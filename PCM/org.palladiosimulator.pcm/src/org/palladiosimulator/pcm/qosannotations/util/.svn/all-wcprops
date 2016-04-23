@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/util
+END
+QosannotationsResourceFactoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/util/QosannotationsResourceFactoryImpl.java
+END
+QosannotationsSwitch.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/util/QosannotationsSwitch.java
+END
+QosannotationsValidator.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/util/QosannotationsValidator.java
+END
+QosannotationsAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/util/QosannotationsAdapterFactory.java
+END
+QosannotationsResourceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/util/QosannotationsResourceImpl.java
+END

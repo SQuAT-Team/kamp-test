@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/i43/svn/code/!svn/ver/27660/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/src/org/palladiosimulator/pcm/ui/provider
+END
+PalladioItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/27660/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/src/org/palladiosimulator/pcm/ui/provider/PalladioItemProvider.java
+END
+RepositoryPrinter.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/27660/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/src/org/palladiosimulator/pcm/ui/provider/RepositoryPrinter.java
+END
+SignaturePrinter.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/27660/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/src/org/palladiosimulator/pcm/ui/provider/SignaturePrinter.java
+END
+PalladioItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/i43/svn/code/!svn/ver/27660/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/src/org/palladiosimulator/pcm/ui/provider/PalladioItemProviderAdapterFactory.java
+END

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core
+END
+CoreFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/CoreFactory.java
+END
+CorePackage.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/CorePackage.java
+END
+PCMRandomVariable.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/PCMRandomVariable.java
+END

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/i43/svn/code/!svn/ver/27660/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/src/org/palladiosimulator/pcm/ui/provider/categoryaware
+END
+CategoryAwareItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/27660/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/src/org/palladiosimulator/pcm/ui/provider/categoryaware/CategoryAwareItemProviderAdapterFactory.java
+END
+GenericCategoryItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/27660/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/src/org/palladiosimulator/pcm/ui/provider/categoryaware/GenericCategoryItemProvider.java
+END
+CategoryAwareItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/27660/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/src/org/palladiosimulator/pcm/ui/provider/categoryaware/CategoryAwareItemProvider.java
+END
+PalladioCategoryDescriptions.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/i43/svn/code/!svn/ver/27660/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/src/org/palladiosimulator/pcm/ui/provider/categoryaware/PalladioCategoryDescriptions.java
+END
+CategoryDescriptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/i43/svn/code/!svn/ver/27660/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/src/org/palladiosimulator/pcm/ui/provider/categoryaware/CategoryDescriptor.java
+END
+ICategoryDescriptions.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/i43/svn/code/!svn/ver/27660/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/src/org/palladiosimulator/pcm/ui/provider/categoryaware/ICategoryDescriptions.java
+END

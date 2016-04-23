@@ -1,0 +1,10 @@
+K 10
+svn:ignore
+V 10
+.settings
+
+K 13
+svn:mergeinfo
+V 86
+/Palladio/Core/branches/bugfixes_3.5.0/StoEx/de.uka.ipd.sdq.stoex.analyser:25725-26072
+END

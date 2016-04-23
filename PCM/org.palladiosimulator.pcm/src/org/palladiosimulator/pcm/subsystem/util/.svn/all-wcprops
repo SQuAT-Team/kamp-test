@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/subsystem/util
+END
+SubsystemResourceFactoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/subsystem/util/SubsystemResourceFactoryImpl.java
+END
+SubsystemSwitch.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/subsystem/util/SubsystemSwitch.java
+END
+SubsystemAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/subsystem/util/SubsystemAdapterFactory.java
+END
+SubsystemResourceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/subsystem/util/SubsystemResourceImpl.java
+END

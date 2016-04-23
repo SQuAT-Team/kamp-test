@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/seff/util
+END
+SeffResourceFactoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/seff/util/SeffResourceFactoryImpl.java
+END
+SeffSwitch.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/seff/util/SeffSwitch.java
+END
+SeffValidator.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/seff/util/SeffValidator.java
+END
+SeffAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/seff/util/SeffAdapterFactory.java
+END
+SeffResourceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/seff/util/SeffResourceImpl.java
+END

@@ -1,0 +1,982 @@
+10
+
+dir
+31805
+https://anonymous@svnserver.informatik.kit.edu/i43/svn/code/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.doc/model/html-doc/content/dojo/dojo/cldr/nls
+https://anonymous@svnserver.informatik.kit.edu/i43/svn/code
+
+
+
+2009-12-11T14:44:57.847233Z
+8091
+klaus
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+769cc9a0-fb0c-0410-8c2f-a2305f0e6268
+
+sr-latn
+dir
+
+sr-latn-cs
+dir
+
+be
+dir
+
+en-be
+dir
+
+bg
+dir
+
+ja
+dir
+
+de-at
+dir
+
+fr-be
+dir
+
+bn
+dir
+
+bo
+dir
+
+es-cl
+dir
+
+en-jm
+dir
+
+es-co
+dir
+
+en-bw
+dir
+
+en-za
+dir
+
+en-bz
+dir
+
+de-be
+dir
+
+persian.js
+file
+
+
+
+
+2016-04-19T23:26:01.000000Z
+a8d0aecc0525b5543555a3a286e69f54
+2009-12-11T14:44:57.847233Z
+8091
+klaus
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1672
+
+ro
+dir
+
+ti-er
+dir
+
+zh
+dir
+
+zh-hk
+dir
+
+ca
+dir
+
+en-ca
+dir
+
+ru
+dir
+
+fr-ca
+dir
+
+ka
+dir
+
+es-sv
+dir
+
+fr-ch
+dir
+
+en-zw
+dir
+
+uz-arab
+dir
+
+se-fi
+dir
+
+kk
+dir
+
+cs
+dir
+
+kl
+dir
+
+km
+dir
+
+es-do
+dir
+
+kn
+dir
+
+ko
+dir
+
+en-sg
+dir
+
+sh
+dir
+
+cy
+dir
+
+sk
+dir
+
+sl
+dir
+
+sr-latn-me
+dir
+
+de-ch
+dir
+
+kw
+dir
+
+so
+dir
+
+sq
+dir
+
+da
+dir
+
+sr
+dir
+
+it-it
+dir
+
+de
+dir
+
+sv
+dir
+
+gregorian.js
+file
+
+
+
+
+2016-04-19T23:26:01.000000Z
+6a0d5cfed2a452a337a86e0ac7d4f6ac
+2009-12-11T14:44:57.847233Z
+8091
+klaus
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1826
+
+sw
+dir
+
+es-ec
+dir
+
+ta
+dir
+
+te
+dir
+
+sr-cyrl-ba
+dir
+
+th
+dir
+
+es-es
+dir
+
+ti
+dir
+
+de-de
+dir
+
+lt
+dir
+
+haw
+dir
+
+lv
+dir
+
+buddhist.js
+file
+
+
+
+
+2016-04-19T23:26:01.000000Z
+b549d4ab543dc8590038b9d5c26dd46a
+2009-12-11T14:44:57.847233Z
+8091
+klaus
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1564
+
+zh-hant-mo
+dir
+
+fr-lu
+dir
+
+tr
+dir
+
+en-tt
+dir
+
+es-mx
+dir
+
+de-li
+dir
+
+es-us
+dir
+
+el
+dir
+
+ar-qa
+dir
+
+es-uy
+dir
+
+en
+dir
+
+eo
+dir
+
+it-ch
+dir
+
+mk
+dir
+
+es
+dir
+
+ml
+dir
+
+et
+dir
+
+pa-pk
+dir
+
+eu
+dir
+
+el-cy
+dir
+
+hy-am-revised
+dir
+
+fa-af
+dir
+
+mn
+dir
+
+es-ni
+dir
+
+ar-ye
+dir
+
+mr
+dir
+
+es-ve
+dir
+
+ms
+dir
+
+uk
+dir
+
+zh-cn
+dir
+
+en-mt
+dir
+
+mt
+dir
+
+af-na
+dir
+
+uz-af
+dir
+
+fa
+dir
+
+ur
+dir
+
+en-us
+dir
+
+en-us-posix
+dir
+
+hebrew.js
+file
+
+
+
+
+2016-04-19T23:26:01.000000Z
+bbea081c3c173bbcb7d8c670fd63adf9
+2009-12-11T14:44:57.847233Z
+8091
+klaus
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1669
+
+zh-sg
+dir
+
+uz-latn
+dir
+
+coptic.js
+file
+
+
+
+
+2016-04-19T23:26:01.000000Z
+95bad05cfcb1f6820ef459deb30680b0
+2009-12-11T14:44:57.847233Z
+8091
+klaus
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1708
+
+fi
+dir
+
+en-na
+dir
+
+nb
+dir
+
+japanese.js
+file
+
+
+
+
+2016-04-19T23:26:01.000000Z
+7f169604ff55afa8ff3c40731c8b4ddf
+2009-12-11T14:44:57.847233Z
+8091
+klaus
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5876
+
+ne
+dir
+
+fo
+dir
+
+sr-ba
+dir
+
+fr
+dir
+
+ar-jo
+dir
+
+nl
+dir
+
+nn
+dir
+
+vi
+dir
+
+es-gt
+dir
+
+ethiopic.js
+file
+
+
+
+
+2016-04-19T23:26:01.000000Z
+66b4681442f24cc7906e4e21e5803172
+2009-12-11T14:44:57.847233Z
+8091
+klaus
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1720
+
+ko-kr
+dir
+
+sv-fi
+dir
+
+sw-ke
+dir
+
+en-nz
+dir
+
+ga
+dir
+
+en-gb
+dir
+
+ru-ua
+dir
+
+islamic-civil.js
+file
+
+
+
+
+2016-04-19T23:26:01.000000Z
+338ece0b147cf3cc6503fcf7cfac85b6
+2009-12-11T14:44:57.847233Z
+8091
+klaus
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1730
+
+ja-jp
+dir
+
+el-polyton
+dir
+
+gl
+dir
+
+ar-sa
+dir
+
+pa-arab
+dir
+
+pt-pt
+dir
+
+es-pa
+dir
+
+currency.js
+file
+
+
+
+
+2016-04-19T23:26:01.000000Z
+1db263ba9b0e1623c288a3654dfb5867
+2009-12-11T14:44:57.847233Z
+8091
+klaus
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+177
+
+es-pe
+dir
+
+zh-hant
+dir
+
+zh-hant-hk
+dir
+
+zh-tw
+dir
+
+es-hn
+dir
+
+gu
+dir
+
+om
+dir
+
+gv
+dir
+
+zh-hans-sg
+dir
+
+es-pr
+dir
+
+zh-mo
+dir
+
+ar-sy
+dir
+
+he
+dir
+
+islamic.js
+file
+
+
+
+
+2016-04-19T23:26:01.000000Z
+338ece0b147cf3cc6503fcf7cfac85b6
+2009-12-11T14:44:57.847233Z
+8091
+klaus
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1730
+
+es-py
+dir
+
+ar-lb
+dir
+
+nl-be
+dir
+
+hi
+dir
+
+pa
+dir
+
+en-hk
+dir
+
+sh-yu
+dir
+
+es-ar
+dir
+
+hr
+dir
+
+fil
+dir
+
+en-pk
+dir
+
+pl
+dir
+
+sr-latn-yu
+dir
+
+hu
+dir
+
+ar-dz
+dir
+
+hy
+dir
+
+aa
+dir
+
+ar-tn
+dir
+
+ps
+dir
+
+pt
+dir
+
+kok
+dir
+
+pt-br
+dir
+
+af
+dir
+
+byn
+dir
+
+chinese.js
+file
+
+
+
+
+2016-04-19T23:26:01.000000Z
+110bcef28d5aee76af9ab7145c8cc77f
+2009-12-11T14:44:57.847233Z
+8091
+klaus
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1500
+
+id
+dir
+
+am
+dir
+
+ar-ma
+dir
+
+en-ie
+dir
+
+ii
+dir
+
+ar
+dir
+
+sr-latn-rs
+dir
+
+as
+dir
+
+number.js
+file
+
+
+
+
+2016-04-19T23:26:01.000000Z
+90fd9ce9f7d7e693077e96baec931590
+2009-12-11T14:44:57.847233Z
+8091
+klaus
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+648
+
+en-au
+dir
+
+en-in
+dir
+
+is
+dir
+
+it
+dir
+
+ms-bn
+dir
+
+sh-cs
+dir
+

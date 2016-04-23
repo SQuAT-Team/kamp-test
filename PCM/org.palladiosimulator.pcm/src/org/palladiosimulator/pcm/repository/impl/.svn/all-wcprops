@@ -1,0 +1,215 @@
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl
+END
+OperationProvidedRoleImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/OperationProvidedRoleImpl.java
+END
+ProvidesComponentTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/ProvidesComponentTypeImpl.java
+END
+ParameterImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/ParameterImpl.java
+END
+OperationInterfaceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/OperationInterfaceImpl.java
+END
+InnerDeclarationImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/InnerDeclarationImpl.java
+END
+SourceRoleImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/SourceRoleImpl.java
+END
+OperationRequiredRoleImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/OperationRequiredRoleImpl.java
+END
+CollectionDataTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/CollectionDataTypeImpl.java
+END
+CompleteComponentTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/CompleteComponentTypeImpl.java
+END
+ProvidedRoleImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/ProvidedRoleImpl.java
+END
+EventGroupImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/EventGroupImpl.java
+END
+RoleImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/RoleImpl.java
+END
+SignatureImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/SignatureImpl.java
+END
+RequiredRoleImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/RequiredRoleImpl.java
+END
+RepositoryComponentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/RepositoryComponentImpl.java
+END
+InfrastructureSignatureImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/InfrastructureSignatureImpl.java
+END
+PrimitiveDataTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/PrimitiveDataTypeImpl.java
+END
+BasicComponentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/BasicComponentImpl.java
+END
+RepositoryFactoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/RepositoryFactoryImpl.java
+END
+ImplementationComponentTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/ImplementationComponentTypeImpl.java
+END
+DataTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/DataTypeImpl.java
+END
+RepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/RepositoryImpl.java
+END
+PassiveResourceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/PassiveResourceImpl.java
+END
+OperationSignatureImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/OperationSignatureImpl.java
+END
+EventTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/EventTypeImpl.java
+END
+RequiredCharacterisationImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/RequiredCharacterisationImpl.java
+END
+CompositeComponentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/CompositeComponentImpl.java
+END
+SinkRoleImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/SinkRoleImpl.java
+END
+RepositoryPackageImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/RepositoryPackageImpl.java
+END
+CompositeDataTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/CompositeDataTypeImpl.java
+END
+InfrastructureProvidedRoleImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/InfrastructureProvidedRoleImpl.java
+END
+ExceptionTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/ExceptionTypeImpl.java
+END
+InterfaceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/InterfaceImpl.java
+END
+InfrastructureInterfaceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/InfrastructureInterfaceImpl.java
+END
+InfrastructureRequiredRoleImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/impl/InfrastructureRequiredRoleImpl.java
+END

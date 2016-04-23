@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/qos_reliability/util
+END
+QosReliabilityValidator.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/qos_reliability/util/QosReliabilityValidator.java
+END
+QosReliabilityAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/qos_reliability/util/QosReliabilityAdapterFactory.java
+END
+QosReliabilityResourceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/qos_reliability/util/QosReliabilityResourceImpl.java
+END
+QosReliabilityResourceFactoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/qos_reliability/util/QosReliabilityResourceFactoryImpl.java
+END
+QosReliabilitySwitch.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/qos_reliability/util/QosReliabilitySwitch.java
+END

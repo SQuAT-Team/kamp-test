@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourcetype/impl
+END
+CommunicationLinkResourceTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourcetype/impl/CommunicationLinkResourceTypeImpl.java
+END
+ResourcetypeFactoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourcetype/impl/ResourcetypeFactoryImpl.java
+END
+ResourcetypePackageImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourcetype/impl/ResourcetypePackageImpl.java
+END
+SchedulingPolicyImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourcetype/impl/SchedulingPolicyImpl.java
+END
+ProcessingResourceTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourcetype/impl/ProcessingResourceTypeImpl.java
+END
+ResourceRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourcetype/impl/ResourceRepositoryImpl.java
+END
+ResourceInterfaceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourcetype/impl/ResourceInterfaceImpl.java
+END
+ResourceSignatureImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourcetype/impl/ResourceSignatureImpl.java
+END
+ResourceTypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourcetype/impl/ResourceTypeImpl.java
+END

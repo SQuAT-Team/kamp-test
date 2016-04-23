@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/util
+END
+CoreAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/util/CoreAdapterFactory.java
+END
+CoreResourceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/util/CoreResourceImpl.java
+END
+CoreResourceFactoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/util/CoreResourceFactoryImpl.java
+END
+CoreSwitch.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/util/CoreSwitch.java
+END
+CoreValidator.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/util/CoreValidator.java
+END

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/qos_performance
+END
+QosPerformancePackage.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/qos_performance/QosPerformancePackage.java
+END
+ComponentSpecifiedExecutionTime.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/qos_performance/ComponentSpecifiedExecutionTime.java
+END
+SystemSpecifiedExecutionTime.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/qos_performance/SystemSpecifiedExecutionTime.java
+END
+QosPerformanceFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/qos_performance/QosPerformanceFactory.java
+END
+SpecifiedExecutionTime.java
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/qos_performance/SpecifiedExecutionTime.java
+END

@@ -1,0 +1,13 @@
+K 10
+svn:ignore
+V 41
+bin
+temp.folder
+.antlr-eclipse
+.settings
+
+K 13
+svn:mergeinfo
+V 74
+/Palladio/Core/branches/NewSchedulingPolicy/de.uka.ipd.sdq.pcm:14158-14209
+END

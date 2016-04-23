@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/i43/svn/code/!svn/ver/28024/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/src/org/palladiosimulator/pcm/ui/wizard
+END
+PalladioTemplate.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/i43/svn/code/!svn/ver/27660/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/src/org/palladiosimulator/pcm/ui/wizard/PalladioTemplate.java
+END
+TemplateContentProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/i43/svn/code/!svn/ver/27660/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/src/org/palladiosimulator/pcm/ui/wizard/TemplateContentProvider.java
+END
+TemplateLabelProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/i43/svn/code/!svn/ver/27660/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/src/org/palladiosimulator/pcm/ui/wizard/TemplateLabelProvider.java
+END
+NewPalladioProjectWizard.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/28024/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/src/org/palladiosimulator/pcm/ui/wizard/NewPalladioProjectWizard.java
+END
+NewPalladioTemplateWizardPage.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/i43/svn/code/!svn/ver/27660/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/src/org/palladiosimulator/pcm/ui/wizard/NewPalladioTemplateWizardPage.java
+END
+DescriptionBox.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/i43/svn/code/!svn/ver/27660/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/src/org/palladiosimulator/pcm/ui/wizard/DescriptionBox.java
+END
+ExtensionHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/27660/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/src/org/palladiosimulator/pcm/ui/wizard/ExtensionHelper.java
+END

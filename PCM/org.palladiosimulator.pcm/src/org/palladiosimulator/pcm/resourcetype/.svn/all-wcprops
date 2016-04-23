@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourcetype
+END
+ResourcetypeFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourcetype/ResourcetypeFactory.java
+END
+ResourcetypePackage.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourcetype/ResourcetypePackage.java
+END
+SchedulingPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourcetype/SchedulingPolicy.java
+END
+ProcessingResourceType.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourcetype/ProcessingResourceType.java
+END
+ResourceRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourcetype/ResourceRepository.java
+END
+ResourceInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourcetype/ResourceInterface.java
+END
+ResourceSignature.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourcetype/ResourceSignature.java
+END
+ResourceType.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourcetype/ResourceType.java
+END
+CommunicationLinkResourceType.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourcetype/CommunicationLinkResourceType.java
+END

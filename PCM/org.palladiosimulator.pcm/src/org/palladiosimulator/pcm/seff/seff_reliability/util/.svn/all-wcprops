@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/seff/seff_reliability/util
+END
+SeffReliabilityResourceFactoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/seff/seff_reliability/util/SeffReliabilityResourceFactoryImpl.java
+END
+SeffReliabilitySwitch.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/seff/seff_reliability/util/SeffReliabilitySwitch.java
+END
+SeffReliabilityValidator.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/seff/seff_reliability/util/SeffReliabilityValidator.java
+END
+SeffReliabilityAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/seff/seff_reliability/util/SeffReliabilityAdapterFactory.java
+END
+SeffReliabilityResourceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/seff/seff_reliability/util/SeffReliabilityResourceImpl.java
+END

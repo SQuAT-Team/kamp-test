@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/model/gmfmodels/repositoryeditor
+END
+repositoryeditor.trace
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/model/gmfmodels/repositoryeditor/repositoryeditor.trace
+END
+repositoryeditor.gmfgen
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/i43/svn/code/!svn/ver/28015/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/model/gmfmodels/repositoryeditor/repositoryeditor.gmfgen
+END
+repository.gmfgraph
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/i43/svn/code/!svn/ver/27568/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/model/gmfmodels/repositoryeditor/repository.gmfgraph
+END
+repositoryeditor.gmfmap
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/i43/svn/code/!svn/ver/27568/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/model/gmfmodels/repositoryeditor/repositoryeditor.gmfmap
+END
+repositoryeditor.gmftool
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/i43/svn/code/!svn/ver/27568/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/model/gmfmodels/repositoryeditor/repositoryeditor.gmftool
+END

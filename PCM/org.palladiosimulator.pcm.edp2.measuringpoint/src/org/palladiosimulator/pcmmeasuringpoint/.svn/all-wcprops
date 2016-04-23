@@ -1,0 +1,155 @@
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/29152/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint
+END
+PassiveResourceReference.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/29152/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/PassiveResourceReference.java
+END
+ExternalCallActionMeasuringPoint.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/27501/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/ExternalCallActionMeasuringPoint.java
+END
+ResourceEnvironmentMeasuringPoint.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/27501/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/ResourceEnvironmentMeasuringPoint.java
+END
+ActiveResourceReference.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/i43/svn/code/!svn/ver/29152/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/ActiveResourceReference.java
+END
+SystemReference.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/i43/svn/code/!svn/ver/29152/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/SystemReference.java
+END
+SubSystemOperationMeasuringPoint.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/27501/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/SubSystemOperationMeasuringPoint.java
+END
+AssemblyPassiveResourceMeasuringPoint.java
+K 25
+svn:wc:ra_dav:version-url
+V 185
+/i43/svn/code/!svn/ver/29152/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/AssemblyPassiveResourceMeasuringPoint.java
+END
+UsageScenarioReference.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/29152/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/UsageScenarioReference.java
+END
+ActiveResourceMeasuringPoint.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/27501/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/ActiveResourceMeasuringPoint.java
+END
+EntryLevelSystemCallReference.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/i43/svn/code/!svn/ver/29152/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/EntryLevelSystemCallReference.java
+END
+ResourceContainerReference.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/29152/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/ResourceContainerReference.java
+END
+SubSystemReference.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/i43/svn/code/!svn/ver/29152/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/SubSystemReference.java
+END
+UsageScenarioMeasuringPoint.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/i43/svn/code/!svn/ver/27501/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/UsageScenarioMeasuringPoint.java
+END
+ResourceContainerMeasuringPoint.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/i43/svn/code/!svn/ver/29151/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/ResourceContainerMeasuringPoint.java
+END
+OperationReference.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/i43/svn/code/!svn/ver/29152/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/OperationReference.java
+END
+EntryLevelSystemCallMeasuringPoint.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/27501/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/EntryLevelSystemCallMeasuringPoint.java
+END
+PcmmeasuringpointPackage.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/29152/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/PcmmeasuringpointPackage.java
+END
+LinkingResourceReference.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/29152/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/LinkingResourceReference.java
+END
+AssemblyOperationMeasuringPoint.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/i43/svn/code/!svn/ver/27501/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/AssemblyOperationMeasuringPoint.java
+END
+LinkingResourceMeasuringPoint.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/i43/svn/code/!svn/ver/27501/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/LinkingResourceMeasuringPoint.java
+END
+SystemOperationMeasuringPoint.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/i43/svn/code/!svn/ver/27501/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/SystemOperationMeasuringPoint.java
+END
+ExternalCallActionReference.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/i43/svn/code/!svn/ver/29152/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/ExternalCallActionReference.java
+END
+ResourceEnvironmentReference.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/29152/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/ResourceEnvironmentReference.java
+END
+PcmmeasuringpointFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/29151/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/PcmmeasuringpointFactory.java
+END
+AssemblyReference.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/i43/svn/code/!svn/ver/29152/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/AssemblyReference.java
+END

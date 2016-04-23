@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/usagemodel/util
+END
+UsagemodelResourceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/usagemodel/util/UsagemodelResourceImpl.java
+END
+UsagemodelResourceFactoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/usagemodel/util/UsagemodelResourceFactoryImpl.java
+END
+UsagemodelSwitch.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/usagemodel/util/UsagemodelSwitch.java
+END
+UsagemodelValidator.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/usagemodel/util/UsagemodelValidator.java
+END
+UsagemodelAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/usagemodel/util/UsagemodelAdapterFactory.java
+END

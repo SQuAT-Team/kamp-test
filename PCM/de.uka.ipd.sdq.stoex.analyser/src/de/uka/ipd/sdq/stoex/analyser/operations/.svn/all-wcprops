@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/i43/svn/code/!svn/ver/27684/Palladio/Core/trunk/PCM/de.uka.ipd.sdq.stoex.analyser/src/de/uka/ipd/sdq/stoex/analyser/operations
+END
+ModOperation.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/27645/Palladio/Core/trunk/PCM/de.uka.ipd.sdq.stoex.analyser/src/de/uka/ipd/sdq/stoex/analyser/operations/ModOperation.java
+END
+OrOperation.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/27645/Palladio/Core/trunk/PCM/de.uka.ipd.sdq.stoex.analyser/src/de/uka/ipd/sdq/stoex/analyser/operations/OrOperation.java
+END
+MultOperation.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/27684/Palladio/Core/trunk/PCM/de.uka.ipd.sdq.stoex.analyser/src/de/uka/ipd/sdq/stoex/analyser/operations/MultOperation.java
+END
+GreaterEqualOperation.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/i43/svn/code/!svn/ver/27645/Palladio/Core/trunk/PCM/de.uka.ipd.sdq.stoex.analyser/src/de/uka/ipd/sdq/stoex/analyser/operations/GreaterEqualOperation.java
+END
+DivOperation.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/27645/Palladio/Core/trunk/PCM/de.uka.ipd.sdq.stoex.analyser/src/de/uka/ipd/sdq/stoex/analyser/operations/DivOperation.java
+END
+CompareOperation.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/27645/Palladio/Core/trunk/PCM/de.uka.ipd.sdq.stoex.analyser/src/de/uka/ipd/sdq/stoex/analyser/operations/CompareOperation.java
+END
+NotEqualOperation.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/i43/svn/code/!svn/ver/27645/Palladio/Core/trunk/PCM/de.uka.ipd.sdq.stoex.analyser/src/de/uka/ipd/sdq/stoex/analyser/operations/NotEqualOperation.java
+END
+AddOperation.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/27684/Palladio/Core/trunk/PCM/de.uka.ipd.sdq.stoex.analyser/src/de/uka/ipd/sdq/stoex/analyser/operations/AddOperation.java
+END
+SubOperation.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/27645/Palladio/Core/trunk/PCM/de.uka.ipd.sdq.stoex.analyser/src/de/uka/ipd/sdq/stoex/analyser/operations/SubOperation.java
+END
+GreaterOperation.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/27645/Palladio/Core/trunk/PCM/de.uka.ipd.sdq.stoex.analyser/src/de/uka/ipd/sdq/stoex/analyser/operations/GreaterOperation.java
+END
+EqualsOperation.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/i43/svn/code/!svn/ver/27645/Palladio/Core/trunk/PCM/de.uka.ipd.sdq.stoex.analyser/src/de/uka/ipd/sdq/stoex/analyser/operations/EqualsOperation.java
+END
+LessEqualOperation.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/27645/Palladio/Core/trunk/PCM/de.uka.ipd.sdq.stoex.analyser/src/de/uka/ipd/sdq/stoex/analyser/operations/LessEqualOperation.java
+END
+AndOperation.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/27645/Palladio/Core/trunk/PCM/de.uka.ipd.sdq.stoex.analyser/src/de/uka/ipd/sdq/stoex/analyser/operations/AndOperation.java
+END
+LessOperation.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/27645/Palladio/Core/trunk/PCM/de.uka.ipd.sdq.stoex.analyser/src/de/uka/ipd/sdq/stoex/analyser/operations/LessOperation.java
+END
+TermProductOperation.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/i43/svn/code/!svn/ver/27684/Palladio/Core/trunk/PCM/de.uka.ipd.sdq.stoex.analyser/src/de/uka/ipd/sdq/stoex/analyser/operations/TermProductOperation.java
+END
+LogicalOperation.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/27645/Palladio/Core/trunk/PCM/de.uka.ipd.sdq.stoex.analyser/src/de/uka/ipd/sdq/stoex/analyser/operations/LogicalOperation.java
+END

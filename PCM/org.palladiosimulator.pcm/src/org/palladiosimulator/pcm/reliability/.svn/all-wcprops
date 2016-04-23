@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/reliability
+END
+NetworkInducedFailureType.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/reliability/NetworkInducedFailureType.java
+END
+SoftwareInducedFailureType.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/reliability/SoftwareInducedFailureType.java
+END
+InternalFailureOccurrenceDescription.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/reliability/InternalFailureOccurrenceDescription.java
+END
+ReliabilityFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/reliability/ReliabilityFactory.java
+END
+HardwareInducedFailureType.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/reliability/HardwareInducedFailureType.java
+END
+FailureOccurrenceDescription.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/reliability/FailureOccurrenceDescription.java
+END
+ReliabilityPackage.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/reliability/ReliabilityPackage.java
+END
+ExternalFailureOccurrenceDescription.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/reliability/ExternalFailureOccurrenceDescription.java
+END
+ResourceTimeoutFailureType.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/reliability/ResourceTimeoutFailureType.java
+END
+FailureType.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/reliability/FailureType.java
+END

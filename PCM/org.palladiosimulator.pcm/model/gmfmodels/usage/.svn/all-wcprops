@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/model/gmfmodels/usage
+END
+usage.trace
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/model/gmfmodels/usage/usage.trace
+END
+usage.gmfgen
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/i43/svn/code/!svn/ver/28015/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/model/gmfmodels/usage/usage.gmfgen
+END
+usage.gmfmap
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/i43/svn/code/!svn/ver/27568/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/model/gmfmodels/usage/usage.gmfmap
+END
+usage.gmftool
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/i43/svn/code/!svn/ver/27593/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/model/gmfmodels/usage/usage.gmftool
+END
+usage.gmfgraph
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/i43/svn/code/!svn/ver/27568/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/model/gmfmodels/usage/usage.gmfgraph
+END

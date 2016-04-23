@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/impl
+END
+QoSAnnotationsImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/impl/QoSAnnotationsImpl.java
+END
+SpecifiedOutputParameterAbstractionImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/impl/SpecifiedOutputParameterAbstractionImpl.java
+END
+QosannotationsFactoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/impl/QosannotationsFactoryImpl.java
+END
+SpecifiedQoSAnnotationImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/impl/SpecifiedQoSAnnotationImpl.java
+END
+QosannotationsPackageImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/qosannotations/impl/QosannotationsPackageImpl.java
+END

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/util
+END
+CompositionResourceFactoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/util/CompositionResourceFactoryImpl.java
+END
+CompositionSwitch.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/util/CompositionSwitch.java
+END
+CompositionValidator.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/util/CompositionValidator.java
+END
+CompositionAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/util/CompositionAdapterFactory.java
+END
+CompositionResourceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/util/CompositionResourceImpl.java
+END

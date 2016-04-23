@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/i43/svn/code/!svn/ver/28221/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.feature
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/i43/svn/code/!svn/ver/27515/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.feature/.project
+END
+build.properties
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/i43/svn/code/!svn/ver/27515/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.feature/build.properties
+END
+feature.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/i43/svn/code/!svn/ver/28221/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.feature/feature.xml
+END

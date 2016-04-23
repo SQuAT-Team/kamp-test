@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/i43/svn/code/!svn/ver/29082/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/i43/svn/code/!svn/ver/27554/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/.classpath
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/i43/svn/code/!svn/ver/27554/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/.project
+END
+build.properties
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/i43/svn/code/!svn/ver/27554/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/build.properties
+END
+readme.txt
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/i43/svn/code/!svn/ver/27554/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/readme.txt
+END
+plugin.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/i43/svn/code/!svn/ver/27554/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/plugin.xml
+END

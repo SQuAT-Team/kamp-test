@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/entity
+END
+InterfaceProvidingEntity.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/entity/InterfaceProvidingEntity.java
+END
+InterfaceRequiringEntity.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/entity/InterfaceRequiringEntity.java
+END
+EntityFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/entity/EntityFactory.java
+END
+InterfaceProvidingRequiringEntity.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/entity/InterfaceProvidingRequiringEntity.java
+END
+ResourceProvidedRole.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/entity/ResourceProvidedRole.java
+END
+ResourceInterfaceProvidingEntity.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/entity/ResourceInterfaceProvidingEntity.java
+END
+EntityPackage.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/entity/EntityPackage.java
+END
+ResourceRequiredRole.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/entity/ResourceRequiredRole.java
+END
+ResourceInterfaceRequiringEntity.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/entity/ResourceInterfaceRequiringEntity.java
+END
+Entity.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/entity/Entity.java
+END
+ResourceInterfaceProvidingRequiringEntity.java
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/entity/ResourceInterfaceProvidingRequiringEntity.java
+END
+ComposedProvidingRequiringEntity.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/entity/ComposedProvidingRequiringEntity.java
+END
+NamedElement.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/entity/NamedElement.java
+END

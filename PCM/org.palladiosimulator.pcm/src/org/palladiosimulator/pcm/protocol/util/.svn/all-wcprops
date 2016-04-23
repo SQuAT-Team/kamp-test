@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/protocol/util
+END
+ProtocolResourceFactoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/protocol/util/ProtocolResourceFactoryImpl.java
+END
+ProtocolSwitch.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/protocol/util/ProtocolSwitch.java
+END
+ProtocolAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/protocol/util/ProtocolAdapterFactory.java
+END
+ProtocolResourceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/protocol/util/ProtocolResourceImpl.java
+END

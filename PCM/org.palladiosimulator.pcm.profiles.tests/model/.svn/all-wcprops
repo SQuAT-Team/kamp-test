@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.profiles.tests/model
+END
+default.repository
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.profiles.tests/model/default.repository
+END
+default.repository_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.profiles.tests/model/default.repository_diagram
+END
+TestProfile.emfprofile_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.profiles.tests/model/TestProfile.emfprofile_diagram
+END

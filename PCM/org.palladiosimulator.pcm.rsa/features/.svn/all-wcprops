@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/i43/svn/code/!svn/ver/27511/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.rsa/features
+END
+CopyException.emx
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/i43/svn/code/!svn/ver/27511/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.rsa/features/CopyException.emx
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/i43/svn/code/!svn/ver/27511/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.rsa/features/.project
+END
+Ecore.emx
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/i43/svn/code/!svn/ver/27511/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.rsa/features/Ecore.emx
+END
+CopyException.ecore
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/i43/svn/code/!svn/ver/27511/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.rsa/features/CopyException.ecore
+END
+Ecore.ecore
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/i43/svn/code/!svn/ver/27511/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.rsa/features/Ecore.ecore
+END
+QVTBase.emx
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/i43/svn/code/!svn/ver/27511/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.rsa/features/QVTBase.emx
+END
+CompletionFeatureModel.emx
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/i43/svn/code/!svn/ver/27511/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.rsa/features/CompletionFeatureModel.emx
+END
+QVTTemplate.emx
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/i43/svn/code/!svn/ver/27511/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.rsa/features/QVTTemplate.emx
+END
+QVTRelation.emx
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/i43/svn/code/!svn/ver/27511/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.rsa/features/QVTRelation.emx
+END
+QVTBase.ecore
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/i43/svn/code/!svn/ver/27511/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.rsa/features/QVTBase.ecore
+END
+QVTTemplate.ecore
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/i43/svn/code/!svn/ver/27511/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.rsa/features/QVTTemplate.ecore
+END
+QVTRelation.ecore
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/i43/svn/code/!svn/ver/27511/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.rsa/features/QVTRelation.ecore
+END
+FeatureModel.emx
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/i43/svn/code/!svn/ver/27511/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.rsa/features/FeatureModel.emx
+END
+OCL.ecore
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/i43/svn/code/!svn/ver/27511/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.rsa/features/OCL.ecore
+END
+FeatureConfig.emx
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/i43/svn/code/!svn/ver/27511/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.rsa/features/FeatureConfig.emx
+END
+EssentialOCL.emx
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/i43/svn/code/!svn/ver/27511/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.rsa/features/EssentialOCL.emx
+END
+EMOF.emx
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/i43/svn/code/!svn/ver/27511/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.rsa/features/EMOF.emx
+END

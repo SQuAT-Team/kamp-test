@@ -1,0 +1,15 @@
+source.. = src/
+output.. = bin/
+bin.includes = META-INF/,\
+               .,\
+               plugin.properties,\
+               icons/,\
+               schema/,\
+               templates/,\
+               plugin.xml,\
+               plugin_customization.ini,\
+               splash.bmp,\
+               about.png
+src.includes = icons/,\
+               schema/,\
+               templates/

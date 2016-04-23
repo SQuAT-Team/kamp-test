@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/util
+END
+PcmResourceFactoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/util/PcmResourceFactoryImpl.java
+END
+PcmSwitch.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/util/PcmSwitch.java
+END
+PcmAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/util/PcmAdapterFactory.java
+END
+PcmResourceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/util/PcmResourceImpl.java
+END

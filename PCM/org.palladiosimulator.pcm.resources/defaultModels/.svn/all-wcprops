@@ -1,0 +1,125 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/i43/svn/code/!svn/ver/29082/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/defaultModels
+END
+Dimension_initialcost.qmlcontracttype
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/i43/svn/code/!svn/ver/27554/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/defaultModels/Dimension_initialcost.qmlcontracttype
+END
+Dimension_maxCPUUtilization.qmlcontracttype
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/27554/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/defaultModels/Dimension_maxCPUUtilization.qmlcontracttype
+END
+PCMStandardQMLContract.qmldeclarations
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/i43/svn/code/!svn/ver/27554/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/defaultModels/PCMStandardQMLContract.qmldeclarations
+END
+FailureTypes.repository
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/i43/svn/code/!svn/ver/29082/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/defaultModels/FailureTypes.repository
+END
+PCMStandardQMLContractType.qmldeclarations
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/27554/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/defaultModels/PCMStandardQMLContractType.qmldeclarations
+END
+ConnectorConfig.featureconfig
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/i43/svn/code/!svn/ver/27554/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/defaultModels/ConnectorConfig.featureconfig
+END
+default_event_middleware.repository
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/defaultModels/default_event_middleware.repository
+END
+Glassfish.repository
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/defaultModels/Glassfish.repository
+END
+Dimension_security.qmlcontracttype
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/i43/svn/code/!svn/ver/27554/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/defaultModels/Dimension_security.qmlcontracttype
+END
+Dimension_pofod.qmlcontracttype
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/27554/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/defaultModels/Dimension_pofod.qmlcontracttype
+END
+Dimension_cost.qmlcontracttype
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/i43/svn/code/!svn/ver/27554/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/defaultModels/Dimension_cost.qmlcontracttype
+END
+Connector.featuremodel
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/i43/svn/code/!svn/ver/27554/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/defaultModels/Connector.featuremodel
+END
+Dimension_throughput.qmlcontracttype
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/i43/svn/code/!svn/ver/27554/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/defaultModels/Dimension_throughput.qmlcontracttype
+END
+LoadOverhead.featuremodel
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/i43/svn/code/!svn/ver/27554/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/defaultModels/LoadOverhead.featuremodel
+END
+Dimension_responsetime.qmlcontracttype
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/i43/svn/code/!svn/ver/27554/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/defaultModels/Dimension_responsetime.qmlcontracttype
+END
+HDDParameter.featuremodel
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/i43/svn/code/!svn/ver/27554/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/defaultModels/HDDParameter.featuremodel
+END
+PrimitiveTypes.repository
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository
+END
+PCMStandardQMLProfile.qmldeclarations
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/i43/svn/code/!svn/ver/27554/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/defaultModels/PCMStandardQMLProfile.qmldeclarations
+END
+Palladio.resourcetype
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype
+END
+Dimension_operatingcost.qmlcontracttype
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/27554/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.resources/defaultModels/Dimension_operatingcost.qmlcontracttype
+END

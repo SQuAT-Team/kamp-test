@@ -1,0 +1,233 @@
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository
+END
+InfrastructureProvidedRole.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/InfrastructureProvidedRole.java
+END
+Interface.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/Interface.java
+END
+ExceptionType.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/ExceptionType.java
+END
+InfrastructureInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/InfrastructureInterface.java
+END
+InfrastructureRequiredRole.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/InfrastructureRequiredRole.java
+END
+OperationProvidedRole.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/OperationProvidedRole.java
+END
+ProvidesComponentType.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/ProvidesComponentType.java
+END
+Parameter.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/Parameter.java
+END
+OperationInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/OperationInterface.java
+END
+InnerDeclaration.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/InnerDeclaration.java
+END
+SourceRole.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/SourceRole.java
+END
+OperationRequiredRole.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/OperationRequiredRole.java
+END
+CollectionDataType.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/CollectionDataType.java
+END
+CompleteComponentType.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/CompleteComponentType.java
+END
+EventGroup.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/EventGroup.java
+END
+ProvidedRole.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/ProvidedRole.java
+END
+PrimitiveTypeEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/PrimitiveTypeEnum.java
+END
+ParameterModifier.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/ParameterModifier.java
+END
+Role.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/Role.java
+END
+Signature.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/Signature.java
+END
+RepositoryComponent.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/RepositoryComponent.java
+END
+InfrastructureSignature.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/InfrastructureSignature.java
+END
+RequiredRole.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/RequiredRole.java
+END
+PrimitiveDataType.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/PrimitiveDataType.java
+END
+BasicComponent.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/BasicComponent.java
+END
+ComponentType.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/ComponentType.java
+END
+RepositoryFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/RepositoryFactory.java
+END
+ImplementationComponentType.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/ImplementationComponentType.java
+END
+DataType.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/DataType.java
+END
+Repository.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/Repository.java
+END
+OperationSignature.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/OperationSignature.java
+END
+PassiveResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/PassiveResource.java
+END
+EventType.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/EventType.java
+END
+RequiredCharacterisation.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/RequiredCharacterisation.java
+END
+CompositeComponent.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/CompositeComponent.java
+END
+SinkRole.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/SinkRole.java
+END
+RepositoryPackage.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/RepositoryPackage.java
+END
+CompositeDataType.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/repository/CompositeDataType.java
+END

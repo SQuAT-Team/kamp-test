@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/parameter
+END
+CharacterisedVariable.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/parameter/CharacterisedVariable.java
+END
+ParameterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/parameter/ParameterFactory.java
+END
+VariableCharacterisation.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/parameter/VariableCharacterisation.java
+END
+VariableUsage.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/parameter/VariableUsage.java
+END
+VariableCharacterisationType.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/parameter/VariableCharacterisationType.java
+END
+ParameterPackage.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/parameter/ParameterPackage.java
+END

@@ -1,0 +1,175 @@
+10
+
+dir
+31805
+https://anonymous@svnserver.informatik.kit.edu/i43/svn/code/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm
+https://anonymous@svnserver.informatik.kit.edu/i43/svn/code
+
+
+
+2015-08-11T05:19:27.813340Z
+28746
+sbecker
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+769cc9a0-fb0c-0410-8c2f-a2305f0e6268
+
+repository
+dir
+
+qosannotations
+dir
+
+parameter
+dir
+
+seff
+dir
+
+system
+dir
+
+allocation
+dir
+
+usagemodel
+dir
+
+PcmFactory.java
+file
+
+
+
+
+2016-04-19T23:25:50.000000Z
+5bcc0c85e9cd5d4c3cfda6770dd1e8e3
+2015-07-03T11:07:43.747861Z
+28147
+sebastian_lehrig
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1304
+
+core
+dir
+
+resourcetype
+dir
+
+subsystem
+dir
+
+protocol
+dir
+
+impl
+dir
+
+DummyClass.java
+file
+
+
+
+
+2016-04-19T23:25:50.000000Z
+71bdc8c565a5a5d486e25cb40e895511
+2015-07-03T11:07:43.747861Z
+28147
+sebastian_lehrig
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+624
+
+reliability
+dir
+
+PcmPackage.java
+file
+
+
+
+
+2016-04-19T23:25:50.000000Z
+cf4f516aa4425af767e495b54028984b
+2015-07-03T11:07:43.747861Z
+28147
+sebastian_lehrig
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3950
+
+resourceenvironment
+dir
+
+util
+dir
+

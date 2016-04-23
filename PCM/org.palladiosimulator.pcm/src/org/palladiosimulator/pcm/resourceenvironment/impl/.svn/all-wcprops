@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourceenvironment/impl
+END
+LinkingResourceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourceenvironment/impl/LinkingResourceImpl.java
+END
+ResourceenvironmentFactoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourceenvironment/impl/ResourceenvironmentFactoryImpl.java
+END
+ProcessingResourceSpecificationImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourceenvironment/impl/ProcessingResourceSpecificationImpl.java
+END
+ResourceenvironmentPackageImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourceenvironment/impl/ResourceenvironmentPackageImpl.java
+END
+ResourceContainerImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourceenvironment/impl/ResourceContainerImpl.java
+END
+CommunicationLinkResourceSpecificationImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourceenvironment/impl/CommunicationLinkResourceSpecificationImpl.java
+END
+ResourceEnvironmentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/resourceenvironment/impl/ResourceEnvironmentImpl.java
+END

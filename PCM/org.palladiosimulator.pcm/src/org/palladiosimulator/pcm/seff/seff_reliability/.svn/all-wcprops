@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/seff/seff_reliability
+END
+RecoveryActionBehaviour.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/seff/seff_reliability/RecoveryActionBehaviour.java
+END
+SeffReliabilityFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/seff/seff_reliability/SeffReliabilityFactory.java
+END
+FailureHandlingEntity.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/seff/seff_reliability/FailureHandlingEntity.java
+END
+SeffReliabilityPackage.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/seff/seff_reliability/SeffReliabilityPackage.java
+END
+RecoveryAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/seff/seff_reliability/RecoveryAction.java
+END

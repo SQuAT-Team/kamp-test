@@ -1,0 +1,125 @@
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition
+END
+RequiredResourceDelegationConnector.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/RequiredResourceDelegationConnector.java
+END
+ResourceRequiredDelegationConnector.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/ResourceRequiredDelegationConnector.java
+END
+EventChannelSourceConnector.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/EventChannelSourceConnector.java
+END
+SourceDelegationConnector.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/SourceDelegationConnector.java
+END
+EventChannelSinkConnector.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/EventChannelSinkConnector.java
+END
+EventChannel.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/EventChannel.java
+END
+SinkDelegationConnector.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/SinkDelegationConnector.java
+END
+CompositionPackage.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/CompositionPackage.java
+END
+ProvidedDelegationConnector.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/ProvidedDelegationConnector.java
+END
+ProvidedInfrastructureDelegationConnector.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/ProvidedInfrastructureDelegationConnector.java
+END
+AssemblyContext.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/AssemblyContext.java
+END
+DelegationConnector.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/DelegationConnector.java
+END
+RequiredDelegationConnector.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/RequiredDelegationConnector.java
+END
+RequiredInfrastructureDelegationConnector.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/RequiredInfrastructureDelegationConnector.java
+END
+ComposedStructure.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/ComposedStructure.java
+END
+Connector.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/Connector.java
+END
+AssemblyConnector.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/AssemblyConnector.java
+END
+CompositionFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/28147/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/CompositionFactory.java
+END
+AssemblyInfrastructureConnector.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/AssemblyInfrastructureConnector.java
+END
+AssemblyEventConnector.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm/src/org/palladiosimulator/pcm/core/composition/AssemblyEventConnector.java
+END

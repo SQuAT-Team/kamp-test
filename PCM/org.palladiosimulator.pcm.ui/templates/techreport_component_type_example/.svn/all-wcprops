@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/techreport_component_type_example
+END
+default.resourceenvironment
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/techreport_component_type_example/default.resourceenvironment
+END
+default.repository
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/techreport_component_type_example/default.repository
+END
+default.resourceenvironment_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/techreport_component_type_example/default.resourceenvironment_diagram
+END
+default.repository_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/techreport_component_type_example/default.repository_diagram
+END
+default.system
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/techreport_component_type_example/default.system
+END
+default.allocation
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/techreport_component_type_example/default.allocation
+END
+default.usagemodel
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/techreport_component_type_example/default.usagemodel
+END
+default.system_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/i43/svn/code/!svn/ver/27660/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/techreport_component_type_example/default.system_diagram
+END
+default.allocation_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/techreport_component_type_example/default.allocation_diagram
+END
+default.usagemodel_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/techreport_component_type_example/default.usagemodel_diagram
+END

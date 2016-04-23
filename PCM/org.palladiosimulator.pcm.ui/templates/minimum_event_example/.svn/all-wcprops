@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/minimum_event_example
+END
+default.resourceenvironment
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/minimum_event_example/default.resourceenvironment
+END
+default.repository
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/minimum_event_example/default.repository
+END
+default.resourceenvironment_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/minimum_event_example/default.resourceenvironment_diagram
+END
+default.repository_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/minimum_event_example/default.repository_diagram
+END
+default.system
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/minimum_event_example/default.system
+END
+default.allocation
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/minimum_event_example/default.allocation
+END
+default.usagemodel
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/minimum_event_example/default.usagemodel
+END
+default.system_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/i43/svn/code/!svn/ver/27660/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/minimum_event_example/default.system_diagram
+END
+default.allocation_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/minimum_event_example/default.allocation_diagram
+END
+default.usagemodel_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.ui/templates/minimum_event_example/default.usagemodel_diagram
+END

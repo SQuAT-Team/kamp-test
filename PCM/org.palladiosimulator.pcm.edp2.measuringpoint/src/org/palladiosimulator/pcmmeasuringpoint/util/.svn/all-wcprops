@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/i43/svn/code/!svn/ver/29152/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/util
+END
+PcmmeasuringpointXMLProcessor.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/29151/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/util/PcmmeasuringpointXMLProcessor.java
+END
+PcmmeasuringpointResourceFactoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 189
+/i43/svn/code/!svn/ver/27501/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/util/PcmmeasuringpointResourceFactoryImpl.java
+END
+PcmmeasuringpointSwitch.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/29152/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/util/PcmmeasuringpointSwitch.java
+END
+PcmmeasuringpointAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/i43/svn/code/!svn/ver/29151/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/util/PcmmeasuringpointAdapterFactory.java
+END
+PcmmeasuringpointResourceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/27501/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.edp2.measuringpoint/src/org/palladiosimulator/pcmmeasuringpoint/util/PcmmeasuringpointResourceImpl.java
+END
