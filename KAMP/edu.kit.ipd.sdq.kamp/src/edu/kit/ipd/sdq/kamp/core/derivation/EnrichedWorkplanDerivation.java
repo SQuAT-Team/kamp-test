@@ -3,9 +3,9 @@ package edu.kit.ipd.sdq.kamp.core.derivation;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.uka.ipd.sdq.pcm.repository.ProvidedRole;
-import de.uka.ipd.sdq.pcm.repository.RepositoryComponent;
-import de.uka.ipd.sdq.pcm.repository.RequiredRole;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
+import org.palladiosimulator.pcm.repository.RequiredRole;
 
 import edu.kit.ipd.sdq.kamp.core.Activity;
 import edu.kit.ipd.sdq.kamp.core.ActivityElementType;
@@ -87,7 +87,7 @@ public class EnrichedWorkplanDerivation {
 				
 				if (numberOfSourceFiles > 0) {
 					Activity newActivity = new Activity(ActivityType.IMPLEMENTATION_SOURCECODE, ActivityElementType.SOURCECODEFILES, numberOfSourceFiles+" Quelltextdatei(en)", BasicActivity.ADD, 
-							"Quelltextbearbeitung: Erstelle Quelltextdateien fŸr Komponente "+activity.getElementName()+".", "Komponente "+activity.getElementName());
+							"Quelltextbearbeitung: Erstelle Quelltextdateien fï¿½r Komponente "+activity.getElementName()+".", "Komponente "+activity.getElementName());
 					activity.addFollowupactivity(newActivity);
 				}
 			} else if (activityElementIsComponent(activity) && activity.getBasicActivity()==BasicActivity.REMOVE) {
@@ -134,7 +134,7 @@ public class EnrichedWorkplanDerivation {
 				int numberOfMetadataFiles = determineNumberOfMetadataFiles(targetVersion, activity);
 				if (numberOfMetadataFiles > 0) {
 					Activity newActivity = new Activity(ActivityType.IMPLEMENTATION_METADATA, ActivityElementType.METADATAFILES, numberOfMetadataFiles+" Metadatendatei(en)", BasicActivity.ADD, 
-							"Metadatenbearbeitung: Erstelle Metadatendateien ("+numberOfMetadataFiles+" Dateien) fŸr Komponente "+activity.getElementName()+".", "Komponente "+activity.getElementName());
+							"Metadatenbearbeitung: Erstelle Metadatendateien ("+numberOfMetadataFiles+" Dateien) fï¿½r Komponente "+activity.getElementName()+".", "Komponente "+activity.getElementName());
 					activity.addFollowupactivity(newActivity);
 				}
 			} else if (activityElementIsComponent(activity) && activity.getBasicActivity()==BasicActivity.REMOVE) {
@@ -197,7 +197,7 @@ public class EnrichedWorkplanDerivation {
 					BuildConfiguration buildConfiguration = ArchitectureAnnotationLookup.lookUpBuildConfigurationForComponent(target, component);
 					Activity newActivity = new Activity(ActivityType.BUILDCONFIGURATION, ActivityElementType.BUILDCONFIGURATION, 
 							(buildConfiguration != null) ? buildConfiguration.getFilename() : "", BasicActivity.MODIFY, 
-							"Baukonfiguration: Hinzugekommene AbhŠngigkeit fŸr Schnittstellennachfrage "+activity.getElementName()+" in Baukonfiguration ergŠnzen.", 
+							"Baukonfiguration: Hinzugekommene Abhï¿½ngigkeit fï¿½r Schnittstellennachfrage "+activity.getElementName()+" in Baukonfiguration ergï¿½nzen.", 
 							"Schnittstellennachfrage "+activity.getElementName());
 					activity.addFollowupactivity(newActivity);
 					
@@ -209,7 +209,7 @@ public class EnrichedWorkplanDerivation {
 					BuildConfiguration buildConfiguration = ArchitectureAnnotationLookup.lookUpBuildConfigurationForComponent(target, component);
 					Activity newActivity = new Activity(ActivityType.BUILDCONFIGURATION, ActivityElementType.BUILDCONFIGURATION, 
 							(buildConfiguration != null) ? buildConfiguration.getFilename() : "", BasicActivity.MODIFY, 
-							"Baukonfiguration: Weggefallene AbhŠngigkeit fŸr Schnittstellennachfrage "+activity.getElementName()+" in Baukonfiguration entfernen.", 
+							"Baukonfiguration: Weggefallene Abhï¿½ngigkeit fï¿½r Schnittstellennachfrage "+activity.getElementName()+" in Baukonfiguration entfernen.", 
 							"Schnittstellennachfrage "+activity.getElementName());
 					activity.addFollowupactivity(newActivity);
 				}
@@ -242,12 +242,12 @@ public class EnrichedWorkplanDerivation {
 		for (Activity activity : activityList) {
 			if (activityElementIsComponent(activity) && activityIsADDorMODIFY(activity)) {
 				if (componentIsNotThirdPartyOrLibrary(target, (RepositoryComponent)activity.getElement())) {
-					// verfŸgbarkeit von quelltext oder metadaten egal
+					// verfï¿½gbarkeit von quelltext oder metadaten egal
 					// TODO: build configuration definiert die einheit
-					// TODO: fŸr jede build configuration wird insgesamt nur eine durchfŸhrung geplant
+					// TODO: fï¿½r jede build configuration wird insgesamt nur eine durchfï¿½hrung geplant
 					BuildConfiguration buildConfig = ArchitectureAnnotationLookup.lookUpBuildConfigurationForComponent(target, (RepositoryComponent)activity.getElement());
 					Activity newActivity = new Activity(ActivityType.BUILDEXECUTION, ActivityElementType.BUILDCONFIGURATION, 
-							(buildConfig != null) ? buildConfig.getFilename() : "" , BasicActivity.EXECUTE, "BaudurchfŸhrung: Baue Komponente "+activity.getElementName(), "Komponente "+activity.getElementName());
+							(buildConfig != null) ? buildConfig.getFilename() : "" , BasicActivity.EXECUTE, "Baudurchfï¿½hrung: Baue Komponente "+activity.getElementName(), "Komponente "+activity.getElementName());
 					activity.addFollowupactivity(newActivity);
 				}
 			}
@@ -264,19 +264,19 @@ public class EnrichedWorkplanDerivation {
 
 		// nur entfernen von vorhandenen tests
 		
-		// nur prŸfen und aktualisieren von vorhandenen tests
+		// nur prï¿½fen und aktualisieren von vorhandenen tests
 		
 		for (Activity activity : baseActivityList) {
 			if (activity.getElementType() == ActivityElementType.PROVIDEDROLE && activity.getBasicActivity()==BasicActivity.ADD) {
 				Activity newActivity = new Activity(ActivityType.TESTDEVELOPMENT, ActivityElementType.TESTCASE, 
-						"", BasicActivity.ADD, "Testentwicklung: Entwickle Unit-TestfŠlle fŸr Schnittstellenangebot.", 
+						"", BasicActivity.ADD, "Testentwicklung: Entwickle Unit-Testfï¿½lle fï¿½r Schnittstellenangebot.", 
 						"Schnittstellenangebot "+activity.getElementName());
 				activity.addFollowupactivity(newActivity);
 			} else if (activity.getElementType() == ActivityElementType.PROVIDEDROLE && activity.getBasicActivity()==BasicActivity.REMOVE) {
 				int numberOfUnitTests = numberOfAvailableUnitTests(base, activity);
 				if (numberOfUnitTests>0) {
 					Activity newActivity = new Activity(ActivityType.TESTDEVELOPMENT, ActivityElementType.TESTCASE, 
-							numberOfUnitTests+ " Tests", BasicActivity.REMOVE, "Testentwicklung: Entferne Unit-TestfŠlle fŸr Schnittstellenangebot.", 
+							numberOfUnitTests+ " Tests", BasicActivity.REMOVE, "Testentwicklung: Entferne Unit-Testfï¿½lle fï¿½r Schnittstellenangebot.", 
 							"Schnittstellenangebot "+activity.getElementName());
 					activity.addFollowupactivity(newActivity);
 				}
@@ -284,7 +284,7 @@ public class EnrichedWorkplanDerivation {
 				int numberOfUnitTests = numberOfAvailableUnitTests(target, activity);
 				if (numberOfUnitTests>0) {
 					Activity newActivity = new Activity(ActivityType.TESTUPDATE, ActivityElementType.TESTCASE, 
-						numberOfUnitTests+ " Tests", BasicActivity.CHECKANDUPDATE, "Testaktualisierung: PrŸfe und aktualisiere TestfŠlle fŸr Schnittstellenangebot.", 
+						numberOfUnitTests+ " Tests", BasicActivity.CHECKANDUPDATE, "Testaktualisierung: Prï¿½fe und aktualisiere Testfï¿½lle fï¿½r Schnittstellenangebot.", 
 						"Schnittstellenangebot "+activity.getElementName());
 					activity.addFollowupactivity(newActivity);
 				}
@@ -311,14 +311,14 @@ public class EnrichedWorkplanDerivation {
 		
 		for (Activity activity : baseActivityList) {
 			if (activity.getElementType() == ActivityElementType.PROVIDEDROLE && activity.getBasicActivity()==BasicActivity.ADD) {
-				Activity newActivity = new Activity(ActivityType.TESTEXECUTION, ActivityElementType.TESTCASE, "Neue TestfŠlle", BasicActivity.EXECUTE, 
-						"TestdurchfŸhrung (Unit-Tests): FŸhre TestfŠlle aus.", "Schnittstellenangebot "+activity.getElementName());
+				Activity newActivity = new Activity(ActivityType.TESTEXECUTION, ActivityElementType.TESTCASE, "Neue Testfï¿½lle", BasicActivity.EXECUTE, 
+						"Testdurchfï¿½hrung (Unit-Tests): Fï¿½hre Testfï¿½lle aus.", "Schnittstellenangebot "+activity.getElementName());
 				activity.addFollowupactivity(newActivity);
 			} else if (activity.getElementType() == ActivityElementType.PROVIDEDROLE && activity.getBasicActivity()==BasicActivity.MODIFY) {
 				int numberOfUnitTests = numberOfAvailableUnitTests(target, activity);
 				if (numberOfUnitTests>0) {
 					Activity newActivity = new Activity(ActivityType.TESTEXECUTION, ActivityElementType.TESTCASE, numberOfUnitTests+ " Tests", BasicActivity.EXECUTE, 
-							"TestdurchfŸhrung (Unit-Tests): FŸhre TestfŠlle aus.", "Schnittstellenangebot "+activity.getElementName());
+							"Testdurchfï¿½hrung (Unit-Tests): Fï¿½hre Testfï¿½lle aus.", "Schnittstellenangebot "+activity.getElementName());
 					activity.addFollowupactivity(newActivity);
 				}
 			}
@@ -346,7 +346,7 @@ public class EnrichedWorkplanDerivation {
 		for (Activity activity : baseActivityList) {
 			if (activity.getElementType() == ActivityElementType.BUILDCONFIGURATION && activity.getBasicActivity()==BasicActivity.EXECUTE) {
 				Activity newActivity = new Activity(ActivityType.RELEASEEXECUTION, ActivityElementType.RELEASECONFIGURATION, "UserManagement.war", BasicActivity.EXECUTE, 
-						"Bereitstellung: FŸhre Bereitstellung durch.");
+						"Bereitstellung: Fï¿½hre Bereitstellung durch.");
 				activity.addFollowupactivity(newActivity);
 			} 
 			deriveReleaseExecutionActivities(target, activity.getFollowupActivities());
@@ -372,7 +372,7 @@ public class EnrichedWorkplanDerivation {
 		for (Activity activity : baseActivityList) {
 			if (activity.getType()==ActivityType.RELEASEEXECUTION && activity.getBasicActivity()==BasicActivity.EXECUTE) {
 				Activity newActivity = new Activity(ActivityType.DEPLOYMENTEXECUTION, ActivityElementType.DEPLOYMENTCONFIGURATION, "1 Laufzeitinstanz", BasicActivity.EXECUTE, 
-						"InbetriebnahmedurchfŸhrung: FŸhre Inbetriebnahme durch.");
+						"Inbetriebnahmedurchfï¿½hrung: Fï¿½hre Inbetriebnahme durch.");
 				activity.addFollowupactivity(newActivity);
 			} 
 			deriveDeploymentExecutionActivities(target, activity.getFollowupActivities());

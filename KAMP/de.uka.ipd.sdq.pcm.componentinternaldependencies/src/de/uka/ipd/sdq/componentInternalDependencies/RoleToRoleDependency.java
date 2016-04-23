@@ -8,11 +8,10 @@ package de.uka.ipd.sdq.componentInternalDependencies;
 
 import de.uka.ipd.sdq.identifier.Identifier;
 
-import de.uka.ipd.sdq.pcm.repository.ProvidedRole;
-import de.uka.ipd.sdq.pcm.repository.RequiredRole;
-import de.uka.ipd.sdq.pcm.repository.Signature;
-
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
+import org.palladiosimulator.pcm.repository.RequiredRole;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,18 +20,18 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.uka.ipd.sdq.componentInternalDependencies.RoleToRoleDependency#getProvidedRole <em>Provided Role</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.componentInternalDependencies.RoleToRoleDependency#getRequiredRole <em>Required Role</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.componentInternalDependencies.RoleToRoleDependency#getOperationToOperationDependency <em>Operation To Operation Dependency</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.uka.ipd.sdq.componentInternalDependencies.ComponentInternalDependenciesPackage#getRoleToRoleDependency()
  * @model
  * @generated
  */
-public interface RoleToRoleDependency extends Identifier {
+public interface RoleToRoleDependency extends EObject, Identifier {
 	/**
 	 * Returns the value of the '<em><b>Provided Role</b></em>' reference.
 	 * <!-- begin-user-doc -->

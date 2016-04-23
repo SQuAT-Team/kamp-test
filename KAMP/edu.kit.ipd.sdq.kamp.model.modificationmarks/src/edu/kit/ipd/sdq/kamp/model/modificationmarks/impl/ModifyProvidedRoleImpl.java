@@ -6,12 +6,13 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import de.uka.ipd.sdq.pcm.repository.ProvidedRole;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.ModifyProvidedRole;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.ModifySignature;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage;
@@ -23,11 +24,11 @@ import java.util.Collection;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.impl.ModifyProvidedRoleImpl#getProvidedrole <em>Providedrole</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.impl.ModifyProvidedRoleImpl#getSignatureModifications <em>Signature Modifications</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -77,7 +78,7 @@ public class ModifyProvidedRoleImpl extends ModificationImpl implements ModifyPr
 	 * @generated
 	 */
 	public ProvidedRole getProvidedrole() {
-		if (providedrole != null && providedrole.eIsProxy()) {
+		if (providedrole != null && ((EObject)providedrole).eIsProxy()) {
 			InternalEObject oldProvidedrole = (InternalEObject)providedrole;
 			providedrole = (ProvidedRole)eResolveProxy(oldProvidedrole);
 			if (providedrole != oldProvidedrole) {

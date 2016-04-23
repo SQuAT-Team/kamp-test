@@ -2,7 +2,7 @@
  */
 package edu.kit.ipd.sdq.kamp.model.modificationmarks;
 
-import de.uka.ipd.sdq.pcm.repository.DataType;
+import org.palladiosimulator.pcm.repository.DataType;
 
 /**
  * <!-- begin-user-doc -->
@@ -11,10 +11,10 @@ import de.uka.ipd.sdq.pcm.repository.DataType;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.ModifyDatatype#getDatatype <em>Datatype</em>}</li>
  * </ul>
- * </p>
  *
  * @see edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage#getModifyDatatype()
  * @model

@@ -32,22 +32,22 @@
   <eClassifiers xsi:type="ecore:EClass" name="SourceFile" eSuperTypes="#//File">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
         eType="#//DevelopmentArtefactSpecification" eOpposite="#//DevelopmentArtefactSpecification/sourceFiles"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="component" eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="component" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SourceFileAggregation" eSuperTypes="#//FileAggregation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
         eType="#//DevelopmentArtefactSpecification" eOpposite="#//DevelopmentArtefactSpecification/sourceFileAggregations"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="component" eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="component" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MetadataFile" eSuperTypes="#//File">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
         eType="#//DevelopmentArtefactSpecification" eOpposite="#//DevelopmentArtefactSpecification/metadataFiles"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="component" eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="component" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MetadataFileAggregation" eSuperTypes="#//FileAggregation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
         eType="#//DevelopmentArtefactSpecification" eOpposite="#//DevelopmentArtefactSpecification/metadataFileAggregations"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="component" eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="component" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BuildSpecification">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
@@ -62,12 +62,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
         eType="#//BuildSpecification" eOpposite="#//BuildSpecification/buildConfigurations"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="component" upperBound="-1"
-        eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ThirdPartyComponentOrLibrary" eSuperTypes="#//File">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
         eType="#//BuildSpecification" eOpposite="#//BuildSpecification/thirdPartyComponentOrLibraries"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="component" eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="component" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestSpecification">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
@@ -97,7 +97,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
         eType="#//ReleaseSpecification" eOpposite="#//ReleaseSpecification/releaseConfigurations"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
-        eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="pathname" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -115,7 +115,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
-        eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RuntimeInstanceAggregation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
@@ -123,39 +123,39 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfInstances" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
-        eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UnitTestCase" eSuperTypes="#//TestCase">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
         eType="#//TestSpecification" eOpposite="#//TestSpecification/unitTestCases"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="providedrole" eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/OperationProvidedRole"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="providedrole" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationProvidedRole"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AcceptanceTestCase" eSuperTypes="#//TestCase">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
         eType="#//TestSpecification" eOpposite="#//TestSpecification/acceptanceTestCases"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="providedrole" eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/OperationProvidedRole"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="providedrole" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationProvidedRole"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntegrationTestCase" eSuperTypes="#//TestCase">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
         eType="#//TestSpecification" eOpposite="#//TestSpecification/integrationTestCases"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="providedrole" eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/OperationProvidedRole"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyConnector" eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/composition/AssemblyConnector"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="providedrole" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationProvidedRole"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyConnector" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//core/composition/AssemblyConnector"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UnitTestCaseAggregation" eSuperTypes="#//TestCaseAggregation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
         eType="#//TestSpecification" eOpposite="#//TestSpecification/unitTestCaseAggregations"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="providedrole" eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/OperationProvidedRole"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="providedrole" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationProvidedRole"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AcceptanceTestCaseAggregation" eSuperTypes="#//TestCaseAggregation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
         eType="#//TestSpecification" eOpposite="#//TestSpecification/acceptanceTestCaseAggregations"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="providedrole" eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/OperationProvidedRole"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="providedrole" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationProvidedRole"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntegrationTestCaseAggregation" eSuperTypes="#//TestCaseAggregation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
         eType="#//TestSpecification" eOpposite="#//TestSpecification/integrationTestCaseAggregations"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="providedrole" eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/OperationProvidedRole"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyConnector" eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/composition/AssemblyConnector"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="providedrole" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationProvidedRole"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyConnector" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//core/composition/AssemblyConnector"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StaffSpecification">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
@@ -185,7 +185,7 @@
         eOpposite="#//Person/roles"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
-        eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RoleList">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"

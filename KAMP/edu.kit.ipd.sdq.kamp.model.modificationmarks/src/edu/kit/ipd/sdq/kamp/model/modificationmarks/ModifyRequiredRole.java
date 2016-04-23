@@ -2,7 +2,7 @@
  */
 package edu.kit.ipd.sdq.kamp.model.modificationmarks;
 
-import de.uka.ipd.sdq.pcm.repository.RequiredRole;
+import org.palladiosimulator.pcm.repository.RequiredRole;
 
 /**
  * <!-- begin-user-doc -->
@@ -11,10 +11,10 @@ import de.uka.ipd.sdq.pcm.repository.RequiredRole;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.ModifyRequiredRole#getRequiredrole <em>Requiredrole</em>}</li>
  * </ul>
- * </p>
  *
  * @see edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage#getModifyRequiredRole()
  * @model

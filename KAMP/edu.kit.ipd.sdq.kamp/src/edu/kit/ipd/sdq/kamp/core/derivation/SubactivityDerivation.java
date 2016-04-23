@@ -3,14 +3,14 @@ package edu.kit.ipd.sdq.kamp.core.derivation;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.uka.ipd.sdq.pcm.repository.BasicComponent;
-import de.uka.ipd.sdq.pcm.repository.OperationInterface;
-import de.uka.ipd.sdq.pcm.repository.OperationProvidedRole;
-import de.uka.ipd.sdq.pcm.repository.OperationRequiredRole;
-import de.uka.ipd.sdq.pcm.repository.OperationSignature;
-import de.uka.ipd.sdq.pcm.repository.ProvidedRole;
-import de.uka.ipd.sdq.pcm.repository.RepositoryComponent;
-import de.uka.ipd.sdq.pcm.repository.RequiredRole;
+import org.palladiosimulator.pcm.repository.BasicComponent;
+import org.palladiosimulator.pcm.repository.OperationInterface;
+import org.palladiosimulator.pcm.repository.OperationProvidedRole;
+import org.palladiosimulator.pcm.repository.OperationRequiredRole;
+import org.palladiosimulator.pcm.repository.OperationSignature;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
+import org.palladiosimulator.pcm.repository.RequiredRole;
 import edu.kit.ipd.sdq.kamp.core.Activity;
 import edu.kit.ipd.sdq.kamp.core.ActivityElementType;
 import edu.kit.ipd.sdq.kamp.core.ActivityType;
@@ -23,7 +23,7 @@ public class SubactivityDerivation {
 		for (ProvidedRole providedRole : basicComponent.getProvidedRoles_InterfaceProvidingEntity()) {
 			String description = "";
 			if (basicActivity.equals(BasicActivity.ADD)) {
-				description = "FŸge Schnittstellenangebot "+providedRole.getEntityName()+" zu Komponente "+basicComponent.getEntityName()+" hinzu.";
+				description = "Fï¿½ge Schnittstellenangebot "+providedRole.getEntityName()+" zu Komponente "+basicComponent.getEntityName()+" hinzu.";
 			} else if (basicActivity.equals(BasicActivity.MODIFY)) {
 				description = "Modifiziere Schnittstellenangebot "+providedRole.getEntityName()+" der Komponente "+basicComponent.getEntityName()+".";
 			} else if (basicActivity.equals(BasicActivity.REMOVE)) {
@@ -38,7 +38,7 @@ public class SubactivityDerivation {
 		for (RequiredRole requiredRole : basicComponent.getRequiredRoles_InterfaceRequiringEntity()) {
 			String description = "";
 			if (basicActivity.equals(BasicActivity.ADD)) {
-				description = "FŸge Schnittstellennachfrage "+requiredRole.getEntityName()+" zu Komponente "+basicComponent.getEntityName()+" hinzu.";
+				description = "Fï¿½ge Schnittstellennachfrage "+requiredRole.getEntityName()+" zu Komponente "+basicComponent.getEntityName()+" hinzu.";
 			} else if (basicActivity.equals(BasicActivity.MODIFY)) {
 				description = "Modifiziere Schnittstellennachfrage "+requiredRole.getEntityName()+" der Komponente "+basicComponent.getEntityName()+".";
 			} else if (basicActivity.equals(BasicActivity.REMOVE)) {
@@ -59,7 +59,7 @@ public class SubactivityDerivation {
 
 			String description = "";
 			if (basicActivity.equals(BasicActivity.ADD)) {
-				description = "FŸge Schnittstellenoperation "+operationSignature.getEntityName()+" zur Schnittstelle "+operationInterface.getEntityName()+" hinzu.";
+				description = "Fï¿½ge Schnittstellenoperation "+operationSignature.getEntityName()+" zur Schnittstelle "+operationInterface.getEntityName()+" hinzu.";
 			} else if (basicActivity.equals(BasicActivity.MODIFY)) {
 				description = "Modifiziere Schnittstellenoperation "+operationSignature.getEntityName()+" der Schnittstelle "+operationInterface.getEntityName()+".";
 			} else if (basicActivity.equals(BasicActivity.REMOVE)) {
@@ -78,7 +78,7 @@ public class SubactivityDerivation {
 		for (OperationSignature operationSignature : providedRole.getProvidedInterface__OperationProvidedRole().getSignatures__OperationInterface()) {
 			String description = "";
 			if (basicActivity.equals(BasicActivity.ADD)) {
-				description = "FŸge angebotene Operation "+operationSignature.getEntityName()+" zum Schnittstellenangebot "+providedRole.getEntityName()+" hinzu.";
+				description = "Fï¿½ge angebotene Operation "+operationSignature.getEntityName()+" zum Schnittstellenangebot "+providedRole.getEntityName()+" hinzu.";
 			} else if (basicActivity.equals(BasicActivity.MODIFY)) {
 				description = "Modifiziere angebotene Operation "+operationSignature.getEntityName()+" des Schnittstellenangebots "+providedRole.getEntityName()+".";
 			} else if (basicActivity.equals(BasicActivity.REMOVE)) {
@@ -97,7 +97,7 @@ public class SubactivityDerivation {
 		for (OperationSignature operationSignature : requiredRole.getRequiredInterface__OperationRequiredRole().getSignatures__OperationInterface()) {
 			String description = "";
 			if (basicActivity.equals(BasicActivity.ADD)) {
-				description = "FŸge nachgefragte Operation "+operationSignature.getEntityName()+" zur Schnittstellennachfrage "+requiredRole.getEntityName()+" hinzu.";
+				description = "Fï¿½ge nachgefragte Operation "+operationSignature.getEntityName()+" zur Schnittstellennachfrage "+requiredRole.getEntityName()+" hinzu.";
 			} else if (basicActivity.equals(BasicActivity.MODIFY)) {
 				description = "Modifiziere nachgefragte Operation "+operationSignature.getEntityName()+" der Schnittstellennachfrage "+requiredRole.getEntityName()+".";
 			} else if (basicActivity.equals(BasicActivity.REMOVE)) {

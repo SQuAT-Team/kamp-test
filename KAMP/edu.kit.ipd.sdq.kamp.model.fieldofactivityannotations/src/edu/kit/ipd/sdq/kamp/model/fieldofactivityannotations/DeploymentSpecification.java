@@ -13,12 +13,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.DeploymentSpecification#getRuntimeInstances <em>Runtime Instances</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.DeploymentSpecification#getRuntimeInstanceAggregations <em>Runtime Instance Aggregations</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.DeploymentSpecification#getParent <em>Parent</em>}</li>
  * </ul>
- * </p>
  *
  * @see edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldofactivityannotationsPackage#getDeploymentSpecification()
  * @model

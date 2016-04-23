@@ -3,8 +3,7 @@
 package edu.kit.ipd.sdq.kamp.model.modificationmarks;
 
 import org.eclipse.emf.common.util.EList;
-
-import de.uka.ipd.sdq.pcm.repository.RepositoryComponent;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,12 +12,12 @@ import de.uka.ipd.sdq.pcm.repository.RepositoryComponent;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.ModifyComponent#getComponent <em>Component</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.ModifyComponent#getProvidedroleModifications <em>Providedrole Modifications</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.ModifyComponent#getRequiredroleModifications <em>Requiredrole Modifications</em>}</li>
  * </ul>
- * </p>
  *
  * @see edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage#getModifyComponent()
  * @model

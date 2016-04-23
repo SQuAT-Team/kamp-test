@@ -3,8 +3,8 @@
 package de.uka.ipd.sdq.fieldOfActivityAnnotations;
 
 import de.uka.ipd.sdq.identifier.Identifier;
-
-import de.uka.ipd.sdq.pcm.repository.ImplementationComponentType;
+import org.eclipse.emf.ecore.EObject;
+import org.palladiosimulator.pcm.repository.ImplementationComponentType;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,17 +13,17 @@ import de.uka.ipd.sdq.pcm.repository.ImplementationComponentType;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.TechnologicalCorrespondence#getTechnologicalCorrespondenceType <em>Technological Correspondence Type</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.TechnologicalCorrespondence#getComponent <em>Component</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.uka.ipd.sdq.fieldOfActivityAnnotations.FieldOfActivityAnnotationsPackage#getTechnologicalCorrespondence()
  * @model
  * @generated
  */
-public interface TechnologicalCorrespondence extends Identifier {
+public interface TechnologicalCorrespondence extends EObject, Identifier {
 	/**
 	 * Returns the value of the '<em><b>Technological Correspondence Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link de.uka.ipd.sdq.fieldOfActivityAnnotations.TechnologicalCorrespondenceTypes}.

@@ -2,8 +2,6 @@
  */
 package edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl;
 
-import de.uka.ipd.sdq.pcm.repository.OperationProvidedRole;
-
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.AcceptanceTestCase;
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldofactivityannotationsPackage;
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.TestSpecification;
@@ -12,11 +10,13 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.palladiosimulator.pcm.repository.OperationProvidedRole;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,11 +24,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.AcceptanceTestCaseImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.AcceptanceTestCaseImpl#getProvidedrole <em>Providedrole</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -69,7 +69,7 @@ public class AcceptanceTestCaseImpl extends TestCaseImpl implements AcceptanceTe
 	 */
 	public TestSpecification getParent() {
 		if (eContainerFeatureID() != FieldofactivityannotationsPackage.ACCEPTANCE_TEST_CASE__PARENT) return null;
-		return (TestSpecification)eContainer();
+		return (TestSpecification)eInternalContainer();
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class AcceptanceTestCaseImpl extends TestCaseImpl implements AcceptanceTe
 	 * @generated
 	 */
 	public OperationProvidedRole getProvidedrole() {
-		if (providedrole != null && providedrole.eIsProxy()) {
+		if (providedrole != null && ((EObject)providedrole).eIsProxy()) {
 			InternalEObject oldProvidedrole = (InternalEObject)providedrole;
 			providedrole = (OperationProvidedRole)eResolveProxy(oldProvidedrole);
 			if (providedrole != oldProvidedrole) {

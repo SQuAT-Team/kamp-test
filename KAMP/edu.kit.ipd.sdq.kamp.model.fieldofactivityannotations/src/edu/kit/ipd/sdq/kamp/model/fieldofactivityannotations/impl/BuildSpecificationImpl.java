@@ -31,12 +31,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.BuildSpecificationImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.BuildSpecificationImpl#getBuildConfigurations <em>Build Configurations</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.BuildSpecificationImpl#getThirdPartyComponentOrLibraries <em>Third Party Component Or Libraries</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -87,7 +87,7 @@ public class BuildSpecificationImpl extends EObjectImpl implements BuildSpecific
 	 */
 	public FieldOfActivityAnnotationRepository getParent() {
 		if (eContainerFeatureID() != FieldofactivityannotationsPackage.BUILD_SPECIFICATION__PARENT) return null;
-		return (FieldOfActivityAnnotationRepository)eContainer();
+		return (FieldOfActivityAnnotationRepository)eInternalContainer();
 	}
 
 	/**

@@ -10,20 +10,19 @@ import de.uka.ipd.sdq.identifier.impl.IdentifierImpl;
 import de.uka.ipd.sdq.internalmodificationmark.InternalModificationMark;
 import de.uka.ipd.sdq.internalmodificationmark.InternalmodificationmarkPackage;
 
-import de.uka.ipd.sdq.pcm.repository.ImplementationComponentType;
-import de.uka.ipd.sdq.pcm.repository.ProvidedRole;
-import de.uka.ipd.sdq.pcm.repository.RepositoryComponent;
-
-import de.uka.ipd.sdq.pcm.repository.Signature;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
+import org.palladiosimulator.pcm.repository.Signature;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
@@ -32,12 +31,12 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.uka.ipd.sdq.internalmodificationmark.impl.InternalModificationMarkImpl#getComponent <em>Component</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.internalmodificationmark.impl.InternalModificationMarkImpl#getProvidedRole <em>Provided Role</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.internalmodificationmark.impl.InternalModificationMarkImpl#getSignature <em>Signature</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -95,7 +94,7 @@ public class InternalModificationMarkImpl extends IdentifierImpl implements Inte
 	 * @generated
 	 */
 	public RepositoryComponent getComponent() {
-		if (component != null && component.eIsProxy()) {
+		if (component != null && ((EObject)component).eIsProxy()) {
 			InternalEObject oldComponent = (InternalEObject)component;
 			component = (RepositoryComponent)eResolveProxy(oldComponent);
 			if (component != oldComponent) {

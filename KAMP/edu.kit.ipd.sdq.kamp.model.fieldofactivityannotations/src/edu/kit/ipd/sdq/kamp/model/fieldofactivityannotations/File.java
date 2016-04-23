@@ -11,11 +11,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.File#getFilename <em>Filename</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.File#getTechnology <em>Technology</em>}</li>
  * </ul>
- * </p>
  *
  * @see edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldofactivityannotationsPackage#getFile()
  * @model abstract="true"

@@ -11,14 +11,14 @@ import de.uka.ipd.sdq.fieldOfActivityAnnotations.RuntimeInstance;
 
 import de.uka.ipd.sdq.identifier.impl.IdentifierImpl;
 
-import de.uka.ipd.sdq.pcm.repository.ImplementationComponentType;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.palladiosimulator.pcm.repository.ImplementationComponentType;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,11 +26,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.impl.RuntimeInstanceImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.impl.RuntimeInstanceImpl#getComponent <em>Component</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -111,7 +111,7 @@ public class RuntimeInstanceImpl extends IdentifierImpl implements RuntimeInstan
 	 * @generated
 	 */
 	public ImplementationComponentType getComponent() {
-		if (component != null && component.eIsProxy()) {
+		if (component != null && ((EObject)component).eIsProxy()) {
 			InternalEObject oldComponent = (InternalEObject)component;
 			component = (ImplementationComponentType)eResolveProxy(oldComponent);
 			if (component != oldComponent) {

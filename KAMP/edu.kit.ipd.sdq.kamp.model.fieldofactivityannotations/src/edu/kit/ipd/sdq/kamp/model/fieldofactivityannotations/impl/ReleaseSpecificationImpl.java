@@ -30,11 +30,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.ReleaseSpecificationImpl#getReleaseConfigurations <em>Release Configurations</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.ReleaseSpecificationImpl#getParent <em>Parent</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -87,7 +87,7 @@ public class ReleaseSpecificationImpl extends EObjectImpl implements ReleaseSpec
 	 */
 	public FieldOfActivityAnnotationRepository getParent() {
 		if (eContainerFeatureID() != FieldofactivityannotationsPackage.RELEASE_SPECIFICATION__PARENT) return null;
-		return (FieldOfActivityAnnotationRepository)eContainer();
+		return (FieldOfActivityAnnotationRepository)eInternalContainer();
 	}
 
 	/**

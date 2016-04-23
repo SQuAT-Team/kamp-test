@@ -21,10 +21,10 @@ import edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.impl.IntercomponentPropagationImpl#getAssemblyConnectorModifications <em>Assembly Connector Modifications</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

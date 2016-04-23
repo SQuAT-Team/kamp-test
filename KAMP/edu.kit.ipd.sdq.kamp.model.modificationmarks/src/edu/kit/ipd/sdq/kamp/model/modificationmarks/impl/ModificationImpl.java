@@ -18,12 +18,12 @@ import edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.impl.ModificationImpl#getId <em>Id</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.impl.ModificationImpl#isToolderived <em>Toolderived</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.impl.ModificationImpl#getUserDecision <em>User Decision</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

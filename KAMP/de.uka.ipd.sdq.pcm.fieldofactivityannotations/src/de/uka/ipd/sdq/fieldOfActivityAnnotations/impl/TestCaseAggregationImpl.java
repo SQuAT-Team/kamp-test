@@ -12,8 +12,6 @@ import de.uka.ipd.sdq.fieldOfActivityAnnotations.TestType;
 
 import de.uka.ipd.sdq.identifier.impl.IdentifierImpl;
 
-import de.uka.ipd.sdq.pcm.repository.ProvidedRole;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -27,6 +25,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,12 +33,12 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.impl.TestCaseAggregationImpl#getNumberOfTestCases <em>Number Of Test Cases</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.impl.TestCaseAggregationImpl#getProvidedRoles <em>Provided Roles</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.impl.TestCaseAggregationImpl#getTestType <em>Test Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

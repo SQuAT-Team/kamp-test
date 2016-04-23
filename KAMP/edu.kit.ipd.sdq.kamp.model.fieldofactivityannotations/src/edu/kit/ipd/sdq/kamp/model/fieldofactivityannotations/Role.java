@@ -2,11 +2,10 @@
  */
 package edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations;
 
-import de.uka.ipd.sdq.pcm.repository.RepositoryComponent;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,13 +14,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.Role#getParent <em>Parent</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.Role#getPerson <em>Person</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.Role#getDescription <em>Description</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.Role#getComponents <em>Components</em>}</li>
  * </ul>
- * </p>
  *
  * @see edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldofactivityannotationsPackage#getRole()
  * @model abstract="true"
@@ -112,7 +111,7 @@ public interface Role extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Components</b></em>' reference list.
-	 * The list contents are of type {@link de.uka.ipd.sdq.pcm.repository.RepositoryComponent}.
+	 * The list contents are of type {@link org.palladiosimulator.pcm.repository.RepositoryComponent}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Components</em>' reference list isn't clear,

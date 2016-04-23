@@ -2,12 +2,6 @@
  */
 package edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl;
 
-import de.uka.ipd.sdq.pcm.PcmPackage;
-
-import de.uka.ipd.sdq.pcm.core.composition.CompositionPackage;
-
-import de.uka.ipd.sdq.pcm.repository.RepositoryPackage;
-
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.AcceptanceTestCase;
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.AcceptanceTestCaseAggregation;
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.BuildConfiguration;
@@ -53,6 +47,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.palladiosimulator.pcm.PcmPackage;
+import org.palladiosimulator.pcm.core.composition.CompositionPackage;
+import org.palladiosimulator.pcm.repository.RepositoryPackage;
 
 /**
  * <!-- begin-user-doc -->

@@ -8,9 +8,9 @@ package de.uka.ipd.sdq.fieldOfActivityAnnotations;
 
 import de.uka.ipd.sdq.identifier.Identifier;
 
-import de.uka.ipd.sdq.pcm.repository.ProvidedRole;
-
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,18 +19,18 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.TestCase#getName <em>Name</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.TestCase#getProvidedRoles <em>Provided Roles</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.TestCase#getTestType <em>Test Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.uka.ipd.sdq.fieldOfActivityAnnotations.FieldOfActivityAnnotationsPackage#getTestCase()
  * @model
  * @generated
  */
-public interface TestCase extends Identifier {
+public interface TestCase extends EObject, Identifier {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -88,7 +88,7 @@ public interface TestCase extends Identifier {
 
 	/**
 	 * Returns the value of the '<em><b>Provided Roles</b></em>' reference list.
-	 * The list contents are of type {@link de.uka.ipd.sdq.pcm.repository.ProvidedRole}.
+	 * The list contents are of type {@link org.palladiosimulator.pcm.repository.ProvidedRole}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Provided Roles</em>' reference list isn't clear,

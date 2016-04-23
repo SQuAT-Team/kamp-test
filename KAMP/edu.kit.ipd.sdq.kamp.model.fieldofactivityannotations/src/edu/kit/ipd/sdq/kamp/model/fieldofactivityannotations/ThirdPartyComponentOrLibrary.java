@@ -2,9 +2,8 @@
  */
 package edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations;
 
-import de.uka.ipd.sdq.pcm.repository.RepositoryComponent;
-
 import org.eclipse.emf.ecore.EObject;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,11 +12,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.ThirdPartyComponentOrLibrary#getParent <em>Parent</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.ThirdPartyComponentOrLibrary#getComponent <em>Component</em>}</li>
  * </ul>
- * </p>
  *
  * @see edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldofactivityannotationsPackage#getThirdPartyComponentOrLibrary()
  * @model

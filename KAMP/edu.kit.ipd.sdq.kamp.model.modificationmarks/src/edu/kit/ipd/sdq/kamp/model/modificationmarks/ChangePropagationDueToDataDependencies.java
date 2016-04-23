@@ -11,10 +11,10 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.ChangePropagationDueToDataDependencies#getInterfaceModifications <em>Interface Modifications</em>}</li>
  * </ul>
- * </p>
  *
  * @see edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage#getChangePropagationDueToDataDependencies()
  * @model

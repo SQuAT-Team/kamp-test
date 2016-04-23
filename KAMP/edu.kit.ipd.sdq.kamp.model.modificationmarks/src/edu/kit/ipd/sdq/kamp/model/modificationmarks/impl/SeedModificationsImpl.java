@@ -24,12 +24,12 @@ import edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.impl.SeedModificationsImpl#getDatatypeModifications <em>Datatype Modifications</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.impl.SeedModificationsImpl#getComponentModifications <em>Component Modifications</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.impl.SeedModificationsImpl#getInterfaceModifications <em>Interface Modifications</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

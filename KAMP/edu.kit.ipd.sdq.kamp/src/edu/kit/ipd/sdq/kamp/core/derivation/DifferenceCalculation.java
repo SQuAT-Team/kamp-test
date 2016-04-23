@@ -16,22 +16,22 @@ import org.eclipse.emf.compare.match.metamodel.MatchModel;
 import org.eclipse.emf.compare.match.service.MatchService;
 import org.eclipse.emf.ecore.EObject;
 
-import de.uka.ipd.sdq.pcm.core.composition.AssemblyConnector;
-import de.uka.ipd.sdq.pcm.repository.BasicComponent;
-import de.uka.ipd.sdq.pcm.repository.CollectionDataType;
-import de.uka.ipd.sdq.pcm.repository.CompositeComponent;
-import de.uka.ipd.sdq.pcm.repository.CompositeDataType;
-import de.uka.ipd.sdq.pcm.repository.DataType;
-import de.uka.ipd.sdq.pcm.repository.InnerDeclaration;
-import de.uka.ipd.sdq.pcm.repository.OperationInterface;
-import de.uka.ipd.sdq.pcm.repository.OperationProvidedRole;
-import de.uka.ipd.sdq.pcm.repository.OperationRequiredRole;
-import de.uka.ipd.sdq.pcm.repository.OperationSignature;
-import de.uka.ipd.sdq.pcm.repository.Parameter;
-import de.uka.ipd.sdq.pcm.repository.ProvidedRole;
-import de.uka.ipd.sdq.pcm.repository.RepositoryComponent;
-import de.uka.ipd.sdq.pcm.repository.RequiredRole;
-import de.uka.ipd.sdq.pcm.repository.Signature;
+import org.palladiosimulator.pcm.core.composition.AssemblyConnector;
+import org.palladiosimulator.pcm.repository.BasicComponent;
+import org.palladiosimulator.pcm.repository.CollectionDataType;
+import org.palladiosimulator.pcm.repository.CompositeComponent;
+import org.palladiosimulator.pcm.repository.CompositeDataType;
+import org.palladiosimulator.pcm.repository.DataType;
+import org.palladiosimulator.pcm.repository.InnerDeclaration;
+import org.palladiosimulator.pcm.repository.OperationInterface;
+import org.palladiosimulator.pcm.repository.OperationProvidedRole;
+import org.palladiosimulator.pcm.repository.OperationRequiredRole;
+import org.palladiosimulator.pcm.repository.OperationSignature;
+import org.palladiosimulator.pcm.repository.Parameter;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
+import org.palladiosimulator.pcm.repository.RequiredRole;
+import org.palladiosimulator.pcm.repository.Signature;
 import edu.kit.ipd.sdq.kamp.core.Activity;
 import edu.kit.ipd.sdq.kamp.core.ActivityElementType;
 import edu.kit.ipd.sdq.kamp.core.ActivityType;
@@ -361,7 +361,7 @@ public class DifferenceCalculation {
 			if (detectionRuleAddedInterface(diffElement)) {
 				OperationInterface architectureElement = (OperationInterface)retrieveArchitectureElement(diffElement);
 				Activity newActivity = new Activity(ActivityType.ARCHITECTUREMODELDIFF, ActivityElementType.INTERFACE, architectureElement.getEntityName(), BasicActivity.ADD, 
-						"FŸge Schnittstelle "+architectureElement.getEntityName()+" hinzu.");
+						"Fï¿½ge Schnittstelle "+architectureElement.getEntityName()+" hinzu.");
 				workplan.add(newActivity);
 				newActivity.addSubactivities(SubactivityDerivation.deriveSubactivities(architectureElement, BasicActivity.ADD));
 			
@@ -389,7 +389,7 @@ public class DifferenceCalculation {
 			} else if (detectionRuleAddedCollectionDatatype(diffElement)) {
 				CollectionDataType architectureElement = (CollectionDataType)retrieveArchitectureElement(diffElement);
 				Activity newActivity = new Activity(ActivityType.ARCHITECTUREMODELDIFF, ActivityElementType.COLLECTIONDATATYPE, architectureElement.getEntityName(), BasicActivity.ADD, 
-						"FŸge Kollektions-Datentyp "+architectureElement.getEntityName()+" hinzu.");
+						"Fï¿½ge Kollektions-Datentyp "+architectureElement.getEntityName()+" hinzu.");
 				workplan.add(newActivity);
 
 				// COLLECTION-DATATYPE -
@@ -403,7 +403,7 @@ public class DifferenceCalculation {
 			} else if (detectionRuleAddedCompositeDatatype(diffElement)) {
 				CompositeDataType architectureElement = (CompositeDataType)retrieveArchitectureElement(diffElement);
 				Activity newActivity = new Activity(ActivityType.ARCHITECTUREMODELDIFF, ActivityElementType.COMPOSITEDATATYPE, architectureElement.getEntityName(), BasicActivity.ADD, 
-						"FŸge Komposit-Datentyp "+architectureElement.getEntityName()+" hinzu.");
+						"Fï¿½ge Komposit-Datentyp "+architectureElement.getEntityName()+" hinzu.");
 				workplan.add(newActivity);
 
 				// COMPOSITE-DATATYPE -
@@ -418,7 +418,7 @@ public class DifferenceCalculation {
 				InnerDeclaration architectureElement = (InnerDeclaration) retrieveArchitectureElement(diffElement);
 				CompositeDataType datatype = architectureElement.getCompositeDataType_InnerDeclaration();
 				Activity newActivity = new Activity(ActivityType.ARCHITECTUREMODELDIFF, ActivityElementType.COMPOSITECOMPONENT, datatype.getEntityName(), BasicActivity.MODIFY, 
-						"FŸge innere Deklaration zu Komposit-Datentyp "+datatype.getEntityName()+" hinzu.");
+						"Fï¿½ge innere Deklaration zu Komposit-Datentyp "+datatype.getEntityName()+" hinzu.");
 				workplan.add(newActivity);
 				
 				// INNERDECLARATION -
@@ -433,7 +433,7 @@ public class DifferenceCalculation {
 			} else if (detectionRuleAddedBasicComponent(diffElement)) {
 				BasicComponent architectureElement = (BasicComponent) retrieveArchitectureElement(diffElement);
 				Activity newActivity = new Activity(ActivityType.ARCHITECTUREMODELDIFF, ActivityElementType.BASICCOMPONENT, architectureElement.getEntityName(), BasicActivity.ADD, 
-						"FŸge Basis-Komponente "+architectureElement.getEntityName()+" hinzu.");
+						"Fï¿½ge Basis-Komponente "+architectureElement.getEntityName()+" hinzu.");
 				workplan.add(newActivity);
 				newActivity.addSubactivities(SubactivityDerivation.deriveSubactivities(architectureElement, BasicActivity.ADD));
 				
@@ -449,7 +449,7 @@ public class DifferenceCalculation {
 			} else if (detectionRuleAddedCompositeComponent(diffElement)) {
 				CompositeComponent architectureElement = (CompositeComponent) retrieveArchitectureElement(diffElement);
 				Activity newActivity = new Activity(ActivityType.ARCHITECTUREMODELDIFF, ActivityElementType.COMPOSITECOMPONENT, architectureElement.getEntityName(), BasicActivity.ADD, 
-						"FŸge Komposit-Komponente "+architectureElement.getEntityName()+" hinzu.");
+						"Fï¿½ge Komposit-Komponente "+architectureElement.getEntityName()+" hinzu.");
 				workplan.add(newActivity);
 				newActivity.addSubactivities(SubactivityDerivation.deriveSubactivities(architectureElement, BasicActivity.ADD));
 				
@@ -468,7 +468,7 @@ public class DifferenceCalculation {
 				String componentName = architectureElement.getProvidingEntity_ProvidedRole().getEntityName();
 				
 				Activity newActivity = new Activity(ActivityType.ARCHITECTUREMODELDIFF, ActivityElementType.PROVIDEDROLE, architectureElement.getEntityName(), BasicActivity.ADD, 
-						"FŸge Schnittstellenangebot "+architectureElement.getEntityName()+" zu Komponente "+componentName+" hinzu.");
+						"Fï¿½ge Schnittstellenangebot "+architectureElement.getEntityName()+" zu Komponente "+componentName+" hinzu.");
 				workplan.add(newActivity);
 				newActivity.addSubactivities(SubactivityDerivation.deriveSubactivities(architectureElement, BasicActivity.ADD));
 
@@ -486,7 +486,7 @@ public class DifferenceCalculation {
 				OperationRequiredRole architectureElement = (OperationRequiredRole)retrieveArchitectureElement(diffElement);
 				String componentName = architectureElement.getRequiringEntity_RequiredRole().getEntityName();
 				Activity newActivity = new Activity(ActivityType.ARCHITECTUREMODELDIFF, ActivityElementType.REQUIREDROLE, architectureElement.getEntityName(), BasicActivity.ADD, 
-						"FŸge Schnittstellennachfrage "+architectureElement.getEntityName()+" zu Komponente "+componentName+" hinzu.");
+						"Fï¿½ge Schnittstellennachfrage "+architectureElement.getEntityName()+" zu Komponente "+componentName+" hinzu.");
 				workplan.add(newActivity);
 				newActivity.addSubactivities(SubactivityDerivation.deriveSubactivities(architectureElement, BasicActivity.REMOVE));
 
@@ -506,7 +506,7 @@ public class DifferenceCalculation {
 				String desc = calculateDescriptionForAssemblyConnector(architectureElement);
 				
 				Activity newActivity = new Activity(ActivityType.ARCHITECTUREMODELDIFF, ActivityElementType.ASSEMBLYCONNECTOR, architectureElement.getEntityName(), BasicActivity.ADD, 
-						"FŸge Assemblierungskonnektor ("+desc+") hinzu.");
+						"Fï¿½ge Assemblierungskonnektor ("+desc+") hinzu.");
 				workplan.add(newActivity);
 			    
 				// ASSEMBLY-CONNECTOR -

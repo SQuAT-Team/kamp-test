@@ -4,10 +4,11 @@ package edu.kit.ipd.sdq.kamp.model.modificationmarks.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import de.uka.ipd.sdq.pcm.core.composition.AssemblyConnector;
+import org.palladiosimulator.pcm.core.composition.AssemblyConnector;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.ModifyAssemblyConnector;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage;
 
@@ -17,10 +18,10 @@ import edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.impl.ModifyAssemblyConnectorImpl#getAssemblyconnector <em>Assemblyconnector</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -60,7 +61,7 @@ public class ModifyAssemblyConnectorImpl extends ModificationImpl implements Mod
 	 * @generated
 	 */
 	public AssemblyConnector getAssemblyconnector() {
-		if (assemblyconnector != null && assemblyconnector.eIsProxy()) {
+		if (assemblyconnector != null && ((EObject)assemblyconnector).eIsProxy()) {
 			InternalEObject oldAssemblyconnector = (InternalEObject)assemblyconnector;
 			assemblyconnector = (AssemblyConnector)eResolveProxy(oldAssemblyconnector);
 			if (assemblyconnector != oldAssemblyconnector) {

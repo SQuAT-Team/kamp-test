@@ -1,7 +1,7 @@
 package edu.kit.ipd.sdq.kamp.core;
 
-import de.uka.ipd.sdq.pcm.repository.ProvidedRole;
-import de.uka.ipd.sdq.pcm.repository.RequiredRole;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
+import org.palladiosimulator.pcm.repository.RequiredRole;
 
 public class ProvidingRequiredRolePair {
 	private ProvidedRole providedRole;

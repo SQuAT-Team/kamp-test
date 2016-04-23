@@ -3,9 +3,9 @@
 package de.uka.ipd.sdq.fieldOfActivityAnnotations;
 
 import de.uka.ipd.sdq.identifier.Identifier;
-
-import de.uka.ipd.sdq.pcm.repository.ImplementationComponentType;
-import de.uka.ipd.sdq.pcm.repository.ProvidedRole;
+import org.eclipse.emf.ecore.EObject;
+import org.palladiosimulator.pcm.repository.ImplementationComponentType;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,17 +14,17 @@ import de.uka.ipd.sdq.pcm.repository.ProvidedRole;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.DesignPatternRole#getProvidedRole <em>Provided Role</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.DesignPatternRole#getComponent <em>Component</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.uka.ipd.sdq.fieldOfActivityAnnotations.FieldOfActivityAnnotationsPackage#getDesignPatternRole()
  * @model
  * @generated
  */
-public interface DesignPatternRole extends Identifier {
+public interface DesignPatternRole extends EObject, Identifier {
 	/**
 	 * Returns the value of the '<em><b>Provided Role</b></em>' reference.
 	 * <!-- begin-user-doc -->

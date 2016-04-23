@@ -4,9 +4,9 @@ package de.uka.ipd.sdq.componentInternalDependencies;
 
 import de.uka.ipd.sdq.identifier.Identifier;
 
-import de.uka.ipd.sdq.pcm.repository.Signature;
-
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.palladiosimulator.pcm.repository.Signature;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,20 +15,20 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.uka.ipd.sdq.componentInternalDependencies.OperationToOperationDependency#getProvidedSignatures <em>Provided Signatures</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.componentInternalDependencies.OperationToOperationDependency#getRequiredSignatures <em>Required Signatures</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.uka.ipd.sdq.componentInternalDependencies.ComponentInternalDependenciesPackage#getOperationToOperationDependency()
  * @model
  * @generated
  */
-public interface OperationToOperationDependency extends Identifier {
+public interface OperationToOperationDependency extends EObject, Identifier {
 	/**
 	 * Returns the value of the '<em><b>Provided Signatures</b></em>' reference list.
-	 * The list contents are of type {@link de.uka.ipd.sdq.pcm.repository.Signature}.
+	 * The list contents are of type {@link org.palladiosimulator.pcm.repository.Signature}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Provided Signatures</em>' reference list isn't clear,
@@ -44,7 +44,7 @@ public interface OperationToOperationDependency extends Identifier {
 
 	/**
 	 * Returns the value of the '<em><b>Required Signatures</b></em>' reference list.
-	 * The list contents are of type {@link de.uka.ipd.sdq.pcm.repository.Signature}.
+	 * The list contents are of type {@link org.palladiosimulator.pcm.repository.Signature}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Required Signatures</em>' reference list isn't clear,

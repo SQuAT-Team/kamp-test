@@ -9,10 +9,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InternalModificationMark" eSuperTypes="platform:/plugin/de.uka.ipd.sdq.identifier/model/identifier.ecore#//Identifier">
     <eStructuralFeatures xsi:type="ecore:EReference" name="component" ordered="false"
-        eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="providedRole" ordered="false"
-        upperBound="-1" eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/ProvidedRole"/>
+        upperBound="-1" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/ProvidedRole"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="signature" ordered="false"
-        upperBound="-1" eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/Signature"/>
+        upperBound="-1" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/Signature"/>
   </eClassifiers>
 </ecore:EPackage>

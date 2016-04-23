@@ -9,17 +9,17 @@
         upperBound="-1" eType="#//ChangePropagationStep" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModifyComponent" eSuperTypes="#//Modification">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="component" eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="component" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/RepositoryComponent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="providedroleModifications"
         upperBound="-1" eType="#//ModifyProvidedRole" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requiredroleModifications"
         upperBound="-1" eType="#//ModifyRequiredRole" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModifyAssemblyConnector" eSuperTypes="#//Modification">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyconnector" eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/composition/AssemblyConnector"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyconnector" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//core/composition/AssemblyConnector"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModifyDatatype" eSuperTypes="#//Modification">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="datatype" eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/DataType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="datatype" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/DataType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Modification" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -47,13 +47,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModifyProvidedRole" eSuperTypes="#//Modification">
     <eStructuralFeatures xsi:type="ecore:EReference" name="providedrole" lowerBound="1"
-        eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/ProvidedRole"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/ProvidedRole"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="signatureModifications"
         upperBound="-1" eType="#//ModifySignature" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModifyRequiredRole" eSuperTypes="#//Modification">
     <eStructuralFeatures xsi:type="ecore:EReference" name="requiredrole" lowerBound="1"
-        eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/RequiredRole"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/RequiredRole"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ChangePropagationStep" abstract="true"
       eSuperTypes="#//Modification"/>
@@ -69,13 +69,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModifyInterface" eSuperTypes="#//Modification">
     <eStructuralFeatures xsi:type="ecore:EReference" name="operationInterface" lowerBound="1"
-        eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/OperationInterface"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationInterface"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="signatureModifications"
         upperBound="-1" eType="#//ModifySignature" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModifySignature" eSuperTypes="#//Modification">
     <eStructuralFeatures xsi:type="ecore:EReference" name="signature" lowerBound="1"
-        eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/Signature"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/Signature"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ChangePropagationDueToInterfaceDependencies"
       eSuperTypes="#//ChangePropagationStep">

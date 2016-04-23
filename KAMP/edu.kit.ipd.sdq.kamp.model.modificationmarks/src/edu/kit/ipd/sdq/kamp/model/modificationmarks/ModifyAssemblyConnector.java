@@ -2,7 +2,7 @@
  */
 package edu.kit.ipd.sdq.kamp.model.modificationmarks;
 
-import de.uka.ipd.sdq.pcm.core.composition.AssemblyConnector;
+import org.palladiosimulator.pcm.core.composition.AssemblyConnector;
 
 /**
  * <!-- begin-user-doc -->
@@ -11,10 +11,10 @@ import de.uka.ipd.sdq.pcm.core.composition.AssemblyConnector;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.ModifyAssemblyConnector#getAssemblyconnector <em>Assemblyconnector</em>}</li>
  * </ul>
- * </p>
  *
  * @see edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage#getModifyAssemblyConnector()
  * @model

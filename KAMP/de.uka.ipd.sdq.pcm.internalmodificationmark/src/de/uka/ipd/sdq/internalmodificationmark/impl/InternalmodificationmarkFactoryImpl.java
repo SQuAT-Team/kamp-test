@@ -31,7 +31,7 @@ public class InternalmodificationmarkFactoryImpl extends EFactoryImpl implements
 	 */
 	public static InternalmodificationmarkFactory init() {
 		try {
-			InternalmodificationmarkFactory theInternalmodificationmarkFactory = (InternalmodificationmarkFactory)EPackage.Registry.INSTANCE.getEFactory("http://sdq.ipd.uka.de/InternalModificationMark/1.0"); 
+			InternalmodificationmarkFactory theInternalmodificationmarkFactory = (InternalmodificationmarkFactory)EPackage.Registry.INSTANCE.getEFactory(InternalmodificationmarkPackage.eNS_URI);
 			if (theInternalmodificationmarkFactory != null) {
 				return theInternalmodificationmarkFactory;
 			}

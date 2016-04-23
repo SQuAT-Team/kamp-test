@@ -7,8 +7,6 @@ import de.uka.ipd.sdq.componentInternalDependencies.OperationToOperationDependen
 
 import de.uka.ipd.sdq.identifier.impl.IdentifierImpl;
 
-import de.uka.ipd.sdq.pcm.repository.Signature;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
@@ -16,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.palladiosimulator.pcm.repository.Signature;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,11 +22,11 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.uka.ipd.sdq.componentInternalDependencies.impl.OperationToOperationDependencyImpl#getProvidedSignatures <em>Provided Signatures</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.componentInternalDependencies.impl.OperationToOperationDependencyImpl#getRequiredSignatures <em>Required Signatures</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

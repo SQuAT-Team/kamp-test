@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.DevelopmentArtefactSpecificationImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.DevelopmentArtefactSpecificationImpl#getSourceFiles <em>Source Files</em>}</li>
@@ -40,7 +41,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.DevelopmentArtefactSpecificationImpl#getMetadataFiles <em>Metadata Files</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.DevelopmentArtefactSpecificationImpl#getMetadataFileAggregations <em>Metadata File Aggregations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -111,7 +111,7 @@ public class DevelopmentArtefactSpecificationImpl extends EObjectImpl implements
 	 */
 	public FieldOfActivityAnnotationRepository getParent() {
 		if (eContainerFeatureID() != FieldofactivityannotationsPackage.DEVELOPMENT_ARTEFACT_SPECIFICATION__PARENT) return null;
-		return (FieldOfActivityAnnotationRepository)eContainer();
+		return (FieldOfActivityAnnotationRepository)eInternalContainer();
 	}
 
 	/**

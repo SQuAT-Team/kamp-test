@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.FieldOfActivityAnnotationRepositoryImpl#getDevelopmentArtefactSpecification <em>Development Artefact Specification</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.FieldOfActivityAnnotationRepositoryImpl#getBuildSpecification <em>Build Specification</em>}</li>
@@ -34,7 +35,6 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.FieldOfActivityAnnotationRepositoryImpl#getDeploymentSpecification <em>Deployment Specification</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.FieldOfActivityAnnotationRepositoryImpl#getStaffSpecification <em>Staff Specification</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

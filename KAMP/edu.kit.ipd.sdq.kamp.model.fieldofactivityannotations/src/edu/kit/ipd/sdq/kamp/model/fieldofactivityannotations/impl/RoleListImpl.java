@@ -30,11 +30,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.RoleListImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.RoleListImpl#getRoles <em>Roles</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -75,7 +75,7 @@ public class RoleListImpl extends EObjectImpl implements RoleList {
 	 */
 	public StaffSpecification getParent() {
 		if (eContainerFeatureID() != FieldofactivityannotationsPackage.ROLE_LIST__PARENT) return null;
-		return (StaffSpecification)eContainer();
+		return (StaffSpecification)eInternalContainer();
 	}
 
 	/**

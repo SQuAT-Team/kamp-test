@@ -2,7 +2,7 @@
  */
 package edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations;
 
-import de.uka.ipd.sdq.pcm.repository.RepositoryComponent;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -15,11 +15,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.BuildConfiguration#getParent <em>Parent</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.BuildConfiguration#getComponent <em>Component</em>}</li>
  * </ul>
- * </p>
  *
  * @see edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldofactivityannotationsPackage#getBuildConfiguration()
  * @model
@@ -56,7 +56,7 @@ public interface BuildConfiguration extends File {
 
 	/**
 	 * Returns the value of the '<em><b>Component</b></em>' reference list.
-	 * The list contents are of type {@link de.uka.ipd.sdq.pcm.repository.RepositoryComponent}.
+	 * The list contents are of type {@link org.palladiosimulator.pcm.repository.RepositoryComponent}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Component</em>' reference list isn't clear,

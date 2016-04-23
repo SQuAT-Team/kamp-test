@@ -12,15 +12,13 @@ import de.uka.ipd.sdq.internalmodificationmark.InternalModificationMarkRepositor
 import de.uka.ipd.sdq.internalmodificationmark.InternalmodificationmarkFactory;
 import de.uka.ipd.sdq.internalmodificationmark.InternalmodificationmarkPackage;
 
-import de.uka.ipd.sdq.pcm.PcmPackage;
-
-import de.uka.ipd.sdq.pcm.repository.RepositoryPackage;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.palladiosimulator.pcm.PcmPackage;
+import org.palladiosimulator.pcm.repository.RepositoryPackage;
 
 /**
  * <!-- begin-user-doc -->

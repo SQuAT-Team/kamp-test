@@ -2,7 +2,7 @@
  */
 package edu.kit.ipd.sdq.kamp.model.modificationmarks;
 
-import de.uka.ipd.sdq.pcm.repository.Signature;
+import org.palladiosimulator.pcm.repository.Signature;
 
 /**
  * <!-- begin-user-doc -->
@@ -11,10 +11,10 @@ import de.uka.ipd.sdq.pcm.repository.Signature;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.ModifySignature#getSignature <em>Signature</em>}</li>
  * </ul>
- * </p>
  *
  * @see edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage#getModifySignature()
  * @model

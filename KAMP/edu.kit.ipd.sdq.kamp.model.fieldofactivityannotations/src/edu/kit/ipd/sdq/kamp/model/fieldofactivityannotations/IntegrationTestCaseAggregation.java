@@ -2,9 +2,9 @@
  */
 package edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations;
 
-import de.uka.ipd.sdq.pcm.core.composition.AssemblyConnector;
+import org.palladiosimulator.pcm.core.composition.AssemblyConnector;
 
-import de.uka.ipd.sdq.pcm.repository.OperationProvidedRole;
+import org.palladiosimulator.pcm.repository.OperationProvidedRole;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,12 +13,12 @@ import de.uka.ipd.sdq.pcm.repository.OperationProvidedRole;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.IntegrationTestCaseAggregation#getParent <em>Parent</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.IntegrationTestCaseAggregation#getProvidedrole <em>Providedrole</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.IntegrationTestCaseAggregation#getAssemblyConnector <em>Assembly Connector</em>}</li>
  * </ul>
- * </p>
  *
  * @see edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldofactivityannotationsPackage#getIntegrationTestCaseAggregation()
  * @model

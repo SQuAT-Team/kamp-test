@@ -7,13 +7,11 @@
 package de.uka.ipd.sdq.internalmodificationmark;
 
 import de.uka.ipd.sdq.identifier.Identifier;
-import de.uka.ipd.sdq.pcm.repository.ImplementationComponentType;
-import de.uka.ipd.sdq.pcm.repository.ProvidedRole;
-import de.uka.ipd.sdq.pcm.repository.RepositoryComponent;
-
-import de.uka.ipd.sdq.pcm.repository.Signature;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
+import org.palladiosimulator.pcm.repository.Signature;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,18 +20,18 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.uka.ipd.sdq.internalmodificationmark.InternalModificationMark#getComponent <em>Component</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.internalmodificationmark.InternalModificationMark#getProvidedRole <em>Provided Role</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.internalmodificationmark.InternalModificationMark#getSignature <em>Signature</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.uka.ipd.sdq.internalmodificationmark.InternalmodificationmarkPackage#getInternalModificationMark()
  * @model
  * @generated
  */
-public interface InternalModificationMark extends Identifier {
+public interface InternalModificationMark extends EObject, Identifier {
 	/**
 	 * Returns the value of the '<em><b>Component</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -62,7 +60,7 @@ public interface InternalModificationMark extends Identifier {
 
 	/**
 	 * Returns the value of the '<em><b>Provided Role</b></em>' reference list.
-	 * The list contents are of type {@link de.uka.ipd.sdq.pcm.repository.ProvidedRole}.
+	 * The list contents are of type {@link org.palladiosimulator.pcm.repository.ProvidedRole}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Provided Role</em>' reference isn't clear,
@@ -78,7 +76,7 @@ public interface InternalModificationMark extends Identifier {
 
 	/**
 	 * Returns the value of the '<em><b>Signature</b></em>' reference list.
-	 * The list contents are of type {@link de.uka.ipd.sdq.pcm.repository.Signature}.
+	 * The list contents are of type {@link org.palladiosimulator.pcm.repository.Signature}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Signature</em>' reference isn't clear,

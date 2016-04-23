@@ -2,8 +2,6 @@
  */
 package edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl;
 
-import de.uka.ipd.sdq.pcm.repository.RepositoryComponent;
-
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.BuildConfiguration;
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.BuildSpecification;
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldofactivityannotationsPackage;
@@ -23,6 +21,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,11 +29,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.BuildConfigurationImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.BuildConfigurationImpl#getComponent <em>Component</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -75,7 +74,7 @@ public class BuildConfigurationImpl extends FileImpl implements BuildConfigurati
 	 */
 	public BuildSpecification getParent() {
 		if (eContainerFeatureID() != FieldofactivityannotationsPackage.BUILD_CONFIGURATION__PARENT) return null;
-		return (BuildSpecification)eContainer();
+		return (BuildSpecification)eInternalContainer();
 	}
 
 	/**

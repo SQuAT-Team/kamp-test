@@ -2,7 +2,7 @@
  */
 package edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations;
 
-import de.uka.ipd.sdq.pcm.repository.OperationProvidedRole;
+import org.palladiosimulator.pcm.repository.OperationProvidedRole;
 
 /**
  * <!-- begin-user-doc -->
@@ -11,11 +11,11 @@ import de.uka.ipd.sdq.pcm.repository.OperationProvidedRole;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.AcceptanceTestCase#getParent <em>Parent</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.AcceptanceTestCase#getProvidedrole <em>Providedrole</em>}</li>
  * </ul>
- * </p>
  *
  * @see edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldofactivityannotationsPackage#getAcceptanceTestCase()
  * @model

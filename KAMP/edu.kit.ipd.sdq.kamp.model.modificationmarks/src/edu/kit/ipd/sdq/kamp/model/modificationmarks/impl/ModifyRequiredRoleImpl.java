@@ -4,10 +4,11 @@ package edu.kit.ipd.sdq.kamp.model.modificationmarks.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import de.uka.ipd.sdq.pcm.repository.RequiredRole;
+import org.palladiosimulator.pcm.repository.RequiredRole;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.ModifyRequiredRole;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage;
 
@@ -17,10 +18,10 @@ import edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.impl.ModifyRequiredRoleImpl#getRequiredrole <em>Requiredrole</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -60,7 +61,7 @@ public class ModifyRequiredRoleImpl extends ModificationImpl implements ModifyRe
 	 * @generated
 	 */
 	public RequiredRole getRequiredrole() {
-		if (requiredrole != null && requiredrole.eIsProxy()) {
+		if (requiredrole != null && ((EObject)requiredrole).eIsProxy()) {
 			InternalEObject oldRequiredrole = (InternalEObject)requiredrole;
 			requiredrole = (RequiredRole)eResolveProxy(oldRequiredrole);
 			if (requiredrole != oldRequiredrole) {

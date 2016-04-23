@@ -1,10 +1,10 @@
 package edu.kit.ipd.sdq.kamp.core;
 
-import de.uka.ipd.sdq.pcm.core.composition.AssemblyConnector;
-import de.uka.ipd.sdq.pcm.repository.BasicComponent;
-import de.uka.ipd.sdq.pcm.repository.OperationProvidedRole;
-import de.uka.ipd.sdq.pcm.repository.ProvidedRole;
-import de.uka.ipd.sdq.pcm.repository.RepositoryComponent;
+import org.palladiosimulator.pcm.core.composition.AssemblyConnector;
+import org.palladiosimulator.pcm.repository.BasicComponent;
+import org.palladiosimulator.pcm.repository.OperationProvidedRole;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.AcceptanceTestCase;
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.AcceptanceTestCaseAggregation;
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.BuildConfiguration;

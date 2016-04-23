@@ -32,7 +32,7 @@ public class FieldOfActivityAnnotationsFactoryImpl extends EFactoryImpl implemen
 	 */
 	public static FieldOfActivityAnnotationsFactory init() {
 		try {
-			FieldOfActivityAnnotationsFactory theFieldOfActivityAnnotationsFactory = (FieldOfActivityAnnotationsFactory)EPackage.Registry.INSTANCE.getEFactory("http://sdq.ipd.uka.de/FieldOfActivityAnnotations/1.0"); 
+			FieldOfActivityAnnotationsFactory theFieldOfActivityAnnotationsFactory = (FieldOfActivityAnnotationsFactory)EPackage.Registry.INSTANCE.getEFactory(FieldOfActivityAnnotationsPackage.eNS_URI);
 			if (theFieldOfActivityAnnotationsFactory != null) {
 				return theFieldOfActivityAnnotationsFactory;
 			}

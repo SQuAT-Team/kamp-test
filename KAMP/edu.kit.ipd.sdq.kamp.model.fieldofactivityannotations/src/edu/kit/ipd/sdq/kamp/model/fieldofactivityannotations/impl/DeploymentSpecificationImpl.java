@@ -31,12 +31,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.DeploymentSpecificationImpl#getRuntimeInstances <em>Runtime Instances</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.DeploymentSpecificationImpl#getRuntimeInstanceAggregations <em>Runtime Instance Aggregations</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.DeploymentSpecificationImpl#getParent <em>Parent</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -111,7 +111,7 @@ public class DeploymentSpecificationImpl extends EObjectImpl implements Deployme
 	 */
 	public FieldOfActivityAnnotationRepository getParent() {
 		if (eContainerFeatureID() != FieldofactivityannotationsPackage.DEPLOYMENT_SPECIFICATION__PARENT) return null;
-		return (FieldOfActivityAnnotationRepository)eContainer();
+		return (FieldOfActivityAnnotationRepository)eInternalContainer();
 	}
 
 	/**

@@ -2,8 +2,6 @@
  */
 package edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl;
 
-import de.uka.ipd.sdq.pcm.repository.RepositoryComponent;
-
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.DeploymentSpecification;
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldofactivityannotationsPackage;
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.RuntimeInstance;
@@ -21,6 +19,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,13 +27,13 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.RuntimeInstanceImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.RuntimeInstanceImpl#getName <em>Name</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.RuntimeInstanceImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.RuntimeInstanceImpl#getComponents <em>Components</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -115,7 +114,7 @@ public class RuntimeInstanceImpl extends EObjectImpl implements RuntimeInstance 
 	 */
 	public DeploymentSpecification getParent() {
 		if (eContainerFeatureID() != FieldofactivityannotationsPackage.RUNTIME_INSTANCE__PARENT) return null;
-		return (DeploymentSpecification)eContainer();
+		return (DeploymentSpecification)eInternalContainer();
 	}
 
 	/**

@@ -4,10 +4,11 @@ package edu.kit.ipd.sdq.kamp.model.modificationmarks.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import de.uka.ipd.sdq.pcm.repository.DataType;
+import org.palladiosimulator.pcm.repository.DataType;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.ModifyDatatype;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage;
 
@@ -17,10 +18,10 @@ import edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.impl.ModifyDatatypeImpl#getDatatype <em>Datatype</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -60,7 +61,7 @@ public class ModifyDatatypeImpl extends ModificationImpl implements ModifyDataty
 	 * @generated
 	 */
 	public DataType getDatatype() {
-		if (datatype != null && datatype.eIsProxy()) {
+		if (datatype != null && ((EObject)datatype).eIsProxy()) {
 			InternalEObject oldDatatype = (InternalEObject)datatype;
 			datatype = (DataType)eResolveProxy(oldDatatype);
 			if (datatype != oldDatatype) {

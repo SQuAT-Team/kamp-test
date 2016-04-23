@@ -31,10 +31,10 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 
 import de.uka.ipd.sdq.componentInternalDependencies.ComponentInternalDependenciesPackage;
 import de.uka.ipd.sdq.componentInternalDependencies.ComponentInternalDependencyRepository;
-import de.uka.ipd.sdq.pcm.repository.Repository;
-import de.uka.ipd.sdq.pcm.repository.RepositoryPackage;
-import de.uka.ipd.sdq.pcm.system.System;
-import de.uka.ipd.sdq.pcm.system.SystemPackage;
+import org.palladiosimulator.pcm.repository.Repository;
+import org.palladiosimulator.pcm.repository.RepositoryPackage;
+import org.palladiosimulator.pcm.system.System;
+import org.palladiosimulator.pcm.system.SystemPackage;
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldOfActivityAnnotationRepository;
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldofactivityannotationsPackage;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.ModificationRepository;

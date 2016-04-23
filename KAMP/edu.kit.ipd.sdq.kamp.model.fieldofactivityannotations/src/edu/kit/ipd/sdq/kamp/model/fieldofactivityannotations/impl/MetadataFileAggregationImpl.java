@@ -2,8 +2,6 @@
  */
 package edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl;
 
-import de.uka.ipd.sdq.pcm.repository.RepositoryComponent;
-
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.DevelopmentArtefactSpecification;
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldofactivityannotationsPackage;
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.MetadataFileAggregation;
@@ -12,11 +10,13 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,11 +24,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.MetadataFileAggregationImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.MetadataFileAggregationImpl#getComponent <em>Component</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -69,7 +69,7 @@ public class MetadataFileAggregationImpl extends FileAggregationImpl implements 
 	 */
 	public DevelopmentArtefactSpecification getParent() {
 		if (eContainerFeatureID() != FieldofactivityannotationsPackage.METADATA_FILE_AGGREGATION__PARENT) return null;
-		return (DevelopmentArtefactSpecification)eContainer();
+		return (DevelopmentArtefactSpecification)eInternalContainer();
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class MetadataFileAggregationImpl extends FileAggregationImpl implements 
 	 * @generated
 	 */
 	public RepositoryComponent getComponent() {
-		if (component != null && component.eIsProxy()) {
+		if (component != null && ((EObject)component).eIsProxy()) {
 			InternalEObject oldComponent = (InternalEObject)component;
 			component = (RepositoryComponent)eResolveProxy(oldComponent);
 			if (component != oldComponent) {

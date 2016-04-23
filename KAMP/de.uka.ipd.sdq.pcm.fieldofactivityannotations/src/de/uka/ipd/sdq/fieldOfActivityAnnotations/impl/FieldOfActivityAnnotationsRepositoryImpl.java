@@ -43,6 +43,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.impl.FieldOfActivityAnnotationsRepositoryImpl#getSourceFiles <em>Source Files</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.impl.FieldOfActivityAnnotationsRepositoryImpl#getSourceFileAggregations <em>Source File Aggregations</em>}</li>
@@ -55,7 +56,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.impl.FieldOfActivityAnnotationsRepositoryImpl#getTechnologicalCorrespondences <em>Technological Correspondences</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.impl.FieldOfActivityAnnotationsRepositoryImpl#getStaffAssignment <em>Staff Assignment</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

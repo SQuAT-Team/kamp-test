@@ -18,16 +18,16 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.uka.ipd.sdq.internalmodificationmark.InternalModificationMarkRepository#getInternalModificationMark <em>Internal Modification Mark</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.uka.ipd.sdq.internalmodificationmark.InternalmodificationmarkPackage#getInternalModificationMarkRepository()
  * @model
  * @generated
  */
-public interface InternalModificationMarkRepository extends Identifier {
+public interface InternalModificationMarkRepository extends EObject, Identifier {
 	/**
 	 * Returns the value of the '<em><b>Internal Modification Mark</b></em>' containment reference list.
 	 * The list contents are of type {@link de.uka.ipd.sdq.internalmodificationmark.InternalModificationMark}.

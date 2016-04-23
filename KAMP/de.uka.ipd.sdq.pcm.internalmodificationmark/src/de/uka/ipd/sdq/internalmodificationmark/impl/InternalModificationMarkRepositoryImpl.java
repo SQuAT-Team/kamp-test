@@ -31,10 +31,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.uka.ipd.sdq.internalmodificationmark.impl.InternalModificationMarkRepositoryImpl#getInternalModificationMark <em>Internal Modification Mark</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

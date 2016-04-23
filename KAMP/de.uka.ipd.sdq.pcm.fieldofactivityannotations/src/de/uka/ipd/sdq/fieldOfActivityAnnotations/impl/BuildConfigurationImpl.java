@@ -11,8 +11,6 @@ import de.uka.ipd.sdq.fieldOfActivityAnnotations.FieldOfActivityAnnotationsPacka
 
 import de.uka.ipd.sdq.identifier.impl.IdentifierImpl;
 
-import de.uka.ipd.sdq.pcm.repository.ImplementationComponentType;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -24,6 +22,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.palladiosimulator.pcm.repository.ImplementationComponentType;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,11 +30,11 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.impl.BuildConfigurationImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.impl.BuildConfigurationImpl#getComponents <em>Components</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

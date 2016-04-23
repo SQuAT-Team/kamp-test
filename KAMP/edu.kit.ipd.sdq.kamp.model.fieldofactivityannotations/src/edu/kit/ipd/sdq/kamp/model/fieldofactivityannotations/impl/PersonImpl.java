@@ -30,12 +30,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.PersonImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.PersonImpl#getRoles <em>Roles</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.PersonImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -96,7 +96,7 @@ public class PersonImpl extends EObjectImpl implements Person {
 	 */
 	public PersonList getParent() {
 		if (eContainerFeatureID() != FieldofactivityannotationsPackage.PERSON__PARENT) return null;
-		return (PersonList)eContainer();
+		return (PersonList)eInternalContainer();
 	}
 
 	/**

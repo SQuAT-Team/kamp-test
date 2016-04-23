@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.TestSpecificationImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.TestSpecificationImpl#getUnitTestCases <em>Unit Test Cases</em>}</li>
@@ -44,7 +45,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.TestSpecificationImpl#getAcceptanceTestCaseAggregations <em>Acceptance Test Case Aggregations</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.TestSpecificationImpl#getIntegrationTestCaseAggregations <em>Integration Test Case Aggregations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -135,7 +135,7 @@ public class TestSpecificationImpl extends EObjectImpl implements TestSpecificat
 	 */
 	public FieldOfActivityAnnotationRepository getParent() {
 		if (eContainerFeatureID() != FieldofactivityannotationsPackage.TEST_SPECIFICATION__PARENT) return null;
-		return (FieldOfActivityAnnotationRepository)eContainer();
+		return (FieldOfActivityAnnotationRepository)eInternalContainer();
 	}
 
 	/**

@@ -8,12 +8,13 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import de.uka.ipd.sdq.pcm.repository.OperationInterface;
+import org.palladiosimulator.pcm.repository.OperationInterface;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.ModifyInterface;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.ModifySignature;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage;
@@ -24,11 +25,11 @@ import edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.impl.ModifyInterfaceImpl#getOperationInterface <em>Operation Interface</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.impl.ModifyInterfaceImpl#getSignatureModifications <em>Signature Modifications</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -78,7 +79,7 @@ public class ModifyInterfaceImpl extends ModificationImpl implements ModifyInter
 	 * @generated
 	 */
 	public OperationInterface getOperationInterface() {
-		if (operationInterface != null && operationInterface.eIsProxy()) {
+		if (operationInterface != null && ((EObject)operationInterface).eIsProxy()) {
 			InternalEObject oldOperationInterface = (InternalEObject)operationInterface;
 			operationInterface = (OperationInterface)eResolveProxy(oldOperationInterface);
 			if (operationInterface != oldOperationInterface) {

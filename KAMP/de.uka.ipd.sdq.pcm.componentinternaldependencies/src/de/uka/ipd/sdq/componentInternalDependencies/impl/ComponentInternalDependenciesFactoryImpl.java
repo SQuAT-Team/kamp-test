@@ -31,7 +31,7 @@ public class ComponentInternalDependenciesFactoryImpl extends EFactoryImpl imple
 	 */
 	public static ComponentInternalDependenciesFactory init() {
 		try {
-			ComponentInternalDependenciesFactory theComponentInternalDependenciesFactory = (ComponentInternalDependenciesFactory)EPackage.Registry.INSTANCE.getEFactory("http://sdq.ipd.uka.de/ComponentInternalDependencies/1.0"); 
+			ComponentInternalDependenciesFactory theComponentInternalDependenciesFactory = (ComponentInternalDependenciesFactory)EPackage.Registry.INSTANCE.getEFactory(ComponentInternalDependenciesPackage.eNS_URI);
 			if (theComponentInternalDependenciesFactory != null) {
 				return theComponentInternalDependenciesFactory;
 			}

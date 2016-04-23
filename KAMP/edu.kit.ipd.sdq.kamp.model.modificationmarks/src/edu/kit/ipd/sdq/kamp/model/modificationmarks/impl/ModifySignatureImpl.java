@@ -4,10 +4,11 @@ package edu.kit.ipd.sdq.kamp.model.modificationmarks.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import de.uka.ipd.sdq.pcm.repository.Signature;
+import org.palladiosimulator.pcm.repository.Signature;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.ModifySignature;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage;
 
@@ -17,10 +18,10 @@ import edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.impl.ModifySignatureImpl#getSignature <em>Signature</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -60,7 +61,7 @@ public class ModifySignatureImpl extends ModificationImpl implements ModifySigna
 	 * @generated
 	 */
 	public Signature getSignature() {
-		if (signature != null && signature.eIsProxy()) {
+		if (signature != null && ((EObject)signature).eIsProxy()) {
 			InternalEObject oldSignature = (InternalEObject)signature;
 			signature = (Signature)eResolveProxy(oldSignature);
 			if (signature != oldSignature) {

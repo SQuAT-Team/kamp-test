@@ -4,9 +4,9 @@ package de.uka.ipd.sdq.fieldOfActivityAnnotations;
 
 import de.uka.ipd.sdq.identifier.Identifier;
 
-import de.uka.ipd.sdq.pcm.repository.ImplementationComponentType;
-
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.palladiosimulator.pcm.repository.ImplementationComponentType;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,18 +15,18 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.StaffAssignment#getComponent <em>Component</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.StaffAssignment#getTeamName <em>Team Name</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.StaffAssignment#getStaffName <em>Staff Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.uka.ipd.sdq.fieldOfActivityAnnotations.FieldOfActivityAnnotationsPackage#getStaffAssignment()
  * @model
  * @generated
  */
-public interface StaffAssignment extends Identifier {
+public interface StaffAssignment extends EObject, Identifier {
 	/**
 	 * Returns the value of the '<em><b>Component</b></em>' reference.
 	 * <!-- begin-user-doc -->

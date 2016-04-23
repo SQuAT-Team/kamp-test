@@ -28,37 +28,37 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="component" ordered="false"
-        eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/ImplementationComponentType"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/ImplementationComponentType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SourceFileAggregation" eSuperTypes="platform:/plugin/de.uka.ipd.sdq.identifier/model/identifier.ecore#//Identifier">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfSourceFiles" ordered="false"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="component" ordered="false"
-        eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/ImplementationComponentType"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/ImplementationComponentType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BuildConfiguration" eSuperTypes="platform:/plugin/de.uka.ipd.sdq.identifier/model/identifier.ecore#//Identifier">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="components" ordered="false"
-        upperBound="-1" eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/ImplementationComponentType"/>
+        upperBound="-1" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/ImplementationComponentType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RuntimeInstance" eSuperTypes="platform:/plugin/de.uka.ipd.sdq.identifier/model/identifier.ecore#//Identifier">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="component" ordered="false"
-        eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/ImplementationComponentType"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/ImplementationComponentType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RuntimeInstanceAggregation" eSuperTypes="platform:/plugin/de.uka.ipd.sdq.identifier/model/identifier.ecore#//Identifier">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfRuntimeInstances"
         ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="component" ordered="false"
-        eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/ImplementationComponentType"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/ImplementationComponentType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestCase" eSuperTypes="platform:/plugin/de.uka.ipd.sdq.identifier/model/identifier.ecore#//Identifier">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="providedRoles" ordered="false"
-        upperBound="-1" eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/ProvidedRole"/>
+        upperBound="-1" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/ProvidedRole"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="testType" ordered="false"
         eType="#//TestType"/>
   </eClassifiers>
@@ -72,21 +72,21 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfTestCases" ordered="false"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="providedRoles" ordered="false"
-        upperBound="-1" eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/ProvidedRole"/>
+        upperBound="-1" eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/ProvidedRole"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="testType" ordered="false"
         eType="#//TestType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DesignPatternRole" eSuperTypes="platform:/plugin/de.uka.ipd.sdq.identifier/model/identifier.ecore#//Identifier">
     <eStructuralFeatures xsi:type="ecore:EReference" name="providedRole" ordered="false"
-        eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/ProvidedRole"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/ProvidedRole"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="component" ordered="false"
-        eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/ImplementationComponentType"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/ImplementationComponentType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TechnologicalCorrespondence" eSuperTypes="platform:/plugin/de.uka.ipd.sdq.identifier/model/identifier.ecore#//Identifier">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="technologicalCorrespondenceType"
         ordered="false" eType="#//TechnologicalCorrespondenceTypes"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="component" ordered="false"
-        eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/ImplementationComponentType"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/ImplementationComponentType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TechnologicalCorrespondenceTypes">
     <eLiterals name="SetOfClasses"/>
@@ -100,7 +100,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StaffAssignment" eSuperTypes="platform:/plugin/de.uka.ipd.sdq.identifier/model/identifier.ecore#//Identifier">
     <eStructuralFeatures xsi:type="ecore:EReference" name="component" ordered="false"
-        eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//repository/ImplementationComponentType"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//repository/ImplementationComponentType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="teamName" ordered="false"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="staffName" ordered="false"

@@ -5,15 +5,15 @@ import java.util.List;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import de.uka.ipd.sdq.componentInternalDependencies.ComponentInternalDependencyRepository;
-import de.uka.ipd.sdq.pcm.repository.Repository;
-import de.uka.ipd.sdq.pcm.system.System;
+import org.palladiosimulator.pcm.repository.Repository;
+import org.palladiosimulator.pcm.system.System;
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldOfActivityAnnotationRepository;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.ModificationRepository;
 
 public class ArchitectureVersion {
 	private String name;
 	private Repository repository;
-	private de.uka.ipd.sdq.pcm.system.System system;
+	private org.palladiosimulator.pcm.system.System system;
 	private FieldOfActivityAnnotationRepository fieldOfActivityRepository;
 	private ModificationRepository modificationMarkRepository;
 	private ComponentInternalDependencyRepository componentInternalDependencyRepository;
@@ -52,11 +52,11 @@ public class ArchitectureVersion {
 		this.repository = repository;
 	}
 
-	public de.uka.ipd.sdq.pcm.system.System getSystem() {
+	public org.palladiosimulator.pcm.system.System getSystem() {
 		return system;
 	}
 
-	public void setSystem(de.uka.ipd.sdq.pcm.system.System system) {
+	public void setSystem(org.palladiosimulator.pcm.system.System system) {
 		this.system = system;
 	}
 

@@ -20,10 +20,6 @@ import de.uka.ipd.sdq.fieldOfActivityAnnotations.TestType;
 
 import de.uka.ipd.sdq.identifier.IdentifierPackage;
 
-import de.uka.ipd.sdq.pcm.PcmPackage;
-
-import de.uka.ipd.sdq.pcm.repository.RepositoryPackage;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -31,6 +27,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.palladiosimulator.pcm.PcmPackage;
+import org.palladiosimulator.pcm.repository.RepositoryPackage;
 
 /**
  * <!-- begin-user-doc -->

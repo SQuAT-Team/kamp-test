@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.uka.ipd.sdq.componentInternalDependencies.RoleToRoleDependency;
-import de.uka.ipd.sdq.pcm.core.composition.AssemblyConnector;
-import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
-import de.uka.ipd.sdq.pcm.core.composition.Connector;
-import de.uka.ipd.sdq.pcm.repository.DataType;
-import de.uka.ipd.sdq.pcm.repository.OperationInterface;
-import de.uka.ipd.sdq.pcm.repository.ProvidedRole;
-import de.uka.ipd.sdq.pcm.repository.RepositoryComponent;
-import de.uka.ipd.sdq.pcm.repository.RequiredRole;
+import org.palladiosimulator.pcm.core.composition.AssemblyConnector;
+import org.palladiosimulator.pcm.core.composition.AssemblyContext;
+import org.palladiosimulator.pcm.core.composition.Connector;
+import org.palladiosimulator.pcm.repository.DataType;
+import org.palladiosimulator.pcm.repository.OperationInterface;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
+import org.palladiosimulator.pcm.repository.RequiredRole;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.ChangePropagationDueToDataDependencies;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.ChangePropagationDueToInterfaceDependencies;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.IntercomponentPropagation;
@@ -291,7 +291,7 @@ public class ChangePropagationAnalysis {
 				}
 			}
 			
-			// required roles nur zurŸckgeben, wenn noch nicht markiert
+			// required roles nur zurï¿½ckgeben, wenn noch nicht markiert
 			List<RequiredRole> requiredRoles = lookUpRequiredRolesForAssemblyConnectors(assemblyConnectors);
 			for (RequiredRole requireRole : requiredRoles) {
 				if (!markedRequiredRoles.contains(requireRole)) {

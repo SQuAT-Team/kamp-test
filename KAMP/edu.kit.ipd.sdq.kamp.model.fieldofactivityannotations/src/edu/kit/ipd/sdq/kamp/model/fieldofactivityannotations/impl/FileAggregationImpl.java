@@ -18,11 +18,11 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.FileAggregationImpl#getNumberOfFiles <em>Number Of Files</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.FileAggregationImpl#getTechnology <em>Technology</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

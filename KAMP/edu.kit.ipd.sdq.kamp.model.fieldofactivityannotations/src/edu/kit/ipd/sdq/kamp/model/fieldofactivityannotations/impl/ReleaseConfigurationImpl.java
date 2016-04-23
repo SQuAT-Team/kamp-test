@@ -2,8 +2,6 @@
  */
 package edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl;
 
-import de.uka.ipd.sdq.pcm.repository.RepositoryComponent;
-
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldofactivityannotationsPackage;
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.ReleaseConfiguration;
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.ReleaseSpecification;
@@ -23,6 +21,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,13 +29,13 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.ReleaseConfigurationImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.ReleaseConfigurationImpl#getComponents <em>Components</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.ReleaseConfigurationImpl#getPathname <em>Pathname</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.ReleaseConfigurationImpl#getDescription <em>Description</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -117,7 +116,7 @@ public class ReleaseConfigurationImpl extends EObjectImpl implements ReleaseConf
 	 */
 	public ReleaseSpecification getParent() {
 		if (eContainerFeatureID() != FieldofactivityannotationsPackage.RELEASE_CONFIGURATION__PARENT) return null;
-		return (ReleaseSpecification)eContainer();
+		return (ReleaseSpecification)eInternalContainer();
 	}
 
 	/**

@@ -8,9 +8,9 @@ package de.uka.ipd.sdq.fieldOfActivityAnnotations;
 
 import de.uka.ipd.sdq.identifier.Identifier;
 
-import de.uka.ipd.sdq.pcm.repository.ImplementationComponentType;
-
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.palladiosimulator.pcm.repository.ImplementationComponentType;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,17 +19,17 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.BuildConfiguration#getName <em>Name</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.BuildConfiguration#getComponents <em>Components</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.uka.ipd.sdq.fieldOfActivityAnnotations.FieldOfActivityAnnotationsPackage#getBuildConfiguration()
  * @model
  * @generated
  */
-public interface BuildConfiguration extends Identifier {
+public interface BuildConfiguration extends EObject, Identifier {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -58,7 +58,7 @@ public interface BuildConfiguration extends Identifier {
 
 	/**
 	 * Returns the value of the '<em><b>Components</b></em>' reference list.
-	 * The list contents are of type {@link de.uka.ipd.sdq.pcm.repository.ImplementationComponentType}.
+	 * The list contents are of type {@link org.palladiosimulator.pcm.repository.ImplementationComponentType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Components</em>' reference list isn't clear,

@@ -42,7 +42,7 @@ public class modificationmarksFactoryImpl extends EFactoryImpl implements modifi
 	 */
 	public static modificationmarksFactory init() {
 		try {
-			modificationmarksFactory themodificationmarksFactory = (modificationmarksFactory)EPackage.Registry.INSTANCE.getEFactory("http://sdq.ipd.kit.edu/KAMPModificationmarks/1.0"); 
+			modificationmarksFactory themodificationmarksFactory = (modificationmarksFactory)EPackage.Registry.INSTANCE.getEFactory(modificationmarksPackage.eNS_URI);
 			if (themodificationmarksFactory != null) {
 				return themodificationmarksFactory;
 			}

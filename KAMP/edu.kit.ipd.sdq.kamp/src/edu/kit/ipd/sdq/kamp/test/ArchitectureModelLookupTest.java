@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import de.uka.ipd.sdq.pcm.repository.CompositeComponent;
+import org.palladiosimulator.pcm.repository.CompositeComponent;
 
 import edu.kit.ipd.sdq.kamp.core.ArchitectureModelFactoryFacade;
 import edu.kit.ipd.sdq.kamp.core.ArchitectureModelLookup;

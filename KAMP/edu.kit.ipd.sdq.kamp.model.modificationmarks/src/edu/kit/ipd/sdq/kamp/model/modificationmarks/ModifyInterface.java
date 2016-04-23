@@ -3,8 +3,7 @@
 package edu.kit.ipd.sdq.kamp.model.modificationmarks;
 
 import org.eclipse.emf.common.util.EList;
-
-import de.uka.ipd.sdq.pcm.repository.OperationInterface;
+import org.palladiosimulator.pcm.repository.OperationInterface;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,11 +12,11 @@ import de.uka.ipd.sdq.pcm.repository.OperationInterface;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.ModifyInterface#getOperationInterface <em>Operation Interface</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.ModifyInterface#getSignatureModifications <em>Signature Modifications</em>}</li>
  * </ul>
- * </p>
  *
  * @see edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage#getModifyInterface()
  * @model

@@ -9,6 +9,7 @@ package de.uka.ipd.sdq.componentInternalDependencies;
 import de.uka.ipd.sdq.identifier.Identifier;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -17,16 +18,16 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.uka.ipd.sdq.componentInternalDependencies.ComponentInternalDependencyRepository#getDependencies <em>Dependencies</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.uka.ipd.sdq.componentInternalDependencies.ComponentInternalDependenciesPackage#getComponentInternalDependencyRepository()
  * @model
  * @generated
  */
-public interface ComponentInternalDependencyRepository extends Identifier {
+public interface ComponentInternalDependencyRepository extends EObject, Identifier {
 	/**
 	 * Returns the value of the '<em><b>Dependencies</b></em>' containment reference list.
 	 * The list contents are of type {@link de.uka.ipd.sdq.componentInternalDependencies.RoleToRoleDependency}.

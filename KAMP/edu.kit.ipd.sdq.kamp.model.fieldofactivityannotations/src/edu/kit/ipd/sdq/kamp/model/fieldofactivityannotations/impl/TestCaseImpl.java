@@ -18,10 +18,10 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.TestCaseImpl#getNameOfTest <em>Name Of Test</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

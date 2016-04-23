@@ -11,8 +11,6 @@ import edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Change Propagation Step</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

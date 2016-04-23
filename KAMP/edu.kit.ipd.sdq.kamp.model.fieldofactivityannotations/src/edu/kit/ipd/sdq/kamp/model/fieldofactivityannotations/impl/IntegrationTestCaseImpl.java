@@ -2,10 +2,6 @@
  */
 package edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl;
 
-import de.uka.ipd.sdq.pcm.core.composition.AssemblyConnector;
-
-import de.uka.ipd.sdq.pcm.repository.OperationProvidedRole;
-
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldofactivityannotationsPackage;
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.IntegrationTestCase;
 import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.TestSpecification;
@@ -14,11 +10,14 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.palladiosimulator.pcm.core.composition.AssemblyConnector;
+import org.palladiosimulator.pcm.repository.OperationProvidedRole;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,12 +25,12 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.IntegrationTestCaseImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.IntegrationTestCaseImpl#getProvidedrole <em>Providedrole</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.impl.IntegrationTestCaseImpl#getAssemblyConnector <em>Assembly Connector</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -82,7 +81,7 @@ public class IntegrationTestCaseImpl extends TestCaseImpl implements Integration
 	 */
 	public TestSpecification getParent() {
 		if (eContainerFeatureID() != FieldofactivityannotationsPackage.INTEGRATION_TEST_CASE__PARENT) return null;
-		return (TestSpecification)eContainer();
+		return (TestSpecification)eInternalContainer();
 	}
 
 	/**
@@ -122,7 +121,7 @@ public class IntegrationTestCaseImpl extends TestCaseImpl implements Integration
 	 * @generated
 	 */
 	public OperationProvidedRole getProvidedrole() {
-		if (providedrole != null && providedrole.eIsProxy()) {
+		if (providedrole != null && ((EObject)providedrole).eIsProxy()) {
 			InternalEObject oldProvidedrole = (InternalEObject)providedrole;
 			providedrole = (OperationProvidedRole)eResolveProxy(oldProvidedrole);
 			if (providedrole != oldProvidedrole) {
@@ -160,7 +159,7 @@ public class IntegrationTestCaseImpl extends TestCaseImpl implements Integration
 	 * @generated
 	 */
 	public AssemblyConnector getAssemblyConnector() {
-		if (assemblyConnector != null && assemblyConnector.eIsProxy()) {
+		if (assemblyConnector != null && ((EObject)assemblyConnector).eIsProxy()) {
 			InternalEObject oldAssemblyConnector = (InternalEObject)assemblyConnector;
 			assemblyConnector = (AssemblyConnector)eResolveProxy(oldAssemblyConnector);
 			if (assemblyConnector != oldAssemblyConnector) {

@@ -6,9 +6,8 @@
  */
 package de.uka.ipd.sdq.fieldOfActivityAnnotations;
 
-import de.uka.ipd.sdq.pcm.repository.RepositoryComponent;
-
 import org.eclipse.emf.ecore.EObject;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
 
 /**
  * <!-- begin-user-doc -->

@@ -8,12 +8,13 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import de.uka.ipd.sdq.pcm.repository.RepositoryComponent;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.ModifyComponent;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.ModifyProvidedRole;
 import edu.kit.ipd.sdq.kamp.model.modificationmarks.ModifyRequiredRole;
@@ -25,12 +26,12 @@ import edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.impl.ModifyComponentImpl#getComponent <em>Component</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.impl.ModifyComponentImpl#getProvidedroleModifications <em>Providedrole Modifications</em>}</li>
  *   <li>{@link edu.kit.ipd.sdq.kamp.model.modificationmarks.impl.ModifyComponentImpl#getRequiredroleModifications <em>Requiredrole Modifications</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -90,7 +91,7 @@ public class ModifyComponentImpl extends ModificationImpl implements ModifyCompo
 	 * @generated
 	 */
 	public RepositoryComponent getComponent() {
-		if (component != null && component.eIsProxy()) {
+		if (component != null && ((EObject)component).eIsProxy()) {
 			InternalEObject oldComponent = (InternalEObject)component;
 			component = (RepositoryComponent)eResolveProxy(oldComponent);
 			if (component != oldComponent) {

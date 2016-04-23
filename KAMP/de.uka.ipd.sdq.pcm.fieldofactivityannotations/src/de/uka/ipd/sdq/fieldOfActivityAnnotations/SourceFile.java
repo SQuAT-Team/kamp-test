@@ -7,8 +7,8 @@
 package de.uka.ipd.sdq.fieldOfActivityAnnotations;
 
 import de.uka.ipd.sdq.identifier.Identifier;
-
-import de.uka.ipd.sdq.pcm.repository.ImplementationComponentType;
+import org.eclipse.emf.ecore.EObject;
+import org.palladiosimulator.pcm.repository.ImplementationComponentType;
 
 /**
  * <!-- begin-user-doc -->
@@ -17,17 +17,17 @@ import de.uka.ipd.sdq.pcm.repository.ImplementationComponentType;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.SourceFile#getName <em>Name</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.fieldOfActivityAnnotations.SourceFile#getComponent <em>Component</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.uka.ipd.sdq.fieldOfActivityAnnotations.FieldOfActivityAnnotationsPackage#getSourceFile()
  * @model
  * @generated
  */
-public interface SourceFile extends Identifier {
+public interface SourceFile extends EObject, Identifier {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

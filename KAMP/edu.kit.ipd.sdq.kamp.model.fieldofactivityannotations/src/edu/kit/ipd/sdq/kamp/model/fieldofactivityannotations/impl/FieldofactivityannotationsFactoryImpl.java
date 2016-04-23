@@ -27,7 +27,7 @@ public class FieldofactivityannotationsFactoryImpl extends EFactoryImpl implemen
 	 */
 	public static FieldofactivityannotationsFactory init() {
 		try {
-			FieldofactivityannotationsFactory theFieldofactivityannotationsFactory = (FieldofactivityannotationsFactory)EPackage.Registry.INSTANCE.getEFactory("http://sdq.ipd.kit.edu/KAMPFieldofactivityannotations/1.0"); 
+			FieldofactivityannotationsFactory theFieldofactivityannotationsFactory = (FieldofactivityannotationsFactory)EPackage.Registry.INSTANCE.getEFactory(FieldofactivityannotationsPackage.eNS_URI);
 			if (theFieldofactivityannotationsFactory != null) {
 				return theFieldofactivityannotationsFactory;
 			}

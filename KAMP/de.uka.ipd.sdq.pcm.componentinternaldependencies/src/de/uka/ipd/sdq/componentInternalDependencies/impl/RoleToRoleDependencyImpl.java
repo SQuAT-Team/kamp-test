@@ -12,10 +12,6 @@ import de.uka.ipd.sdq.componentInternalDependencies.RoleToRoleDependency;
 
 import de.uka.ipd.sdq.identifier.impl.IdentifierImpl;
 
-import de.uka.ipd.sdq.pcm.repository.ProvidedRole;
-import de.uka.ipd.sdq.pcm.repository.RequiredRole;
-import de.uka.ipd.sdq.pcm.repository.Signature;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -24,12 +20,15 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
+import org.palladiosimulator.pcm.repository.RequiredRole;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
@@ -38,12 +37,12 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.uka.ipd.sdq.componentInternalDependencies.impl.RoleToRoleDependencyImpl#getProvidedRole <em>Provided Role</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.componentInternalDependencies.impl.RoleToRoleDependencyImpl#getRequiredRole <em>Required Role</em>}</li>
  *   <li>{@link de.uka.ipd.sdq.componentInternalDependencies.impl.RoleToRoleDependencyImpl#getOperationToOperationDependency <em>Operation To Operation Dependency</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -103,7 +102,7 @@ public class RoleToRoleDependencyImpl extends IdentifierImpl implements RoleToRo
 	 * @generated
 	 */
 	public ProvidedRole getProvidedRole() {
-		if (providedRole != null && providedRole.eIsProxy()) {
+		if (providedRole != null && ((EObject)providedRole).eIsProxy()) {
 			InternalEObject oldProvidedRole = (InternalEObject)providedRole;
 			providedRole = (ProvidedRole)eResolveProxy(oldProvidedRole);
 			if (providedRole != oldProvidedRole) {
@@ -141,7 +140,7 @@ public class RoleToRoleDependencyImpl extends IdentifierImpl implements RoleToRo
 	 * @generated
 	 */
 	public RequiredRole getRequiredRole() {
-		if (requiredRole != null && requiredRole.eIsProxy()) {
+		if (requiredRole != null && ((EObject)requiredRole).eIsProxy()) {
 			InternalEObject oldRequiredRole = (InternalEObject)requiredRole;
 			requiredRole = (RequiredRole)eResolveProxy(oldRequiredRole);
 			if (requiredRole != oldRequiredRole) {

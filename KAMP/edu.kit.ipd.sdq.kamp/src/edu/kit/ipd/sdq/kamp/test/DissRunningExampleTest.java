@@ -9,12 +9,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import de.uka.ipd.sdq.componentInternalDependencies.RoleToRoleDependency;
-import de.uka.ipd.sdq.pcm.core.composition.AssemblyConnector;
-import de.uka.ipd.sdq.pcm.repository.BasicComponent;
-import de.uka.ipd.sdq.pcm.repository.OperationInterface;
-import de.uka.ipd.sdq.pcm.repository.ProvidedRole;
-import de.uka.ipd.sdq.pcm.repository.RepositoryComponent;
-import de.uka.ipd.sdq.pcm.repository.RequiredRole;
+import org.palladiosimulator.pcm.core.composition.AssemblyConnector;
+import org.palladiosimulator.pcm.repository.BasicComponent;
+import org.palladiosimulator.pcm.repository.OperationInterface;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
+import org.palladiosimulator.pcm.repository.RequiredRole;
 import edu.kit.ipd.sdq.kamp.core.Activity;
 import edu.kit.ipd.sdq.kamp.core.ArchitectureAnnotationFactory;
 import edu.kit.ipd.sdq.kamp.core.ArchitectureModelFactoryFacade;
@@ -48,14 +48,14 @@ public class DissRunningExampleTest {
 		ArchitectureVersion baseversion = ArchitectureModelFactoryFacade.createEmptyModel(name);
 
 		// base model - repository 
-		OperationInterface haendlerSchnittstelle = ArchitectureModelFactoryFacade.createInterface(baseversion, "HŠndler-Schnittstelle");
+		OperationInterface haendlerSchnittstelle = ArchitectureModelFactoryFacade.createInterface(baseversion, "Hï¿½ndler-Schnittstelle");
 		OperationInterface kundenSchnittstelle = ArchitectureModelFactoryFacade.createInterface(baseversion, "Kunden-Schnittstelle");
-		OperationInterface haendlerServerSchnittstelle = ArchitectureModelFactoryFacade.createInterface(baseversion, "HŠndler-Server-Schnittstelle");
+		OperationInterface haendlerServerSchnittstelle = ArchitectureModelFactoryFacade.createInterface(baseversion, "Hï¿½ndler-Server-Schnittstelle");
 		OperationInterface kundenServerSchnittstelle = ArchitectureModelFactoryFacade.createInterface(baseversion, "Kunden-Server-Schnittstelle");
 		OperationInterface finanzdienstSchnittstelle = ArchitectureModelFactoryFacade.createInterface(baseversion, "Finanzdienst-Schnittstelle");
 		OperationInterface odbcSchnittstelle = ArchitectureModelFactoryFacade.createInterface(baseversion, "ODBC-Schnittstelle");
 
-		BasicComponent haendlerclient = ArchitectureModelFactoryFacade.createBasicComponent(baseversion, "HŠndler-Client");
+		BasicComponent haendlerclient = ArchitectureModelFactoryFacade.createBasicComponent(baseversion, "Hï¿½ndler-Client");
 		BasicComponent kundenclient = ArchitectureModelFactoryFacade.createBasicComponent(baseversion, "Kunden-Client");
 		BasicComponent bestellserver = ArchitectureModelFactoryFacade.createBasicComponent(baseversion, "Bestell-Server");
 		BasicComponent datenbank = ArchitectureModelFactoryFacade.createBasicComponent(baseversion, "Datenbank");
@@ -124,9 +124,9 @@ public class DissRunningExampleTest {
 		ArchitectureAnnotationFactory.createBuildConfiguration(baseversion, new RepositoryComponent[] {kundenclient, haendlerclient, bestellserver}, "build.xml", "");
 
 		// distribution/release management	
-		ArchitectureAnnotationFactory.createReleaseConfiguration(baseversion, new RepositoryComponent[] {kundenclient}, "", "InstallierfŠhiger Kunden-Client");
-		ArchitectureAnnotationFactory.createReleaseConfiguration(baseversion, new RepositoryComponent[] {haendlerclient}, "", "InstallierfŠhiger HŠndler-Client");
-		ArchitectureAnnotationFactory.createReleaseConfiguration(baseversion, new RepositoryComponent[] {bestellserver}, "", "InstallierfŠhiger Bestell-Server");
+		ArchitectureAnnotationFactory.createReleaseConfiguration(baseversion, new RepositoryComponent[] {kundenclient}, "", "Installierfï¿½higer Kunden-Client");
+		ArchitectureAnnotationFactory.createReleaseConfiguration(baseversion, new RepositoryComponent[] {haendlerclient}, "", "Installierfï¿½higer Hï¿½ndler-Client");
+		ArchitectureAnnotationFactory.createReleaseConfiguration(baseversion, new RepositoryComponent[] {bestellserver}, "", "Installierfï¿½higer Bestell-Server");
 		
 		// deployment
 		ArchitectureAnnotationFactory.createRuntimeInstanceAggregation(baseversion, new RepositoryComponent[] {kundenclient}, 1000, "");
