@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.identifier/src/de/uka/ipd/sdq/identifier/util
+END
+IdentifierXMLProcessor.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/i43/svn/code/!svn/ver/26775/Commons/trunk/de.uka.ipd.sdq.identifier/src/de/uka/ipd/sdq/identifier/util/IdentifierXMLProcessor.java
+END
+IdentifierResourceFactoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/26775/Commons/trunk/de.uka.ipd.sdq.identifier/src/de/uka/ipd/sdq/identifier/util/IdentifierResourceFactoryImpl.java
+END
+IdentifierSwitch.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.identifier/src/de/uka/ipd/sdq/identifier/util/IdentifierSwitch.java
+END
+IdentifierAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.identifier/src/de/uka/ipd/sdq/identifier/util/IdentifierAdapterFactory.java
+END
+IdentifierResourceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/i43/svn/code/!svn/ver/26775/Commons/trunk/de.uka.ipd.sdq.identifier/src/de/uka/ipd/sdq/identifier/util/IdentifierResourceImpl.java
+END

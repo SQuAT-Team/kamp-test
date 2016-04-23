@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/i43/svn/code/!svn/ver/25901/Commons/trunk/org.palladiosimulator.commons.xtexttools/src/org/palladiosimulator/xtexttools
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/24221/Commons/trunk/org.palladiosimulator.commons.xtexttools/src/org/palladiosimulator/xtexttools/package-info.java
+END
+AbstractXtextEditorAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/24221/Commons/trunk/org.palladiosimulator.commons.xtexttools/src/org/palladiosimulator/xtexttools/AbstractXtextEditorAdapter.java
+END
+AbstractXtextSerializerAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/i43/svn/code/!svn/ver/24221/Commons/trunk/org.palladiosimulator.commons.xtexttools/src/org/palladiosimulator/xtexttools/AbstractXtextSerializerAdapter.java
+END
+AbstractXtextParserAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/25901/Commons/trunk/org.palladiosimulator.commons.xtexttools/src/org/palladiosimulator/xtexttools/AbstractXtextParserAdapter.java
+END

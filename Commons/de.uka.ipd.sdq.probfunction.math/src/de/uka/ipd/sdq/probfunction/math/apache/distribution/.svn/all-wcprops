@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/distribution
+END
+UniformDistributionImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/distribution/UniformDistributionImpl.java
+END
+LognormalDistributionFromMomentsImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/distribution/LognormalDistributionFromMomentsImpl.java
+END
+GammaDistributionFromMomentsImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/distribution/GammaDistributionFromMomentsImpl.java
+END
+LognormalDistributionImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/distribution/LognormalDistributionImpl.java
+END
+UniformIntDistributionImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/distribution/UniformIntDistributionImpl.java
+END

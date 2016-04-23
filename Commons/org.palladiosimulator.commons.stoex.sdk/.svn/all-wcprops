@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/i43/svn/code/!svn/ver/28223/Commons/trunk/org.palladiosimulator.commons.stoex.sdk
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/i43/svn/code/!svn/ver/24221/Commons/trunk/org.palladiosimulator.commons.stoex.sdk/.project
+END
+build.properties
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/i43/svn/code/!svn/ver/24221/Commons/trunk/org.palladiosimulator.commons.stoex.sdk/build.properties
+END
+feature.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/i43/svn/code/!svn/ver/28223/Commons/trunk/org.palladiosimulator.commons.stoex.sdk/feature.xml
+END

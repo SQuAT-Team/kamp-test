@@ -1,0 +1,133 @@
+10
+
+dir
+31485
+https://anonymous@svnserver.informatik.kit.edu/i43/svn/code/Commons/trunk
+https://anonymous@svnserver.informatik.kit.edu/i43/svn/code
+
+
+
+2016-03-21T21:37:18.561661Z
+31485
+kramerm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+769cc9a0-fb0c-0410-8c2f-a2305f0e6268
+
+org.palladiosimulator.commons.feature
+dir
+
+de.uka.ipd.sdq.probfunction.visualization
+dir
+
+org.palladiosimulator.commons.stoex.feature
+dir
+
+de.uka.ipd.sdq.dialogs.feature
+dir
+
+de.uka.ipd.sdq.identifier.feature
+dir
+
+org.palladiosimulator.commons
+dir
+
+org.palladiosimulator.commons.stoex
+dir
+
+org.palladiosimulator.commons.stoex.tests
+dir
+
+de.uka.ipd.sdq.dialogs
+dir
+
+de.uka.ipd.sdq.identifier
+dir
+
+de.uka.ipd.sdq.statistics.feature
+dir
+
+de.uka.ipd.sdq.stoex.edit
+dir
+
+de.uka.ipd.sdq.statistics
+dir
+
+org.palladiosimulator.commons.stoex.ui
+dir
+
+de.uka.ipd.sdq.units.feature
+dir
+
+de.uka.ipd.sdq.probfunction.math
+dir
+
+de.uka.ipd.sdq.probfunction.math.tests
+dir
+
+de.uka.ipd.sdq.units
+dir
+
+de.uka.ipd.sdq.probfunction.feature
+dir
+
+edu.kit.ipd.sdq.commons.util.java
+dir
+
+de.uka.ipd.sdq.identifier.edit
+dir
+
+de.uka.ipd.sdq.probfunction
+dir
+
+de.uka.ipd.sdq.statistics.test
+dir
+
+org.palladiosimulator.commons.xtexttools
+dir
+
+de.uka.ipd.sdq.units.edit
+dir
+
+de.uka.ipd.sdq.units.editor
+dir
+
+de.uka.ipd.sdq.errorhandling.feature
+dir
+
+edu.kit.ipd.sdq.commons.util.emf
+dir
+
+de.uka.ipd.sdq.stoex.feature
+dir
+
+de.uka.ipd.sdq.probfunction.edit
+dir
+
+de.uka.ipd.sdq.errorhandling
+dir
+
+org.palladiosimulator.commons.stoex.adapter
+dir
+
+org.palladiosimulator.commons.stoex.sdk
+dir
+
+de.uka.ipd.sdq.stoex
+dir
+
+org.palladiosimulator.commons.buckminster
+dir
+

@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: StoExAdapter
+Bundle-SymbolicName: org.palladiosimulator.commons.stoex.adapter
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Jonas Heinisch
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.xtext,
+ com.google.inject,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.palladiosimulator.commons.stoex;bundle-version="1.0.0",
+ org.palladiosimulator.commons.stoex.ui,
+ org.eclipse.xtext.ui,
+ org.palladiosimulator.commons.xtexttools;visibility:=reexport,
+ de.uka.ipd.sdq.stoex,
+ de.uka.ipd.sdq.units
+Export-Package: org.palladiosimulator.commons.stoex.adapter

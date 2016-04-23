@@ -1,0 +1,197 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/i43/svn/code/!svn/ver/28018/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl
+END
+StoexPackageImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/StoexPackageImpl.java
+END
+NumericLiteralImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/NumericLiteralImpl.java
+END
+VariableImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/VariableImpl.java
+END
+ParenthesisImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/ParenthesisImpl.java
+END
+TermExpressionImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/TermExpressionImpl.java
+END
+DoubleLiteralImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/DoubleLiteralImpl.java
+END
+IfElseExpressionImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/IfElseExpressionImpl.java
+END
+ProductExpressionImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/ProductExpressionImpl.java
+END
+TermImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/TermImpl.java
+END
+IfElseImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/IfElseImpl.java
+END
+ComparisonImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/ComparisonImpl.java
+END
+NamespaceReferenceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/NamespaceReferenceImpl.java
+END
+PowerExpressionImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/PowerExpressionImpl.java
+END
+ProductImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/ProductImpl.java
+END
+NotExpressionImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/NotExpressionImpl.java
+END
+NegativeExpressionImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/NegativeExpressionImpl.java
+END
+StringLiteralImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/StringLiteralImpl.java
+END
+RandomVariableImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/i43/svn/code/!svn/ver/28018/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/RandomVariableImpl.java
+END
+AbstractNamedReferenceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/AbstractNamedReferenceImpl.java
+END
+StoexFactoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/StoexFactoryImpl.java
+END
+PowerImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/PowerImpl.java
+END
+UnaryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/UnaryImpl.java
+END
+BooleanExpressionImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/BooleanExpressionImpl.java
+END
+ExpressionImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/ExpressionImpl.java
+END
+AtomImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/AtomImpl.java
+END
+FunctionLiteralImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/FunctionLiteralImpl.java
+END
+ProbabilityFunctionLiteralImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/ProbabilityFunctionLiteralImpl.java
+END
+VariableReferenceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/VariableReferenceImpl.java
+END
+CompareExpressionImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/CompareExpressionImpl.java
+END
+IntLiteralImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/IntLiteralImpl.java
+END
+BoolLiteralImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/BoolLiteralImpl.java
+END
+BooleanOperatorExpressionImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/impl/BooleanOperatorExpressionImpl.java
+END

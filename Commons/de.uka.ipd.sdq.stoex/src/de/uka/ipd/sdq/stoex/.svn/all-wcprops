@@ -1,0 +1,221 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/i43/svn/code/!svn/ver/28018/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex
+END
+BooleanExpression.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/BooleanExpression.java
+END
+Expression.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/Expression.java
+END
+Atom.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/Atom.java
+END
+FunctionLiteral.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/FunctionLiteral.java
+END
+ProbabilityFunctionLiteral.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/ProbabilityFunctionLiteral.java
+END
+VariableReference.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/VariableReference.java
+END
+CompareExpression.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/CompareExpression.java
+END
+IntLiteral.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/IntLiteral.java
+END
+BoolLiteral.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/BoolLiteral.java
+END
+BooleanOperatorExpression.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/BooleanOperatorExpression.java
+END
+TermOperations.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/TermOperations.java
+END
+StoexPackage.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/StoexPackage.java
+END
+NumericLiteral.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/NumericLiteral.java
+END
+ProductOperations.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/ProductOperations.java
+END
+Variable.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/Variable.java
+END
+Parenthesis.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/Parenthesis.java
+END
+TermExpression.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/TermExpression.java
+END
+DoubleLiteral.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/DoubleLiteral.java
+END
+IfElseExpression.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/IfElseExpression.java
+END
+ProductExpression.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/ProductExpression.java
+END
+Term.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/Term.java
+END
+IfElse.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/IfElse.java
+END
+Comparison.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/Comparison.java
+END
+NamespaceReference.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/NamespaceReference.java
+END
+PowerExpression.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/PowerExpression.java
+END
+Product.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/Product.java
+END
+NotExpression.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/NotExpression.java
+END
+NegativeExpression.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/NegativeExpression.java
+END
+StringLiteral.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/StringLiteral.java
+END
+BooleanOperations.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/BooleanOperations.java
+END
+RandomVariable.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/RandomVariable.java
+END
+AbstractNamedReference.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/AbstractNamedReference.java
+END
+StoexFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/StoexFactory.java
+END
+CompareOperations.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/CompareOperations.java
+END
+Power.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/Power.java
+END
+Unary.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.stoex/src/de/uka/ipd/sdq/stoex/Unary.java
+END

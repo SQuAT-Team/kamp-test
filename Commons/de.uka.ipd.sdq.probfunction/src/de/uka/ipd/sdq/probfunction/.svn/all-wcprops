@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/i43/svn/code/!svn/ver/27006/Commons/trunk/de.uka.ipd.sdq.probfunction/src/de/uka/ipd/sdq/probfunction
+END
+ProbfunctionFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.probfunction/src/de/uka/ipd/sdq/probfunction/ProbfunctionFactory.java
+END
+ContinuousPDF.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.probfunction/src/de/uka/ipd/sdq/probfunction/ContinuousPDF.java
+END
+Complex.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.probfunction/src/de/uka/ipd/sdq/probfunction/Complex.java
+END
+ContinuousSample.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.probfunction/src/de/uka/ipd/sdq/probfunction/ContinuousSample.java
+END
+StringSample.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.probfunction/src/de/uka/ipd/sdq/probfunction/StringSample.java
+END
+ProbabilityMassFunction.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.probfunction/src/de/uka/ipd/sdq/probfunction/ProbabilityMassFunction.java
+END
+SamplePDF.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.probfunction/src/de/uka/ipd/sdq/probfunction/SamplePDF.java
+END
+DoubleSample.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.probfunction/src/de/uka/ipd/sdq/probfunction/DoubleSample.java
+END
+Sample.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.probfunction/src/de/uka/ipd/sdq/probfunction/Sample.java
+END
+GammaDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.probfunction/src/de/uka/ipd/sdq/probfunction/GammaDistribution.java
+END
+ProbfunctionPackage.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.probfunction/src/de/uka/ipd/sdq/probfunction/ProbfunctionPackage.java
+END
+ProbabilityFunction.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/i43/svn/code/!svn/ver/26775/Commons/trunk/de.uka.ipd.sdq.probfunction/src/de/uka/ipd/sdq/probfunction/ProbabilityFunction.java
+END
+ProbabilityDensityFunction.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/26775/Commons/trunk/de.uka.ipd.sdq.probfunction/src/de/uka/ipd/sdq/probfunction/ProbabilityDensityFunction.java
+END
+ExponentialDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.probfunction/src/de/uka/ipd/sdq/probfunction/ExponentialDistribution.java
+END
+NormalDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.probfunction/src/de/uka/ipd/sdq/probfunction/NormalDistribution.java
+END
+LognormalDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.probfunction/src/de/uka/ipd/sdq/probfunction/LognormalDistribution.java
+END
+BoxedPDF.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.probfunction/src/de/uka/ipd/sdq/probfunction/BoxedPDF.java
+END
+IntSample.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.probfunction/src/de/uka/ipd/sdq/probfunction/IntSample.java
+END
+BoolSample.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/i43/svn/code/!svn/ver/26944/Commons/trunk/de.uka.ipd.sdq.probfunction/src/de/uka/ipd/sdq/probfunction/BoolSample.java
+END

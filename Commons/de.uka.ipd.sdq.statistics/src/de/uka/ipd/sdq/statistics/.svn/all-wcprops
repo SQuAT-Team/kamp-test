@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/i43/svn/code/!svn/ver/23850/Commons/trunk/de.uka.ipd.sdq.statistics/src/de/uka/ipd/sdq/statistics
+END
+StaticBatchAlgorithm.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/i43/svn/code/!svn/ver/23850/Commons/trunk/de.uka.ipd.sdq.statistics/src/de/uka/ipd/sdq/statistics/StaticBatchAlgorithm.java
+END
+Batch.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/i43/svn/code/!svn/ver/23825/Commons/trunk/de.uka.ipd.sdq.statistics/src/de/uka/ipd/sdq/statistics/Batch.java
+END
+IBatchAlgorithm.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/i43/svn/code/!svn/ver/23825/Commons/trunk/de.uka.ipd.sdq.statistics/src/de/uka/ipd/sdq/statistics/IBatchAlgorithm.java
+END
+MCRWarmUpFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/i43/svn/code/!svn/ver/23825/Commons/trunk/de.uka.ipd.sdq.statistics/src/de/uka/ipd/sdq/statistics/MCRWarmUpFilter.java
+END
+PhiMixingBatchAlgorithm.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/i43/svn/code/!svn/ver/23850/Commons/trunk/de.uka.ipd.sdq.statistics/src/de/uka/ipd/sdq/statistics/PhiMixingBatchAlgorithm.java
+END
+ABatchAlgorithm.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/i43/svn/code/!svn/ver/23825/Commons/trunk/de.uka.ipd.sdq.statistics/src/de/uka/ipd/sdq/statistics/ABatchAlgorithm.java
+END
+CrossingMeanWarmUpFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/i43/svn/code/!svn/ver/23825/Commons/trunk/de.uka.ipd.sdq.statistics/src/de/uka/ipd/sdq/statistics/CrossingMeanWarmUpFilter.java
+END
+Activator.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/i43/svn/code/!svn/ver/23825/Commons/trunk/de.uka.ipd.sdq.statistics/src/de/uka/ipd/sdq/statistics/Activator.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/i43/svn/code/!svn/ver/16260/Commons/trunk/de.uka.ipd.sdq.statistics/src/de/uka/ipd/sdq/statistics/package.html
+END

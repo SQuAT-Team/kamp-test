@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/i43/svn/code/!svn/ver/30806/Commons/trunk/de.uka.ipd.sdq.identifier
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/i43/svn/code/!svn/ver/14602/Commons/trunk/de.uka.ipd.sdq.identifier/.classpath
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/i43/svn/code/!svn/ver/14602/Commons/trunk/de.uka.ipd.sdq.identifier/.project
+END
+plugin.properties
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/i43/svn/code/!svn/ver/14602/Commons/trunk/de.uka.ipd.sdq.identifier/plugin.properties
+END
+build.properties
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/i43/svn/code/!svn/ver/14602/Commons/trunk/de.uka.ipd.sdq.identifier/build.properties
+END
+plugin.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/i43/svn/code/!svn/ver/30806/Commons/trunk/de.uka.ipd.sdq.identifier/plugin.xml
+END

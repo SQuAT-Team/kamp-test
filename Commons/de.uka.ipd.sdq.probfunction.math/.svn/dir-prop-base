@@ -1,0 +1,12 @@
+K 10
+svn:ignore
+V 14
+bin
+.settings
+
+K 13
+svn:mergeinfo
+V 153
+/Palladio.EMFProbfunctionModel/trunk/de.uka.ipd.sdq.probfunction.math:8635-9117
+/branches/SchedulerIntegration/de.uka.ipd.sdq.probfunction.math:5989-8640
+END

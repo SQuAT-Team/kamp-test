@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.units/src/de/uka/ipd/sdq/units/impl
+END
+UnitMultiplicationImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.units/src/de/uka/ipd/sdq/units/impl/UnitMultiplicationImpl.java
+END
+UnitsPackageImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/i43/svn/code/!svn/ver/26945/Commons/trunk/de.uka.ipd.sdq.units/src/de/uka/ipd/sdq/units/impl/UnitsPackageImpl.java
+END
+UnitImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.units/src/de/uka/ipd/sdq/units/impl/UnitImpl.java
+END
+UnitRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.units/src/de/uka/ipd/sdq/units/impl/UnitRepositoryImpl.java
+END
+UnitDivisionImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.units/src/de/uka/ipd/sdq/units/impl/UnitDivisionImpl.java
+END
+UnitCarryingElementImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.units/src/de/uka/ipd/sdq/units/impl/UnitCarryingElementImpl.java
+END
+BaseUnitImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.units/src/de/uka/ipd/sdq/units/impl/BaseUnitImpl.java
+END
+UnitsFactoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/i43/svn/code/!svn/ver/26945/Commons/trunk/de.uka.ipd.sdq.units/src/de/uka/ipd/sdq/units/impl/UnitsFactoryImpl.java
+END
+UnitPowerImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/i43/svn/code/!svn/ver/26993/Commons/trunk/de.uka.ipd.sdq.units/src/de/uka/ipd/sdq/units/impl/UnitPowerImpl.java
+END

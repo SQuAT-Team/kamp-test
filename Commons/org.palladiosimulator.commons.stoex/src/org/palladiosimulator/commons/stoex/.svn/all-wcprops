@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/i43/svn/code/!svn/ver/25922/Commons/trunk/org.palladiosimulator.commons.stoex/src/org/palladiosimulator/commons/stoex
+END
+GenerateStoEx.mwe2
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/i43/svn/code/!svn/ver/24226/Commons/trunk/org.palladiosimulator.commons.stoex/src/org/palladiosimulator/commons/stoex/GenerateStoEx.mwe2
+END
+StoExRuntimeModule.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/24226/Commons/trunk/org.palladiosimulator.commons.stoex/src/org/palladiosimulator/commons/stoex/StoExRuntimeModule.java
+END
+StoExStandaloneSetup.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/24226/Commons/trunk/org.palladiosimulator.commons.stoex/src/org/palladiosimulator/commons/stoex/StoExStandaloneSetup.java
+END
+StoEx.xtext
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/i43/svn/code/!svn/ver/24226/Commons/trunk/org.palladiosimulator.commons.stoex/src/org/palladiosimulator/commons/stoex/StoEx.xtext
+END

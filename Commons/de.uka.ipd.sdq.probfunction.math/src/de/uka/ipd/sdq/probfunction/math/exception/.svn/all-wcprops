@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/exception
+END
+StringNotPDFException.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/exception/StringNotPDFException.java
+END
+DifferentDomainsException.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/exception/DifferentDomainsException.java
+END
+DomainNotNumbersException.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/exception/DomainNotNumbersException.java
+END
+SizeTooSmallException.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/exception/SizeTooSmallException.java
+END
+InvalidSampleValueException.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/exception/InvalidSampleValueException.java
+END
+ProbabilityFunctionException.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/exception/ProbabilityFunctionException.java
+END
+ProbabilitySumNotOneException.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/exception/ProbabilitySumNotOneException.java
+END
+IncompatibleUnitsException.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/exception/IncompatibleUnitsException.java
+END
+UnknownPDFTypeException.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/exception/UnknownPDFTypeException.java
+END
+FunctionNotInTimeDomainException.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/exception/FunctionNotInTimeDomainException.java
+END
+ConfigurationNotSetException.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/exception/ConfigurationNotSetException.java
+END
+FunctionNotInFrequencyDomainException.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/exception/FunctionNotInFrequencyDomainException.java
+END
+UnitNotSetException.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/exception/UnitNotSetException.java
+END
+DoubleSampleException.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/exception/DoubleSampleException.java
+END
+UnitNameNotSetException.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/exception/UnitNameNotSetException.java
+END
+NegativeDistanceException.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/exception/NegativeDistanceException.java
+END
+FunctionsInDifferenDomainsException.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/exception/FunctionsInDifferenDomainsException.java
+END
+UnorderedDomainException.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/exception/UnorderedDomainException.java
+END

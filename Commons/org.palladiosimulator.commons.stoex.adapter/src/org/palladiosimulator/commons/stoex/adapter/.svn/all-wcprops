@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/24221/Commons/trunk/org.palladiosimulator.commons.stoex.adapter/src/org/palladiosimulator/commons/stoex/adapter
+END
+StoExParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/24221/Commons/trunk/org.palladiosimulator.commons.stoex.adapter/src/org/palladiosimulator/commons/stoex/adapter/StoExParser.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/24221/Commons/trunk/org.palladiosimulator.commons.stoex.adapter/src/org/palladiosimulator/commons/stoex/adapter/package-info.java
+END
+StoExEditor.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/24221/Commons/trunk/org.palladiosimulator.commons.stoex.adapter/src/org/palladiosimulator/commons/stoex/adapter/StoExEditor.java
+END
+StoExSerializer.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/i43/svn/code/!svn/ver/24221/Commons/trunk/org.palladiosimulator.commons.stoex.adapter/src/org/palladiosimulator/commons/stoex/adapter/StoExSerializer.java
+END

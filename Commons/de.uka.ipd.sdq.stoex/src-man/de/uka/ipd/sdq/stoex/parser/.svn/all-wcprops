@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/i43/svn/code/!svn/ver/26575/Commons/trunk/de.uka.ipd.sdq.stoex/src-man/de/uka/ipd/sdq/stoex/parser
+END
+StochasticExpressionsParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/i43/svn/code/!svn/ver/26575/Commons/trunk/de.uka.ipd.sdq.stoex/src-man/de/uka/ipd/sdq/stoex/parser/StochasticExpressionsParser.java
+END
+StochasticExpressionsLexer.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/i43/svn/code/!svn/ver/26575/Commons/trunk/de.uka.ipd.sdq.stoex/src-man/de/uka/ipd/sdq/stoex/parser/StochasticExpressionsLexer.java
+END
+StochasticExpressionsParserTokenTypes.txt
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/i43/svn/code/!svn/ver/16279/Commons/trunk/de.uka.ipd.sdq.stoex/src-man/de/uka/ipd/sdq/stoex/parser/StochasticExpressionsParserTokenTypes.txt
+END
+StochasticExpressions.tokens
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/i43/svn/code/!svn/ver/16279/Commons/trunk/de.uka.ipd.sdq.stoex/src-man/de/uka/ipd/sdq/stoex/parser/StochasticExpressions.tokens
+END
+StochasticExpressions.g
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/i43/svn/code/!svn/ver/16534/Commons/trunk/de.uka.ipd.sdq.stoex/src-man/de/uka/ipd/sdq/stoex/parser/StochasticExpressions.g
+END

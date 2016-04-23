@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/i43/svn/code/!svn/ver/23825/Commons/trunk/de.uka.ipd.sdq.statistics/src/de/uka/ipd/sdq/statistics/estimation
+END
+ConfidenceInterval.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/i43/svn/code/!svn/ver/23825/Commons/trunk/de.uka.ipd.sdq.statistics/src/de/uka/ipd/sdq/statistics/estimation/ConfidenceInterval.java
+END
+SampleVarianceEstimator.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/23825/Commons/trunk/de.uka.ipd.sdq.statistics/src/de/uka/ipd/sdq/statistics/estimation/SampleVarianceEstimator.java
+END
+IPointEstimator.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/i43/svn/code/!svn/ver/23825/Commons/trunk/de.uka.ipd.sdq.statistics/src/de/uka/ipd/sdq/statistics/estimation/IPointEstimator.java
+END
+SampleMeanEstimator.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/23825/Commons/trunk/de.uka.ipd.sdq.statistics/src/de/uka/ipd/sdq/statistics/estimation/SampleMeanEstimator.java
+END
+IConfidenceEstimator.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/i43/svn/code/!svn/ver/23825/Commons/trunk/de.uka.ipd.sdq.statistics/src/de/uka/ipd/sdq/statistics/estimation/IConfidenceEstimator.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/i43/svn/code/!svn/ver/16260/Commons/trunk/de.uka.ipd.sdq.statistics/src/de/uka/ipd/sdq/statistics/estimation/package.html
+END

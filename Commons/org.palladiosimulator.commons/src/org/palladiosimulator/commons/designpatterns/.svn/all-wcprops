@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/i43/svn/code/!svn/ver/24478/Commons/trunk/org.palladiosimulator.commons/src/org/palladiosimulator/commons/designpatterns
+END
+IAbstractObservable.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/23825/Commons/trunk/org.palladiosimulator.commons/src/org/palladiosimulator/commons/designpatterns/IAbstractObservable.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/i43/svn/code/!svn/ver/24478/Commons/trunk/org.palladiosimulator.commons/src/org/palladiosimulator/commons/designpatterns/package-info.java
+END
+AbstractObservable.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/23825/Commons/trunk/org.palladiosimulator.commons/src/org/palladiosimulator/commons/designpatterns/AbstractObservable.java
+END

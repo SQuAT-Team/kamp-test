@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="de.uka.ipd.sdq.units.feature"
+      label="Palladio Commons Units"
+      version="2.1.0.qualifier"
+      plugin="org.palladiosimulator.branding"
+      license-feature="org.palladiosimulator.license"
+      license-feature-version="1.0.0">
+
+   <description url="http://sdq.ipd.uka.de">
+      Palladio Commons library: Units classes
+   </description>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="de.uka.ipd.sdq.units"/>
+      <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="org.eclipse.emf.ecore.edit"/>
+      <import plugin="org.eclipse.uml2.common.edit"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="de.uka.ipd.sdq.units.edit"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="org.eclipse.emf.edit.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+   </requires>
+
+   <plugin
+         id="de.uka.ipd.sdq.units"
+         download-size="0"
+         install-size="0"
+         version="2.1.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="de.uka.ipd.sdq.units.edit"
+         download-size="0"
+         install-size="0"
+         version="2.1.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="de.uka.ipd.sdq.units.editor"
+         download-size="0"
+         install-size="0"
+         version="2.1.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="org.palladiosimulator.branding"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

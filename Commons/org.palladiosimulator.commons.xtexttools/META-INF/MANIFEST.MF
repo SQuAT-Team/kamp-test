@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Xtexttools
+Bundle-SymbolicName: org.palladiosimulator.commons.xtexttools
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Jonas Heinisch
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.palladiosimulator.xtexttools,
+ org.palladiosimulator.xtexttools.interfaces
+Require-Bundle: org.eclipse.xtext;visibility:=reexport,
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.ui,
+ com.google.inject

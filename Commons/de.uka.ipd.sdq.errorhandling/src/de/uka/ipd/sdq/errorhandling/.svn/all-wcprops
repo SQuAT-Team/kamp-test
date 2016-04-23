@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/i43/svn/code/!svn/ver/23825/Commons/trunk/de.uka.ipd.sdq.errorhandling/src/de/uka/ipd/sdq/errorhandling
+END
+SeverityEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/i43/svn/code/!svn/ver/23825/Commons/trunk/de.uka.ipd.sdq.errorhandling/src/de/uka/ipd/sdq/errorhandling/SeverityEnum.java
+END
+IIssue.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/i43/svn/code/!svn/ver/23825/Commons/trunk/de.uka.ipd.sdq.errorhandling/src/de/uka/ipd/sdq/errorhandling/IIssue.java
+END
+SeverityAndIssue.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/i43/svn/code/!svn/ver/23825/Commons/trunk/de.uka.ipd.sdq.errorhandling/src/de/uka/ipd/sdq/errorhandling/SeverityAndIssue.java
+END
+Activator.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/i43/svn/code/!svn/ver/23825/Commons/trunk/de.uka.ipd.sdq.errorhandling/src/de/uka/ipd/sdq/errorhandling/Activator.java
+END

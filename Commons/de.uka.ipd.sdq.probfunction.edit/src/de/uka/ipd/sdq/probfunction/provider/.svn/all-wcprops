@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.probfunction.edit/src/de/uka/ipd/sdq/probfunction/provider
+END
+ComplexItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.probfunction.edit/src/de/uka/ipd/sdq/probfunction/provider/ComplexItemProvider.java
+END
+ContinuousSampleItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.probfunction.edit/src/de/uka/ipd/sdq/probfunction/provider/ContinuousSampleItemProvider.java
+END
+StringSampleItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.probfunction.edit/src/de/uka/ipd/sdq/probfunction/provider/StringSampleItemProvider.java
+END
+ProbabilityMassFunctionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.probfunction.edit/src/de/uka/ipd/sdq/probfunction/provider/ProbabilityMassFunctionItemProvider.java
+END
+SamplePDFItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.probfunction.edit/src/de/uka/ipd/sdq/probfunction/provider/SamplePDFItemProvider.java
+END
+DoubleSampleItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.probfunction.edit/src/de/uka/ipd/sdq/probfunction/provider/DoubleSampleItemProvider.java
+END
+ProbabilityFunctionEditPlugin.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.probfunction.edit/src/de/uka/ipd/sdq/probfunction/provider/ProbabilityFunctionEditPlugin.java
+END
+SampleItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.probfunction.edit/src/de/uka/ipd/sdq/probfunction/provider/SampleItemProvider.java
+END
+GammaDistributionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.probfunction.edit/src/de/uka/ipd/sdq/probfunction/provider/GammaDistributionItemProvider.java
+END
+ProbabilityFunctionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.probfunction.edit/src/de/uka/ipd/sdq/probfunction/provider/ProbabilityFunctionItemProvider.java
+END
+ProbabilityDensityFunctionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.probfunction.edit/src/de/uka/ipd/sdq/probfunction/provider/ProbabilityDensityFunctionItemProvider.java
+END
+ExponentialDistributionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.probfunction.edit/src/de/uka/ipd/sdq/probfunction/provider/ExponentialDistributionItemProvider.java
+END
+NormalDistributionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.probfunction.edit/src/de/uka/ipd/sdq/probfunction/provider/NormalDistributionItemProvider.java
+END
+LognormalDistributionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.probfunction.edit/src/de/uka/ipd/sdq/probfunction/provider/LognormalDistributionItemProvider.java
+END
+BoxedPDFItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.probfunction.edit/src/de/uka/ipd/sdq/probfunction/provider/BoxedPDFItemProvider.java
+END
+IntSampleItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.probfunction.edit/src/de/uka/ipd/sdq/probfunction/provider/IntSampleItemProvider.java
+END
+BoolSampleItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.probfunction.edit/src/de/uka/ipd/sdq/probfunction/provider/BoolSampleItemProvider.java
+END
+ContinuousPDFItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.probfunction.edit/src/de/uka/ipd/sdq/probfunction/provider/ContinuousPDFItemProvider.java
+END
+ProbfunctionItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.probfunction.edit/src/de/uka/ipd/sdq/probfunction/provider/ProbfunctionItemProviderAdapterFactory.java
+END

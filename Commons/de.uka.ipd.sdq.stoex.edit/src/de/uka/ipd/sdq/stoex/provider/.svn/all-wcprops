@@ -1,0 +1,197 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider
+END
+CompareExpressionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/CompareExpressionItemProvider.java
+END
+IntLiteralItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/IntLiteralItemProvider.java
+END
+BoolLiteralItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/BoolLiteralItemProvider.java
+END
+BooleanOperatorExpressionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/BooleanOperatorExpressionItemProvider.java
+END
+NumericLiteralItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/NumericLiteralItemProvider.java
+END
+VariableItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/VariableItemProvider.java
+END
+ParenthesisItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/ParenthesisItemProvider.java
+END
+TermExpressionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/TermExpressionItemProvider.java
+END
+DoubleLiteralItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/DoubleLiteralItemProvider.java
+END
+IfElseExpressionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/IfElseExpressionItemProvider.java
+END
+ProductExpressionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/ProductExpressionItemProvider.java
+END
+TermItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/TermItemProvider.java
+END
+IfElseItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/IfElseItemProvider.java
+END
+ComparisonItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/ComparisonItemProvider.java
+END
+NamespaceReferenceItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/NamespaceReferenceItemProvider.java
+END
+PowerExpressionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/PowerExpressionItemProvider.java
+END
+ProductItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/ProductItemProvider.java
+END
+NotExpressionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/NotExpressionItemProvider.java
+END
+NegativeExpressionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/NegativeExpressionItemProvider.java
+END
+StringLiteralItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/StringLiteralItemProvider.java
+END
+RandomVariableItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/RandomVariableItemProvider.java
+END
+AbstractNamedReferenceItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/AbstractNamedReferenceItemProvider.java
+END
+StoexItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/StoexItemProviderAdapterFactory.java
+END
+PowerItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/PowerItemProvider.java
+END
+StoexEditPlugin.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/StoexEditPlugin.java
+END
+UnaryItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/UnaryItemProvider.java
+END
+BooleanExpressionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/BooleanExpressionItemProvider.java
+END
+ExpressionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/ExpressionItemProvider.java
+END
+AtomItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/AtomItemProvider.java
+END
+FunctionLiteralItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/FunctionLiteralItemProvider.java
+END
+ProbabilityFunctionLiteralItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/ProbabilityFunctionLiteralItemProvider.java
+END
+VariableReferenceItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/i43/svn/code/!svn/ver/26843/Commons/trunk/de.uka.ipd.sdq.stoex.edit/src/de/uka/ipd/sdq/stoex/provider/VariableReferenceItemProvider.java
+END

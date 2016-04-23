@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.identifier.edit/src/de/uka/ipd/sdq/identifier/provider
+END
+IdentifierItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/i43/svn/code/!svn/ver/26775/Commons/trunk/de.uka.ipd.sdq.identifier.edit/src/de/uka/ipd/sdq/identifier/provider/IdentifierItemProviderAdapterFactory.java
+END
+IdentifierEditPlugin.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.identifier.edit/src/de/uka/ipd/sdq/identifier/provider/IdentifierEditPlugin.java
+END
+IdentifierItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/i43/svn/code/!svn/ver/26861/Commons/trunk/de.uka.ipd.sdq.identifier.edit/src/de/uka/ipd/sdq/identifier/provider/IdentifierItemProvider.java
+END

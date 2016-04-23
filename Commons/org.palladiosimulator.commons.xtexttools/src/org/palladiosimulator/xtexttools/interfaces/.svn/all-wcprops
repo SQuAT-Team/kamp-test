@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/i43/svn/code/!svn/ver/24221/Commons/trunk/org.palladiosimulator.commons.xtexttools/src/org/palladiosimulator/xtexttools/interfaces
+END
+IXProduct.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/24221/Commons/trunk/org.palladiosimulator.commons.xtexttools/src/org/palladiosimulator/xtexttools/interfaces/IXProduct.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/24221/Commons/trunk/org.palladiosimulator.commons.xtexttools/src/org/palladiosimulator/xtexttools/interfaces/package-info.java
+END
+IXEditor.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/24221/Commons/trunk/org.palladiosimulator.commons.xtexttools/src/org/palladiosimulator/xtexttools/interfaces/IXEditor.java
+END
+IXSerializer.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/24221/Commons/trunk/org.palladiosimulator.commons.xtexttools/src/org/palladiosimulator/xtexttools/interfaces/IXSerializer.java
+END
+IXParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/24221/Commons/trunk/org.palladiosimulator.commons.xtexttools/src/org/palladiosimulator/xtexttools/interfaces/IXParser.java
+END

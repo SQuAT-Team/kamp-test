@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/26167/Commons/trunk/org.palladiosimulator.commons.stoex/src-gen/org/palladiosimulator/commons/stoex/parser/antlr/internal
+END
+InternalStoExLexer.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/26167/Commons/trunk/org.palladiosimulator.commons.stoex/src-gen/org/palladiosimulator/commons/stoex/parser/antlr/internal/InternalStoExLexer.java
+END
+InternalStoEx.tokens
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/i43/svn/code/!svn/ver/26167/Commons/trunk/org.palladiosimulator.commons.stoex/src-gen/org/palladiosimulator/commons/stoex/parser/antlr/internal/InternalStoEx.tokens
+END
+InternalStoEx.g
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/i43/svn/code/!svn/ver/26167/Commons/trunk/org.palladiosimulator.commons.stoex/src-gen/org/palladiosimulator/commons/stoex/parser/antlr/internal/InternalStoEx.g
+END
+InternalStoExParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/i43/svn/code/!svn/ver/26167/Commons/trunk/org.palladiosimulator.commons.stoex/src-gen/org/palladiosimulator/commons/stoex/parser/antlr/internal/InternalStoExParser.java
+END

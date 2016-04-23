@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/impl
+END
+ProbabilityFunctionFactoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/impl/ProbabilityFunctionFactoryImpl.java
+END
+UnitImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/impl/UnitImpl.java
+END
+SampleImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/impl/SampleImpl.java
+END
+ProbabilityDensityFunctionImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/impl/ProbabilityDensityFunctionImpl.java
+END
+ProbabilityFunctionImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/impl/ProbabilityFunctionImpl.java
+END
+ContinuousSampleImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/impl/ContinuousSampleImpl.java
+END
+DefaultRandomGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/impl/DefaultRandomGenerator.java
+END
+ProbabilityMassFunctionImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/impl/ProbabilityMassFunctionImpl.java
+END
+BoxedPDFImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/impl/BoxedPDFImpl.java
+END
+SamplePDFImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/impl/SamplePDFImpl.java
+END

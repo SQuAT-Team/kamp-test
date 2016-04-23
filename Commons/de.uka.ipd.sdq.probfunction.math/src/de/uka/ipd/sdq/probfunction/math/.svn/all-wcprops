@@ -1,0 +1,173 @@
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/i43/svn/code/!svn/ver/26553/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math
+END
+IExponentialDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/IExponentialDistribution.java
+END
+IProbabilityFunction.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/IProbabilityFunction.java
+END
+IProbabilityDensityFunction.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/IProbabilityDensityFunction.java
+END
+ManagedPMF.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/i43/svn/code/!svn/ver/26553/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/ManagedPMF.java
+END
+IRandomGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/IRandomGenerator.java
+END
+INormalDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/INormalDistribution.java
+END
+PDFConfiguration.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/PDFConfiguration.java
+END
+IPoissonDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/IPoissonDistribution.java
+END
+IBinomialDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/IBinomialDistribution.java
+END
+ILognormalDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/ILognormalDistribution.java
+END
+IUniformIntDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/IUniformIntDistribution.java
+END
+IBoxedPDF.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/IBoxedPDF.java
+END
+IDiscretePDF.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/IDiscretePDF.java
+END
+IPDFFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/IPDFFactory.java
+END
+IContinousPDFFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/IContinousPDFFactory.java
+END
+IContinuousSample.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/IContinuousSample.java
+END
+IProbabilityMassFunction.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/IProbabilityMassFunction.java
+END
+IStudentTDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/IStudentTDistribution.java
+END
+IContinousPDF.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/IContinousPDF.java
+END
+ISamplePDF.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/ISamplePDF.java
+END
+ManagedPDF.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/i43/svn/code/!svn/ver/26553/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/ManagedPDF.java
+END
+IProbabilityFunctionFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/IProbabilityFunctionFactory.java
+END
+IUnit.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/IUnit.java
+END
+IUniformDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/IUniformDistribution.java
+END
+ISample.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/ISample.java
+END
+IGammaDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/IGammaDistribution.java
+END
+IDiscretePDFFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/IDiscretePDFFactory.java
+END
+IChiSquareDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/IChiSquareDistribution.java
+END

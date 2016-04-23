@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rm:rmap xmlns:bc="http://www.eclipse.org/buckminster/Common-1.0"
+	xmlns:rm="http://www.eclipse.org/buckminster/RMap-1.0">
+	
+  	<rm:property key="resolveFrom" value="release"/>
+  	
+	<rm:locator pattern="^de\.uka\.ipd\.sdq\.[dialogs|errorhandling|identifier|probfuction|statistics|stoex|units].*" searchPathRef="commons" failOnError="true" />
+	<rm:locator pattern="^org\.palladiosimulator\.commons.*" searchPathRef="commons" failOnError="true" />
+
+	<rm:redirect pattern=".*" href="https://anonymous:anonymous@svnserver.informatik.kit.edu/i43/svn/code/ThirdPartyWrapper/trunk/org.palladiosimulator.thirdpartywrapper.buckminster/thirdpartywrapper.rmap" />
+		
+	<rm:searchPath name="commons">
+	    <rm:provider componentTypes="osgi.bundle,eclipse.feature" resolutionFilter="(resolveFrom=nightly)" readerType="p2" source="false" mutable="false">
+      		<rm:uri format="https://sdqweb.ipd.kit.edu/eclipse/commons/nightly/"/>
+    	</rm:provider>
+	    <rm:provider componentTypes="osgi.bundle,eclipse.feature" resolutionFilter="(resolveFrom=release)" readerType="p2" source="false" mutable="false">
+      		<rm:uri format="https://sdqweb.ipd.kit.edu/eclipse/commons/releases/latest/"/>
+    	</rm:provider>
+		<rm:provider componentTypes="eclipse.feature,osgi.bundle" source="true" mutable="true" readerType="svn">
+			<rm:uri	format="https://anonymous:anonymous@svnserver.informatik.kit.edu/i43/svn/code/Commons/trunk/{0}?moduleAfterTag&amp;moduleAfterBranch">
+				<bc:propertyRef key="buckminster.component" />
+			</rm:uri>
+		</rm:provider>
+	</rm:searchPath>
+	
+</rm:rmap>

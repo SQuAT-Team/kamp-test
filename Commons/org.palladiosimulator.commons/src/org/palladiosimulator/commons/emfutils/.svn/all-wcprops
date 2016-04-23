@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/i43/svn/code/!svn/ver/28749/Commons/trunk/org.palladiosimulator.commons/src/org/palladiosimulator/commons/emfutils
+END
+EMFAdapterFactoryHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/24599/Commons/trunk/org.palladiosimulator.commons/src/org/palladiosimulator/commons/emfutils/EMFAdapterFactoryHelper.java
+END
+EMFCopyHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/24599/Commons/trunk/org.palladiosimulator.commons/src/org/palladiosimulator/commons/emfutils/EMFCopyHelper.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/i43/svn/code/!svn/ver/24478/Commons/trunk/org.palladiosimulator.commons/src/org/palladiosimulator/commons/emfutils/package-info.java
+END
+EMFLoadHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/28749/Commons/trunk/org.palladiosimulator.commons/src/org/palladiosimulator/commons/emfutils/EMFLoadHelper.java
+END

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/i43/svn/code/!svn/ver/24226/Commons/trunk/org.palladiosimulator.commons.stoex/src/org/palladiosimulator/commons/stoex/serializer
+END
+StoExSyntacticSequencer.xtend
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/i43/svn/code/!svn/ver/24226/Commons/trunk/org.palladiosimulator.commons.stoex/src/org/palladiosimulator/commons/stoex/serializer/StoExSyntacticSequencer.xtend
+END
+StoExSemanticSequencer.xtend
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/i43/svn/code/!svn/ver/24226/Commons/trunk/org.palladiosimulator.commons.stoex/src/org/palladiosimulator/commons/stoex/serializer/StoExSemanticSequencer.xtend
+END

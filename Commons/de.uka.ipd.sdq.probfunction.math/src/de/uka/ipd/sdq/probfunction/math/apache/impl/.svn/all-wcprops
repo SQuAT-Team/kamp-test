@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/i43/svn/code/!svn/ver/24050/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/impl
+END
+AbstractContinousPDF.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/impl/AbstractContinousPDF.java
+END
+PDFFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/impl/PDFFactory.java
+END
+ApacheMathRandomGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/i43/svn/code/!svn/ver/24050/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/impl/ApacheMathRandomGenerator.java
+END
+MT19937RandomGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/impl/MT19937RandomGenerator.java
+END
+GammaDistributionFromMoments.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/impl/GammaDistributionFromMoments.java
+END
+StudentTDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/impl/StudentTDistribution.java
+END
+UniformDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/impl/UniformDistribution.java
+END
+AbstractDiscretePDF.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/impl/AbstractDiscretePDF.java
+END
+LognormalDistributionFromMoments.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/impl/LognormalDistributionFromMoments.java
+END
+GammaDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/impl/GammaDistribution.java
+END
+ChiSquareDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/impl/ChiSquareDistribution.java
+END
+ExponentialDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/impl/ExponentialDistribution.java
+END
+NormalDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/impl/NormalDistribution.java
+END
+PoissonDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/impl/PoissonDistribution.java
+END
+LognormalDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/impl/LognormalDistribution.java
+END
+BinomialDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/impl/BinomialDistribution.java
+END
+UniformIntDistribution.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/22881/Commons/trunk/de.uka.ipd.sdq.probfunction.math/src/de/uka/ipd/sdq/probfunction/math/apache/impl/UniformIntDistribution.java
+END

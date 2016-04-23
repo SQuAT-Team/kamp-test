@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="de.uka.ipd.sdq.statistics.feature"
+      label="Palladio Statistics Feature"
+      version="1.4.0.qualifier"
+      plugin="org.palladiosimulator.branding"
+      license-feature="org.palladiosimulator.license"
+      license-feature-version="1.0.0">
+
+   <description url="http://sdq.ipd.kit.edu">
+      Provides statistical methods like probability functions, batch mean algorithms, point
+estimators, confidence estimators and indepence tests.
+   </description>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.apache.log4j" version="1.2.13" match="greaterOrEqual"/>
+      <import plugin="de.uka.ipd.sdq.probfunction.math" version="2.0.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="de.uka.ipd.sdq.statistics"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.palladiosimulator.branding"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
