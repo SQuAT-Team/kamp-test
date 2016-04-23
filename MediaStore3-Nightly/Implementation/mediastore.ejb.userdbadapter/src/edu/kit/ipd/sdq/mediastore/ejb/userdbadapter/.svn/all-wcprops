@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.ejb.userdbadapter/src/edu/kit/ipd/sdq/mediastore/ejb/userdbadapter
+END
+DbManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 199
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.ejb.userdbadapter/src/edu/kit/ipd/sdq/mediastore/ejb/userdbadapter/DbManager.java
+END
+UserDBAdapterImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 207
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.ejb.userdbadapter/src/edu/kit/ipd/sdq/mediastore/ejb/userdbadapter/UserDBAdapterImpl.java
+END
+User.java
+K 25
+svn:wc:ra_dav:version-url
+V 194
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.ejb.userdbadapter/src/edu/kit/ipd/sdq/mediastore/ejb/userdbadapter/User.java
+END

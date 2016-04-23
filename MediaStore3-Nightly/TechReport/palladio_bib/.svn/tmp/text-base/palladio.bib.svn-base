@@ -1,0 +1,2446 @@
+@STRING{AAW = {ACM Press, Addison-Wesley, Reading, MA, USA}}
+
+@STRING{ACM = {Association of Computing Machinery}}
+
+@STRING{ACMP = {ACM Press}}
+
+@STRING{ACP = {Academic Press, New York, NY , USA}}
+
+@STRING{ACPL = {Academic Press, London , UK}}
+
+@STRING{AHICSS = {Annual Hawaii International Conference on System Sciences}}
+
+@STRING{PROFT = {Proceedings of the }}
+
+@STRING{AP = {American Programmer}}
+
+@STRING{AW = {Addison-Wesley, Reading, MA, USA}}
+
+@STRING{C = {IEEE Computer}}
+
+@STRING{CACM = {Communications of the ACM}}
+
+@STRING{CJ = {Computer Journal}}
+
+@STRING{COMPSAC = {Annual International Computer Software and Application Conference
+	(COMPSAC)}}
+
+@STRING{CONC = {IEEE Concurrency}}
+
+@STRING{CS = {ACM Computing Surveys}}
+
+@STRING{CSEE = {Conference on Software Engineering Environments}}
+
+@STRING{CSM = {Conference on Software Maintenance}}
+
+@STRING{CT = {Cross Talk, The Journal of Defense Software Engineering}}
+
+@STRING{EICSE = {European Industrial Symposium on Cleanroom Sofware Engineering}}
+
+@STRING{ELSEVIER = {Elsevier Science Publishers}}
+
+@STRING{ERW = {European Reuse Workshop}}
+
+@STRING{ESEC = {European Software Engineering Conference}}
+
+@STRING{EWSPM = {European Workshop on Software Process Modeling}}
+
+@STRING{EWSPT = {European Workshop on Software Process Technology}}
+
+@STRING{FL = {Forschung \& Lehre}}
+
+@STRING{FSE = {ACM SIGSOFT Symposium on the Foundations of Software Engineering}}
+
+@STRING{GSFC = {NASA Goddard Space Flight Center, Greenbelt MD 20771}}
+
+@STRING{HPJ = {Hewlett-Packard Journal}}
+
+@STRING{IBMRD = {IBM Journal of Research and Development}}
+
+@STRING{IBMSJ = {IBM Systems Journal}}
+
+@STRING{ICSC = {International Computer Science Conference}}
+
+@STRING{ICSE = {International Conference on Software Engineering}}
+
+@STRING{ICSM = {International Conference on Software Maintenance}}
+
+@STRING{ICSP = {International Conference on the Software Process}}
+
+@STRING{IEEE = {Institute of Electrical and Electronics Engineers}}
+
+@STRING{IEEECSP = {IEEE Computer Society Press}}
+
+@STRING{IFE = {Informatik, Forschung und Entwicklung}}
+
+@STRING{IJSEKE = {International Journal of Software Engineering \& Knowledge Engineering}}
+
+@STRING{IS = {GI Informatik Spektrum}}
+
+@STRING{ISPW = {International Software Process Workshop}}
+
+@STRING{ISSRE = {International Symposium on Software Reliability Engineering}}
+
+@STRING{ISSTA = {Internation Symposium on Software Testing and Analysis (ISSTA)}}
+
+@STRING{IST = {Information and Software Technology}}
+
+@STRING{JESE = {Journal of Empirical Software Engineering}}
+
+@STRING{JOT = {Journal of Object Technology}}
+
+@STRING{JPDC = {Journal of Parallel and Distributed Computing}}
+
+@STRING{JSS = {Journal of Systems and Software}}
+
+@STRING{KI = {K\"{u}nstliche Intelligenz}}
+
+@STRING{LNCS = {Lecture Notes in Computer Science }}
+
+@STRING{LNCS-SHORT = {LNCS}}
+
+@STRING{METRICS = {International Software Metrics Symposium}}
+
+@STRING{NSDCS = {Nordic Seminar on Dependable Computing Systems }}
+
+@STRING{OF = {Objekt Fokus}}
+
+@STRING{PH = {Prentice Hall, Englewood Cliffs, NJ, USA}}
+
+@STRING{PIEEE = {Proceedings of the IEEE}}
+
+@STRING{PNSQC = {Pacific Northwest Software Quality Conference}}
+
+@STRING{PSDE = {ACM SIGSOFT/SIGPLAN Symposium on Practical Software Development Environments}}
+
+@STRING{SA = {Scientific American}}
+
+@STRING{SDE = {ACM SIGSOFT/SIGPLAN Symposium on Software Development Environments}}
+
+@STRING{SEAME = {ACM Transactions on Software Engineering and Methodology}}
+
+@STRING{SEI = {Software Engineering Institute, Carnegie Mellon University}}
+
+@STRING{SEJ = {IEE Software Engineering Journal}}
+
+@STRING{SEKE = {Conference on Software Engineering and Knowledge Engineering}}
+
+@STRING{TH1 = { First }}
+
+@STRING{SEN = {ACM SIGSOFT Software Engineering Notes}}
+
+@STRING{SEW = {Annual Software Engineering Workshop}}
+
+@STRING{TH2 = { Second }}
+
+@STRING{TH15 = { Fifteenth }}
+
+@STRING{TH16 = { Sixteenth }}
+
+@STRING{TH17 = { Seventeenth }}
+
+@STRING{SHAKER = {Shaker Verlag GmbH, Germany}}
+
+@STRING{SPRINGER = {Springer-Verlag, Berlin, Germany}}
+
+@STRING{TH18 = { Eighteenth }}
+
+@STRING{SPRINGERUK = {Springer, London, UK}}
+
+@STRING{TH19 = { ineteenth }}
+
+@STRING{TH20 = { Twentieth }}
+
+@STRING{TH21 = { $21^{st}$ }}
+
+@STRING{TH22 = { $22^{nd}$ }}
+
+@STRING{TH23 = { $23^{rd}$ }}
+
+@STRING{TH24 = { $24^{th}$ }}
+
+@STRING{TH25 = { $25^{th}$ }}
+
+@STRING{TH26 = { $26^{th}$ }}
+
+@STRING{TH27 = { $27^{th}$ }}
+
+@STRING{TH28 = { $28^{th}$ }}
+
+@STRING{TH29 = { $29^{th}$ }}
+
+@STRING{TH3 = { Third }}
+
+@STRING{TH30 = { $30^{th}$ }}
+
+@STRING{TH31 = { $31^{st}$ }}
+
+@STRING{TH32 = { $32^{nd}$ }}
+
+@STRING{TH33 = { $33^{rd}$ }}
+
+@STRING{TH34 = { $34^{th}$ }}
+
+@STRING{TH35 = { $35^{th}$ }}
+
+@STRING{TH4 = { Fourth }}
+
+@STRING{TH14 = { Fourteenth }}
+
+@STRING{TH5 = { Fifth }}
+
+@STRING{TH6 = { Sixth }}
+
+@STRING{SIGP = {ACM Sigplan}}
+
+@STRING{SP = {IEEE Spectrum}}
+
+@STRING{SPE = {Software--Practice and Experience}}
+
+@STRING{SPIP = {Software Process--Improvement and Practice}}
+
+@STRING{SPRINGERUS = {Springer-Verlag, New York, USA}}
+
+@STRING{SQJ = {Software Quality Journal}}
+
+@STRING{SW = {IEEE Software}}
+
+@STRING{SWTT = {Softwaretechnik-Trends: Mitteilungen der GI-Fachgruppen `Software-Engineering'
+	und `Requirements-Engineering'}}
+
+@STRING{TAV = {ACM SIGSOFT Symposium on Software Testing, Analysis and Verification}}
+
+@STRING{TC = {IEEE Transactions on Computers}}
+
+@STRING{TH10 = { Tenth }}
+
+@STRING{TH11 = { Eleventh }}
+
+@STRING{TH12 = { Twelfth }}
+
+@STRING{TH13 = { Thirteenth }}
+
+@STRING{TH7 = { Seventh }}
+
+@STRING{TH8 = { Eighth }}
+
+@STRING{TH9 = { Ninth }}
+
+@STRING{TKDE = {IEEE Transactions on Knowledge and Data Engineering}}
+
+@STRING{TOPL = {ACM Transactions on Programming Languages and Systems}}
+
+@STRING{TOSEM = {ACM Transactions on Software Engineering and Methodology}}
+
+@STRING{TPDS = {IEEE Transactions on Parallel and Distributed Systems}}
+
+@STRING{TSE = {IEEE Transactions on Software Engineering}}
+
+@STRING{UKA = {Fakult\"{a}t f\"{u}r Informatik, Universit\"{a}t Karlsruhe (TH),
+	Germany}}
+
+@STRING{WILEY = {Wiley \& Sons, New York, NY, USA}}
+
+@STRING{WILEYUK = {Wiley \& Sons, Chichester, UK}}
+
+@STRING{WSSD = {International Workshop on Software Specification and Design}}
+
+@inproceedings{becker2012w,
+ author = {Becker, Matthias and Luckey, Markus and Becker, Steffen},
+ title = {Model-driven performance engineering of self-adaptive systems: a survey},
+ booktitle = {Proceedings of the 8th international ACM SIGSOFT conference on Quality of Software Architectures},
+ series = {QoSA '12},
+ year = {2012},
+ isbn = {978-1-4503-1346-9},
+ location = {Bertinoro, Italy},
+ pages = {117--122},
+ numpages = {6},
+ doi = {10.1145/2304696.2304716},
+ acmid = {2304716},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {model-driven performance engineering, self-*, self-adaptation, software performance},
+}
+
+@phdthesis{vondetten2013a,
+author = {von Detten, Markus},
+title = {Reengineering of Component-Based Software Systems in the Presence of Design Deficiencies},
+type = {Dissertation},
+school = {Software Engineering Group, University of Paderborn},
+month = jan,
+year = {2013},
+} 
+
+@inproceedings{vondetten2013b,
+author = {{von Detten}, Markus and Lehrig, Sebastian},
+title = {Reengineering of Component-Based Systems in the Presence of Design Deficiencies -- An Overview},
+booktitle = {Proceedings of the 15th Workshop Software-Reengineering},
+pages = {2},
+publisher = {Gesellschaft fuer Informatik},
+month = {6~-~8~} # may,
+year = {2013},
+location = {Bad Honnef, Germany}
+}
+
+@incollection{Eessaar2008,
+ author = {Eessaar, Erki},
+ chapter = {On Metamodel-Based Design of Software Metrics},
+ title = {Balancing Agility and Formalism in Software Engineering},
+ editor = {Meyer, Bertrand and Nawrocki, Jerzy R. and Walter, Bartosz},
+ year = {2008},
+ isbn = {978-3-540-85278-0},
+ pages = {40--54},
+ numpages = {15},
+ url = {http://dx.doi.org/10.1007/978-3-540-85279-7_4},
+ doi = {10.1007/978-3-540-85279-7_4},
+ acmid = {1425792},
+ publisher = {Springer-Verlag},
+ address = {Berlin, Heidelberg},
+ keywords = {Data model, Measure, Metamodel, Metric, Object-relational database, Reusability, UML},
+} 
+
+@inproceedings{Hutchinson:2011ICSE,
+ author = {Hutchinson, John and Whittle, Jon and Rouncefield, Mark and Kristoffersen, Steinar},
+ title = {Empirical assessment of MDE in industry},
+ booktitle = {Proceedings of the 33rd International Conference on Software Engineering},
+ series = {ICSE '11},
+ year = {2011},
+ isbn = {978-1-4503-0445-0},
+ location = {Waikiki, Honolulu, HI, USA},
+ pages = {471--480},
+ numpages = {10},
+ url = {http://doi.acm.org/10.1145/1985793.1985858},
+ doi = {10.1145/1985793.1985858},
+ acmid = {1985858},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {empirical software engineering, model driven engineering},
+} 
+
+@book{clark2008applied,
+           title = {Applied metamodelling: a foundation for language driven development.},
+          author = {Tony Clark and Paul Sammut and James Willans},
+         address = {Sheffield},
+       publisher = {Ceteva},
+            year = {2008},
+            note = {First edn. published 2004.},
+             url = {http://eprints.mdx.ac.uk/6060/},
+        abstract = {The motivation behind XMF was to develop a technology that would support a language driven approach to modelling and system development. Our starting point was that UML was not sufficiently flexible and in order to address this we designed an executable meta-language. This book describes the approach and provides an introduction to the key technologies: meta-models, language definition and mappings. The book concludes with a number of worked examples.}
+}
+
+@incollection{clark2002engineering,
+	Author = {Clark, Tony and Evans, Andy and Kent, Stuart},
+	Booktitle = {Fundamental Approaches to Software Engineering},
+	Pages = {159--173},
+	Publisher = {Springer Berlin Heidelberg},
+	Title = {Engineering modelling languages: A precise meta-modelling approach},
+	Year = {2002}}
+
+@inproceedings{anjorin2011a,
+author = {Anjorin, Anthony and Lauder, Marius and Patzina, Sven and Sch\"{u}rr, Andy},
+title = {eMoflon: Leveraging EMF and Professional CASE Tools},
+year = {2011},
+booktitle = {3. Workshop Methodische Entwicklung von Modellierungswerkzeugen (MEMWe2011)},
+series = {Lecture Notes in Informatics}
+}
+
+@inproceedings{anjorin2012a,
+  author    = {Anthony Anjorin and Gergely Varr{\'{o}} and Andy Sch{\"{u}}rr},
+  title     = {Complex Attribute Manipulation in TGGs with Constraint-Based Programming Techniques},
+  booktitle = {Proceedings of the First International Workshop on Bidirectional Transformations (BX 2012)},
+  series    = {Electronic Communications of the EASST},
+  volume    = {49},
+  year      = {2012},
+  url       = {http://journal.ub.tu-berlin.de/eceasst/article/view/707},
+  issn      = {1863-2122}
+}
+
+@inproceedings{anjorin2014a,
+  title={BenchmarX},
+  author={Anjorin, Anthony and Cunha, Alcino and Giese, Holger and Hermann, Frank and Rensink, Arend and Sch{\"u}rr, Andy},
+  booktitle = {Proceedings of the Workshops of the {EDBT/ICDT} 2014 Joint Conference},
+  pages     = {82--86},
+  year      = {2014},
+  url       = {http://ceur-ws.org/Vol-1133/paper-13.pdf},
+  volume={1133},
+  urn={urn:nbn:de:0074-1133-4},
+  editors={K. Sel\c{c}uk Candan and Sihem Amer-Yahia and Nicole Schweikardt and Vassilis Christophides and Vincent Leroy}, 
+  publisher={CEUR},
+  series={CEUR Workshop Proceedings}
+}
+
+@incollection{anjorin2014b,
+year={2014},
+isbn={978-3-319-09194-5},
+booktitle={Modelling Foundations and Applications},
+volume={8569},
+series={Lecture Notes in Computer Science},
+editor={Cabot, Jordi and Rubin, Julia},
+doi={10.1007/978-3-319-09195-2_1},
+title={Efficient Model Synchronization with View Triple Graph Grammars},
+url={http://dx.doi.org/10.1007/978-3-319-09195-2_1},
+publisher={Springer International Publishing},
+keywords={model driven engineering; bidirectional model transformation; triple graph grammars; view triple graph grammars},
+author={Anjorin, Anthony and Rose, Sebastian and Deckwerth, Frederik and Schürr, Andy},
+pages={1-17},
+language={English}
+}
+
+@phdthesis{anjorin2014c,
+            year = {2014},
+          author = {Anthony Anjorin},
+          school = {Technische Universit{\"a}t},
+           title = {Synchronization of Models on Different Abstraction Levels using Triple Graph Grammars},
+         address = {Darmstadt},
+        abstract = {In modern, computer-aided engineering processes, restoring and maintaining the consistency of multiple, related artefacts is an important challenge. This is especially the case in multi-disciplinary domains such as manufacturing engineering, where complex systems are described using multiple artefacts that are concurrently manipulated by domain experts, each with their own established tools.
+Bidirectional languages address this challenge of consistency maintenance by supporting incremental change propagation with a clear and precise semantics. Triple Graph Grammars (TGGs) are a prominent rule-based and declarative bidirectional model transformation language with various implementations, and a solid formal foundation based on algebraic graph transformations.
+Although TGGs are well suited for synchronizing models that are already on an appropriate, high-level of abstraction, practical model synchronization chains typically require handling models on different levels of abstraction. This poses additional challenges including: (i) handling massive information loss typically incurred when abstracting from a low-level model to a high-level model, (ii) supporting complex attribute manipulation as low-level models are often simple trees extracted from textual or XML-files, with relevant information encoded in attribute values rather than structural relations, and (iii) enabling arbitrary structural constraints to cope with complex, often recursive structural context relations, which are usually not present as explicit links in low-level models.
+
+This thesis addresses these challenges by: 
+(1) Establishing a general framework for organizing and structuring model synchronization chains. This framework is applied to an industrial case study in the domain of manufacturing engineering, which is used consequently throughout this thesis to identify requirements, formulate corresponding challenges, and evaluate the contributions of this thesis.
+(2) Identifying and formalizing new language extensions for TGGs: attribute conditions for complex attribute manipulation in TGG rules, and dynamic conditions for integrating arbitrary structural constraints. To guarantee the maintainability of large TGG specifications, a new modularity concept for TGGs, rule refinement is also introduced. Similar to inheritance and composition for programming languages, rule refinement enables the reuse and flexible combination of TGG rule fragments to form similar TGG rules without introducing redundancy in specifications.
+(3) Extending an existing TGG-based synchronization algorithm to cover these new features with formal proofs of correctness and completeness (well-behavedness) of derived TGG-based synchronizers.
+(4) Providing formal construction techniques and static analyses for all properties and restrictions required to guarantee the well-behavedness of derived synchronizers.},
+             url = {http://tuprints.ulb.tu-darmstadt.de/4399/}
+}
+
+@BOOK{abbott2009a,
+  title = {{The art of scalability}},
+  publisher = {Addison--Wesley},
+  year = {2009},
+  author = {Abbott, Martin L. and Fisher, Michael T.},
+  pages = {559},
+  abstract = {A Comprehensive, Proven Approach to IT Scalability from Two Veteran
+	Software, Technology, and Business Executives InThe Art of Scalability,AKF
+	Partners cofounders Martin L. Abbott and Michael T. Fisher cover
+	everything IT and business leaders must know to build technology
+	infrastructures that can scale smoothly to meet any business requirement.
+	Drawing on their unparalleled experience managing some of the worldrs"s
+	highest-transaction-volume Web sites, the authors provide detailed
+	models and best-practice approaches available in no other book. Unlike
+	previous books on scalability,The Art of Scalabilitydoesnrs"t limit
+	its coverage to technology. Writing for both technical and nontechnical
+	decision-makers, this book covers everything that impacts scalability,
+	including architecture, processes, people, and organizations. Throughout,
+	the authors address a broad spectrum of real-world challenges, from
+	performance testing to IT governance. Using their tools and guidance,
+	organizations can systematically overcome obstacles to scalability
+	and achieve unprecedented levels of technical and business performance.
+	Coverage includes Staffing the scalable organization: essential organizational,
+	management, and leadership skills for technical leaders Building
+	processes for scale: process lessons from hyper-growth companies,
+	from technical issue resolution to crisis management Making better
+	"build versus buy" decisions Architecting scalable solutions: powerful
+	proprietary models for identifying scalability needs and choosing
+	the best approaches to meet them Optimizing performance through caching,
+	application and database splitting, and asynchronous design Scalability
+	techniques for emerging technologies, including clouds and grids
+	Planning for rapid data growth and new data centers Evolving monitoring
+	strategies to tightly align with customer requirements},
+  isbn = {0137030428}
+}
+
+@INPROCEEDINGS{abdelwahed2007a,
+  author = {Sherif Abdelwahed and Nagarajan Kandasamy},
+  title = {Fault-Adaptive Control for Robust Performance Management of Computing
+	Systems},
+  booktitle = {Fourth International Conference on Autonomic Computing (ICAC)},
+  year = {2007},
+  pages = {21},
+  publisher = {IEEE Computer Society},
+  bibdate = {2007-06-18},
+  bibsource = {DBLP, http://dblp.uni-trier.de/db/conf/icac/icac2007.html#AbdelwahedK07},
+  crossref = {conf/icac/2007},
+  url = {http://doi.ieeecomputersociety.org/10.1109/ICAC.2007.17}
+}
+
+@INPROCEEDINGS{boehme2005a,
+  author = {Rainer B{\"o}hme and Ralf Reussner},
+  title = {Validation of Predictions with Measurements},
+  booktitle = {Dependability Metrics},
+  year = {2005},
+  editor = {Irene Eusgeld and Felix C. Freiling and Ralf Reussner},
+  volume = {4909},
+  series = {Lecture Notes in Computer Science},
+  pages = {14--18},
+  publisher = {Springer},
+  bibdate = {2008-08-27},
+  bibsource = {DBLP, http://dblp.uni-trier.de/db/conf/dagstuhl/dm2005.html#BohmeR05},
+  crossref = {conf/dagstuhl/2005dm},
+  isbn = {978-3-540-68946-1},
+  url = {http://dx.doi.org/10.1007/978-3-540-68947-8\_3}
+}
+
+@INPROCEEDINGS{balsamo2002a,
+  author = {Simonetta Balsamo and Marta Simeoni},
+  title = {Integrating Performance Modeling in the Software Development Process},
+  booktitle = {Radical Innovations of Software and Systems Engineering in the Future,
+	9th International Workshop, RISSEF 2002, Venice, Italy, October 7-11,
+	2002, Revised Papers},
+  year = {2002},
+  editor = {Martin Wirsing and Alexander Knapp and Simonetta Balsamo},
+  pages = {35--49},
+  publisher = {Springer},
+  bibsource = {DBLP,http://dblp.uni-trier.de},
+  crossref = {wirsing2004a},
+  ee = {http://springerlink.metapress.com/openurl.asp?genre$=$article\&issn$=$0302-9743\&volume$=$2941\&spage$=$35},
+  isbn = {3-540-21179-9}
+}
+
+@INPROCEEDINGS{bowman2007a,
+  author = {Michael Bowman and Lionel C. Briand and Yvan Labiche},
+  title = {Multi-Objective Genetic Algorithm to Support Class Responsibility
+	Assignment},
+  booktitle = {ICSM},
+  year = {2007},
+  pages = {124--133},
+  publisher = {IEEE},
+  bibdate = {2008-11-18},
+  bibsource = {DBLP, http://dblp.uni-trier.de/db/conf/icsm/icsm2007.html#BowmanBL07},
+  crossref = {conf/icsm/2007},
+  url = {http://dx.doi.org/10.1109/ICSM.2007.4362625}
+}
+
+@INPROCEEDINGS{feather2002a,
+  author = {Martin S. Feather and Tim Menzies},
+  title = {Converging on the Optimal Attainment of Requirements},
+  booktitle = {RE},
+  year = {2002},
+  pages = {263--272},
+  publisher = {IEEE Computer Society},
+  bibdate = {2003-02-21},
+  bibsource = {DBLP, http://dblp.uni-trier.de/db/conf/re/re2002.html#FeatherM02},
+  crossref = {conf/re/2002},
+  isbn = {0-7695-1465-0},
+  url = {http://computer.org/proceedings/re/1465/14650263abs.htm}
+}
+
+@INPROCEEDINGS{finkelstein2008a,
+  author = {Anthony Finkelstein and Mark Harman and S. Afshin Mansouri and Jian
+	Ren and Yuanyuan Zhang},
+  title = {{"}Fairness Analysis{"} in Requirements Assignments},
+  booktitle = {RE},
+  year = {2008},
+  pages = {115--124},
+  publisher = {IEEE Computer Society},
+  bibdate = {2009-02-19},
+  bibsource = {DBLP, http://dblp.uni-trier.de/db/conf/re/re2008.html#FinkelsteinHMRZ08},
+  crossref = {conf/re/2008},
+  url = {http://dx.doi.org/10.1109/RE.2008.61}
+}
+
+@INPROCEEDINGS{franks2006a,
+  author = {Greg Franks and Dorina C. Petriu and C. Murray Woodside and Jing
+	Xu and Peter Tregunno},
+  title = {Layered Bottlenecks and Their Mitigation},
+  booktitle = {QEST},
+  year = {2006},
+  pages = {103--114},
+  publisher = {IEEE Computer Society},
+  bibdate = {2006-11-16},
+  bibsource = {DBLP, http://dblp.uni-trier.de/db/conf/qest/qest2006.html#FranksPWXT06},
+  crossref = {conf/qest/2006},
+  isbn = {0-7695-2665-9},
+  url = {http://doi.ieeecomputersociety.org/10.1109/QEST.2006.23}
+}
+
+@INPROCEEDINGS{glinz2007a,
+  author = {Martin Glinz},
+  title = {On Non-Functional Requirements},
+  booktitle = {Requirements Engineering Conference, 2007. RE '07. 15th IEEE International},
+  year = {2007},
+  pages = {21--26},
+  publisher = {{IEEE} Computer Society},
+  bibsource = {DBLP, http://dblp.uni-trier.de/db/conf/re/re2007.html#Glinz07},
+  isbn = {0-7695-2935-6},
+  url = {http://dx.doi.org/10.1109/RE.2007.45}
+}
+
+@INPROCEEDINGS{ligang2004a,
+  author = {Ligang He and Stephen A. Jarvis and David A. Bacigalupo and Daniel
+	P. Spooner and Xinuo Chen and Graham R. Nudd},
+  title = {Queueing Network-based Optimisation Techniques for Workload Allocation
+	in Clusters of Computers},
+  booktitle = {IEEE International Conference on Service Computing},
+  year = {2004},
+  pages = {207--216},
+  publisher = {IEEE Computer Society},
+  bibdate = {2005-04-07},
+  bibsource = {DBLP, http://dblp.uni-trier.de/db/conf/IEEEscc/scc2004.html#HeJBSCN04},
+  crossref = {conf/IEEEscc/2004},
+  isbn = {0-7695-2225-4},
+  url = {http://csdl.computer.org/comp/proceedings/scc/2004/2225/00/22250207abs.htm}
+}
+
+@INPROCEEDINGS{jedlitschka2005a,
+  author = {Andreas Jedlitschka and Dietmar Pfahl},
+  title = {Reporting guidelines for controlled experiments in software engineering},
+  booktitle = {ISESE},
+  year = {2005},
+  pages = {95--104},
+  publisher = {IEEE},
+  bibdate = {2007-02-14},
+  bibsource = {DBLP, http://dblp.uni-trier.de/db/conf/isese/isese2005.html#JedlitschkaP05},
+  crossref = {conf/isese/2005},
+  url = {http://dx.doi.org/10.1109/ISESE.2005.1541818}
+}
+
+@INPROCEEDINGS{laddaga2001a,
+  author = {Robert Laddaga and Paul Robertson and Howard E. Shrobe},
+  title = {Results of the Second International Workshop on Self-adaptive Software},
+  booktitle = {IWSAS},
+  year = {2001},
+  editor = {Robert Laddaga and Paul Robertson and Howard E. Shrobe},
+  volume = {2614},
+  series = {Lecture Notes in Computer Science},
+  pages = {281--290},
+  publisher = {Springer},
+  bibdate = {2003-08-29},
+  bibsource = {DBLP, http://dblp.uni-trier.de/db/conf/iwsas/iwsas2001.html#LaddagaRS01b},
+  crossref = {conf/iwsas/2001},
+  isbn = {3-540-00731-8},
+  url = {http://springerlink.metapress.com/openurl.asp?genre=article&amp;issn=0302-9743&amp;volume=2614&amp;spage=281}
+}
+
+@INPROCEEDINGS{lukasiewycz2008a,
+  author = {Martin Lukasiewycz and Michael Gla{\ss} and Christian Haubelt and
+	J{\"u}rgen Teich},
+  title = {A feasibility-preserving local search operator for constrained discrete
+	optimization problems},
+  booktitle = {IEEE Congress on Evolutionary Computation},
+  year = {2008},
+  pages = {1968--1975},
+  publisher = {IEEE},
+  bibdate = {2009-02-27},
+  bibsource = {DBLP, http://dblp.uni-trier.de/db/conf/cec/cec2008.html#LukasiewyczGHT08},
+  crossref = {conf/cec/2008},
+  url = {http://dx.doi.org/10.1109/CEC.2008.4631058}
+}
+
+@INPROCEEDINGS{poladian2007a,
+  author = {Vahe Poladian and David Garlan and Mary Shaw and M. Satyanarayanan
+	and Bradley R. Schmerl and Jo{\~a}o Pedro Sousa},
+  title = {Leveraging Resource Prediction for Anticipatory Dynamic Configuration},
+  booktitle = {SASO},
+  year = {2007},
+  pages = {214--223},
+  publisher = {IEEE Computer Society},
+  bibdate = {2007-07-10},
+  bibsource = {DBLP, http://dblp.uni-trier.de/db/conf/saso/saso2007.html#PoladianGSSSS07},
+  crossref = {conf/saso/2007},
+  url = {http://doi.ieeecomputersociety.org/10.1109/SASO.2007.35}
+}
+
+@INPROCEEDINGS{schneider2005a,
+  author = {Florian Schneider and Thomas R. Gross},
+  title = {{Using Platform-Specific Performance Counters for Dynamic Compilation}},
+  booktitle = {LCPC},
+  year = {2005},
+  editor = {Eduard Ayguad{\'e} and Gerald Baumgartner and J. Ramanujam and P.
+	Sadayappan},
+  volume = {4339},
+  series = {Lecture Notes in Computer Science},
+  pages = {334-346},
+  publisher = SPRINGER,
+  crossref = {conf/lcpc/2005},
+  date = {2007-05-22},
+  description = {dblp},
+  ee = {http://dx.doi.org/10.1007/978-3-540-69330-7_23},
+  isbn = {978-3-540-69329-1},
+  keywords = {dblp},
+  url = {http://dblp.uni-trier.de/db/conf/lcpc/lcpc2005.html#SchneiderG05}
+}
+
+@INPROCEEDINGS{staron2006a,
+  author = {Miroslaw Staron},
+  title = {Adopting Model Driven Software Development in Industry - A Case Study
+	at Two Companies},
+  booktitle = {MoDELS},
+  year = {2006},
+  pages = {57--72},
+  bibsource = {DBLP, http://dblp.uni-trier.de},
+  crossref = {DBLP:conf/models/2006},
+  ee = {http://dx.doi.org/10.1007/11880240_5}
+}
+
+@MISC{naveh2009a,
+  author = {Barak Naveh et al.},
+  title = {{JGraphT}},
+  year = {2009},
+  note = {Last visit: October 2009},
+  url = {http://jgrapht.sourceforge.net}
+}
+
+@ARTICLE{ernst2007aShort,
+  author = {Michael D. Ernst et al.},
+  title = {The {Daikon} system for dynamic detection of likely invariants},
+  journal = {Science of Computer Programming},
+  year = {2007},
+  volume = {69},
+  pages = {35--45},
+  number = {1--3},
+  month = dec
+}
+
+@BOOK{linden1999a,
+  title = {Just {Java} 1.2},
+  publisher = PH,
+  year = {1999},
+  author = {Peter {van der Linden}},
+  pages = {608},
+  series = {SunSoft Press Java series},
+  edition = {Fourth},
+  month = mar,
+  acknowledgement = {#ack-nhfb#},
+  bibdate = {Wed Jun 23 18:32:18 1999},
+  isbn = {0-13-010534-1},
+  lccn = {????},
+  price = {US\$44.99},
+  url = {http://www.phptr.com/bookseri/java.html; http://www.phptr.com/ptrbooks/ptr{\_}0130105341.html; http://www.javaworld.com/books/jw-clbooks.html?030899txt}
+}
+
+@BOOK{linden1999b,
+  title = {Not Just {Java}: a technology briefing},
+  publisher = PH,
+  year = {1999},
+  author = {Peter {van der Linden}},
+  pages = {x + 329},
+  series = {SunSoft Press Java series},
+  edition = {Second},
+  acknowledgement = {#ack-nhfb#},
+  bibdate = {Tue May 11 08:14:55 1999},
+  isbn = {0-13-079660-3},
+  lccn = {QA76.73.J38V363 1999},
+  url = {http://www.phptr.com/ptrbooks/ptr{\_}0130796603.html; http://www1.clbooks.com/asp/BookInfo/BookInfo.asp?theisbn=0130796603; http://www.sun.com/books/catalog/vanderLinden3/vanderLinden3.html}
+}
+
+@article{lehman1980a,
+ author = {Lehman, Meir Manny},
+ title = {{On Understanding Laws, Evolution, and Conservation in the Large-program Life Cycle}},
+ journal = {Journal of Systems and Software},
+ volume = {1},
+ month = sep,
+ year = {1979-1980},
+ issn = {0164-1212},
+ pages = {213--221},
+ numpages = {9},
+ url = {http://dx.doi.org/10.1016/0164-1212(79)90022-0},
+ doi = {10.1016/0164-1212(79)90022-0},
+ acmid = {2305985},
+ publisher = {Elsevier Science Inc.},
+ address = {New York, NY, USA},
+}
+
+@article{lehman2001a,
+year={2001},
+issn={1022-7091},
+journal={Annals of Software Engineering},
+volume={11},
+number={1},
+doi={10.1023/A:1012535017876},
+title={Rules and Tools for Software Evolution Planning and Management},
+url={http://dx.doi.org/10.1023/A%3A1012535017876},
+publisher={Kluwer Academic Publishers},
+keywords={assumptions; E-type software; FEAST; feedback; laws of software evolution; software management; process improvement; rules for process planning and management; software evolution},
+author={Lehman, Meir M. and Ramil, Juan F.},
+pages={15--44},
+language={English}
+}
+
+@MISC{SPECjms2007a,
+  author = {Standard Performance Evaluation Corp. (SPEC)},
+  title = {{SPECjms2007 Benchmark}},
+  howpublished = {http://www.spec.org/jms2007/, last visit: January 21st, 2009},
+  year = {2007},
+  url = {http://www.spec.org/jms2007/}
+}
+
+@MISC{spec2004a,
+  author = {Standard Performance Evaluation Corp. (SPEC)},
+  title = {{SPECjAppServer2004 Benchmark}},
+  year = {2004},
+  note = {URL: http://www.spec.org/jvm2008/, last visit: June 9th, 2008},
+  url = {http://www.spec.org/jAppServer2004/}
+}
+
+@INPROCEEDINGS{ipek2006a,
+  author = {Engin {\.I}pek and Sally A. McKee and Rich Caruana and Bronis R.
+	de Supinski and Martin Schulz},
+  title = {Efficiently exploring architectural design spaces via predictive
+	modeling},
+  booktitle = {Proceedings of the 12th International Conference on Architectural
+	Support for Programming Languages and Operating Systems, {ASPLOS}
+	2006, San Jose, {CA}, {USA}, October 21-25, 2006},
+  year = {2006},
+  editor = {John Paul Shen and Margaret Martonosi},
+  pages = {195--206},
+  publisher = {ACM},
+  bibdate = {2007-05-15},
+  bibsource = {DBLP, http://dblp.uni-trier.de/db/conf/asplos/asplos2006.html#IpekMCSS06},
+  isbn = {1-59593-451-0},
+  url = {http://doi.acm.org/10.1145/1168857.1168882}
+}
+
+@ARTICLE{ipek2008a,
+  author = {Engin {\.I}pek and Sally A. McKee and Karan Singh and Rich Caruana
+	and Bronis R. de Supinski and Martin Schulz},
+  title = {Efficient architectural design space exploration via predictive modeling},
+  journal = {ACM Trans. Archit. Code Optim.},
+  year = {2008},
+  volume = {4},
+  pages = {1--34},
+  number = {4},
+  address = {New York, NY, USA},
+  doi = {http://doi.acm.org/10.1145/1328195.1328196},
+  issn = {1544-3566},
+  publisher = {ACM}
+}
+
+@TECHREPORT{aalst2000a,
+  author = {{W.M.P.} van der {A}alst and {K.M.} van {H}ee and {R.A.} van der
+	{T}oorn},
+  title = {Component-Based Software Architectures: A Framework Based on Inheritance
+	of Behavior},
+  institution = {Eindhoven University of Technology},
+  year = {2000},
+  type = {BETA Working Paper Series},
+  number = {WP 45}
+}
+
+@PHDTHESIS{aagedal2001a,
+  author = {Jan {\O}yvind Aagedal},
+  title = {Quality of Service Support in Development of Distributed Systems},
+  school = {University of Oslo},
+  year = {2001}
+}
+
+@BOOK{abadi1996a,
+  title = {A Theory of Objects},
+  publisher = {Springer-Verlag},
+  year = {1996},
+  author = {M. Abadi and L. Cardelli},
+  address = {New York},
+  descriptor = {Spezialisierung, Prototyp, Typing, Typisierung, Vererbung, Objektkalkuel,
+	Klasse, Wiederverwendung, Wiederverwendbarkeit, Wiederverwendbar,
+	Reusability, Objektorientierung, Objektorientierter Ansatz, Objekt-orientierte
+	Sprache, Objekt-orientiert, Objekt},
+  isbn = {0-387-94775-2}
+}
+
+@INPROCEEDINGS{abadi1993a,
+  author = {M. Abadi and L. Cardelli and P.-L. Curien},
+  title = {Formal Parametric Polymorphism},
+  booktitle = {Conference Record of the Twentieth Annual ACM SIGPLAN-SIGACT Symposium
+	on Principles of Programming Languages},
+  year = {1993},
+  pages = {157--170},
+  publisher = {ACM New York, NY},
+  abstract = {A polymorphic function is parametric if its behavior does not depend
+	on the type at which it is instantiated. Starting with J.C. Reynolds'
+	(1983) work, the study of parametricity is typically semantic. The
+	authors develop a syntactic approach to parametricity, and a formal
+	system that embodies this approach: system R. Girard's system F (J.Y.
+	Girard et al., 1989) deals with terms and types; R is an extension
+	of F that deals also with relations between types. In R, it is possible
+	to derive theorems about functions from their types, or 'theorems
+	for free', as P. Wadler (1989) calls them. An easy 'theorem for free'
+	asserts that the type For all (X)X to Bool contains only constant
+	functions; this is not provable in F. There are many harder and more
+	substantial examples. Various metatheorems can also be obtained.},
+  isbn = {0-89791-560-7},
+  keywords = {functional}
+}
+
+@ARTICLE{abadi1991a,
+  author = {Martin Abadi and Luca Cardelli and Benjamin Pierce and Gordon Plotkin},
+  title = {Dynamic Typing in a Statically Typed Language},
+  journal = {ACM Transactions on Programming Languages and Systems},
+  year = {1991},
+  volume = {13},
+  pages = {237--268},
+  number = {2},
+  month = apr,
+  abstract = {Statically typed programming languages allow earlier error checking,
+	better enforcement of disciplined programming styles, and generation
+	of more efficient object code than languages where all type consistency
+	checks are performed at run time. However, even in statically typed
+	languages, there is often the need to deal with data whose type cannot
+	be determined at compile time. To handle such situations safely,
+	we propose to add a type Dynamic whose values are pairs of a value
+	v and a type tag T where v has the type denoted by T. Instances of
+	Dynamic are built with an explicit tagging construct and inspected
+	with a type safe typecas construct. This paper explores the syntax,
+	operational semantics, and denotational semantics of a simple language
+	including the type Dynamic.},
+  keywords = {types popl91 binder},
+  url = {ftp://ftp.cs.indiana.edu/pub/pierce/dynamic.ps.gz}
+}
+
+@INCOLLECTION{abdi2007a,
+  author = {Herve Abdi},
+  title = {Kendall rank correlation},
+  booktitle = {Encyclopedia of Measurement and Statistics},
+  publisher = {SAGE Publications Ltd.},
+  year = {2007},
+  editor = {Neil J. Salkind},
+  pages = {508--510},
+  address = {Thousand Oaks, CA}
+}
+
+@INPROCEEDINGS{abdulfatah1998,
+  author = {I. Abdul-Fatah and S. Majumdar},
+  title = {{Performance Comparison of Architectures for Client-Server Interactions
+	in CORBA}},
+  booktitle = {Proceedings of the 18th International Conference on Distributed Computing
+	Systems},
+  year = {1998},
+  pages = {2},
+  publisher = {IEEE Computer Society},
+  isbn = {0-8186-8292-2}
+}
+
+@BOOK{abel1990a,
+  title = {Petri-{N}etze f{\"u}r {I}ngenieure},
+  publisher = SPRINGER,
+  year = {1990},
+  author = {Dirk Abel}
+}
+
+@INPROCEEDINGS{abts2000a,
+  author = {Chris Abts and Barry W. Boehm and Elizabeth Bailey Clark},
+  title = {COCOTS: a COTS software integration cost model -- model overview
+	and preliminary data findings},
+  booktitle = {Proc. European Software Control and Metrics Conf. (Escom 2000)},
+  year = {2000},
+  pages = {325--333},
+  location = {M{\"u}nchen},
+  url = {http://dspace.dial.pipex.com/town/drive/gcd54/conference2000/abts.pdf}
+}
+
+@BOOK{abts1997a,
+  title = {COTS Software Integration Cost Modeling Study},
+  year = {1997},
+  author = {C. M. Abts and Barry Boehm},
+  address = {USC Center for Software Engineering, University of Southern California},
+  month = {Juni},
+  url = {http://sunset.usc.edu/research/COCOTS/docs/USAFReport.pdf}
+}
+
+@INPROCEEDINGS{ackermann2003a,
+  author = {J{\"o}rg Ackermann},
+  title = {Zur Spezifikation der Parameter von Fachkomponenten},
+  booktitle = {Tagungsband 5. Workshop Komponentenorientierte betriebliche Anwendungssysteme},
+  year = {2003},
+  editor = {Klaus Turowski},
+  pages = {47--154},
+  organization = {Universit{\"a}t Augsburg}
+}
+
+@INPROCEEDINGS{ackermann2002a,
+  author = {J{\"o}rg Ackermann},
+  title = {Spezifikation des Parametrisierungsspielraums von Fachkomponenten
+	-- Erste {\"U}berlegungen},
+  booktitle = {Modellierung und Spezifikation von Fachkomponenten. 3. Workshop},
+  year = {2002},
+  editor = {Klaus Turowski},
+  pages = {17--68},
+  organization = {N{\"u}rnberg}
+}
+
+@ARTICLE{ackermann2002b,
+  author = {J{\"o}rg Ackermann and Frank Brinkop and Stefan Conrad and Peter
+	Fettke and Andreas Frick and Elke Glistau and Holger Jaekel and Otto
+	Kotlar and Peter Loos and Heike Mrech and Erich Ortner and Ulrich
+	Raape and Sven Overhage and Stephan Sahm and Andreas Schmieten and
+	Thorsten Teschke and Klaus Turowski},
+  title = {Standardized Specification of Business Components},
+  journal = {Memorandum of the working group 5.10.3, Component Oriented Business
+	Application Systems},
+  year = {2002},
+  url = {http://www.fachkomponenten.de}
+}
+
+@ARTICLE{ackermann2002c,
+  author = {J{\"o}rg Ackermann and Frank Brinkop and Stefan Conrad and Peter
+	Fettke and Andreas Frick and Elke Glistau and Holger Jaekel and Otto
+	Kotlar and Peter Loos and Heike Mrech and Erich Ortner and Ulrich
+	Raape and Sven Overhage and Stephan Sahm and Andreas Schmieten and
+	Thorsten Teschke and Klaus Turowski},
+  title = {Vereinheitlichte Spezifikation von Fachkomponenten},
+  journal = {Gesellschaft f{\"u}r Informatik (GI), Arbeitskreis 5.10.3},
+  year = {2002},
+  url = {http://www.fachkomponenten.de}
+}
+
+@INPROCEEDINGS{aguirre2005a,
+  author = {Hern\'{a}n Aguirre and Kiyoshi Tanaka},
+  title = {Selection, {D}rift, {R}ecombination, and {M}utation in {M}ultiobjective
+	{E}volutionary {A}lgorithms on {S}calable {MNK}-{L}andscapes},
+  booktitle = {Evolutionary Multi-Criterion Optimization. Third International Conference,
+	EMO 2005},
+  year = {2005},
+  editor = {Carlos A. {Coello Coello} and Arturo {Hern\'{a}ndez Aguirre} and
+	Eckart Zitzler},
+  volume = {3410},
+  series = LNCS,
+  pages = {355--369},
+  address = {Guanajuato, M\'{e}xico},
+  month = mar,
+  publisher = SPRINGER
+}
+
+@BOOK{aho1986a,
+  title = {Compilers \& Principles, Techniques, and Tools},
+  publisher = {Addison-Wesley},
+  year = {1986},
+  author = {Alfred V. Aho and Ravi Sethi and Jeffrey D. Ullman},
+  pages = {x + 796},
+  address = {Reading, MA},
+  isbn = {0-201-10088-6}
+}
+
+@BOOK{aho1992a,
+  title = {Foundations of Computer Science},
+  publisher = {Computer Science Press, W.H. Freeman and Co.},
+  year = {1992},
+  author = {A. V. Aho and J. D. Ullman},
+  address = {New York}
+}
+
+@BOOK{aho1974a,
+  title = {The Design and Analysis of Computer Algorithms},
+  publisher = {Addison-Wesley},
+  year = {1974},
+  author = {Alfred V. Aho and J. D. Ullman and John E. Hopcroft},
+  address = {Reading, MA},
+  annote = {Standardwerk der Algorithmik 1. Models of computation 2. Design of
+	efficient algorithms 3. Sorting and order statistics 4. Data structures
+	for set manipulation 5. Algorithms on graphs 6. Matrix multiplication
+	and related operations 7. The Fast Fourier Transformation and its
+	applications 8. Integer and polynomial arithmetic 9. Pattern matching
+	algorithms 10. NP-complete problems 11. Some provable intractable
+	problems 12. Lower bounds on numbers Arithmetic operations},
+  descriptor = {Algorithmus, Analyse, Arithmetik, Berechnung, Datenstruktur, Effizienz,
+	Entwurf, Fouriertransformation, Graph, Komplexitaet, Matrix, Mengenbearbeitung,
+	Mustererkennung, NP-Vollstaendigkeit, Sortieren, Unloesbarkeit},
+  isbn = {0-201-00029-6}
+}
+
+@TECHREPORT{aigner2002a,
+  author = {R. Aigner and H. Berthold and E. Franz and S. Gbel and H. Hrtig and
+	H. Humann and K. Meiner and K. Meyer-Wegener and M. Meyerhoefer and
+	A. Pfitzmann and S. Rttger and A. Schill and T. Springer and F. Wehner},
+  title = {{COMQUAD} - {K}omponentenbasierte {S}oftwaresysteme mit zusagbaren
+	quantitativen {E}igenschaften und {A}daptionsfhigkeit},
+  institution = {TU Dresden, Fakultt Informatik},
+  year = {2002},
+  type = {Technical Report},
+  number = {TUD-FI02-10},
+  month = nov,
+  issn = {1430-211X}
+}
+
+@ARTICLE{marsan1989a,
+  author = {Marco {Ajmone Marsan} and G. Balbo and A. Bobbio and G. Chiola andG.
+	Conte and A. Cumani},
+  title = {The {E}ffect of {E}xecution {P}olicies on the {S}emantics and {A}nalysisof
+	{S}tochastic {P}etri {N}ets},
+  journal = TSE,
+  year = {1989},
+  volume = {15},
+  pages = {832--846},
+  number = {7},
+  address = {Piscataway, NJ, USA},
+  issn = {0098-5589},
+  publisher = {IEEE Press}
+}
+
+@ARTICLE{aksit1996a,
+  author = {Mehmet Aksit},
+  title = {Separation and Composition of Concerns in the Object-Oriented Model},
+  journal = {ACM Computing Surveys},
+  year = {1996},
+  volume = {28},
+  pages = {148},
+  number = {4},
+  month = dec
+}
+
+@ARTICLE{aksit1994a,
+  author = {M. Aksit and K. Wakita and J. Bosch and L. Bergmans},
+  title = {Abstracting Object Interactions Using Composition Filters},
+  journal = {Lecture Notes in Computer Science},
+  year = {1994},
+  volume = {791},
+  pages = {152pp.},
+  acknowledgement = {#ack-nhfb#},
+  bibdate = {Mon May 13 11:52:14 MDT 1996},
+  coden = {LNCSD9},
+  issn = {0302-9743}
+}
+
+@ARTICLE{akzhalova2007a,
+  author = {Assel Akzhalova and Assel Altayeva and Nurzhan Duzbayev},
+  title = {Model Driven Prediction and Control},
+  journal = {Journal of Object Technology},
+  year = {2007},
+  volume = {6},
+  pages = {45--67},
+  number = {11},
+  month = Dec,
+  note = {Special Issue on Advances in Quality of Service Management}
+}
+
+@Inbook{alam2013a,
+author="Alam, Omar and Kienzle, J{\"o}rg and Mussbacher, Gunter",
+editor="Moreira, Ana and Sch{\"a}tz, Bernhard and Gray, Jeff and Vallecillo, Antonio and Clarke, Peter",
+chapter="Concern-Oriented Software Design",
+title="Proc. of 16th Intl. Conf. on Model-Driven Engineering Languages and Systems (MODELS 2013)",
+year="2013",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="604--621",
+isbn="978-3-642-41533-3",
+doi="10.1007/978-3-642-41533-3_37",
+url="http://dx.doi.org/10.1007/978-3-642-41533-3_37"
+}
+
+
+
+@TechReport{alam2015a,
+ author = {Alam, Omar and Kienzle, J{\"o}rg and Mussbacher, Gunter},
+ title =  {Concern-Driven Software Development},
+ institution = {School of Computer Science, McGill University},
+ year = {2015},
+ number = {CS-TR-2015.1},
+ month = {January},
+ url = {https://www.cs.mcgill.ca/files/techReports/CS-TR-2015.1-Concern_Driven_Software_Development.pdf},
+ abstract = {This paper describes the vision of Concern-Driven Development (CDD), a novel software development paradigm that extends model-driven engineering with best practices from reuse, advanced modularization techniques, goal modelling, and software product line research. CDD advocates the use of a three-part interface to describe units of reuse, i.e., concerns. The variation interface de- scribes required design decisions and their impact on high level system qualities, both explicitly expressed using feature models and goal models. The customization interface allows the chosen variation to be adapted to a specific reuse context, while the us- age interface defines how a customized concern may eventually be used. When a concern is reused, the modeller first uses the varia- tion interface to select the feature configuration that has the desired impact on stakeholder goals and system qualities, then adapts the concern to the context of the application under development with the help of the customization interface, and finally accesses the concern’s functionality through its usage interface. We argue that, if CDD is successfully adopted on a large scale, it will transform the software engineering discipline by enabling software engineers to specialize to a greater degree and hence align the practice of software engineering closer to what is done in other engineering disciplines.},
+}
+
+@ARTICLE{albert2007b,
+  author = {Elvira Albert and Puri Arenas and Samir Genaim and Germ{\'a}n Puebla
+	and Damiano Zanardini},
+  title = {{Experiments in Cost Analysis of Java Bytecode}},
+  journal = {Electr. Notes Theor. Comput. Sci.},
+  year = {2007},
+  volume = {190},
+  pages = {67-83},
+  number = {1},
+  ee = {http://dx.doi.org/10.1016/j.entcs.2007.02.061}
+}
+
+@inproceedings{alebrahim2015a,
+ author = {Alebrahim, Azadeh and Fassbender, Stephan and Filipczyk, Martin and Goedicke, Michael and Heisel, Maritta},
+ title = {Towards Systematic Selection of Architectural Patterns with Respect to Quality Requirements},
+ booktitle = {Proc. of the 20th European Conference on Pattern Languages of Programs},
+ series = {EuroPLoP '15},
+ year = {2015},
+ isbn = {978-1-4503-3847-9},
+ location = {Kaufbeuren, Germany},
+ pages = {40:1--40:20},
+ articleno = {40},
+ numpages = {20},
+ url = {http://doi.acm.org/10.1145/2855321.2855362},
+ doi = {10.1145/2855321.2855362},
+ acmid = {2855362},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {CoCoME, patterns, problem frames, quality requirements},
+}
+
+@INPROCEEDINGS{aleti2009a,
+  author = {Aldeida Aleti and Stefan Bj{\"o}rnander and Lars Grunske and Indika
+	Meedeniya},
+  title = {ArcheOpterix: An extendable tool for architecture optimization of
+	{AADL} models},
+  booktitle = {Proceedings of the 2009 ICSE Workshop on Model-Based Methodologies
+	for Pervasive and Embedded Software (MOMPES 2009)},
+  year = {2009},
+  pages = {61--71},
+  publisher = {IEEE Computer Society},
+  bibdate = {2009-12-21},
+  bibsource = {DBLP, http://dblp.uni-trier.de/db/conf/mompes/mompes2009.html#AletiBGM09},
+  doi = {10.1109/MOMPES.2009.5069138},
+  isbn = {978-1-4244-3721-4},
+  url = {http://dx.doi.org/10.1109/MOMPES.2009.5069138}
+}
+
+@INPROCEEDINGS{aleti2009b,
+  author = {Aldeida Aleti and Lars Grunske and Indika Meedeniya and Irene Moser},
+  title = {Let the Ants Deploy Your Software - An {ACO} Based Deployment Optimisation
+	Strategy},
+  booktitle = {ASE 2009, 24th IEEE/ACM International Conference on Automated Software
+	Engineering, Auckland, New Zealand, November 16-20, 2009},
+  year = {2009},
+  pages = {505--509},
+  publisher = {IEEE Computer Society},
+  bibdate = {2010-03-04},
+  bibsource = {DBLP, http://dblp.uni-trier.de/db/conf/kbse/ase2009.html#AletiGMM09},
+  isbn = {978-0-7695-3891-4},
+  url = {http://doi.ieeecomputersociety.org/10.1109/ASE.2009.59}
+}
+
+@BOOK{alexander1977a,
+  title = {A Pattern Language: towns, buildings, construction},
+  publisher = {Oxford University Press, New York},
+  year = {1977},
+  author = {Christopher Alexander},
+  number = {2},
+  series = {Center for Environmental Structure series},
+  isbn_issn = {0-19-501919-9},
+  location = {85 A 1588}
+}
+
+@INPROCEEDINGS{alexandrov1995a,
+  author = {Albert Alexandrov and Mihai Ionescu and Klaus E. Schauser and Chris
+	Scheiman},
+  title = {Log{GP}: Incorporating Long Messages into the Log{P} model -- One
+	step closer towards a realistic model for parallel computation},
+  booktitle = {Proc. 7th Annual ACM Symposium on Parallel Algorithms and Architectures
+	SPAA'95},
+  year = {1995},
+  pages = {95--105},
+  address = {Santa Barbara, California},
+  month = jul,
+  note = {UC Santa Barbara},
+  keywords = {model, loggp, Log GP, Log P, Meiko CS-2, FFT, split-C, sort,}
+}
+
+@INPROCEEDINGS{alfaro2001a,
+  author = {Luca de Alfaro and Thomas A. Henzinger},
+  title = {{I}nterface {A}utomata},
+  booktitle = {Proceedings of the Joint 8th European Software Engineering Conference
+	and 9th {ACM} {SIGSOFT} Symposium on the Foundation of Software Engeneering
+	({ESEC}/{FSE}-01)},
+  year = {2001},
+  editor = {Volker Gruhn},
+  volume = {26, 5},
+  series = SEN,
+  pages = {109--120},
+  address = {New York},
+  month = sep # { ~10--14},
+  publisher = {ACM Press},
+  issn = {0163-5948}
+}
+
+@INPROCEEDINGS{allen1998a,
+  author = {Robert Allen and Remi Douence and David Garlan},
+  title = {Specifying and Analyzing Dynamic Software Architectures},
+  booktitle = {Proceedings of the 1998 Conference on Fundamental Approaches to Software
+	Engineering (FASE'98)},
+  year = {1998},
+  address = {Lisbon, Portugal},
+  month = {March},
+  note = {An expanded version of a the paper 'Specifying Dynamism in Software
+	Architectures,' which appeared in the Proceedings of the Workshop
+	on Foundations of Component-Based Software Engineering, September
+	1997.},
+  conference-url = {http://www.di.fc.ul.pt:80/~llf/etaps98/}
+}
+
+@ARTICLE{allen1997b,
+  author = {Robert Allen and David Garlan},
+  title = {A Formal Basis for Architectural Connection},
+  journal = {ACM Transactions on Software Engineering and Methodology},
+  year = {1997},
+  volume = {6},
+  pages = {213--249},
+  number = {3},
+  month = jul,
+  abstract = {As software systems become more complex, the overall system structure---or
+	software architecture---becomes a central design problem. An important
+	step toward an engineering discipline of software is a formal basis
+	for describing and analyzing these designs. In the article we present
+	a formal approach to one aspect of architectural design: the interactions
+	among components. The key idea is to define architectural connectors
+	as explicit semantic entities. These are specified as a collection
+	of protocols that characterize each of the participant roles in an
+	interaction and how these roles interact. We illustrate how this
+	scheme can be used to define a variety of common architectural connectors.
+	We further provide a formal semantics and show how this leads to
+	a system in which architectural compatibility can be checked in a
+	way analogous to type-checking in programming languages.},
+  annote = {incomplete},
+  categories = {F.3.1 Theory of Computation, LOGICS AND MEANINGS OF PROGRAMS, Specifying
+	and Verifying and Reasoning about Programs, Specification techniques.
+	D.2.1 Software, SOFTWARE ENGINEERING, Requirements/Specifications,
+	Languages. D.2.2 Software, SOFTWARE ENGINEERING, Design Tools and
+	Techniques, Modules and interfaces. D.2.10 Software, SOFTWARE ENGINEERING,
+	Design**, Representation**. F.4.3 Theory of Computation, MATHEMATICAL
+	LOGIC AND FORMAL LANGUAGES, Formal Languages.},
+  correctedby = {\cite{1998:tosem:allen}},
+  genterms = {DESIGN, THEORY},
+  issn = {1049-331X},
+  publaddr = {New York , NY , USA},
+  publisher = {ACM Press},
+  url = {http://www.acm.org/pubs/articles/journals/tosem/1997-6-3/p213-allen/p213-allen.pdf}
+}
+
+@PHDTHESIS{allen1997a,
+  author = {Robert J. Allen},
+  title = {A Formal Approach to Software Architecture},
+  school = {School of Computer Science, Carnegie Mellon University, Pittsburgh,
+	PE, USA},
+  year = {1997},
+  type = {Ph.{D}. Thesis},
+  month = may,
+  keywords = {sa wright sa architecture csp},
+  url = {http://www.cs.cmu.edu/afs/cs/project/able/www/paper\_abstracts/rallen\_thesis.htm}
+}
+
+@MANUAL{almaer2001a,
+  title = {Another Review of "`The Petstore Revisited: J2EE vs .NET Application
+	Server Performance Benchmark"'},
+  author = {Dion Almaer},
+  organization = {O'Reilly},
+  address = {http://www.oreillynet.com/pub/wlg/2240},
+  note = {Retrieved 2004-05-18}
+}
+
+@ARTICLE{alpern2005a,
+  author = {B. Alpern and S. Augart and S.M. Blackburn and M. Butrico and A.
+	Cocchi and P. Cheng and J. Dolby and S. Fink and D. Grove and M.
+	Hind and K.S. McKinley and M. Mergen and J.E.B. Moss and T. Ngo and
+	V. Sarkar and M. Trapp},
+  title = {{The Jikes Research Virtual Machine project: building an open-source
+	research community}},
+  journal = {IBM Systems Journal},
+  year = {2005},
+  volume = {44},
+  pages = {399--417},
+  number = {2}
+}
+
+@UNPUBLISHED{alves2001a,
+  author = {Carina Alves and Jaelson Castro},
+  title = {CRE: A Systematic Method for COTS Components Selection},
+  year = {2001},
+  url = {http://www.cs.ucl.ac.uk/staff/C.Alves/SBES'01{\_}Alves.pdf}
+}
+
+@UNPUBLISHED{alves2002a,
+  author = {Carina Alves and Anthony Finkelstein},
+  title = {Challenges in COTS Decision-Making: A Goal-Driven Requirements Engineering
+	Perspective},
+  note = {University College London, UK},
+  year = {2002},
+  url = {http://www.cs.ucl.ac.uk/staff/C.Alves/seke'02{\_}Alves.pdf}
+}
+
+@book{ambler2002a,
+ title = {Agile Modeling: Effective Practices for Extreme Programming and the Unified Process},
+ publisher = {John Wiley \& Sons},
+ author = {Scott Ambler},
+ isbn = {0471202827},
+ year = 2002
+}
+
+@book{ambler2004a,
+ title = {The Object Primer: Agile Model-Driven Development with UML 2.0},
+ publisher = {Cambridge University Press},
+ edition = 3,
+ author = {Scott Ambler},
+ isbn = {978-0-521-54018-6},
+ year = 2014
+}
+
+
+
+@ARTICLE{amizadeh2006a,
+  author = {S. Amizadeh and F. Rastegar and C. Lucas},
+  title = {Incorporating Heuristics in Evolutionary Optimization},
+  journal = {International Journal of Information Technology and Intelligent Computing},
+  year = {2006},
+  volume = {1},
+  pages = {259--270},
+  number = {2}
+}
+
+@INPROCEEDINGS{ammar2001a,
+  author = {Hany H. Ammar and Vittorio Cortellessa and Alaa Ibrahim},
+  title = {Modeling Resources in a UML-Based Simulative Environment},
+  booktitle = {AICCSA},
+  year = {2001},
+  pages = {405-410},
+  publisher = {IEEE Computer Society},
+  abstract = {The importance of early performance assessment grows as software systems
+	increase in terms of size, logical distribution and interaction complexity.
+	Lack of time from the side of software developers, as well as distance
+	among software model notations and performance model representation
+	do not help to build an integrated software process that takes into
+	account, from the early phases of the lifecycle, non functional requirements.
+	In this paper we work towards filling this gap by extending the capabilities
+	of a simulative environment developed for the UML notation. Out intent
+	is to introduce new stereotypes representing performance related
+	items, such as resource types and job dispatchers. They allow the
+	software designers to homogeneously represent a software architecture
+	integrated with a running platform as well as parameterized with
+	the resource demand that the components require.}
+}
+
+@INPROCEEDINGS{andersson2000a,
+  author = {Jesper Andersson},
+  title = {Issues in dynamic software architectures},
+  booktitle = {Proceedings of the International Software Architecture Workshop},
+  year = {2000},
+  month = jun,
+  url = {citeseer.ist.psu.edu/629596.html}
+}
+
+@MASTERSTHESIS{andrej2007a,
+  author = {Roman Andrej},
+  title = {Entwurf und Implementierung eines GUI-Simulationsframeworks fuer
+	das Palladio Komponentenmodell auf Basis der Eclipse Rich Client
+	Platform},
+  school = {University of Karlsruhe},
+  year = {2007},
+  type = {Study Thesis}
+}
+
+@ARTICLE{andrews2005a,
+  author = {Anneliese Amschler Andrews and Ed Mancebo and Per Runeson and Robert
+	B. France},
+  title = {A Framework for Design Tradeoffs},
+  journal = {Software Quality Journal},
+  year = {2005},
+  volume = {13},
+  pages = {377--405},
+  number = {4},
+  bibdate = {2006-01-27},
+  bibsource = {DBLP, http://dblp.uni-trier.de/db/journals/sqj/sqj13.html#AndrewsMRF05},
+  url = {http://dx.doi.org/10.1007/s11219-005-4252-z}
+}
+
+@INPROCEEDINGS{andrews2002a,
+  author = {A. Andrews and S. Ghosh and E. Choi},
+  title = {A Model for Understanding Software Components},
+  booktitle = {{Proceedings of the 18th IEEE International Conference on Software
+	Maintenance (ICSM'02)}},
+  year = {2002},
+  pages = {359--368},
+  address = {Los Alamitos, CA, USA},
+  publisher = {IEEE Computer Society},
+  abstract = {Understanding the behavior of components is an important task in the
+	component-based software development process. Component users build
+	mental models to understand a component when they use it for the
+	first time. The models are also useful during the evolution of the
+	component and the application that incorporates it. The process of
+	component understanding employed by the component user influences
+	the kind of models that can be developed. In this paper we examine
+	several comprehension models used in practice, and analyze existing
+	component understanding approaches with respect to the comprehension
+	models. We illustrate the development of comprehension models with
+	the example of a spreadsheet component used in an application.},
+  doi = {http://doi.ieeecomputersociety.org/10.1109/ICSM.2002.1167792},
+  isbn = {0-7695-1819-2},
+  journal = {{ICSM}}
+}
+
+@MISC{AndroMDA,
+  author = {AndroMDA.org},
+  title = {{AndroMDA Homepage}},
+  year = {2009},
+  note = {http://www.andromda.org/},
+  url = {http://www.andromda.org/}
+}
+
+@MISC{AXIS,
+  author = {{Apache Software Foundation}},
+  title = {Apache Axis 2},
+  year = {2008},
+  note = {Last retrieved 2008-01-06},
+  key = {Axis},
+  url = {http://ws.apache.org/axis2/}
+}
+
+@INCOLLECTION{ardagna2008a,
+  author = {Ardagna, Danilo and Ghezzi, Carlo and Mirandola, Raffaela},
+  title = {Rethinking the Use of Models in Software Architecture},
+  booktitle = {Quality of Software Architectures. Models and Architectures},
+  publisher = {Springer Berlin / Heidelberg},
+  year = {2008},
+  editor = {Becker, Steffen and Plasil, Frantisek and Reussner, Ralf},
+  volume = {5281},
+  series = {Lecture Notes in Computer Science},
+  pages = {1-27},
+  affiliation = {Politecnico di Milano Dipartimento di Elettronica e Informazione Piazza
+	Leonardo da Vinci 32 20133 Milano Italy},
+  url = {http://dx.doi.org/10.1007/978-3-540-87879-7_1}
+}
+
+@INPROCEEDINGS{arief2000,
+  author = {L. B. Arief and N. A. Speirs},
+  title = {A {UML} {T}ool for an {Au}tomatic {G}eneration of {S}imulation {P}rograms},
+  booktitle = {Proceedings of the {S}econd {I}nternational {W}orkshop on {S}oftware
+	and {P}erformance},
+  year = {2000},
+  pages = {71--76},
+  publisher = {ACM Press},
+  doi = {http://doi.acm.org/10.1145/350391.350408},
+  isbn = {1-58113-195-X},
+  location = {Ottawa, Ontario, Canada}
+}
+
+@TECHREPORT{armbrust2009a,
+  author = {Armbrust, Michael and Fox, Armando and Griffith, Rean and Joseph,
+	Anthony D. and Katz, Randy H. and Konwinski, Andrew and Lee, Gunho
+	and Patterson, David A. and Rabkin, Ariel and Stoica, Ion and Zaharia,
+	Matei},
+  title = {Above the Clouds: A Berkeley View of Cloud Computing},
+  institution = {EECS Department, University of California, Berkeley},
+  year = {2009},
+  number = {UCB/EECS-2009-28},
+  month = {Feb},
+  abstract = {Provided certain obstacles are overcome, we believe Cloud Computing
+	has the potential to transform a large part of the IT industry, making
+	software even more attractive as a service and shaping the way IT
+	hardware is designed and purchased. Developers with innovative ideas
+	for new interactive Internet services no longer require the large
+	capital outlays in hardware to deploy their service or the human
+	expense to operate it. They need not be concerned about over-provisioning
+	for a service whose popularity does not meet their predictions, thus
+	wasting costly resources, or under-provisioning for one that becomes
+	wildly popular, thus missing potential customers and revenue. Moreover,
+	companies with large batch-oriented tasks can get their results as
+	quickly as their programs can scale, since using 1000 servers for
+	one hour costs no more than using one server for 1000 hours. This
+	elasticity of resources, without paying a premium for large scale,
+	is unprecedented in the history of IT. The economies of scale of
+	very large-scale datacenters combined with ``pay-as-you-go'' resource
+	usage has heralded the rise of Cloud Computing. It is now attractive
+	to deploy an innovative new Internet service on a third party's Internet
+	Datacenter rather than your own infrastructure, and to gracefully
+	scale its resources as it grows or declines in popularity and revenue.
+	Expanding and shrinking daily in response to normal diurnal patterns
+	could lower costs even further. Cloud Computing transfers the risks
+	of over-provisioning or under-provisioning to the Cloud Computing
+	provider, who mitigates that risk by statistical multiplexing over
+	a much larger set of users and who offers relatively low prices due
+	better utilization and from the economy of purchasing at a larger
+	scale. We define terms, present an economic model that quantifies
+	the key buy vs. pay-as-you-go decision, offer a spectrum to classify
+	Cloud Computing providers, and give our view of the top 10 obstacles
+	and opportunities to the growth of Cloud Computing.},
+  url = {http://www.eecs.berkeley.edu/Pubs/TechRpts/2009/EECS-2009-28.html}
+}
+
+@BOOK{arnold1998a,
+  title = {The {Java} Programming Language},
+  publisher = AW,
+  year = {1998},
+  author = {Ken Arnold and James Gosling},
+  pages = {xix + 442},
+  edition = {Second},
+  acknowledgement = {#ack-nhfb#},
+  author-url = {http://java.sun.com/people/arnold/},
+  bibdate = {Wed Jun 17 22:05:06 MDT 1998},
+  isbn = {0-201-31006-6},
+  lccn = {QA76.73.J38A76 1998},
+  price = {US\$39},
+  publisher-url = {http://www.aw.com/}
+}
+
+@ARTICLE{arns2009a,
+  author = {Markus Arns and Peter Buchholz and Dennis M{\"u}ller},
+  title = {{OPED}o: a tool for the optimization of performance and dependability
+	models},
+  journal = {SIGMETRICS Performance Evaluation Review},
+  year = {2009},
+  volume = {36},
+  pages = {22--27},
+  number = {4},
+  bibdate = {2010-12-03},
+  bibsource = {DBLP, http://dblp.uni-trier.de/db/journals/sigmetrics/sigmetrics36.html#ArnsBM09},
+  url = {http://doi.acm.org/10.1145/1530873.1530879}
+}
+
+@INPROCEEDINGS{arthur2005a,
+  author = {John Arthur and Shiva Azadegan},
+  title = {Spring Framework for Rapid Open Source J2EE Web Application Development:
+	A Case Study.},
+  booktitle = {Proceedings of the 6th ACIS International Conference on Software
+	Engineering, Artificial Intelligence, Networking and Parallel/Distributed
+	Computing (SNPD 2005), May 23-25, 2005, Towson, Maryland, USA},
+  year = {2005},
+  editor = {Lawrence Chung and Yeong-Tae Song},
+  pages = {90-95},
+  publisher = {IEEE Computer Society},
+  bibsource = {DBLP, http://dblp.uni-trier.de},
+  ee = {http://doi.ieeecomputersociety.org/10.1109/SNPD-SAWN.2005.74},
+  isbn = {0-7695-2294-7},
+  owner = {MichaelKuperberg},
+  pdf = {Arthur2005a.pdf},
+  timestamp = {2007.08.09}
+}
+
+@TECHREPORT{asanovic2006a,
+  author = {Krste Asanovic and Ras Bodik and Bryan Christopher Catanzaro and
+	Joseph James Gebis and Parry Husbands and Kurt Keutzer and David
+	A. Patterson and William Lester Plishker and John Shalf and Samuel
+	Webb Williams and Katherine A. Yelick},
+  title = {The Landscape of Parallel Computing Research: {A} View from Berkeley},
+  institution = {EECS Department, University of California, Berkeley},
+  year = {2006},
+  number = {UCB/EECS-2006-183},
+  month = dec,
+  added-at = {Wed Oct 3 15:55:52 2007},
+  added-by = {msteiner},
+  annote = {Big inter-disciplinary project at berkely looking at multi-core et
+	al. home-page: \url{http://view.eecs.berkeley.edu/wiki/Main_Page}},
+  url = {http://www.eecs.berkeley.edu/Pubs/TechRpts/2006/EECS-2006-183.html}
+}
+
+@BOOK{ashbacher2002,
+  title = {{Introduction to Neutrosophic Logic}},
+  publisher = {{American Research Press}},
+  year = {2002},
+  author = {Ashbacher, Charles},
+  address = {Rehoboth},
+  edition = {7},
+  isbn = {73-8252-0375-1}
+}
+
+@ARTICLE{atkinson2003a,
+  author = {Colin Atkinson and Thomas K{\"u}hne},
+  title = {Model-Driven Development: A Metamodeling Foundation},
+  journal = {IEEE Software},
+  year = {2003},
+  volume = {20},
+  pages = {36-41},
+  number = {5},
+  bibsource = {DBLP, http://dblp.uni-trier.de},
+  ee = {http://csdl.computer.org/comp/mags/so/2003/05/s5036abs.htm}
+}
+
+@INCOLLECTION{atkinson1999a,
+  author = {Colin Atkinson and Thomas K\"uhne and Christian Bunse},
+  title = {Dimensions of {C}omponent-based {D}evelopment},
+  booktitle = {4$^{th}$ International Workshop on {C}omponent-{O}riented Programming},
+  publisher = {University of Karlskrona/Ronneby},
+  year = {1999},
+  editor = {Jan Bosch},
+  month = jun,
+  howpublished = {Research report}
+}
+
+@INCOLLECTION{atkinson2010a,
+	author = {Atkinson, Colin and Stoll, Dietmar and Bostan, Philipp},
+	title = {{Orthographic Software Modeling: A Practical Approach to View-Based Development}},
+	booktitle = {Evaluation of Novel Approaches to Software Engineering},
+	address = {Berlin/Heidelberg},
+	publisher = {Springer},
+	year = {2010},
+	editor={Maciaszek, LeszekA. and Gonz\'{a}lez-P\'{e}rez, C\'{e}sar and Jablonski, Stefan},
+	volume = {69},
+	series = {Communications in Computer and Information Science},
+	pages = {206-219},
+	affiliation = {Institute of Computer Science, University of Mannheim, 68131 Mannheim, Germany},
+	isbn = {978-3-642-14819-4},
+	keyword = {Computer Science},
+}
+
+@inproceedings{atkinson2012a,
+ author = {Atkinson, Colin and Hummel, Oliver},
+ title = {Iterative and Incremental Development of Component-based Software Architectures},
+ booktitle = {Proceedings of the 15th ACM SIGSOFT Symposium on Component Based Software Engineering},
+ series = {CBSE '12},
+ year = {2012},
+ isbn = {978-1-4503-1345-2},
+ location = {Bertinoro, Italy},
+ pages = {77--82},
+ numpages = {6},
+ url = {http://doi.acm.org/10.1145/2304736.2304750},
+ doi = {10.1145/2304736.2304750},
+ acmid = {2304750},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {component-based software architectures, iterative and incremental software development},
+} 
+
+@MISC{ATL,
+  author = {{ATLAS Group}},
+  title = {{Atlas Transformation Language (ATL) Homepage}},
+  year = {2007},
+  note = {Last retrieved 2008-01-06},
+  key = {ATL},
+  url = {http://www.eclipse.org/m2m/atl/}
+}
+
+@MASTERSTHESIS{augustin2001a,
+  author = {Werner Augustin},
+  title = {{Messverfahren f{\"u}r kollektive Operationen}},
+  school = {Fakult{\"a}t f{\"u}r Informatik, Universit{\"a}t Karlsruhe},
+  year = {2001},
+  type = {Diplomarbeit},
+  address = {Am Fasanengarten 5, D-76128 Karlsruhe, Germany},
+  month = oct,
+  note = {in preparation}
+}
+
+@INPROCEEDINGS{austermann2001a,
+  author = {Michael Austermann and Pascal Costanza and G{\"u}nter Kniesel},
+  title = {Unabh{\"a}ngige Erweiterbarkeit f{\"u}r Aspekt-Orientierte Systeme},
+  booktitle = {First Workshop Aspect Oriented Systems of German Asociation for Computer
+	Science (GI)},
+  year = {2001},
+  editor = {K.Mehner and M.Mezini and E. Pulverm{\"u}ller and A.Speck},
+  month = may,
+  publisher = {Universit{\"a}t Paderborn},
+  note = {Technical Report tr-ri-01-233}
+}
+
+@INPROCEEDINGS{autili2004a,
+  author = {M. Autili and P. Inverardi and M. Tivoli},
+  title = {{A}utomatic {A}daptor {S}ynthesis for {P}rotocol {T}ransformation},
+  booktitle = {Proceedings of the First International Workshop on Coordination and
+	Adaptation Techniques for Software Entities (WCAT'04)},
+  year = {2004}
+}
+
+@book{avgeriou2011a,
+  title = {Relating Software Requirements and Architectures},
+	author = {Paris Avgeriou and John Grundy and Jon G. Hall and Patricia Lago and Ivan Mistrik},
+	isbn = {978-3-642-21000-6},
+	publisher = SPRINGER,
+	year = 2011,
+	isbn-online = {978-3-642-21001-3}
+}
+
+@Article{avizienis2004a,
+  title =	"Basic Concepts and Taxonomy of Dependable and Secure Computing",
+  author =	"Algirdas Avizienis and Jean-Claude Laprie and Brian Randell and Carl E. Landwehr",
+  journal =	"IEEE Transactions on Dependable and Secure Computing",
+  year = 	"2004",
+  number =	"1",
+  volume =	"1",
+  bibdate =	"2011-10-26",
+  bibsource =	"DBLP, http://dblp.uni-trier.de/db/journals/tdsc/tdsc1.html#AvizienisLRL04",
+  pages =	"11--33",
+  URL =  	"http://doi.ieeecomputersociety.org/10.1109/TDSC.2004.2",
+}
+
+@ARTICLE{avritzer1996a,
+  author = {Alberto Avritzer and Elaine J. Weyuker},
+  title = {{Deriving Workloads for Performance Testing}},
+  journal = {Software--Practice and Experience},
+  year = {1996},
+  volume = {26},
+  pages = {613--633},
+  number = {6}
+}
+
+@INPROCEEDINGS{carter1993a,
+  author = {{B. Alpern, L. Carter} and J. Ferrante},
+  title = {Modeling Parallel Computers as Memory Hierarchies},
+  booktitle = {Proceedings of the Conference on Programming Models for Massively
+	Parallel Computers},
+  year = {1993},
+  editor = {S. {Giloi, W. K., J{\"a}hnichen} and B. D. Shriver},
+  pages = {116--123},
+  address = {Los Alamitos, CA, USA},
+  month = sep,
+  publisher = {IEEE Computer Society Press},
+  isbn = {0-8186-4900-3}
+}
+
+@TECHREPORT{baer1995a,
+  author = {Dieter B{\"a}r and Michael Schmidt and Ingo Redeke and Thomas Br{\"u}ckner
+	and Ulrich Veigel and Ralf Reussner and Lutz Prechelt},
+  title = {{Experimentelle Methoden in der Informatik}},
+  institution = {Department of Informatics, Universit{\"a}t Karlsruhe},
+  year = {1995},
+  type = {Technical Report},
+  number = {38/1995},
+  address = {Am Fasanengarten 5, D-76128 Karlsruhe, Germany},
+  abstract = {Dieser Report enthaelt die Ausarbeitungen von Vortraegen aus einem
+	Seminar gleichen Namens, das am 3./4. Juli 1995 am Institut f{"}ur
+	Programmstrukturen und Datenorganisation unter Leitung von Walter
+	Tichy, Ernst Heinz, Paul Lukowicz und Lutz Prechelt stattfand. Die
+	Artikel geben einen Ueberblick ueber die moegliche Funktion und den
+	Stellenwert experimentellen Vorgehens in verschiedenen Teilen der
+	Informatik, sowie einerseits deren wissenschaftstheoretische Grundlage
+	und andererseits ihre bisherige praktische Umsetzung.}
+}
+
+@ARTICLE{buechi2000a,
+  author = {Martin B{\"u}chi and Emil Sekerinski},
+  title = {A Foundation for Refining Concurrent Objects},
+  journal = {Fundamenta Informaticae},
+  year = {2000},
+  volume = {44},
+  pages = {25--61},
+  number = {1, 2},
+  month = {October},
+  note = {http://www.abo.fi/\symbol{126}mbuechi/publications/FI.html}
+}
+
+@TECHREPORT{buechi1999a,
+  author = {Martin B{\"u}chi and Wolfgang Weck},
+  title = {The Greybox Approach: When Blackbox Specifications Hide Too Much},
+  institution = {Turku Center for Computer Science},
+  year = {1999},
+  number = {297},
+  month = aug,
+  url = {http://www.abo.fi/~mbuechi/publications/TR297.html}
+}
+
+@MISC{balek,
+  author = {Du\v{s}an B\'alek and Franti\v{s}ek Pl\'a\v{s}il},
+  title = {{Software Connectors and thier Role in Component Deployment}},
+  note = {[letztes Abrufdatum 11.01.2006]},
+  url = {http://nenya.ms.mff.cuni.cz/publications/DAIS01.pdf}
+}
+
+@MISC{baleka,
+  author = {Du\v{s}an B\'alek and Franti\v{s}ek Pl\'a\v{s}il},
+  title = {{Software Connectors: A Hierarchical Model}},
+  note = {[letztes Abrufdatum 11.01.2006]},
+  url = {http://nenya.ms.mff.cuni.cz/publications/tr2000_2_revised.pdf}
+}
+
+@INPROCEEDINGS{babka2007a,
+  author = {Vlastimil Babka and Martin Decky and Petr T{\r{u}}ma},
+  title = {{Resource Sharing in Performance Models}},
+  booktitle = {Fourth European Performance Engineering Workshop, {EPEW} 2007, Berlin,
+	Germany, September 27-28, 2007},
+  year = {2007},
+  series = {Lecture Notes In Computer Science},
+  publisher = {Springer-Verlag},
+  abstract = {In software systems, individual components interact not only through
+	explicit function invocations, but also through implicit resource
+	sharing. The use of shared resources significantly influences the
+	duration of the invoked functions. For resources that are heavily
+	shared, capturing this influence can lead to performance models that
+	have a large number of elements and a large number of dependencies.
+	We introduce an approach that can model resource sharing separately
+	from function invocations, keeping the performance model reasonably
+	simple while still describing many of the effects of resource sharing
+	on the duration of function invocations. The approach has been tested
+	on the CoCoME component application modeling example.},
+  institution = {Humboldt University of Berlin},
+  owner = {MichaelKuperberg},
+  pdf = {Babka2007a.pdf},
+  timestamp = {2007.08.09},
+  venue = {Humboldt University of Berlin}
+}
+
+@ARTICLE{baccelli1994a,
+  author = {F. Baccelli and G. Balbo and R.J. Boucherie and J. Campos and G.
+	Chiola},
+  title = {Annotated Bibliography on Stochastic Petri Nets},
+  journal = {Performance Evaluation of Parallel and Distributed Systems Solution
+	Methods},
+  year = {1994},
+  volume = {105},
+  pages = {1-24},
+  note = {CWI Tract}
+}
+
+@TECHREPORT{bachmann2003a,
+  author = {Felix Bachmann and Len Bass and Mark Klein},
+  title = {Deriving Architectural Tactics: A Step Toward Methodical Architectural
+	Design},
+  institution = {CarnegieMellon SEI, Pittsburgh, PA},
+  year = {2003},
+  number = {CMU/SEI-2003-TR-004}
+}
+
+@ARTICLE{bachmann2005a,
+  author = {Bachmann, Felix and Bass, Len and Klein, Mark and Shelton, Charles},
+  title = {Designing software architectures to achieve quality attribute requirements},
+  journal = {IEE Proceedings - Software},
+  year = {2005},
+  volume = {152},
+  pages = { 153-165},
+  number = {4},
+  month = {Aug.},
+  doi = {10.1049/ip-sen:20045037},
+  issn = {1462-5970},
+  keywords = { formal specification, software architecture, software quality quality
+	attribute knowledge, quality attribute requirements, reasoning framework
+	interaction, software architectural design method}
+}
+
+@INPROCEEDINGS{bacigalupo2004a,
+  author = {D. A. Bacigalupo and S. A. Jarvis and L. He and G. R. Nudd},
+  title = {An Investigation into the Application of Different Performance Techniques
+	to e-Commerce Applications},
+  booktitle = {18th IEEE International Parallel and Distributed Processing Symposium
+	2004 (IPDPS'04), Santa Fe, New Mexico},
+  year = {2004},
+  month = {April},
+  publisher = IEEECSP
+}
+
+@ARTICLE{bacigalupo2005a,
+  author = {David A. Bacigalupo and Stephen A. Jarvis and Ligang He and Daniel
+	P. Spooner and Donna N. Dillenberger and Graham R. Nudd},
+  title = {An Investigation into the Application of Different Performance Prediction
+	Methods to Distributed Enterprise Applications},
+  journal = {J. Supercomput.},
+  year = {2005},
+  volume = {34},
+  pages = {93--111},
+  number = {2},
+  address = {Hingham, MA, USA},
+  doi = {http://dx.doi.org/10.1007/s11227-005-2335-z},
+  issn = {0920-8542},
+  publisher = {Kluwer Academic Publishers}
+}
+
+@INPROCEEDINGS{bacigalupo2003a,
+  author = {D. A. Bacigalupo and J. D. Turner and S. A. Jarvis and G. R. Nudd},
+  title = {A Dynamic Predictive Framework for e-business Workload Management},
+  booktitle = {7th World Multiconference on Systemics,Cybernetics and Informatics
+	(SCI2003) Performance of Web Services Invited Session, Orlando, Florida,
+	USA},
+  year = {2003},
+  month = {July},
+  abstract = {Distributed e-business application platforms such as the web services
+	framework will require sophisticated workload management infrastructures
+	for the routing of client requests to the most appropriate services.
+	This paper introduces a novel and dynamic predictive framework that
+	uses both analytical performance modeling and historical data to
+	extrapolate a request's predicted performance under varying workloads
+	and conditions. Such a framework can facilitate a routing algorithm
+	in meeting quality of service-based metric requirements. An e-business
+	benchmark is used as a demonstrator to provide an insight into the
+	techniques used in predicting the response time of requests under
+	varied workload conditions.},
+  keywords = {Web Services, Computational Grids, Performance Modelling, Performance
+	Prediction, ARM, Routing, Java},
+  pdf = {http://www.dcs.warwick.ac.uk/research/hpsg/documents/BacigalupoD.PACEWS.pdf}
+}
+
+@TECHREPORT{bader1997a,
+  author = {David A. Bader and Joseph Ja'Ja'},
+  title = {{SIMPLE}: {A} Methodology for Programming High Performance Algorithms
+	on Clusters of Symmetric Multiprocessors ({SMP}s)},
+  institution = {University of Maryland, College Park},
+  year = {1997},
+  type = {Technical Report},
+  number = {CS-TR-3798},
+  month = may,
+  abstract = {We describe a methodology for developing high performance programs
+	running on clusters of SMP nodes. Our methodology is based on a small
+	kernel (SIMPLE) of collective communication primitives that make
+	efficient use of the hybrid shared and message passing environment.
+	We illustrate the power of our methodology by presenting experimental
+	results for sorting integers, two-dimensional fast Fourier transforms
+	(FFT), and constraint-satisfied searching. Our testbed is a cluster
+	of DEC AlphaServer 2100 4/275 nodes interconnected by an ATM switch.
+	(Also cross-referenced as UMIACS-TR-97-48.)},
+  bibdate = {October 15, 1998}
+}
+
+@TECHREPORT{bailey1994a,
+  author = {D. Bailey and E. Barszcz and J. Barton and D. Browning and R. Carter
+	and L. Dagum and R. Fatoohi and S. Fineberg and P. Frederickson and
+	T. Lasinski and R. Schreiber and H. Simon and V. Venkatakrishnan
+	and S. Weeratunga},
+  title = {{The NAS Parallel Benchmarks}},
+  institution = {Department of Mathematics and Computer Science, Emory University},
+  year = {1994},
+  type = {Report},
+  number = {RNR-94-007},
+  month = mar,
+  optaddress = {Atlanta, GA 30322}
+}
+
+@INPROCEEDINGS{Baker2005,
+  author = {Paul Baker and Shiou Loh and Frank Weil},
+  title = {{Model-driven engineering in a large industrial context - Motorola
+	case study}},
+  booktitle = {{Model Driven Engineering Languages and Systems}},
+  year = {2005},
+  volume = {3713/2005},
+  series = {Lecture Notes in Computer Science},
+  pages = {476--491},
+  address = {Springer Berlin / Heidelberg}
+}
+
+@INPROCEEDINGS{saker2005,
+  author = {Paul Baker and Shiou Loh and Frank Weil},
+  title = {{Model-driven engineering in a large industrial context - Motorolacase
+	study}},
+  booktitle = {{Model Driven Engineering Languages and Systems}},
+  year = {2005},
+  volume = {3713/2005},
+  series = {Lecture Notes in Computer Science},
+  pages = {476--491},
+  address = {Springer Berlin / Heidelberg}
+}
+
+@ARTICLE{bala1995a,
+  author = {Vasanth Bala and Jehoshua Bruck and Robert Cypher and Pablo Elustondo
+	and Alex Ho and Ching-Tien Ho and Shlomo Kipnis and Marc Snir},
+  title = {{CCL}: {A} Portable and Tunable Collective Communication Library
+	for Scalable Parallel Computers},
+  journal = {IEEE Transactions on Parallel and Distributed Systems},
+  year = {1995},
+  volume = {6},
+  pages = {154--164},
+  number = {2},
+  month = feb,
+  acknowledgement = {#ack-nhfb#},
+  affiliation = {HP Lab},
+  affiliationaddress = {Cambridge, MA, USA},
+  bibdate = {Fri Nov 6 12:31:15 MST 1998},
+  classification = {716.1; 721.1; 722.2; 722.4; 723.1; 921.6; C6110P (Parallel programming);
+	C6115 (Programming support); C6150N (Distributed systems software)},
+  coden = {ITDSEO},
+  corpsource = {HP Lab., Cambridge, MA, USA},
+  issn = {1045-9219},
+  journalabr = {IEEE Trans Parallel Distrib Syst},
+  keywords = {Algorithms; broadcast; CCL; Collective communication library; Collective
+	communication semantics; communication operations; Computational
+	linguistics; Computer programming; Computer software portability;
+	concatenate; gather; IBM 9076 Scalable POWERparallel System 1; interface;
+	message passing; Message passing parallel systems; parallel application
+	programming; parallel computers; Parallel processing systems; parallel
+	programming; Personal communication systems; Portable library; programming
+	interface; realistic point-to-point communication model; reduce;
+	scalable; Scalable parallel computers; scatter; shift; software libraries;
+	Synchronization; synchronize; tunable collective communication library;
+	User interfaces},
+  treatment = {P Practical},
+  url = {http://www.computer.org/tpds/td1995/l0154abs.htm}
+}
+
+@ARTICLE{balsamo2003c,
+  author = {Simonetta Balsamo and Marco Bernardo and Marta Simeoni},
+  title = {{Performance Evaluation at the Software Architecture Level}},
+  journal = {Formal Methods for Software Architectures},
+  year = {2003},
+  volume = {2804},
+  pages = {207--258},
+  abstract = {When tackling the construction of a software system, at the software
+	architecture design level there are two main issues related to the
+	system performance. First, the designer may need to choose among
+	several alternative software architectures for the system, with the
+	choice being driven especially by performance considerations. Second,
+	for a specific software architecture of the system, the designer
+	may want to understand whether its performance can be improved and,
+	if so, it would be desirable for the designer to have some diagnostic
+	information that guide the modification of the software architecture
+	itself. In this paper we show how these two issues can be addressed
+	in practice by employing a methodology relying on the combined use
+	of Emilia an architectural description language based on stochastic
+	process algebra and queueing networks structured performance models
+	equipped with fast solution algorithms which allows for a quick prediction,
+	improvement, and comparison of the performance of different software
+	architectures for a given system. The methodology is illustrated
+	through a case study in which a sequential architecture, a pipeline
+	architecture, and a concurrent architecture for a compiler system
+	are compared on the basis of typical average performance indices.},
+  owner = {MichaelKuperberg},
+  pdf = {Balsamo2003a.pdf},
+  publisher = {Springer},
+  review = {Sehr gute Uebersicht zu den verschiedenen Methoden: Warteschlangennetze,
+	Stochastische Ausdr"ucke und Algebren, etc. Allerdings eine Ebene
+	h"oher als Ressourcenmodellierung.},
+  timestamp = {2007.07.22}
+}
+
+@ARTICLE{balsamo2004b,
+  author = {Simonetta Balsamo and Antinisca {Di Marco} and Paola Inverardi and
+	Marta Simeoni},
+  title = {{M}odel-{B}ased {P}erformance {P}rediction in {S}oftware {D}evelopment:
+	{A S}urvey},
+  journal = {IEEE Transactions on Software Engineering},
+  year = {2004},
+  volume = {30},
+  pages = {295--310},
+  number = {5},
+  month = may,
+  abstract = {Over the last decade, a lot of research has been directed toward integrating
+	performance analysis into the software development process. Traditional
+	software development methods focus on software correctness, introducing
+	performance issues later in the development process. This approach
+	does not take into account the fact that performance problems may
+	require considerable changes in design, for example, at the software
+	architecture level, or even worse at the requirement analysis level.
+	Several approaches were proposed in order to address early software
+	performance analysis. Although some of them have been successfully
+	applied, we are still far from seeing performance analysis integrated
+	into ordinary software development. In this paper, we present a comprehensive
+	review of recent research in the field of model-based performance
+	prediction at software development time in order to assess the maturity
+	of the field and point out promising research directions.}
+}
+
+@TECHREPORT{balsamo2003b,
+  author = {Simonetta Balsamo and Mattia Grosso and Moreno Marzolla},
+  title = {Towards Simulation-Based Performance Modeling of {UML} Specifications},
+  institution = {Dep. di Informatica, Universtita Ca' Foscari Venezia, Italy},
+  year = {2003},
+  number = {CS-2003-2}
+}
+
+@INPROCEEDINGS{balsamo1998a,
+  author = {Simonetta Balsamo and Paola Inverardi and Calogero Mangano},
+  title = {An approach to performance evaluation of software architectures},
+  booktitle = {Proc. first international workshop on Software and performance (WASP'98)},
+  year = {1998},
+  pages = {178--190},
+  publisher = {ACM Press},
+  abstract = {In this puper we present an approach to evaluating the expected performance
+	of a software architecture. The method automatically derives a performance
+	evaluation model, based on a Queueing Network Model, from a software
+	architecture specification formally described in CHAM (CHemical Abstract
+	Machine). The goal of this approach is to provide a set of measures
+	to compare the performance of two or more competing software architectures,
+	even at their high level of abstraction. This means that we will
+	be able to derive mathematical relations among the parameters---that
+	is, the evaluution indices---characterizing the competing models.
+	Besides assisting in the choice of a software architecture, these
+	relations give information on how to curry on the development process
+	in order to mantain the given performance. To a certain extent, the
+	relations provide further requirements to be fulfilled by an implementation
+	in order to satisfy the chosen performance criteria.},
+  doi = {http://doi.acm.org/10.1145/287318.287354},
+  isbn = {1-58113-060-0},
+  keywords = {Software Architecture, CHAM, performance evaluation, Queueing Network
+	Model, performance indices},
+  location = {Santa Fe, New Mexico, United States}
+}
+
+@INPROCEEDINGS{balsamo2003a,
+  author = {Simonetta Balsamo and Moreno Marzolla},
+  title = {A {S}imulation-{B}ased {A}pproach to {S}oftware {P}erformance {M}odeling},
+  booktitle = {Proceedings of the 9th European Software Engineering Conference held
+	jointly with 11th ACM SIGSOFT international symposium on Foundations
+	of Software Engineering},
+  year = {2003},
+  pages = {363--366},
+  publisher = {ACM Press},
+  doi = {http://doi.acm.org/10.1145/940071.940122},
+  isbn = {1-58113-743-5},
+  location = {Helsinki, Finland}
+}
+
+@INPROCEEDINGS{balsamo2004a,
+  author = {Simonetta Balsamo and Moreno Marzolla and Antinisca {Di Marco} and
+	Paola Inverardi},
+  title = {Experimenting Different Software Architectures Performance Techniques:
+	A Case Study},
+  booktitle = {Proceedings of the Fourth International Workshop on Software and
+	Performance},
+  year = {2004},
+  pages = {115--119},
+  publisher = {ACM Press},
+  doi = {http://doi.acm.org/10.1145/974044.974062},
+  location = {Redwood Shores, California}
+}
+
+@INPROCEEDINGS{balsamo2001a,
+  author = {Simonetta Balsamo and Marta Simeoni},
+  title = {Deriving Performance Models from Software Architecture Specification},
+  booktitle = {Proceedings of the European Simulation Multiconference, Analytical
+	and Stochastic Modelling Techniques},
+  year = {2001}
+}
+
+@INPROCEEDINGS{balsamo2001b,
+  author = {S. Balsamo and M. Simeoni},
+  title = {On transforming UML models into performance models},
+  booktitle = {Proceedings of the Workshop on Transformations in UML (WTUML) 2001},
+  year = {2001}
+}
+
+@INPROCEEDINGS{balter1998a,
+  author = {R. Balter and L. Bellisard and F. Boyer and M. Riveill and J.-Y.
+	Vian-Dury},
+  title = {Architecturing and Configuring Distributed Applications with OLAN},
+  booktitle = {Proceedings of IFIP International Conference on Distributed Systems
+	Platforms and Open Distributed Processing (Middleware)},
+  year = {1998},
+  pages = {15--18}
+}
+
+@BOOK{balzert1998a,
+  title = {Lehrbuch der Softwaretechnik, Teil 2: Softwaremanagement, Software-Qualitaetssicherung,
+	Unternehmensmodellierung},
+  publisher = {Spektrum Akademischer Verlag},
+  year = {1998},
+  author = {Helmut Balzert},
+  address = {Heidelberg, Berlin},
+  annote = {Dieses Buch ist der zweite Band des zweibaendigen {"}Lehrbuchs der
+	Softwaretechnik{"}. In diesem Band werden die methodischen Aspekte
+	der Softwaretechnik behandelt. Hierzu gehoeren Software-Management
+	und -Qualitaetsicherung. In einem weiteren Abschnitt wird auf die
+	Modellierung von Unternehmen eingegangen. Neben seiner Funktion als
+	Lehrbuch eignet sich das Buch auch als Nachschlagewerk.},
+  descriptor = {Unternehmensmodell, Softwaretechnik, Software-Qualitaetssicherung,
+	Qualitaetssicherung, Software Management, Software},
+  isbn = {3-8274-0065-1}
+}
+
+@BOOK{balzert1996a,
+  title = {Lehrbuch der Software-Technik: Teil 1: Software-Entwicklung},
+  publisher = {Spektrum Akademischer Verlag},
+  year = {1996},
+  author = {Helmut Balzert},
+  address = {Heidelberg, Germany},
+  annote = {Dieser Titel ist der erste Band des zweibaendigen {"}Lehrbuchs der
+	Softwaretechnik{"}. In diesem Band wird Software-Entwicklung behandelt.
+	Dabei werden die einzelnen Abschnitte bzw. Phasen der Software-Entwicklung
+	erlaeutert, wobei besonders auf die verschiedenen Moeglichkeiten
+	zur Spezifikation fuer Analyse und Design eingegangen wird. Neben
+	seiner Funktion als Lehrbuch eignet sich das Buch auch als Nachschlagewerk
+	ueber die bei der Software-Entwicklung verwendeten Verfahren und
+	Notationen.},
+  descriptor = {Software-Entwicklung},
+  isbn = {3-8274-0042-2}
+}
+
+@article{bancilhon1981a,
+ author = {Bancilhon, F. and Spyratos, N.},
+ title = {Update semantics of relational views},
+ journal = {ACM Trans. Database Syst.},
+ volume = {6},
+ number = {4},
+ month = dec,
+ year = {1981},
+ issn = {0362-5915},
+ pages = {557--575},
+ numpages = {19},
+ doi = {10.1145/319628.319634},
+ acmid = {319634},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {conceptual model, data model, data semantics, database view, relation, relational model database, update translation, view updating},
+} 
+
+@MISC{banes2004a,
+  author = {J. Banes},
+  title = {{GAGE - Genuine Advantage Gaming Engine}},
+  year = {2004},
+  note = {Last retrieved 2009-04-04},
+  url = {http://java.dnsalias.com/}
+}
+
+@ARTICLE{banker1992a,
+  author = { Rajiv D. Banker and Robert J. Kauffman and Rachna Kumar},
+  title = {An Empirical Test of Object-Based Output Measurement Metrics in a
+	Computer Aided Software Engineering (CASE) Environment},
+  journal = {Journal of Management Information Systems},
+  year = {1992},
+  volume = {8},
+  pages = {127--150},
+  number = {3}
+}
+
+@INPROCEEDINGS{baragry2001a,
+  author = {Jason Baragry and Karl Reed},
+  title = {Why We Need A Different View of Software Architecture},
+  booktitle = {Proceedings of the Working IEEE/IFIP Conference on Software Architecture
+	(WICSA'01)},
+  year = {2001},
+  pages = {125--134},
+  publisher = {IEEE Computer Society},
+  doi = {http://dx.doi.org/10.1109/WICSA.2001.948419},
+  isbn = {0-7695-1360-3}
+}
+
+@techreport{barbacci2003a,
+  author = {Barbacci, Mario and Ellison, Robert and Lattanze, Anthony and Stafford, Judith and Weinstock, Charles and Wood, William},
+	title = {Quality Attribute Workshops (QAWs)},
+	note = {Third Edition, CMU/SEI-2003-TR-016},
+	institution = {Software Engineering Institute, Carnegie Mellon University},
+	year = 2003, 
+	url = {http://resources.sei.cmu.edu/library/asset-view.cfm?AssetID=6687}
+}
+
+@inproceedings{barbosa2010a,
+ author = {Barbosa, Davi M.J. and Cretin, Julien and Foster, Nate and Greenberg, Michael and Pierce, Benjamin C.},
+ title = {Matching Lenses: Alignment and View Update},
+ booktitle = {Proceedings of the 15th ACM SIGPLAN International Conference on Functional Programming},
+ series = {ICFP '10},
+ year = {2010},
+ isbn = {978-1-60558-794-3},
+ location = {Baltimore, Maryland, USA},
+ pages = {193--204},
+ numpages = {12},
+ url = {http://doi.acm.org/10.1145/1863543.1863572},
+ doi = {10.1145/1863543.1863572},
+ acmid = {1863572},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {alignment, bidirectional languages, boomerang, lenses, view update problem},
+} 
+
+@TechReport{barbosa2010b,
+ author = {Barbosa, Davi M.J. and Cretin, Julien and Foster, Nate and Greenberg, Michael and Pierce, Benjamin C.},
+ title = {Matching Lenses: Alignment and View Update},
+ institution = {University of Pennsylvania, Department of Computer and Information Science},
+ year = {2010},
+ OPTnumber = {MS-CIS-10-01},
+}
+
+@INPROCEEDINGS{bardram2005a,
+  author = {Jakob E. Bardram and Henrik B{\ae}rbak Christensen and Aino Vonge
+	Corry and Klaus Marius Hansen and Mads Ingstrup},
+  title = {Exploring Quality Attributes Using Architectural Prototyping},
+  booktitle = {Quality of Software Architectures and Software Quality, First International
+	Conference on the Quality of Software Architectures, QoSA 2005 and
+	Second International Workshop on Software Quality, SOQUA 2005, Erfurt,
+	Germany, September 20-22, 2005, Proceedings},
+  year = {2005},
+  editor = {Ralf Reussner and Johannes Mayer and Judith A. Stafford and Sven
+	Overhage and Steffen Becker and Patrick J. Schroeder},
+  volume = {3712},
+  series = LNCS,
+  pages = {155-170},
+  publisher = SPRINGER
+}
+
+@BOOK{barton1994a,
+  title = {Scientific and engineering {C++}: an introduction with advanced techniques
+	and examples},
+  publisher = {Addison-Wesley},
+  year = {1994},
+  author = {John J. Barton and Lee R. Nackman},
+  pages = {xv + 671},
+  address = {Reading, MA, USA},
+  isbn = {0-201-53393-6},
+  lccn = {QA76.73.C153 B38 1994}
+}
+
+@INPROCEEDINGS{basili1997a,
+  author = {Victor Basili and Frank McGarry},
+  title = {The Experience Factory: How to Build and Run One},
+  booktitle = {Proceedings of the 19th International Conference on Software Engineering
+	({ICSE} '97)},
+  year = {1997},
+  pages = {643--644},
+  month = may,
+  publisher = SPRINGER,
+  isbn = {0-89791-914-9}
+}
+
+@ARTICLE{basili1990a,
+  author = {Victor R. Basili},
+  title = {Viewing Maintenance as Reuse-Oriented Software Development},
+  journal = {IEEE Software},
+  year = {1990},
+  volume = {7},
+  pages = {19--25},
+  month = jan,
+  keywords = {GQM, Goal/Question/Metric paradigm, Software reuse, Software maintenance,
+	Quick fix process model, Iterative enhancement process model, Full-reuse
+	model}
+}
+
+@TECHREPORT{basili1988a,
+  author = {Victor R. Basili and G. Caldiera},
+  title = {Reusing Existing Software},
+  institution = {Institute for Advanced Computer Studies, Department of Computer Science},
+  year = {1988},
+  number = {IMIACS-TR-88-72, CS-TR-2116},
+  address = {University of Maryland, College Park, MD, USA},
+  month = oct,
+  abstract = {The paper examines the problems related to the analysis of existing
+	software in order to reuse it. The source programs are analyzed in
+	two steps: the first step is dedicated to the identification of the
+	reusable components, the second one to their computer assisted classification.
+	The paper deals in more detail with the identification phase on the
+	basis of the research work in progress on a system called CARE, Computer
+	Aided Reuse Engineering.},
+  bibdate = {Mon May 8 11:54:06 1989},
+  key = {Basili \& Caldiera},
+  owner = {payne},
+  pages = {1--18}
+}
+
+@ARTICLE{basili1992a,
+  author = {Victor R. Basili and Gianluigi Caldiera and Giovanni Cantone},
+  title = {A Reference Architecture for the Component Factory},
+  journal = {ACM Transactions on Software Engineering and Methodology},
+  year = {1992},
+  volume = {1},
+  pages = {53--80},
+  number = {1},
+  month = {January}
+}
+
+@INCOLLECTION{basili1999a,
+  author = {Victor R. Basili and Gianluigi Caldiera and H. Dieter Rombach},
+  title = {Experience Factory},
+  booktitle = {Encyclopedia of Software Engineering},
+  year = {1999},
+  editor = {John J. Marciniak},
+  pages = {469--476},
+  organization = {Wiley-Interscience}
+}
+
+@INCOLLECTION{basili1994a,
+  author = {Victor R. Basili and Gianluigi Caldiera and H. Dieter Rombach},
+  title = {{T}he {G}oal {Q}uestion {M}etric {A}pproach},
+  booktitle = {Encyclopedia of Software Engineering - 2 Volume Set},
+  publisher = {John Wiley \& Sons},
+  year = {1994},
+  editor = {John J. Marciniak},
+  pages = {528-532}
+}
+
+@ARTICLE{basili1996a,
+  author = {Victor R. Basili and Salwa K. Abd-El-Hafiz},
+  title = {A Method for Documenting Code Components},
+  journal = {The Journal of Systems and Software},
+  year = {1996},
+  volume = {34},
+  pages = {89--104},
+  number = {2},
+  month = aug,
+  acknowledgement = {#ack-nhfb#},
+  bibdate = {Wed Dec 16 08:24:49 MST 1998},
+  coden = {JSSODM},
+  issn = {0164-1212}
+}
+
+@TECHREPORT{basili1991a,
+  author = {Victor R. Basili and H. Dieter Rombach},
+  title = {Support for comprehensive reuse},
+  institution = {Department of Computer Science, University of Maryland},
+  year = {1991},
+  number = {CS-TR-2606 and UMIACS-TR-91-23},
+  address = {College Park , MD , USA},
+  month = feb,
+  publishedas = {\cite{1991:sej:basili}},
+  referencedby = {\cite{1992:tosem:basili}}
+}
+
+@TECHREPORT{basili1988b,
+  author = {Victor R. Basili and H. Dieter Rombach},
+  title = {Towards a Comprehensive Framework for Reuse: {A} Reuse-Enabling Software
+	Evolution Environment},
+  institution = {Institute for Advanced Computer Studies, Department of Computer Science},
+  year = {1988},
+  number = {UMIACS-TR-88-92, CS-TR-2158},
+  address = {University of Maryland, College Park, MD, USA},
+  month = dec,
+  abstract = {Reuse of products, processes and knowledge will be the key to enable
+	the software industry to achieve the dramatic improvement in productivity
+	and quality required to satisfy the anticipated growing demands.
+	Although experience shows the certain kinds of reuse can be successful,
+	general success has been elusive. A software life-cycle technology
+	which allows broad and extensive reuse could provide the means to
+	achieving the desired order-of-magnitude improvements. This paper
+	motivates and outlines the scope of a comprehensive framework for
+	understanding, planning, evaluating, and motivating reuse practices
+	and the necessary research activities. As a first step towards such
+	a framework, a reuse-enabling software evolution environment model
+	is introduced which provides a basis for the effective recording
+	of experience, the generalization and tailoring of experience, the
+	formalization of experience, and the re-/use of experience.},
+  bibdate = {Mon May 8 11:59:43 1989},
+  key = {Basili \& Rombach},
+  owner = {payne},
+  pages = {1--23}
+}
+
+@BOOK{bass2003a,
+  title = {Software Architecture in Practice, Second Edition},
+  p

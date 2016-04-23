@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.web/src/edu/kit/ipd/sdq/mediastore/web/beans
+END
+SessionBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.web/src/edu/kit/ipd/sdq/mediastore/web/beans/SessionBean.java
+END
+RegisterBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.web/src/edu/kit/ipd/sdq/mediastore/web/beans/RegisterBean.java
+END
+UploadBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.web/src/edu/kit/ipd/sdq/mediastore/web/beans/UploadBean.java
+END
+DownloadBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.web/src/edu/kit/ipd/sdq/mediastore/web/beans/DownloadBean.java
+END
+LoginBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.web/src/edu/kit/ipd/sdq/mediastore/web/beans/LoginBean.java
+END

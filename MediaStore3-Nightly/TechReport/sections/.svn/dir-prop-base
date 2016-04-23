@@ -1,0 +1,30 @@
+K 10
+svn:ignore
+V 170
+*.aux
+*.bak
+*.bbl
+*.blg
+*.idx
+*.lof
+*.log
+*.out
+*.toc
+*.tps
+Thumbs.db
+*.fdb_latexmk
+*.fls
+*.synctex
+*.tcp
+*.pdf
+*.bcf
+*.nav
+*.snm
+*.run.xml
+*.dvi
+*.ilg
+*.ind
+*.nlo
+*.tdo
+
+END

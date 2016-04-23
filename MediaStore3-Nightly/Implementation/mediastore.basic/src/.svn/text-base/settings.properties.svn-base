@@ -1,0 +1,3 @@
+#Format: key:value
+#Possible values for now: MEDIA_ACCESS_DOWNLOAD, TAG_WATERMARKING, AUDIO_WATERMARKING, REENCODER, CACHE
+mediamanagement:AUDIO_WATERMARKING

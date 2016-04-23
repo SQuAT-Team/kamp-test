@@ -1,0 +1,257 @@
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model
+END
+ms_base.system_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_base.system_diagram
+END
+ms_base.allocation_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_base.allocation_diagram
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/.project
+END
+ms_distr_reenc.allocation
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_distr_reenc.allocation
+END
+ms_parallel_audio_wm_replicas.system
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_parallel_audio_wm_replicas.system
+END
+ms_audio_wm.system
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_audio_wm.system
+END
+ms_audio_wm_usage_all.usagemodel_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_audio_wm_usage_all.usagemodel_diagram
+END
+ms_audio_wm.allocation
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_audio_wm.allocation
+END
+ms.resourceenvironment
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms.resourceenvironment
+END
+ms_parallel_audio_wm_distr_replicas.allocation
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_parallel_audio_wm_distr_replicas.allocation
+END
+ms_base.system
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_base.system
+END
+ms_audio_wm_usage_realistic_3.usagemodel
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_audio_wm_usage_realistic_3.usagemodel
+END
+ms_audio_wm_replicas_usage_realistic.usagemodel
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_audio_wm_replicas_usage_realistic.usagemodel
+END
+ms_base_usage_all.usagemodel_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_base_usage_all.usagemodel_diagram
+END
+ms_base.allocation
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_base.allocation
+END
+readme_ms_usage_realistic.txt
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/readme_ms_usage_realistic.txt
+END
+ms_audio_wm_usage_realistic.usagemodel_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_audio_wm_usage_realistic.usagemodel_diagram
+END
+ms_audio_wm_usage_all.usagemodel
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_audio_wm_usage_all.usagemodel
+END
+ms_base_usage_realistic.usagemodel_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_base_usage_realistic.usagemodel_diagram
+END
+ms_parallel_audio_wm_replicas_usage_realistic.usagemodel
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_parallel_audio_wm_replicas_usage_realistic.usagemodel
+END
+ms_base_usage_all.usagemodel
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_base_usage_all.usagemodel
+END
+ms_cache.system_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_cache.system_diagram
+END
+ms_cache.allocation_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_cache.allocation_diagram
+END
+ms_audio_wm_usage_realistic.usagemodel
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_audio_wm_usage_realistic.usagemodel
+END
+ms_base_usage_realistic.usagemodel
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_base_usage_realistic.usagemodel
+END
+ms.repository_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms.repository_diagram
+END
+ms_cache.system
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_cache.system
+END
+ms_cache.allocation
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_cache.allocation
+END
+ms_cache_usage_all.usagemodel_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_cache_usage_all.usagemodel_diagram
+END
+ms_audio_wm_distr.allocation
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_audio_wm_distr.allocation
+END
+ms_audio_wm_replicas.system_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_audio_wm_replicas.system_diagram
+END
+ms.repository
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms.repository
+END
+ms_cache_usage_realistic.usagemodel_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_cache_usage_realistic.usagemodel_diagram
+END
+ms_cache_usage_all.usagemodel
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_cache_usage_all.usagemodel
+END
+readme_ms_resourceenvironment.txt
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/readme_ms_resourceenvironment.txt
+END
+ms_audio_wm_replicas.system
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_audio_wm_replicas.system
+END
+ms_distr_reenc.allocation_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_distr_reenc.allocation_diagram
+END
+ms_cache_usage_realistic.usagemodel
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_cache_usage_realistic.usagemodel
+END
+ms_audio_wm.system_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_audio_wm.system_diagram
+END
+ms_audio_wm.allocation_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_audio_wm.allocation_diagram
+END
+ms.resourceenvironment_diagram
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms.resourceenvironment_diagram
+END
+ms_audio_wm_distr_replicas.allocation
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/i43/svn/code/!svn/ver/28888/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Model/MediaStore3_Model/ms_audio_wm_distr_replicas.allocation
+END

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 192
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.ejb.audiowatermarking/src/edu/kit/ipd/sdq/mediastore/ejb/audiowatermarking
+END
+AudioWatermarkingImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 219
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.ejb.audiowatermarking/src/edu/kit/ipd/sdq/mediastore/ejb/audiowatermarking/AudioWatermarkingImpl.java
+END
+WavFileException.java
+K 25
+svn:wc:ra_dav:version-url
+V 214
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.ejb.audiowatermarking/src/edu/kit/ipd/sdq/mediastore/ejb/audiowatermarking/WavFileException.java
+END
+WavFile.java
+K 25
+svn:wc:ra_dav:version-url
+V 205
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.ejb.audiowatermarking/src/edu/kit/ipd/sdq/mediastore/ejb/audiowatermarking/WavFile.java
+END

@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/exceptions
+END
+AppException.java
+K 25
+svn:wc:ra_dav:version-url
+V 189
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/exceptions/AppException.java
+END
+UserAlreadyExistsException.java
+K 25
+svn:wc:ra_dav:version-url
+V 203
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/exceptions/UserAlreadyExistsException.java
+END
+ConversionException.java
+K 25
+svn:wc:ra_dav:version-url
+V 196
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/exceptions/ConversionException.java
+END
+DbException.java
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/exceptions/DbException.java
+END
+UnknownServerException.java
+K 25
+svn:wc:ra_dav:version-url
+V 199
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/exceptions/UnknownServerException.java
+END
+BadLoginDataException.java
+K 25
+svn:wc:ra_dav:version-url
+V 198
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/exceptions/BadLoginDataException.java
+END
+FailedUploadException.java
+K 25
+svn:wc:ra_dav:version-url
+V 198
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/exceptions/FailedUploadException.java
+END
+FailedDownloadException.java
+K 25
+svn:wc:ra_dav:version-url
+V 200
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/exceptions/FailedDownloadException.java
+END

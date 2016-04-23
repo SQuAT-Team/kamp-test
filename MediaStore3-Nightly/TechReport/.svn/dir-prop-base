@@ -1,0 +1,36 @@
+K 13
+svn:externals
+V 77
+https://svnserver.informatik.kit.edu/i43/svn/palladio_bib/trunk palladio_bib
+
+K 10
+svn:ignore
+V 176
+*.aux
+*.bak
+*.bbl
+*.blg
+*.idx
+*.lof
+*.log
+*.out
+*.toc
+*.tps
+Thumbs.db
+*.fdb_latexmk
+*.fls
+*.synctex
+*.tcp
+*.pdf
+*.bcf
+*.nav
+*.snm
+*.run.xml
+*.dvi
+*.ilg
+*.ind
+*.nlo
+*.tdo
+*.lot
+
+END

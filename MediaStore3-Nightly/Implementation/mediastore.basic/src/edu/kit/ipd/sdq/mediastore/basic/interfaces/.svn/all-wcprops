@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/interfaces
+END
+ICacheMaintenance.java
+K 25
+svn:wc:ra_dav:version-url
+V 194
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/interfaces/ICacheMaintenance.java
+END
+IDownload.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/interfaces/IDownload.java
+END
+IDownloadMediaAccess.java
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/interfaces/IDownloadMediaAccess.java
+END
+IDownloadCache.java
+K 25
+svn:wc:ra_dav:version-url
+V 191
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/interfaces/IDownloadCache.java
+END
+IUserManagement.java
+K 25
+svn:wc:ra_dav:version-url
+V 192
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/interfaces/IUserManagement.java
+END
+IMediaManagement.java
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/interfaces/IMediaManagement.java
+END
+IDownloadReEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 195
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/interfaces/IDownloadReEncoder.java
+END
+IDownloadTagWatermarking.java
+K 25
+svn:wc:ra_dav:version-url
+V 201
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/interfaces/IDownloadTagWatermarking.java
+END
+IMediaAccess.java
+K 25
+svn:wc:ra_dav:version-url
+V 189
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/interfaces/IMediaAccess.java
+END
+IFacade.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/interfaces/IFacade.java
+END
+IMediaAccessMaintenance.java
+K 25
+svn:wc:ra_dav:version-url
+V 200
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/interfaces/IMediaAccessMaintenance.java
+END
+IPackaging.java
+K 25
+svn:wc:ra_dav:version-url
+V 187
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/interfaces/IPackaging.java
+END
+IDownloadAudioWatermarking.java
+K 25
+svn:wc:ra_dav:version-url
+V 203
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/interfaces/IDownloadAudioWatermarking.java
+END
+IUserDBAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 191
+/i43/svn/code/!svn/ver/26496/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation/mediastore.basic/src/edu/kit/ipd/sdq/mediastore/basic/interfaces/IUserDBAdapter.java
+END

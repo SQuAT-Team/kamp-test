@@ -1,0 +1,162 @@
+10
+
+dir
+30982
+https://anonymous@svnserver.informatik.kit.edu/i43/svn/code/CaseStudies/MediaStore3/branches/PCM%20nightly%20build%20model/Implementation
+https://anonymous@svnserver.informatik.kit.edu/i43/svn/code
+
+
+
+2015-05-10T21:53:09.284115Z
+26467
+s_kechao
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+769cc9a0-fb0c-0410-8c2f-a2305f0e6268
+
+mediastore.ejb.userdbadapter
+dir
+
+mediastore.ejb.tagwatermarking
+dir
+
+mediastore.ear.packaging
+dir
+
+mediastore.ear.userdbadapter
+dir
+
+mediastore.ear.tagwatermarking
+dir
+
+mediastore.ejb.mediaaccess
+dir
+
+mediastore.ejb.facade
+dir
+
+mediastore.ejb.cache
+dir
+
+gpl-3.0.txt
+file
+
+
+
+
+2016-04-20T01:00:59.000000Z
+d32239bcb673463ab874e80d47fae504
+2015-04-24T16:18:43.214635Z
+26300
+strittm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+35147
+
+mediastore.ejb.reencoder
+dir
+
+mediastore.ear.mediaaccess
+dir
+
+mediastore.ear.facade
+dir
+
+mediastore.ear.cache
+dir
+
+mediastore.ejb.usermanagement
+dir
+
+mediastore.ejb.mediamanagement
+dir
+
+mediastore.ejb.audiowatermarking
+dir
+
+mediastore.ear.reencoder
+dir
+
+mediastore.web
+dir
+
+Doku.pdf
+file
+
+
+
+
+2016-04-20T01:00:59.000000Z
+cad83531bea19408afb9e3e16570dde6
+2015-05-06T12:26:19.647658Z
+26404
+strittm
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+644457
+
+mediastore.ear.usermanagement
+dir
+
+mediastore.basic
+dir
+
+mediastore.ear.mediamanagement
+dir
+
+mediastore.ear.audiowatermarking
+dir
+
+mediastore.ejb.packaging
+dir
+

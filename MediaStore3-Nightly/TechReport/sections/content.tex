@@ -1,0 +1,195 @@
+%% LaTeX2e class for student theses
+%% sections/content.tex
+%% 
+%% Karlsruhe Institute of Technology
+%% Institute for Program Structures and Data Organization
+%% Chair for Software Design and Quality (SDQ)
+%%
+%% Dr.-Ing. Erik Burger
+%% burger@kit.edu
+%%
+%% Version 1.1, 2014-11-21
+
+
+\chapter{Introduction}
+
+
+\chapter{License}
+\begin{verbatim}
+Media Store V3
+Copyright (C) 2015 Software Design and Quality Group (SDQ), KIT, Germany
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+Full version of the GNU General Public License is at:
+../Implementation/gpl-3.0.txt
+or
+http://www.gnu.org/licenses/
+\end{verbatim}
+
+
+\chapter{Resources}
+All information about the Media Store can be found at the following SVN repository:\\
+https://svnserver.informatik.kit.edu/i43/svn/code/CaseStudies/MediaStore3\\
+The structure of the repository is as follows:
+
+\vspace{10pt}
+\dirtree{%
+	.1 MediaStore3.
+		.2 branches.
+		.2 tags.
+			.3 1.0.
+			.3 1.1 Implementation.
+		.2 trunk.
+			.3 Data.
+			.3 Implementation.
+			.3 Model.
+			.3 TechReport.
+}
+\vspace{10pt}
+
+The trunk folder contains the most up-to-date files.
+Keep in mind, that this code may be under development and may contain errors and may not be in sync with the model or the data.
+The tags folder contains tagged versions of the trunk or of subfolders of the trunk.
+The trunk contains the following subfolders:
+\begin{description}
+	\item[Data] Measurement and simulation data of the media store (see \autoref{data}).
+	\item[Implementation] The source code of the media store (see \autoref{impl}).
+	\item[Model] The PCM model of the media store (see \autoref{model}).
+	\item[TechReport] Sources and compiled version of this document.
+\end{description}
+
+
+\chapter{Implementation}
+\label{impl}
+%general
+The purpose of the Media Store implementation is not to be an application designed for use by humans, but to possess architectural and performance features like such an application.
+Using it as an subject of investigation, the capabilities of the Palladio Approach can be demonstrated.
+Thus, it is designed to adhere to a set of special requirements: component-based architecture, free individual deployment of each component, up-to-date JEE technology, presence of scaling resource demands.
+
+%drawbacks and future work
+However, the free individual deployment of components has negative implications on the performance of the implementation, if EJBs are deployed and have to communicated within the same application server.
+In future work, a mechanism to switch between remote and local communication is implemented.
+Using this mechanism it is possible to package multiple EJBs into one EAR and have them communicate locally.
+This solution will achieve the benefits of flexibility by free deployment and the performance of local communication where possible.
+Another future work is the implementation of runtime rewireing of EJBs.
+This will enable to inject any component into a dependency of an EJB, no matter if remote or local as long as the EJB is already deployed.
+
+%mapping
+The implementation adheres to a component to software artifact mapping.
+\autoref{fig:techn_arch} shows a possible configuration of the component-based architecture of the Media Store, as specified in the PCM model.
+Basic components that are marked by the EJB stereotype map to stateless session beans.
+Provided interfaces (roles to be exact) map to implemented business interfaces of EJBs.
+Required interfaces map to business interfaces which appear as attributes of EJBs.
+Connectors can be regarded as the data, which is provided for the JNDI lookup, which retrieves the required EJB.
+Exceptions to this mapping are: the DB, DataStorage, WebGUI components and their interfaces.
+The DB component is an arbitrary JPA compatible DBMS.
+The DataStorage represents a location on a file system, which may be local or on a remote file share.
+The WebGUI is mainly JSF but uses an empty EJB (Facade) to dispatch its calls into the backend.
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=\textwidth]{img/techn_arch.pdf}
+	\caption{Possible Configuration of the Media Store Architecture}
+	\label{fig:techn_arch}
+\end{figure}
+
+%technical stuffs
+For more in dept information about the implementation, technical requirements and how to set it up please consult the German documentation
+\footnote{\scriptsize https://svnserver.informatik.kit.edu/i43/svn/code/CaseStudies/MediaStore3/trunk/Implementation/Doku.pdf}.
+In addition, the MediaStore has to be configured, which currently is done by modifying the constants within the GlobalConstantsContainer class.
+As already mentioned, this will be extracted into a dedicated configuration file.
+
+% ramdisc
+% remote data transfer
+
+
+\chapter{PCM Model}
+\label{model}
+The PCM model of the Media Store represents an early design model.
+It is not a highly calibrated model to validate the PCM.
+Thus, the model has high error margins (up to 97\%).
+However, the tendencies for modeled and explored design alternatives are correct and a high error is to be expected for an early design model.
+More calibration is, however, always possible to improve accuracy.
+In the case of this PCM model, the high errors result from the really fast services (e.g. login).
+During modeling they were treated with less rigor, as they are not as performance relevant compared to other services.
+The download functionality is more important, as it causes the most resource demands.
+The model accuracy for download is much higher (error below 9 \%).
+
+The model was built, as it would be built in the an early design stage.
+The implementation is non-existent.
+However, third party components and prototypical code exists.
+It is especially worthwhile to prototype infrastructure functionality, which is used by all components (e.g., JNDI lookup and remote calls).
+Using a load driver and a monitoring tool, resource demands can be extracted from the existing code and fed into the model.
+Resource demands can also be transferred to code, which is expected to generate a similar load.
+
+To model the concrete CPU resource demands, the response time of a single functionality was measured in isolation.
+As an approximation, we used the response times as resource demands.
+This is plausible, as the use of a RAM Disc removes waiting times due to HDD access from most functionality (except for the initial retrieval from the DataStorage).
+The following functionality was measured:
+\begin{itemize}
+	\item Overhead of remote communication and JNDI lookups, which is easy to prototype.
+		This was measured once and inserted into every SEFF for components, which correspond to EJBs.
+		This demand is constant.
+	\item Query building (by the EJB/JPA) and execution (by the DBMS).
+		This was measured once and then inserted for both database accessing components (MediaAccess and UserDBAdapter).
+		This demand is constant.
+	\item The resource demand of packaging audio files into zip files.
+		We measured this functionality, as we consider it already available in the design phase, as it is provided by the Java API.
+		We measured this functionality using multiple files with varying sizes and modeled the resource demand using linear regression.
+		Thus, this demand is proportional to the overall size of requested files.
+	\item We measured the demand of reencoding and audio watermarking.
+		Both use the LAME codec, which is readily available.
+		Further, we assume, that the audio watermarking component is a cots (component of the shelf).
+		Without that assumption, we would have to estimate the performance of the component, which would lead to a worsened accuracy.
+		An educated guess could be to double the demand from encoding, as lame is used two times for audio watermarking.
+\end{itemize}
+
+While we are satisfied with the accuracy of the model as an early design model, we are aware of much improvement potential.
+This could be addressed if one needs a highly fitted model for performance evaluation.
+\begin{itemize}
+	\item The overhead due to transfer of audio data between EJBs is not regarded.
+		This is relevant for the upload and download services.
+	\item All DB queries have the same constant resource demand.
+		getFileList queries, however, should depend on the amount of entries in the database.
+	\item The HDD is not modeled.
+		This could be done for the DB and DataStorage Component.
+		However, HDD access is not easily approximated, as it does not works as an FIFO, nor as a processor sharing resource.
+		Possible, quite elaborate solutions are the use of performance curves \cite{wert2012integrating}, regression or queuing models \cite{noorshams2015phd}.
+	\item The resource demand of reencoding and audio watermarking is dependent on the requested audio files.
+		However, a correlation which can be expressed in closed form is not easily found due to the many influencing factors (input size, output size, lenght, bitrates, etc.).
+		Thus, their resource demands are currently modeled using constant probability density functions, which are tuned to the audio payload.
+		The resource demands could be parametrized by using performance curves, regression or queuing models.
+	\item The overhead of remote EJB communication and JNDI lookups was measured under a high parallel load.
+		Later, this turned out to be problematic, as the expected workload utilizes all services and thus accelerating factors from the high parallel load of one service were no longer in effect (e.g., cache effects).
+\end{itemize}
+
+The audio payload, under which the model was calibrated, consists of 6 files, which were replicated 20 times each.
+The replication was used to minimize caching effect that would have occurred if the size of the payload was to small.
+The amount of files per requests may be varied.
+However, due to the modeling of the reencoding and audio watermarking resource demands, the files have to be requested equally distributed.
+For our purpose, which is to have an early design time model, this modeling is sufficiently representative of a random MP3 collection.
+It was not our intent to create an intricate model of a MP3 collection.
+However, if desired, a model of arbitrary complexity may be created and the resource demands may be recalibrated or a more complex modeling of these resource demands can be put in place which is parametrized.
+As payload we used freely available files from the artist trash80 \footnote{http://trash80.com/}.
+The song names are: Excuses, Impact of Silence, 
+
+data payload
+* constant demand ...
+
+
+\chapter{Data}
+\label{data}
+stored in the form of data file sources
+these can be opened in pcm stable 3.5.0 (link to drop)
+may be compatible with newer pcm versions
+
+describe svn trunk content
