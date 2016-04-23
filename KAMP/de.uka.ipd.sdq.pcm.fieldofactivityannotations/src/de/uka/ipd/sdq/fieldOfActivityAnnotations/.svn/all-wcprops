@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.fieldofactivityannotations/src/de/uka/ipd/sdq/fieldOfActivityAnnotations
+END
+PhysicalRepresentation.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.fieldofactivityannotations/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/PhysicalRepresentation.java
+END
+SourceFile.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.fieldofactivityannotations/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/SourceFile.java
+END
+FieldOfActivityAnnotationsRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 189
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.fieldofactivityannotations/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/FieldOfActivityAnnotationsRepository.java
+END
+TechnologicalCorrespondence.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.fieldofactivityannotations/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/TechnologicalCorrespondence.java
+END
+SourceFileAggregation.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.fieldofactivityannotations/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/SourceFileAggregation.java
+END
+RuntimeInstance.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.fieldofactivityannotations/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/RuntimeInstance.java
+END
+TestCase.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.fieldofactivityannotations/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/TestCase.java
+END
+Testing.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.fieldofactivityannotations/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/Testing.java
+END
+FieldOfActivityAnnotationsPackage.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.fieldofactivityannotations/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/FieldOfActivityAnnotationsPackage.java
+END
+RuntimeInstanceAggregation.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.fieldofactivityannotations/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/RuntimeInstanceAggregation.java
+END
+Deployment.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.fieldofactivityannotations/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/Deployment.java
+END
+TestType.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.fieldofactivityannotations/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/TestType.java
+END
+TestCaseAggregation.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.fieldofactivityannotations/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/TestCaseAggregation.java
+END
+BuildConfiguration.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.fieldofactivityannotations/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/BuildConfiguration.java
+END
+DesignPatternRole.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.fieldofactivityannotations/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/DesignPatternRole.java
+END
+TechnologicalCorrespondenceTypes.java
+K 25
+svn:wc:ra_dav:version-url
+V 185
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.fieldofactivityannotations/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/TechnologicalCorrespondenceTypes.java
+END
+FieldOfActivityAnnotationsFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.fieldofactivityannotations/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/FieldOfActivityAnnotationsFactory.java
+END
+StaffAssignment.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.fieldofactivityannotations/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/StaffAssignment.java
+END
+LogicalRepresentation.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.fieldofactivityannotations/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/LogicalRepresentation.java
+END

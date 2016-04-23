@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.internalmodificationmark.edit/src/de/uka/ipd/sdq/internalmodificationmark/provider
+END
+InternalmodificationmarkItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 213
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.internalmodificationmark.edit/src/de/uka/ipd/sdq/internalmodificationmark/provider/InternalmodificationmarkItemProviderAdapterFactory.java
+END
+InternalModificationMarkEditPlugin.java
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.internalmodificationmark.edit/src/de/uka/ipd/sdq/internalmodificationmark/provider/InternalModificationMarkEditPlugin.java
+END
+InternalModificationMarkItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 199
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.internalmodificationmark.edit/src/de/uka/ipd/sdq/internalmodificationmark/provider/InternalModificationMarkItemProvider.java
+END
+InternalModificationMarkRepositoryItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 209
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.internalmodificationmark.edit/src/de/uka/ipd/sdq/internalmodificationmark/provider/InternalModificationMarkRepositoryItemProvider.java
+END

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_XqSD4GS-EeKWUqRocs82VQ" type="EcoreTools" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_h0t3kGS-EeKWUqRocs82VQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_h0wT0GS-EeKWUqRocs82VQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_h0yJAGS-EeKWUqRocs82VQ" type="5001">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_h0yJAWS-EeKWUqRocs82VQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_h0yJAmS-EeKWUqRocs82VQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_h0yJA2S-EeKWUqRocs82VQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_h0ywEGS-EeKWUqRocs82VQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_h0ywEWS-EeKWUqRocs82VQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_h0ywEmS-EeKWUqRocs82VQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_h0ywE2S-EeKWUqRocs82VQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_h0t3kWS-EeKWUqRocs82VQ" fontColor="4210752" fontName="Lucida Grande" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="KAMPModificationsmarks.ecore#//ModificationRepository"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h0t3kmS-EeKWUqRocs82VQ" x="85" y="81"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_lln9YGS-EeKWUqRocs82VQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_llokcmS-EeKWUqRocs82VQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_llpLgGS-EeKWUqRocs82VQ" type="5001">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_llpLgWS-EeKWUqRocs82VQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_llpLgmS-EeKWUqRocs82VQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_llpLg2S-EeKWUqRocs82VQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_llpLhGS-EeKWUqRocs82VQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_llpLhWS-EeKWUqRocs82VQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_llpLhmS-EeKWUqRocs82VQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_llpLh2S-EeKWUqRocs82VQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_llokcGS-EeKWUqRocs82VQ" fontColor="4210752" fontName="Lucida Grande" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="KAMPModificationsmarks.ecore#//ModifyComponent"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_llokcWS-EeKWUqRocs82VQ" x="96" y="180" width="123"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_XqSD4WS-EeKWUqRocs82VQ"/>
+  <element xmi:type="ecore:EPackage" href="KAMPModificationsmarks.ecore#/"/>
+  <edges xmi:type="notation:Edge" xmi:id="_sPmiEGS-EeKWUqRocs82VQ" type="3002" source="_h0t3kGS-EeKWUqRocs82VQ" target="_lln9YGS-EeKWUqRocs82VQ">
+    <children xmi:type="notation:Node" xmi:id="_sPnwMGS-EeKWUqRocs82VQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_sPnwMWS-EeKWUqRocs82VQ" x="-1" y="-66"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_sPoXQGS-EeKWUqRocs82VQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_sPoXQWS-EeKWUqRocs82VQ" x="-1" y="13"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_sPmiEWS-EeKWUqRocs82VQ" routing="Rectilinear" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_sPmiEmS-EeKWUqRocs82VQ" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="KAMPModificationsmarks.ecore#//ModificationRepository/componentModifications"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_sPmiE2S-EeKWUqRocs82VQ" points="[27, 33, -6, -79]$[27, 92, -6, -20]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_sQiWMGS-EeKWUqRocs82VQ" id="(0.2932330827067669,0.19047619047619047)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_bNBVYGS_EeKWUqRocs82VQ" id="(0.5,0.5)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_WPENoGS_EeKWUqRocs82VQ" type="3002" source="_lln9YGS-EeKWUqRocs82VQ" target="_h0t3kGS-EeKWUqRocs82VQ">
+    <children xmi:type="notation:Node" xmi:id="_WPE0sGS_EeKWUqRocs82VQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_WPE0sWS_EeKWUqRocs82VQ" x="-8" y="-53"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_WPFbwGS_EeKWUqRocs82VQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_WPFbwWS_EeKWUqRocs82VQ" y="13"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_WPENoWS_EeKWUqRocs82VQ" routing="Rectilinear" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_WPENomS_EeKWUqRocs82VQ" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="KAMPModificationsmarks.ecore#//ModifyComponent/parentRepository"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_WPENo2S_EeKWUqRocs82VQ" points="[-6, -20, 27, 92]$[-6, -79, 27, 33]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_bNDxoWS_EeKWUqRocs82VQ" id="(0.5,0.5)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_bNDxomS_EeKWUqRocs82VQ" id="(0.2932330827067669,0.19047619047619047)"/>
+  </edges>
+</notation:Diagram>

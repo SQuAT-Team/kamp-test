@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.componentinternaldependencies.edit/src/de/uka/ipd/sdq/componentInternalDependencies/provider
+END
+RoleToRoleDependencyItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 205
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.componentinternaldependencies.edit/src/de/uka/ipd/sdq/componentInternalDependencies/provider/RoleToRoleDependencyItemProvider.java
+END
+ComponentInternalDependencyRepositoryItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 222
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.componentinternaldependencies.edit/src/de/uka/ipd/sdq/componentInternalDependencies/provider/ComponentInternalDependencyRepositoryItemProvider.java
+END
+ComponentInternalDependenciesItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 228
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.componentinternaldependencies.edit/src/de/uka/ipd/sdq/componentInternalDependencies/provider/ComponentInternalDependenciesItemProviderAdapterFactory.java
+END
+ComponentInternalDependenciesEditPlugin.java
+K 25
+svn:wc:ra_dav:version-url
+V 212
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.componentinternaldependencies.edit/src/de/uka/ipd/sdq/componentInternalDependencies/provider/ComponentInternalDependenciesEditPlugin.java
+END
+OperationToOperationDependencyItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 215
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.componentinternaldependencies.edit/src/de/uka/ipd/sdq/componentInternalDependencies/provider/OperationToOperationDependencyItemProvider.java
+END

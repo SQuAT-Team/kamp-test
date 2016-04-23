@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/test
+END
+DissRunningExampleTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/test/DissRunningExampleTest.java
+END
+ArchitectureVersionPersistencyTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/test/ArchitectureVersionPersistencyTest.java
+END
+PSEStudienTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/test/PSEStudienTest.java
+END
+TestPathProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/test/TestPathProvider.java
+END
+ChangePropagationDetectionTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/test/ChangePropagationDetectionTest.java
+END
+DifferenceDetectionTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/test/DifferenceDetectionTest.java
+END
+ArchitectureModelFactoryTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/test/ArchitectureModelFactoryTest.java
+END
+KAMPApplicationTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/test/KAMPApplicationTest.java
+END
+ArchitectureModelLookupTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/test/ArchitectureModelLookupTest.java
+END
+AnnotationModelsTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/test/AnnotationModelsTest.java
+END

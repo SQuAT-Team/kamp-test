@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.componentinternaldependencies/src/de/uka/ipd/sdq/componentInternalDependencies/impl
+END
+ComponentInternalDependenciesFactoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 204
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.componentinternaldependencies/src/de/uka/ipd/sdq/componentInternalDependencies/impl/ComponentInternalDependenciesFactoryImpl.java
+END
+ComponentInternalDependencyRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 205
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.componentinternaldependencies/src/de/uka/ipd/sdq/componentInternalDependencies/impl/ComponentInternalDependencyRepositoryImpl.java
+END
+ComponentInternalDependenciesPackageImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 204
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.componentinternaldependencies/src/de/uka/ipd/sdq/componentInternalDependencies/impl/ComponentInternalDependenciesPackageImpl.java
+END
+OperationToOperationDependencyImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 198
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.componentinternaldependencies/src/de/uka/ipd/sdq/componentInternalDependencies/impl/OperationToOperationDependencyImpl.java
+END
+RoleToRoleDependencyImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/i43/svn/code/!svn/ver/28686/Palladio/Addons/KAMP/trunk/de.uka.ipd.sdq.pcm.componentinternaldependencies/src/de/uka/ipd/sdq/componentInternalDependencies/impl/RoleToRoleDependencyImpl.java
+END

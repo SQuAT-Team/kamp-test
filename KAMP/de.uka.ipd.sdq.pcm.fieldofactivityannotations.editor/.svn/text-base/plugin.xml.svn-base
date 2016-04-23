@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.fieldofactivity.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="de.uka.ipd.sdq.fieldOfActivityAnnotations.presentation.FieldOfActivityAnnotationsModelWizardID"
+            name="%_UI_FieldOfActivityAnnotationsModelWizard_label"
+            class="de.uka.ipd.sdq.fieldOfActivityAnnotations.presentation.FieldOfActivityAnnotationsModelWizard"
+            category="org.eclipse.emf.ecore.internalmodificationmark.category.ID"
+            icon="icons/full/obj16/FieldOfActivityAnnotationsModelFile.gif">
+         <description>%_UI_FieldOfActivityAnnotationsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="de.uka.ipd.sdq.fieldOfActivityAnnotations.presentation.FieldOfActivityAnnotationsEditorID"
+            name="%_UI_FieldOfActivityAnnotationsEditor_label"
+            icon="icons/full/obj16/FieldOfActivityAnnotationsModelFile.gif"
+            extensions="fieldofactivityannotations"
+            class="de.uka.ipd.sdq.fieldOfActivityAnnotations.presentation.FieldOfActivityAnnotationsEditor"
+            contributorClass="de.uka.ipd.sdq.fieldOfActivityAnnotations.presentation.FieldOfActivityAnnotationsActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="edu.kit.ipd.sdq.kamp.buckminster"
+      label="KAMP Buckminster Build Feature"
+      version="1.0.0.qualifier">
+
+   <includes
+         id="edu.kit.ipd.sdq.kamp.feature"
+         version="1.0.0.qualifier"/>
+
+</feature>

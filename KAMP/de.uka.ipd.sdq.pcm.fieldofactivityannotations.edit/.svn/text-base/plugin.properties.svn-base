@@ -1,0 +1,103 @@
+
+# <copyright>
+# </copyright>
+#
+# $Id$
+
+pluginName = FieldOfActivityAnnotations Edit Support
+providerName = www.kit.edu
+
+_UI_CreateChild_text = {0}
+_UI_CreateChild_text2 = {1} {0}
+_UI_CreateChild_text3 = {1}
+_UI_CreateChild_tooltip = Create New {0} Under {1} Feature
+_UI_CreateChild_description = Create a new child of type {0} for the {1} feature of the selected {2}.
+_UI_CreateSibling_description = Create a new sibling of type {0} for the selected {2}, under the {1} feature of their parent.
+
+_UI_PropertyDescriptor_description = The {0} of the {1}
+
+_UI_FieldOfActivityAnnotationsRepository_type = Repository
+_UI_PhysicalRepresentation_type = Physical Representation
+_UI_LogicalRepresentation_type = Logical Representation
+_UI_Testing_type = Testing
+_UI_Deployment_type = Deployment
+_UI_Unknown_type = Object
+
+_UI_Unknown_datatype= Value
+
+_UI_FieldOfActivityAnnotationsRepository_physicalRepresentations_feature = Physical Representations
+_UI_FieldOfActivityAnnotationsRepository_logicalRepresentations_feature = Logical Representations
+_UI_FieldOfActivityAnnotationsRepository_testing_feature = Testing
+_UI_FieldOfActivityAnnotationsRepository_deployment_feature = Deployment
+_UI_PhysicalRepresentation_numberOfSourceFiles_feature = Number Of Source Files
+_UI_PhysicalRepresentation_numberOfConfigurationFiles_feature = Number Of Configuration Files
+_UI_PhysicalRepresentation_hasSourceFiles_feature = Has Source Files
+_UI_PhysicalRepresentation_repositoryComponent_feature = Repository Component
+_UI_LogicalRepresentation_logicalRepresentationName_feature = Logical Representation Name
+_UI_LogicalRepresentation_repositoryComponent_feature = Repository Component
+_UI_Testing_numberOfTestcases_feature = Number Of Testcases
+_UI_Testing_repositoryComponent_feature = Repository Component
+_UI_Deployment_numberOfDeploymentNodes_feature = Number Of Deployment Nodes
+_UI_Deployment_repositoryComponent_feature = Repository Component
+_UI_Unknown_feature = Unspecified
+
+_UI_SourceFile_type = Source File
+_UI_SourceFileAggregation_type = Source File Aggregation
+_UI_BuildConfiguration_type = Build Configuration
+_UI_RuntimeInstance_type = Runtime Instance
+_UI_RuntimeInstanceAggregation_type = Runtime Instance Aggregation
+_UI_TestCase_type = Test Case
+_UI_TestType_type = Test Type
+_UI_TestCaseAggregation_type = Test Case Aggregation
+_UI_UnitTest_type = Unit Test
+_UI_FunctionalTest_type = Functional Test
+_UI_IntegrationTest_type = Integration Test
+_UI_AcceptanceTest_type = Acceptance Test
+_UI_FieldOfActivityAnnotationsRepository_sourceFiles_feature = Source Files
+_UI_FieldOfActivityAnnotationsRepository_sourceFileAggregations_feature = Source File Aggregations
+_UI_FieldOfActivityAnnotationsRepository_buildConfigurations_feature = Build Configurations
+_UI_FieldOfActivityAnnotationsRepository_runtimeInstances_feature = Runtime Instances
+_UI_FieldOfActivityAnnotationsRepository_runtimeInstanceAggregations_feature = Runtime Instance Aggregations
+_UI_FieldOfActivityAnnotationsRepository_testCases_feature = Test Cases
+_UI_FieldOfActivityAnnotationsRepository_testCaseAggregations_feature = Test Case Aggregations
+_UI_SourceFile_name_feature = Name
+_UI_SourceFile_component_feature = Component
+_UI_SourceFileAggregation_numberOfSourceFiles_feature = Number Of Source Files
+_UI_SourceFileAggregation_component_feature = Component
+_UI_BuildConfiguration_name_feature = Name
+_UI_BuildConfiguration_components_feature = Components
+_UI_RuntimeInstance_name_feature = Name
+_UI_RuntimeInstance_component_feature = Component
+_UI_RuntimeInstanceAggregation_numberOfRuntimeInstances_feature = Number Of Runtime Instances
+_UI_RuntimeInstanceAggregation_component_feature = Component
+_UI_TestCase_name_feature = Name
+_UI_TestCase_testType_feature = Test Type
+_UI_TestCase_providedRoles_feature = Provided Roles
+_UI_TestCaseAggregation_numberOfTestCases_feature = Number Of Test Cases
+_UI_TestCaseAggregation_testType_feature = Test Type
+_UI_TestCaseAggregation_providedRoles_feature = Provided Roles
+_UI_DesignPatternRole_type = Design Pattern Role
+_UI_TechnologicalCorrespondence_type = Technological Correspondence
+_UI_StaffAssignment_type = Staff Assignment
+_UI_FieldOfActivityAnnotationsRepository_designPatternRoles_feature = Design Pattern Roles
+_UI_FieldOfActivityAnnotationsRepository_technologicalCorrespondences_feature = Technological Correspondences
+_UI_FieldOfActivityAnnotationsRepository_staffAssignment_feature = Staff Assignment
+_UI_DesignPatternRole_providedRole_feature = Provided Role
+_UI_DesignPatternRole_component_feature = Component
+_UI_TechnologicalCorrespondence_technologicalCorrespondenceType_feature = Technological Correspondence Type
+_UI_TechnologicalCorrespondence_component_feature = Component
+_UI_StaffAssignment_component_feature = Component
+_UI_StaffAssignment_teamName_feature = Team Name
+_UI_StaffAssignment_staffName_feature = Staff Name
+_UI_TestType_UnitTest_literal = UnitTest
+_UI_TestType_FunctionalTest_literal = FunctionalTest
+_UI_TestType_IntegrationTest_literal = IntegrationTest
+_UI_TestType_AcceptanceTest_literal = AcceptanceTest
+_UI_TechnologicalCorrespondenceTypes_SetOfClasses_literal = SetOfClasses
+_UI_TechnologicalCorrespondenceTypes_JavaPackages_literal = JavaPackages
+_UI_TechnologicalCorrespondenceTypes_Plugins_literal = Plugins
+_UI_TechnologicalCorrespondenceTypes_EclipsePlugins_literal = EclipsePlugins
+_UI_TechnologicalCorrespondenceTypes_EJB_literal = EJB
+_UI_TechnologicalCorrespondenceTypes_Packages_literal = Packages
+_UI_TechnologicalCorrespondenceTypes_Namespaces_literal = Namespaces
+_UI_TechnologicalCorrespondenceTypes_Directories_literal = Directories

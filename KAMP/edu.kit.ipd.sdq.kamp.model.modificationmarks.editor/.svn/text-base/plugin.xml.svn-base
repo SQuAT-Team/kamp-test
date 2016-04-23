@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="edu.kit.ipd.sdq.kamp.wizard.category"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="edu.kit.ipd.sdq.kamp.model.modificationmarks.presentation.modificationmarksModelWizardID"
+            name="%_UI_modificationmarksModelWizard_label"
+            class="edu.kit.ipd.sdq.kamp.model.modificationmarks.presentation.modificationmarksModelWizard"
+            category="edu.kit.ipd.sdq.kamp.wizard.category"
+            icon="icons/full/obj16/modificationmarksModelFile.gif">
+         <description>%_UI_modificationmarksModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="edu.kit.ipd.sdq.kamp.model.modificationmarks.presentation.modificationmarksEditorID"
+            name="%_UI_modificationmarksEditor_label"
+            icon="icons/full/obj16/modificationmarksModelFile.gif"
+            extensions="modificationmarks"
+            class="edu.kit.ipd.sdq.kamp.model.modificationmarks.presentation.modificationmarksEditor"
+            contributorClass="edu.kit.ipd.sdq.kamp.model.modificationmarks.presentation.modificationmarksActionBarContributor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="edu.kit.ipd.sdq.kamp.model.modificationmarks.editor.objectContributionkamp1"
+            objectClass="edu.kit.ipd.sdq.kamp.model.modificationmarks.ModificationRepository">
+         <action
+               class="edu.kit.ipd.sdq.kamp.model.modificationmarks.editor.ArchitectureBasedWorkplanDerivationAction"
+               icon="icons/run.png"
+               id="edu.kit.ipd.sdq.kamp.model.modificationmarks.editor.actionArchitectureBasedWorkplanDerivation"
+               label="Schritt 4: Aktivitäten berechnen"
+               menubarPath="edit">
+         </action>
+         <action
+               class="edu.kit.ipd.sdq.kamp.model.modificationmarks.editor.ChangePropagationAction"
+               icon="icons/run.png"
+               id="edu.kit.ipd.sdq.kamp.model.modificationmarks.editor.actionChangePropagation"
+               label="Schritt 3: Änderungsausbreitung berechnen"
+               menubarPath="edit">
+         </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="edu.kit.ipd.sdq.kamp.model.modificationmarks.editor.objectContributionChangeSteps"
+            objectClass="edu.kit.ipd.sdq.kamp.model.modificationmarks.ChangePropagationStep">
+         <action
+               class="edu.kit.ipd.sdq.kamp.model.modificationmarks.editor.UserDecisionNoDecisionAction"
+               id="edu.kit.ipd.sdq.kamp.model.modificationmarks.editor.UserDecisionNoSelectionAction"
+               label="Keine Benutzerentscheidung"
+               menubarPath="edit"
+               state="true"
+               style="radio">
+         </action>
+         <action
+               class="edu.kit.ipd.sdq.kamp.model.modificationmarks.editor.UserDecisionConfirmAction"
+               id="edu.kit.ipd.sdq.kamp.model.modificationmarks.editor.UserDecisionConfirmAction"
+               label="Bestätigen"
+               menubarPath="edit"
+               style="radio">
+         </action>
+         <action
+               class="edu.kit.ipd.sdq.kamp.model.modificationmarks.editor.UserDecisionExcludeAction"
+               id="edu.kit.ipd.sdq.kamp.model.modificationmarks.editor.UserDecisionExcludeAction"
+               label="Ablehnen"
+               menubarPath="edit"
+               style="radio">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>

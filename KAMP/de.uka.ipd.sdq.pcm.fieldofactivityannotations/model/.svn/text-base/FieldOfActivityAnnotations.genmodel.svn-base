@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/uml2/2.2.0/GenModel"
+    modelDirectory="/de.uka.ipd.sdq.pcm.fieldofactivityannotations/src"
+    modelPluginID="de.uka.ipd.sdq.pcm.fieldofactivityannotations" modelName="FieldOfActivityAnnotations"
+    importerID="org.eclipse.uml2.uml.ecore.importer" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="platform:/plugin/de.uka.ipd.sdq.identifier/model/identifier.genmodel#//identifier ../../de.uka.ipd.sdq.pcm/model/pcm.genmodel#//pcm platform:/plugin/de.uka.ipd.sdq.stoex/model/stoex.genmodel#//stoex platform:/plugin/de.uka.ipd.sdq.units/model/Units.genmodel#//units platform:/plugin/de.uka.ipd.sdq.probfunction/model/ProbabilityFunction.genmodel#//probfunction">
+  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/importer/org.eclipse.uml2.uml.ecore.importer">
+    <details key="ECORE_TAGGED_VALUES" value="PROCESS"/>
+    <details key="UNION_PROPERTIES" value="REPORT"/>
+    <details key="DUPLICATE_FEATURES" value="DISCARD"/>
+    <details key="SUBSETTING_PROPERTIES" value="REPORT"/>
+    <details key="COMMENTS" value="PROCESS"/>
+    <details key="DUPLICATE_FEATURE_INHERITANCE" value="DISCARD"/>
+    <details key="DUPLICATE_OPERATIONS" value="DISCARD"/>
+    <details key="INVARIANT_CONSTRAINTS" value="PROCESS"/>
+    <details key="REDEFINING_PROPERTIES" value="REPORT"/>
+    <details key="ANNOTATION_DETAILS" value="PROCESS"/>
+    <details key="DUPLICATE_OPERATION_INHERITANCE" value="DISCARD"/>
+    <details key="REDEFINING_OPERATIONS" value="REPORT"/>
+    <details key="DERIVED_FEATURES" value="PROCESS"/>
+    <details key="OPERATION_BODIES" value="IGNORE"/>
+    <details key="CAMEL_CASE_NAMES" value="IGNORE"/>
+    <details key="SUPER_CLASS_ORDER" value="PROCESS"/>
+  </genAnnotations>
+  <foreignModel>file:/Users/stammel/Desktop/rsagenerates/FieldOfActivityAnnotations.uml</foreignModel>
+  <genPackages xsi:type="genmodel:GenPackage" prefix="FieldOfActivityAnnotations"
+      basePackage="de.uka.ipd.sdq" resource="XMI" disposableProviderFactory="true"
+      ecorePackage="fieldOfActivityAnnotations.ecore#/">
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="fieldOfActivityAnnotations.ecore#//TestType">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fieldOfActivityAnnotations.ecore#//TestType/UnitTest"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fieldOfActivityAnnotations.ecore#//TestType/FunctionalTest"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fieldOfActivityAnnotations.ecore#//TestType/IntegrationTest"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fieldOfActivityAnnotations.ecore#//TestType/AcceptanceTest"/>
+    </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="fieldOfActivityAnnotations.ecore#//TechnologicalCorrespondenceTypes">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fieldOfActivityAnnotations.ecore#//TechnologicalCorrespondenceTypes/SetOfClasses"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fieldOfActivityAnnotations.ecore#//TechnologicalCorrespondenceTypes/JavaPackages"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fieldOfActivityAnnotations.ecore#//TechnologicalCorrespondenceTypes/Plugins"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fieldOfActivityAnnotations.ecore#//TechnologicalCorrespondenceTypes/EclipsePlugins"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fieldOfActivityAnnotations.ecore#//TechnologicalCorrespondenceTypes/EJB"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fieldOfActivityAnnotations.ecore#//TechnologicalCorrespondenceTypes/Packages"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fieldOfActivityAnnotations.ecore#//TechnologicalCorrespondenceTypes/Namespaces"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="fieldOfActivityAnnotations.ecore#//TechnologicalCorrespondenceTypes/Directories"/>
+    </genEnums>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="fieldOfActivityAnnotations.ecore#//FieldOfActivityAnnotationsRepository">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference fieldOfActivityAnnotations.ecore#//FieldOfActivityAnnotationsRepository/sourceFiles"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference fieldOfActivityAnnotations.ecore#//FieldOfActivityAnnotationsRepository/sourceFileAggregations"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference fieldOfActivityAnnotations.ecore#//FieldOfActivityAnnotationsRepository/buildConfigurations"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference fieldOfActivityAnnotations.ecore#//FieldOfActivityAnnotationsRepository/runtimeInstances"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference fieldOfActivityAnnotations.ecore#//FieldOfActivityAnnotationsRepository/runtimeInstanceAggregations"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference fieldOfActivityAnnotations.ecore#//FieldOfActivityAnnotationsRepository/testCases"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference fieldOfActivityAnnotations.ecore#//FieldOfActivityAnnotationsRepository/testCaseAggregations"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference fieldOfActivityAnnotations.ecore#//FieldOfActivityAnnotationsRepository/designPatternRoles"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference fieldOfActivityAnnotations.ecore#//FieldOfActivityAnnotationsRepository/technologicalCorrespondences"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference fieldOfActivityAnnotations.ecore#//FieldOfActivityAnnotationsRepository/staffAssignment"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="fieldOfActivityAnnotations.ecore#//SourceFile">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute fieldOfActivityAnnotations.ecore#//SourceFile/name"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference fieldOfActivityAnnotations.ecore#//SourceFile/component"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="fieldOfActivityAnnotations.ecore#//SourceFileAggregation">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute fieldOfActivityAnnotations.ecore#//SourceFileAggregation/numberOfSourceFiles"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference fieldOfActivityAnnotations.ecore#//SourceFileAggregation/component"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="fieldOfActivityAnnotations.ecore#//BuildConfiguration">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute fieldOfActivityAnnotations.ecore#//BuildConfiguration/name"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference fieldOfActivityAnnotations.ecore#//BuildConfiguration/components"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="fieldOfActivityAnnotations.ecore#//RuntimeInstance">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute fieldOfActivityAnnotations.ecore#//RuntimeInstance/name"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference fieldOfActivityAnnotations.ecore#//RuntimeInstance/component"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="fieldOfActivityAnnotations.ecore#//RuntimeInstanceAggregation">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute fieldOfActivityAnnotations.ecore#//RuntimeInstanceAggregation/numberOfRuntimeInstances"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference fieldOfActivityAnnotations.ecore#//RuntimeInstanceAggregation/component"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="fieldOfActivityAnnotations.ecore#//TestCase">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute fieldOfActivityAnnotations.ecore#//TestCase/name"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference fieldOfActivityAnnotations.ecore#//TestCase/providedRoles"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EAttribute fieldOfActivityAnnotations.ecore#//TestCase/testType"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="fieldOfActivityAnnotations.ecore#//TestCaseAggregation">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute fieldOfActivityAnnotations.ecore#//TestCaseAggregation/numberOfTestCases"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference fieldOfActivityAnnotations.ecore#//TestCaseAggregation/providedRoles"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EAttribute fieldOfActivityAnnotations.ecore#//TestCaseAggregation/testType"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="fieldOfActivityAnnotations.ecore#//DesignPatternRole">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference fieldOfActivityAnnotations.ecore#//DesignPatternRole/providedRole"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference fieldOfActivityAnnotations.ecore#//DesignPatternRole/component"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="fieldOfActivityAnnotations.ecore#//TechnologicalCorrespondence">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute fieldOfActivityAnnotations.ecore#//TechnologicalCorrespondence/technologicalCorrespondenceType"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference fieldOfActivityAnnotations.ecore#//TechnologicalCorrespondence/component"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="fieldOfActivityAnnotations.ecore#//StaffAssignment">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference fieldOfActivityAnnotations.ecore#//StaffAssignment/component"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute fieldOfActivityAnnotations.ecore#//StaffAssignment/teamName"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute fieldOfActivityAnnotations.ecore#//StaffAssignment/staffName"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
