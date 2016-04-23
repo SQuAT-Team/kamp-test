@@ -1,0 +1,161 @@
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part
+END
+PalladioComponentModelCreationWizard.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/PalladioComponentModelCreationWizard.java
+END
+CustomNewAllocationDiagramFileWizard.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/CustomNewAllocationDiagramFileWizard.java
+END
+PalladioComponentModelInitDiagramFileAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/PalladioComponentModelInitDiagramFileAction.java
+END
+PalladioComponentModelPaletteFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/PalladioComponentModelPaletteFactory.java
+END
+PalladioComponentModelDiagramUpdater.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/PalladioComponentModelDiagramUpdater.java
+END
+PalladioComponentModelDocumentProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/PalladioComponentModelDocumentProvider.java
+END
+CustomResourceEnvironmentSelectorPage.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/CustomResourceEnvironmentSelectorPage.java
+END
+PalladioComponentModelLinkDescriptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/PalladioComponentModelLinkDescriptor.java
+END
+Messages.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/Messages.java
+END
+PalladioComponentModelNewDiagramFileWizard.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/PalladioComponentModelNewDiagramFileWizard.java
+END
+PalladioComponentModelAllocationDiagramEditorPlugin.java
+K 25
+svn:wc:ra_dav:version-url
+V 190
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/PalladioComponentModelAllocationDiagramEditorPlugin.java
+END
+DeleteElementAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/DeleteElementAction.java
+END
+ModelElementSelectionPage.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/ModelElementSelectionPage.java
+END
+CustomSystemSelectorPage.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/CustomSystemSelectorPage.java
+END
+PalladioComponentModelDiagramUpdateCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/PalladioComponentModelDiagramUpdateCommand.java
+END
+DiagramEditorContextMenuProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/DiagramEditorContextMenuProvider.java
+END
+CustomResourceSelectorPage.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/CustomResourceSelectorPage.java
+END
+PalladioComponentModelDiagramEditorUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/PalladioComponentModelDiagramEditorUtil.java
+END
+PalladioComponentModelVisualIDRegistry.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/PalladioComponentModelVisualIDRegistry.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/package-info.java
+END
+LoadResourceAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/LoadResourceAction.java
+END
+PalladioComponentModelMatchingStrategy.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/PalladioComponentModelMatchingStrategy.java
+END
+PalladioComponentModelAllocationDiagramEditor.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/PalladioComponentModelAllocationDiagramEditor.java
+END
+PalladioComponentModelDiagramActionBarContributor.java
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/PalladioComponentModelDiagramActionBarContributor.java
+END
+PalladioComponentModelCreationWizardPage.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/PalladioComponentModelCreationWizardPage.java
+END
+PalladioComponentModelNodeDescriptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/part/PalladioComponentModelNodeDescriptor.java
+END

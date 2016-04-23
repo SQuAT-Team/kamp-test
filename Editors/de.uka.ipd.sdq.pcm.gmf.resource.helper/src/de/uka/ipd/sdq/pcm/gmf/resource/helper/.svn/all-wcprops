@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.helper/src/de/uka/ipd/sdq/pcm/gmf/resource/helper
+END
+AddLatencyAndThroughputRecordingCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.helper/src/de/uka/ipd/sdq/pcm/gmf/resource/helper/AddLatencyAndThroughputRecordingCommand.java
+END
+LatencyEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.helper/src/de/uka/ipd/sdq/pcm/gmf/resource/helper/LatencyEditHelperAdvice.java
+END
+SetLatencyThroughputAndLanTypeCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.helper/src/de/uka/ipd/sdq/pcm/gmf/resource/helper/SetLatencyThroughputAndLanTypeCommand.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.helper/src/de/uka/ipd/sdq/pcm/gmf/resource/helper/package-info.java
+END
+AbstractCreateCommunicationLinkResourceSpecificationEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 212
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.helper/src/de/uka/ipd/sdq/pcm/gmf/resource/helper/AbstractCreateCommunicationLinkResourceSpecificationEditHelperAdvice.java
+END
+AddCommunicationLinkResourceSpecificationEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 201
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.helper/src/de/uka/ipd/sdq/pcm/gmf/resource/helper/AddCommunicationLinkResourceSpecificationEditHelperAdvice.java
+END
+ProcessingResourceSpecificationEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 191
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.helper/src/de/uka/ipd/sdq/pcm/gmf/resource/helper/ProcessingResourceSpecificationEditHelperAdvice.java
+END
+ThroughputEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.helper/src/de/uka/ipd/sdq/pcm/gmf/resource/helper/ThroughputEditHelperAdvice.java
+END
+Activator.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.helper/src/de/uka/ipd/sdq/pcm/gmf/resource/helper/Activator.java
+END
+CanceledCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.helper/src/de/uka/ipd/sdq/pcm/gmf/resource/helper/CanceledCommand.java
+END
+MySetValueCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.helper/src/de/uka/ipd/sdq/pcm/gmf/resource/helper/MySetValueCommand.java
+END

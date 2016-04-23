@@ -1,0 +1,124 @@
+10
+
+dir
+31805
+https://anonymous@svnserver.informatik.kit.edu/i43/svn/code/Palladio/Core/trunk/Editors
+https://anonymous@svnserver.informatik.kit.edu/i43/svn/code
+
+
+
+2016-03-24T19:05:46.545130Z
+31536
+s_junker
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+769cc9a0-fb0c-0410-8c2f-a2305f0e6268
+
+org.palladiosimulator.editors.tests
+dir
+
+org.palladiosimulator.editors.gmf.feature
+dir
+
+org.palladiosimulator.editors.usage.externaljavaactions
+dir
+
+de.uka.ipd.sdq.pcm.gmf.repository.helper
+dir
+
+de.uka.ipd.sdq.pcm.gmf.seff.helper
+dir
+
+de.uka.ipd.sdq.pcm.gmf.composite
+dir
+
+de.uka.ipd.sdq.pcm.gmf.allocation.helper
+dir
+
+de.uka.ipd.sdq.pcm.gmf.usage
+dir
+
+de.uka.ipd.sdq.pcm.gmf.resource.helper
+dir
+
+org.palladiosimulator.editors.dialogs
+dir
+
+org.palladiosimulator.editors.tabs
+dir
+
+de.uka.ipd.sdq.pcm.gmf.repository
+dir
+
+de.uka.ipd.sdq.pcm.gmf.composite.helper
+dir
+
+de.uka.ipd.sdq.pcm.gmf.usage.helper
+dir
+
+de.uka.ipd.sdq.pcm.gmf.seff
+dir
+
+org.palladiosimulator.editors.propertytabs
+dir
+
+de.uka.ipd.sdq.pcm.gmf.allocation
+dir
+
+de.uka.ipd.sdq.pcm.gmf.resource
+dir
+
+de.uka.ipd.sdq.pcm.gmf.repository.custom
+dir
+
+de.uka.ipd.sdq.pcm.gmf.seff.custom
+dir
+
+org.palladiosimulator.editors.sirius.seff.design
+dir
+
+de.uka.ipd.sdq.pcm.gmf.allocation.custom
+dir
+
+de.uka.ipd.sdq.pcm.gmf.resource.custom
+dir
+
+de.uka.ipd.sdq.pcm.gmf.toolbar
+dir
+
+org.palladiosimulator.editors.buckminster
+dir
+
+de.uka.ipd.sdq.pcm.gmf.composite.custom
+dir
+
+org.palladiosimulator.pcm.edp2.measuringpoint.edit
+dir
+
+de.uka.ipd.sdq.pcm.gmf.usage.custom
+dir
+
+org.palladiosimulator.editors.tree.feature
+dir
+
+org.palladiosimulator.editors.sirius.usage.design
+dir
+
+org.palladiosimulator.pcm.edit
+dir
+
+org.palladiosimulator.pcm.editor
+dir
+

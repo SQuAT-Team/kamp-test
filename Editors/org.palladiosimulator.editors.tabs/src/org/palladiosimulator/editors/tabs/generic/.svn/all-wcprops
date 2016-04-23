@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/28015/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.tabs/src/org/palladiosimulator/editors/tabs/generic
+END
+ObservableCellModifier.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/i43/svn/code/!svn/ver/28015/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.tabs/src/org/palladiosimulator/editors/tabs/generic/ObservableCellModifier.java
+END
+SelectionChangedListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/28015/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.tabs/src/org/palladiosimulator/editors/tabs/generic/SelectionChangedListener.java
+END
+GenericPropertySection.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/i43/svn/code/!svn/ver/28015/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.tabs/src/org/palladiosimulator/editors/tabs/generic/GenericPropertySection.java
+END
+TabItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/i43/svn/code/!svn/ver/28015/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.tabs/src/org/palladiosimulator/editors/tabs/generic/TabItemProviderAdapterFactory.java
+END
+EditorSection.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/i43/svn/code/!svn/ver/28015/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.tabs/src/org/palladiosimulator/editors/tabs/generic/EditorSection.java
+END

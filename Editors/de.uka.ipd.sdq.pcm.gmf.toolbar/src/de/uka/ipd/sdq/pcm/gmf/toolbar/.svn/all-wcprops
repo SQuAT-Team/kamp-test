@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.toolbar/src/de/uka/ipd/sdq/pcm/gmf/toolbar
+END
+BaseInitializeDiagramAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.toolbar/src/de/uka/ipd/sdq/pcm/gmf/toolbar/BaseInitializeDiagramAction.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.toolbar/src/de/uka/ipd/sdq/pcm/gmf/toolbar/package-info.java
+END
+BaseNewDiagramAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.toolbar/src/de/uka/ipd/sdq/pcm/gmf/toolbar/BaseNewDiagramAction.java
+END
+BaseDiagramAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.toolbar/src/de/uka/ipd/sdq/pcm/gmf/toolbar/BaseDiagramAction.java
+END

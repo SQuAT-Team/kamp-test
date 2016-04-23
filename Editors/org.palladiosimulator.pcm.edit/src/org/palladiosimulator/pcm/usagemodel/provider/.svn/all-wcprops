@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/usagemodel/provider
+END
+UserDataItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/usagemodel/provider/UserDataItemProvider.java
+END
+ScenarioBehaviourItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/usagemodel/provider/ScenarioBehaviourItemProvider.java
+END
+BranchTransitionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/usagemodel/provider/BranchTransitionItemProvider.java
+END
+LoopItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/usagemodel/provider/LoopItemProvider.java
+END
+ClosedWorkloadItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/usagemodel/provider/ClosedWorkloadItemProvider.java
+END
+UsagemodelItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/usagemodel/provider/UsagemodelItemProviderAdapterFactory.java
+END
+WorkloadItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/usagemodel/provider/WorkloadItemProvider.java
+END
+UsageModelItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/usagemodel/provider/UsageModelItemProvider.java
+END
+StopItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/usagemodel/provider/StopItemProvider.java
+END
+UsageScenarioItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/usagemodel/provider/UsageScenarioItemProvider.java
+END
+EntryLevelSystemCallItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/usagemodel/provider/EntryLevelSystemCallItemProvider.java
+END
+StartItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/usagemodel/provider/StartItemProvider.java
+END
+BranchItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/usagemodel/provider/BranchItemProvider.java
+END
+DelayItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/usagemodel/provider/DelayItemProvider.java
+END
+AbstractUserActionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/usagemodel/provider/AbstractUserActionItemProvider.java
+END
+OpenWorkloadItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/usagemodel/provider/OpenWorkloadItemProvider.java
+END

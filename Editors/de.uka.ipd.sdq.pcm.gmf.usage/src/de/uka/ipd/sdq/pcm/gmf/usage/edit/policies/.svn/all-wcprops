@@ -1,0 +1,257 @@
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies
+END
+BranchUsageBranchTransitionsCompartmentItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 199
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/BranchUsageBranchTransitionsCompartmentItemSemanticEditPolicy.java
+END
+UsageScenario2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/UsageScenario2ItemSemanticEditPolicy.java
+END
+VariableUsageItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/VariableUsageItemSemanticEditPolicy.java
+END
+ClosedWorkloadItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/ClosedWorkloadItemSemanticEditPolicy.java
+END
+ScenarioBehaviourScenarioBehaviourStepsCompartment3ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 211
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/ScenarioBehaviourScenarioBehaviourStepsCompartment3ItemSemanticEditPolicy.java
+END
+BranchTransitionCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/BranchTransitionCanonicalEditPolicy.java
+END
+EntryLevelSystemCallParameterUsageItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 194
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/EntryLevelSystemCallParameterUsageItemSemanticEditPolicy.java
+END
+ScenarioBehaviourScenarioBehaviourStepsCompartment2CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 208
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/ScenarioBehaviourScenarioBehaviourStepsCompartment2CanonicalEditPolicy.java
+END
+ScenarioBehaviourScenarioBehaviourStepsCompartment3CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 208
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/ScenarioBehaviourScenarioBehaviourStepsCompartment3CanonicalEditPolicy.java
+END
+StopItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/StopItemSemanticEditPolicy.java
+END
+VariableCharacterisationItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/VariableCharacterisationItemSemanticEditPolicy.java
+END
+VariableUsageVariableCharacterisationCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 194
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/VariableUsageVariableCharacterisationCanonicalEditPolicy.java
+END
+ScenarioBehaviourScenarioBehaviourStepsCompartmentItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 210
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/ScenarioBehaviourScenarioBehaviourStepsCompartmentItemSemanticEditPolicy.java
+END
+BranchBranchCompartmentCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/BranchBranchCompartmentCanonicalEditPolicy.java
+END
+EntryLevelSystemCallItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/EntryLevelSystemCallItemSemanticEditPolicy.java
+END
+ScenarioBehaviour3ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/ScenarioBehaviour3ItemSemanticEditPolicy.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/package-info.java
+END
+UsageScenarioCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/UsageScenarioCanonicalEditPolicy.java
+END
+PalladioComponentModelTextSelectionEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/PalladioComponentModelTextSelectionEditPolicy.java
+END
+OpenWorkloadItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/OpenWorkloadItemSemanticEditPolicy.java
+END
+PalladioComponentModelTextNonResizableEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/PalladioComponentModelTextNonResizableEditPolicy.java
+END
+ScenarioBehaviourItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/ScenarioBehaviourItemSemanticEditPolicy.java
+END
+BranchTransitionItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/BranchTransitionItemSemanticEditPolicy.java
+END
+LoopItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/LoopItemSemanticEditPolicy.java
+END
+UsageScenarioUsageScenarioCompartmentItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/UsageScenarioUsageScenarioCompartmentItemSemanticEditPolicy.java
+END
+ScenarioBehaviourScenarioBehaviourStepsCompartment2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 211
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/ScenarioBehaviourScenarioBehaviourStepsCompartment2ItemSemanticEditPolicy.java
+END
+BranchUsageBranchTransitionsCompartmentCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 196
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/BranchUsageBranchTransitionsCompartmentCanonicalEditPolicy.java
+END
+LoopCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/LoopCanonicalEditPolicy.java
+END
+BranchTransitionBranchTransitionCompartmentCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 200
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/BranchTransitionBranchTransitionCompartmentCanonicalEditPolicy.java
+END
+UsageScenarioUsageScenarioCompartmentCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 194
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/UsageScenarioUsageScenarioCompartmentCanonicalEditPolicy.java
+END
+LoopLoopCompartmentCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/LoopLoopCompartmentCanonicalEditPolicy.java
+END
+PalladioComponentModelBaseItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/PalladioComponentModelBaseItemSemanticEditPolicy.java
+END
+VariableUsageVariableCharacterisationItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/VariableUsageVariableCharacterisationItemSemanticEditPolicy.java
+END
+EntryLevelSystemCallParameterUsageCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 191
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/EntryLevelSystemCallParameterUsageCanonicalEditPolicy.java
+END
+UsageScenarioItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/UsageScenarioItemSemanticEditPolicy.java
+END
+ScenarioBehaviour2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/ScenarioBehaviour2ItemSemanticEditPolicy.java
+END
+AbstractUserActionSuccessorItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 187
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/AbstractUserActionSuccessorItemSemanticEditPolicy.java
+END
+StartItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/StartItemSemanticEditPolicy.java
+END
+BranchItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/BranchItemSemanticEditPolicy.java
+END
+DelayItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/DelayItemSemanticEditPolicy.java
+END
+ScenarioBehaviourScenarioBehaviourStepsCompartmentCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 207
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/ScenarioBehaviourScenarioBehaviourStepsCompartmentCanonicalEditPolicy.java
+END
+BranchCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/edit/policies/BranchCanonicalEditPolicy.java
+END

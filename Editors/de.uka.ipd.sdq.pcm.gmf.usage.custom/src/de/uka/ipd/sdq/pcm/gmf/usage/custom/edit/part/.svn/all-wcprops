@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/28023/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage.custom/src/de/uka/ipd/sdq/pcm/gmf/usage/custom/edit/part
+END
+CustomClosedWorkloadThinkTimeLabelEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 190
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage.custom/src/de/uka/ipd/sdq/pcm/gmf/usage/custom/edit/part/CustomClosedWorkloadThinkTimeLabelEditPart.java
+END
+CustomDelayLabelSpecEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage.custom/src/de/uka/ipd/sdq/pcm/gmf/usage/custom/edit/part/CustomDelayLabelSpecEditPart.java
+END
+CustomVariableCharacterisationEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage.custom/src/de/uka/ipd/sdq/pcm/gmf/usage/custom/edit/part/CustomVariableCharacterisationEditPart.java
+END
+CustomVariableUsageEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/i43/svn/code/!svn/ver/28023/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage.custom/src/de/uka/ipd/sdq/pcm/gmf/usage/custom/edit/part/CustomVariableUsageEditPart.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage.custom/src/de/uka/ipd/sdq/pcm/gmf/usage/custom/edit/part/package-info.java
+END
+CustomOpenWorkloadSpecLabelEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage.custom/src/de/uka/ipd/sdq/pcm/gmf/usage/custom/edit/part/CustomOpenWorkloadSpecLabelEditPart.java
+END
+CustomUsageLoopIterationsLabelEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage.custom/src/de/uka/ipd/sdq/pcm/gmf/usage/custom/edit/part/CustomUsageLoopIterationsLabelEditPart.java
+END
+CustomPalladioComponentModelEditPartFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 191
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage.custom/src/de/uka/ipd/sdq/pcm/gmf/usage/custom/edit/part/CustomPalladioComponentModelEditPartFactory.java
+END
+CustomComponentExternalCallNameLabelEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 192
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage.custom/src/de/uka/ipd/sdq/pcm/gmf/usage/custom/edit/part/CustomComponentExternalCallNameLabelEditPart.java
+END

@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/parameters
+END
+DeleteParameterAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/parameters/DeleteParameterAction.java
+END
+ParametersUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/parameters/ParametersUtil.java
+END
+UpDownButtonsValidator.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/parameters/UpDownButtonsValidator.java
+END
+ParametersCellModifier.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/parameters/ParametersCellModifier.java
+END
+ParametersDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/parameters/ParametersDialog.java
+END
+UpParameterAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/parameters/UpParameterAction.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/parameters/package-info.java
+END
+DownParameterAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/parameters/DownParameterAction.java
+END
+ParametersItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 189
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/parameters/ParametersItemProviderAdapterFactory.java
+END
+AddParameterAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/parameters/AddParameterAction.java
+END
+CreateEditorContents.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/parameters/CreateEditorContents.java
+END
+EditorContentsSelectionAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/parameters/EditorContentsSelectionAction.java
+END
+TypeDialogCellEditor.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/parameters/TypeDialogCellEditor.java
+END
+ParametersItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/parameters/ParametersItemProvider.java
+END

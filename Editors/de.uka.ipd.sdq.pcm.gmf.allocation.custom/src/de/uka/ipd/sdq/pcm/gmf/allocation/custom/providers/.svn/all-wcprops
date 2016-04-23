@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation.custom/src/de/uka/ipd/sdq/pcm/gmf/allocation/custom/providers
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation.custom/src/de/uka/ipd/sdq/pcm/gmf/allocation/custom/providers/package-info.java
+END
+CustomPalladioComponentModelModelingAssistantProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 211
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation.custom/src/de/uka/ipd/sdq/pcm/gmf/allocation/custom/providers/CustomPalladioComponentModelModelingAssistantProvider.java
+END
+CustomPalladioComponentModelEditPartProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 202
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation.custom/src/de/uka/ipd/sdq/pcm/gmf/allocation/custom/providers/CustomPalladioComponentModelEditPartProvider.java
+END

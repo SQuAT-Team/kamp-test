@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.custom/src/de/uka/ipd/sdq/pcm/gmf/composite/custom/edit/parts
+END
+CustomEventChannelSinkConnectorEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 196
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.custom/src/de/uka/ipd/sdq/pcm/gmf/composite/custom/edit/parts/CustomEventChannelSinkConnectorEditPart.java
+END
+CustomEventChannelEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.custom/src/de/uka/ipd/sdq/pcm/gmf/composite/custom/edit/parts/CustomEventChannelEditPart.java
+END
+CustomOperationProvidedRoleEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 192
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.custom/src/de/uka/ipd/sdq/pcm/gmf/composite/custom/edit/parts/CustomOperationProvidedRoleEditPart.java
+END
+PcmWrapLabel.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.custom/src/de/uka/ipd/sdq/pcm/gmf/composite/custom/edit/parts/PcmWrapLabel.java
+END
+CustomPalladioComponentModelEditPartFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 200
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.custom/src/de/uka/ipd/sdq/pcm/gmf/composite/custom/edit/parts/CustomPalladioComponentModelEditPartFactory.java
+END
+CustomSourceRoleEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.custom/src/de/uka/ipd/sdq/pcm/gmf/composite/custom/edit/parts/CustomSourceRoleEditPart.java
+END
+CustomOperationRequiredRoleEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 192
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.custom/src/de/uka/ipd/sdq/pcm/gmf/composite/custom/edit/parts/CustomOperationRequiredRoleEditPart.java
+END
+CustomAssemblyContextEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.custom/src/de/uka/ipd/sdq/pcm/gmf/composite/custom/edit/parts/CustomAssemblyContextEditPart.java
+END
+CustomSinkRoleEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.custom/src/de/uka/ipd/sdq/pcm/gmf/composite/custom/edit/parts/CustomSinkRoleEditPart.java
+END
+CustomComposedProvidingRequiringEntityCompositeStructureInnerCompartmentEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 237
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.custom/src/de/uka/ipd/sdq/pcm/gmf/composite/custom/edit/parts/CustomComposedProvidingRequiringEntityCompositeStructureInnerCompartmentEditPart.java
+END
+CustomAssemblyEventConnectorEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.custom/src/de/uka/ipd/sdq/pcm/gmf/composite/custom/edit/parts/CustomAssemblyEventConnectorEditPart.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.custom/src/de/uka/ipd/sdq/pcm/gmf/composite/custom/edit/parts/package-info.java
+END
+CustomInfrastructureProvidedRoleEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.custom/src/de/uka/ipd/sdq/pcm/gmf/composite/custom/edit/parts/CustomInfrastructureProvidedRoleEditPart.java
+END
+CustomComposedProvidingRequiringEntity2EditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 204
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.custom/src/de/uka/ipd/sdq/pcm/gmf/composite/custom/edit/parts/CustomComposedProvidingRequiringEntity2EditPart.java
+END
+CustomOperationProvidedRole2EditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.custom/src/de/uka/ipd/sdq/pcm/gmf/composite/custom/edit/parts/CustomOperationProvidedRole2EditPart.java
+END
+CustomInfrastructureRequiredRoleEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.custom/src/de/uka/ipd/sdq/pcm/gmf/composite/custom/edit/parts/CustomInfrastructureRequiredRoleEditPart.java
+END
+CustomOperationRequiredRole2EditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.custom/src/de/uka/ipd/sdq/pcm/gmf/composite/custom/edit/parts/CustomOperationRequiredRole2EditPart.java
+END

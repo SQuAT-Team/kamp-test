@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/variableusage
+END
+VariableUsageContentProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/variableusage/VariableUsageContentProvider.java
+END
+VariableUsageInputParameterContentProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 198
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/variableusage/VariableUsageInputParameterContentProvider.java
+END
+VariableUsageOutputParameterContentProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 199
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/variableusage/VariableUsageOutputParameterContentProvider.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/variableusage/package-info.java
+END
+VariableUsageLabelProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/variableusage/VariableUsageLabelProvider.java
+END
+VariableUsageItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 195
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/variableusage/VariableUsageItemProviderAdapterFactory.java
+END

@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/providers
+END
+PalladioComponentModelViewProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/providers/PalladioComponentModelViewProvider.java
+END
+PalladioComponentModelEditPartProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/providers/PalladioComponentModelEditPartProvider.java
+END
+PalladioComponentModelStructuralFeatureParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/providers/PalladioComponentModelStructuralFeatureParser.java
+END
+PalladioComponentModelModelingAssistantProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/providers/PalladioComponentModelModelingAssistantProvider.java
+END
+PalladioComponentModelIconProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/providers/PalladioComponentModelIconProvider.java
+END
+PalladioComponentModelValidationProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/providers/PalladioComponentModelValidationProvider.java
+END
+ElementInitializers.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/providers/ElementInitializers.java
+END
+PalladioComponentModelParserProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/providers/PalladioComponentModelParserProvider.java
+END
+PalladioComponentModelValidationDecoratorProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/providers/PalladioComponentModelValidationDecoratorProvider.java
+END
+PalladioComponentModelContributionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/providers/PalladioComponentModelContributionItemProvider.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/providers/package-info.java
+END
+PalladioComponentModelMarkerNavigationProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/providers/PalladioComponentModelMarkerNavigationProvider.java
+END
+PalladioComponentModelElementTypes.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/providers/PalladioComponentModelElementTypes.java
+END
+PalladioComponentModelAbstractParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/providers/PalladioComponentModelAbstractParser.java
+END
+PalladioComponentModelStructuralFeaturesParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/providers/PalladioComponentModelStructuralFeaturesParser.java
+END

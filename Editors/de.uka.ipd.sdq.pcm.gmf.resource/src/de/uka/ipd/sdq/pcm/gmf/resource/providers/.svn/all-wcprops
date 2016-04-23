@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/27664/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource/src/de/uka/ipd/sdq/pcm/gmf/resource/providers
+END
+PalladioComponentModelValidationProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource/src/de/uka/ipd/sdq/pcm/gmf/resource/providers/PalladioComponentModelValidationProvider.java
+END
+PalladioComponentModelViewProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource/src/de/uka/ipd/sdq/pcm/gmf/resource/providers/PalladioComponentModelViewProvider.java
+END
+ElementInitializers.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource/src/de/uka/ipd/sdq/pcm/gmf/resource/providers/ElementInitializers.java
+END
+PalladioComponentModelEditPartProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource/src/de/uka/ipd/sdq/pcm/gmf/resource/providers/PalladioComponentModelEditPartProvider.java
+END
+PalladioComponentModelParserProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/27664/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource/src/de/uka/ipd/sdq/pcm/gmf/resource/providers/PalladioComponentModelParserProvider.java
+END
+PalladioComponentModelValidationDecoratorProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 189
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource/src/de/uka/ipd/sdq/pcm/gmf/resource/providers/PalladioComponentModelValidationDecoratorProvider.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource/src/de/uka/ipd/sdq/pcm/gmf/resource/providers/package-info.java
+END
+PalladioComponentModelMarkerNavigationProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource/src/de/uka/ipd/sdq/pcm/gmf/resource/providers/PalladioComponentModelMarkerNavigationProvider.java
+END
+PalladioComponentModelElementTypes.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/27664/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource/src/de/uka/ipd/sdq/pcm/gmf/resource/providers/PalladioComponentModelElementTypes.java
+END
+PalladioComponentModelIconProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource/src/de/uka/ipd/sdq/pcm/gmf/resource/providers/PalladioComponentModelIconProvider.java
+END
+PalladioComponentModelModelingAssistantProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 187
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource/src/de/uka/ipd/sdq/pcm/gmf/resource/providers/PalladioComponentModelModelingAssistantProvider.java
+END

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/allocation/provider
+END
+AllocationItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/allocation/provider/AllocationItemProvider.java
+END
+AllocationContextItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/allocation/provider/AllocationContextItemProvider.java
+END
+AllocationItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/allocation/provider/AllocationItemProviderAdapterFactory.java
+END

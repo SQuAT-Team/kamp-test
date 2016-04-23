@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/parsers
+END
+AbstractParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/parsers/AbstractParser.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/parsers/package-info.java
+END
+MessageFormatParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/parsers/MessageFormatParser.java
+END

@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/navigator
+END
+PalladioComponentModelNavigatorLabelProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/28150/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/navigator/PalladioComponentModelNavigatorLabelProvider.java
+END
+PalladioComponentModelNavigatorGroup.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/navigator/PalladioComponentModelNavigatorGroup.java
+END
+PalladioComponentModelDomainNavigatorContentProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/navigator/PalladioComponentModelDomainNavigatorContentProvider.java
+END
+PalladioComponentModelNavigatorLinkHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/navigator/PalladioComponentModelNavigatorLinkHelper.java
+END
+PalladioComponentModelNavigatorItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/navigator/PalladioComponentModelNavigatorItem.java
+END
+PalladioComponentModelNavigatorSorter.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/navigator/PalladioComponentModelNavigatorSorter.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/navigator/package-info.java
+END
+PalladioComponentModelAbstractNavigatorItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/navigator/PalladioComponentModelAbstractNavigatorItem.java
+END
+PalladioComponentModelDomainNavigatorLabelProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/navigator/PalladioComponentModelDomainNavigatorLabelProvider.java
+END
+PalladioComponentModelNavigatorContentProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/navigator/PalladioComponentModelNavigatorContentProvider.java
+END
+PalladioComponentModelDomainNavigatorItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/navigator/PalladioComponentModelDomainNavigatorItem.java
+END
+PalladioComponentModelNavigatorActionProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/navigator/PalladioComponentModelNavigatorActionProvider.java
+END

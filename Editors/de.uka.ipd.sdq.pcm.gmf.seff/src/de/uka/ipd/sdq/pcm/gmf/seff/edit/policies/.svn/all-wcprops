@@ -1,0 +1,833 @@
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies
+END
+AcquireAction2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/AcquireAction2ItemSemanticEditPolicy.java
+END
+InternalActionInfrastructureCallsCompartmentCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 199
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/InternalActionInfrastructureCallsCompartmentCanonicalEditPolicy.java
+END
+VariableUsageItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/VariableUsageItemSemanticEditPolicy.java
+END
+VariableCharacterisation4ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/VariableCharacterisation4ItemSemanticEditPolicy.java
+END
+ProbabilisticBranchTransitionCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ProbabilisticBranchTransitionCanonicalEditPolicy.java
+END
+ResourceDemandingBehaviour2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 185
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ResourceDemandingBehaviour2ItemSemanticEditPolicy.java
+END
+AcquireActionItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/AcquireActionItemSemanticEditPolicy.java
+END
+VariableCharacterisationItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/VariableCharacterisationItemSemanticEditPolicy.java
+END
+BranchActionItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/BranchActionItemSemanticEditPolicy.java
+END
+VariableUsage4ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/VariableUsage4ItemSemanticEditPolicy.java
+END
+ResourceDemandingBehaviourLoopCompartment2CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ResourceDemandingBehaviourLoopCompartment2CanonicalEditPolicy.java
+END
+InternalActionResourceDemandCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/InternalActionResourceDemandCanonicalEditPolicy.java
+END
+SetVariableActionVariableSetterCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/SetVariableActionVariableSetterCanonicalEditPolicy.java
+END
+SynchronisationPointItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/SynchronisationPointItemSemanticEditPolicy.java
+END
+InternalActionInfrastructureCallsCompartmentItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 202
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/InternalActionInfrastructureCallsCompartmentItemSemanticEditPolicy.java
+END
+InternalActionItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/InternalActionItemSemanticEditPolicy.java
+END
+RecoveryActionBehaviourFailureHandlingAlternatives__RecoveryActionBehaviourItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 233
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/RecoveryActionBehaviourFailureHandlingAlternatives__RecoveryActionBehaviourItemSemanticEditPolicy.java
+END
+ResourceDemandingBehaviourBranchCompartment2CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 199
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ResourceDemandingBehaviourBranchCompartment2CanonicalEditPolicy.java
+END
+PalladioComponentModelBaseItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/PalladioComponentModelBaseItemSemanticEditPolicy.java
+END
+ResourceDemandingBehaviourBehaviourCompartmentCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 201
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ResourceDemandingBehaviourBehaviourCompartmentCanonicalEditPolicy.java
+END
+RecoveryActionRecoveryBlockCompartment2CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 194
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/RecoveryActionRecoveryBlockCompartment2CanonicalEditPolicy.java
+END
+SetVariableActionVariableSetterItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 189
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/SetVariableActionVariableSetterItemSemanticEditPolicy.java
+END
+RecoveryActionBehaviourItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/RecoveryActionBehaviourItemSemanticEditPolicy.java
+END
+ResourceDemandingBehaviourBehaviourCompartment3ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 205
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ResourceDemandingBehaviourBehaviourCompartment3ItemSemanticEditPolicy.java
+END
+CollectionIteratorActionCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/CollectionIteratorActionCanonicalEditPolicy.java
+END
+VariableUsageVariableCharacterisation4ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 196
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/VariableUsageVariableCharacterisation4ItemSemanticEditPolicy.java
+END
+GuardedBranchTransitionCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/GuardedBranchTransitionCanonicalEditPolicy.java
+END
+VariableCharacterisation2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/VariableCharacterisation2ItemSemanticEditPolicy.java
+END
+LoopActionCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/LoopActionCanonicalEditPolicy.java
+END
+ExternalCallActionItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ExternalCallActionItemSemanticEditPolicy.java
+END
+StartAction2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/StartAction2ItemSemanticEditPolicy.java
+END
+InternalActionResourceDemand2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 187
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/InternalActionResourceDemand2ItemSemanticEditPolicy.java
+END
+ProbabilisticBranchTransitionItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 187
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ProbabilisticBranchTransitionItemSemanticEditPolicy.java
+END
+ExternalCallActionOutputVariableUsage2CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ExternalCallActionOutputVariableUsage2CanonicalEditPolicy.java
+END
+BranchActionBranchTransitionCompartment2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 198
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/BranchActionBranchTransitionCompartment2ItemSemanticEditPolicy.java
+END
+ForkActionForkedBehavioursCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ForkActionForkedBehavioursCanonicalEditPolicy.java
+END
+InternalActionFailureOccurrenceDescriptionsCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 198
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/InternalActionFailureOccurrenceDescriptionsCanonicalEditPolicy.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/package-info.java
+END
+VariableUsage2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/VariableUsage2ItemSemanticEditPolicy.java
+END
+RecoveryActionItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/RecoveryActionItemSemanticEditPolicy.java
+END
+ReleaseAction2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ReleaseAction2ItemSemanticEditPolicy.java
+END
+EmitEventActionInputVariableUsageEvent2CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 194
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/EmitEventActionInputVariableUsageEvent2CanonicalEditPolicy.java
+END
+ProbabilisticBranchTransitionBehaviourCompartmentCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 204
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ProbabilisticBranchTransitionBehaviourCompartmentCanonicalEditPolicy.java
+END
+GuardedBranchTransitionItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/GuardedBranchTransitionItemSemanticEditPolicy.java
+END
+StopAction2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/StopAction2ItemSemanticEditPolicy.java
+END
+ResourceDemandingSEFFCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ResourceDemandingSEFFCanonicalEditPolicy.java
+END
+PalladioComponentModelTextNonResizableEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/PalladioComponentModelTextNonResizableEditPolicy.java
+END
+EmitEventActionInputVariableUsageEventItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 196
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/EmitEventActionInputVariableUsageEventItemSemanticEditPolicy.java
+END
+VariableCharacterisation5ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/VariableCharacterisation5ItemSemanticEditPolicy.java
+END
+EmitEventAction2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/EmitEventAction2ItemSemanticEditPolicy.java
+END
+CollectionIteratorAction2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/CollectionIteratorAction2ItemSemanticEditPolicy.java
+END
+ResourceDemandingBehaviour3ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 185
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ResourceDemandingBehaviour3ItemSemanticEditPolicy.java
+END
+LoopAction2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/LoopAction2ItemSemanticEditPolicy.java
+END
+ForkedBehaviourSynchronisationPointForkedBehavioursCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 206
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ForkedBehaviourSynchronisationPointForkedBehavioursCanonicalEditPolicy.java
+END
+InternalAction2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/InternalAction2ItemSemanticEditPolicy.java
+END
+BranchActionBranchTransitionCompartmentItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/BranchActionBranchTransitionCompartmentItemSemanticEditPolicy.java
+END
+LoopAction2CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/LoopAction2CanonicalEditPolicy.java
+END
+VariableUsage5ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/VariableUsage5ItemSemanticEditPolicy.java
+END
+ResourceDemandingBehaviourBranchCompartmentCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 198
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ResourceDemandingBehaviourBranchCompartmentCanonicalEditPolicy.java
+END
+RecoveryActionRecoveryBlockCompartmentItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 196
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/RecoveryActionRecoveryBlockCompartmentItemSemanticEditPolicy.java
+END
+VariableUsageVariableCharacterisation2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 196
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/VariableUsageVariableCharacterisation2ItemSemanticEditPolicy.java
+END
+LoopActionItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/LoopActionItemSemanticEditPolicy.java
+END
+BranchAction2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/BranchAction2ItemSemanticEditPolicy.java
+END
+ReleaseActionItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ReleaseActionItemSemanticEditPolicy.java
+END
+SetVariableAction2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/SetVariableAction2ItemSemanticEditPolicy.java
+END
+ForkAction2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ForkAction2ItemSemanticEditPolicy.java
+END
+ResourceDemandingBehaviourBehaviourCompartmentItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 204
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ResourceDemandingBehaviourBehaviourCompartmentItemSemanticEditPolicy.java
+END
+RecoveryActionRecoveryBlockCompartment2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/RecoveryActionRecoveryBlockCompartment2ItemSemanticEditPolicy.java
+END
+ExternalCallActionOutputVariableUsageItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 195
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ExternalCallActionOutputVariableUsageItemSemanticEditPolicy.java
+END
+SynchronisationPointSynchronisationPointItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 198
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/SynchronisationPointSynchronisationPointItemSemanticEditPolicy.java
+END
+LoopActionBehaviourCompartmentCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 185
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/LoopActionBehaviourCompartmentCanonicalEditPolicy.java
+END
+ExternalCallActionInputVariableUsageCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 191
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ExternalCallActionInputVariableUsageCanonicalEditPolicy.java
+END
+SynchronisationPointSynchronisationPointCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 195
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/SynchronisationPointSynchronisationPointCanonicalEditPolicy.java
+END
+EmitEventActionItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/EmitEventActionItemSemanticEditPolicy.java
+END
+ForkedBehaviourBehaviourCompartmentItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ForkedBehaviourBehaviourCompartmentItemSemanticEditPolicy.java
+END
+SetVariableActionItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/SetVariableActionItemSemanticEditPolicy.java
+END
+ForkActionItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ForkActionItemSemanticEditPolicy.java
+END
+PalladioComponentModelTextSelectionEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/PalladioComponentModelTextSelectionEditPolicy.java
+END
+ForkedBehaviour2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ForkedBehaviour2ItemSemanticEditPolicy.java
+END
+ResourceDemandingBehaviourItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ResourceDemandingBehaviourItemSemanticEditPolicy.java
+END
+BranchActionBranchTransitionCompartmentCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 194
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/BranchActionBranchTransitionCompartmentCanonicalEditPolicy.java
+END
+ResourceDemandingBehaviourBehaviourCompartment4ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 205
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ResourceDemandingBehaviourBehaviourCompartment4ItemSemanticEditPolicy.java
+END
+VariableUsageVariableCharacterisation5ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 196
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/VariableUsageVariableCharacterisation5ItemSemanticEditPolicy.java
+END
+ExternalCallActionOutputVariableUsage2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 196
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ExternalCallActionOutputVariableUsage2ItemSemanticEditPolicy.java
+END
+VariableUsageVariableCharacterisation2CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/VariableUsageVariableCharacterisation2CanonicalEditPolicy.java
+END
+VariableCharacterisation3ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/VariableCharacterisation3ItemSemanticEditPolicy.java
+END
+InfrastructureCallInfrastructureCallInputVariableUsagesCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 210
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/InfrastructureCallInfrastructureCallInputVariableUsagesCanonicalEditPolicy.java
+END
+VariableUsageVariableCharacterisation3CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/VariableUsageVariableCharacterisation3CanonicalEditPolicy.java
+END
+LoopActionBehaviourCompartment2CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/LoopActionBehaviourCompartment2CanonicalEditPolicy.java
+END
+VariableUsageVariableCharacterisation4CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/VariableUsageVariableCharacterisation4CanonicalEditPolicy.java
+END
+VariableUsageVariableCharacterisation5CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/VariableUsageVariableCharacterisation5CanonicalEditPolicy.java
+END
+ForkedBehaviourItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ForkedBehaviourItemSemanticEditPolicy.java
+END
+EmitEventActionInputVariableUsageEventCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/EmitEventActionInputVariableUsageEventCanonicalEditPolicy.java
+END
+ForkActionForkedBehavioursItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ForkActionForkedBehavioursItemSemanticEditPolicy.java
+END
+InternalActionFailureOccurrenceDescriptionsItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 201
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/InternalActionFailureOccurrenceDescriptionsItemSemanticEditPolicy.java
+END
+RecoveryActionBehaviourAlternativeBehaviourCompartmentCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 209
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/RecoveryActionBehaviourAlternativeBehaviourCompartmentCanonicalEditPolicy.java
+END
+BranchActionBranchTransitionCompartment2CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 195
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/BranchActionBranchTransitionCompartment2CanonicalEditPolicy.java
+END
+InternalActionInfrastructureCallsCompartment2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 203
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/InternalActionInfrastructureCallsCompartment2ItemSemanticEditPolicy.java
+END
+ForkedBehaviourSynchronisationPointForkedBehavioursItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 209
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ForkedBehaviourSynchronisationPointForkedBehavioursItemSemanticEditPolicy.java
+END
+VariableUsage3ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/VariableUsage3ItemSemanticEditPolicy.java
+END
+ResourceDemandingSEFFItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ResourceDemandingSEFFItemSemanticEditPolicy.java
+END
+ForkedBehaviourBehaviourCompartmentCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 190
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ForkedBehaviourBehaviourCompartmentCanonicalEditPolicy.java
+END
+ResourceDemandingBehaviourBehaviourCompartment2CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 202
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ResourceDemandingBehaviourBehaviourCompartment2CanonicalEditPolicy.java
+END
+ExternalCallActionInputVariableUsage2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 195
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ExternalCallActionInputVariableUsage2ItemSemanticEditPolicy.java
+END
+ResourceDemandingBehaviourBehaviourCompartment3CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 202
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ResourceDemandingBehaviourBehaviourCompartment3CanonicalEditPolicy.java
+END
+ResourceDemandingBehaviourBehaviourCompartment4CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 202
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ResourceDemandingBehaviourBehaviourCompartment4CanonicalEditPolicy.java
+END
+AbstractActionSuccessor_AbstractActionItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 196
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/AbstractActionSuccessor_AbstractActionItemSemanticEditPolicy.java
+END
+SetVariableActionVariableSetter2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 190
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/SetVariableActionVariableSetter2ItemSemanticEditPolicy.java
+END
+ExternalCallActionInputVariableUsage2CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 192
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ExternalCallActionInputVariableUsage2CanonicalEditPolicy.java
+END
+InternalActionResourceDemand2CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/InternalActionResourceDemand2CanonicalEditPolicy.java
+END
+ResourceDemandingBehaviour4ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 185
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ResourceDemandingBehaviour4ItemSemanticEditPolicy.java
+END
+ExternalCallActionInputVariableUsageItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 194
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ExternalCallActionInputVariableUsageItemSemanticEditPolicy.java
+END
+VariableUsageVariableCharacterisationCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 192
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/VariableUsageVariableCharacterisationCanonicalEditPolicy.java
+END
+StartActionItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/StartActionItemSemanticEditPolicy.java
+END
+InternalActionInfrastructureCallsCompartment2CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 200
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/InternalActionInfrastructureCallsCompartment2CanonicalEditPolicy.java
+END
+InternalActionResourceDemandItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/InternalActionResourceDemandItemSemanticEditPolicy.java
+END
+EmitEventActionInputVariableUsageEvent2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/EmitEventActionInputVariableUsageEvent2ItemSemanticEditPolicy.java
+END
+ExternalCallAction2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ExternalCallAction2ItemSemanticEditPolicy.java
+END
+ResourceDemandingBehaviourBehaviourCompartment2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 205
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ResourceDemandingBehaviourBehaviourCompartment2ItemSemanticEditPolicy.java
+END
+RecoveryActionRecoveryBlockCompartmentCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/RecoveryActionRecoveryBlockCompartmentCanonicalEditPolicy.java
+END
+InfrastructureCallInfrastructureCallInputVariableUsagesItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 213
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/InfrastructureCallInfrastructureCallInputVariableUsagesItemSemanticEditPolicy.java
+END
+VariableUsageVariableCharacterisation3ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 196
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/VariableUsageVariableCharacterisation3ItemSemanticEditPolicy.java
+END
+ParametricResourceDemandItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ParametricResourceDemandItemSemanticEditPolicy.java
+END
+ForkActionForkedBehaviours2CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ForkActionForkedBehaviours2CanonicalEditPolicy.java
+END
+InternalActionFailureOccurrenceDescriptions2CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 199
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/InternalActionFailureOccurrenceDescriptions2CanonicalEditPolicy.java
+END
+ResourceDemandingBehaviourLoopCompartmentCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 196
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ResourceDemandingBehaviourLoopCompartmentCanonicalEditPolicy.java
+END
+InfrastructureCallItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/InfrastructureCallItemSemanticEditPolicy.java
+END
+RecoveryAction2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/RecoveryAction2ItemSemanticEditPolicy.java
+END
+RecoveryActionBehaviourAlternativeBehaviourCompartmentItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 212
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/RecoveryActionBehaviourAlternativeBehaviourCompartmentItemSemanticEditPolicy.java
+END
+StopActionItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/StopActionItemSemanticEditPolicy.java
+END
+SetVariableActionVariableSetter2CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 187
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/SetVariableActionVariableSetter2CanonicalEditPolicy.java
+END
+VariableUsageVariableCharacterisationItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 195
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/VariableUsageVariableCharacterisationItemSemanticEditPolicy.java
+END
+CollectionIteratorAction2CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/CollectionIteratorAction2CanonicalEditPolicy.java
+END
+ExternalCallActionOutputVariableUsageCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 192
+/i43/svn/code/!svn/ver/27663/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ExternalCallActionOutputVariableUsageCanonicalEditPolicy.java
+END
+InternalFailureOccurrenceDescriptionItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 194
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/InternalFailureOccurrenceDescriptionItemSemanticEditPolicy.java
+END
+CollectionIteratorActionItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/CollectionIteratorActionItemSemanticEditPolicy.java
+END
+ForkActionForkedBehaviours2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 185
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/ForkActionForkedBehaviours2ItemSemanticEditPolicy.java
+END
+InternalActionFailureOccurrenceDescriptions2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 202
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff/src/de/uka/ipd/sdq/pcm/gmf/seff/edit/policies/InternalActionFailureOccurrenceDescriptions2ItemSemanticEditPolicy.java
+END

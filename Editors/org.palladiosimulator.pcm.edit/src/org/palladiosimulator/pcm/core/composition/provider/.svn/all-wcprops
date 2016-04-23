@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/composition/provider
+END
+EventChannelSourceConnectorItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/composition/provider/EventChannelSourceConnectorItemProvider.java
+END
+SourceDelegationConnectorItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/composition/provider/SourceDelegationConnectorItemProvider.java
+END
+EventChannelSinkConnectorItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/composition/provider/EventChannelSinkConnectorItemProvider.java
+END
+EventChannelItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/composition/provider/EventChannelItemProvider.java
+END
+SinkDelegationConnectorItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/composition/provider/SinkDelegationConnectorItemProvider.java
+END
+ProvidedDelegationConnectorItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/composition/provider/ProvidedDelegationConnectorItemProvider.java
+END
+ProvidedInfrastructureDelegationConnectorItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 202
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/composition/provider/ProvidedInfrastructureDelegationConnectorItemProvider.java
+END
+AssemblyContextItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/composition/provider/AssemblyContextItemProvider.java
+END
+DelegationConnectorItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/composition/provider/DelegationConnectorItemProvider.java
+END
+RequiredDelegationConnectorItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/composition/provider/RequiredDelegationConnectorItemProvider.java
+END
+RequiredInfrastructureDelegationConnectorItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 202
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/composition/provider/RequiredInfrastructureDelegationConnectorItemProvider.java
+END
+ConnectorItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/composition/provider/ConnectorItemProvider.java
+END
+ComposedStructureItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/composition/provider/ComposedStructureItemProvider.java
+END
+AssemblyConnectorItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/composition/provider/AssemblyConnectorItemProvider.java
+END
+AssemblyInfrastructureConnectorItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 192
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/composition/provider/AssemblyInfrastructureConnectorItemProvider.java
+END
+CompositionItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/composition/provider/CompositionItemProviderAdapterFactory.java
+END
+AssemblyEventConnectorItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/composition/provider/AssemblyEventConnectorItemProvider.java
+END
+RequiredResourceDelegationConnectorItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 196
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/composition/provider/RequiredResourceDelegationConnectorItemProvider.java
+END
+ResourceRequiredDelegationConnectorItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 196
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/composition/provider/ResourceRequiredDelegationConnectorItemProvider.java
+END

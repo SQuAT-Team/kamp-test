@@ -1,0 +1,215 @@
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/i43/svn/code/!svn/ver/28747/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper
+END
+EmitEventActionConfigureCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/EmitEventActionConfigureCommand.java
+END
+ReleaseActionEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/ReleaseActionEditHelperAdvice.java
+END
+ParametricResourceDemandConfigureCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/ParametricResourceDemandConfigureCommand.java
+END
+AcquireActionEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/AcquireActionEditHelperAdvice.java
+END
+SynchronisationPointEditHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/SynchronisationPointEditHelper.java
+END
+CreateBranchConditionEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/CreateBranchConditionEditHelperAdvice.java
+END
+ForkActionHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/ForkActionHelperAdvice.java
+END
+VariableCharacterisationEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/28316/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/VariableCharacterisationEditHelperAdvice.java
+END
+CreateLoopActionEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/CreateLoopActionEditHelperAdvice.java
+END
+InfrastructureCallConfigureCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/InfrastructureCallConfigureCommand.java
+END
+EmitEventActionEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/EmitEventActionEditHelperAdvice.java
+END
+SetVariableActionEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/SetVariableActionEditHelperAdvice.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/package-info.java
+END
+ResourceDemandingBehaviourEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/ResourceDemandingBehaviourEditHelperAdvice.java
+END
+CollectionIteratorItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/CollectionIteratorItemProviderAdapterFactory.java
+END
+IncludeResourceDemandingBehaviourEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 185
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/IncludeResourceDemandingBehaviourEditHelperAdvice.java
+END
+ParametricResourceDemandEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/ParametricResourceDemandEditHelperAdvice.java
+END
+ConfigureMinimalSeffCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/ConfigureMinimalSeffCommand.java
+END
+InternalActionEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/InternalActionEditHelperAdvice.java
+END
+CanceledCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/CanceledCommand.java
+END
+InfrastructureCallEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/28747/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/InfrastructureCallEditHelperAdvice.java
+END
+SEFFHelperPlugin.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/SEFFHelperPlugin.java
+END
+OKCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/OKCommand.java
+END
+CollectionIteratorContentProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/CollectionIteratorContentProvider.java
+END
+ExternalCallActionConfigureCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/ExternalCallActionConfigureCommand.java
+END
+StoExParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/StoExParser.java
+END
+AbstractCreateRandomVariableEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/AbstractCreateRandomVariableEditHelperAdvice.java
+END
+CollectionIteratorLabelProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/CollectionIteratorLabelProvider.java
+END
+RecoveryActionBehaviourEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/RecoveryActionBehaviourEditHelperAdvice.java
+END
+ParameterCollectionIteratorActionEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 185
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/ParameterCollectionIteratorActionEditHelperAdvice.java
+END
+VariableCharacterisationConfigureCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/28316/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/VariableCharacterisationConfigureCommand.java
+END
+StoExParserProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/StoExParserProvider.java
+END
+PCMRandomVariableEditHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/PCMRandomVariableEditHelper.java
+END
+VariableUsageEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/VariableUsageEditHelperAdvice.java
+END
+ExternalCallActionEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.helper/src/de/uka/ipd/sdq/pcm/gmf/seff/helper/ExternalCallActionEditHelperAdvice.java
+END

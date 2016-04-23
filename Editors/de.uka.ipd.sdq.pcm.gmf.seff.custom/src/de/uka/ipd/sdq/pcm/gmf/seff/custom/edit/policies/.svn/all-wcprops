@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.custom/src/de/uka/ipd/sdq/pcm/gmf/seff/custom/edit/policies
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.custom/src/de/uka/ipd/sdq/pcm/gmf/seff/custom/edit/policies/package-info.java
+END
+CustomInternalActionInfrastructureCallsCompartmentItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 222
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.custom/src/de/uka/ipd/sdq/pcm/gmf/seff/custom/edit/policies/CustomInternalActionInfrastructureCallsCompartmentItemSemanticEditPolicy.java
+END
+CustomInternalActionInfrastructureCallsCompartment2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 223
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.seff.custom/src/de/uka/ipd/sdq/pcm/gmf/seff/custom/edit/policies/CustomInternalActionInfrastructureCallsCompartment2ItemSemanticEditPolicy.java
+END

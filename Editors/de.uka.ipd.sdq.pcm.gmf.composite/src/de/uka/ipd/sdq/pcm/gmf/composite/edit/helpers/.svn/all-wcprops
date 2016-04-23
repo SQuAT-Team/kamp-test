@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/helpers
+END
+AssemblyConnectorEditHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/helpers/AssemblyConnectorEditHelper.java
+END
+AssemblyInfrastructureConnectorEditHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/helpers/AssemblyInfrastructureConnectorEditHelper.java
+END
+AssemblyEventConnectorEditHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/helpers/AssemblyEventConnectorEditHelper.java
+END
+InfrastructureProvidedRoleEditHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/helpers/InfrastructureProvidedRoleEditHelper.java
+END
+InfrastructureRequiredRoleEditHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/helpers/InfrastructureRequiredRoleEditHelper.java
+END
+EventChannelSourceConnectorEditHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/helpers/EventChannelSourceConnectorEditHelper.java
+END
+EventChannelSinkConnectorEditHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/helpers/EventChannelSinkConnectorEditHelper.java
+END
+EventChannelEditHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/helpers/EventChannelEditHelper.java
+END
+ComposedProvidingRequiringEntityEditHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 187
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/helpers/ComposedProvidingRequiringEntityEditHelper.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/helpers/package-info.java
+END
+OperationProvidedRoleEditHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/helpers/OperationProvidedRoleEditHelper.java
+END
+SourceRoleEditHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/helpers/SourceRoleEditHelper.java
+END
+ProvidedDelegationConnectorEditHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/helpers/ProvidedDelegationConnectorEditHelper.java
+END
+OperationRequiredRoleEditHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/helpers/OperationRequiredRoleEditHelper.java
+END
+PalladioComponentModelBaseEditHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/helpers/PalladioComponentModelBaseEditHelper.java
+END
+AssemblyContextEditHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/helpers/AssemblyContextEditHelper.java
+END
+SinkRoleEditHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/helpers/SinkRoleEditHelper.java
+END
+RequiredDelegationConnectorEditHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/helpers/RequiredDelegationConnectorEditHelper.java
+END

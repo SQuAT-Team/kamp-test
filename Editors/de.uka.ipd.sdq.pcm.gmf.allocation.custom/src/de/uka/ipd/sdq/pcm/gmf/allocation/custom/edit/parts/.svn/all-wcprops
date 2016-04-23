@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation.custom/src/de/uka/ipd/sdq/pcm/gmf/allocation/custom/edit/parts
+END
+CustomAllocationComponentLabelEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation.custom/src/de/uka/ipd/sdq/pcm/gmf/allocation/custom/edit/parts/CustomAllocationComponentLabelEditPart.java
+END
+CustomResourceContainerAllocationCompartmentEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 211
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation.custom/src/de/uka/ipd/sdq/pcm/gmf/allocation/custom/edit/parts/CustomResourceContainerAllocationCompartmentEditPart.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation.custom/src/de/uka/ipd/sdq/pcm/gmf/allocation/custom/edit/parts/package-info.java
+END
+CustomPalladioComponentModelEditPartFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 202
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation.custom/src/de/uka/ipd/sdq/pcm/gmf/allocation/custom/edit/parts/CustomPalladioComponentModelEditPartFactory.java
+END

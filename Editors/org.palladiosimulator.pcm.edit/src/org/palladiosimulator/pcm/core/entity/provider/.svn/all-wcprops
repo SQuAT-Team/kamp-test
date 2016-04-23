@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/entity/provider
+END
+EntityItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/entity/provider/EntityItemProviderAdapterFactory.java
+END
+InterfaceProvidingRequiringEntityItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 189
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/entity/provider/InterfaceProvidingRequiringEntityItemProvider.java
+END
+ResourceProvidedRoleItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/entity/provider/ResourceProvidedRoleItemProvider.java
+END
+ResourceInterfaceProvidingEntityItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/entity/provider/ResourceInterfaceProvidingEntityItemProvider.java
+END
+ResourceRequiredRoleItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/entity/provider/ResourceRequiredRoleItemProvider.java
+END
+ResourceInterfaceRequiringEntityItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/entity/provider/ResourceInterfaceRequiringEntityItemProvider.java
+END
+EntityItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 162
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/entity/provider/EntityItemProvider.java
+END
+ResourceInterfaceProvidingRequiringEntityItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/entity/provider/ResourceInterfaceProvidingRequiringEntityItemProvider.java
+END
+ComposedProvidingRequiringEntityItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/entity/provider/ComposedProvidingRequiringEntityItemProvider.java
+END
+NamedElementItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/entity/provider/NamedElementItemProvider.java
+END
+InterfaceProvidingEntityItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/entity/provider/InterfaceProvidingEntityItemProvider.java
+END
+InterfaceRequiringEntityItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/core/entity/provider/InterfaceRequiringEntityItemProvider.java
+END

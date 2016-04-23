@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.custom/src/de/uka/ipd/sdq/pcm/gmf/repository/custom/edit/policies
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.custom/src/de/uka/ipd/sdq/pcm/gmf/repository/custom/edit/policies/package-info.java
+END
+CustomRepositoryCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.custom/src/de/uka/ipd/sdq/pcm/gmf/repository/custom/edit/policies/CustomRepositoryCanonicalEditPolicy.java
+END
+CustomOpenCompositeDiagramEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 198
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.custom/src/de/uka/ipd/sdq/pcm/gmf/repository/custom/edit/policies/CustomOpenCompositeDiagramEditPolicy.java
+END
+CustomOpenSeffDiagramEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.custom/src/de/uka/ipd/sdq/pcm/gmf/repository/custom/edit/policies/CustomOpenSeffDiagramEditPolicy.java
+END

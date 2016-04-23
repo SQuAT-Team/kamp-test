@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/exception
+END
+ExceptionsCellModifier.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/exception/ExceptionsCellModifier.java
+END
+DeleteExctentionAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/exception/DeleteExctentionAction.java
+END
+ExceptionsDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/exception/ExceptionsDialog.java
+END
+ExceptionsItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/exception/ExceptionsItemProviderAdapterFactory.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/exception/package-info.java
+END
+AddExceptionTypeAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/exception/AddExceptionTypeAction.java
+END
+TestLabelProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/exception/TestLabelProvider.java
+END
+ExceptionsItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/exception/ExceptionsItemProvider.java
+END

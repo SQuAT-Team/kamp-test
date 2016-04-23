@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/commands
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/commands/package-info.java
+END
+AllocationContextCreateCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/commands/AllocationContextCreateCommand.java
+END
+ResourceContainerCreateCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/commands/ResourceContainerCreateCommand.java
+END

@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/resourcetype/provider
+END
+SchedulingPolicyItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/resourcetype/provider/SchedulingPolicyItemProvider.java
+END
+ProcessingResourceTypeItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/resourcetype/provider/ProcessingResourceTypeItemProvider.java
+END
+ResourceRepositoryItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/resourcetype/provider/ResourceRepositoryItemProvider.java
+END
+ResourceInterfaceItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/resourcetype/provider/ResourceInterfaceItemProvider.java
+END
+ResourceSignatureItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/resourcetype/provider/ResourceSignatureItemProvider.java
+END
+ResourceTypeItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/resourcetype/provider/ResourceTypeItemProvider.java
+END
+CommunicationLinkResourceTypeItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/resourcetype/provider/CommunicationLinkResourceTypeItemProvider.java
+END
+ResourcetypeItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/resourcetype/provider/ResourcetypeItemProviderAdapterFactory.java
+END

@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.custom/src/de/uka/ipd/sdq/pcm/gmf/resource/custom/edit/parts
+END
+CustomLinkingResourceNetworkSwitchCompartmentEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 208
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.custom/src/de/uka/ipd/sdq/pcm/gmf/resource/custom/edit/parts/CustomLinkingResourceNetworkSwitchCompartmentEditPart.java
+END
+CustomProcessingResourceSpecificationActiveResourceTypeLabelEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 223
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.custom/src/de/uka/ipd/sdq/pcm/gmf/resource/custom/edit/parts/CustomProcessingResourceSpecificationActiveResourceTypeLabelEditPart.java
+END
+CustomProcessingResourceSpecificationSchedulingPolicyLabelEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 221
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.custom/src/de/uka/ipd/sdq/pcm/gmf/resource/custom/edit/parts/CustomProcessingResourceSpecificationSchedulingPolicyLabelEditPart.java
+END
+CustomCommunicationLinkResourceSpecificationLatencyLabelEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 219
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.custom/src/de/uka/ipd/sdq/pcm/gmf/resource/custom/edit/parts/CustomCommunicationLinkResourceSpecificationLatencyLabelEditPart.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.custom/src/de/uka/ipd/sdq/pcm/gmf/resource/custom/edit/parts/package-info.java
+END
+CustomProcessingResourceSpecificationProcessingRateLabelEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 219
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.custom/src/de/uka/ipd/sdq/pcm/gmf/resource/custom/edit/parts/CustomProcessingResourceSpecificationProcessingRateLabelEditPart.java
+END
+CustomResourceContainerResourceContainerCompartmentEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 214
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.custom/src/de/uka/ipd/sdq/pcm/gmf/resource/custom/edit/parts/CustomResourceContainerResourceContainerCompartmentEditPart.java
+END
+CustomPalladioComponentModelEditPartFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 198
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.custom/src/de/uka/ipd/sdq/pcm/gmf/resource/custom/edit/parts/CustomPalladioComponentModelEditPartFactory.java
+END
+CustomCommunicationLinkResourceSpecificationFailureProbabilityEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 225
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.custom/src/de/uka/ipd/sdq/pcm/gmf/resource/custom/edit/parts/CustomCommunicationLinkResourceSpecificationFailureProbabilityEditPart.java
+END
+CustomProcessingResourceSpecificationProcessingResourceSpecificationCompartmentEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 242
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.custom/src/de/uka/ipd/sdq/pcm/gmf/resource/custom/edit/parts/CustomProcessingResourceSpecificationProcessingResourceSpecificationCompartmentEditPart.java
+END
+CustomCommunicationLinkResourceSpecificationThroughputLabelEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 222
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.resource.custom/src/de/uka/ipd/sdq/pcm/gmf/resource/custom/edit/parts/CustomCommunicationLinkResourceSpecificationThroughputLabelEditPart.java
+END

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/i43/svn/code/!svn/ver/28219/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs
+END
+SWTResourceManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/SWTResourceManager.java
+END
+OpenStoExDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/OpenStoExDialog.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/package-info.java
+END
+Messages.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/Messages.java
+END
+DialogsImages.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/DialogsImages.java
+END
+PCMDialogPluginActivator.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/i43/svn/code/!svn/ver/28015/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/PCMDialogPluginActivator.java
+END

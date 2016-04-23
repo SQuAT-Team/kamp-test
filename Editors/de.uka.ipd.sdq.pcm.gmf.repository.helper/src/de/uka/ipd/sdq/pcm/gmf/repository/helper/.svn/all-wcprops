@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.helper/src/de/uka/ipd/sdq/pcm/gmf/repository/helper
+END
+InterfaceEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 173
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.helper/src/de/uka/ipd/sdq/pcm/gmf/repository/helper/InterfaceEditHelperAdvice.java
+END
+RoleEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.helper/src/de/uka/ipd/sdq/pcm/gmf/repository/helper/RoleEditHelperAdvice.java
+END
+PassiveResourceEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.helper/src/de/uka/ipd/sdq/pcm/gmf/repository/helper/PassiveResourceEditHelperAdvice.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.helper/src/de/uka/ipd/sdq/pcm/gmf/repository/helper/package-info.java
+END
+ComponentParameterEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.helper/src/de/uka/ipd/sdq/pcm/gmf/repository/helper/ComponentParameterEditHelperAdvice.java
+END
+VariableCharacterisationEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.helper/src/de/uka/ipd/sdq/pcm/gmf/repository/helper/VariableCharacterisationEditHelperAdvice.java
+END
+RepositoryEditorSeffEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.helper/src/de/uka/ipd/sdq/pcm/gmf/repository/helper/RepositoryEditorSeffEditHelperAdvice.java
+END
+CanceledCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.helper/src/de/uka/ipd/sdq/pcm/gmf/repository/helper/CanceledCommand.java
+END
+RepositoryHelperPlugin.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.helper/src/de/uka/ipd/sdq/pcm/gmf/repository/helper/RepositoryHelperPlugin.java
+END

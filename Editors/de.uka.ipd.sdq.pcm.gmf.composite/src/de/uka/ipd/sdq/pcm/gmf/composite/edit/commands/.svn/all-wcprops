@@ -1,0 +1,161 @@
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands
+END
+ComposedProvidingRequiringEntityCreateCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 191
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/ComposedProvidingRequiringEntityCreateCommand.java
+END
+AssemblyConnectorReorientCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/AssemblyConnectorReorientCommand.java
+END
+AssemblyInfrastructureConnectorReorientCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 192
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/AssemblyInfrastructureConnectorReorientCommand.java
+END
+OperationProvidedRoleCreateCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/OperationProvidedRoleCreateCommand.java
+END
+AssemblyEventConnectorReorientCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/AssemblyEventConnectorReorientCommand.java
+END
+SourceRoleCreateCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 169
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/SourceRoleCreateCommand.java
+END
+OperationRequiredRoleCreateCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/OperationRequiredRoleCreateCommand.java
+END
+ProvidedDelegationConnectorCreateCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/ProvidedDelegationConnectorCreateCommand.java
+END
+AssemblyContextCreateCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/AssemblyContextCreateCommand.java
+END
+SinkRoleCreateCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/SinkRoleCreateCommand.java
+END
+RequiredDelegationConnectorCreateCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/RequiredDelegationConnectorCreateCommand.java
+END
+EventChannelSourceConnectorReorientCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/EventChannelSourceConnectorReorientCommand.java
+END
+AssemblyConnectorCreateCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/AssemblyConnectorCreateCommand.java
+END
+AssemblyInfrastructureConnectorCreateCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 190
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/AssemblyInfrastructureConnectorCreateCommand.java
+END
+AssemblyEventConnectorCreateCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/AssemblyEventConnectorCreateCommand.java
+END
+EventChannelSinkConnectorReorientCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/EventChannelSinkConnectorReorientCommand.java
+END
+InfrastructureProvidedRoleCreateCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 185
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/InfrastructureProvidedRoleCreateCommand.java
+END
+OperationProvidedRole2CreateCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/OperationProvidedRole2CreateCommand.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/package-info.java
+END
+InfrastructureRequiredRoleCreateCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 185
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/InfrastructureRequiredRoleCreateCommand.java
+END
+OperationRequiredRole2CreateCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/OperationRequiredRole2CreateCommand.java
+END
+EventChannelSourceConnectorCreateCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/EventChannelSourceConnectorCreateCommand.java
+END
+ProvidedDelegationConnectorReorientCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/ProvidedDelegationConnectorReorientCommand.java
+END
+EventChannelSinkConnectorCreateCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/EventChannelSinkConnectorCreateCommand.java
+END
+EventChannelCreateCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/EventChannelCreateCommand.java
+END
+RequiredDelegationConnectorReorientCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/commands/RequiredDelegationConnectorReorientCommand.java
+END

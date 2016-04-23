@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/i43/svn/code/!svn/ver/28314/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.editor/src/org/palladiosimulator/pcm/core/presentation
+END
+CoreEditor.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/i43/svn/code/!svn/ver/28314/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.editor/src/org/palladiosimulator/pcm/core/presentation/CoreEditor.java
+END
+PalladioComponentModelEditorPlugin.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/i43/svn/code/!svn/ver/28314/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.editor/src/org/palladiosimulator/pcm/core/presentation/PalladioComponentModelEditorPlugin.java
+END
+CoreActionBarContributor.java
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/i43/svn/code/!svn/ver/28314/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.editor/src/org/palladiosimulator/pcm/core/presentation/CoreActionBarContributor.java
+END
+CoreModelWizard.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/i43/svn/code/!svn/ver/28314/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.editor/src/org/palladiosimulator/pcm/core/presentation/CoreModelWizard.java
+END

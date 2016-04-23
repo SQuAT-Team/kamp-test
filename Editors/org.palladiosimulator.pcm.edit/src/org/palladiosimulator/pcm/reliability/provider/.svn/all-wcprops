@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/reliability/provider
+END
+ExternalFailureOccurrenceDescriptionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 192
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/reliability/provider/ExternalFailureOccurrenceDescriptionItemProvider.java
+END
+ResourceTimeoutFailureTypeItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/reliability/provider/ResourceTimeoutFailureTypeItemProvider.java
+END
+FailureTypeItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/reliability/provider/FailureTypeItemProvider.java
+END
+NetworkInducedFailureTypeItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/reliability/provider/NetworkInducedFailureTypeItemProvider.java
+END
+SoftwareInducedFailureTypeItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/reliability/provider/SoftwareInducedFailureTypeItemProvider.java
+END
+InternalFailureOccurrenceDescriptionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 192
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/reliability/provider/InternalFailureOccurrenceDescriptionItemProvider.java
+END
+ReliabilityItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/reliability/provider/ReliabilityItemProviderAdapterFactory.java
+END
+HardwareInducedFailureTypeItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/reliability/provider/HardwareInducedFailureTypeItemProvider.java
+END
+FailureOccurrenceDescriptionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/reliability/provider/FailureOccurrenceDescriptionItemProvider.java
+END

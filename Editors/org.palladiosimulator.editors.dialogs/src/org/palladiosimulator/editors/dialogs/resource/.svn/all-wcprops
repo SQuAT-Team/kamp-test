@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/resource
+END
+OpenLatencyDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/resource/OpenLatencyDialog.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/resource/package-info.java
+END
+OpenActiveResourceSpecificationDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/resource/OpenActiveResourceSpecificationDialog.java
+END
+OpenSchedulingPolicyDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/resource/OpenSchedulingPolicyDialog.java
+END
+OpenProcessingRateDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/resource/OpenProcessingRateDialog.java
+END
+OpenThroughputDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/src/org/palladiosimulator/editors/dialogs/resource/OpenThroughputDialog.java
+END

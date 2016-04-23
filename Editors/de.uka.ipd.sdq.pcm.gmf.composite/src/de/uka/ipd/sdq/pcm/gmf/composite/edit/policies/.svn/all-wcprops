@@ -1,0 +1,173 @@
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies
+END
+EventChannelSourceConnectorItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 195
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/EventChannelSourceConnectorItemSemanticEditPolicy.java
+END
+PalladioComponentModelTextNonResizableEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 194
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/PalladioComponentModelTextNonResizableEditPolicy.java
+END
+EventChannelSinkConnectorItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/EventChannelSinkConnectorItemSemanticEditPolicy.java
+END
+EventChannelItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/EventChannelItemSemanticEditPolicy.java
+END
+ComposedProvidingRequiringEntityItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 200
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/ComposedProvidingRequiringEntityItemSemanticEditPolicy.java
+END
+OperationProvidedRoleItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 189
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/OperationProvidedRoleItemSemanticEditPolicy.java
+END
+SourceRoleItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/SourceRoleItemSemanticEditPolicy.java
+END
+ComposedProvidingRequiringEntityCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/ComposedProvidingRequiringEntityCanonicalEditPolicy.java
+END
+OperationRequiredRoleItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 189
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/OperationRequiredRoleItemSemanticEditPolicy.java
+END
+ProvidedDelegationConnectorItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 195
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/ProvidedDelegationConnectorItemSemanticEditPolicy.java
+END
+AssemblyContextItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/AssemblyContextItemSemanticEditPolicy.java
+END
+PalladioComponentModelBaseItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 194
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/PalladioComponentModelBaseItemSemanticEditPolicy.java
+END
+SinkRoleItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 176
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/SinkRoleItemSemanticEditPolicy.java
+END
+RequiredDelegationConnectorItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 195
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/RequiredDelegationConnectorItemSemanticEditPolicy.java
+END
+ComposedProvidingRequiringEntityCompositeStructureInnerCompartmentItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 234
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/ComposedProvidingRequiringEntityCompositeStructureInnerCompartmentItemSemanticEditPolicy.java
+END
+AssemblyContextCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/AssemblyContextCanonicalEditPolicy.java
+END
+AssemblyConnectorItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 185
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/AssemblyConnectorItemSemanticEditPolicy.java
+END
+AssemblyInfrastructureConnectorItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 199
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/AssemblyInfrastructureConnectorItemSemanticEditPolicy.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/package-info.java
+END
+AssemblyEventConnectorItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 190
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/AssemblyEventConnectorItemSemanticEditPolicy.java
+END
+ComposedProvidingRequiringEntityCompositeStructureInnerCompartmentCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 231
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/ComposedProvidingRequiringEntityCompositeStructureInnerCompartmentCanonicalEditPolicy.java
+END
+InfrastructureProvidedRoleItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 194
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/InfrastructureProvidedRoleItemSemanticEditPolicy.java
+END
+ComposedProvidingRequiringEntity2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 201
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/ComposedProvidingRequiringEntity2ItemSemanticEditPolicy.java
+END
+OperationProvidedRole2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 190
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/OperationProvidedRole2ItemSemanticEditPolicy.java
+END
+PalladioComponentModelTextSelectionEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 191
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/PalladioComponentModelTextSelectionEditPolicy.java
+END
+InfrastructureRequiredRoleItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 194
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/InfrastructureRequiredRoleItemSemanticEditPolicy.java
+END
+ComposedProvidingRequiringEntity2CanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 198
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/ComposedProvidingRequiringEntity2CanonicalEditPolicy.java
+END
+OperationRequiredRole2ItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 190
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite/src/de/uka/ipd/sdq/pcm/gmf/composite/edit/policies/OperationRequiredRole2ItemSemanticEditPolicy.java
+END

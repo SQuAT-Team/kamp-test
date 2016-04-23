@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/i43/svn/code/!svn/ver/28023/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.custom/src/de/uka/ipd/sdq/pcm/gmf/repository/custom/edit/parts
+END
+CustomVariableCharacterisationEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.custom/src/de/uka/ipd/sdq/pcm/gmf/repository/custom/edit/parts/CustomVariableCharacterisationEditPart.java
+END
+CustomVariableUsageEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 186
+/i43/svn/code/!svn/ver/28023/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.custom/src/de/uka/ipd/sdq/pcm/gmf/repository/custom/edit/parts/CustomVariableUsageEditPart.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.custom/src/de/uka/ipd/sdq/pcm/gmf/repository/custom/edit/parts/package-info.java
+END
+CustomRepositoryEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.custom/src/de/uka/ipd/sdq/pcm/gmf/repository/custom/edit/parts/CustomRepositoryEditPart.java
+END
+CustomPalladioComponentModelEditPartFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 202
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.custom/src/de/uka/ipd/sdq/pcm/gmf/repository/custom/edit/parts/CustomPalladioComponentModelEditPartFactory.java
+END
+CustomInfrastructureSignatureEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 196
+/i43/svn/code/!svn/ver/27654/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.custom/src/de/uka/ipd/sdq/pcm/gmf/repository/custom/edit/parts/CustomInfrastructureSignatureEditPart.java
+END
+CustomOperationSignatureEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 191
+/i43/svn/code/!svn/ver/27654/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.custom/src/de/uka/ipd/sdq/pcm/gmf/repository/custom/edit/parts/CustomOperationSignatureEditPart.java
+END
+CustomPassiveResourceEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.custom/src/de/uka/ipd/sdq/pcm/gmf/repository/custom/edit/parts/CustomPassiveResourceEditPart.java
+END
+CustomResourceDemandingSEFFEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 194
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.custom/src/de/uka/ipd/sdq/pcm/gmf/repository/custom/edit/parts/CustomResourceDemandingSEFFEditPart.java
+END
+CustomCompositeComponentEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 191
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.repository.custom/src/de/uka/ipd/sdq/pcm/gmf/repository/custom/edit/parts/CustomCompositeComponentEditPart.java
+END

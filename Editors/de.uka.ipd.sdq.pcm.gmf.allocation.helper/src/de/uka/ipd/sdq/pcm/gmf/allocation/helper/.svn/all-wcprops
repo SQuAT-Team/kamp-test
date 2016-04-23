@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation.helper/src/de/uka/ipd/sdq/pcm/gmf/allocation/helper
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation.helper/src/de/uka/ipd/sdq/pcm/gmf/allocation/helper/package-info.java
+END
+Activator.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation.helper/src/de/uka/ipd/sdq/pcm/gmf/allocation/helper/Activator.java
+END
+AllocationContextEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation.helper/src/de/uka/ipd/sdq/pcm/gmf/allocation/helper/AllocationContextEditHelperAdvice.java
+END
+CanceledCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation.helper/src/de/uka/ipd/sdq/pcm/gmf/allocation/helper/CanceledCommand.java
+END

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation.custom/src/de/uka/ipd/sdq/pcm/gmf/allocation/custom/edit/policies
+END
+CustomResourceContainerAllocationCompartmentCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 225
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation.custom/src/de/uka/ipd/sdq/pcm/gmf/allocation/custom/edit/policies/CustomResourceContainerAllocationCompartmentCanonicalEditPolicy.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation.custom/src/de/uka/ipd/sdq/pcm/gmf/allocation/custom/edit/policies/package-info.java
+END
+CustomAllocationCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation.custom/src/de/uka/ipd/sdq/pcm/gmf/allocation/custom/edit/policies/CustomAllocationCanonicalEditPolicy.java
+END
+CustomResourceContainerAllocationCompartmentItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 228
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation.custom/src/de/uka/ipd/sdq/pcm/gmf/allocation/custom/edit/policies/CustomResourceContainerAllocationCompartmentItemSemanticEditPolicy.java
+END

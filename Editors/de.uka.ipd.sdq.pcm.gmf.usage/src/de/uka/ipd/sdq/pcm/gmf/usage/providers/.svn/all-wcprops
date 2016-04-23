@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/providers
+END
+PalladioComponentModelViewProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/providers/PalladioComponentModelViewProvider.java
+END
+PalladioComponentModelEditPartProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 172
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/providers/PalladioComponentModelEditPartProvider.java
+END
+PalladioComponentModelStructuralFeatureParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/providers/PalladioComponentModelStructuralFeatureParser.java
+END
+PalladioComponentModelModelingAssistantProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/providers/PalladioComponentModelModelingAssistantProvider.java
+END
+PalladioComponentModelIconProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/providers/PalladioComponentModelIconProvider.java
+END
+PalladioComponentModelValidationProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 174
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/providers/PalladioComponentModelValidationProvider.java
+END
+ElementInitializers.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/providers/ElementInitializers.java
+END
+PalladioComponentModelParserProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/providers/PalladioComponentModelParserProvider.java
+END
+PalladioComponentModelValidationDecoratorProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/providers/PalladioComponentModelValidationDecoratorProvider.java
+END
+PalladioComponentModelContributionItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/providers/PalladioComponentModelContributionItemProvider.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/providers/package-info.java
+END
+PalladioComponentModelMarkerNavigationProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/providers/PalladioComponentModelMarkerNavigationProvider.java
+END
+PalladioComponentModelElementTypes.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/providers/PalladioComponentModelElementTypes.java
+END
+PalladioComponentModelAbstractParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/providers/PalladioComponentModelAbstractParser.java
+END
+PalladioComponentModelStructuralFeaturesParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/providers/PalladioComponentModelStructuralFeaturesParser.java
+END

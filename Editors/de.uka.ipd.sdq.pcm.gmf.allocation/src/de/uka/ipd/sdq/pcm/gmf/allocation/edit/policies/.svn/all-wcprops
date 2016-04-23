@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/policies
+END
+PalladioComponentModelTextNonResizableEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 196
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/policies/PalladioComponentModelTextNonResizableEditPolicy.java
+END
+AllocationCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/policies/AllocationCanonicalEditPolicy.java
+END
+AllocationContextItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 187
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/policies/AllocationContextItemSemanticEditPolicy.java
+END
+ResourceContainerAllocationCompartmentItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 208
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/policies/ResourceContainerAllocationCompartmentItemSemanticEditPolicy.java
+END
+ResourceContainerItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 187
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/policies/ResourceContainerItemSemanticEditPolicy.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/policies/package-info.java
+END
+ResourceContainerAllocationCompartmentCanonicalEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 205
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/policies/ResourceContainerAllocationCompartmentCanonicalEditPolicy.java
+END
+PalladioComponentModelTextSelectionEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/policies/PalladioComponentModelTextSelectionEditPolicy.java
+END
+PalladioComponentModelBaseItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 196
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/policies/PalladioComponentModelBaseItemSemanticEditPolicy.java
+END
+AllocationItemSemanticEditPolicy.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/policies/AllocationItemSemanticEditPolicy.java
+END

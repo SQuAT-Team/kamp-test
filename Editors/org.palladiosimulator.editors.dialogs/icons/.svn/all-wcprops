@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/i43/svn/code/!svn/ver/27640/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/icons
+END
+delete_action.gif
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/i43/svn/code/!svn/ver/27640/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/icons/delete_action.gif
+END
+up_action.gif
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/i43/svn/code/!svn/ver/27640/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/icons/up_action.gif
+END
+down_action.gif
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/i43/svn/code/!svn/ver/27640/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/icons/down_action.gif
+END
+add_action.gif
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/i43/svn/code/!svn/ver/27640/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/icons/add_action.gif
+END
+warning.gif
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/i43/svn/code/!svn/ver/27640/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/icons/warning.gif
+END
+error.gif
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/i43/svn/code/!svn/ver/27640/Palladio/Core/trunk/Editors/org.palladiosimulator.editors.dialogs/icons/error.gif
+END

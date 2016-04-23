@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/preferences
+END
+DiagramAppearancePreferencePage.java
+K 25
+svn:wc:ra_dav:version-url
+V 167
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/preferences/DiagramAppearancePreferencePage.java
+END
+DiagramConnectionsPreferencePage.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/preferences/DiagramConnectionsPreferencePage.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/preferences/package-info.java
+END
+DiagramRulersAndGridPreferencePage.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/preferences/DiagramRulersAndGridPreferencePage.java
+END
+DiagramPreferenceInitializer.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/preferences/DiagramPreferenceInitializer.java
+END
+DiagramPrintingPreferencePage.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/preferences/DiagramPrintingPreferencePage.java
+END
+DiagramGeneralPreferencePage.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.usage/src/de/uka/ipd/sdq/pcm/gmf/usage/preferences/DiagramGeneralPreferencePage.java
+END

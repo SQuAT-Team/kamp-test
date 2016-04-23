@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.helper/src/de/uka/ipd/sdq/pcm/gmf/composite/helper/edit
+END
+OperationProvidedRoleEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.helper/src/de/uka/ipd/sdq/pcm/gmf/composite/helper/edit/OperationProvidedRoleEditHelperAdvice.java
+END
+ProvidedDelegationConnectorEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 194
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.helper/src/de/uka/ipd/sdq/pcm/gmf/composite/helper/edit/ProvidedDelegationConnectorEditHelperAdvice.java
+END
+OperationRequiredRoleEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 188
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.helper/src/de/uka/ipd/sdq/pcm/gmf/composite/helper/edit/OperationRequiredRoleEditHelperAdvice.java
+END
+AssemblyContextEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.helper/src/de/uka/ipd/sdq/pcm/gmf/composite/helper/edit/AssemblyContextEditHelperAdvice.java
+END
+RequiredDelegationConnectorEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 194
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.helper/src/de/uka/ipd/sdq/pcm/gmf/composite/helper/edit/RequiredDelegationConnectorEditHelperAdvice.java
+END
+AssemblyConnectorEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 184
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.helper/src/de/uka/ipd/sdq/pcm/gmf/composite/helper/edit/AssemblyConnectorEditHelperAdvice.java
+END
+AssemblyInfrastructureConnectorEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 198
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.helper/src/de/uka/ipd/sdq/pcm/gmf/composite/helper/edit/AssemblyInfrastructureConnectorEditHelperAdvice.java
+END
+AssemblyEventConnectorEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 189
+/i43/svn/code/!svn/ver/27596/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.helper/src/de/uka/ipd/sdq/pcm/gmf/composite/helper/edit/AssemblyEventConnectorEditHelperAdvice.java
+END
+ProvidedRoleEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.helper/src/de/uka/ipd/sdq/pcm/gmf/composite/helper/edit/ProvidedRoleEditHelperAdvice.java
+END
+InfrastructureProvidedRoleEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.helper/src/de/uka/ipd/sdq/pcm/gmf/composite/helper/edit/InfrastructureProvidedRoleEditHelperAdvice.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.helper/src/de/uka/ipd/sdq/pcm/gmf/composite/helper/edit/package-info.java
+END
+RequiredRoleEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.helper/src/de/uka/ipd/sdq/pcm/gmf/composite/helper/edit/RequiredRoleEditHelperAdvice.java
+END
+InfrastructureRequiredRoleEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.helper/src/de/uka/ipd/sdq/pcm/gmf/composite/helper/edit/InfrastructureRequiredRoleEditHelperAdvice.java
+END
+EventChannelEditHelperAdvice.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/i43/svn/code/!svn/ver/27715/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.helper/src/de/uka/ipd/sdq/pcm/gmf/composite/helper/edit/EventChannelEditHelperAdvice.java
+END
+CanceledCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.composite.helper/src/de/uka/ipd/sdq/pcm/gmf/composite/helper/edit/CanceledCommand.java
+END

@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/parts
+END
+AllocationEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/parts/AllocationEditPart.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/parts/package-info.java
+END
+AllocationComponentLabelEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/parts/AllocationComponentLabelEditPart.java
+END
+AllocationContextEntityNameEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/parts/AllocationContextEntityNameEditPart.java
+END
+ResourceContainerEntityNameEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/parts/ResourceContainerEntityNameEditPart.java
+END
+AllocationContextEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/parts/AllocationContextEditPart.java
+END
+ResourceContainerAllocationCompartmentEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 191
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/parts/ResourceContainerAllocationCompartmentEditPart.java
+END
+ResourceContainerEditPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 170
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/parts/ResourceContainerEditPart.java
+END
+PalladioComponentModelEditPartFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/27505/Palladio/Core/trunk/Editors/de.uka.ipd.sdq.pcm.gmf.allocation/src/de/uka/ipd/sdq/pcm/gmf/allocation/edit/parts/PalladioComponentModelEditPartFactory.java
+END

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/resourceenvironment/provider
+END
+ProcessingResourceSpecificationItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 195
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/resourceenvironment/provider/ProcessingResourceSpecificationItemProvider.java
+END
+ResourceenvironmentItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/resourceenvironment/provider/ResourceenvironmentItemProviderAdapterFactory.java
+END
+ResourceContainerItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/resourceenvironment/provider/ResourceContainerItemProvider.java
+END
+CommunicationLinkResourceSpecificationItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 202
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/resourceenvironment/provider/CommunicationLinkResourceSpecificationItemProvider.java
+END
+ResourceEnvironmentItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/resourceenvironment/provider/ResourceEnvironmentItemProvider.java
+END
+LinkingResourceItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 179
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/resourceenvironment/provider/LinkingResourceItemProvider.java
+END

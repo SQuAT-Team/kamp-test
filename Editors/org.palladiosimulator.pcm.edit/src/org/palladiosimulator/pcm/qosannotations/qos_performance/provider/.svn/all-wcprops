@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/qosannotations/qos_performance/provider
+END
+QosPerformanceItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 203
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/qosannotations/qos_performance/provider/QosPerformanceItemProviderAdapterFactory.java
+END
+SpecifiedExecutionTimeItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 197
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/qosannotations/qos_performance/provider/SpecifiedExecutionTimeItemProvider.java
+END
+ComponentSpecifiedExecutionTimeItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 206
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/qosannotations/qos_performance/provider/ComponentSpecifiedExecutionTimeItemProvider.java
+END
+SystemSpecifiedExecutionTimeItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 203
+/i43/svn/code/!svn/ver/28746/Palladio/Core/trunk/Editors/org.palladiosimulator.pcm.edit/src/org/palladiosimulator/pcm/qosannotations/qos_performance/provider/SystemSpecifiedExecutionTimeItemProvider.java
+END
