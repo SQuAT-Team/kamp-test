@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 6 resources" deleteContents="false" description="Delete 6 resources" element1="/de.uka.ipd.sdq.pcm.componentinternaldependencies" element2="/de.uka.ipd.sdq.pcm.fieldofactivityannotations" element3="/de.uka.ipd.sdq.pcm.internalmodificationmark" element4="/edu.kit.ipd.sdq.kamp" element5="/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations" element6="/edu.kit.ipd.sdq.kamp.model.modificationmarks" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="6" stamp="1461956903832"/>
+</session>

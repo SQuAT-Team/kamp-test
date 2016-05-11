@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated InternalModificationMark -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="de.uka.ipd.sdq.internalmodificationmark.presentation.InternalmodificationmarkModelWizardID"
+            name="%_UI_InternalmodificationmarkModelWizard_label"
+            class="de.uka.ipd.sdq.internalmodificationmark.presentation.InternalmodificationmarkModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/InternalmodificationmarkModelFile.gif">
+         <description>%_UI_InternalmodificationmarkModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated InternalModificationMark -->
+      <editor
+            id="de.uka.ipd.sdq.internalmodificationmark.presentation.InternalmodificationmarkEditorID"
+            name="%_UI_InternalmodificationmarkEditor_label"
+            icon="icons/full/obj16/InternalmodificationmarkModelFile.gif"
+            extensions="internalmodifications"
+            class="de.uka.ipd.sdq.internalmodificationmark.presentation.InternalmodificationmarkEditor"
+            contributorClass="de.uka.ipd.sdq.internalmodificationmark.presentation.InternalmodificationmarkActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

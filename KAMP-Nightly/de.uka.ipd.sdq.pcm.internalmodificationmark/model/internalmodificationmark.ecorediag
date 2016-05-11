@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_HifEoCGTEeWcrfIrSrSvKA" type="EcoreTools" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_HinAcCGTEeWcrfIrSrSvKA" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_HinAcyGTEeWcrfIrSrSvKA" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_HinngCGTEeWcrfIrSrSvKA" type="5001">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_HinngSGTEeWcrfIrSrSvKA"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_HinngiGTEeWcrfIrSrSvKA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_HinngyGTEeWcrfIrSrSvKA"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_HinnhCGTEeWcrfIrSrSvKA" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_HinnhSGTEeWcrfIrSrSvKA"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_HinnhiGTEeWcrfIrSrSvKA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_HinnhyGTEeWcrfIrSrSvKA"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_HinAcSGTEeWcrfIrSrSvKA" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="internalmodificationmark.ecore#//InternalModificationMarkRepository"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HinAciGTEeWcrfIrSrSvKA" y="103"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_Hio1oCGTEeWcrfIrSrSvKA" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_HipcsCGTEeWcrfIrSrSvKA" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_HipcsSGTEeWcrfIrSrSvKA" type="5001">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_HipcsiGTEeWcrfIrSrSvKA"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_HipcsyGTEeWcrfIrSrSvKA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_HipctCGTEeWcrfIrSrSvKA"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_HipctSGTEeWcrfIrSrSvKA" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_HipctiGTEeWcrfIrSrSvKA"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_HipctyGTEeWcrfIrSrSvKA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_HipcuCGTEeWcrfIrSrSvKA"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_Hio1oSGTEeWcrfIrSrSvKA" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="internalmodificationmark.ecore#//InternalModificationMark"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Hio1oiGTEeWcrfIrSrSvKA" x="31"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_HifEoSGTEeWcrfIrSrSvKA"/>
+  <element xmi:type="ecore:EPackage" href="internalmodificationmark.ecore#/"/>
+  <edges xmi:type="notation:Edge" xmi:id="_HipcuSGTEeWcrfIrSrSvKA" type="3002" source="_HinAcCGTEeWcrfIrSrSvKA" target="_Hio1oCGTEeWcrfIrSrSvKA">
+    <children xmi:type="notation:Node" xmi:id="_HiqDwCGTEeWcrfIrSrSvKA" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_HiqDwSGTEeWcrfIrSrSvKA" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_HiqDwiGTEeWcrfIrSrSvKA" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_HiqDwyGTEeWcrfIrSrSvKA" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_HipcuiGTEeWcrfIrSrSvKA" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_HipcuyGTEeWcrfIrSrSvKA" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="internalmodificationmark.ecore#//InternalModificationMarkRepository/internalModificationMark"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_HipcvCGTEeWcrfIrSrSvKA" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_HjACACGTEeWcrfIrSrSvKA" id="(0.49783549783549785,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_HjACASGTEeWcrfIrSrSvKA" id="(0.5,1.0)"/>
+  </edges>
+</notation:Diagram>

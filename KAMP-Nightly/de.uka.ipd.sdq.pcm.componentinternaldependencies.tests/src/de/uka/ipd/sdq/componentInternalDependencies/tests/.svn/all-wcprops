@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 223
+/i43/svn/code/!svn/ver/29371/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.componentinternaldependencies.tests/src/de/uka/ipd/sdq/componentInternalDependencies/tests
+END
+ComponentInternalDependenciesAllTests.java
+K 25
+svn:wc:ra_dav:version-url
+V 266
+/i43/svn/code/!svn/ver/29371/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.componentinternaldependencies.tests/src/de/uka/ipd/sdq/componentInternalDependencies/tests/ComponentInternalDependenciesAllTests.java
+END
+ComponentInternalDependenciesExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 265
+/i43/svn/code/!svn/ver/29371/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.componentinternaldependencies.tests/src/de/uka/ipd/sdq/componentInternalDependencies/tests/ComponentInternalDependenciesExample.java
+END
+OperationToOperationDependencyTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 263
+/i43/svn/code/!svn/ver/29371/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.componentinternaldependencies.tests/src/de/uka/ipd/sdq/componentInternalDependencies/tests/OperationToOperationDependencyTest.java
+END
+RoleToRoleDependencyTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 253
+/i43/svn/code/!svn/ver/29371/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.componentinternaldependencies.tests/src/de/uka/ipd/sdq/componentInternalDependencies/tests/RoleToRoleDependencyTest.java
+END
+ComponentInternalDependenciesTests.java
+K 25
+svn:wc:ra_dav:version-url
+V 263
+/i43/svn/code/!svn/ver/29371/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.componentinternaldependencies.tests/src/de/uka/ipd/sdq/componentInternalDependencies/tests/ComponentInternalDependenciesTests.java
+END
+ComponentInternalDependencyRepositoryTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 270
+/i43/svn/code/!svn/ver/29371/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.componentinternaldependencies.tests/src/de/uka/ipd/sdq/componentInternalDependencies/tests/ComponentInternalDependencyRepositoryTest.java
+END

@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 217
+/i43/svn/code/!svn/ver/29357/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.tests/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/tests
+END
+FieldOfActivityAnnotationsAllTests.java
+K 25
+svn:wc:ra_dav:version-url
+V 257
+/i43/svn/code/!svn/ver/29357/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.tests/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/tests/FieldOfActivityAnnotationsAllTests.java
+END
+FieldOfActivityAnnotationsExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 256
+/i43/svn/code/!svn/ver/29357/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.tests/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/tests/FieldOfActivityAnnotationsExample.java
+END
+RuntimeInstanceAggregationTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 253
+/i43/svn/code/!svn/ver/29357/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.tests/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/tests/RuntimeInstanceAggregationTest.java
+END
+SourceFileTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 237
+/i43/svn/code/!svn/ver/29357/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.tests/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/tests/SourceFileTest.java
+END
+FieldOfActivityAnnotationsRepositoryTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 263
+/i43/svn/code/!svn/ver/29357/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.tests/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/tests/FieldOfActivityAnnotationsRepositoryTest.java
+END
+TestCaseAggregationTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 246
+/i43/svn/code/!svn/ver/29357/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.tests/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/tests/TestCaseAggregationTest.java
+END
+TechnologicalCorrespondenceTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 254
+/i43/svn/code/!svn/ver/29357/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.tests/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/tests/TechnologicalCorrespondenceTest.java
+END
+FieldOfActivityAnnotationsTests.java
+K 25
+svn:wc:ra_dav:version-url
+V 254
+/i43/svn/code/!svn/ver/29357/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.tests/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/tests/FieldOfActivityAnnotationsTests.java
+END
+BuildConfigurationTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 245
+/i43/svn/code/!svn/ver/29357/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.tests/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/tests/BuildConfigurationTest.java
+END
+RuntimeInstanceTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 242
+/i43/svn/code/!svn/ver/29357/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.tests/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/tests/RuntimeInstanceTest.java
+END
+SourceFileAggregationTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 248
+/i43/svn/code/!svn/ver/29357/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.tests/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/tests/SourceFileAggregationTest.java
+END
+DesignPatternRoleTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 244
+/i43/svn/code/!svn/ver/29357/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.tests/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/tests/DesignPatternRoleTest.java
+END
+TestCaseTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 235
+/i43/svn/code/!svn/ver/29357/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.tests/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/tests/TestCaseTest.java
+END
+StaffAssignmentTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 242
+/i43/svn/code/!svn/ver/29357/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.tests/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/tests/StaffAssignmentTest.java
+END

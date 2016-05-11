@@ -1,0 +1,100 @@
+10
+
+dir
+31907
+https://anonymous@svnserver.informatik.kit.edu/i43/svn/code/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo
+https://anonymous@svnserver.informatik.kit.edu/i43/svn/code
+
+
+
+2015-10-14T17:01:27.076751Z
+29464
+s_jbach
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+769cc9a0-fb0c-0410-8c2f-a2305f0e6268
+
+de.uka.ipd.sdq.pcm.componentinternaldependencies.edit
+dir
+
+edu.kit.ipd.sdq.kamp.buckminster
+dir
+
+de.uka.ipd.sdq.pcm.componentinternaldependencies.editor
+dir
+
+edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.edit
+dir
+
+edu.kit.ipd.sdq.kamp.model.modificationmarks.edit
+dir
+
+edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.editor
+dir
+
+edu.kit.ipd.sdq.kamp.model.modificationmarks.editor
+dir
+
+edu.kit.ipd.sdq.kamp.feature
+dir
+
+de.uka.ipd.sdq.pcm.internalmodificationmark.edit
+dir
+
+de.uka.ipd.sdq.pcm.internalmodificationmark.editor
+dir
+
+de.uka.ipd.sdq.pcm.fieldofactivityannotations
+dir
+
+de.uka.ipd.sdq.pcm.fieldofactivityannotations.tests
+dir
+
+edu.kit.ipd.sdq.kamp
+dir
+
+de.uka.ipd.sdq.pcm.componentinternaldependencies
+dir
+
+de.uka.ipd.sdq.pcm.componentinternaldependencies.tests
+dir
+
+edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations
+dir
+
+edu.kit.ipd.sdq.kamp.model.modificationmarks
+dir
+
+edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.tests
+dir
+
+edu.kit.ipd.sdq.kamp.model.modificationmarks.tests
+dir
+
+edu.kit.ipd.sdq.kamp.updatesite
+dir
+
+de.uka.ipd.sdq.pcm.internalmodificationmark
+dir
+
+de.uka.ipd.sdq.pcm.internalmodificationmark.tests
+dir
+
+de.uka.ipd.sdq.pcm.fieldofactivityannotations.edit
+dir
+
+de.uka.ipd.sdq.pcm.fieldofactivityannotations.editor
+dir
+

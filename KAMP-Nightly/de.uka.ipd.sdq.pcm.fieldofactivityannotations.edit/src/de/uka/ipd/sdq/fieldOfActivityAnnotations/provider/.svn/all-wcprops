@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 219
+/i43/svn/code/!svn/ver/29379/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.edit/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/provider
+END
+TechnologicalCorrespondenceItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 264
+/i43/svn/code/!svn/ver/29379/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.edit/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/provider/TechnologicalCorrespondenceItemProvider.java
+END
+BuildConfigurationItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 255
+/i43/svn/code/!svn/ver/29379/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.edit/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/provider/BuildConfigurationItemProvider.java
+END
+RuntimeInstanceItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 252
+/i43/svn/code/!svn/ver/29379/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.edit/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/provider/RuntimeInstanceItemProvider.java
+END
+SourceFileAggregationItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 258
+/i43/svn/code/!svn/ver/29379/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.edit/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/provider/SourceFileAggregationItemProvider.java
+END
+DesignPatternRoleItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 254
+/i43/svn/code/!svn/ver/29379/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.edit/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/provider/DesignPatternRoleItemProvider.java
+END
+TestCaseItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 245
+/i43/svn/code/!svn/ver/29379/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.edit/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/provider/TestCaseItemProvider.java
+END
+FieldOfActivityAnnotationsItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 277
+/i43/svn/code/!svn/ver/29379/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.edit/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/provider/FieldOfActivityAnnotationsItemProviderAdapterFactory.java
+END
+StaffAssignmentItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 252
+/i43/svn/code/!svn/ver/29379/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.edit/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/provider/StaffAssignmentItemProvider.java
+END
+FieldOfActivityAnnotationsEditPlugin.java
+K 25
+svn:wc:ra_dav:version-url
+V 261
+/i43/svn/code/!svn/ver/29379/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.edit/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/provider/FieldOfActivityAnnotationsEditPlugin.java
+END
+RuntimeInstanceAggregationItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 263
+/i43/svn/code/!svn/ver/29379/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.edit/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/provider/RuntimeInstanceAggregationItemProvider.java
+END
+SourceFileItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 247
+/i43/svn/code/!svn/ver/29379/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.edit/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/provider/SourceFileItemProvider.java
+END
+FieldOfActivityAnnotationsRepositoryItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 273
+/i43/svn/code/!svn/ver/29379/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.edit/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/provider/FieldOfActivityAnnotationsRepositoryItemProvider.java
+END
+TestCaseAggregationItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 256
+/i43/svn/code/!svn/ver/29379/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.fieldofactivityannotations.edit/src/de/uka/ipd/sdq/fieldOfActivityAnnotations/provider/TestCaseAggregationItemProvider.java
+END

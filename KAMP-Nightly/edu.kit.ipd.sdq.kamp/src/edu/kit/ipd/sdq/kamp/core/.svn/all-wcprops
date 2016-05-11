@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/i43/svn/code/!svn/ver/29382/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/core
+END
+ArchitectureModelFactoryFacade.java
+K 25
+svn:wc:ra_dav:version-url
+V 200
+/i43/svn/code/!svn/ver/29374/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/core/ArchitectureModelFactoryFacade.java
+END
+ProvidingRequiredRolePair.java
+K 25
+svn:wc:ra_dav:version-url
+V 195
+/i43/svn/code/!svn/ver/29374/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/core/ProvidingRequiredRolePair.java
+END
+ArchitectureVersionPersistency.java
+K 25
+svn:wc:ra_dav:version-url
+V 200
+/i43/svn/code/!svn/ver/29374/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/core/ArchitectureVersionPersistency.java
+END
+ArchitectureAnnotationFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 199
+/i43/svn/code/!svn/ver/29374/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/core/ArchitectureAnnotationFactory.java
+END
+ArchitectureAnnotationLookup.java
+K 25
+svn:wc:ra_dav:version-url
+V 198
+/i43/svn/code/!svn/ver/29374/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/core/ArchitectureAnnotationLookup.java
+END
+ActivityElementType.java
+K 25
+svn:wc:ra_dav:version-url
+V 189
+/i43/svn/code/!svn/ver/29374/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/core/ActivityElementType.java
+END
+ArchitectureVersion.java
+K 25
+svn:wc:ra_dav:version-url
+V 189
+/i43/svn/code/!svn/ver/29374/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/core/ArchitectureVersion.java
+END
+Activity.java
+K 25
+svn:wc:ra_dav:version-url
+V 178
+/i43/svn/code/!svn/ver/29374/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/core/Activity.java
+END
+ArchitectureModelLookup.java
+K 25
+svn:wc:ra_dav:version-url
+V 193
+/i43/svn/code/!svn/ver/29382/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/core/ArchitectureModelLookup.java
+END
+ChangePropagationAnalysis.java
+K 25
+svn:wc:ra_dav:version-url
+V 195
+/i43/svn/code/!svn/ver/29382/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/core/ChangePropagationAnalysis.java
+END
+ExcelWriter.java
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/i43/svn/code/!svn/ver/29374/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/core/ExcelWriter.java
+END
+ActivityType.java
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/i43/svn/code/!svn/ver/29374/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/core/ActivityType.java
+END
+BasicActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 183
+/i43/svn/code/!svn/ver/29374/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp/src/edu/kit/ipd/sdq/kamp/core/BasicActivity.java
+END

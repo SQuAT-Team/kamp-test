@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/edu.kit.ipd.sdq.kamp.feature_1.0.0.qualifier.jar" id="edu.kit.ipd.sdq.kamp.feature" version="1.0.0.qualifier">
+      <category name="kamp_category"/>
+   </feature>
+   <category-def name="kamp_category" label="KAMP Addon"/>
+</site>

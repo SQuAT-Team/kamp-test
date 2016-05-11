@@ -1,0 +1,62 @@
+#
+
+pluginName = KAMPModificationmarks Edit Support
+providerName = www.example.org
+
+_UI_CreateChild_text = {0}
+_UI_CreateChild_text2 = {1} {0}
+_UI_CreateChild_text3 = {1}
+_UI_CreateChild_tooltip = Erzeuge Neu {0} Unter {1} 
+_UI_CreateChild_description = Erzeuge ein neues Kind vom Typ {0} für das {1} Feature der Auswahl {2}.
+_UI_CreateSibling_description = Erzeuge ein neues Geschwister vom Typ {0} für die Auswahl {2}, unter dem {1} Feature des Elternteils.
+
+_UI_PropertyDescriptor_description = The {0} of the {1}
+
+_UI_ModificationRepository_type = Auswirkungsanalyse
+_UI_ModifyComponent_type = Modifiziere Komponente
+_UI_ModifyAssemblyConnector_type = Modifiziere Assemblierungskonnektor
+_UI_ModifyDatatype_type = Modifiziere Datentyp
+_UI_Modification_type = Modifikationskennzeichnung
+_UI_Unknown_type = Object
+
+_UI_Unknown_datatype= Value
+
+_UI_ModifyComponent_component_feature = Komponente
+_UI_ModifyComponent_signatures_feature = Signaturen
+_UI_ModifyAssemblyConnector_assemblyconnector_feature = Assemblierungskonnektor
+_UI_ModifyDatatype_datatype_feature = Datentyp
+_UI_Modification_id_feature = Id
+_UI_Unknown_feature = unspezifiziert
+
+_UI_IntercomponentPropagation_type = Ausbreitung: Komponente -> Komponente
+_UI_IntracomponentPropagation_type = Ausbreitung: Innerhalb von Komponente
+_UI_SeedModifications_type = Änderungen kennzeichnen
+_UI_ModifyProvidedRole_type = Modifiziere Schnittstellenangebot (Provided Role)
+_UI_ModifyRequiredRole_type = Modifiziere Schnittstellennachfrage (Required Role)
+_UI_ChangePropagationStep_type = Änderungsausbreitungs-Schritt
+_UI_ChangePropagationDueToDataDependencies_type = Ausbreitung: Datentyp(en) -> Schnittstelle(n)
+_UI_ModifyInterface_type = Modifiziere Schnittstelle
+_UI_ModifySignature_type = Modifiziere Signatur
+_UI_ChangePropagationDueToInterfaceDependencies_type = Ausbreitung: Schnittstelle(n) -> Schnittstellenangebote / Schnittstellennachfragen
+_UI_ModificationRepository_seedModifications_feature = Änderungen kennzeichnen
+_UI_ModificationRepository_changePropagationSteps_feature = Änderungsausbreitungsschritte
+_UI_ModifyComponent_providedroleModifications_feature = Schnittstellenangebots-Modifikation (Provided Roles)
+_UI_ModifyComponent_requiredroleModifications_feature = Schnittstellennachfrage-Modifikation (Required Roles)
+_UI_Modification_toolderived_feature = Werkzeug-Vorschlag
+_UI_Modification_userDecision_feature = Anwender-Entscheidung
+_UI_IntercomponentPropagation_assemblyConnectorModifications_feature = Assemblierungskonnektor-Modifikationen
+_UI_IntracomponentPropagation_componentModifications_feature = Modifiziere Komponente
+_UI_SeedModifications_datatypeModifications_feature = Modifiziere Datentyp
+_UI_SeedModifications_componentModifications_feature = Modifiziere Komponente
+_UI_SeedModifications_interfaceModifications_feature = Modifiziere Schnittstelle
+_UI_ModifyProvidedRole_providedrole_feature = Schnittstellenangebot (Provided Role)
+_UI_ModifyRequiredRole_requiredrole_feature = Schnittstellennachfrage (Required Role)
+_UI_ChangePropagationDueToDataDependencies_interfaceModifications_feature = Schnittstellen-Modifikationen
+_UI_ModifyInterface_operationInterface_feature = Schnittstelle
+_UI_ModifyInterface_signatureModifications_feature = Signatur-Modifikationen 
+_UI_ModifySignature_signature_feature = Signatur
+_UI_ChangePropagationDueToInterfaceDependencies_componentModifications_feature = Komponenten-Modifikationen
+_UI_AcceptanceAndConfirmationState_NODECISION_literal = Keine Entscheidung
+_UI_AcceptanceAndConfirmationState_CONFIRMED_literal = Bestätigt
+_UI_AcceptanceAndConfirmationState_EXCLUDED_literal = Abgelehnt
+_UI_ModifyProvidedRole_signatureModifications_feature = Modifiziere Signatur

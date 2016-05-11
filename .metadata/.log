@@ -20,3 +20,370 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.
 
 !ENTRY org.eclipse.core.net 1 0 2016-04-22 16:41:33.341
 !MESSAGE System property https.proxyPort has been set to 8080 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2016-04-29 16:07:20.536 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/alejandrorago/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/alejandrorago/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2016-04-29 16:07:31.258
+!MESSAGE System property http.proxyHost has been set to proxy.exa.unicen.edu.ar by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2016-04-29 16:07:31.265
+!MESSAGE System property http.proxyPort has been set to 8080 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2016-04-29 16:07:31.265
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2016-04-29 16:07:31.268
+!MESSAGE System property https.proxyHost has been set to proxy.exa.unicen.edu.ar by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2016-04-29 16:07:31.269
+!MESSAGE System property https.proxyPort has been set to 8080 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.egit.core 4 0 2016-04-29 16:07:49.371
+!MESSAGE Ignoring /edu.kit.ipd.sdq.kamp.model.modificationmarks/bin failed
+!STACK 0
+java.io.IOException: File not found: /Users/alejandrorago/Documents/Implementacion/Repositorios/kamp-test/KAMP/edu.kit.ipd.sdq.kamp.model.modificationmarks/.gitignore.
+	at org.eclipse.egit.core.ContainerTreeIterator$ResourceEntry.openInputStream(ContainerTreeIterator.java:392)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator$PerDirectoryIgnoreNode.load(WorkingTreeIterator.java:1216)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.getIgnoreNode(WorkingTreeIterator.java:651)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isEntryIgnored(WorkingTreeIterator.java:619)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isEntryIgnored(WorkingTreeIterator.java:599)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isEntryIgnored(WorkingTreeIterator.java:586)
+	at org.eclipse.egit.core.RepositoryUtil.canBeAutoIgnored(RepositoryUtil.java:609)
+	at org.eclipse.egit.core.Activator$IgnoreDerivedResources$1.visit(Activator.java:586)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:63)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:74)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:74)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:47)
+	at org.eclipse.egit.core.Activator$IgnoreDerivedResources.resourceChanged(Activator.java:562)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:289)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:152)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:373)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1470)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:46)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.eclipse.core.runtime.CoreException: File not found: /Users/alejandrorago/Documents/Implementacion/Repositorios/kamp-test/KAMP/edu.kit.ipd.sdq.kamp.model.modificationmarks/.gitignore.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:49)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:391)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:834)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:269)
+	at org.eclipse.egit.core.ContainerTreeIterator$ResourceEntry.openInputStream(ContainerTreeIterator.java:390)
+	... 20 more
+Caused by: java.io.FileNotFoundException: /Users/alejandrorago/Documents/Implementacion/Repositorios/kamp-test/KAMP/edu.kit.ipd.sdq.kamp.model.modificationmarks/.gitignore (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:382)
+	... 23 more
+
+!ENTRY org.eclipse.egit.core 4 0 2016-04-29 16:07:49.870
+!MESSAGE Ignoring /de.uka.ipd.sdq.pcm.fieldofactivityannotations/bin failed
+!STACK 0
+java.io.IOException: File not found: /Users/alejandrorago/Documents/Implementacion/Repositorios/kamp-test/KAMP/de.uka.ipd.sdq.pcm.fieldofactivityannotations/.gitignore.
+	at org.eclipse.egit.core.ContainerTreeIterator$ResourceEntry.openInputStream(ContainerTreeIterator.java:392)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator$PerDirectoryIgnoreNode.load(WorkingTreeIterator.java:1216)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.getIgnoreNode(WorkingTreeIterator.java:651)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isEntryIgnored(WorkingTreeIterator.java:619)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isEntryIgnored(WorkingTreeIterator.java:599)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isEntryIgnored(WorkingTreeIterator.java:586)
+	at org.eclipse.egit.core.RepositoryUtil.canBeAutoIgnored(RepositoryUtil.java:609)
+	at org.eclipse.egit.core.Activator$IgnoreDerivedResources$1.visit(Activator.java:586)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:63)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:74)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:74)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:47)
+	at org.eclipse.egit.core.Activator$IgnoreDerivedResources.resourceChanged(Activator.java:562)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:289)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:152)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:373)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1470)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:46)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.eclipse.core.runtime.CoreException: File not found: /Users/alejandrorago/Documents/Implementacion/Repositorios/kamp-test/KAMP/de.uka.ipd.sdq.pcm.fieldofactivityannotations/.gitignore.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:49)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:391)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:834)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:269)
+	at org.eclipse.egit.core.ContainerTreeIterator$ResourceEntry.openInputStream(ContainerTreeIterator.java:390)
+	... 20 more
+Caused by: java.io.FileNotFoundException: /Users/alejandrorago/Documents/Implementacion/Repositorios/kamp-test/KAMP/de.uka.ipd.sdq.pcm.fieldofactivityannotations/.gitignore (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:382)
+	... 23 more
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2016-04-29 16:10:36.430
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10054 2016-04-29 16:10:36.430
+!MESSAGE Cannot complete the install because of a conflicting dependency.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.430
+!MESSAGE Software being installed: Model comparison (EMF Compare) 3.1.1.201509120604 (org.eclipse.emf.compare.ide.ui.feature.group 3.1.1.201509120604)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.431
+!MESSAGE Software currently installed: EMF Compare 1.2.2.v20120214-0915 (org.eclipse.emf.compare.feature.group 1.2.2.v20120214-0915)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-04-29 16:10:36.431
+!MESSAGE Only one of the following can be installed at once: 
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.431
+!MESSAGE EMF Compare core 1.2.2.v20120214-0915 (org.eclipse.emf.compare 1.2.2.v20120214-0915)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.431
+!MESSAGE EMF Compare Core 3.2.0.201509120604 (org.eclipse.emf.compare 3.2.0.201509120604)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-04-29 16:10:36.431
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.431
+!MESSAGE From: EMF Compare 1.2.2.v20120214-0915 (org.eclipse.emf.compare.feature.group 1.2.2.v20120214-0915)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.431
+!MESSAGE To: org.eclipse.emf.compare [1.2.2.v20120214-0915]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-04-29 16:10:36.431
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.431
+!MESSAGE From: EMF Compare IDE integration 3.2.1.201509120604 (org.eclipse.emf.compare.ide 3.2.1.201509120604)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.431
+!MESSAGE To: bundle org.eclipse.emf.compare 2.0.1
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-04-29 16:10:36.431
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.431
+!MESSAGE From: Model comparison (EMF Compare) 3.1.1.201509120604 (org.eclipse.emf.compare.ide.ui.feature.group 3.1.1.201509120604)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.431
+!MESSAGE To: org.eclipse.emf.compare.ide [3.2.1.201509120604]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2016-04-29 16:10:36.434
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10054 2016-04-29 16:10:36.434
+!MESSAGE Cannot complete the install because of a conflicting dependency.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.434
+!MESSAGE Software being installed: Model comparison (EMF Compare) 3.1.1.201509120604 (org.eclipse.emf.compare.ide.ui.feature.group 3.1.1.201509120604)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.434
+!MESSAGE Software currently installed: EMF Compare 1.2.2.v20120214-0915 (org.eclipse.emf.compare.feature.group 1.2.2.v20120214-0915)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-04-29 16:10:36.434
+!MESSAGE Only one of the following can be installed at once: 
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.434
+!MESSAGE EMF Compare core 1.2.2.v20120214-0915 (org.eclipse.emf.compare 1.2.2.v20120214-0915)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.434
+!MESSAGE EMF Compare Core 3.2.0.201509120604 (org.eclipse.emf.compare 3.2.0.201509120604)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-04-29 16:10:36.434
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.434
+!MESSAGE From: EMF Compare 1.2.2.v20120214-0915 (org.eclipse.emf.compare.feature.group 1.2.2.v20120214-0915)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.434
+!MESSAGE To: org.eclipse.emf.compare [1.2.2.v20120214-0915]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-04-29 16:10:36.434
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.434
+!MESSAGE From: EMF Compare IDE integration 3.2.1.201509120604 (org.eclipse.emf.compare.ide 3.2.1.201509120604)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.434
+!MESSAGE To: bundle org.eclipse.emf.compare 2.0.1
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-04-29 16:10:36.434
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.434
+!MESSAGE From: Model comparison (EMF Compare) 3.1.1.201509120604 (org.eclipse.emf.compare.ide.ui.feature.group 3.1.1.201509120604)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.434
+!MESSAGE To: org.eclipse.emf.compare.ide [3.2.1.201509120604]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2016-04-29 16:10:36.441
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10054 2016-04-29 16:10:36.441
+!MESSAGE Cannot complete the install because of a conflicting dependency.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.441
+!MESSAGE Software being installed: Model comparison (EMF Compare) 3.1.1.201509120604 (org.eclipse.emf.compare.ide.ui.feature.group 3.1.1.201509120604)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.441
+!MESSAGE Software currently installed: EMF Compare 1.2.2.v20120214-0915 (org.eclipse.emf.compare.feature.group 1.2.2.v20120214-0915)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-04-29 16:10:36.441
+!MESSAGE Only one of the following can be installed at once: 
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.441
+!MESSAGE EMF Compare core 1.2.2.v20120214-0915 (org.eclipse.emf.compare 1.2.2.v20120214-0915)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.441
+!MESSAGE EMF Compare Core 3.2.0.201509120604 (org.eclipse.emf.compare 3.2.0.201509120604)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-04-29 16:10:36.441
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.441
+!MESSAGE From: EMF Compare 1.2.2.v20120214-0915 (org.eclipse.emf.compare.feature.group 1.2.2.v20120214-0915)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.441
+!MESSAGE To: org.eclipse.emf.compare [1.2.2.v20120214-0915]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-04-29 16:10:36.441
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.441
+!MESSAGE From: EMF Compare IDE integration 3.2.1.201509120604 (org.eclipse.emf.compare.ide 3.2.1.201509120604)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.442
+!MESSAGE To: bundle org.eclipse.emf.compare 2.0.1
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-04-29 16:10:36.442
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.442
+!MESSAGE From: Model comparison (EMF Compare) 3.1.1.201509120604 (org.eclipse.emf.compare.ide.ui.feature.group 3.1.1.201509120604)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.442
+!MESSAGE To: org.eclipse.emf.compare.ide [3.2.1.201509120604]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2016-04-29 16:10:36.442
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10054 2016-04-29 16:10:36.442
+!MESSAGE Cannot complete the install because of a conflicting dependency.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.442
+!MESSAGE Software being installed: Model comparison (EMF Compare) 3.1.1.201509120604 (org.eclipse.emf.compare.ide.ui.feature.group 3.1.1.201509120604)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.442
+!MESSAGE Software currently installed: EMF Compare 1.2.2.v20120214-0915 (org.eclipse.emf.compare.feature.group 1.2.2.v20120214-0915)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-04-29 16:10:36.442
+!MESSAGE Only one of the following can be installed at once: 
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.442
+!MESSAGE EMF Compare core 1.2.2.v20120214-0915 (org.eclipse.emf.compare 1.2.2.v20120214-0915)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.442
+!MESSAGE EMF Compare Core 3.2.0.201509120604 (org.eclipse.emf.compare 3.2.0.201509120604)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-04-29 16:10:36.442
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.442
+!MESSAGE From: EMF Compare 1.2.2.v20120214-0915 (org.eclipse.emf.compare.feature.group 1.2.2.v20120214-0915)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.442
+!MESSAGE To: org.eclipse.emf.compare [1.2.2.v20120214-0915]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-04-29 16:10:36.442
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.442
+!MESSAGE From: EMF Compare IDE integration 3.2.1.201509120604 (org.eclipse.emf.compare.ide 3.2.1.201509120604)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.442
+!MESSAGE To: bundle org.eclipse.emf.compare 2.0.1
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-04-29 16:10:36.442
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.442
+!MESSAGE From: Model comparison (EMF Compare) 3.1.1.201509120604 (org.eclipse.emf.compare.ide.ui.feature.group 3.1.1.201509120604)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:10:36.442
+!MESSAGE To: org.eclipse.emf.compare.ide [3.2.1.201509120604]
+!SESSION 2016-04-29 16:14:58.861 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.java.product -product org.eclipse.epp.package.java.product -keyring /Users/alejandrorago/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -data file:/Users/alejandrorago/Documents/Implementacion/Repositorios/kamp-test/ -product org.eclipse.epp.package.java.product -keyring /Users/alejandrorago/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2016-04-29 16:15:12.154
+!MESSAGE System property http.proxyHost has been set to proxy.exa.unicen.edu.ar by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2016-04-29 16:15:12.158
+!MESSAGE System property http.proxyPort has been set to 8080 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2016-04-29 16:15:12.158
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2016-04-29 16:15:12.160
+!MESSAGE System property https.proxyHost has been set to proxy.exa.unicen.edu.ar by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2016-04-29 16:15:12.160
+!MESSAGE System property https.proxyPort has been set to 8080 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2016-04-29 16:34:03.929
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2016-04-29 16:34:03.929
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:34:03.929
+!MESSAGE Software being installed: Henshin SDK (Incubation) 1.2.0.201502161222 (org.eclipse.emf.henshin.sdk.feature.group 1.2.0.201502161222)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:34:03.929
+!MESSAGE Missing requirement: Henshin Diagram Editor Plugin 1.2.0.201502161222 (org.eclipse.emf.henshin.diagram 1.2.0.201502161222) requires 'bundle org.eclipse.gmf.tooling.runtime 0.0.0' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-04-29 16:34:03.929
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:34:03.929
+!MESSAGE From: Henshin SDK (Incubation) 1.2.0.201502161222 (org.eclipse.emf.henshin.sdk.feature.group 1.2.0.201502161222)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:34:03.929
+!MESSAGE To: org.eclipse.emf.henshin.diagram [1.2.0.201502161222]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2016-04-29 16:34:03.935
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2016-04-29 16:34:03.935
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:34:03.935
+!MESSAGE Software being installed: Henshin SDK (Incubation) 1.2.0.201502161222 (org.eclipse.emf.henshin.sdk.feature.group 1.2.0.201502161222)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:34:03.935
+!MESSAGE Missing requirement: Henshin Diagram Editor Plugin 1.2.0.201502161222 (org.eclipse.emf.henshin.diagram 1.2.0.201502161222) requires 'bundle org.eclipse.gmf.tooling.runtime 0.0.0' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-04-29 16:34:03.935
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:34:03.935
+!MESSAGE From: Henshin SDK (Incubation) 1.2.0.201502161222 (org.eclipse.emf.henshin.sdk.feature.group 1.2.0.201502161222)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:34:03.935
+!MESSAGE To: org.eclipse.emf.henshin.diagram [1.2.0.201502161222]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2016-04-29 16:34:03.940
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2016-04-29 16:34:03.940
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:34:03.940
+!MESSAGE Software being installed: Henshin SDK (Incubation) 1.2.0.201502161222 (org.eclipse.emf.henshin.sdk.feature.group 1.2.0.201502161222)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:34:03.940
+!MESSAGE Missing requirement: Henshin Diagram Editor Plugin 1.2.0.201502161222 (org.eclipse.emf.henshin.diagram 1.2.0.201502161222) requires 'bundle org.eclipse.gmf.tooling.runtime 0.0.0' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-04-29 16:34:03.940
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:34:03.940
+!MESSAGE From: Henshin SDK (Incubation) 1.2.0.201502161222 (org.eclipse.emf.henshin.sdk.feature.group 1.2.0.201502161222)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:34:03.940
+!MESSAGE To: org.eclipse.emf.henshin.diagram [1.2.0.201502161222]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2016-04-29 16:34:03.940
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2016-04-29 16:34:03.940
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:34:03.940
+!MESSAGE Software being installed: Henshin SDK (Incubation) 1.2.0.201502161222 (org.eclipse.emf.henshin.sdk.feature.group 1.2.0.201502161222)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:34:03.940
+!MESSAGE Missing requirement: Henshin Diagram Editor Plugin 1.2.0.201502161222 (org.eclipse.emf.henshin.diagram 1.2.0.201502161222) requires 'bundle org.eclipse.gmf.tooling.runtime 0.0.0' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-04-29 16:34:03.940
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:34:03.940
+!MESSAGE From: Henshin SDK (Incubation) 1.2.0.201502161222 (org.eclipse.emf.henshin.sdk.feature.group 1.2.0.201502161222)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-04-29 16:34:03.940
+!MESSAGE To: org.eclipse.emf.henshin.diagram [1.2.0.201502161222]
+!SESSION 2016-04-29 16:36:24.505 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.java.product -product org.eclipse.epp.package.java.product -product org.eclipse.epp.package.java.product -keyring /Users/alejandrorago/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -product org.eclipse.epp.package.java.product -data file:/Users/alejandrorago/Documents/Implementacion/Repositorios/kamp-test/ -product org.eclipse.epp.package.java.product -keyring /Users/alejandrorago/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2016-04-29 16:36:35.321
+!MESSAGE System property http.proxyHost has been set to proxy.exa.unicen.edu.ar by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2016-04-29 16:36:35.324
+!MESSAGE System property http.proxyPort has been set to 8080 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2016-04-29 16:36:35.325
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2016-04-29 16:36:35.327
+!MESSAGE System property https.proxyHost has been set to proxy.exa.unicen.edu.ar by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.net 1 0 2016-04-29 16:36:35.327
+!MESSAGE System property https.proxyPort has been set to 8080 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.emf.cdo.dawn.examples.acore.diagram 1 0 2016-04-29 16:40:51.455
+!MESSAGE Using DawnAcoreEditPartProvider instead of the original one.
+
+!ENTRY org.eclipse.emf.cdo.dawn.examples.acore.diagram 1 0 2016-04-29 16:40:51.461
+!MESSAGE Using DawnAcoreEditPartFactory instead of the original one
+!SESSION 2016-05-11 18:23:03.001 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/alejandrorago/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/alejandrorago/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2016-05-11 18:23:14.518
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2016-05-11 18:23:23.868
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: Service Temporarily Unavailable. ; version: 1.100.0.v20160217-0435
+!STACK 0
+org.apache.http.client.HttpResponseException: Service Temporarily Unavailable
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.HttpResponses$ProgressMonitorResponseHandler.handleResponse(HttpResponses.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.HttpResponses$ProgressMonitorResponseStringHandler.handleResponse(HttpResponses.java:92)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.HttpResponses$ProgressMonitorResponseStringHandler.handleResponse(HttpResponses.java:1)
+	at org.apache.http.client.fluent.Response.handleResponse(Response.java:90)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.HttpResponses.getContentWithProgress(HttpResponses.java:55)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:69)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Thread.java:745)

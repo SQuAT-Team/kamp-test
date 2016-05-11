@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 212
+/i43/svn/code/!svn/ver/29375/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/impl
+END
+modificationmarksPackageImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 246
+/i43/svn/code/!svn/ver/29375/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/impl/modificationmarksPackageImpl.java
+END
+ChangePropagationDueToInterfaceDependenciesImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 265
+/i43/svn/code/!svn/ver/29375/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/impl/ChangePropagationDueToInterfaceDependenciesImpl.java
+END
+ModifyDatatypeImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 236
+/i43/svn/code/!svn/ver/29375/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/impl/ModifyDatatypeImpl.java
+END
+ChangePropagationStepImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 243
+/i43/svn/code/!svn/ver/29375/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/impl/ChangePropagationStepImpl.java
+END
+SeedModificationsImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 239
+/i43/svn/code/!svn/ver/29375/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/impl/SeedModificationsImpl.java
+END
+modificationmarksFactoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 246
+/i43/svn/code/!svn/ver/29375/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/impl/modificationmarksFactoryImpl.java
+END
+ChangePropagationDueToDataDependenciesImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 260
+/i43/svn/code/!svn/ver/29375/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/impl/ChangePropagationDueToDataDependenciesImpl.java
+END
+ModifyAssemblyConnectorImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 245
+/i43/svn/code/!svn/ver/29375/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/impl/ModifyAssemblyConnectorImpl.java
+END
+IntracomponentPropagationImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 247
+/i43/svn/code/!svn/ver/29375/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/impl/IntracomponentPropagationImpl.java
+END
+ModificationRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 244
+/i43/svn/code/!svn/ver/29375/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/impl/ModificationRepositoryImpl.java
+END
+ModificationImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 234
+/i43/svn/code/!svn/ver/29375/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/impl/ModificationImpl.java
+END
+ModifyProvidedRoleImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 240
+/i43/svn/code/!svn/ver/29375/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/impl/ModifyProvidedRoleImpl.java
+END
+ModifyInterfaceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 237
+/i43/svn/code/!svn/ver/29375/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/impl/ModifyInterfaceImpl.java
+END
+IntercomponentPropagationImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 247
+/i43/svn/code/!svn/ver/29375/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/impl/IntercomponentPropagationImpl.java
+END
+ModifySignatureImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 237
+/i43/svn/code/!svn/ver/29375/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/impl/ModifySignatureImpl.java
+END
+ModifyRequiredRoleImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 240
+/i43/svn/code/!svn/ver/29375/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/impl/ModifyRequiredRoleImpl.java
+END
+ModifyComponentImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 237
+/i43/svn/code/!svn/ver/29375/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/impl/ModifyComponentImpl.java
+END

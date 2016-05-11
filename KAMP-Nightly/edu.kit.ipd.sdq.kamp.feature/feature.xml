@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="edu.kit.ipd.sdq.kamp.feature"
+      label="KAMP Feature"
+      version="1.0.0.qualifier"
+      provider-name="SDQ">
+
+   <description url="http://www.example.com/description">
+      This plugin represents KAMP, the Maintainabiltiy Prediction addon for PCM Palladio Simulator.
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="de.uka.ipd.sdq.identifier"/>
+      <import plugin="org.palladiosimulator.pcm"/>
+      <import plugin="de.uka.ipd.sdq.probfunction"/>
+      <import plugin="de.uka.ipd.sdq.stoex"/>
+      <import plugin="de.uka.ipd.sdq.units"/>
+      <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="de.uka.ipd.sdq.identifier.edit"/>
+      <import plugin="org.palladiosimulator.pcm.edit"/>
+      <import plugin="de.uka.ipd.sdq.probfunction.edit"/>
+      <import plugin="de.uka.ipd.sdq.stoex.edit"/>
+      <import plugin="de.uka.ipd.sdq.units.edit"/>
+      <import plugin="org.eclipse.uml2.common.edit"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.emf.edit.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.junit"/>
+      <import plugin="org.palladiosimulator.pcm" version="3.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.compare" version="1.2.2" match="equivalent"/>
+      <import plugin="org.eclipse.core.resources" version="3.7.101" match="greaterOrEqual"/>
+      <import plugin="org.palladiosimulator.pcm.componentinternaldependencies" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.compare.diff" version="1.2.2" match="equivalent"/>
+      <import plugin="org.eclipse.emf.compare.match" version="1.2.2" match="equivalent"/>
+      <import plugin="edu.kit.ipd.sdq.kamp.model.modificationmarks" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="edu.kit.ipd.sdq.kamp" version="1.0.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.palladiosimulator.pcm.componentinternaldependencies"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.palladiosimulator.pcm.componentinternaldependencies.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.palladiosimulator.pcm.componentinternaldependencies.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="edu.kit.ipd.sdq.kamp"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="edu.kit.ipd.sdq.kamp.model.modificationmarks"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="edu.kit.ipd.sdq.kamp.model.modificationmarks.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="edu.kit.ipd.sdq.kamp.model.modificationmarks.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

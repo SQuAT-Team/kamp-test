@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 215
+/i43/svn/code/!svn/ver/29365/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.internalmodificationmark.edit/src/de/uka/ipd/sdq/internalmodificationmark/provider
+END
+InternalmodificationmarkItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 271
+/i43/svn/code/!svn/ver/29365/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.internalmodificationmark.edit/src/de/uka/ipd/sdq/internalmodificationmark/provider/InternalmodificationmarkItemProviderAdapterFactory.java
+END
+InternalModificationMarkEditPlugin.java
+K 25
+svn:wc:ra_dav:version-url
+V 255
+/i43/svn/code/!svn/ver/29365/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.internalmodificationmark.edit/src/de/uka/ipd/sdq/internalmodificationmark/provider/InternalModificationMarkEditPlugin.java
+END
+InternalModificationMarkItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 257
+/i43/svn/code/!svn/ver/29365/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.internalmodificationmark.edit/src/de/uka/ipd/sdq/internalmodificationmark/provider/InternalModificationMarkItemProvider.java
+END
+InternalModificationMarkRepositoryItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 267
+/i43/svn/code/!svn/ver/29365/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.internalmodificationmark.edit/src/de/uka/ipd/sdq/internalmodificationmark/provider/InternalModificationMarkRepositoryItemProvider.java
+END

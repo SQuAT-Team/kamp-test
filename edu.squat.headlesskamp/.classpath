@@ -12,11 +12,15 @@
 	<classpathentry kind="lib" path="lib/org.eclipse.ocl_3.4.2.v20140725-2242.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.ocl.ecore_3.3.100.v20140610-0641.jar"/>
 	<classpathentry kind="lib" path="lib/junit-4.12.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/de.uka.ipd.sdq.pcm.componentinternaldependencies"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/de.uka.ipd.sdq.pcm.fieldofactivityannotations"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/de.uka.ipd.sdq.pcm.internalmodificationmark"/>
+	<classpathentry kind="lib" path="lib/log4j-over-slf4j-1.7.21.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2-api-2.5.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.7.21.jar"/>
+	<classpathentry kind="lib" path="lib/guava-19.0.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/edu.kit.ipd.sdq.kamp"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/edu.kit.ipd.sdq.kamp.model.modificationmarks"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.palladiosimulator.pcm.componentinternaldependencies"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.palladiosimulator.pcm.fieldofactivityannotations"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.palladiosimulator.pcm.internalmodificationmark"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

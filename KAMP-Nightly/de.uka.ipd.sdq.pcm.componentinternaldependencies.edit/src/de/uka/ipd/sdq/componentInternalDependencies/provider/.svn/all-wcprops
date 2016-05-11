@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 225
+/i43/svn/code/!svn/ver/29359/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.componentinternaldependencies.edit/src/de/uka/ipd/sdq/componentInternalDependencies/provider
+END
+RoleToRoleDependencyItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 263
+/i43/svn/code/!svn/ver/29359/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.componentinternaldependencies.edit/src/de/uka/ipd/sdq/componentInternalDependencies/provider/RoleToRoleDependencyItemProvider.java
+END
+ComponentInternalDependencyRepositoryItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 280
+/i43/svn/code/!svn/ver/29359/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.componentinternaldependencies.edit/src/de/uka/ipd/sdq/componentInternalDependencies/provider/ComponentInternalDependencyRepositoryItemProvider.java
+END
+ComponentInternalDependenciesItemProviderAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 286
+/i43/svn/code/!svn/ver/29359/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.componentinternaldependencies.edit/src/de/uka/ipd/sdq/componentInternalDependencies/provider/ComponentInternalDependenciesItemProviderAdapterFactory.java
+END
+ComponentInternalDependenciesEditPlugin.java
+K 25
+svn:wc:ra_dav:version-url
+V 270
+/i43/svn/code/!svn/ver/29359/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.componentinternaldependencies.edit/src/de/uka/ipd/sdq/componentInternalDependencies/provider/ComponentInternalDependenciesEditPlugin.java
+END
+OperationToOperationDependencyItemProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 273
+/i43/svn/code/!svn/ver/29359/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.componentinternaldependencies.edit/src/de/uka/ipd/sdq/componentInternalDependencies/provider/OperationToOperationDependencyItemProvider.java
+END

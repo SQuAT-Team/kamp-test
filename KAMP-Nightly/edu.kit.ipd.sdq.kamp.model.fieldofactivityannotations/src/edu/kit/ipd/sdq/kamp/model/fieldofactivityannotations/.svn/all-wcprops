@@ -1,0 +1,233 @@
+K 25
+svn:wc:ra_dav:version-url
+V 225
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations
+END
+SourceFile.java
+K 25
+svn:wc:ra_dav:version-url
+V 241
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/SourceFile.java
+END
+PersonList.java
+K 25
+svn:wc:ra_dav:version-url
+V 241
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/PersonList.java
+END
+ReleaseConfigurator.java
+K 25
+svn:wc:ra_dav:version-url
+V 250
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/ReleaseConfigurator.java
+END
+ThirdPartyComponentOrLibrary.java
+K 25
+svn:wc:ra_dav:version-url
+V 259
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/ThirdPartyComponentOrLibrary.java
+END
+StaffSpecification.java
+K 25
+svn:wc:ra_dav:version-url
+V 249
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/StaffSpecification.java
+END
+Person.java
+K 25
+svn:wc:ra_dav:version-url
+V 237
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/Person.java
+END
+RuntimeInstance.java
+K 25
+svn:wc:ra_dav:version-url
+V 246
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/RuntimeInstance.java
+END
+TestCase.java
+K 25
+svn:wc:ra_dav:version-url
+V 239
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/TestCase.java
+END
+File.java
+K 25
+svn:wc:ra_dav:version-url
+V 235
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/File.java
+END
+IntegrationTestCase.java
+K 25
+svn:wc:ra_dav:version-url
+V 250
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/IntegrationTestCase.java
+END
+TestSpecification.java
+K 25
+svn:wc:ra_dav:version-url
+V 248
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/TestSpecification.java
+END
+AcceptanceTestCase.java
+K 25
+svn:wc:ra_dav:version-url
+V 249
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/AcceptanceTestCase.java
+END
+BuildConfigurator.java
+K 25
+svn:wc:ra_dav:version-url
+V 248
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/BuildConfigurator.java
+END
+TestCaseAggregation.java
+K 25
+svn:wc:ra_dav:version-url
+V 250
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/TestCaseAggregation.java
+END
+Deployer.java
+K 25
+svn:wc:ra_dav:version-url
+V 239
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/Deployer.java
+END
+BuildConfiguration.java
+K 25
+svn:wc:ra_dav:version-url
+V 249
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/BuildConfiguration.java
+END
+FileAggregation.java
+K 25
+svn:wc:ra_dav:version-url
+V 246
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/FileAggregation.java
+END
+IntegrationTestCaseAggregation.java
+K 25
+svn:wc:ra_dav:version-url
+V 261
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/IntegrationTestCaseAggregation.java
+END
+MetadataFileAggregation.java
+K 25
+svn:wc:ra_dav:version-url
+V 254
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/MetadataFileAggregation.java
+END
+FieldofactivityannotationsFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 264
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/FieldofactivityannotationsFactory.java
+END
+RoleList.java
+K 25
+svn:wc:ra_dav:version-url
+V 239
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/RoleList.java
+END
+BuildSpecification.java
+K 25
+svn:wc:ra_dav:version-url
+V 249
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/BuildSpecification.java
+END
+Role.java
+K 25
+svn:wc:ra_dav:version-url
+V 235
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/Role.java
+END
+Tester.java
+K 25
+svn:wc:ra_dav:version-url
+V 237
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/Tester.java
+END
+SourceFileAggregation.java
+K 25
+svn:wc:ra_dav:version-url
+V 252
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/SourceFileAggregation.java
+END
+ReleaseConfiguration.java
+K 25
+svn:wc:ra_dav:version-url
+V 251
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/ReleaseConfiguration.java
+END
+UnitTestCase.java
+K 25
+svn:wc:ra_dav:version-url
+V 243
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/UnitTestCase.java
+END
+FieldofactivityannotationsPackage.java
+K 25
+svn:wc:ra_dav:version-url
+V 264
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/FieldofactivityannotationsPackage.java
+END
+RuntimeInstanceAggregation.java
+K 25
+svn:wc:ra_dav:version-url
+V 257
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/RuntimeInstanceAggregation.java
+END
+MetadataFile.java
+K 25
+svn:wc:ra_dav:version-url
+V 243
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/MetadataFile.java
+END
+FieldOfActivityAnnotationRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 266
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/FieldOfActivityAnnotationRepository.java
+END
+ReleaseSpecification.java
+K 25
+svn:wc:ra_dav:version-url
+V 251
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/ReleaseSpecification.java
+END
+DeploymentSpecification.java
+K 25
+svn:wc:ra_dav:version-url
+V 254
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/DeploymentSpecification.java
+END
+UnitTestCaseAggregation.java
+K 25
+svn:wc:ra_dav:version-url
+V 254
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/UnitTestCaseAggregation.java
+END
+Developer.java
+K 25
+svn:wc:ra_dav:version-url
+V 240
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/Developer.java
+END
+TestDeveloper.java
+K 25
+svn:wc:ra_dav:version-url
+V 244
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/TestDeveloper.java
+END
+AcceptanceTestCaseAggregation.java
+K 25
+svn:wc:ra_dav:version-url
+V 260
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/AcceptanceTestCaseAggregation.java
+END
+DevelopmentArtefactSpecification.java
+K 25
+svn:wc:ra_dav:version-url
+V 263
+/i43/svn/code/!svn/ver/29378/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations/src/edu/kit/ipd/sdq/kamp/model/fieldofactivityannotations/DevelopmentArtefactSpecification.java
+END

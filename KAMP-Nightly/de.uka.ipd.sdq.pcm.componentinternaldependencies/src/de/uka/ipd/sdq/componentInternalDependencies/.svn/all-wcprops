@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 211
+/i43/svn/code/!svn/ver/29369/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.componentinternaldependencies/src/de/uka/ipd/sdq/componentInternalDependencies
+END
+ComponentInternalDependenciesPackage.java
+K 25
+svn:wc:ra_dav:version-url
+V 253
+/i43/svn/code/!svn/ver/29369/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.componentinternaldependencies/src/de/uka/ipd/sdq/componentInternalDependencies/ComponentInternalDependenciesPackage.java
+END
+OperationToOperationDependency.java
+K 25
+svn:wc:ra_dav:version-url
+V 247
+/i43/svn/code/!svn/ver/29369/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.componentinternaldependencies/src/de/uka/ipd/sdq/componentInternalDependencies/OperationToOperationDependency.java
+END
+RoleToRoleDependency.java
+K 25
+svn:wc:ra_dav:version-url
+V 237
+/i43/svn/code/!svn/ver/29369/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.componentinternaldependencies/src/de/uka/ipd/sdq/componentInternalDependencies/RoleToRoleDependency.java
+END
+ComponentInternalDependenciesFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 253
+/i43/svn/code/!svn/ver/29369/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.componentinternaldependencies/src/de/uka/ipd/sdq/componentInternalDependencies/ComponentInternalDependenciesFactory.java
+END
+ComponentInternalDependencyRepository.java
+K 25
+svn:wc:ra_dav:version-url
+V 254
+/i43/svn/code/!svn/ver/29369/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/de.uka.ipd.sdq.pcm.componentinternaldependencies/src/de/uka/ipd/sdq/componentInternalDependencies/ComponentInternalDependencyRepository.java
+END

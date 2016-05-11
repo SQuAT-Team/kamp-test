@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 219
+/i43/svn/code/!svn/ver/29366/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks.tests/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/tests
+END
+ModifyAssemblyConnectorTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 252
+/i43/svn/code/!svn/ver/29366/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks.tests/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/tests/ModifyAssemblyConnectorTest.java
+END
+IntracomponentPropagationTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 254
+/i43/svn/code/!svn/ver/29366/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks.tests/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/tests/IntracomponentPropagationTest.java
+END
+ModificationTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 241
+/i43/svn/code/!svn/ver/29366/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks.tests/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/tests/ModificationTest.java
+END
+ModificationRepositoryTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 251
+/i43/svn/code/!svn/ver/29366/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks.tests/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/tests/ModificationRepositoryTest.java
+END
+ModifyProvidedRoleTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 247
+/i43/svn/code/!svn/ver/29366/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks.tests/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/tests/ModifyProvidedRoleTest.java
+END
+ModifyInterfaceTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 244
+/i43/svn/code/!svn/ver/29366/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks.tests/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/tests/ModifyInterfaceTest.java
+END
+IntercomponentPropagationTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 254
+/i43/svn/code/!svn/ver/29366/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks.tests/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/tests/IntercomponentPropagationTest.java
+END
+ModifySignatureTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 244
+/i43/svn/code/!svn/ver/29366/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks.tests/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/tests/ModifySignatureTest.java
+END
+ModifyRequiredRoleTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 247
+/i43/svn/code/!svn/ver/29366/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks.tests/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/tests/ModifyRequiredRoleTest.java
+END
+ModifyComponentTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 244
+/i43/svn/code/!svn/ver/29366/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks.tests/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/tests/ModifyComponentTest.java
+END
+modificationmarksExample.java
+K 25
+svn:wc:ra_dav:version-url
+V 249
+/i43/svn/code/!svn/ver/29366/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks.tests/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/tests/modificationmarksExample.java
+END
+ChangePropagationDueToInterfaceDependenciesTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 272
+/i43/svn/code/!svn/ver/29366/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks.tests/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/tests/ChangePropagationDueToInterfaceDependenciesTest.java
+END
+ModifyDatatypeTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 243
+/i43/svn/code/!svn/ver/29366/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks.tests/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/tests/ModifyDatatypeTest.java
+END
+ChangePropagationStepTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 250
+/i43/svn/code/!svn/ver/29366/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks.tests/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/tests/ChangePropagationStepTest.java
+END
+modificationmarksTests.java
+K 25
+svn:wc:ra_dav:version-url
+V 247
+/i43/svn/code/!svn/ver/29366/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks.tests/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/tests/modificationmarksTests.java
+END
+KAMPModificationmarksAllTests.java
+K 25
+svn:wc:ra_dav:version-url
+V 254
+/i43/svn/code/!svn/ver/29366/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks.tests/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/tests/KAMPModificationmarksAllTests.java
+END
+SeedModificationsTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 246
+/i43/svn/code/!svn/ver/29366/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks.tests/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/tests/SeedModificationsTest.java
+END
+ChangePropagationDueToDataDependenciesTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 267
+/i43/svn/code/!svn/ver/29366/Palladio/Addons/KAMP/branches/KAMP-nightly/branches/advancedDatatypeModificationInfo/edu.kit.ipd.sdq.kamp.model.modificationmarks.tests/src/edu/kit/ipd/sdq/kamp/model/modificationmarks/tests/ChangePropagationDueToDataDependenciesTest.java
+END
