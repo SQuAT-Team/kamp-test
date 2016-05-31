@@ -1,17 +1,149 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_Jo0XcA5CEeaDm6u9sC10iQ">
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_Jo0XcA5CEeaDm6u9sC10iQ">
   <imports href="../../org.palladiosimulator.pcm/model/pcm.ecore#/"/>
-  <units xsi:type="henshin:Rule" xmi:id="_R6QpMA5CEeaDm6u9sC10iQ" name="test">
+  <imports href="../../de.uka.ipd.sdq.stoex/model/stoex.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_R6QpMA5CEeaDm6u9sC10iQ" name="addIntermediate">
+    <parameters xmi:id="_5KQhMCbVEeaUQaXK_kOIqw" name="comp1">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </parameters>
+    <parameters xmi:id="_5KQhMSbVEeaUQaXK_kOIqw" name="comp2">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </parameters>
+    <parameters xmi:id="_5KQhMibVEeaUQaXK_kOIqw" name="comp3">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </parameters>
     <lhs xmi:id="_R8JfkA5CEeaDm6u9sC10iQ" name="Lhs">
-      <nodes xmi:id="_SyJ6gA5CEeaDm6u9sC10iQ">
-        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/Interface"/>
+      <nodes xmi:id="_V45-QCUmEeayzvKp-sYKoQ" incoming="_EMdVMCUnEeayzvKp-sYKoQ _FKzMwCUnEeayzvKp-sYKoQ">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationInterface"/>
       </nodes>
+      <nodes xmi:id="_gHc14CUmEeayzvKp-sYKoQ" outgoing="_CqucsCUnEeayzvKp-sYKoQ _b7iHwCbWEeaUQaXK_kOIqw">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/BasicComponent"/>
+        <attributes xmi:id="_kF_vECUmEeayzvKp-sYKoQ" value="comp1">
+          <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/NamedElement/entityName"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_gwLp0CUmEeayzvKp-sYKoQ" outgoing="_DrFtgCUnEeayzvKp-sYKoQ">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/BasicComponent"/>
+        <attributes xmi:id="_mwK2UCUmEeayzvKp-sYKoQ" value="comp3">
+          <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/NamedElement/entityName"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_AFgG4CUnEeayzvKp-sYKoQ" description="" incoming="_CqucsCUnEeayzvKp-sYKoQ" outgoing="_FKzMwCUnEeayzvKp-sYKoQ">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationProvidedRole"/>
+      </nodes>
+      <nodes xmi:id="_A4hfQCUnEeayzvKp-sYKoQ" incoming="_DrFtgCUnEeayzvKp-sYKoQ" outgoing="_EMdVMCUnEeayzvKp-sYKoQ">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationRequiredRole"/>
+      </nodes>
+      <nodes xmi:id="_XyensCbWEeaUQaXK_kOIqw" outgoing="_dPaxgCbWEeaUQaXK_kOIqw">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/BasicComponent"/>
+        <attributes xmi:id="_fRQGYCbWEeaUQaXK_kOIqw" value="comp2">
+          <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/NamedElement/entityName"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_ZY7oICbWEeaUQaXK_kOIqw" incoming="_dPaxgCbWEeaUQaXK_kOIqw" outgoing="_c-n8cCbWEeaUQaXK_kOIqw">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationRequiredRole"/>
+      </nodes>
+      <nodes xmi:id="_aTQiYCbWEeaUQaXK_kOIqw" incoming="_cdTYECbWEeaUQaXK_kOIqw _c-n8cCbWEeaUQaXK_kOIqw">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationInterface"/>
+      </nodes>
+      <nodes xmi:id="_bHjtICbWEeaUQaXK_kOIqw" incoming="_b7iHwCbWEeaUQaXK_kOIqw" outgoing="_cdTYECbWEeaUQaXK_kOIqw">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationProvidedRole"/>
+      </nodes>
+      <edges xmi:id="_CqucsCUnEeayzvKp-sYKoQ" source="_gHc14CUmEeayzvKp-sYKoQ" target="_AFgG4CUnEeayzvKp-sYKoQ">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/InterfaceProvidingEntity/providedRoles_InterfaceProvidingEntity"/>
+      </edges>
+      <edges xmi:id="_DrFtgCUnEeayzvKp-sYKoQ" source="_gwLp0CUmEeayzvKp-sYKoQ" target="_A4hfQCUnEeayzvKp-sYKoQ">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/InterfaceRequiringEntity/requiredRoles_InterfaceRequiringEntity"/>
+      </edges>
+      <edges xmi:id="_EMdVMCUnEeayzvKp-sYKoQ" source="_A4hfQCUnEeayzvKp-sYKoQ" target="_V45-QCUmEeayzvKp-sYKoQ">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationRequiredRole/requiredInterface__OperationRequiredRole"/>
+      </edges>
+      <edges xmi:id="_FKzMwCUnEeayzvKp-sYKoQ" source="_AFgG4CUnEeayzvKp-sYKoQ" target="_V45-QCUmEeayzvKp-sYKoQ">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationProvidedRole/providedInterface__OperationProvidedRole"/>
+      </edges>
+      <edges xmi:id="_b7iHwCbWEeaUQaXK_kOIqw" source="_gHc14CUmEeayzvKp-sYKoQ" target="_bHjtICbWEeaUQaXK_kOIqw">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/InterfaceProvidingEntity/providedRoles_InterfaceProvidingEntity"/>
+      </edges>
+      <edges xmi:id="_cdTYECbWEeaUQaXK_kOIqw" source="_bHjtICbWEeaUQaXK_kOIqw" target="_aTQiYCbWEeaUQaXK_kOIqw">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationProvidedRole/providedInterface__OperationProvidedRole"/>
+      </edges>
+      <edges xmi:id="_c-n8cCbWEeaUQaXK_kOIqw" source="_ZY7oICbWEeaUQaXK_kOIqw" target="_aTQiYCbWEeaUQaXK_kOIqw">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationRequiredRole/requiredInterface__OperationRequiredRole"/>
+      </edges>
+      <edges xmi:id="_dPaxgCbWEeaUQaXK_kOIqw" source="_XyensCbWEeaUQaXK_kOIqw" target="_ZY7oICbWEeaUQaXK_kOIqw">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/InterfaceRequiringEntity/requiredRoles_InterfaceRequiringEntity"/>
+      </edges>
     </lhs>
     <rhs xmi:id="_R8JfkQ5CEeaDm6u9sC10iQ" name="Rhs">
-      <nodes xmi:id="_SyKhkA5CEeaDm6u9sC10iQ">
-        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/Interface"/>
+      <nodes xmi:id="_V45-QSUmEeayzvKp-sYKoQ" incoming="_EMdVMSUnEeayzvKp-sYKoQ _FKzMwSUnEeayzvKp-sYKoQ">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationInterface"/>
       </nodes>
+      <nodes xmi:id="_gHdc8CUmEeayzvKp-sYKoQ" outgoing="_CqucsSUnEeayzvKp-sYKoQ _b7iHwSbWEeaUQaXK_kOIqw">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/BasicComponent"/>
+        <attributes xmi:id="_kF_vESUmEeayzvKp-sYKoQ" value="comp1">
+          <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/NamedElement/entityName"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_gwLp0SUmEeayzvKp-sYKoQ" outgoing="_DrGUkCUnEeayzvKp-sYKoQ">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/BasicComponent"/>
+        <attributes xmi:id="_mwK2USUmEeayzvKp-sYKoQ" value="comp3">
+          <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/NamedElement/entityName"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_AFgG4SUnEeayzvKp-sYKoQ" incoming="_CqucsSUnEeayzvKp-sYKoQ" outgoing="_FKzMwSUnEeayzvKp-sYKoQ">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationProvidedRole"/>
+      </nodes>
+      <nodes xmi:id="_A4hfQSUnEeayzvKp-sYKoQ" incoming="_DrGUkCUnEeayzvKp-sYKoQ" outgoing="_EMdVMSUnEeayzvKp-sYKoQ">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationRequiredRole"/>
+      </nodes>
+      <nodes xmi:id="_XyfOwCbWEeaUQaXK_kOIqw" outgoing="_dPaxgSbWEeaUQaXK_kOIqw">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/BasicComponent"/>
+        <attributes xmi:id="_fRQGYSbWEeaUQaXK_kOIqw" value="comp2">
+          <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/NamedElement/entityName"/>
+        </attributes>
+      </nodes>
+      <nodes xmi:id="_ZY7oISbWEeaUQaXK_kOIqw" incoming="_dPaxgSbWEeaUQaXK_kOIqw" outgoing="_c-n8cSbWEeaUQaXK_kOIqw">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationRequiredRole"/>
+      </nodes>
+      <nodes xmi:id="_aTQiYSbWEeaUQaXK_kOIqw" incoming="_cdTYESbWEeaUQaXK_kOIqw _c-n8cSbWEeaUQaXK_kOIqw">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationInterface"/>
+      </nodes>
+      <nodes xmi:id="_bHjtISbWEeaUQaXK_kOIqw" incoming="_b7iHwSbWEeaUQaXK_kOIqw" outgoing="_cdTYESbWEeaUQaXK_kOIqw">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationProvidedRole"/>
+      </nodes>
+      <edges xmi:id="_CqucsSUnEeayzvKp-sYKoQ" source="_gHdc8CUmEeayzvKp-sYKoQ" target="_AFgG4SUnEeayzvKp-sYKoQ">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/InterfaceProvidingEntity/providedRoles_InterfaceProvidingEntity"/>
+      </edges>
+      <edges xmi:id="_DrGUkCUnEeayzvKp-sYKoQ" source="_gwLp0SUmEeayzvKp-sYKoQ" target="_A4hfQSUnEeayzvKp-sYKoQ">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/InterfaceRequiringEntity/requiredRoles_InterfaceRequiringEntity"/>
+      </edges>
+      <edges xmi:id="_EMdVMSUnEeayzvKp-sYKoQ" source="_A4hfQSUnEeayzvKp-sYKoQ" target="_V45-QSUmEeayzvKp-sYKoQ">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationRequiredRole/requiredInterface__OperationRequiredRole"/>
+      </edges>
+      <edges xmi:id="_FKzMwSUnEeayzvKp-sYKoQ" source="_AFgG4SUnEeayzvKp-sYKoQ" target="_V45-QSUmEeayzvKp-sYKoQ">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationProvidedRole/providedInterface__OperationProvidedRole"/>
+      </edges>
+      <edges xmi:id="_b7iHwSbWEeaUQaXK_kOIqw" source="_gHdc8CUmEeayzvKp-sYKoQ" target="_bHjtISbWEeaUQaXK_kOIqw">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/InterfaceProvidingEntity/providedRoles_InterfaceProvidingEntity"/>
+      </edges>
+      <edges xmi:id="_cdTYESbWEeaUQaXK_kOIqw" source="_bHjtISbWEeaUQaXK_kOIqw" target="_aTQiYSbWEeaUQaXK_kOIqw">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationProvidedRole/providedInterface__OperationProvidedRole"/>
+      </edges>
+      <edges xmi:id="_c-n8cSbWEeaUQaXK_kOIqw" source="_ZY7oISbWEeaUQaXK_kOIqw" target="_aTQiYSbWEeaUQaXK_kOIqw">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationRequiredRole/requiredInterface__OperationRequiredRole"/>
+      </edges>
+      <edges xmi:id="_dPaxgSbWEeaUQaXK_kOIqw" source="_XyfOwCbWEeaUQaXK_kOIqw" target="_ZY7oISbWEeaUQaXK_kOIqw">
+        <type href="../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/InterfaceRequiringEntity/requiredRoles_InterfaceRequiringEntity"/>
+      </edges>
     </rhs>
-    <mappings xmi:id="_SyLIoA5CEeaDm6u9sC10iQ" origin="_SyJ6gA5CEeaDm6u9sC10iQ" image="_SyKhkA5CEeaDm6u9sC10iQ"/>
+    <mappings xmi:id="_V45-QiUmEeayzvKp-sYKoQ" origin="_V45-QCUmEeayzvKp-sYKoQ" image="_V45-QSUmEeayzvKp-sYKoQ"/>
+    <mappings xmi:id="_gHdc8SUmEeayzvKp-sYKoQ" origin="_gHc14CUmEeayzvKp-sYKoQ" image="_gHdc8CUmEeayzvKp-sYKoQ"/>
+    <mappings xmi:id="_gwLp0iUmEeayzvKp-sYKoQ" origin="_gwLp0CUmEeayzvKp-sYKoQ" image="_gwLp0SUmEeayzvKp-sYKoQ"/>
+    <mappings xmi:id="_AFgG4iUnEeayzvKp-sYKoQ" origin="_AFgG4CUnEeayzvKp-sYKoQ" image="_AFgG4SUnEeayzvKp-sYKoQ"/>
+    <mappings xmi:id="_A4hfQiUnEeayzvKp-sYKoQ" origin="_A4hfQCUnEeayzvKp-sYKoQ" image="_A4hfQSUnEeayzvKp-sYKoQ"/>
+    <mappings xmi:id="_XyfOwSbWEeaUQaXK_kOIqw" origin="_XyensCbWEeaUQaXK_kOIqw" image="_XyfOwCbWEeaUQaXK_kOIqw"/>
+    <mappings xmi:id="_ZY7oIibWEeaUQaXK_kOIqw" origin="_ZY7oICbWEeaUQaXK_kOIqw" image="_ZY7oISbWEeaUQaXK_kOIqw"/>
+    <mappings xmi:id="_aTQiYibWEeaUQaXK_kOIqw" origin="_aTQiYCbWEeaUQaXK_kOIqw" image="_aTQiYSbWEeaUQaXK_kOIqw"/>
+    <mappings xmi:id="_bHjtIibWEeaUQaXK_kOIqw" origin="_bHjtICbWEeaUQaXK_kOIqw" image="_bHjtISbWEeaUQaXK_kOIqw"/>
   </units>
 </henshin:Module>
