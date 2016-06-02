@@ -1,0 +1,134 @@
+package edu.squat.headlesskamp;
+
+import java.util.List;
+
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+
+import org.palladiosimulator.pcm.allocation.Allocation;
+import org.palladiosimulator.pcm.allocation.AllocationPackage;
+import org.palladiosimulator.pcm.core.composition.AssemblyConnector;
+import org.palladiosimulator.pcm.core.composition.AssemblyContext;
+import org.palladiosimulator.pcm.repository.BasicComponent;
+import org.palladiosimulator.pcm.repository.OperationInterface;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
+import org.palladiosimulator.pcm.repository.Repository;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
+import org.palladiosimulator.pcm.repository.RepositoryPackage;
+import org.palladiosimulator.pcm.repository.RequiredRole;
+import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
+import org.palladiosimulator.pcm.resourceenvironment.ResourceenvironmentPackage;
+import org.palladiosimulator.pcm.system.System;
+import org.palladiosimulator.pcm.system.SystemPackage;
+
+import de.uka.ipd.sdq.componentInternalDependencies.ComponentInternalDependenciesPackage;
+import de.uka.ipd.sdq.componentInternalDependencies.ComponentInternalDependencyRepository;
+import de.uka.ipd.sdq.componentInternalDependencies.RoleToRoleDependency;
+import de.uka.ipd.sdq.internalmodificationmark.InternalmodificationmarkPackage;
+import edu.kit.ipd.sdq.kamp.core.Activity;
+import edu.kit.ipd.sdq.kamp.core.ArchitectureModelFactoryFacade;
+import edu.kit.ipd.sdq.kamp.core.ArchitectureModelLookup;
+import edu.kit.ipd.sdq.kamp.core.ArchitectureVersion;
+import edu.kit.ipd.sdq.kamp.core.ChangePropagationAnalysis;
+import edu.kit.ipd.sdq.kamp.core.derivation.DifferenceCalculation;
+import edu.kit.ipd.sdq.kamp.core.derivation.EnrichedWorkplanDerivation;
+import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldOfActivityAnnotationRepository;
+import edu.kit.ipd.sdq.kamp.model.modificationmarks.ModificationRepository;
+
+public class HeadlessKAMPLauncher {
+	public static String dirPath = "file:////Users/alejandrorago/Documents/Implementacion/Repositorios/kamp-test/MediaStore3-Nightly/Model/MediaStore3_Model/";
+	
+	static {
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("*", new XMIResourceFactoryImpl());
+		//PCM Packages
+		EPackage.Registry.INSTANCE.put(RepositoryPackage.eNS_URI, RepositoryPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(ResourceenvironmentPackage.eNS_URI, ResourceenvironmentPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(SystemPackage.eNS_URI, SystemPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(AllocationPackage.eNS_URI, AllocationPackage.eINSTANCE);
+		//KAMP Packages
+		EPackage.Registry.INSTANCE.put(ComponentInternalDependenciesPackage.eNS_URI, ComponentInternalDependenciesPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(de.uka.ipd.sdq.fieldOfActivityAnnotations.FieldOfActivityAnnotationsPackage.eNS_URI, de.uka.ipd.sdq.fieldOfActivityAnnotations.FieldOfActivityAnnotationsPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(InternalmodificationmarkPackage.eNS_URI, InternalmodificationmarkPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldofactivityannotationsPackage.eNS_URI, edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldofactivityannotationsPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage.eNS_URI, edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage.eINSTANCE);
+	}
+
+	private Repository repository;
+	//private ResourceEnvironment resourceEnvironment;
+	private System baseSystem;
+	//private Allocation allocation;
+	
+	private EObject load(String inputString) {
+		URI resourceURI = URI.createURI(inputString);
+		ResourceSet resourceSet = new ResourceSetImpl();
+		Resource resource = resourceSet.getResource(resourceURI, true);
+		EObject content = resource.getContents().get(0);
+		return content;
+	}
+	
+	private void loadPCM() {
+		String repositoryFile = dirPath + "ms.repository";
+		//String resourceEnvFile = dirPath + "ms.resourceenvironment";
+		String baseSystemFile = dirPath + "ms_base.system";
+		//String baseAllocationFile = dirPath + "ms_base.allocation";
+		repository = (Repository) this.load(repositoryFile);
+		//resourceEnvironment = (ResourceEnvironment) this.load(resourceEnvFile);
+		baseSystem = (System) this.load(baseSystemFile);
+		//allocation = (Allocation) this.load(baseAllocationFile);
+	}
+	
+	private ArchitectureVersion createKAMP() {
+		FieldOfActivityAnnotationRepository fieldOfActivityRepository = ArchitectureModelFactoryFacade.createFieldOfActivityAnnotationsRepository();
+		ModificationRepository internalModificationMarkRepository = ArchitectureModelFactoryFacade.createModificationMarkRepository();
+		ComponentInternalDependencyRepository componentInternalDependencyRepository = ArchitectureModelFactoryFacade.createComponentInternalDependencyRepository();
+		ArchitectureVersion baseVersion = new ArchitectureVersion("MediaStore3", 
+				repository, baseSystem, 
+				fieldOfActivityRepository, internalModificationMarkRepository, componentInternalDependencyRepository);
+		return baseVersion;
+	}
+	
+	@SuppressWarnings("unused")
+	public void invokeKAMP() {
+		// Loading original PCM models
+		this.loadPCM();
+		// Setting up KAMP additional models (empty) for the original variant
+		ArchitectureVersion baseVersion = this.createKAMP();
+		// Cloning the architecture for making changes to add a cache
+		ArchitectureVersion changedVersion = KAMPHelper.createArchitectureVersionClone(baseVersion, "cache");
+		// Searching components affected by this change scenario
+		BasicComponent cacheComponent = (BasicComponent) ArchitectureModelLookup.lookUpComponentByName(changedVersion, "Cache");
+		OperationInterface downloadInterface = (OperationInterface) ArchitectureModelLookup.lookUpInterfaceByName(changedVersion, "IDownload");
+		RequiredRole requiredRoleCacheDownload = cacheComponent.getRequiredRoles_InterfaceRequiringEntity().get(0);
+		ProvidedRole providedRoleCacheDownload = cacheComponent.getProvidedRoles_InterfaceProvidingEntity().get(0);
+		BasicComponent watermarkingComponent = (BasicComponent) ArchitectureModelLookup.lookUpComponentByName(changedVersion, "TagWatermarking");
+		BasicComponent reencodingComponent = (BasicComponent) ArchitectureModelLookup.lookUpComponentByName(changedVersion, "Reencoding");
+		// Making modifications for fulfilling this change scenario
+		AssemblyContext reencodingContext = ArchitectureModelLookup.lookUpAssemblyContextsForRepositoryComponent(changedVersion, reencodingComponent).get(0);
+		AssemblyContext watermarkingContext = ArchitectureModelLookup.lookUpAssemblyContextsForRepositoryComponent(changedVersion, watermarkingComponent).get(0);
+		AssemblyConnector oldConnector = ArchitectureModelLookup.lookUpAssemblyConnectorsBetweenAssemblyContexts(reencodingContext, watermarkingContext).get(0);
+		// Delete old assembly connector
+		ArchitectureModelFactoryFacade.deleteAssemblyConnector(oldConnector);
+		// Create new assembly contexts and connectors for the cache (same as in ms_cache.system)
+		ArchitectureModelFactoryFacade.createAssemblyContext(cacheComponent, changedVersion);
+		AssemblyContext cacheContext = ArchitectureModelLookup.lookUpAssemblyContextsForRepositoryComponent(changedVersion, cacheComponent).get(0);
+		ArchitectureModelFactoryFacade.createAssemblyConnector(reencodingComponent, cacheComponent, changedVersion);
+		ArchitectureModelFactoryFacade.createAssemblyConnector(cacheComponent, watermarkingComponent, changedVersion);
+		// Executing the propagation algorithm
+		List<Activity> baseActivityList = DifferenceCalculation.deriveWorkplan(baseVersion, changedVersion);
+		java.lang.System.out.println("Base Activity List:");
+		KAMPHelper.printActivities(baseActivityList, "Top:");
+		List<Activity> enrichedActivityList = EnrichedWorkplanDerivation.deriveEnrichedWorkplan(baseVersion, changedVersion, baseActivityList);
+		java.lang.System.out.println("Enriched Activity List:");
+		KAMPHelper.printActivities(enrichedActivityList, "Top:");
+	}
+	
+	public static void main(String[] args) {
+		HeadlessKAMPLauncher launcher = new HeadlessKAMPLauncher();
+		launcher.invokeKAMP();
+	}
+}

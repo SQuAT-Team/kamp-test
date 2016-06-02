@@ -1,0 +1,225 @@
+package edu.squat.headlesskamp;
+
+import java.util.List;
+
+import static org.junit.Assert.assertTrue;
+
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.palladiosimulator.pcm.allocation.AllocationPackage;
+import org.palladiosimulator.pcm.core.composition.AssemblyConnector;
+import org.palladiosimulator.pcm.repository.BasicComponent;
+import org.palladiosimulator.pcm.repository.OperationInterface;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
+import org.palladiosimulator.pcm.repository.RepositoryPackage;
+import org.palladiosimulator.pcm.repository.RequiredRole;
+import org.palladiosimulator.pcm.resourceenvironment.ResourceenvironmentPackage;
+import org.palladiosimulator.pcm.system.SystemPackage;
+
+import de.uka.ipd.sdq.componentInternalDependencies.ComponentInternalDependenciesPackage;
+import de.uka.ipd.sdq.componentInternalDependencies.RoleToRoleDependency;
+import de.uka.ipd.sdq.internalmodificationmark.InternalmodificationmarkPackage;
+import edu.kit.ipd.sdq.kamp.core.Activity;
+import edu.kit.ipd.sdq.kamp.core.ArchitectureAnnotationFactory;
+import edu.kit.ipd.sdq.kamp.core.ArchitectureModelFactoryFacade;
+import edu.kit.ipd.sdq.kamp.core.ArchitectureModelLookup;
+import edu.kit.ipd.sdq.kamp.core.ArchitectureVersion;
+import edu.kit.ipd.sdq.kamp.core.ArchitectureVersionPersistency;
+import edu.kit.ipd.sdq.kamp.core.ChangePropagationAnalysis;
+import edu.kit.ipd.sdq.kamp.core.derivation.DifferenceCalculation;
+//import edu.kit.ipd.sdq.kamp.test.TestPathProvider;
+
+public class KAMPTest {
+	private final static String TESTNAME = "DissRunningExampleTest";
+	private final static String PROJECTPATH = "file:////Users/alejandrorago/Documents/Implementacion/Repositorios/kamp-test/edu.squat.headlesskamp/tests/";
+	
+	static {
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("*", new XMIResourceFactoryImpl());
+		//PCM Packages
+		EPackage.Registry.INSTANCE.put(RepositoryPackage.eNS_URI, RepositoryPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(ResourceenvironmentPackage.eNS_URI, ResourceenvironmentPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(SystemPackage.eNS_URI, SystemPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(AllocationPackage.eNS_URI, AllocationPackage.eINSTANCE);
+		//KAMP Packages
+		EPackage.Registry.INSTANCE.put(ComponentInternalDependenciesPackage.eNS_URI, ComponentInternalDependenciesPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(de.uka.ipd.sdq.fieldOfActivityAnnotations.FieldOfActivityAnnotationsPackage.eNS_URI, de.uka.ipd.sdq.fieldOfActivityAnnotations.FieldOfActivityAnnotationsPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(InternalmodificationmarkPackage.eNS_URI, InternalmodificationmarkPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldofactivityannotationsPackage.eNS_URI, edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldofactivityannotationsPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage.eNS_URI, edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage.eINSTANCE);
+	}
+	
+	ArchitectureVersion baseArchitectureVersion;
+
+	public static final String CHANGEREQUEST_A1 = "A1";
+	public static final String CHANGEREQUEST_A2 = "A2";
+	public static final String CHANGEREQUEST_B = "B";
+	public static final String CHANGEREQUEST_C = "C";
+	public static final String CHANGEREQUEST_D = "D";
+
+	@Before
+	public void setUp() throws Exception {
+		//TestPathProvider.resetTestProject(TESTNAME);
+		
+		baseArchitectureVersion = setupBasePCMModel("basemodel");
+		//ArchitectureVersionPersistency.save(TestPathProvider.getTestPath(TESTNAME), baseArchitectureVersion.getName(), baseArchitectureVersion);
+		//ArchitectureVersionPersistency.save(PROJECTPATH+TESTNAME, baseArchitectureVersion.getName(), baseArchitectureVersion);
+	}
+
+	private static ArchitectureVersion setupBasePCMModel(String name) {
+		ArchitectureVersion baseversion = ArchitectureModelFactoryFacade.createEmptyModel(name);
+		// base model - repository 
+		OperationInterface traderInterface = ArchitectureModelFactoryFacade.createInterface(baseversion, "Trader-Interface");
+		OperationInterface customerInterface = ArchitectureModelFactoryFacade.createInterface(baseversion, "Customer-Interface");
+		OperationInterface traderServerInterface = ArchitectureModelFactoryFacade.createInterface(baseversion, "Trader-Server-Interface");
+		OperationInterface customerServerInterface = ArchitectureModelFactoryFacade.createInterface(baseversion, "Customer-Server-Interface");
+		OperationInterface financesInterface = ArchitectureModelFactoryFacade.createInterface(baseversion, "FinancialServices-Interface");
+		OperationInterface odbcInterface = ArchitectureModelFactoryFacade.createInterface(baseversion, "ODBC-Interface");
+
+		BasicComponent traderClientComponent = ArchitectureModelFactoryFacade.createBasicComponent(baseversion, "Trader-Client");
+		BasicComponent customerClientComponent = ArchitectureModelFactoryFacade.createBasicComponent(baseversion, "Customer-Client");
+		BasicComponent orderingServerComponent = ArchitectureModelFactoryFacade.createBasicComponent(baseversion, "Ordering-Server");
+		BasicComponent databaseComponent = ArchitectureModelFactoryFacade.createBasicComponent(baseversion, "Database");
+		BasicComponent financesComponent = ArchitectureModelFactoryFacade.createBasicComponent(baseversion, "FinancialServices");
+		
+		ProvidedRole traderClient_traderInterfacePR = ArchitectureModelFactoryFacade.createProvidedRole(traderClientComponent, traderInterface);
+		RequiredRole traderClient_traderInterfaceRR = ArchitectureModelFactoryFacade.createRequiredRole(traderClientComponent, traderServerInterface);
+
+		ProvidedRole customerClient_customerInterfacePR = ArchitectureModelFactoryFacade.createProvidedRole(customerClientComponent, customerInterface);
+		RequiredRole customerClient_customerInterfaceRR = ArchitectureModelFactoryFacade.createRequiredRole(customerClientComponent, customerServerInterface);
+
+		ProvidedRole orderingServer_TraderServerInterfacePR = ArchitectureModelFactoryFacade.createProvidedRole(orderingServerComponent, traderServerInterface);
+		ProvidedRole orderingServer_CustomerServerInterfacePR = ArchitectureModelFactoryFacade.createProvidedRole(orderingServerComponent, customerServerInterface);
+		RequiredRole orderingServer_financesInterfaceRR = ArchitectureModelFactoryFacade.createRequiredRole(orderingServerComponent, financesInterface);
+		RequiredRole orderingServer_odbcInterfaceRR = ArchitectureModelFactoryFacade.createRequiredRole(orderingServerComponent, odbcInterface);
+
+		ArchitectureModelFactoryFacade.createProvidedRole(databaseComponent, odbcInterface);
+		ArchitectureModelFactoryFacade.createProvidedRole(financesComponent, financesInterface);
+
+		// base model - system
+		ArchitectureModelFactoryFacade.createAssemblyContext(traderClientComponent, baseversion);
+		ArchitectureModelFactoryFacade.createAssemblyContext(customerClientComponent, baseversion);
+		ArchitectureModelFactoryFacade.createAssemblyContext(orderingServerComponent, baseversion);
+		ArchitectureModelFactoryFacade.createAssemblyContext(databaseComponent, baseversion);
+		ArchitectureModelFactoryFacade.createAssemblyContext(financesComponent, baseversion);
+		
+		AssemblyConnector traderClient_orderingServerConnector = ArchitectureModelFactoryFacade.createAssemblyConnector(traderClientComponent, orderingServerComponent, baseversion);
+		AssemblyConnector customerClient_orderingServerConnector = ArchitectureModelFactoryFacade.createAssemblyConnector(customerClientComponent, orderingServerComponent, baseversion);
+		AssemblyConnector orderingServer_datenbaseConnector = ArchitectureModelFactoryFacade.createAssemblyConnector(orderingServerComponent, databaseComponent, baseversion);
+		AssemblyConnector orderingServer_financesConnector = ArchitectureModelFactoryFacade.createAssemblyConnector(orderingServerComponent, financesComponent, baseversion);
+		
+		// component internal dependencies
+		ArchitectureModelFactoryFacade.setupComponentInternalDependenciesPessimistic(baseversion);
+		ArchitectureModelFactoryFacade.createComponentInternalDependency(baseversion, traderClient_traderInterfacePR, traderClient_traderInterfaceRR);
+		ArchitectureModelFactoryFacade.createComponentInternalDependency(baseversion, customerClient_customerInterfacePR, customerClient_customerInterfaceRR);
+		ArchitectureModelFactoryFacade.createComponentInternalDependency(baseversion, orderingServer_TraderServerInterfacePR, orderingServer_financesInterfaceRR);
+		ArchitectureModelFactoryFacade.createComponentInternalDependency(baseversion, orderingServer_TraderServerInterfacePR, orderingServer_odbcInterfaceRR);
+		ArchitectureModelFactoryFacade.createComponentInternalDependency(baseversion, orderingServer_CustomerServerInterfacePR, orderingServer_odbcInterfaceRR);
+
+		// model annotations 
+		
+		// development artefacts
+		ArchitectureAnnotationFactory.createSourceFileAggregationAnnotation(baseversion, customerClientComponent, 120, "JavaScript");
+		ArchitectureAnnotationFactory.createSourceFileAggregationAnnotation(baseversion, traderClientComponent, 130, "Java");
+		ArchitectureAnnotationFactory.createSourceFileAggregationAnnotation(baseversion, orderingServerComponent, 152, "PHP");
+		ArchitectureAnnotationFactory.createMetadataFileAnnotation(baseversion, customerClientComponent, "DatabaseSchema", "SQL-DDL");
+		
+		// testing
+		ArchitectureAnnotationFactory.createUnitTestAggregation(baseversion, 
+				customerClientComponent.getProvidedRoles_InterfaceProvidingEntity().get(0), 30, "");
+		ArchitectureAnnotationFactory.createUnitTestAggregation(baseversion, 
+				traderClientComponent.getProvidedRoles_InterfaceProvidingEntity().get(0), 33, "");
+		ArchitectureAnnotationFactory.createUnitTestAggregation(baseversion, 
+				orderingServerComponent.getProvidedRoles_InterfaceProvidingEntity().get(0), 50, "");
+		ArchitectureAnnotationFactory.createIntegrationTestAggregation(baseversion, customerClient_orderingServerConnector, 35, "");
+		ArchitectureAnnotationFactory.createIntegrationTestAggregation(baseversion, traderClient_orderingServerConnector, 33, "");
+		ArchitectureAnnotationFactory.createIntegrationTestAggregation(baseversion, orderingServer_financesConnector, 41, "");
+		ArchitectureAnnotationFactory.createIntegrationTestAggregation(baseversion, orderingServer_datenbaseConnector, 28, "");
+
+		ArchitectureAnnotationFactory.createAcceptanceTestAggregation(baseversion, customerClientComponent.getProvidedRoles_InterfaceProvidingEntity().get(0), 38, "");
+		ArchitectureAnnotationFactory.createAcceptanceTestAggregation(baseversion, traderClientComponent.getProvidedRoles_InterfaceProvidingEntity().get(0), 42, "");
+		
+		// building
+		ArchitectureAnnotationFactory.createBuildConfiguration(baseversion, new RepositoryComponent[] {customerClientComponent, traderClientComponent, orderingServerComponent}, "build.xml", "");
+
+		// distribution/release management	
+		ArchitectureAnnotationFactory.createReleaseConfiguration(baseversion, new RepositoryComponent[] {customerClientComponent}, "", "Install-capable Customer-Client");
+		ArchitectureAnnotationFactory.createReleaseConfiguration(baseversion, new RepositoryComponent[] {traderClientComponent}, "", "Install-capable Trader-Client");
+		ArchitectureAnnotationFactory.createReleaseConfiguration(baseversion, new RepositoryComponent[] {orderingServerComponent}, "", "Install-capable Ordering-Server");
+		
+		// deployment
+		ArchitectureAnnotationFactory.createRuntimeInstanceAggregation(baseversion, new RepositoryComponent[] {customerClientComponent}, 1000, "");
+		ArchitectureAnnotationFactory.createRuntimeInstanceAggregation(baseversion, new RepositoryComponent[] {traderClientComponent}, 10, "");
+		ArchitectureAnnotationFactory.createRuntimeInstanceAggregation(baseversion, new RepositoryComponent[] {orderingServerComponent}, 1, "");
+		ArchitectureAnnotationFactory.createRuntimeInstanceAggregation(baseversion, new RepositoryComponent[] {databaseComponent}, 1, "");
+		
+		// staff assignment
+		//ArchitectureAnnotationFactory.createStaffAssignmentDeveloper(baseversion, )
+		
+		return baseversion;
+	}
+
+	@After
+	public void tearDown() {
+		baseArchitectureVersion.delete();
+		baseArchitectureVersion = null;
+	}
+
+	@Test
+	public void testScenarioA1DatabaseSchemaOptimization() {
+		String FOLDER = PROJECTPATH+TESTNAME+"/"+CHANGEREQUEST_A1;		
+		
+		//ArchitectureVersion subVersion = ArchitectureVersionPersistency.createArchitectureVersionClone(baseArchitectureVersion, TestPathProvider.getTestPath(TESTNAME), "SubVersionModifyDatabaseSchema");
+		//ArchitectureVersion subVersion = ArchitectureVersionPersistency.createArchitectureVersionClone(baseArchitectureVersion, PROJECTPATH+TESTNAME, "SubVersionModifyDatabaseSchema");
+		ArchitectureVersion subVersion = setupBasePCMModel("basemodel");
+				
+		RepositoryComponent database = ArchitectureModelLookup.lookUpComponentByName(subVersion, "Database");
+
+		assertTrue("componentUserDatabase not found", database != null);
+		
+		assertTrue("Number of provided roles of componentUserDatabase not equals 1", database.getProvidedRoles_InterfaceProvidingEntity().size()==1);
+		
+		ProvidedRole providedRoleOfDatabase = database.getProvidedRoles_InterfaceProvidingEntity().get(0);
+
+		ArchitectureModelFactoryFacade.assignInternalModificationMarkToProvidedRoleOfComponent(subVersion, providedRoleOfDatabase);
+		
+		assertTrue("Internal Modification mark not set properly or not retrieved properly", ArchitectureModelLookup.lookUpInternalModificationMarkForProvidedRole(subVersion, providedRoleOfDatabase)!=null);
+		
+		List<Activity> baseActivityList = DifferenceCalculation.deriveWorkplan(baseArchitectureVersion, subVersion);
+		
+		assertTrue("No activities detected", !baseActivityList.isEmpty());
+		
+		//ArchitectureVersionPersistency.saveActivityListToExcelFile(FOLDER, "workplan_archbased_beforepropagationanalysis", baseActivityList);
+		//ArchitectureVersionPersistency.saveActivityListToExcelFile(FOLDER, "workplan_archbased_beforepropagationanalysis", baseActivityList);
+
+		ChangePropagationAnalysis changePropagationAnalysis = new ChangePropagationAnalysis();
+		changePropagationAnalysis.runChangePropagationAnalysis(subVersion);
+
+		RepositoryComponent bestellserver = ArchitectureModelLookup.lookUpComponentByName(subVersion, "Bestell-Server");
+		
+		List<RoleToRoleDependency> internalDependencies = ArchitectureModelLookup.lookUpComponentInternalDependenciesForComponent(subVersion, (BasicComponent) bestellserver);
+		//assertTrue("Number of marked assembly connectors NOT THREE", ArchitectureModelLookup.lookUpMarkedAssemblyConnectors(subVersion).size()==3);
+		
+		
+		List<Activity> baseActivityListAfterChangePropagationAnalysis = DifferenceCalculation.deriveWorkplan(baseArchitectureVersion, subVersion);
+		
+		assertTrue("No activities detected", !baseActivityListAfterChangePropagationAnalysis.isEmpty());
+
+		//ArchitectureVersionPersistency.saveActivityListToExcelFile(FOLDER, "workplan_archbased_afterpropagationanalysis", baseActivityListAfterChangePropagationAnalysis);
+	}
+	
+	public static void main(String[] args) {
+		KAMPTest test = new KAMPTest();
+		try {
+			test.setUp();
+			test.testScenarioA1DatabaseSchemaOptimization();
+			test.tearDown();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

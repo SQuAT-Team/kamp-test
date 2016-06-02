@@ -1,0 +1,98 @@
+package edu.squat.headlesskamp;
+
+import java.util.List;
+
+import org.palladiosimulator.pcm.core.composition.AssemblyConnector;
+import org.palladiosimulator.pcm.core.composition.AssemblyContext;
+import org.palladiosimulator.pcm.repository.BasicComponent;
+import org.palladiosimulator.pcm.repository.OperationInterface;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
+import org.palladiosimulator.pcm.repository.Repository;
+import org.palladiosimulator.pcm.repository.RequiredRole;
+import org.palladiosimulator.pcm.system.System;
+
+import de.uka.ipd.sdq.componentInternalDependencies.ComponentInternalDependencyRepository;
+import edu.kit.ipd.sdq.kamp.core.ArchitectureModelFactoryFacade;
+import edu.kit.ipd.sdq.kamp.core.ArchitectureModelLookup;
+import edu.kit.ipd.sdq.kamp.core.ArchitectureVersion;
+import edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldOfActivityAnnotationRepository;
+import edu.kit.ipd.sdq.kamp.model.modificationmarks.ModificationRepository;
+import edu.squat.pcm.PCMHelper;
+
+public class MediaStoreKAMPTest extends AbstractKAMPTest {
+	public static String dirPath = "file:////Users/alejandrorago/Documents/Implementacion/Repositorios/kamp-test/MediaStore3-Nightly/Model/MediaStore3_Model/";
+
+	@Override
+	public String getInitialModelName() {
+		return "MediaStore3";
+	}
+	
+	@Override
+	public String getChangeScenarioName() {
+		return "MediaStore3-Cache";
+	}
+	
+	@Override
+	public ArchitectureVersion setupInitialModel(String initialArchitectureName) {
+		// Loading original PCM models
+		String repositoryFile = dirPath + "ms.repository";
+		String baseSystemFile = dirPath + "ms_base.system";
+		Repository repository = PCMHelper.loadRepositoryModel(repositoryFile);
+		System baseSystem = PCMHelper.loadSystemModel(baseSystemFile);
+		// Setting up KAMP additional models (empty) for the original variant
+		FieldOfActivityAnnotationRepository fieldOfActivityRepository = ArchitectureModelFactoryFacade.createFieldOfActivityAnnotationsRepository();
+		ModificationRepository internalModificationMarkRepository = ArchitectureModelFactoryFacade.createModificationMarkRepository();
+		ComponentInternalDependencyRepository componentInternalDependencyRepository = ArchitectureModelFactoryFacade.createComponentInternalDependencyRepository();
+		// Creating the architecture version for KAMP
+		ArchitectureVersion baseAV = new ArchitectureVersion(initialArchitectureName, 
+				repository, baseSystem, 
+				fieldOfActivityRepository, internalModificationMarkRepository, componentInternalDependencyRepository);
+		return baseAV;
+	}
+	
+	@SuppressWarnings("unused")
+	@Override
+	public ArchitectureVersion setupChangedModel(String changeScenarioName) {
+		// Cloning the architecture for making changes to add a cache
+		ArchitectureVersion changedAV = KAMPHelper.createArchitectureVersionClone(baseAV, changeScenarioName);
+		// Searching components affected by this change scenario
+		BasicComponent cacheComponent = (BasicComponent) ArchitectureModelLookup.lookUpComponentByName(changedAV, "Cache");
+		OperationInterface downloadInterface = (OperationInterface) ArchitectureModelLookup.lookUpInterfaceByName(changedAV, "IDownload");
+		RequiredRole requiredRoleCacheDownload = cacheComponent.getRequiredRoles_InterfaceRequiringEntity().get(0);
+		ProvidedRole providedRoleCacheDownload = cacheComponent.getProvidedRoles_InterfaceProvidingEntity().get(0);
+		BasicComponent watermarkingComponent = (BasicComponent) ArchitectureModelLookup.lookUpComponentByName(changedAV, "TagWatermarking");
+		BasicComponent reencodingComponent = (BasicComponent) ArchitectureModelLookup.lookUpComponentByName(changedAV, "Reencoding");
+		// Making modifications for fulfilling this change scenario
+		AssemblyContext reencodingContext = ArchitectureModelLookup.lookUpAssemblyContextsForRepositoryComponent(changedAV, reencodingComponent).get(0);
+		AssemblyContext watermarkingContext = ArchitectureModelLookup.lookUpAssemblyContextsForRepositoryComponent(changedAV, watermarkingComponent).get(0);
+		AssemblyConnector oldConnector = ArchitectureModelLookup.lookUpAssemblyConnectorsBetweenAssemblyContexts(reencodingContext, watermarkingContext).get(0);
+		// Delete old assembly connector
+		ArchitectureModelFactoryFacade.deleteAssemblyConnector(oldConnector);
+		// Create new assembly contexts and connectors for the cache (same as in ms_cache.system)
+		ArchitectureModelFactoryFacade.createAssemblyContext(cacheComponent, changedAV);
+		AssemblyContext cacheContext = ArchitectureModelLookup.lookUpAssemblyContextsForRepositoryComponent(changedAV, cacheComponent).get(0);
+		ArchitectureModelFactoryFacade.createAssemblyConnector(reencodingComponent, cacheComponent, changedAV);
+		ArchitectureModelFactoryFacade.createAssemblyConnector(cacheComponent, watermarkingComponent, changedAV);
+		//
+		return changedAV;
+	}
+	
+	@Override
+	public void runTest() {
+		try {
+			baseAV = this.setupInitialModel(this.getInitialModelName());
+			changedAV = this.setupChangedModel(this.getChangeScenarioName());
+			this.deriveWorkplan();
+			this.runChangeAnalysis();
+			this.deriveWorkplan();
+			this.tearDown();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String[] args) throws Exception {
+		MediaStoreKAMPTest testNew = new MediaStoreKAMPTest();
+		testNew.runTest();
+	}
+}

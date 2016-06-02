@@ -1,0 +1,171 @@
+package edu.squat.headlesskamp;
+
+import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.palladiosimulator.pcm.allocation.AllocationPackage;
+import org.palladiosimulator.pcm.core.composition.AssemblyConnector;
+import org.palladiosimulator.pcm.core.composition.AssemblyContext;
+import org.palladiosimulator.pcm.repository.BasicComponent;
+import org.palladiosimulator.pcm.repository.CompositeDataType;
+import org.palladiosimulator.pcm.repository.OperationInterface;
+import org.palladiosimulator.pcm.repository.OperationProvidedRole;
+import org.palladiosimulator.pcm.repository.OperationRequiredRole;
+import org.palladiosimulator.pcm.repository.OperationSignature;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
+import org.palladiosimulator.pcm.repository.RepositoryPackage;
+import org.palladiosimulator.pcm.repository.RequiredRole;
+import org.palladiosimulator.pcm.resourceenvironment.ResourceenvironmentPackage;
+import org.palladiosimulator.pcm.system.SystemPackage;
+
+import de.uka.ipd.sdq.componentInternalDependencies.ComponentInternalDependenciesPackage;
+import de.uka.ipd.sdq.internalmodificationmark.InternalmodificationmarkPackage;
+import edu.kit.ipd.sdq.kamp.core.Activity;
+import edu.kit.ipd.sdq.kamp.core.ArchitectureModelFactoryFacade;
+import edu.kit.ipd.sdq.kamp.core.ArchitectureModelLookup;
+import edu.kit.ipd.sdq.kamp.core.ArchitectureVersion;
+import edu.kit.ipd.sdq.kamp.core.ChangePropagationAnalysis;
+import edu.kit.ipd.sdq.kamp.core.derivation.DifferenceCalculation;
+import edu.kit.ipd.sdq.kamp.core.derivation.EnrichedWorkplanDerivation;
+import edu.kit.ipd.sdq.kamp.model.modificationmarks.ModifyComponent;
+
+public class KAMPTestNew {
+	private ArchitectureVersion baseArchitectureVersion;
+	
+	static {
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("*", new XMIResourceFactoryImpl());
+		//PCM Packages
+		EPackage.Registry.INSTANCE.put(RepositoryPackage.eNS_URI, RepositoryPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(ResourceenvironmentPackage.eNS_URI, ResourceenvironmentPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(SystemPackage.eNS_URI, SystemPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(AllocationPackage.eNS_URI, AllocationPackage.eINSTANCE);
+		//KAMP Packages
+		EPackage.Registry.INSTANCE.put(ComponentInternalDependenciesPackage.eNS_URI, ComponentInternalDependenciesPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(de.uka.ipd.sdq.fieldOfActivityAnnotations.FieldOfActivityAnnotationsPackage.eNS_URI, de.uka.ipd.sdq.fieldOfActivityAnnotations.FieldOfActivityAnnotationsPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(InternalmodificationmarkPackage.eNS_URI, InternalmodificationmarkPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldofactivityannotationsPackage.eNS_URI, edu.kit.ipd.sdq.kamp.model.fieldofactivityannotations.FieldofactivityannotationsPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage.eNS_URI, edu.kit.ipd.sdq.kamp.model.modificationmarks.modificationmarksPackage.eINSTANCE);
+	}
+	
+	public void setUp() throws Exception {
+		baseArchitectureVersion = setupBasePCMModel("basemodel");
+	}
+	
+	private static ArchitectureVersion setupBasePCMModel(String name) {
+		/** Base model creation **/
+		// 0. Create empty architecture model (container of all pcm models)
+		ArchitectureVersion baseversion = ArchitectureModelFactoryFacade.createEmptyModel(name);
+		// 1. Create: base model (repository) - Modules View
+		// 1.1. Create components
+		BasicComponent client = ArchitectureModelFactoryFacade.createBasicComponent(baseversion, "Client");
+		BasicComponent server = ArchitectureModelFactoryFacade.createBasicComponent(baseversion, "Server");
+		BasicComponent database = ArchitectureModelFactoryFacade.createBasicComponent(baseversion, "Database");
+		// 1.2. Create interfaces
+		OperationInterface clientInterface = ArchitectureModelFactoryFacade.createInterface(baseversion, "ClientInterface");
+		OperationInterface serverInterface = ArchitectureModelFactoryFacade.createInterface(baseversion, "ServerInterface");
+		OperationInterface databaseInterface = ArchitectureModelFactoryFacade.createInterface(baseversion, "DatabaseInterface");
+		// 1.3. Create connections between components and interfaces
+		// 1.3.1. Client's perspective
+		ArchitectureModelFactoryFacade.createProvidedRole(client, clientInterface);
+		ArchitectureModelFactoryFacade.createRequiredRole(client, serverInterface);
+		// 1.3.2. Server's perspective
+		ArchitectureModelFactoryFacade.createProvidedRole(server, serverInterface);
+		ArchitectureModelFactoryFacade.createRequiredRole(server, databaseInterface);
+		// 1.3.3. Database's perspective
+		ArchitectureModelFactoryFacade.createProvidedRole(database, databaseInterface);
+		// 2. Create: base model (system) - Components & Connectors View?
+		// 2.1. Create assembly context for the components
+		ArchitectureModelFactoryFacade.createAssemblyContext(client, baseversion);
+		ArchitectureModelFactoryFacade.createAssemblyContext(server, baseversion);
+		ArchitectureModelFactoryFacade.createAssemblyContext(database, baseversion);
+		// 2.2. Associate components with assembly connectors
+		ArchitectureModelFactoryFacade.createAssemblyConnector(client, server, baseversion);
+		ArchitectureModelFactoryFacade.createAssemblyConnector(server, database, baseversion);
+		// 2.3. Create interface operations
+		CompositeDataType dataType = ArchitectureModelFactoryFacade.createCompositeDatatype(baseversion, "mydatatype");
+		OperationSignature signature = ArchitectureModelFactoryFacade.createSignatureForInterface(clientInterface, "myOperation");
+		ArchitectureModelFactoryFacade.createParameterForSignature(signature, "myParameter", dataType);
+		/** Component internal dependencies **/
+		// 3. Create: component internal dependencies - don't know if it is important or not (probably it is for change impact analyses)
+		// TBD
+		// 4. Setup internal dependencies mode of operation - pessimistic modeling
+		ArchitectureModelFactoryFacade.setupComponentInternalDependenciesPessimistic(baseversion);
+		/** Annotation model creation **/
+		// TBD
+		return baseversion;
+	}
+	
+	public void tearDown() {
+		baseArchitectureVersion.delete();
+		baseArchitectureVersion = null;
+	}
+	
+
+	public void testWholeAnalysis() {
+		/** Change request 1 **/
+		// 1. Clone base model 
+		ArchitectureVersion subVersion = KAMPHelper.createArchitectureVersionClone(baseArchitectureVersion, "SubVersionInsertDatabaseCache");
+		// 2. Model change request
+		// 2.1. Alter repository view (modules view) by adding a new cache interface and component with its respective roles
+		BasicComponent cacheComponent = ArchitectureModelFactoryFacade.createBasicComponent(subVersion, "DatabaseCache");
+		OperationInterface dbInterface = (OperationInterface) ArchitectureModelLookup.lookUpInterfaceByName(subVersion, "DatabaseInterface");
+		OperationProvidedRole cacheProvidedRole = ArchitectureModelFactoryFacade.createProvidedRole(cacheComponent, dbInterface);
+		OperationRequiredRole cacheRequiredRole = ArchitectureModelFactoryFacade.createRequiredRole(cacheComponent, dbInterface);
+		// 2.2. Alter system view (components & connectors view)
+		// 2.2.0. Lookup affected components (server & database)
+		RepositoryComponent server = ArchitectureModelLookup.lookUpComponentByName(subVersion, "Server");
+		RepositoryComponent database = ArchitectureModelLookup.lookUpComponentByName(subVersion, "Database");
+		// 2.2.1. Lookup affected assembly contexts and connectors
+		AssemblyContext databaseContext = ArchitectureModelLookup.lookUpAssemblyContextsForRepositoryComponent(subVersion, database).get(0);
+		AssemblyContext serverContext = ArchitectureModelLookup.lookUpAssemblyContextsForRepositoryComponent(subVersion, server).get(0);
+		AssemblyConnector databaseServerConnector = ArchitectureModelLookup.lookUpAssemblyConnectorsBetweenAssemblyContexts(databaseContext, serverContext).get(0);
+		// 2.2.2. Delete old assembly connector
+		ArchitectureModelFactoryFacade.deleteAssemblyConnector(databaseServerConnector);
+		// 2.2.3. Create new assembly contexts and connectors for the cache
+		ArchitectureModelFactoryFacade.createAssemblyContext(cacheComponent, subVersion);
+		AssemblyContext cacheAssemblyContext = ArchitectureModelLookup.lookUpAssemblyContextsForRepositoryComponent(subVersion, cacheComponent).get(0);
+		ArchitectureModelFactoryFacade.createAssemblyConnector(server, cacheComponent, subVersion);
+		ArchitectureModelFactoryFacade.createAssemblyConnector(cacheComponent, database, subVersion);
+		// 2.3. Mark internal modification of the database component
+		ArchitectureModelFactoryFacade.assignInternalModificationMarkToComponent(subVersion, database);
+		ArchitectureModelFactoryFacade.assignInternalModificationMarkToComponent(subVersion, cacheComponent);
+		ArchitectureModelFactoryFacade.assignInternalModificationMarkToInterface(subVersion, dbInterface);
+		ArchitectureModelFactoryFacade.assignInternalModificationMarkToProvidedRoleOfComponent(subVersion, cacheProvidedRole);
+		ArchitectureModelFactoryFacade.assignInternalModificationMarkToRequiredRole(subVersion, cacheRequiredRole);
+		//List<ModifyComponent> internalModificationMarks = ArchitectureModelLookup.lookUpModificationMarksForComponent(subVersion, database);
+		
+		// 3. Compute activities required to fulfill the change request
+		// 3.1 Derivation of workplan (plain)
+		List<Activity> baseActivityList = DifferenceCalculation.deriveWorkplan(baseArchitectureVersion, subVersion);
+		System.out.println("Base Activity List:");
+		KAMPHelper.printActivities(baseActivityList, "Top:");
+		
+		// 3.2. Make change propagation analysis
+		ChangePropagationAnalysis cia = new ChangePropagationAnalysis();
+		cia.runChangePropagationAnalysis(subVersion);
+		List<ProvidedRole> newProvidedRoles = new ArrayList<ProvidedRole>();
+		newProvidedRoles.add(cacheProvidedRole);
+		cia.calculateInterComponentPropagation(newProvidedRoles, subVersion);
+		List<RequiredRole> requiredRoles = new ArrayList<RequiredRole>();
+		requiredRoles.add(cacheRequiredRole);
+		cia.calculateIntraComponentPropagation(requiredRoles, subVersion);
+		
+		// 3.3. Derivation of workplan (enriched)
+		List<Activity> enrichedActivityList = EnrichedWorkplanDerivation.deriveEnrichedWorkplan(baseArchitectureVersion, subVersion, baseActivityList);
+		System.out.println("Enriched Activity List:");
+		KAMPHelper.printActivities(enrichedActivityList, "Top:");
+	}
+	
+	public static void main(String[] args) throws Exception {
+		KAMPTestNew testNew = new KAMPTestNew();
+		testNew.setUp();
+		testNew.testWholeAnalysis();
+		testNew.tearDown();
+	}
+}
