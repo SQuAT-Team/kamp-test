@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_AZvXcJ1KEeaONP5_ZF6LwQ" type="Henshin" name="simple.henshin_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_Xjcd8J1KEeaONP5_ZF6LwQ" type="2001" fontName=".SF NS Text" italic="true" lineColor="0">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Z5M0Y51KEeaONP5_ZF6LwQ" source="defaultAction">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Z5M0ZJ1KEeaONP5_ZF6LwQ" key="value" value="create"/>
+    </eAnnotations>
+    <children xmi:type="notation:DecorationNode" xmi:id="_XjdsEJ1KEeaONP5_ZF6LwQ" type="5001"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_XjdsEZ1KEeaONP5_ZF6LwQ" type="7001">
+      <children xmi:type="notation:Shape" xmi:id="_Z5QewJ1KEeaONP5_ZF6LwQ" type="3001" fontName=".SF NS Text">
+        <children xmi:type="notation:DecorationNode" xmi:id="_Z5RF0J1KEeaONP5_ZF6LwQ" type="5002"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_Z5RF0Z1KEeaONP5_ZF6LwQ" type="5003"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_Z5RF0p1KEeaONP5_ZF6LwQ" type="7002">
+          <children xmi:type="notation:Node" xmi:id="_ahzFcJ1KEeaONP5_ZF6LwQ" type="3002">
+            <element xmi:type="henshin:Attribute" href="simple.henshin#_ahtl4J1KEeaONP5_ZF6LwQ"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_ahzFcZ1KEeaONP5_ZF6LwQ"/>
+          </children>
+          <styles xmi:type="notation:SortingStyle" xmi:id="_Z5RF051KEeaONP5_ZF6LwQ"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_Z5RF1J1KEeaONP5_ZF6LwQ"/>
+        </children>
+        <element xmi:type="henshin:Node" href="simple.henshin#_Z5M0YJ1KEeaONP5_ZF6LwQ"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Z5QewZ1KEeaONP5_ZF6LwQ" x="65" y="16"/>
+      </children>
+    </children>
+    <element xmi:type="henshin:Rule" href="simple.henshin#_XjaowJ1KEeaONP5_ZF6LwQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Xjcd8Z1KEeaONP5_ZF6LwQ" x="159" y="114"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_AZvXcZ1KEeaONP5_ZF6LwQ"/>
+  <element xmi:type="henshin:Module" href="simple.henshin#_AZmNgJ1KEeaONP5_ZF6LwQ"/>
+</notation:Diagram>

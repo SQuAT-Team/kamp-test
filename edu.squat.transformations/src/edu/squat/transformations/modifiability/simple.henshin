@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_AZmNgJ1KEeaONP5_ZF6LwQ">
+  <imports href="pcm.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_XjaowJ1KEeaONP5_ZF6LwQ" name="changeName">
+    <parameters xmi:id="_Y-dqcJ1KEeaONP5_ZF6LwQ" name="name" description="" kind="IN">
+      <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </parameters>
+    <lhs xmi:id="_XjhWcJ1KEeaONP5_ZF6LwQ" name="Lhs">
+      <nodes xmi:id="_Z5M0YJ1KEeaONP5_ZF6LwQ">
+        <type href="pcm.ecore#//repository/BasicComponent"/>
+        <attributes xmi:id="_ahtl4J1KEeaONP5_ZF6LwQ" value="name">
+          <type href="pcm.ecore#//core/entity/NamedElement/entityName"/>
+        </attributes>
+      </nodes>
+    </lhs>
+    <rhs xmi:id="_XjhWcZ1KEeaONP5_ZF6LwQ" name="Rhs">
+      <nodes xmi:id="_Z5M0YZ1KEeaONP5_ZF6LwQ">
+        <type href="pcm.ecore#//repository/BasicComponent"/>
+        <attributes xmi:id="_ahtl4Z1KEeaONP5_ZF6LwQ" value="name">
+          <type href="pcm.ecore#//core/entity/NamedElement/entityName"/>
+        </attributes>
+      </nodes>
+    </rhs>
+    <mappings xmi:id="_Z5M0Yp1KEeaONP5_ZF6LwQ" origin="_Z5M0YJ1KEeaONP5_ZF6LwQ" image="_Z5M0YZ1KEeaONP5_ZF6LwQ"/>
+  </units>
+</henshin:Module>
