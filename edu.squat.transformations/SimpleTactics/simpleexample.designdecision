@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<designdecision:DecisionSpace xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:designdecision="http://sdq.ipd.uka.de/DesignDecision/3.0" xmlns:specific="http://sdq.ipd.uka.de/DesignDecision/Specific/3.0" id="_6wfScJcTEeasxLM3CeV8iA">
+  <degreesOfFreedom xsi:type="specific:ContinuousProcessingRateDegree" lowerBoundIncluded="false" to="7.0" from="1.75">
+    <primaryChanged href="default.resourceenvironment#_g7HJEC6MEd-Jla2o7wkBzQ"/>
+    <processingresourcetype href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+  </degreesOfFreedom>
+</designdecision:DecisionSpace>

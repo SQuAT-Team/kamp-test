@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:usagemodel="http://palladiosimulator.org/PalladioComponentModel/UsageModel/5.1" xsi:schemaLocation="http://palladiosimulator.org/PalladioComponentModel/UsageModel/5.1 http://palladiosimulator.org/PalladioComponentModel/5.1#//usagemodel" xmi:id="_BHZzkHUaEeauMPtoFodBVw" type="PCM Usage Model" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_IZH6MHg6Eeao1YTRdhPu3w" type="2004">
+    <children xmi:type="notation:DecorationNode" xmi:id="_IZIhQHg6Eeao1YTRdhPu3w" type="5017"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_IZIhQXg6Eeao1YTRdhPu3w" type="7012">
+      <children xmi:type="notation:Shape" xmi:id="_IZP2AHg6Eeao1YTRdhPu3w" type="3014" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_IZQdEHg6Eeao1YTRdhPu3w" type="7013"/>
+        <element xmi:type="usagemodel:ScenarioBehaviour" href="default.usagemodel#_Uc-igS6OEd-Jla2o7wkBzQ"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IZP2AXg6Eeao1YTRdhPu3w"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_IZQdEXg6Eeao1YTRdhPu3w" type="3016">
+        <children xmi:type="notation:DecorationNode" xmi:id="_IZQdFng6Eeao1YTRdhPu3w" type="5016"/>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_IZQdEng6Eeao1YTRdhPu3w"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_IZQdE3g6Eeao1YTRdhPu3w" fontName="Segoe UI"/>
+        <styles xmi:type="notation:LineStyle" xmi:id="_IZQdFHg6Eeao1YTRdhPu3w"/>
+        <element xmi:type="usagemodel:OpenWorkload" href="default.usagemodel#//@usageScenario_UsageModel.0/@workload_UsageScenario"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IZQdFXg6Eeao1YTRdhPu3w" x="738" y="-27"/>
+      </children>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_IZH6MXg6Eeao1YTRdhPu3w"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_IZH6Mng6Eeao1YTRdhPu3w" fontName="Segoe UI"/>
+    <styles xmi:type="notation:FillStyle" xmi:id="_IZH6M3g6Eeao1YTRdhPu3w"/>
+    <element xmi:type="usagemodel:UsageScenario" href="default.usagemodel#_Uc-igC6OEd-Jla2o7wkBzQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IZH6NHg6Eeao1YTRdhPu3w" x="-35" y="30"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_BHZzkXUaEeauMPtoFodBVw"/>
+  <element xmi:type="usagemodel:UsageModel" href="default.usagemodel#/"/>
+</notation:Diagram>
