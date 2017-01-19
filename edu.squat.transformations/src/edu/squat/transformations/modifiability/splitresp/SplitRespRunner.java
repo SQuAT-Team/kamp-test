@@ -22,6 +22,7 @@ import org.eclipse.emf.henshin.interpreter.impl.LoggingApplicationMonitor;
 import org.eclipse.emf.henshin.interpreter.impl.RuleApplicationImpl;
 import org.eclipse.emf.henshin.model.Rule;
 import org.eclipse.emf.henshin.trace.Trace;
+import org.palladiosimulator.pcm.parameter.VariableUsage;
 import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.repository.OperationInterface;
 import org.palladiosimulator.pcm.repository.PassiveResource;
@@ -200,6 +201,12 @@ public class SplitRespRunner extends PCMTransformerRunner {
 				for(PassiveResource pr : passiveResourcesClone)
 					pr.setId(EcoreUtil.generateUUID());
 				newComponent.getPassiveResource_BasicComponent().addAll(passiveResourcesClone);
+			}
+			//Duplicating component resources
+			EList<VariableUsage> variableUsages = oldComponent.getComponentParameterUsage_ImplementationComponentType();
+			if(variableUsages != null && !variableUsages.isEmpty()) {
+				Collection<VariableUsage> variableUsagesClone = EcoreUtil.copyAll(variableUsages);
+				newComponent.getComponentParameterUsage_ImplementationComponentType().addAll(variableUsagesClone);
 			}
 			System.out.println("Successfully cloned the internal elements of the component and the associated interface");
 		}
