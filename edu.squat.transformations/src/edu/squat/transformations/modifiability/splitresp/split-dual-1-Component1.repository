@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.1" xmlns:seff="http://palladiosimulator.org/PalladioComponentModel/SEFF/5.1" xmlns:trace="http://www.eclipse.org/emf/2011/Henshin/Trace">
   <repository:Repository id="_VfRHwM0CEeaolPjamFsuIw" entityName="defaultRepository">
-    <components__Repository xsi:type="repository:BasicComponent" id="_uZAPENNxEea3f-br-N5UWQ" entityName="Component1-B">
-      <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_uZAPEdNxEea3f-br-N5UWQ" providedInterface__OperationProvidedRole="_YET3YM0CEeaolPjamFsuIw"/>
-      <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_uZL1QNNxEea3f-br-N5UWQ" requiredInterface__OperationRequiredRole="_Wv0JoM0CEeaolPjamFsuIw"/>
+    <components__Repository xsi:type="repository:BasicComponent" id="__stdQOlDEeapRYPrIFEJDA" entityName="Component1-B">
+      <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="__stdQelDEeapRYPrIFEJDA" providedInterface__OperationProvidedRole="_YET3YM0CEeaolPjamFsuIw"/>
+      <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="__s0K8elDEeapRYPrIFEJDA" requiredInterface__OperationRequiredRole="_Wv0JoM0CEeaolPjamFsuIw"/>
       <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_mM7X4s0CEeaolPjamFsuIw" describedService__SEFF="_htgmQM0CEeaolPjamFsuIw">
         <steps_Behaviour xsi:type="seff:StartAction" id="_mM7-8M0CEeaolPjamFsuIw" entityName="start" successor_AbstractAction="_mM7-8c0CEeaolPjamFsuIw"/>
         <steps_Behaviour xsi:type="seff:StopAction" id="_mM7-8c0CEeaolPjamFsuIw" entityName="stop" predecessor_AbstractAction="_mM7-8M0CEeaolPjamFsuIw"/>
@@ -31,9 +31,9 @@
         <steps_Behaviour xsi:type="seff:StopAction" id="_8wj84M0CEeaolPjamFsuIw" entityName="stop" predecessor_AbstractAction="_8wjV0M0CEeaolPjamFsuIw"/>
       </serviceEffectSpecifications__BasicComponent>
     </components__Repository>
-    <components__Repository xsi:type="repository:BasicComponent" id="_uY7WkNNxEea3f-br-N5UWQ" entityName="Component1-A">
-      <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_uY7WkdNxEea3f-br-N5UWQ" providedInterface__OperationProvidedRole="_Wv0JoM0CEeaolPjamFsuIw"/>
-      <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_uZLOMNNxEea3f-br-N5UWQ" requiredInterface__OperationRequiredRole="_YET3YM0CEeaolPjamFsuIw"/>
+    <components__Repository xsi:type="repository:BasicComponent" id="__sqZ8OlDEeapRYPrIFEJDA" entityName="Component1-A">
+      <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="__sqZ8elDEeapRYPrIFEJDA" providedInterface__OperationProvidedRole="_Wv0JoM0CEeaolPjamFsuIw"/>
+      <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="__s0K8OlDEeapRYPrIFEJDA" requiredInterface__OperationRequiredRole="_YET3YM0CEeaolPjamFsuIw"/>
       <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_ljWPYM0CEeaolPjamFsuIw" describedService__SEFF="_kTBP8M0CEeaolPjamFsuIw">
         <steps_Behaviour xsi:type="seff:StartAction" id="_ljW2cM0CEeaolPjamFsuIw" entityName="start" successor_AbstractAction="_ljW2cc0CEeaolPjamFsuIw"/>
         <steps_Behaviour xsi:type="seff:StopAction" id="_ljW2cc0CEeaolPjamFsuIw" entityName="stop" predecessor_AbstractAction="_ljW2cM0CEeaolPjamFsuIw"/>
@@ -63,7 +63,16 @@
     <subTraces source="_cYhekM0CEeaolPjamFsuIw" target="_YET3YM0CEeaolPjamFsuIw" name="reconn-intB"/>
     <subTraces source="_dEaUMM0CEeaolPjamFsuIw" target="_Wv0JoM0CEeaolPjamFsuIw" name="dep-intA"/>
     <subTraces source="_eJtvYM0CEeaolPjamFsuIw" target="_YET3YM0CEeaolPjamFsuIw" name="dep-intB"/>
-    <subTraces source="_cYhekM0CEeaolPjamFsuIw" target="_uY7WkNNxEea3f-br-N5UWQ" name="reconn-compA"/>
-    <subTraces source="_cYhekM0CEeaolPjamFsuIw" target="_uZAPENNxEea3f-br-N5UWQ" name="reconn-compB"/>
+    <subTraces source="_cYhekM0CEeaolPjamFsuIw" target="__sqZ8OlDEeapRYPrIFEJDA" name="reconn-compA"/>
+    <subTraces source="_cYhekM0CEeaolPjamFsuIw" target="__stdQOlDEeapRYPrIFEJDA" name="reconn-compB"/>
+    <subTraces source="_IPgtsOc0EeaYi_qKETszAw" target="__tCNYOlDEeapRYPrIFEJDA" name="assembly-contA"/>
+    <subTraces source="_IPgtsOc0EeaYi_qKETszAw" target="__tFQsOlDEeapRYPrIFEJDA" name="assembly-contB"/>
+    <subTraces source="_FuXxMOc1EeaYi_qKETszAw" target="__tHF4OlDEeapRYPrIFEJDA" name="assembly-connA"/>
+    <subTraces source="_QjoqkOc1EeaYi_qKETszAw" target="__tHF4elDEeapRYPrIFEJDA" name="assembly-connA"/>
+    <subTraces source="_WBW3gOc1EeaYi_qKETszAw" target="__tHF4ulDEeapRYPrIFEJDA" name="assembly-connA"/>
+    <subTraces source="_Yb8DkOc1EeaYi_qKETszAw" target="__tHF4-lDEeapRYPrIFEJDA" name="assembly-connA"/>
+    <subTraces source="_QjoqkOc1EeaYi_qKETszAw" target="__tHs8OlDEeapRYPrIFEJDA" name="assembly-connB"/>
+    <subTraces source="_WBW3gOc1EeaYi_qKETszAw" target="__tHs8elDEeapRYPrIFEJDA" name="assembly-connB"/>
+    <subTraces source="_Yb8DkOc1EeaYi_qKETszAw" target="__tHs8ulDEeapRYPrIFEJDA" name="assembly-connB"/>
   </trace:Trace>
 </xmi:XMI>

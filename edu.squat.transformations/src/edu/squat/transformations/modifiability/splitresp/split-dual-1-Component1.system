@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:composition="http://palladiosimulator.org/PalladioComponentModel/Core/Composition/5.1" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.1" xmlns:system="http://palladiosimulator.org/PalladioComponentModel/System/5.1" xmlns:trace="http://www.eclipse.org/emf/2011/Henshin/Trace">
+  <system:System id="_uw6zcOczEeaYi_qKETszAw" entityName="defaultSystem">
+    <assemblyContexts__ComposedStructure id="__tFQsOlDEeapRYPrIFEJDA" entityName="Assembly_Component1 &lt;Component1>-B">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="split-dual-1-Component1.repository#__stdQOlDEeapRYPrIFEJDA"/>
+    </assemblyContexts__ComposedStructure>
+    <assemblyContexts__ComposedStructure id="_NzYl8Oc0EeaYi_qKETszAw" entityName="Assembly_Component2 &lt;Component2>">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="split-dual-1-Component1.repository#_dEaUMM0CEeaolPjamFsuIw"/>
+    </assemblyContexts__ComposedStructure>
+    <assemblyContexts__ComposedStructure id="_OxMSAOc0EeaYi_qKETszAw" entityName="Assembly_Component3.2 &lt;Component3>">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="split-dual-1-Component1.repository#_eJtvYM0CEeaolPjamFsuIw"/>
+    </assemblyContexts__ComposedStructure>
+    <assemblyContexts__ComposedStructure id="_Pj79kOc0EeaYi_qKETszAw" entityName="Assembly_Component3.1 &lt;Component3>">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="split-dual-1-Component1.repository#_eJtvYM0CEeaolPjamFsuIw"/>
+    </assemblyContexts__ComposedStructure>
+    <assemblyContexts__ComposedStructure id="__tCNYOlDEeapRYPrIFEJDA" entityName="Assembly_Component1 &lt;Component1>-A">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="split-dual-1-Component1.repository#__sqZ8OlDEeapRYPrIFEJDA"/>
+    </assemblyContexts__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="__tHs8ulDEeapRYPrIFEJDA" entityName="Connector Assembly_Component3 &lt;Component3> -> Assembly_Component1 &lt;Component1>-B" requiringAssemblyContext_AssemblyConnector="_OxMSAOc0EeaYi_qKETszAw" providingAssemblyContext_AssemblyConnector="__tFQsOlDEeapRYPrIFEJDA">
+      <providedRole_AssemblyConnector href="split-dual-1-Component1.repository#__stdQelDEeapRYPrIFEJDA"/>
+      <requiredRole_AssemblyConnector href="split-dual-1-Component1.repository#_nb6TgM0CEeaolPjamFsuIw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="__tHs8elDEeapRYPrIFEJDA" entityName="Connector Assembly_Component3 &lt;Component3> -> Assembly_Component1 &lt;Component1>-B" requiringAssemblyContext_AssemblyConnector="_Pj79kOc0EeaYi_qKETszAw" providingAssemblyContext_AssemblyConnector="__tFQsOlDEeapRYPrIFEJDA">
+      <providedRole_AssemblyConnector href="split-dual-1-Component1.repository#__stdQelDEeapRYPrIFEJDA"/>
+      <requiredRole_AssemblyConnector href="split-dual-1-Component1.repository#_nb6TgM0CEeaolPjamFsuIw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="__tHs8OlDEeapRYPrIFEJDA" entityName="Connector Assembly_Component2 &lt;Component2> -> Assembly_Component1 &lt;Component1>-B" requiringAssemblyContext_AssemblyConnector="_NzYl8Oc0EeaYi_qKETszAw" providingAssemblyContext_AssemblyConnector="__tFQsOlDEeapRYPrIFEJDA">
+      <requiredRole_AssemblyConnector href="split-dual-1-Component1.repository#_nC0eEM0CEeaolPjamFsuIw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="__tHF4-lDEeapRYPrIFEJDA" entityName="Connector Assembly_Component3 &lt;Component3> -> Assembly_Component1 &lt;Component1>-A" requiringAssemblyContext_AssemblyConnector="_OxMSAOc0EeaYi_qKETszAw" providingAssemblyContext_AssemblyConnector="__tCNYOlDEeapRYPrIFEJDA">
+      <requiredRole_AssemblyConnector href="split-dual-1-Component1.repository#_nb6TgM0CEeaolPjamFsuIw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_rq5y0Oc1EeaYi_qKETszAw" entityName="Connector Assembly_Component2 &lt;Component2> -> Assembly_Component3.1 &lt;Component3>" requiringAssemblyContext_AssemblyConnector="_NzYl8Oc0EeaYi_qKETszAw" providingAssemblyContext_AssemblyConnector="_Pj79kOc0EeaYi_qKETszAw">
+      <providedRole_AssemblyConnector href="split-dual-1-Component1.repository#_8wg5kM0CEeaolPjamFsuIw"/>
+      <requiredRole_AssemblyConnector href="split-dual-1-Component1.repository#__G5iIM0CEeaolPjamFsuIw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_sRGQIOc1EeaYi_qKETszAw" entityName="Connector Assembly_Component2 &lt;Component2> -> Assembly_Component3.2 &lt;Component3>" requiringAssemblyContext_AssemblyConnector="_NzYl8Oc0EeaYi_qKETszAw" providingAssemblyContext_AssemblyConnector="_OxMSAOc0EeaYi_qKETszAw">
+      <providedRole_AssemblyConnector href="split-dual-1-Component1.repository#_7YvOUM0CEeaolPjamFsuIw"/>
+      <requiredRole_AssemblyConnector href="split-dual-1-Component1.repository#__G5iIM0CEeaolPjamFsuIw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_tPwQwOc1EeaYi_qKETszAw" entityName="Connector Assembly_Component2 &lt;Component2> -> Assembly_Component3.1 &lt;Component3>" requiringAssemblyContext_AssemblyConnector="_NzYl8Oc0EeaYi_qKETszAw" providingAssemblyContext_AssemblyConnector="_Pj79kOc0EeaYi_qKETszAw">
+      <providedRole_AssemblyConnector href="split-dual-1-Component1.repository#_7YvOUM0CEeaolPjamFsuIw"/>
+      <requiredRole_AssemblyConnector href="split-dual-1-Component1.repository#_ASJNQM0DEeaolPjamFsuIw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_uei_IOc1EeaYi_qKETszAw" entityName="Connector Assembly_Component2 &lt;Component2> -> Assembly_Component3.2 &lt;Component3>" requiringAssemblyContext_AssemblyConnector="_NzYl8Oc0EeaYi_qKETszAw" providingAssemblyContext_AssemblyConnector="_OxMSAOc0EeaYi_qKETszAw">
+      <providedRole_AssemblyConnector href="split-dual-1-Component1.repository#_8wg5kM0CEeaolPjamFsuIw"/>
+      <requiredRole_AssemblyConnector href="split-dual-1-Component1.repository#_ASJNQM0DEeaolPjamFsuIw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="__tHF4OlDEeapRYPrIFEJDA" entityName="ProvDelegation Provided_A -> Provided_A_Component1-A" outerProvidedRole_ProvidedDelegationConnector="_92ICkOc0EeaYi_qKETszAw" assemblyContext_ProvidedDelegationConnector="__tCNYOlDEeapRYPrIFEJDA">
+      <innerProvidedRole_ProvidedDelegationConnector href="split-dual-1-Component1.repository#__sqZ8elDEeapRYPrIFEJDA"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="__tHF4elDEeapRYPrIFEJDA" entityName="Connector Assembly_Component2 &lt;Component2> -> Assembly_Component1 &lt;Component1>-A" requiringAssemblyContext_AssemblyConnector="_NzYl8Oc0EeaYi_qKETszAw" providingAssemblyContext_AssemblyConnector="__tCNYOlDEeapRYPrIFEJDA">
+      <providedRole_AssemblyConnector href="split-dual-1-Component1.repository#__sqZ8elDEeapRYPrIFEJDA"/>
+      <requiredRole_AssemblyConnector href="split-dual-1-Component1.repository#_nC0eEM0CEeaolPjamFsuIw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="__tHF4ulDEeapRYPrIFEJDA" entityName="Connector Assembly_Component3 &lt;Component3> -> Assembly_Component1 &lt;Component1>-A" requiringAssemblyContext_AssemblyConnector="_Pj79kOc0EeaYi_qKETszAw" providingAssemblyContext_AssemblyConnector="__tCNYOlDEeapRYPrIFEJDA">
+      <requiredRole_AssemblyConnector href="split-dual-1-Component1.repository#_nb6TgM0CEeaolPjamFsuIw"/>
+    </connectors__ComposedStructure>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_92ICkOc0EeaYi_qKETszAw" entityName="Provided_A">
+      <providedInterface__OperationProvidedRole href="split-dual-1-Component1.repository#_Wv0JoM0CEeaolPjamFsuIw"/>
+    </providedRoles_InterfaceProvidingEntity>
+  </system:System>
+  <trace:Trace source="_cYhekM0CEeaolPjamFsuIw" name="root">
+    <subTraces source="_cYhekM0CEeaolPjamFsuIw" name="reconn-intA">
+      <target href="split-dual-1-Component1.repository#_Wv0JoM0CEeaolPjamFsuIw"/>
+    </subTraces>
+    <subTraces source="_cYhekM0CEeaolPjamFsuIw" name="reconn-intB">
+      <target href="split-dual-1-Component1.repository#_YET3YM0CEeaolPjamFsuIw"/>
+    </subTraces>
+    <subTraces name="dep-intA">
+      <source href="split-dual-1-Component1.repository#_dEaUMM0CEeaolPjamFsuIw"/>
+      <target href="split-dual-1-Component1.repository#_Wv0JoM0CEeaolPjamFsuIw"/>
+    </subTraces>
+    <subTraces name="dep-intB">
+      <source href="split-dual-1-Component1.repository#_eJtvYM0CEeaolPjamFsuIw"/>
+      <target href="split-dual-1-Component1.repository#_YET3YM0CEeaolPjamFsuIw"/>
+    </subTraces>
+    <subTraces source="_cYhekM0CEeaolPjamFsuIw" name="reconn-compA">
+      <target href="split-dual-1-Component1.repository#__sqZ8OlDEeapRYPrIFEJDA"/>
+    </subTraces>
+    <subTraces source="_cYhekM0CEeaolPjamFsuIw" name="reconn-compB">
+      <target href="split-dual-1-Component1.repository#__stdQOlDEeapRYPrIFEJDA"/>
+    </subTraces>
+    <subTraces source="_IPgtsOc0EeaYi_qKETszAw" target="__tCNYOlDEeapRYPrIFEJDA" name="assembly-contA"/>
+    <subTraces source="_IPgtsOc0EeaYi_qKETszAw" target="__tFQsOlDEeapRYPrIFEJDA" name="assembly-contB"/>
+    <subTraces source="_FuXxMOc1EeaYi_qKETszAw" target="__tHF4OlDEeapRYPrIFEJDA" name="assembly-connA"/>
+    <subTraces source="_QjoqkOc1EeaYi_qKETszAw" target="__tHF4elDEeapRYPrIFEJDA" name="assembly-connA"/>
+    <subTraces source="_WBW3gOc1EeaYi_qKETszAw" target="__tHF4ulDEeapRYPrIFEJDA" name="assembly-connA"/>
+    <subTraces source="_Yb8DkOc1EeaYi_qKETszAw" target="__tHF4-lDEeapRYPrIFEJDA" name="assembly-connA"/>
+    <subTraces source="_QjoqkOc1EeaYi_qKETszAw" target="__tHs8OlDEeapRYPrIFEJDA" name="assembly-connB"/>
+    <subTraces source="_WBW3gOc1EeaYi_qKETszAw" target="__tHs8elDEeapRYPrIFEJDA" name="assembly-connB"/>
+    <subTraces source="_Yb8DkOc1EeaYi_qKETszAw" target="__tHs8ulDEeapRYPrIFEJDA" name="assembly-connB"/>
+  </trace:Trace>
+</xmi:XMI>
