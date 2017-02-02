@@ -121,9 +121,10 @@ public class InsInterRunner extends PCMTransformerRunner {
 					//Store the results
 					this.addTactic(null, tempGraph, null);
 					if (saveResult) {
-						String fileIdentifier = interfacesName;
-						String fileName = resultFilename.replace("#REPLACEMENT#", String.valueOf(counter) + "-" + fileIdentifier);
-						RunnerHelper.saveResult(resourceSet, tempGraph, fileName);
+						RunnerHelper.saveRepositoryResult(
+								resourceSet, 
+								tempGraph, 
+								repositoryFilename.replace("#REPLACEMENT#", String.valueOf(counter) + "-" + interfacesName));
 					}
 				}
 				else {
@@ -306,7 +307,7 @@ public class InsInterRunner extends PCMTransformerRunner {
 
 
 	private List<Trace> collectMatchTraces(Trace root, OperationInterface op1, OperationInterface op2) {
-		List<Trace> allMatches = this.getTraceMatches(root);
+		List<Trace> allMatches = RunnerHelper.getTraces(root, "match", true);
 		List<Trace> interfaceMatches = new ArrayList<Trace>();
 		for(Trace trace : allMatches) {
 			OperationInterface leftInterface = (OperationInterface) ((Trace) trace.getSource().get(0)).getTarget().get(0);
@@ -349,7 +350,6 @@ public class InsInterRunner extends PCMTransformerRunner {
 		return chainHolderPointer;
 	}
 
-
 	private List<OperationInterface> convertToInterfaces(Trace root, Repository repository, List<Integer> chainInterfacesPointer) {
 		List<OperationInterface> chainInterfacesHolder = new ArrayList<OperationInterface>();
 		for(int i = 0; i < chainInterfacesPointer.size(); i++) {
@@ -373,7 +373,7 @@ public class InsInterRunner extends PCMTransformerRunner {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void gatherEntities(Trace root, String type, List list) {
-		List<Trace> matches = this.getTraceMatches(root);
+		List<Trace> matches = RunnerHelper.getTraces(root, "match", true);
 		for(Trace t : matches) {
 			if(type.equals("component")) {
 				BasicComponent leftC = (BasicComponent)(((Trace)t.getSource().get(0)).getSource().get(0));
@@ -389,48 +389,38 @@ public class InsInterRunner extends PCMTransformerRunner {
 			}
 		}
 	}
-
-
-	private List<Trace> getTraceMatches(Trace root) {
-		List<Trace> tMatches = new ArrayList<Trace>();
-		for(Trace t : root.getSubTraces()) {
-			if(t.getName().startsWith("match"))
-				tMatches.add(t);
-		}
-		return tMatches;
-	}
 	
 	public static void main(String[] args) {
 		String dirPath = "src/edu/squat/transformations/modifiability/insinter";
 		String henshinFilename = "insinter-modular.henshin";
-		String modelFilename;
-		String resultFilename;
+		String repositoryFilename;
+		String resultRepositoryFilename;
 
 		InsInterRunner runner = new InsInterRunner();
 
 		//Individual testing
-		modelFilename = "insert-test.repository";
-		resultFilename = "insert-test-" + "#REPLACEMENT#" + ".repository";
-		runner.run(dirPath, modelFilename, henshinFilename, resultFilename, true);
+		repositoryFilename = "insert-test.repository";
+		resultRepositoryFilename = "insert-test-" + "#REPLACEMENT#" + ".repository";
+		runner.run(dirPath, repositoryFilename, henshinFilename, resultRepositoryFilename, true);
 		
 		//Multiple testing
-		modelFilename = "insert-mult.repository";
-		resultFilename = "insert-mult-" + "#REPLACEMENT#" + ".repository";
-		runner.run(dirPath, modelFilename, henshinFilename, resultFilename, true);
+		repositoryFilename = "insert-mult.repository";
+		resultRepositoryFilename = "insert-mult-" + "#REPLACEMENT#" + ".repository";
+		runner.run(dirPath, repositoryFilename, henshinFilename, resultRepositoryFilename, true);
 		
 		//MediaStore3 testing
-		modelFilename = "ms.repository";
-		resultFilename = "ms-" + "#REPLACEMENT#" + ".repository";
-		//runner.run(dirPath, modelFilename, henshinFilename, resultFilename, true);
+		repositoryFilename = "ms.repository";
+		resultRepositoryFilename = "ms-" + "#REPLACEMENT#" + ".repository";
+		//runner.run(dirPath, repositoryFilename, henshinFilename, resultRepositoryFilename, true);
 		
 		//SimpleTactics testing
-		modelFilename = "st.repository";
-		resultFilename = "st-" + "#REPLACEMENT#" + ".repository";
-		//runner.run(dirPath, modelFilename, henshinFilename, resultFilename, true);
+		repositoryFilename = "st.repository";
+		resultRepositoryFilename = "st-" + "#REPLACEMENT#" + ".repository";
+		//runner.run(dirPath, repositoryFilename, henshinFilename, resultRepositoryFilename, true);
 		
 		//SimpleTactics+ testing
-		modelFilename = "stplus.repository";
-		resultFilename = "stplus-" + "#REPLACEMENT#" + ".repository";
-		//runner.run(dirPath, modelFilename, henshinFilename, resultFilename, true);
+		repositoryFilename = "stplus.repository";
+		resultRepositoryFilename = "stplus-" + "#REPLACEMENT#" + ".repository";
+		//runner.run(dirPath, repositoryFilename, henshinFilename, resultRepositoryFilename, true);
 	}
 }
