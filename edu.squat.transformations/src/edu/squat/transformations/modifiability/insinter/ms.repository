@@ -803,7 +803,7 @@
         </localVariableUsages_SetVariableAction>
       </steps_Behaviour>
       <steps_Behaviour xsi:type="seff:ForkAction" id="_VZEREOXWEeSa__lJ2-JCxw" predecessor_AbstractAction="_tZUiMHQhEeSabL89DKH5bQ2" successor_AbstractAction="_RxPpAL0JEeSAHuL4ItXOLQ2">
-        <synchronisingBehaviours_ForkAction>
+        <synchronisingBehaviours_ForkAction id="_TUEb4N5jEea1KbZjf0YUJQ">
           <synchronousForkedBehaviours_SynchronisationPoint id="_dHf8YOXWEeSa__lJ2-JCxw">
             <steps_Behaviour xsi:type="seff:StartAction" id="_sC92IOXWEeSa__lJ2-JCxw" successor_AbstractAction="_6YA9EOdrEeSABYdOmkr4cA"/>
             <steps_Behaviour xsi:type="seff:StopAction" id="_sSBl0OXWEeSa__lJ2-JCxw" predecessor_AbstractAction="_6YA9EOdrEeSABYdOmkr4cA"/>
