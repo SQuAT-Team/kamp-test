@@ -21,7 +21,7 @@ import static org.mockito.Mockito.mock;
  * Tests if the SQuAT algorithm is able to identify a candidate, which is
  * obviously the best candidate (no negotiation necessary).
  */
-public class SimpleTest extends AbstractAlgorithmTest {
+public class SimpleNegotiatorTest extends AbstractNegotiatorTest {
 
 	@Override
 	protected List<PCMBotMockBuilder> mockBots() {

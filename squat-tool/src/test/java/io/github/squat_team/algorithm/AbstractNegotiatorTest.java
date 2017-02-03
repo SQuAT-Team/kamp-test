@@ -25,7 +25,7 @@ import io.github.squat_team.model.PCMArchitectureInstance;
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(ArchitectureTransformer.class)
-public abstract class AbstractAlgorithmTest {
+public abstract class AbstractNegotiatorTest {
 	protected PCMArchitectureInstance initialArchitecture;
 	protected List<AbstractPCMBot> bots = new ArrayList<AbstractPCMBot>();
 
