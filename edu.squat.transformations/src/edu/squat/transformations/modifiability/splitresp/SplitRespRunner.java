@@ -33,7 +33,9 @@ import org.eclipse.emf.henshin.model.impl.LoopUnitImpl;
 import org.eclipse.emf.henshin.model.impl.ParameterMappingImpl;
 import org.eclipse.emf.henshin.trace.Trace;
 import org.eclipse.emf.henshin.trace.TraceFactory;
+import org.palladiosimulator.pcm.allocation.Allocation;
 import org.palladiosimulator.pcm.allocation.AllocationContext;
+import org.palladiosimulator.pcm.allocation.AllocationFactory;
 import org.palladiosimulator.pcm.core.composition.AssemblyConnector;
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.core.composition.CompositionFactory;
@@ -397,8 +399,41 @@ public class SplitRespRunner extends PCMTransformerRunner {
 		return false;
 	}
 	
-	private RuleApplication runEighthRule(EGraph graph, String i) {
-		RuleApplication app = new RuleApplicationImpl(engine);
+	private void runEighthRule(EGraph graph, String i) {
+		Trace traceRoot = RunnerHelper.getTraceRoot(graph);
+		Repository repositoryRoot = RunnerHelper.getRepositoryRoot(graph);
+		org.palladiosimulator.pcm.system.System systemRoot = RunnerHelper.getSystemRoot(graph);
+		Allocation allocationRoot = RunnerHelper.getAllocationRoot(graph);
+		List<Trace> assemblies = RunnerHelper.getTraces(traceRoot, TRACE_AssemblyContext + i, false);
+		List<AllocationContext> allocationsToAdd = new ArrayList<AllocationContext>();
+		for(Trace trace : assemblies) {
+			AssemblyContext oldAssemblyContext = (AssemblyContext) trace.getSource().get(0);
+			AssemblyContext newAssemblyContext = (AssemblyContext) trace.getTarget().get(0);
+			BasicComponent oldComponent = (BasicComponent) oldAssemblyContext.getEncapsulatedComponent__AssemblyContext();
+			BasicComponent newComponent = (BasicComponent) newAssemblyContext.getEncapsulatedComponent__AssemblyContext();
+			Iterator<AllocationContext> allocationContexts = allocationRoot.getAllocationContexts_Allocation().iterator();
+			while(allocationContexts.hasNext()) {
+				AllocationContext oldAllocationContext = allocationContexts.next();
+				if(oldAllocationContext.getAssemblyContext_AllocationContext().equals(oldAssemblyContext)) {
+					AllocationContext newAllocationContext = AllocationFactory.eINSTANCE.createAllocationContext();
+					newAllocationContext.setEntityName(oldAllocationContext.getEntityName() + "-" + i);
+					newAllocationContext.setAssemblyContext_AllocationContext(newAssemblyContext);
+					newAllocationContext.setResourceContainer_AllocationContext(oldAllocationContext.getResourceContainer_AllocationContext());
+					allocationsToAdd.add(newAllocationContext);
+					Trace allocationTrace = TraceFactory.eINSTANCE.createTrace();
+					allocationTrace.setName(TRACE_AllocationContext + i);
+					allocationTrace.getSource().add((EObject) oldAllocationContext);
+					allocationTrace.getTarget().add((EObject) newAllocationContext);
+					traceRoot.getSubTraces().add(allocationTrace);
+				}
+			}
+		}
+		allocationRoot.getAllocationContexts_Allocation().addAll(allocationsToAdd);
+		if(allocationsToAdd.size() > 0)
+			System.out.println("Successfully created the allocation contexts for the new components");
+		else
+			System.out.println("Could not create the allocation contexts for the new components");
+		/*RuleApplication app = new RuleApplicationImpl(engine);
 		app.setEGraph(graph);
 		app.setRule(propagate2Allocation);
 		app.setParameterValue("i", i);
@@ -408,7 +443,7 @@ public class SplitRespRunner extends PCMTransformerRunner {
 			System.out.println("Successfully created allocation contexts for the new assembly contexts");
 		else
 			System.out.println("Could not create allocation contexts for the new assembly contexts");
-		return app;
+		return app;*/
 	}
 	
 	private RuleApplication runLastRule(EGraph graph) {
@@ -487,6 +522,21 @@ public class SplitRespRunner extends PCMTransformerRunner {
 		resultSystemFilename = "split-dual-" + "#REPLACEMENT#" + ".system";
 		resultResourceEnvironmentFilename = "split-dual-" + "#REPLACEMENT#" + ".resourceenvironment";
 		resultAllocationFilename = "split-dual-" + "#REPLACEMENT#" + ".allocation";
+		runner.run(dirPath, 
+				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename,
+				henshinFilename, 
+				resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename,
+				true);
+		
+		//Complete SimpleTactics+ testing
+		repositoryFilename = "stplus.repository";
+		systemFilename = "stplus.system";
+		resourceEnvironmentFilename = "stplus.resourceenvironment";
+		allocationFilename = "stplus.allocation";
+		resultRepositoryFilename = "stplus-" + "#REPLACEMENT#" + ".repository";
+		resultSystemFilename = "stplus-" + "#REPLACEMENT#" + ".system";
+		resultResourceEnvironmentFilename = "stplus-" + "#REPLACEMENT#" + ".resourceenvironment";
+		resultAllocationFilename = "stplus-" + "#REPLACEMENT#" + ".allocation";
 		runner.run(dirPath, 
 				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename,
 				henshinFilename, 

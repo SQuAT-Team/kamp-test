@@ -1,71 +1,25 @@
 <?xml version="1.0" encoding="ASCII"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:allocation="http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1" xmlns:trace="http://www.eclipse.org/emf/2011/Henshin/Trace">
-  <allocation:Allocation id="_DRiX0Oc0EeaYi_qKETszAw" entityName="defaultAllocation">
-    <targetResourceEnvironment_Allocation href="split-dual-1-Component1.resourceenvironment#/"/>
-    <system_Allocation href="split-dual-1-Component1.system#_uw6zcOczEeaYi_qKETszAw"/>
-    <allocationContexts_Allocation id="_zGEj4Oc1EeaYi_qKETszAw" entityName="Allocation_Assembly_Component1 &lt;Component1> &lt;Component1>" assemblyContext_AllocationContext="_IPgtsOc0EeaYi_qKETszAw">
-      <resourceContainer_AllocationContext href="split-dual-1-Component1.resourceenvironment#_iHTyIOc0EeaYi_qKETszAw"/>
-    </allocationContexts_Allocation>
-    <allocationContexts_Allocation id="_0UMj4Oc1EeaYi_qKETszAw" entityName="Allocation_Assembly_Component2 &lt;Component2> &lt;Component2>">
-      <resourceContainer_AllocationContext href="split-dual-1-Component1.resourceenvironment#_iHTyIOc0EeaYi_qKETszAw"/>
-      <assemblyContext_AllocationContext href="split-dual-1-Component1.system#_NzYl8Oc0EeaYi_qKETszAw"/>
-    </allocationContexts_Allocation>
-    <allocationContexts_Allocation id="_1BQeMOc1EeaYi_qKETszAw" entityName="Allocation_Assembly_Component3.2 &lt;Component3> &lt;Component3>">
-      <resourceContainer_AllocationContext href="split-dual-1-Component1.resourceenvironment#_jHKFkOc0EeaYi_qKETszAw"/>
-      <assemblyContext_AllocationContext href="split-dual-1-Component1.system#_OxMSAOc0EeaYi_qKETszAw"/>
-    </allocationContexts_Allocation>
-    <allocationContexts_Allocation id="_1oT3IOc1EeaYi_qKETszAw" entityName="Allocation_Assembly_Component3.1 &lt;Component3> &lt;Component3>">
-      <resourceContainer_AllocationContext href="split-dual-1-Component1.resourceenvironment#_jHKFkOc0EeaYi_qKETszAw"/>
-      <assemblyContext_AllocationContext href="split-dual-1-Component1.system#_Pj79kOc0EeaYi_qKETszAw"/>
-    </allocationContexts_Allocation>
-  </allocation:Allocation>
-  <trace:Trace source="_cYhekM0CEeaolPjamFsuIw" name="root">
-    <subTraces source="_cYhekM0CEeaolPjamFsuIw" name="reconn-intA">
-      <target href="split-dual-1-Component1.repository#_Wv0JoM0CEeaolPjamFsuIw"/>
-    </subTraces>
-    <subTraces source="_cYhekM0CEeaolPjamFsuIw" name="reconn-intB">
-      <target href="split-dual-1-Component1.repository#_YET3YM0CEeaolPjamFsuIw"/>
-    </subTraces>
-    <subTraces name="dep-intA">
-      <source href="split-dual-1-Component1.repository#_dEaUMM0CEeaolPjamFsuIw"/>
-      <target href="split-dual-1-Component1.repository#_Wv0JoM0CEeaolPjamFsuIw"/>
-    </subTraces>
-    <subTraces name="dep-intB">
-      <source href="split-dual-1-Component1.repository#_eJtvYM0CEeaolPjamFsuIw"/>
-      <target href="split-dual-1-Component1.repository#_YET3YM0CEeaolPjamFsuIw"/>
-    </subTraces>
-    <subTraces source="_cYhekM0CEeaolPjamFsuIw" name="reconn-compA">
-      <target href="split-dual-1-Component1.repository#__sqZ8OlDEeapRYPrIFEJDA"/>
-    </subTraces>
-    <subTraces source="_cYhekM0CEeaolPjamFsuIw" name="reconn-compB">
-      <target href="split-dual-1-Component1.repository#__stdQOlDEeapRYPrIFEJDA"/>
-    </subTraces>
-    <subTraces source="_IPgtsOc0EeaYi_qKETszAw" name="assembly-contA">
-      <target href="split-dual-1-Component1.system#__tCNYOlDEeapRYPrIFEJDA"/>
-    </subTraces>
-    <subTraces source="_IPgtsOc0EeaYi_qKETszAw" name="assembly-contB">
-      <target href="split-dual-1-Component1.system#__tFQsOlDEeapRYPrIFEJDA"/>
-    </subTraces>
-    <subTraces source="_FuXxMOc1EeaYi_qKETszAw" name="assembly-connA">
-      <target href="split-dual-1-Component1.system#__tHF4OlDEeapRYPrIFEJDA"/>
-    </subTraces>
-    <subTraces source="_QjoqkOc1EeaYi_qKETszAw" name="assembly-connA">
-      <target href="split-dual-1-Component1.system#__tHF4elDEeapRYPrIFEJDA"/>
-    </subTraces>
-    <subTraces source="_WBW3gOc1EeaYi_qKETszAw" name="assembly-connA">
-      <target href="split-dual-1-Component1.system#__tHF4ulDEeapRYPrIFEJDA"/>
-    </subTraces>
-    <subTraces source="_Yb8DkOc1EeaYi_qKETszAw" name="assembly-connA">
-      <target href="split-dual-1-Component1.system#__tHF4-lDEeapRYPrIFEJDA"/>
-    </subTraces>
-    <subTraces source="_QjoqkOc1EeaYi_qKETszAw" name="assembly-connB">
-      <target href="split-dual-1-Component1.system#__tHs8OlDEeapRYPrIFEJDA"/>
-    </subTraces>
-    <subTraces source="_WBW3gOc1EeaYi_qKETszAw" name="assembly-connB">
-      <target href="split-dual-1-Component1.system#__tHs8elDEeapRYPrIFEJDA"/>
-    </subTraces>
-    <subTraces source="_Yb8DkOc1EeaYi_qKETszAw" name="assembly-connB">
-      <target href="split-dual-1-Component1.system#__tHs8ulDEeapRYPrIFEJDA"/>
-    </subTraces>
-  </trace:Trace>
-</xmi:XMI>
+<allocation:Allocation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:allocation="http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1" id="_DRiX0Oc0EeaYi_qKETszAw" entityName="defaultAllocation">
+  <targetResourceEnvironment_Allocation href="split-dual-1-Component1.resourceenvironment#/"/>
+  <system_Allocation href="split-dual-1-Component1.system#_uw6zcOczEeaYi_qKETszAw"/>
+  <allocationContexts_Allocation id="_Ep66UOmVEeaJU9Kshr7_iQ" entityName="Allocation_Assembly_Component1 &lt;Component1> &lt;Component1>-B">
+    <resourceContainer_AllocationContext href="split-dual-1-Component1.resourceenvironment#_iHTyIOc0EeaYi_qKETszAw"/>
+    <assemblyContext_AllocationContext href="split-dual-1-Component1.system#_Ep0zsOmVEeaJU9Kshr7_iQ"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_0UMj4Oc1EeaYi_qKETszAw" entityName="Allocation_Assembly_Component2 &lt;Component2> &lt;Component2>">
+    <resourceContainer_AllocationContext href="split-dual-1-Component1.resourceenvironment#_iHTyIOc0EeaYi_qKETszAw"/>
+    <assemblyContext_AllocationContext href="split-dual-1-Component1.system#_NzYl8Oc0EeaYi_qKETszAw"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_1BQeMOc1EeaYi_qKETszAw" entityName="Allocation_Assembly_Component3.2 &lt;Component3> &lt;Component3>">
+    <resourceContainer_AllocationContext href="split-dual-1-Component1.resourceenvironment#_jHKFkOc0EeaYi_qKETszAw"/>
+    <assemblyContext_AllocationContext href="split-dual-1-Component1.system#_OxMSAOc0EeaYi_qKETszAw"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_1oT3IOc1EeaYi_qKETszAw" entityName="Allocation_Assembly_Component3.1 &lt;Component3> &lt;Component3>">
+    <resourceContainer_AllocationContext href="split-dual-1-Component1.resourceenvironment#_jHKFkOc0EeaYi_qKETszAw"/>
+    <assemblyContext_AllocationContext href="split-dual-1-Component1.system#_Pj79kOc0EeaYi_qKETszAw"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_Ep6TQOmVEeaJU9Kshr7_iQ" entityName="Allocation_Assembly_Component1 &lt;Component1> &lt;Component1>-A">
+    <resourceContainer_AllocationContext href="split-dual-1-Component1.resourceenvironment#_iHTyIOc0EeaYi_qKETszAw"/>
+    <assemblyContext_AllocationContext href="split-dual-1-Component1.system#_EpvUIOmVEeaJU9Kshr7_iQ"/>
+  </allocationContexts_Allocation>
+</allocation:Allocation>

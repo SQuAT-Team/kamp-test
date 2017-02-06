@@ -116,7 +116,7 @@ public class RunnerHelper {
 			Resource resource = resourceSet.createResource(fileName);
 			Trace traceRoot = RunnerHelper.getTraceRoot(graph);
 			resource.getContents().add(modelRoot);
-			resource.getContents().add((EObject) traceRoot);
+			//resource.getContents().add((EObject) traceRoot);
 			resource.save(null);
 		} catch (IOException e) {
 			e.printStackTrace();
