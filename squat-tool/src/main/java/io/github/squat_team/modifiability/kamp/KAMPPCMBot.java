@@ -21,11 +21,25 @@ import io.github.squat_team.modifiability.ModifiabilityPCMScenario;
 
 @SuppressWarnings("unused")
 public class KAMPPCMBot extends AbstractPCMBot {
+	public static String TYPE_ELEMENTS = "Elements";
+	public static String TYPE_COMPLEXITY = "Complexity";
+	public static String TYPE_EFFORT = "Effort";
+	//
 	protected ArchitectureVersion baseAV;
 	protected ArchitectureVersion changedAV;
+	//
+	private String evaluationType = TYPE_ELEMENTS;
 	
 	public KAMPPCMBot(PCMScenario scenario) {
 		super(scenario);
+	}
+	
+	public String getEvaluationType() {
+		return evaluationType;
+	}
+	
+	public void setEvaluationType(String evaluationType) {
+		this.evaluationType = evaluationType;
 	}
 
 	@Override
@@ -54,17 +68,23 @@ public class KAMPPCMBot extends AbstractPCMBot {
 			//Run Change Impact Analyses
 			List<Activity> activities = KAMPHeadlessRunner.runAnalysis(baseAV, changedAV);
 			//Create the result
-			int changes = this.computeReponse(activities);
 			PCMResult result = new PCMResult(ResponseMeasureType.NUMERIC);
-			result.setResponse(new Integer(changes));
+			if(evaluationType.equals(TYPE_ELEMENTS)) {
+				int changes = this.computeElementsReponse(activities);
+				result.setResponse(new Integer(changes));
+			}
+			else if(evaluationType.equals(TYPE_ELEMENTS)) {
+				int complexity = this.computeComplexityReponse(activities);
+				result.setResponse(new Integer(complexity));
+			}
 			scenarioResult.setResult(result);	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return scenarioResult;
 	}
-	
-	private int computeReponse(List<Activity> activities) {
+
+	private int computeElementsReponse(List<Activity> activities) {
 		//We should define how we measure changes -> work hours, complexity, number of changes, etc.
 		int numberOfChanges = 0;
 		for (Activity activity : activities) {
@@ -72,11 +92,16 @@ public class KAMPPCMBot extends AbstractPCMBot {
 			activity.getElementType();
 			numberOfChanges++;
 			if (!activity.getSubactivities().isEmpty())
-				numberOfChanges += computeReponse(activity.getSubactivities());
+				numberOfChanges += computeElementsReponse(activity.getSubactivities());
 			if (!activity.getFollowupActivities().isEmpty())
-				numberOfChanges += computeReponse(activity.getFollowupActivities());
+				numberOfChanges += computeElementsReponse(activity.getFollowupActivities());
 		}
 		return numberOfChanges;
+	}
+	
+	private int computeComplexityReponse(List<Activity> activities) {
+		//TODO: SANTIAGO
+		return 0;
 	}
 	
 	private void setupChangedModel() throws Exception {
