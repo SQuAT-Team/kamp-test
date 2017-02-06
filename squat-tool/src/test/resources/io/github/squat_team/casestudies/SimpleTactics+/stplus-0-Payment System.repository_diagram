@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.1" xsi:schemaLocation="http://palladiosimulator.org/PalladioComponentModel/Repository/5.1 http://palladiosimulator.org/PalladioComponentModel/5.1#//repository" xmi:id="_tG5w8OoNEeayA4xbRyVG-A" type="PCM Repository Model" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_tKFn0OoNEeayA4xbRyVG-A" type="2107" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKFn0uoNEeayA4xbRyVG-A" type="5108"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_tKFn0-oNEeayA4xbRyVG-A" type="7106">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKFn1OoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKFn1eoNEeayA4xbRyVG-A"/>
+    </children>
+    <element xmi:type="repository:OperationInterface" href="stplus-0-Payment%20System.repository#_bh5lgC6IEd-Jla2o7wkBzQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tKFn0eoNEeayA4xbRyVG-A" x="787" y="216"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_tKGO4OoNEeayA4xbRyVG-A" type="2107" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKGO4uoNEeayA4xbRyVG-A" type="5108"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_tKGO4-oNEeayA4xbRyVG-A" type="7106">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKGO5OoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKGO5eoNEeayA4xbRyVG-A"/>
+    </children>
+    <element xmi:type="repository:OperationInterface" href="stplus-0-Payment%20System.repository#_cyLhoC6IEd-Jla2o7wkBzQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tKGO4eoNEeayA4xbRyVG-A" x="206" y="216"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_tKGO5uoNEeayA4xbRyVG-A" type="2107" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKGO6OoNEeayA4xbRyVG-A" type="5108"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_tKG18OoNEeayA4xbRyVG-A" type="7106">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKG18eoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKG18uoNEeayA4xbRyVG-A"/>
+    </children>
+    <element xmi:type="repository:OperationInterface" href="stplus-0-Payment%20System.repository#_pPmroC6IEd-Jla2o7wkBzQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tKGO5-oNEeayA4xbRyVG-A" x="625" y="216"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_tKG18-oNEeayA4xbRyVG-A" type="2107" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKG19eoNEeayA4xbRyVG-A" type="5108"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_tKG19uoNEeayA4xbRyVG-A" type="7106">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKG19-oNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKG1-OoNEeayA4xbRyVG-A"/>
+    </children>
+    <element xmi:type="repository:OperationInterface" href="stplus-0-Payment%20System.repository#_zdIuAOsyEd-swe4bkXmV_Q"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tKG19OoNEeayA4xbRyVG-A" x="396" y="216"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_tKG1-eoNEeayA4xbRyVG-A" type="2107" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKHdAOoNEeayA4xbRyVG-A" type="5108"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_tKHdAeoNEeayA4xbRyVG-A" type="7106">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKHdAuoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKHdA-oNEeayA4xbRyVG-A"/>
+    </children>
+    <element xmi:type="repository:OperationInterface" href="stplus-0-Payment%20System.repository#_znbSN141EeavvL8WcdoZSg"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tKG1-uoNEeayA4xbRyVG-A" x="729" y="680"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_tKHdBOoNEeayA4xbRyVG-A" type="2107" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKHdBuoNEeayA4xbRyVG-A" type="5108"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_tKHdB-oNEeayA4xbRyVG-A" type="7106">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKHdCOoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKHdCeoNEeayA4xbRyVG-A"/>
+    </children>
+    <element xmi:type="repository:OperationInterface" href="stplus-0-Payment%20System.repository#_1Qmmp1_OEeahZew5WJ0QOQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tKHdBeoNEeayA4xbRyVG-A" x="1040" y="388"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_tKHdCuoNEeayA4xbRyVG-A" type="2102" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKHdDOoNEeayA4xbRyVG-A" type="5102"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKHdDeoNEeayA4xbRyVG-A" type="7102">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKHdDuoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKHdD-oNEeayA4xbRyVG-A"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKHdEOoNEeayA4xbRyVG-A" type="7103">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_tKHdEeoNEeayA4xbRyVG-A" showTitle="true"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKHdEuoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKIEEOoNEeayA4xbRyVG-A"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_tKIEEeoNEeayA4xbRyVG-A" type="7104">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_tKIEEuoNEeayA4xbRyVG-A" showTitle="true"/>
+    </children>
+    <element xmi:type="repository:BasicComponent" href="stplus-0-Payment%20System.repository#_YyVn8C6IEd-Jla2o7wkBzQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tKHdC-oNEeayA4xbRyVG-A" x="808"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_tKIEE-oNEeayA4xbRyVG-A" type="2102" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKIEFeoNEeayA4xbRyVG-A" type="5102"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKIEFuoNEeayA4xbRyVG-A" type="7102">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKIEF-oNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKIEGOoNEeayA4xbRyVG-A"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKIEGeoNEeayA4xbRyVG-A" type="7103">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_tKIEGuoNEeayA4xbRyVG-A" showTitle="true"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKIEG-oNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKIEHOoNEeayA4xbRyVG-A"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_tKIEHeoNEeayA4xbRyVG-A" type="7104">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_tKIEHuoNEeayA4xbRyVG-A" showTitle="true"/>
+    </children>
+    <element xmi:type="repository:BasicComponent" href="stplus-0-Payment%20System.repository#_QWlc0F_MEeahZew5WJ0QOQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tKIEFOoNEeayA4xbRyVG-A" x="996" y="504"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_tKIEH-oNEeayA4xbRyVG-A" type="2102" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKIrIOoNEeayA4xbRyVG-A" type="5102"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKIrIeoNEeayA4xbRyVG-A" type="7102">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKIrIuoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKIrI-oNEeayA4xbRyVG-A"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKIrJOoNEeayA4xbRyVG-A" type="7103">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_tKIrJeoNEeayA4xbRyVG-A" showTitle="true"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKIrJuoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKIrJ-oNEeayA4xbRyVG-A"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_tKIrKOoNEeayA4xbRyVG-A" type="7104">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_tKIrKeoNEeayA4xbRyVG-A" showTitle="true"/>
+    </children>
+    <element xmi:type="repository:BasicComponent" href="stplus-0-Payment%20System.repository#_ZZH7IC6IEd-Jla2o7wkBzQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tKIEIOoNEeayA4xbRyVG-A" x="212" y="332"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_tKIrKuoNEeayA4xbRyVG-A" type="2102" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKIrLOoNEeayA4xbRyVG-A" type="5102"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKIrLeoNEeayA4xbRyVG-A" type="7102">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKIrLuoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKIrL-oNEeayA4xbRyVG-A"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKIrMOoNEeayA4xbRyVG-A" type="7103">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_tKIrMeoNEeayA4xbRyVG-A" showTitle="true"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKIrMuoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKIrM-oNEeayA4xbRyVG-A"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_tKIrNOoNEeayA4xbRyVG-A" type="7104">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_tKIrNeoNEeayA4xbRyVG-A" showTitle="true"/>
+    </children>
+    <element xmi:type="repository:BasicComponent" href="stplus-0-Payment%20System.repository#_E1kwsOmVEeaJU9Kshr7_iQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tKIrK-oNEeayA4xbRyVG-A" x="605"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_tKJSMOoNEeayA4xbRyVG-A" type="2102" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKJSMuoNEeayA4xbRyVG-A" type="5102"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKJSM-oNEeayA4xbRyVG-A" type="7102">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKJSNOoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKJSNeoNEeayA4xbRyVG-A"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKJSNuoNEeayA4xbRyVG-A" type="7103">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_tKJSN-oNEeayA4xbRyVG-A" showTitle="true"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKJSOOoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKJSOeoNEeayA4xbRyVG-A"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_tKJSOuoNEeayA4xbRyVG-A" type="7104">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_tKJSO-oNEeayA4xbRyVG-A" showTitle="true"/>
+    </children>
+    <element xmi:type="repository:BasicComponent" href="stplus-0-Payment%20System.repository#__VPcQOtlEd-m3_hR0FtH3Q"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tKJSMeoNEeayA4xbRyVG-A" x="11" y="332"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_tKJSPOoNEeayA4xbRyVG-A" type="2102" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKJSPuoNEeayA4xbRyVG-A" type="5102"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKJSP-oNEeayA4xbRyVG-A" type="7102">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKJSQOoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKJSQeoNEeayA4xbRyVG-A"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKJSQuoNEeayA4xbRyVG-A" type="7103">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_tKJSQ-oNEeayA4xbRyVG-A" showTitle="true"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKJSROoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKJSReoNEeayA4xbRyVG-A"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_tKJSRuoNEeayA4xbRyVG-A" type="7104">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_tKJSR-oNEeayA4xbRyVG-A" showTitle="true"/>
+    </children>
+    <element xmi:type="repository:BasicComponent" href="stplus-0-Payment%20System.repository#_letEAF41EeavvL8WcdoZSg"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tKJSPeoNEeayA4xbRyVG-A" x="14" y="852"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_tKJ5QOoNEeayA4xbRyVG-A" type="2102" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKJ5QuoNEeayA4xbRyVG-A" type="5102"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKJ5Q-oNEeayA4xbRyVG-A" type="7102">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKJ5ROoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKJ5ReoNEeayA4xbRyVG-A"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKJ5RuoNEeayA4xbRyVG-A" type="7103">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_tKJ5R-oNEeayA4xbRyVG-A" showTitle="true"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKJ5SOoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKJ5SeoNEeayA4xbRyVG-A"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_tKJ5SuoNEeayA4xbRyVG-A" type="7104">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_tKJ5S-oNEeayA4xbRyVG-A" showTitle="true"/>
+    </children>
+    <element xmi:type="repository:BasicComponent" href="stplus-0-Payment%20System.repository#B_letEAF41EeavvL8WcdoZSg"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tKJ5QeoNEeayA4xbRyVG-A" x="547" y="852"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_tKKgUOoNEeayA4xbRyVG-A" type="2102" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKKgUuoNEeayA4xbRyVG-A" type="5102"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKKgU-oNEeayA4xbRyVG-A" type="7102">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKKgVOoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKKgVeoNEeayA4xbRyVG-A"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKKgVuoNEeayA4xbRyVG-A" type="7103">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_tKKgV-oNEeayA4xbRyVG-A" showTitle="true"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKKgWOoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKKgWeoNEeayA4xbRyVG-A"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_tKKgWuoNEeayA4xbRyVG-A" type="7104">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_tKKgW-oNEeayA4xbRyVG-A" showTitle="true"/>
+    </children>
+    <element xmi:type="repository:BasicComponent" href="stplus-0-Payment%20System.repository#C_letEAF41EeavvL8WcdoZSg"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tKKgUeoNEeayA4xbRyVG-A" x="1080" y="852"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_tKKgXOoNEeayA4xbRyVG-A" type="2102" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKLHYOoNEeayA4xbRyVG-A" type="5102"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKLHYeoNEeayA4xbRyVG-A" type="7102">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKLHYuoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKLHY-oNEeayA4xbRyVG-A"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKLHZOoNEeayA4xbRyVG-A" type="7103">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_tKLHZeoNEeayA4xbRyVG-A" showTitle="true"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKLHZuoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKLHZ-oNEeayA4xbRyVG-A"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_tKLHaOoNEeayA4xbRyVG-A" type="7104">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_tKLHaeoNEeayA4xbRyVG-A" showTitle="true"/>
+    </children>
+    <element xmi:type="repository:BasicComponent" href="stplus-0-Payment%20System.repository#_K9EFUHXDEeauMPtoFodBVw"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tKKgXeoNEeayA4xbRyVG-A" x="1306" y="504"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_tKLHauoNEeayA4xbRyVG-A" type="2102" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKLHbOoNEeayA4xbRyVG-A" type="5102"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKLHbeoNEeayA4xbRyVG-A" type="7102">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKLHbuoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKLHb-oNEeayA4xbRyVG-A"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tKLHcOoNEeayA4xbRyVG-A" type="7103">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_tKLHceoNEeayA4xbRyVG-A" showTitle="true"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_tKLHcuoNEeayA4xbRyVG-A"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_tKLHc-oNEeayA4xbRyVG-A"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_tKLHdOoNEeayA4xbRyVG-A" type="7104">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_tKLHdeoNEeayA4xbRyVG-A" showTitle="true"/>
+    </children>
+    <element xmi:type="repository:BasicComponent" href="stplus-0-Payment%20System.repository#_E1LIEOmVEeaJU9Kshr7_iQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tKLHa-oNEeayA4xbRyVG-A" x="402"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_tG5w8eoNEeayA4xbRyVG-A"/>
+  <element xmi:type="repository:Repository" href="stplus-0-Payment%20System.repository#_XPYAYC6IEd-Jla2o7wkBzQ"/>
+  <edges xmi:type="notation:Connector" xmi:id="_tMfbkOoNEeayA4xbRyVG-A" type="4105" source="_tKHdCuoNEeayA4xbRyVG-A" target="_tKFn0OoNEeayA4xbRyVG-A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tMgCoOoNEeayA4xbRyVG-A" type="6105">
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_tMgCoeoNEeayA4xbRyVG-A"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tMgCouoNEeayA4xbRyVG-A" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_tMfbkeoNEeayA4xbRyVG-A" fontName=".SF NS Text"/>
+    <element xmi:type="repository:OperationProvidedRole" href="stplus-0-Payment%20System.repository#_fYvUMC6IEd-Jla2o7wkBzQ"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tMfbkuoNEeayA4xbRyVG-A" points="[0, 0, 0, -115]$[0, 115, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiC--oNEeayA4xbRyVG-A" id="(0.49645390070921985,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiC_OoNEeayA4xbRyVG-A" id="(0.4972677595628415,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_tMjF8OoNEeayA4xbRyVG-A" type="4106" source="_tKHdCuoNEeayA4xbRyVG-A" target="_tKGO4OoNEeayA4xbRyVG-A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tMjtAOoNEeayA4xbRyVG-A" type="6106">
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_tMjtAeoNEeayA4xbRyVG-A"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tMjtAuoNEeayA4xbRyVG-A" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_tMjF8eoNEeayA4xbRyVG-A" fontName=".SF NS Text"/>
+    <element xmi:type="repository:OperationRequiredRole" href="stplus-0-Payment%20System.repository#_frf4IC6IEd-Jla2o7wkBzQ"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tMjF8uoNEeayA4xbRyVG-A" points="[0, 0, 528, -115]$[-39, 54, 489, -61]$[-528, 115, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiC-eoNEeayA4xbRyVG-A" id="(0.16312056737588654,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiC-uoNEeayA4xbRyVG-A" id="(0.7461538461538462,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_tMmJQOoNEeayA4xbRyVG-A" type="4106" source="_tKHdCuoNEeayA4xbRyVG-A" target="_tKGO5uoNEeayA4xbRyVG-A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tMmJQ-oNEeayA4xbRyVG-A" type="6106">
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_tMmJROoNEeayA4xbRyVG-A"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tMmJReoNEeayA4xbRyVG-A" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_tMmJQeoNEeayA4xbRyVG-A" fontName=".SF NS Text"/>
+    <element xmi:type="repository:OperationRequiredRole" href="stplus-0-Payment%20System.repository#_rng-MC6IEd-Jla2o7wkBzQ"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tMmJQuoNEeayA4xbRyVG-A" points="[0, 0, 153, -115]$[-47, 54, 106, -61]$[-153, 115, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiC8-oNEeayA4xbRyVG-A" id="(0.3262411347517731,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiC9OoNEeayA4xbRyVG-A" id="(0.7450980392156863,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_tMpMkOoNEeayA4xbRyVG-A" type="4106" source="_tKHdCuoNEeayA4xbRyVG-A" target="_tKG1-eoNEeayA4xbRyVG-A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tMpzoOoNEeayA4xbRyVG-A" type="6106">
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_tMpzoeoNEeayA4xbRyVG-A"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tMpzouoNEeayA4xbRyVG-A" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_tMpMkeoNEeayA4xbRyVG-A" fontName=".SF NS Text"/>
+    <element xmi:type="repository:OperationRequiredRole" href="stplus-0-Payment%20System.repository#_zpVJ5V7pEeavvL8WcdoZSg"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tMpMkuoNEeayA4xbRyVG-A" points="[0, 0, -782, -115]$[39, 54, -743, -61]$[782, 115, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiC9-oNEeayA4xbRyVG-A" id="(0.8297872340425532,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiC-OoNEeayA4xbRyVG-A" id="(0.12222222222222222,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_tMsP4OoNEeayA4xbRyVG-A" type="4106" source="_tKHdCuoNEeayA4xbRyVG-A" target="_tKHdBOoNEeayA4xbRyVG-A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tMsP4-oNEeayA4xbRyVG-A" type="6106">
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_tMsP5OoNEeayA4xbRyVG-A"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tMsP5eoNEeayA4xbRyVG-A" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_tMsP4eoNEeayA4xbRyVG-A" fontName=".SF NS Text"/>
+    <element xmi:type="repository:OperationRequiredRole" href="stplus-0-Payment%20System.repository#_vUtoRV_UEeahZew5WJ0QOQ"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tMsP4uoNEeayA4xbRyVG-A" points="[0, 0, -193, -115]$[48, 54, -145, -61]$[193, 115, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiC9eoNEeayA4xbRyVG-A" id="(0.6595744680851063,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiC9uoNEeayA4xbRyVG-A" id="(0.25,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_tMvTMOoNEeayA4xbRyVG-A" type="4105" source="_tKIEE-oNEeayA4xbRyVG-A" target="_tKHdBOoNEeayA4xbRyVG-A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tMv6QOoNEeayA4xbRyVG-A" type="6105">
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_tMv6QeoNEeayA4xbRyVG-A"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tMv6QuoNEeayA4xbRyVG-A" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_tMvTMeoNEeayA4xbRyVG-A" fontName=".SF NS Text"/>
+    <element xmi:type="repository:OperationProvidedRole" href="stplus-0-Payment%20System.repository#_gsQ_4V_OEeahZew5WJ0QOQ"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tMvTMuoNEeayA4xbRyVG-A" points="[0, 0, 0, -92]$[0, 92, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiC8eoNEeayA4xbRyVG-A" id="(0.5,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiC8uoNEeayA4xbRyVG-A" id="(0.5,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_tMyWgOoNEeayA4xbRyVG-A" type="4106" source="_tKIEE-oNEeayA4xbRyVG-A" target="_tKG1-eoNEeayA4xbRyVG-A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tMy9kOoNEeayA4xbRyVG-A" type="6106">
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_tMy9keoNEeayA4xbRyVG-A"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tMy9kuoNEeayA4xbRyVG-A" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_tMyWgeoNEeayA4xbRyVG-A" fontName=".SF NS Text"/>
+    <element xmi:type="repository:OperationRequiredRole" href="stplus-0-Payment%20System.repository#_iUC2BV_OEeahZew5WJ0QOQ"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tMyWguoNEeayA4xbRyVG-A" points="[0, 0, -534, -92]$[78, 31, -456, -61]$[534, 92, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOhb4OoNEeayA4xbRyVG-A" id="(0.748,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiC8OoNEeayA4xbRyVG-A" id="(0.25,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_tM1Z0OoNEeayA4xbRyVG-A" type="4105" source="_tKIEH-oNEeayA4xbRyVG-A" target="_tKGO4OoNEeayA4xbRyVG-A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tM1Z0-oNEeayA4xbRyVG-A" type="6105">
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_tM1Z1OoNEeayA4xbRyVG-A"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tM1Z1eoNEeayA4xbRyVG-A" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_tM1Z0eoNEeayA4xbRyVG-A" fontName=".SF NS Text"/>
+    <element xmi:type="repository:OperationProvidedRole" href="stplus-0-Payment%20System.repository#_gCeNsC6IEd-Jla2o7wkBzQ"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tM1Z0uoNEeayA4xbRyVG-A" points="[0, 0, 0, -131]$[0, 131, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiqBeoNEeayA4xbRyVG-A" id="(0.49645390070921985,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiqBuoNEeayA4xbRyVG-A" id="(0.5,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_tM32EOoNEeayA4xbRyVG-A" type="4106" source="_tKIEH-oNEeayA4xbRyVG-A" target="_tKG18-oNEeayA4xbRyVG-A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tM32E-oNEeayA4xbRyVG-A" type="6106">
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_tM32FOoNEeayA4xbRyVG-A"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tM32FeoNEeayA4xbRyVG-A" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_tM32EeoNEeayA4xbRyVG-A" fontName=".SF NS Text"/>
+    <element xmi:type="repository:OperationRequiredRole" href="stplus-0-Payment%20System.repository#_6D7mkOtYEd-m3_hR0FtH3Q"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tM32EuoNEeayA4xbRyVG-A" points="[0, 0, -131, -131]$[51, 70, -80, -61]$[131, 131, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiqA-oNEeayA4xbRyVG-A" id="(0.7446808510638298,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiqBOoNEeayA4xbRyVG-A" id="(0.33064516129032256,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_tM5rQOoNEeayA4xbRyVG-A" type="4105" source="_tKIrKuoNEeayA4xbRyVG-A" target="_tKG18-oNEeayA4xbRyVG-A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tM5rQ-oNEeayA4xbRyVG-A" type="6105">
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_tM6SUOoNEeayA4xbRyVG-A"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tM6SUeoNEeayA4xbRyVG-A" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_tM5rQeoNEeayA4xbRyVG-A" fontName=".SF NS Text"/>
+    <element xmi:type="repository:OperationProvidedRole" href="stplus-0-Payment%20System.repository#_E1kwsemVEeaJU9Kshr7_iQ"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tM5rQuoNEeayA4xbRyVG-A" points="[0, 0, 151, -115]$[-51, 54, 100, -61]$[-151, 115, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiqB-oNEeayA4xbRyVG-A" id="(0.24475524475524477,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiqCOoNEeayA4xbRyVG-A" id="(0.75,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_tM7gcOoNEeayA4xbRyVG-A" type="4106" source="_tKIrKuoNEeayA4xbRyVG-A" target="_tKGO5uoNEeayA4xbRyVG-A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tM8HgOoNEeayA4xbRyVG-A" type="6106">
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_tM8HgeoNEeayA4xbRyVG-A"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tM8HguoNEeayA4xbRyVG-A" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_tM7gceoNEeayA4xbRyVG-A" fontName=".SF NS Text"/>
+    <element xmi:type="repository:OperationRequiredRole" href="stplus-0-Payment%20System.repository#_E2A1kemVEeaJU9Kshr7_iQ"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tM7gcuoNEeayA4xbRyVG-A" points="[0, 0, 0, -115]$[0, 115, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiqCeoNEeayA4xbRyVG-A" id="(0.4965034965034965,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiqCuoNEeayA4xbRyVG-A" id="(0.5,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_tM-jwOoNEeayA4xbRyVG-A" type="4105" source="_tKJSMOoNEeayA4xbRyVG-A" target="_tKGO4OoNEeayA4xbRyVG-A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tM-jw-oNEeayA4xbRyVG-A" type="6105">
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_tM-jxOoNEeayA4xbRyVG-A"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tM-jxeoNEeayA4xbRyVG-A" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_tM-jweoNEeayA4xbRyVG-A" fontName=".SF NS Text"/>
+    <element xmi:type="repository:OperationProvidedRole" href="stplus-0-Payment%20System.repository#_AhcwsOtmEd-m3_hR0FtH3Q"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tM-jwuoNEeayA4xbRyVG-A" points="[0, 0, -191, -131]$[94, 70, -97, -61]$[191, 131, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiqDeoNEeayA4xbRyVG-A" id="(0.3333333333333333,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiqDuoNEeayA4xbRyVG-A" id="(0.24615384615384617,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_tNAY8OoNEeayA4xbRyVG-A" type="4106" source="_tKJSMOoNEeayA4xbRyVG-A" target="_tKG18-oNEeayA4xbRyVG-A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tNAY8-oNEeayA4xbRyVG-A" type="6106">
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_tNAY9OoNEeayA4xbRyVG-A"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tNAY9eoNEeayA4xbRyVG-A" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_tNAY8eoNEeayA4xbRyVG-A" fontName=".SF NS Text"/>
+    <element xmi:type="repository:OperationRequiredRole" href="stplus-0-Payment%20System.repository#_A39MMOtmEd-m3_hR0FtH3Q"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tNAY8uoNEeayA4xbRyVG-A" points="[0, 0, -322, -131]$[62, 70, -260, -61]$[322, 131, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiqC-oNEeayA4xbRyVG-A" id="(0.6666666666666666,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiqDOoNEeayA4xbRyVG-A" id="(0.16129032258064516,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_tNC1MOoNEeayA4xbRyVG-A" type="4105" source="_tKJSPOoNEeayA4xbRyVG-A" target="_tKG1-eoNEeayA4xbRyVG-A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tNC1M-oNEeayA4xbRyVG-A" type="6105">
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_tNC1NOoNEeayA4xbRyVG-A"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tNC1NeoNEeayA4xbRyVG-A" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_tNC1MeoNEeayA4xbRyVG-A" fontName=".SF NS Text"/>
+    <element xmi:type="repository:OperationProvidedRole" href="stplus-0-Payment%20System.repository#_-P7lIV45EeavvL8WcdoZSg"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tNC1MuoNEeayA4xbRyVG-A" points="[0, 0, 0, -60]$[0, 60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiDA-oNEeayA4xbRyVG-A" id="(0.3086680761099366,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiqAOoNEeayA4xbRyVG-A" id="(0.5,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_tNFRcOoNEeayA4xbRyVG-A" type="4105" source="_tKJ5QOoNEeayA4xbRyVG-A" target="_tKG1-eoNEeayA4xbRyVG-A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tNFRc-oNEeayA4xbRyVG-A" type="6105">
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_tNFRdOoNEeayA4xbRyVG-A"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tNFRdeoNEeayA4xbRyVG-A" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_tNFRceoNEeayA4xbRyVG-A" fontName=".SF NS Text"/>
+    <element xmi:type="repository:OperationProvidedRole" href="stplus-0-Payment%20System.repository#B_-P7lIV45EeavvL8WcdoZSg"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tNFRcuoNEeayA4xbRyVG-A" points="[0, 0, 593, -60]$[-593, 60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiqAeoNEeayA4xbRyVG-A" id="(0.4989429175475687,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiqAuoNEeayA4xbRyVG-A" id="(0.6666666666666666,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_tNGfkOoNEeayA4xbRyVG-A" type="4105" source="_tKKgUOoNEeayA4xbRyVG-A" target="_tKG1-eoNEeayA4xbRyVG-A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tNHGoOoNEeayA4xbRyVG-A" type="6105">
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_tNHGoeoNEeayA4xbRyVG-A"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tNHGouoNEeayA4xbRyVG-A" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_tNGfkeoNEeayA4xbRyVG-A" fontName=".SF NS Text"/>
+    <element xmi:type="repository:OperationProvidedRole" href="stplus-0-Payment%20System.repository#C_-P7lIV45EeavvL8WcdoZSg"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tNGfkuoNEeayA4xbRyVG-A" points="[0, 0, 1096, -60]$[-1096, 60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiC_eoNEeayA4xbRyVG-A" id="(0.4989429175475687,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiC_uoNEeayA4xbRyVG-A" id="(0.8333333333333334,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_tNIUwOoNEeayA4xbRyVG-A" type="4105" source="_tKKgXOoNEeayA4xbRyVG-A" target="_tKHdBOoNEeayA4xbRyVG-A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tNIUw-oNEeayA4xbRyVG-A" type="6105">
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_tNIUxOoNEeayA4xbRyVG-A"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tNIUxeoNEeayA4xbRyVG-A" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_tNIUweoNEeayA4xbRyVG-A" fontName=".SF NS Text"/>
+    <element xmi:type="repository:OperationProvidedRole" href="stplus-0-Payment%20System.repository#_FlG3QXXFEeauMPtoFodBVw"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tNIUwuoNEeayA4xbRyVG-A" points="[0, 0, 228, -92]$[-228, 92, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiDAeoNEeayA4xbRyVG-A" id="(0.332,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiDAuoNEeayA4xbRyVG-A" id="(0.75,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_tNKJ8OoNEeayA4xbRyVG-A" type="4106" source="_tKKgXOoNEeayA4xbRyVG-A" target="_tKG1-eoNEeayA4xbRyVG-A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tNKJ8-oNEeayA4xbRyVG-A" type="6106">
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_tNKJ9OoNEeayA4xbRyVG-A"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tNKJ9eoNEeayA4xbRyVG-A" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_tNKJ8eoNEeayA4xbRyVG-A" fontName=".SF NS Text"/>
+    <element xmi:type="repository:OperationRequiredRole" href="stplus-0-Payment%20System.repository#_JF6EhXXFEeauMPtoFodBVw"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tNKJ8uoNEeayA4xbRyVG-A" points="[0, 0, -267, -92]$[267, 92, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiC_-oNEeayA4xbRyVG-A" id="(0.664,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiDAOoNEeayA4xbRyVG-A" id="(0.37222222222222223,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_tNMmMOoNEeayA4xbRyVG-A" type="4105" source="_tKLHauoNEeayA4xbRyVG-A" target="_tKGO5uoNEeayA4xbRyVG-A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tNMmM-oNEeayA4xbRyVG-A" type="6105">
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_tNMmNOoNEeayA4xbRyVG-A"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tNMmNeoNEeayA4xbRyVG-A" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_tNMmMeoNEeayA4xbRyVG-A" fontName=".SF NS Text"/>
+    <element xmi:type="repository:OperationProvidedRole" href="stplus-0-Payment%20System.repository#_E1LIEemVEeaJU9Kshr7_iQ"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tNMmMuoNEeayA4xbRyVG-A" points="[0, 0, -149, -115]$[59, 54, -90, -61]$[149, 115, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiqD-oNEeayA4xbRyVG-A" id="(0.6923076923076923,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiqEOoNEeayA4xbRyVG-A" id="(0.24509803921568626,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_tNObYOoNEeayA4xbRyVG-A" type="4106" source="_tKLHauoNEeayA4xbRyVG-A" target="_tKG18-oNEeayA4xbRyVG-A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tNPCcOoNEeayA4xbRyVG-A" type="6106">
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_tNPCceoNEeayA4xbRyVG-A"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tNPCcuoNEeayA4xbRyVG-A" x="-2" y="3"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_tNObYeoNEeayA4xbRyVG-A" fontName=".SF NS Text"/>
+    <element xmi:type="repository:OperationRequiredRole" href="stplus-0-Payment%20System.repository#_E2A1kOmVEeaJU9Kshr7_iQ"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tNObYuoNEeayA4xbRyVG-A" points="[0, 0, 0, -115]$[0, 115, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiqEeoNEeayA4xbRyVG-A" id="(0.3916083916083916,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tOiqEuoNEeayA4xbRyVG-A" id="(0.5,0.0)"/>
+  </edges>
+</notation:Diagram>
