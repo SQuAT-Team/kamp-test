@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<allocation:Allocation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:allocation="http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1" id="_vUBS4C6NEd-Jla2o7wkBzQ" entityName="defaultAllocation">
+<allocation:Allocation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:allocation="http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1" id="_vUBS4C6NEd-Jla2o7wkBzQ" entityName="stplus.llocation">
   <targetResourceEnvironment_Allocation href="stplus-0-Payment%20System.resourceenvironment#/"/>
   <system_Allocation href="stplus-0-Payment%20System.system#_VreA0C6MEd-Jla2o7wkBzQ"/>
   <allocationContexts_Allocation id="_wTSXgC6NEd-Jla2o7wkBzQ" entityName="Allocation_Assembly_C1 &lt;C1> &lt;C1>">
@@ -10,9 +10,9 @@
     <resourceContainer_AllocationContext href="stplus-0-Payment%20System.resourceenvironment#_h3wXgC6MEd-Jla2o7wkBzQ"/>
     <assemblyContext_AllocationContext href="stplus-0-Payment%20System.system#_YXdtAC6MEd-Jla2o7wkBzQ"/>
   </allocationContexts_Allocation>
-  <allocationContexts_Allocation id="_E2zfwOmVEeaJU9Kshr7_iQ" entityName="Allocation_Assembly_C3 &lt;C3> &lt;C3>-B">
+  <allocationContexts_Allocation id="_C0ZKgO1jEeaVDI-nCmFxWg" entityName="Allocation_Assembly_C3 &lt;C3> &lt;C3>-B">
     <resourceContainer_AllocationContext href="stplus-0-Payment%20System.resourceenvironment#_vxqJwS6QEd-pNfzbJsur0g"/>
-    <assemblyContext_AllocationContext href="stplus-0-Payment%20System.system#_E2nSgOmVEeaJU9Kshr7_iQ"/>
+    <assemblyContext_AllocationContext href="stplus-0-Payment%20System.system#_C0MWMO1jEeaVDI-nCmFxWg"/>
   </allocationContexts_Allocation>
   <allocationContexts_Allocation id="_Sl0FoF7pEeavvL8WcdoZSg" entityName="Allocation_Assembly_DB">
     <resourceContainer_AllocationContext href="stplus-0-Payment%20System.resourceenvironment#_7jiyMV5LEeavvL8WcdoZSg"/>
@@ -22,8 +22,8 @@
     <resourceContainer_AllocationContext href="stplus-0-Payment%20System.resourceenvironment#_g7HJEC6MEd-Jla2o7wkBzQ"/>
     <assemblyContext_AllocationContext href="stplus-0-Payment%20System.system#_Ha2JcGCTEeaQ-qRnqvu5Tg"/>
   </allocationContexts_Allocation>
-  <allocationContexts_Allocation id="_E2wccOmVEeaJU9Kshr7_iQ" entityName="Allocation_Assembly_C3 &lt;C3> &lt;C3>-A">
+  <allocationContexts_Allocation id="_C0WHMO1jEeaVDI-nCmFxWg" entityName="Allocation_Assembly_C3 &lt;C3> &lt;C3>-A">
     <resourceContainer_AllocationContext href="stplus-0-Payment%20System.resourceenvironment#_vxqJwS6QEd-pNfzbJsur0g"/>
-    <assemblyContext_AllocationContext href="stplus-0-Payment%20System.system#_E2eIkOmVEeaJU9Kshr7_iQ"/>
+    <assemblyContext_AllocationContext href="stplus-0-Payment%20System.system#_C0AwAO1jEeaVDI-nCmFxWg"/>
   </allocationContexts_Allocation>
 </allocation:Allocation>

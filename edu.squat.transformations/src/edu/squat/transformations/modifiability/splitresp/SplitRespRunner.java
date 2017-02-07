@@ -137,18 +137,14 @@ public class SplitRespRunner extends PCMTransformerRunner {
 				//Configuring and executing the cloning rule
 				this.runFifthRule(tempGraph, PARAMETER_1stInterface);
 				this.runFifthRule(tempGraph, PARAMETER_2ndInterface);
-				//Fixing the system model
-				if(systemFilename != null && !systemFilename.isEmpty() && system != null) {
+				if(this.arePerformanceModelsLoaded()) {
+					//Fixing the system model
 					this.runSixthRule(tempGraph, PARAMETER_1stInterface);
 					this.runSixthRule(tempGraph, PARAMETER_2ndInterface);
 					this.runSeventhRule(tempGraph, PARAMETER_1stInterface);
 					this.runSeventhRule(tempGraph, PARAMETER_2ndInterface);
-				}
-				//Fixing the allocation model
-				if(
-					allocationFilename != null && !allocationFilename.isEmpty() && allocation != null &&
-					resourceEnvironmentFilename != null && !resourceEnvironmentFilename.isEmpty() && resourceEnvironment != null
-				) {
+					this.runSeventhRule(tempGraph, PARAMETER_1stInterface, PARAMETER_2ndInterface);
+					//Fixing the allocation model
 					this.runEighthRule(tempGraph, PARAMETER_1stInterface);
 					this.runEighthRule(tempGraph, PARAMETER_2ndInterface);
 				}
@@ -161,16 +157,11 @@ public class SplitRespRunner extends PCMTransformerRunner {
 							resourceSet, 
 							tempGraph, 
 							resultRepositoryFilename.replace("#REPLACEMENT#", String.valueOf(matches.indexOf(match)) + "-" + seed.getEntityName()));
-					if(systemFilename != null && !systemFilename.isEmpty() && system != null) {
+					if(this.arePerformanceModelsLoaded()) {
 						RunnerHelper.saveSystemResult(
 								resourceSet, 
 								tempGraph, 
 								resultSystemFilename.replace("#REPLACEMENT#", String.valueOf(matches.indexOf(match)) + "-" + seed.getEntityName()));
-					}
-					if(
-						allocationFilename != null && !allocationFilename.isEmpty() && allocation != null &&
-						resourceEnvironmentFilename != null && !resourceEnvironmentFilename.isEmpty() && resourceEnvironment != null
-					) {
 						RunnerHelper.saveResourceEnvironmentResult(
 								resourceSet, 
 								tempGraph, 
@@ -179,6 +170,12 @@ public class SplitRespRunner extends PCMTransformerRunner {
 								resourceSet, 
 								tempGraph, 
 								resultAllocationFilename.replace("#REPLACEMENT#", String.valueOf(matches.indexOf(match)) + "-" + seed.getEntityName()));
+					}
+					if(this.isUsageModelLoaded()) {
+						RunnerHelper.saveUsageResult(
+								resourceSet, 
+								tempGraph, 
+								resultUsageFilename.replace("#REPLACEMENT#", String.valueOf(matches.indexOf(match)) + "-" + seed.getEntityName()));
 					}
 				}
 				app.undo(monitor);
@@ -338,24 +335,28 @@ public class SplitRespRunner extends PCMTransformerRunner {
 					if(oldConnector.getProvidingAssemblyContext_AssemblyConnector().equals(oldAssemblyContext) || oldConnector.getRequiringAssemblyContext_AssemblyConnector().equals(oldAssemblyContext)) {
 						AssemblyConnector newConnector = CompositionFactory.eINSTANCE.createAssemblyConnector();
 						newConnector.setEntityName(oldConnector.getEntityName() + "-" + i);
-						if(oldConnector.getProvidingAssemblyContext_AssemblyConnector().equals(oldAssemblyContext)) {
+						OperationProvidedRole newProvidedRole = this.searchNewProvidedRole(oldComponent, newComponent, oldConnector.getProvidedRole_AssemblyConnector());
+						OperationRequiredRole newRequiredRole = this.searchNewRequiredRole(oldComponent, newComponent, oldConnector.getRequiredRole_AssemblyConnector());
+						if(oldConnector.getProvidingAssemblyContext_AssemblyConnector().equals(oldAssemblyContext) && newProvidedRole != null) {
 							newConnector.setProvidingAssemblyContext_AssemblyConnector(newAssemblyContext);
 							newConnector.setRequiringAssemblyContext_AssemblyConnector(oldConnector.getRequiringAssemblyContext_AssemblyConnector());
-							newConnector.setProvidedRole_AssemblyConnector(this.searchNewProvidedRole(oldComponent, newComponent, oldConnector.getProvidedRole_AssemblyConnector()));
+							newConnector.setProvidedRole_AssemblyConnector(newProvidedRole);
 							newConnector.setRequiredRole_AssemblyConnector(oldConnector.getRequiredRole_AssemblyConnector());
 						}
-						else if(oldConnector.getRequiringAssemblyContext_AssemblyConnector().equals(oldAssemblyContext)) {
+						else if(oldConnector.getRequiringAssemblyContext_AssemblyConnector().equals(oldAssemblyContext) && newRequiredRole != null) {
 							newConnector.setProvidingAssemblyContext_AssemblyConnector(oldConnector.getProvidingAssemblyContext_AssemblyConnector());
 							newConnector.setRequiringAssemblyContext_AssemblyConnector(newAssemblyContext);
 							newConnector.setProvidedRole_AssemblyConnector(oldConnector.getProvidedRole_AssemblyConnector());
-							newConnector.setRequiredRole_AssemblyConnector(this.searchNewRequiredRole(oldComponent, newComponent, oldConnector.getRequiredRole_AssemblyConnector()));
+							newConnector.setRequiredRole_AssemblyConnector(newRequiredRole);
 						}
-						connectorsToAdd.add(newConnector);
-						Trace connectorTrace = TraceFactory.eINSTANCE.createTrace();
-						connectorTrace.setName(TRACE_AssemblyConnector + i);
-						connectorTrace.getSource().add((EObject) oldConnector);
-						connectorTrace.getTarget().add((EObject) newConnector);
-						traceRoot.getSubTraces().add(connectorTrace);
+						if(newConnector.getProvidingAssemblyContext_AssemblyConnector() != null && newConnector.getRequiringAssemblyContext_AssemblyConnector() != null) {
+							connectorsToAdd.add(newConnector);
+							Trace connectorTrace = TraceFactory.eINSTANCE.createTrace();
+							connectorTrace.setName(TRACE_AssemblyConnector + i);
+							connectorTrace.getSource().add((EObject) oldConnector);
+							connectorTrace.getTarget().add((EObject) newConnector);
+							traceRoot.getSubTraces().add(connectorTrace);
+						}
 					}
 				}
 			}
@@ -399,6 +400,106 @@ public class SplitRespRunner extends PCMTransformerRunner {
 		return false;
 	}
 	
+	private void runSeventhRule(EGraph graph, String i, String j) {
+		Trace traceRoot = RunnerHelper.getTraceRoot(graph);
+		Repository repositoryRoot = RunnerHelper.getRepositoryRoot(graph);
+		org.palladiosimulator.pcm.system.System systemRoot = RunnerHelper.getSystemRoot(graph);
+		List<Trace> compI = RunnerHelper.getTraces(traceRoot, TRACE_ReconnectedComponent + i, false);
+		List<Trace> compJ = RunnerHelper.getTraces(traceRoot, TRACE_ReconnectedComponent + j, false);
+		List<Trace> intI = RunnerHelper.getTraces(traceRoot, TRACE_ReconnectedInterface + i, false);
+		List<Trace> intJ = RunnerHelper.getTraces(traceRoot, TRACE_ReconnectedInterface + j, false);
+		//List<Trace> assemblies = RunnerHelper.getTraces(traceRoot, TRACE_AssemblyContext, true);
+		List<Connector> connectorsToAdd = new ArrayList<Connector>();
+		if(compI.size() == 1 && compJ.size() == 1 && intI.size() == 1 && intJ.size() == 1) {
+			Trace traceCompI = compI.get(0);
+			Trace traceCompJ = compJ.get(0);
+			Trace traceIntI = intI.get(0);
+			Trace traceIntJ = intJ.get(0);
+			//
+			BasicComponent originalComponent = (BasicComponent) traceCompI.getSource().get(0); //must be the same as traceCompJ.getSource().get(0), traceIntI.getSource().get(0) and traceIntJ.getSource().get(0)
+			BasicComponent newComponentI = (BasicComponent) traceCompI.getTarget().get(0);
+			BasicComponent newComponentJ = (BasicComponent) traceCompJ.getTarget().get(0);
+			OperationInterface interfaceI = (OperationInterface) traceIntI.getTarget().get(0);
+			OperationInterface interfaceJ = (OperationInterface) traceIntJ.getTarget().get(0);
+			//
+			List<AssemblyContext> originalAssemblyContexts = this.findAssemblyContexts(originalComponent, systemRoot);
+			List<AssemblyContext> assemblyContextsI = this.findAssemblyContexts(newComponentI, systemRoot);
+			List<AssemblyContext> assemblyContextsJ = this.findAssemblyContexts(newComponentJ, systemRoot);
+			for(AssemblyContext assemblyContextI : assemblyContextsI) {
+				for(AssemblyContext assemblyContextJ : assemblyContextsJ) {
+					//One direction
+					AssemblyConnector newConnectorIJ = CompositionFactory.eINSTANCE.createAssemblyConnector();
+					newConnectorIJ.setEntityName("Connector " + 
+							assemblyContextI.getEntityName() + " <" + newComponentI.getEntityName() + ">" + " -> " + 
+							assemblyContextJ.getEntityName() + " <" + newComponentJ.getEntityName() + ">");
+					newConnectorIJ.setProvidingAssemblyContext_AssemblyConnector(assemblyContextI);
+					newConnectorIJ.setRequiringAssemblyContext_AssemblyConnector(assemblyContextJ);
+					OperationProvidedRole newProvidedRoleIJ = this.findProvidedRole(newComponentI, interfaceI);
+					OperationRequiredRole newRequiredRoleIJ = this.findRequiredRole(newComponentJ, interfaceI);
+					newConnectorIJ.setProvidedRole_AssemblyConnector(newProvidedRoleIJ);
+					newConnectorIJ.setRequiredRole_AssemblyConnector(newRequiredRoleIJ);
+					//The other direction
+					AssemblyConnector newConnectorJI = CompositionFactory.eINSTANCE.createAssemblyConnector();
+					newConnectorJI.setEntityName("Connector " + 
+							assemblyContextJ.getEntityName() + " <" + newComponentJ.getEntityName() + ">" + " -> " + 
+							assemblyContextI.getEntityName() + " <" + newComponentI.getEntityName() + ">");
+					newConnectorJI.setProvidingAssemblyContext_AssemblyConnector(assemblyContextJ);
+					newConnectorJI.setRequiringAssemblyContext_AssemblyConnector(assemblyContextI);
+					OperationProvidedRole newProvidedRoleJI = this.findProvidedRole(newComponentJ, interfaceJ);
+					OperationRequiredRole newRequiredRoleJI = this.findRequiredRole(newComponentI, interfaceJ);
+					newConnectorJI.setProvidedRole_AssemblyConnector(newProvidedRoleJI);
+					newConnectorJI.setRequiredRole_AssemblyConnector(newRequiredRoleJI);
+					//
+					connectorsToAdd.add(newConnectorIJ);
+					connectorsToAdd.add(newConnectorJI);
+					//
+					Trace connectorTraceIJ = TraceFactory.eINSTANCE.createTrace();
+					connectorTraceIJ.setName(TRACE_AssemblyConnector + i + j);
+					//connectorTraceIJ.getSource().add(null);
+					connectorTraceIJ.getTarget().add((EObject) newConnectorIJ);
+					traceRoot.getSubTraces().add(connectorTraceIJ);
+					Trace connectorTraceJI = TraceFactory.eINSTANCE.createTrace();
+					connectorTraceJI.setName(TRACE_AssemblyConnector + j + i);
+					//connectorTraceJI.getSource().add(null);
+					connectorTraceJI.getTarget().add((EObject) newConnectorJI);
+					traceRoot.getSubTraces().add(connectorTraceIJ);
+				}
+			}
+		}
+		systemRoot.getConnectors__ComposedStructure().addAll(connectorsToAdd);
+		if(connectorsToAdd.size() > 0)
+			System.out.println("Successfully created the assembly connectors for the internal conections between the splitted components");
+		else
+			System.out.println("Could not create the assembly connectors for the internal conections between the splitted components");
+	}
+	
+	private OperationProvidedRole findProvidedRole(BasicComponent component, OperationInterface operationInterface) {
+		for(ProvidedRole providedRole : component.getProvidedRoles_InterfaceProvidingEntity()) {
+			OperationProvidedRole operationProvidedRole = (OperationProvidedRole) providedRole;
+			if(operationProvidedRole.getProvidedInterface__OperationProvidedRole().equals(operationInterface))
+				return operationProvidedRole;
+		}
+		return null;
+	}
+	
+	private OperationRequiredRole findRequiredRole(BasicComponent component, OperationInterface operationInterface) {
+		for(RequiredRole requiredRole : component.getRequiredRoles_InterfaceRequiringEntity()) {
+			OperationRequiredRole operationRequiredRole = (OperationRequiredRole) requiredRole;
+			if(operationRequiredRole.getRequiredInterface__OperationRequiredRole().equals(operationInterface))
+				return operationRequiredRole;
+		}
+		return null;
+	}
+	
+	private List<AssemblyContext> findAssemblyContexts(BasicComponent component, org.palladiosimulator.pcm.system.System systemRoot) {
+		List<AssemblyContext> componentAssemblies = new ArrayList<AssemblyContext>();
+		for(AssemblyContext assemblyContext : systemRoot.getAssemblyContexts__ComposedStructure()) {
+			if(assemblyContext.getEncapsulatedComponent__AssemblyContext().equals(component))
+				componentAssemblies.add(assemblyContext);
+		}
+		return componentAssemblies;
+	}
+	
 	private void runEighthRule(EGraph graph, String i) {
 		Trace traceRoot = RunnerHelper.getTraceRoot(graph);
 		Repository repositoryRoot = RunnerHelper.getRepositoryRoot(graph);
@@ -433,17 +534,6 @@ public class SplitRespRunner extends PCMTransformerRunner {
 			System.out.println("Successfully created the allocation contexts for the new components");
 		else
 			System.out.println("Could not create the allocation contexts for the new components");
-		/*RuleApplication app = new RuleApplicationImpl(engine);
-		app.setEGraph(graph);
-		app.setRule(propagate2Allocation);
-		app.setParameterValue("i", i);
-		app.setParameterValue("assemblyContextTrace", TRACE_AssemblyContext + i);
-		boolean success = app.execute(monitor);
-		if(success)
-			System.out.println("Successfully created allocation contexts for the new assembly contexts");
-		else
-			System.out.println("Could not create allocation contexts for the new assembly contexts");
-		return app;*/
 	}
 	
 	private RuleApplication runLastRule(EGraph graph) {
@@ -465,8 +555,10 @@ public class SplitRespRunner extends PCMTransformerRunner {
 				EcoreUtil.delete((EObject) oldAllocationContext, false);
 			}
 			for(Trace trace : assemblyConnectors) {
-				EObject oldAssemblyConnector = (EObject) trace.getSource().get(0);
-				EcoreUtil.delete((EObject) oldAssemblyConnector, false);
+				if(trace.getSource().size() > 0) {
+					EObject oldAssemblyConnector = (EObject) trace.getSource().get(0);
+					EcoreUtil.delete((EObject) oldAssemblyConnector, false);
+				}
 			}
 			for(Trace trace : assemblyContexts) {
 				AssemblyContext oldAssemblyContext = (AssemblyContext) trace.getSource().get(0);
@@ -483,8 +575,8 @@ public class SplitRespRunner extends PCMTransformerRunner {
 	public static void main(String[] args) {
 		String dirPath = "src/edu/squat/transformations/modifiability/splitresp";
 		String henshinFilename = "splitresp-modular.henshin";
-		String repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename;
-		String resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename;
+		String repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, usageFilename;
+		String resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename, resultUsageFilename;
 		
 		SplitRespRunner runner = new SplitRespRunner();
 
@@ -533,14 +625,16 @@ public class SplitRespRunner extends PCMTransformerRunner {
 		systemFilename = "stplus.system";
 		resourceEnvironmentFilename = "stplus.resourceenvironment";
 		allocationFilename = "stplus.allocation";
+		usageFilename = "stplus.usagemodel";
 		resultRepositoryFilename = "stplus-" + "#REPLACEMENT#" + ".repository";
 		resultSystemFilename = "stplus-" + "#REPLACEMENT#" + ".system";
 		resultResourceEnvironmentFilename = "stplus-" + "#REPLACEMENT#" + ".resourceenvironment";
 		resultAllocationFilename = "stplus-" + "#REPLACEMENT#" + ".allocation";
+		resultUsageFilename = "stplus-" + "#REPLACEMENT#" + ".usagemodel";
 		runner.run(dirPath, 
-				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename,
+				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, usageFilename,
 				henshinFilename, 
-				resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename,
+				resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename, resultUsageFilename,
 				true);
 	}
 }

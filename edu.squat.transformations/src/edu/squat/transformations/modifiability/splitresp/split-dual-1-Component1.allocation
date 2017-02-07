@@ -2,9 +2,9 @@
 <allocation:Allocation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:allocation="http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1" id="_DRiX0Oc0EeaYi_qKETszAw" entityName="defaultAllocation">
   <targetResourceEnvironment_Allocation href="split-dual-1-Component1.resourceenvironment#/"/>
   <system_Allocation href="split-dual-1-Component1.system#_uw6zcOczEeaYi_qKETszAw"/>
-  <allocationContexts_Allocation id="_Ep66UOmVEeaJU9Kshr7_iQ" entityName="Allocation_Assembly_Component1 &lt;Component1> &lt;Component1>-B">
+  <allocationContexts_Allocation id="_CpmPwO1jEeaVDI-nCmFxWg" entityName="Allocation_Assembly_Component1 &lt;Component1> &lt;Component1>-B">
     <resourceContainer_AllocationContext href="split-dual-1-Component1.resourceenvironment#_iHTyIOc0EeaYi_qKETszAw"/>
-    <assemblyContext_AllocationContext href="split-dual-1-Component1.system#_Ep0zsOmVEeaJU9Kshr7_iQ"/>
+    <assemblyContext_AllocationContext href="split-dual-1-Component1.system#_CpjMcO1jEeaVDI-nCmFxWg"/>
   </allocationContexts_Allocation>
   <allocationContexts_Allocation id="_0UMj4Oc1EeaYi_qKETszAw" entityName="Allocation_Assembly_Component2 &lt;Component2> &lt;Component2>">
     <resourceContainer_AllocationContext href="split-dual-1-Component1.resourceenvironment#_iHTyIOc0EeaYi_qKETszAw"/>
@@ -18,8 +18,8 @@
     <resourceContainer_AllocationContext href="split-dual-1-Component1.resourceenvironment#_jHKFkOc0EeaYi_qKETszAw"/>
     <assemblyContext_AllocationContext href="split-dual-1-Component1.system#_Pj79kOc0EeaYi_qKETszAw"/>
   </allocationContexts_Allocation>
-  <allocationContexts_Allocation id="_Ep6TQOmVEeaJU9Kshr7_iQ" entityName="Allocation_Assembly_Component1 &lt;Component1> &lt;Component1>-A">
+  <allocationContexts_Allocation id="_Cplosu1jEeaVDI-nCmFxWg" entityName="Allocation_Assembly_Component1 &lt;Component1> &lt;Component1>-A">
     <resourceContainer_AllocationContext href="split-dual-1-Component1.resourceenvironment#_iHTyIOc0EeaYi_qKETszAw"/>
-    <assemblyContext_AllocationContext href="split-dual-1-Component1.system#_EpvUIOmVEeaJU9Kshr7_iQ"/>
+    <assemblyContext_AllocationContext href="split-dual-1-Component1.system#_CphXQO1jEeaVDI-nCmFxWg"/>
   </allocationContexts_Allocation>
 </allocation:Allocation>
