@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resourceenvironment:ResourceEnvironment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:resourceenvironment="http://palladiosimulator.org/PalladioComponentModel/ResourceEnvironment/5.1">
-  <linkingResources__ResourceEnvironment id="_nTuUoK63Ed-35MKFzRJ9sw" connectedResourceContainers_LinkingResource="_g7HJEC6MEd-Jla2o7wkBzQ _h3wXgC6MEd-Jla2o7wkBzQ _vxqJwS6QEd-pNfzbJsur0g">
+  <linkingResources__ResourceEnvironment id="_nTuUoK63Ed-35MKFzRJ9sw" connectedResourceContainers_LinkingResource="_g7HJEC6MEd-Jla2o7wkBzQ _h3wXgC6MEd-Jla2o7wkBzQ _vxqJwS6QEd-pNfzbJsur0g _7jiyMV5LEeavvL8WcdoZSg">
     <communicationLinkResourceSpecifications_LinkingResource id="_ou_YwK63Ed-35MKFzRJ9sw" failureProbability="2.0E-4">
       <communicationLinkResourceType_CommunicationLinkResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_o3sScH2AEdyH8uerKnHYug"/>
       <latency_CommunicationLinkResourceSpecification specification="0.015"/>
       <throughput_CommunicationLinkResourceSpecification specification="2000000000"/>
-    </communicationLinkResourceSpecifications_LinkingResource>
-  </linkingResources__ResourceEnvironment>
-  <linkingResources__ResourceEnvironment id="_KPVRMF5MEeavvL8WcdoZSg" entityName="DBConnection" connectedResourceContainers_LinkingResource="_g7HJEC6MEd-Jla2o7wkBzQ _7jiyMV5LEeavvL8WcdoZSg">
-    <communicationLinkResourceSpecifications_LinkingResource id="_QmckQF5MEeavvL8WcdoZSg" failureProbability="2.0E-4">
-      <communicationLinkResourceType_CommunicationLinkResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_o3sScH2AEdyH8uerKnHYug"/>
-      <latency_CommunicationLinkResourceSpecification specification="0.1"/>
-      <throughput_CommunicationLinkResourceSpecification specification="10000000"/>
     </communicationLinkResourceSpecifications_LinkingResource>
   </linkingResources__ResourceEnvironment>
   <resourceContainer_ResourceEnvironment id="_g7HJEC6MEd-Jla2o7wkBzQ" entityName="Server1">
