@@ -13,6 +13,7 @@ import org.eclipse.emf.henshin.trace.Trace;
 import org.palladiosimulator.pcm.allocation.Allocation;
 import org.palladiosimulator.pcm.repository.Repository;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
+import org.palladiosimulator.pcm.usagemodel.UsageModel;
 
 public class RunnerHelper {
 	
@@ -91,6 +92,17 @@ public class RunnerHelper {
 		return environment;
 	}
 	
+	public static UsageModel getUsageRoot(EGraph graph) {
+		UsageModel usage = null;
+		Iterator<EObject> i = graph.getRoots().iterator();
+		while(i.hasNext() && null == null) {
+			EObject e = i.next();
+			if(e instanceof UsageModel)
+				usage = (UsageModel) e;
+		}
+		return usage;
+	}
+	
 	public static void saveRepositoryResult(HenshinResourceSet resourceSet, EGraph graph, String fileName) {
 		Repository repoRoot = RunnerHelper.getRepositoryRoot(graph);
 		RunnerHelper.saveResult(resourceSet, graph, fileName, (EObject) repoRoot);
@@ -111,10 +123,15 @@ public class RunnerHelper {
 		RunnerHelper.saveResult(resourceSet, graph, fileName, (EObject) environmentRoot);
 	}
 	
+	public static void saveUsageResult(HenshinResourceSet resourceSet, EGraph graph, String fileName) {
+		UsageModel usageRoot = RunnerHelper.getUsageRoot(graph);
+		RunnerHelper.saveResult(resourceSet, graph, fileName, (EObject) usageRoot);
+	}
+	
 	private static void saveResult(HenshinResourceSet resourceSet, EGraph graph, String fileName, EObject modelRoot) {
 		try {
 			Resource resource = resourceSet.createResource(fileName);
-			Trace traceRoot = RunnerHelper.getTraceRoot(graph);
+			//Trace traceRoot = RunnerHelper.getTraceRoot(graph);
 			resource.getContents().add(modelRoot);
 			//resource.getContents().add((EObject) traceRoot);
 			resource.save(null);

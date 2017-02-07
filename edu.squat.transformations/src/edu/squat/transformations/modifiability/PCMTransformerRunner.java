@@ -25,6 +25,8 @@ import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceenvironmentPackage;
 import org.palladiosimulator.pcm.seff.SeffPackage;
 import org.palladiosimulator.pcm.system.SystemPackage;
+import org.palladiosimulator.pcm.usagemodel.UsageModel;
+import org.palladiosimulator.pcm.usagemodel.UsagemodelPackage;
 
 import de.uka.ipd.sdq.identifier.IdentifierPackage;
 import de.uka.ipd.sdq.stoex.StoexPackage;
@@ -32,24 +34,33 @@ import edu.squat.pcm.PCMHelper;
 
 public abstract class PCMTransformerRunner {
 	protected String dirPath;
+	//
 	protected String repositoryFilename;
 	protected String systemFilename;
 	protected String resourceEnvironmentFilename;
 	protected String allocationFilename;
+	protected String usageFilename;
+	//
 	protected String henshinFilename;
+	//
 	protected String resultRepositoryFilename;
 	protected String resultSystemFilename;
 	protected String resultResourceEnvironmentFilename;
 	protected String resultAllocationFilename;
+	protected String resultUsageFilename;
 	//
 	protected HenshinResourceSet resourceSet;
 	protected Module module;
 	protected EGraph graph;
+	//
 	protected Repository repository;
 	protected org.palladiosimulator.pcm.system.System system;
 	protected ResourceEnvironment resourceEnvironment;
 	protected Allocation allocation;
+	protected UsageModel usage;
 	//
+	protected boolean performanceModelsLoaded = false;
+	protected boolean usageModelLoaded = false;
 	protected List<Tactic> candidateTactics;
 	//
 	protected ApplicationMonitor monitor;
@@ -65,6 +76,7 @@ public abstract class PCMTransformerRunner {
 		EPackage.Registry.INSTANCE.put(SystemPackage.eNS_URI, SystemPackage.eINSTANCE);
 		EPackage.Registry.INSTANCE.put(ResourceenvironmentPackage.eNS_URI, ResourceenvironmentPackage.eINSTANCE);
 		EPackage.Registry.INSTANCE.put(AllocationPackage.eNS_URI, AllocationPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(UsagemodelPackage.eNS_URI, UsagemodelPackage.eINSTANCE);
 		EPackage.Registry.INSTANCE.put(SeffPackage.eNS_URI, SeffPackage.eINSTANCE);
 		//Henshin Packages
 		EPackage.Registry.INSTANCE.put(HenshinPackage.eNS_URI, HenshinPackage.eINSTANCE);
@@ -78,30 +90,50 @@ public abstract class PCMTransformerRunner {
 		((LoggingApplicationMonitor) monitor).setLogStream(System.out);
 	}
 	
+	public boolean arePerformanceModelsLoaded() {
+		return performanceModelsLoaded;
+	}
+	
+	public boolean isUsageModelLoaded() {
+		return usageModelLoaded;
+	}
+	
 	private void setParameters(String dirPath, 
 			String repositoryFilename, 
 			String henshinFilename, 
 			String resultRepositoryFilename) {
 		this.setParameters(dirPath, 
-				repositoryFilename, null, null, null, 
+				repositoryFilename, null, null, null, null,
 				henshinFilename, 
-				resultRepositoryFilename, null, null, null);
+				resultRepositoryFilename, null, null, null, null);
 	}
 	
 	private void setParameters(String dirPath, 
 			String repositoryFilename, String systemFilename, String resourceEnvironmentFilename, String allocationFilename, 
 			String henshinFilename, 
 			String resultRepositoryFilename, String resultSystemFilename, String resultResourceEnvironmentFilename, String resultAllocationFilename) {
+		this.setParameters(dirPath, 
+				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, null,
+				henshinFilename, 
+				resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename, null);
+	}
+	
+	private void setParameters(String dirPath, 
+			String repositoryFilename, String systemFilename, String resourceEnvironmentFilename, String allocationFilename, String usageFilename, 
+			String henshinFilename, 
+			String resultRepositoryFilename, String resultSystemFilename, String resultResourceEnvironmentFilename, String resultAllocationFilename, String resultUsageFilename) {
 		this.dirPath = dirPath;
 		this.repositoryFilename = repositoryFilename;
 		this.systemFilename = systemFilename;
 		this.resourceEnvironmentFilename = resourceEnvironmentFilename;
 		this.allocationFilename = allocationFilename;
+		this.usageFilename = usageFilename;
 		this.henshinFilename = henshinFilename;
 		this.resultRepositoryFilename = resultRepositoryFilename;
 		this.resultSystemFilename = resultSystemFilename;
 		this.resultResourceEnvironmentFilename = resultResourceEnvironmentFilename;
 		this.resultAllocationFilename = resultAllocationFilename;
+		this.resultUsageFilename = resultUsageFilename;
 	}
 	
 	private void loadModels() {
@@ -126,9 +158,15 @@ public abstract class PCMTransformerRunner {
 			graph.addGraph(resourceSet.getResource(allocationFilename).getContents().get(0));
 			allocation = PCMHelper.loadAllocationModel(dirPath + "/" + allocationFilename);
 		}
+		if(usageFilename != null && !usageFilename.isEmpty()) {
+			graph.addGraph(resourceSet.getResource(usageFilename).getContents().get(0));
+			usage = PCMHelper.loadUsageModel(dirPath + "/" + usageFilename);
+		}
 	}
 	
 	public void loadModelsAndRules(String dirPath, String repositoryFilename, String henshinFilename, String resultFilename) {
+		this.performanceModelsLoaded = false;
+		this.usageModelLoaded = false;
 		this.setParameters(dirPath, 
 				repositoryFilename, 
 				henshinFilename, 
@@ -138,13 +176,29 @@ public abstract class PCMTransformerRunner {
 	}
 	
 	public void loadModelsAndRules(String dirPath, 
-			String repositoryFilename, String systemFilename, String resourceEnvironmentFilename, String allocationFilename, 
+			String repositoryFilename, String systemFilename, String resourceEnvironmentFilename, String allocationFilename,
 			String henshinFilename, 
 			String resultRepositoryFilename, String resultSystemFilename, String resultResourceEnvironmentFilename, String resultAllocationFilename) {
+		this.performanceModelsLoaded = true;
+		this.usageModelLoaded = false;
 		this.setParameters(dirPath, 
-				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, 
+				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename,
 				henshinFilename, 
 				resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename);
+		this.loadModels();
+		this.loadRules();
+	}
+	
+	public void loadModelsAndRules(String dirPath, 
+			String repositoryFilename, String systemFilename, String resourceEnvironmentFilename, String allocationFilename, String usageFilename,
+			String henshinFilename, 
+			String resultRepositoryFilename, String resultSystemFilename, String resultResourceEnvironmentFilename, String resultAllocationFilename, String resultUsageFilename) {
+		this.performanceModelsLoaded = true;
+		this.usageModelLoaded = true;
+		this.setParameters(dirPath, 
+				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, usageFilename, 
+				henshinFilename, 
+				resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename, resultUsageFilename);
 		this.loadModels();
 		this.loadRules();
 	}
@@ -166,14 +220,26 @@ public abstract class PCMTransformerRunner {
 	}
 	
 	public void run(String dirPath, 
-			String repositoryFilename, String systemFilename, String resourceEnvironmentFilename, String allocationFilename, 
+			String repositoryFilename, String systemFilename, String resourceEnvironmentFilename, String allocationFilename,
 			String henshinFilename, 
-			String resultRepositoryFilename, String resultSystemFilename, String resultResourceEnvironmentFilename, String resultAllocationFilename, 
+			String resultRepositoryFilename, String resultSystemFilename, String resultResourceEnvironmentFilename, String resultAllocationFilename,
 			boolean saveResult) {
 		this.loadModelsAndRules(dirPath, 
-				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, 
+				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename,
 				henshinFilename, 
 				resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename);
+		this.run(saveResult);
+	}
+	
+	public void run(String dirPath, 
+			String repositoryFilename, String systemFilename, String resourceEnvironmentFilename, String allocationFilename, String usageFilename,
+			String henshinFilename, 
+			String resultRepositoryFilename, String resultSystemFilename, String resultResourceEnvironmentFilename, String resultAllocationFilename, String resultUsageFilename,
+			boolean saveResult) {
+		this.loadModelsAndRules(dirPath, 
+				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, usageFilename,
+				henshinFilename, 
+				resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename, resultUsageFilename);
 		this.run(saveResult);
 	}
 	

@@ -14,6 +14,7 @@ import org.palladiosimulator.pcm.repository.RepositoryComponent;
 import org.palladiosimulator.pcm.resourceenvironment.LinkingResource;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
+import org.palladiosimulator.pcm.usagemodel.UsageModel;
 
 public class PCMHelper {
 	
@@ -43,6 +44,11 @@ public class PCMHelper {
 	public static Allocation loadAllocationModel(String allocationFile) {
 		Allocation allocation = (Allocation) PCMHelper.load(allocationFile);
 		return allocation;
+	}
+	
+	public static UsageModel loadUsageModel(String usageFile) {
+		UsageModel usage = (UsageModel) PCMHelper.load(usageFile);
+		return usage;
 	}
 	
 	public static void printRepositoryModel(Repository repository) {
