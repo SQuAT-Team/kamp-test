@@ -550,6 +550,66 @@
     <element xmi:type="henshin:Rule" href="insinter-modular.henshin#_r12XoNWnEeaRSskp9rqpCg"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_r13lwdWnEeaRSskp9rqpCg" x="10" y="1566" width="1053"/>
   </children>
+  <children xmi:type="notation:Shape" xmi:id="_fgDnAO4OEeay-trbjOew_Q" type="2002" fontName=".SF NS Text" italic="true" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_fgDnAu4OEeay-trbjOew_Q" type="5004"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_fgDnA-4OEeay-trbjOew_Q" type="7003">
+      <children xmi:type="notation:Node" xmi:id="_fgDnBO4OEeay-trbjOew_Q" type="3004">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fgEOEO4OEeay-trbjOew_Q" source="symbol">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_fgEOEe4OEeay-trbjOew_Q" key="type" value="UNIT_BEGIN"/>
+        </eAnnotations>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_fgDnBe4OEeay-trbjOew_Q"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_fgDnBu4OEeay-trbjOew_Q" fontName=".SF NS Text"/>
+        <element xmi:type="henshin:LoopUnit" href="insinter-modular.henshin#_bavXcO4OEeay-trbjOew_Q"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_fgEOEu4OEeay-trbjOew_Q" x="15" y="15"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_fgEOE-4OEeay-trbjOew_Q" type="3004">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fgEOF-4OEeay-trbjOew_Q" source="symbol">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_fgEOGO4OEeay-trbjOew_Q" key="type" value="UNIT_END"/>
+        </eAnnotations>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_fgEOFO4OEeay-trbjOew_Q"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_fgEOFe4OEeay-trbjOew_Q" fontName=".SF NS Text"/>
+        <element xmi:type="henshin:LoopUnit" href="insinter-modular.henshin#_bavXcO4OEeay-trbjOew_Q"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_fgEOGe4OEeay-trbjOew_Q" x="205" y="15"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_fgH4cO4OEeay-trbjOew_Q" type="3003" fontName=".SF NS Text" italic="true" lineColor="0">
+        <children xmi:type="notation:DecorationNode" xmi:id="_fgH4cu4OEeay-trbjOew_Q" type="5005"/>
+        <element xmi:type="henshin:Rule" href="insinter-modular.henshin#_r12XoNWnEeaRSskp9rqpCg"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fgH4ce4OEeay-trbjOew_Q" x="49" y="55"/>
+      </children>
+    </children>
+    <element xmi:type="henshin:LoopUnit" href="insinter-modular.henshin#_bavXcO4OEeay-trbjOew_Q"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fgDnAe4OEeay-trbjOew_Q" x="10" y="1807" width="246"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_vJVB8O4OEeay-trbjOew_Q" type="2002" fontName=".SF NS Text" italic="true" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_vJVpAO4OEeay-trbjOew_Q" type="5004"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_vJVpAe4OEeay-trbjOew_Q" type="7003">
+      <children xmi:type="notation:Node" xmi:id="_vJVpAu4OEeay-trbjOew_Q" type="3004">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vJVpBu4OEeay-trbjOew_Q" source="symbol">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_vJVpB-4OEeay-trbjOew_Q" key="type" value="UNIT_BEGIN"/>
+        </eAnnotations>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_vJVpA-4OEeay-trbjOew_Q"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_vJVpBO4OEeay-trbjOew_Q" fontName=".SF NS Text"/>
+        <element xmi:type="henshin:LoopUnit" href="insinter-modular.henshin#_o0XrAO4OEeay-trbjOew_Q"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_vJVpCO4OEeay-trbjOew_Q" x="15" y="15"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_vJVpCe4OEeay-trbjOew_Q" type="3004">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vJVpDe4OEeay-trbjOew_Q" source="symbol">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_vJVpDu4OEeay-trbjOew_Q" key="type" value="UNIT_END"/>
+        </eAnnotations>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_vJVpCu4OEeay-trbjOew_Q"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_vJVpC-4OEeay-trbjOew_Q" fontName=".SF NS Text"/>
+        <element xmi:type="henshin:LoopUnit" href="insinter-modular.henshin#_o0XrAO4OEeay-trbjOew_Q"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_vJVpD-4OEeay-trbjOew_Q" x="205" y="15"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_vJbIkO4OEeay-trbjOew_Q" type="3003" fontName=".SF NS Text" italic="true" lineColor="0">
+        <children xmi:type="notation:DecorationNode" xmi:id="_vJbIku4OEeay-trbjOew_Q" type="5005"/>
+        <element xmi:type="henshin:Rule" href="insinter-modular.henshin#_ykessNKPEeas-8AGl-ITcQ"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vJbIke4OEeay-trbjOew_Q" x="41" y="60"/>
+      </children>
+    </children>
+    <element xmi:type="henshin:LoopUnit" href="insinter-modular.henshin#_o0XrAO4OEeay-trbjOew_Q"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vJVB8e4OEeay-trbjOew_Q" x="268" y="1807"/>
+  </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_rEx2YdKOEeas-8AGl-ITcQ"/>
   <element xmi:type="henshin:Module" href="insinter-modular.henshin#_rEoscNKOEeas-8AGl-ITcQ"/>
   <edges xmi:type="notation:Connector" xmi:id="_9ExvsNNgEea6LOvbS5YVAA" type="4001" source="_IdPHoNNfEea6LOvbS5YVAA" target="_B47GENNfEea6LOvbS5YVAA">
@@ -1429,5 +1489,41 @@
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_dGH-YtWoEeaRSskp9rqpCg" points="[-6, 0, 296, 50]$[-302, 0, 0, 50]$[-302, -44, 0, 6]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_dGJMgNWoEeaRSskp9rqpCg" id="(0.10909090909090909,0.475)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_dGJMgdWoEeaRSskp9rqpCg" id="(0.35365853658536583,0.85)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_fgIfgO4OEeay-trbjOew_Q" type="4002" source="_fgDnBO4OEeay-trbjOew_Q" target="_fgH4cO4OEeay-trbjOew_Q">
+    <styles xmi:type="notation:RoutingStyle" xmi:id="_fgIfge4OEeay-trbjOew_Q" routing="Rectilinear"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_fgIfgu4OEeay-trbjOew_Q" fontName=".SF NS Text"/>
+    <element xmi:type="henshin:LoopUnit" href="insinter-modular.henshin#_bavXcO4OEeay-trbjOew_Q"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_fgIfg-4OEeay-trbjOew_Q" points="[-1, 10, -98, -32]$[-1, 42, -98, 0]$[24, 42, -73, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_fgIfhO4OEeay-trbjOew_Q" type="4002" source="_fgH4cO4OEeay-trbjOew_Q" target="_fgEOE-4OEeay-trbjOew_Q">
+    <styles xmi:type="notation:RoutingStyle" xmi:id="_fgIfhe4OEeay-trbjOew_Q" routing="Rectilinear"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_fgIfhu4OEeay-trbjOew_Q" fontName=".SF NS Text"/>
+    <element xmi:type="henshin:LoopUnit" href="insinter-modular.henshin#_bavXcO4OEeay-trbjOew_Q"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_fgIfh-4OEeay-trbjOew_Q" points="[74, 0, -19, 42]$[93, 0, 0, 42]$[93, -32, 0, 10]"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_fgIfiO4OEeay-trbjOew_Q" type="4002" source="_fgH4cO4OEeay-trbjOew_Q" target="_fgH4cO4OEeay-trbjOew_Q">
+    <styles xmi:type="notation:RoutingStyle" xmi:id="_fgIfie4OEeay-trbjOew_Q" routing="Rectilinear"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_fgIfiu4OEeay-trbjOew_Q" fontName=".SF NS Text"/>
+    <element xmi:type="henshin:LoopUnit" href="insinter-modular.henshin#_bavXcO4OEeay-trbjOew_Q"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_fgIfi-4OEeay-trbjOew_Q" points="[-43, 13, -43, 13]$[-43, 52, -43, 52]$[38, 52, 38, 52]$[38, 13, 38, 13]"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_vJbvoO4OEeay-trbjOew_Q" type="4002" source="_vJVpAu4OEeay-trbjOew_Q" target="_vJbIkO4OEeay-trbjOew_Q">
+    <styles xmi:type="notation:RoutingStyle" xmi:id="_vJbvoe4OEeay-trbjOew_Q" routing="Rectilinear"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_vJbvou4OEeay-trbjOew_Q" fontName=".SF NS Text"/>
+    <element xmi:type="henshin:LoopUnit" href="insinter-modular.henshin#_o0XrAO4OEeay-trbjOew_Q"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vJbvo-4OEeay-trbjOew_Q" points="[-1, 10, -92, -37]$[-1, 47, -92, 0]$[16, 47, -75, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_vJbvpO4OEeay-trbjOew_Q" type="4002" source="_vJbIkO4OEeay-trbjOew_Q" target="_vJVpCe4OEeay-trbjOew_Q">
+    <styles xmi:type="notation:RoutingStyle" xmi:id="_vJbvpe4OEeay-trbjOew_Q" routing="Rectilinear"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_vJbvpu4OEeay-trbjOew_Q" fontName=".SF NS Text"/>
+    <element xmi:type="henshin:LoopUnit" href="insinter-modular.henshin#_o0XrAO4OEeay-trbjOew_Q"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vJbvp-4OEeay-trbjOew_Q" points="[76, 0, -23, 47]$[98, 0, -1, 47]$[98, -37, -1, 10]"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_vJbvqO4OEeay-trbjOew_Q" type="4002" source="_vJbIkO4OEeay-trbjOew_Q" target="_vJbIkO4OEeay-trbjOew_Q">
+    <styles xmi:type="notation:RoutingStyle" xmi:id="_vJbvqe4OEeay-trbjOew_Q" routing="Rectilinear"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_vJbvqu4OEeay-trbjOew_Q" fontName=".SF NS Text"/>
+    <element xmi:type="henshin:LoopUnit" href="insinter-modular.henshin#_o0XrAO4OEeay-trbjOew_Q"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vJbvq-4OEeay-trbjOew_Q" points="[-31, 13, -31, 13]$[-31, 55, -31, 55]$[39, 55, 39, 55]$[39, 13, 39, 13]"/>
   </edges>
 </notation:Diagram>
