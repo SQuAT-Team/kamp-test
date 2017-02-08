@@ -11,7 +11,16 @@ import org.eclipse.emf.henshin.interpreter.EGraph;
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet;
 import org.eclipse.emf.henshin.trace.Trace;
 import org.palladiosimulator.pcm.allocation.Allocation;
+import org.palladiosimulator.pcm.allocation.AllocationContext;
+import org.palladiosimulator.pcm.core.composition.AssemblyContext;
+import org.palladiosimulator.pcm.repository.BasicComponent;
+import org.palladiosimulator.pcm.repository.OperationInterface;
+import org.palladiosimulator.pcm.repository.OperationProvidedRole;
+import org.palladiosimulator.pcm.repository.OperationRequiredRole;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
 import org.palladiosimulator.pcm.repository.Repository;
+import org.palladiosimulator.pcm.repository.RequiredRole;
+import org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
 import org.palladiosimulator.pcm.usagemodel.UsageModel;
 
@@ -138,5 +147,41 @@ public class RunnerHelper {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static OperationProvidedRole findProvidedRole(BasicComponent component, OperationInterface operationInterface) {
+		for(ProvidedRole providedRole : component.getProvidedRoles_InterfaceProvidingEntity()) {
+			OperationProvidedRole operationProvidedRole = (OperationProvidedRole) providedRole;
+			if(operationProvidedRole.getProvidedInterface__OperationProvidedRole().equals(operationInterface))
+				return operationProvidedRole;
+		}
+		return null;
+	}
+	
+	public static OperationRequiredRole findRequiredRole(BasicComponent component, OperationInterface operationInterface) {
+		for(RequiredRole requiredRole : component.getRequiredRoles_InterfaceRequiringEntity()) {
+			OperationRequiredRole operationRequiredRole = (OperationRequiredRole) requiredRole;
+			if(operationRequiredRole.getRequiredInterface__OperationRequiredRole().equals(operationInterface))
+				return operationRequiredRole;
+		}
+		return null;
+	}
+	
+	public static List<AssemblyContext> findAssemblyContexts(BasicComponent component, org.palladiosimulator.pcm.system.System systemRoot) {
+		List<AssemblyContext> componentAssemblies = new ArrayList<AssemblyContext>();
+		for(AssemblyContext assemblyContext : systemRoot.getAssemblyContexts__ComposedStructure()) {
+			if(assemblyContext.getEncapsulatedComponent__AssemblyContext().equals(component))
+				componentAssemblies.add(assemblyContext);
+		}
+		return componentAssemblies;
+	}
+
+	public static ResourceContainer findAllocationResourceContainer(AssemblyContext assemblyContext,
+			Allocation allocationRoot) {
+		for(AllocationContext allocationContext : allocationRoot.getAllocationContexts_Allocation()) {
+			if(allocationContext.getAssemblyContext_AllocationContext().equals(assemblyContext))
+				return allocationContext.getResourceContainer_AllocationContext();
+		}
+		return null;
 	}
 }

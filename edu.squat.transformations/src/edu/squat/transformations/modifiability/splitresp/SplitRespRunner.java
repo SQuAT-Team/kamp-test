@@ -422,9 +422,9 @@ public class SplitRespRunner extends PCMTransformerRunner {
 			OperationInterface interfaceI = (OperationInterface) traceIntI.getTarget().get(0);
 			OperationInterface interfaceJ = (OperationInterface) traceIntJ.getTarget().get(0);
 			//
-			List<AssemblyContext> originalAssemblyContexts = this.findAssemblyContexts(originalComponent, systemRoot);
-			List<AssemblyContext> assemblyContextsI = this.findAssemblyContexts(newComponentI, systemRoot);
-			List<AssemblyContext> assemblyContextsJ = this.findAssemblyContexts(newComponentJ, systemRoot);
+			List<AssemblyContext> originalAssemblyContexts = RunnerHelper.findAssemblyContexts(originalComponent, systemRoot);
+			List<AssemblyContext> assemblyContextsI = RunnerHelper.findAssemblyContexts(newComponentI, systemRoot);
+			List<AssemblyContext> assemblyContextsJ = RunnerHelper.findAssemblyContexts(newComponentJ, systemRoot);
 			for(AssemblyContext assemblyContextI : assemblyContextsI) {
 				for(AssemblyContext assemblyContextJ : assemblyContextsJ) {
 					//One direction
@@ -434,8 +434,8 @@ public class SplitRespRunner extends PCMTransformerRunner {
 							assemblyContextJ.getEntityName() + " <" + newComponentJ.getEntityName() + ">");
 					newConnectorIJ.setProvidingAssemblyContext_AssemblyConnector(assemblyContextI);
 					newConnectorIJ.setRequiringAssemblyContext_AssemblyConnector(assemblyContextJ);
-					OperationProvidedRole newProvidedRoleIJ = this.findProvidedRole(newComponentI, interfaceI);
-					OperationRequiredRole newRequiredRoleIJ = this.findRequiredRole(newComponentJ, interfaceI);
+					OperationProvidedRole newProvidedRoleIJ = RunnerHelper.findProvidedRole(newComponentI, interfaceI);
+					OperationRequiredRole newRequiredRoleIJ = RunnerHelper.findRequiredRole(newComponentJ, interfaceI);
 					newConnectorIJ.setProvidedRole_AssemblyConnector(newProvidedRoleIJ);
 					newConnectorIJ.setRequiredRole_AssemblyConnector(newRequiredRoleIJ);
 					//The other direction
@@ -445,8 +445,8 @@ public class SplitRespRunner extends PCMTransformerRunner {
 							assemblyContextI.getEntityName() + " <" + newComponentI.getEntityName() + ">");
 					newConnectorJI.setProvidingAssemblyContext_AssemblyConnector(assemblyContextJ);
 					newConnectorJI.setRequiringAssemblyContext_AssemblyConnector(assemblyContextI);
-					OperationProvidedRole newProvidedRoleJI = this.findProvidedRole(newComponentJ, interfaceJ);
-					OperationRequiredRole newRequiredRoleJI = this.findRequiredRole(newComponentI, interfaceJ);
+					OperationProvidedRole newProvidedRoleJI = RunnerHelper.findProvidedRole(newComponentJ, interfaceJ);
+					OperationRequiredRole newRequiredRoleJI = RunnerHelper.findRequiredRole(newComponentI, interfaceJ);
 					newConnectorJI.setProvidedRole_AssemblyConnector(newProvidedRoleJI);
 					newConnectorJI.setRequiredRole_AssemblyConnector(newRequiredRoleJI);
 					//
@@ -471,33 +471,6 @@ public class SplitRespRunner extends PCMTransformerRunner {
 			System.out.println("Successfully created the assembly connectors for the internal conections between the splitted components");
 		else
 			System.out.println("Could not create the assembly connectors for the internal conections between the splitted components");
-	}
-	
-	private OperationProvidedRole findProvidedRole(BasicComponent component, OperationInterface operationInterface) {
-		for(ProvidedRole providedRole : component.getProvidedRoles_InterfaceProvidingEntity()) {
-			OperationProvidedRole operationProvidedRole = (OperationProvidedRole) providedRole;
-			if(operationProvidedRole.getProvidedInterface__OperationProvidedRole().equals(operationInterface))
-				return operationProvidedRole;
-		}
-		return null;
-	}
-	
-	private OperationRequiredRole findRequiredRole(BasicComponent component, OperationInterface operationInterface) {
-		for(RequiredRole requiredRole : component.getRequiredRoles_InterfaceRequiringEntity()) {
-			OperationRequiredRole operationRequiredRole = (OperationRequiredRole) requiredRole;
-			if(operationRequiredRole.getRequiredInterface__OperationRequiredRole().equals(operationInterface))
-				return operationRequiredRole;
-		}
-		return null;
-	}
-	
-	private List<AssemblyContext> findAssemblyContexts(BasicComponent component, org.palladiosimulator.pcm.system.System systemRoot) {
-		List<AssemblyContext> componentAssemblies = new ArrayList<AssemblyContext>();
-		for(AssemblyContext assemblyContext : systemRoot.getAssemblyContexts__ComposedStructure()) {
-			if(assemblyContext.getEncapsulatedComponent__AssemblyContext().equals(component))
-				componentAssemblies.add(assemblyContext);
-		}
-		return componentAssemblies;
 	}
 	
 	private void runEighthRule(EGraph graph, String i) {
