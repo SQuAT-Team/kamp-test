@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:composition="http://palladiosimulator.org/PalladioComponentModel/Core/Composition/5.1" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.1" xmlns:system="http://palladiosimulator.org/PalladioComponentModel/System/5.1" xsi:schemaLocation="http://palladiosimulator.org/PalladioComponentModel/Core/Composition/5.1 http://palladiosimulator.org/PalladioComponentModel/5.1#//core/composition http://palladiosimulator.org/PalladioComponentModel/Repository/5.1 http://palladiosimulator.org/PalladioComponentModel/5.1#//repository http://palladiosimulator.org/PalladioComponentModel/System/5.1 http://palladiosimulator.org/PalladioComponentModel/5.1#//system" xmi:id="_YQ3AIO40Eea9uYhss1uCQg" type="CompositeModel" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_YsfzQO40Eea9uYhss1uCQg" type="2002" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_YspkQO40Eea9uYhss1uCQg" type="5012"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_YspkQe40Eea9uYhss1uCQg" type="7002">
+      <children xmi:type="notation:Shape" xmi:id="_Yz5bwO40Eea9uYhss1uCQg" type="3006" fontName=".SF NS Text">
+        <children xmi:type="notation:DecorationNode" xmi:id="_Yz5bwu40Eea9uYhss1uCQg" type="5009"/>
+        <children xmi:type="notation:Shape" xmi:id="_Y0M9wO40Eea9uYhss1uCQg" type="3007" fontName=".SF NS Text">
+          <children xmi:type="notation:DecorationNode" xmi:id="_Y0M9wu40Eea9uYhss1uCQg" type="5007">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_Y0M9w-40Eea9uYhss1uCQg" y="5"/>
+          </children>
+          <element xmi:type="repository:OperationProvidedRole" href="insert-test-0-B+C+A.repository#_z_gZ0MI0Eea2uLfVNtEP3w"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Y0M9we40Eea9uYhss1uCQg" x="139" y="31"/>
+        </children>
+        <element xmi:type="composition:AssemblyContext" href="insert-test-0-B+C+A.system#_vQXlsO1sEeab86LP4wB6tQ"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Yz5bwe40Eea9uYhss1uCQg" x="106" y="9"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_Yz6C0O40Eea9uYhss1uCQg" type="3006" fontName=".SF NS Text">
+        <children xmi:type="notation:DecorationNode" xmi:id="_Yz6p4O40Eea9uYhss1uCQg" type="5009"/>
+        <children xmi:type="notation:Shape" xmi:id="_Y046QO40Eea9uYhss1uCQg" type="3007" fontName=".SF NS Text">
+          <children xmi:type="notation:DecorationNode" xmi:id="_Y046Qu40Eea9uYhss1uCQg" type="5007">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_Y046Q-40Eea9uYhss1uCQg" x="-56" y="18"/>
+          </children>
+          <element xmi:type="repository:OperationProvidedRole" href="insert-test-0-B+C+A.repository#_8TIc4MI0Eea2uLfVNtEP3w"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Y046Qe40Eea9uYhss1uCQg" x="139" y="49"/>
+        </children>
+        <element xmi:type="composition:AssemblyContext" href="insert-test-0-B+C+A.system#_DMCC4O1tEeab86LP4wB6tQ"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Yz6C0e40Eea9uYhss1uCQg" x="75" y="317"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_Yz6p4e40Eea9uYhss1uCQg" type="3006" fontName=".SF NS Text">
+        <children xmi:type="notation:DecorationNode" xmi:id="_Yz7Q8O40Eea9uYhss1uCQg" type="5009"/>
+        <children xmi:type="notation:Shape" xmi:id="_Y1APAO40Eea9uYhss1uCQg" type="3007" fontName=".SF NS Text">
+          <children xmi:type="notation:DecorationNode" xmi:id="_Y1A2EO40Eea9uYhss1uCQg" type="5007">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_Y1A2Ee40Eea9uYhss1uCQg" y="5"/>
+          </children>
+          <element xmi:type="repository:OperationProvidedRole" href="insert-test-0-B+C+A.repository#_7dKeMMI0Eea2uLfVNtEP3w"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Y1APAe40Eea9uYhss1uCQg" x="84" y="-29"/>
+        </children>
+        <element xmi:type="composition:AssemblyContext" href="insert-test-0-B+C+A.system#_EHzHkO1tEeab86LP4wB6tQ"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Yz6p4u40Eea9uYhss1uCQg" x="403" y="335"/>
+      </children>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_Y20z8O40Eea9uYhss1uCQg" type="3011" fontName=".SF NS Text">
+      <children xmi:type="notation:DecorationNode" xmi:id="_Y21bAO40Eea9uYhss1uCQg" type="5013">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Y21bAe40Eea9uYhss1uCQg" y="5"/>
+      </children>
+      <element xmi:type="repository:OperationProvidedRole" href="insert-test-0-B+C+A.system#_tv6DEO1tEeab86LP4wB6tQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Y20z8e40Eea9uYhss1uCQg"/>
+    </children>
+    <element xmi:type="system:System" href="insert-test-0-B+C+A.system#_uGsn4O1sEeab86LP4wB6tQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YsgaUO40Eea9uYhss1uCQg" x="-40" width="897"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_YQ3nMO40Eea9uYhss1uCQg"/>
+  <element xmi:type="system:System" href="insert-test-0-B+C+A.system#_uGsn4O1sEeab86LP4wB6tQ"/>
+  <edges xmi:type="notation:Connector" xmi:id="_Y4m8oO40Eea9uYhss1uCQg" type="4006" source="_Y20z8O40Eea9uYhss1uCQg" target="_Y0M9wO40Eea9uYhss1uCQg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_Y4m8oe40Eea9uYhss1uCQg" fontName=".SF NS Text"/>
+    <element xmi:type="composition:ProvidedDelegationConnector" href="insert-test-0-B+C+A.system#_x-6aIO1tEeab86LP4wB6tQ"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Y4m8ou40Eea9uYhss1uCQg" points="[30, 0, -264, 184]$[69, -44, -225, 140]$[69, -240, -225, -56]$[333, -240, 39, -56]$[333, -192, 39, -8]$[308, -186, 14, -2]"/>
+  </edges>
+</notation:Diagram>

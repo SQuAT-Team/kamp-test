@@ -1,11 +1,17 @@
 package edu.squat.transformations.modifiability.insinter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.henshin.interpreter.EGraph;
 import org.eclipse.emf.henshin.interpreter.Engine;
+import org.eclipse.emf.henshin.interpreter.Match;
 import org.eclipse.emf.henshin.interpreter.RuleApplication;
 import org.eclipse.emf.henshin.interpreter.UnitApplication;
 import org.eclipse.emf.henshin.interpreter.impl.EngineImpl;
@@ -13,15 +19,30 @@ import org.eclipse.emf.henshin.interpreter.impl.RuleApplicationImpl;
 import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl;
 import org.eclipse.emf.henshin.model.LoopUnit;
 import org.eclipse.emf.henshin.model.Rule;
+import org.eclipse.emf.henshin.model.Unit;
 import org.eclipse.emf.henshin.model.impl.LoopUnitImpl;
 import org.eclipse.emf.henshin.trace.Trace;
+import org.eclipse.emf.henshin.trace.TraceFactory;
+import org.palladiosimulator.pcm.allocation.Allocation;
+import org.palladiosimulator.pcm.allocation.AllocationContext;
+import org.palladiosimulator.pcm.allocation.AllocationFactory;
+import org.palladiosimulator.pcm.core.composition.AssemblyConnector;
+import org.palladiosimulator.pcm.core.composition.AssemblyContext;
+import org.palladiosimulator.pcm.core.composition.CompositionFactory;
+import org.palladiosimulator.pcm.core.composition.Connector;
+import org.palladiosimulator.pcm.core.composition.ProvidedDelegationConnector;
 import org.palladiosimulator.pcm.core.entity.Entity;
 import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.repository.OperationInterface;
+import org.palladiosimulator.pcm.repository.OperationProvidedRole;
+import org.palladiosimulator.pcm.repository.OperationRequiredRole;
 import org.palladiosimulator.pcm.repository.OperationSignature;
 import org.palladiosimulator.pcm.repository.Parameter;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
 import org.palladiosimulator.pcm.repository.Repository;
 import org.palladiosimulator.pcm.repository.RepositoryFactory;
+import org.palladiosimulator.pcm.repository.RequiredRole;
+import org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
 import org.palladiosimulator.pcm.seff.ResourceDemandingSEFF;
 import org.palladiosimulator.pcm.seff.SeffFactory;
 import org.palladiosimulator.pcm.seff.StartAction;
@@ -31,7 +52,15 @@ import edu.squat.transformations.modifiability.PCMTransformerRunner;
 import edu.squat.transformations.modifiability.RunnerHelper;
 import edu.squat.transformations.modifiability.Tactic;
 
+@SuppressWarnings("unused")
 public class InsInterRunner extends PCMTransformerRunner {
+	private final static String TRACE_Left = "left";
+	private final static String TRACE_Right = "right";
+	private final static String TRACE_Match = "match";
+	private final static String TRACE_Intermediate = "intermediate";
+	private final static String TRACE_AssemblyContext = "assembly-cont";
+	private final static String TRACE_AssemblyConnector = "assembly-conn";
+	private final static String TRACE_AllocationContext = "allocation-cont";
 	//
 	private Engine engine;
 	//
@@ -39,6 +68,8 @@ public class InsInterRunner extends PCMTransformerRunner {
 	private Rule createIntermediaryComponent;
 	private Rule rewireComponents2Intermediary;
 	private Rule removeDuplicateRequiredRoles;
+	private Unit rewireComponents2IntermediaryLoop;
+	private Unit removeDuplicateRequiredRolesLoop;
 	
 	public InsInterRunner() {
 		super();
@@ -51,11 +82,13 @@ public class InsInterRunner extends PCMTransformerRunner {
 		//markComponents2Isolate.setCheckDangling(false);
 		createIntermediaryComponent = (Rule) module.getUnit("createIntermediaryComponent");
 		rewireComponents2Intermediary = (Rule) module.getUnit("rewireComponents2Intermediary");
+		//rewireComponents2Intermediary.setCheckDangling(false);
 		removeDuplicateRequiredRoles = (Rule) module.getUnit("removeDuplicateRequiredRoles");
+		rewireComponents2IntermediaryLoop = module.getUnit("rewireComponents2IntermediaryLoop");
+		removeDuplicateRequiredRolesLoop = module.getUnit("removeDuplicateRequiredRolesLoop");
 	}
 	
 	
-	@SuppressWarnings({"unused"})
 	@Override
 	public void run(boolean saveResult) {
 		candidateTactics = new ArrayList<Tactic>();
@@ -105,10 +138,12 @@ public class InsInterRunner extends PCMTransformerRunner {
 					
 					//Configuring and executing the second rule
 					RuleApplication secondRule = this.runSecondRule(tempGraph, componentsName, interfacesName);
+					
 					//Duplicating the interface for the intermediate
 					BasicComponent newComponent = (BasicComponent) secondRule.getResultParameterValue("newComp");
 					OperationInterface newInterface = (OperationInterface) secondRule.getResultParameterValue("newInt");		
 					this.duplicateInterface(interfaces, newInterface);		
+					
 					//Creating a basic service effect specification for the intermediate
 					this.createSEFF(newComponent, newInterface);
 
@@ -118,13 +153,40 @@ public class InsInterRunner extends PCMTransformerRunner {
 					//Configuring and executing the fourth rule
 					UnitApplication fourthRule = this.runFourthRule(tempGraph);
 					
+					if(this.arePerformanceModelsLoaded()) {
+						//Adjust the system and allocation models by executing a monolithic method (ugly but fast)
+						this.fixSystemAndAllocation(tempGraph, newComponent, newInterface, components, interfaces);
+						//Clean up and delete old assembly connectors
+						this.runLastRule(tempGraph);
+					}
+					
 					//Store the results
 					this.addTactic(null, tempGraph, null);
 					if (saveResult) {
 						RunnerHelper.saveRepositoryResult(
 								resourceSet, 
 								tempGraph, 
-								repositoryFilename.replace("#REPLACEMENT#", String.valueOf(counter) + "-" + interfacesName));
+								resultRepositoryFilename.replace("#REPLACEMENT#", String.valueOf(counter) + "-" + interfacesName));
+						if(this.arePerformanceModelsLoaded()) {
+							RunnerHelper.saveSystemResult(
+									resourceSet, 
+									tempGraph, 
+									resultSystemFilename.replace("#REPLACEMENT#", String.valueOf(counter) + "-" + interfacesName));
+							RunnerHelper.saveResourceEnvironmentResult(
+									resourceSet, 
+									tempGraph, 
+									resultResourceEnvironmentFilename.replace("#REPLACEMENT#", String.valueOf(counter) + "-" + interfacesName));
+							RunnerHelper.saveAllocationResult(
+									resourceSet, 
+									tempGraph, 
+									resultAllocationFilename.replace("#REPLACEMENT#", String.valueOf(counter) + "-" + interfacesName));
+						}
+						if(this.isUsageModelLoaded()) {
+							RunnerHelper.saveUsageResult(
+									resourceSet, 
+									tempGraph, 
+									resultUsageFilename.replace("#REPLACEMENT#", String.valueOf(counter) + "-" + interfacesName));
+						}
 					}
 				}
 				else {
@@ -139,6 +201,141 @@ public class InsInterRunner extends PCMTransformerRunner {
 		}
 	}
 	
+	private void fixSystemAndAllocation(EGraph graph, BasicComponent intermediateComponent, OperationInterface intermediateInterface, List<BasicComponent> components, List<OperationInterface> interfaces) {
+		Trace traceRoot = RunnerHelper.getTraceRoot(graph);
+		org.palladiosimulator.pcm.system.System systemRoot = RunnerHelper.getSystemRoot(graph);
+		
+		//Create the assembly context
+		AssemblyContext intermediateAssemblyContext = CompositionFactory.eINSTANCE.createAssemblyContext();
+		intermediateAssemblyContext.setEncapsulatedComponent__AssemblyContext(intermediateComponent);
+		intermediateAssemblyContext.setEntityName("Assembly_" + intermediateComponent.getEntityName() + " <" + intermediateComponent.getEntityName() + ">");
+		systemRoot.getAssemblyContexts__ComposedStructure().add(intermediateAssemblyContext);
+		Trace assemblyContextTrace = TraceFactory.eINSTANCE.createTrace();
+		assemblyContextTrace.setName(TRACE_AssemblyContext);
+		//assemblyContextTrace.getSource().add(null);
+		assemblyContextTrace.getTarget().add((EObject) intermediateAssemblyContext);
+		traceRoot.getSubTraces().add(assemblyContextTrace);
+		
+		//Reconnect the assembly connectors
+		List<Connector> connectorsToAdd = new ArrayList<Connector>();
+		Iterator<Connector> connectors = systemRoot.getConnectors__ComposedStructure().iterator();
+		while(connectors.hasNext()) {
+			Connector connector = connectors.next();
+			if(connector instanceof ProvidedDelegationConnector) {
+				//ProvidedDelegationConnector oldDelegationConnector = (ProvidedDelegationConnector) connector;
+				//DO NOTHING
+			}
+			if(connector instanceof AssemblyConnector) {
+				AssemblyConnector oldConnector = (AssemblyConnector) connector;
+				AssemblyContext providingAssemblyContext = oldConnector.getProvidingAssemblyContext_AssemblyConnector();
+				AssemblyContext requiringAssemblyContext = oldConnector.getRequiringAssemblyContext_AssemblyConnector();
+				BasicComponent providingComponent = (BasicComponent) providingAssemblyContext.getEncapsulatedComponent__AssemblyContext();
+				BasicComponent requiringComponent = (BasicComponent) requiringAssemblyContext.getEncapsulatedComponent__AssemblyContext();
+				OperationProvidedRole providedRole = oldConnector.getProvidedRole_AssemblyConnector();
+				//OperationRequiredRole requiredRole = oldConnector.getRequiredRole_AssemblyConnector();
+				
+				if(components.contains(providingComponent) && components.contains(requiringComponent)) {
+					if(
+							interfaces.contains(providedRole.getProvidedInterface__OperationProvidedRole()) 
+							//&& interfaces.contains(requiredRole.getRequiredInterface__OperationRequiredRole())
+							) {
+						AssemblyConnector intermediateConnector = CompositionFactory.eINSTANCE.createAssemblyConnector();
+						intermediateConnector.setEntityName("Connector " + intermediateAssemblyContext.getEntityName() + " -> "+ requiringAssemblyContext.getEntityName());
+						intermediateConnector.setProvidingAssemblyContext_AssemblyConnector(intermediateAssemblyContext);
+						intermediateConnector.setRequiringAssemblyContext_AssemblyConnector(requiringAssemblyContext);
+						OperationProvidedRole intermediateProvidedRole = RunnerHelper.findProvidedRole(intermediateComponent, intermediateInterface);
+						OperationRequiredRole intermediateRequiredRole = RunnerHelper.findRequiredRole(requiringComponent, intermediateInterface);
+						intermediateConnector.setProvidedRole_AssemblyConnector(intermediateProvidedRole);
+						intermediateConnector.setRequiredRole_AssemblyConnector(intermediateRequiredRole);
+						connectorsToAdd.add(intermediateConnector);
+						//
+						Trace connectorTrace = TraceFactory.eINSTANCE.createTrace();
+						connectorTrace.setName(TRACE_AssemblyConnector);
+						connectorTrace.getSource().add((EObject) oldConnector);
+						connectorTrace.getTarget().add((EObject) intermediateConnector);
+						traceRoot.getSubTraces().add(connectorTrace);
+					}
+				}
+			}
+		}
+		//Create new assembly connectors for required interfaces from the intermediate
+		for(RequiredRole requiredRole : intermediateComponent.getRequiredRoles_InterfaceRequiringEntity()) {
+			if(requiredRole instanceof OperationRequiredRole) {
+				OperationRequiredRole requiringRole = (OperationRequiredRole) requiredRole;
+				OperationInterface requiredInterface = requiringRole.getRequiredInterface__OperationRequiredRole();
+				BasicComponent providingComponent = null;
+				OperationProvidedRole providingRole = null;
+				Iterator<BasicComponent> componentIterator = components.iterator();
+				while(componentIterator.hasNext() && providingComponent == null && providingRole == null) {
+					BasicComponent component = componentIterator.next();
+					Iterator<ProvidedRole> providedRoleIterator = component.getProvidedRoles_InterfaceProvidingEntity().iterator();
+					while(providedRoleIterator.hasNext() && providingComponent == null && providingRole == null) {
+						ProvidedRole providedRole = providedRoleIterator.next();
+						if(providedRole instanceof OperationProvidedRole) {
+							OperationProvidedRole operationProvidedRole = (OperationProvidedRole) providedRole;
+							if(operationProvidedRole.getProvidedInterface__OperationProvidedRole().equals(requiredInterface)) {
+								providingComponent = component;
+								providingRole = operationProvidedRole;
+							}
+						}
+					}
+				}
+				List<AssemblyContext> providingAssemblyContexts = RunnerHelper.findAssemblyContexts(providingComponent, systemRoot);
+				for(AssemblyContext providingAssemblyContext : providingAssemblyContexts) {
+					AssemblyConnector newConnector = CompositionFactory.eINSTANCE.createAssemblyConnector();
+					newConnector.setEntityName("Connector " + providingAssemblyContext.getEntityName() + " -> "+ intermediateAssemblyContext.getEntityName());
+					newConnector.setProvidingAssemblyContext_AssemblyConnector(providingAssemblyContext);
+					newConnector.setRequiringAssemblyContext_AssemblyConnector(intermediateAssemblyContext);
+					newConnector.setProvidedRole_AssemblyConnector(providingRole);
+					newConnector.setRequiredRole_AssemblyConnector(requiringRole);
+					connectorsToAdd.add(newConnector);
+					//
+					Trace connectorTrace = TraceFactory.eINSTANCE.createTrace();
+					connectorTrace.setName(TRACE_AssemblyConnector);
+					//connectorTrace.getSource().add(null);
+					connectorTrace.getTarget().add((EObject) newConnector);
+					traceRoot.getSubTraces().add(connectorTrace);
+				}
+				
+			}
+		}
+		//Add all the connectors to the system model
+		systemRoot.getConnectors__ComposedStructure().addAll(connectorsToAdd);
+		//Find the first resource allocated to a assembly context
+		Allocation allocationRoot = RunnerHelper.getAllocationRoot(graph);
+		Map<ResourceContainer, Integer> counter = new HashMap<ResourceContainer, Integer>();
+		for(BasicComponent component : components) {
+			List<AssemblyContext> assemblyContexts = RunnerHelper.findAssemblyContexts(component, systemRoot);
+			for(AssemblyContext assemblyContext : assemblyContexts) {
+				ResourceContainer resourceContainer = RunnerHelper.findAllocationResourceContainer(assemblyContext, allocationRoot);
+				if(counter.containsKey(resourceContainer))
+					counter.put(resourceContainer, counter.get(resourceContainer) + 1);
+				else
+					counter.put(resourceContainer, 1);
+			}
+		}
+		//Allocate the assembly context to the resource with lower allocated resources
+		ResourceContainer bestContainer = null;
+		int minAllocation = Integer.MAX_VALUE;
+		for(ResourceContainer resourceContainer : counter.keySet()) {
+			if(bestContainer == null || counter.get(resourceContainer) < minAllocation) {
+				bestContainer = resourceContainer;
+				minAllocation = counter.get(resourceContainer);
+			}
+		}
+		AllocationContext intermediateAllocationContext = AllocationFactory.eINSTANCE.createAllocationContext();
+		intermediateAllocationContext.setEntityName("Allocation_" + intermediateAssemblyContext.getEntityName() + " <" + intermediateComponent.getEntityName() + ">");
+		intermediateAllocationContext.setAssemblyContext_AllocationContext(intermediateAssemblyContext);
+		intermediateAllocationContext.setResourceContainer_AllocationContext(bestContainer);
+		allocationRoot.getAllocationContexts_Allocation().add(intermediateAllocationContext);
+		//
+		Trace allocationTrace = TraceFactory.eINSTANCE.createTrace();
+		allocationTrace.setName(TRACE_AllocationContext);
+		//allocationTrace.getSource().add(null);
+		allocationTrace.getTarget().add((EObject) intermediateAllocationContext);
+		traceRoot.getSubTraces().add(allocationTrace);
+	}
+
 	private RuleApplication runFirstRule(EGraph graph) {
 		RuleApplication app = new RuleApplicationImpl(engine);
 		app.setEGraph(graph);
@@ -203,32 +400,41 @@ public class InsInterRunner extends PCMTransformerRunner {
 
 
 	private UnitApplication runThirdRule(EGraph graph) {
-		UnitApplication appLoop = new UnitApplicationImpl(engine);
-		appLoop.setEGraph(graph);
-		LoopUnit loop = new LoopUnitImpl();
-		loop.setSubUnit(rewireComponents2Intermediary);
-		appLoop.setUnit(loop);
-		boolean success = appLoop.execute(monitor);
+		UnitApplication app = new UnitApplicationImpl(engine);
+		app.setEGraph(graph);
+		app.setUnit(rewireComponents2IntermediaryLoop);
+		boolean success = app.execute(monitor);
 		if(success)
 			System.out.println("Successfully reconnected existing components to the intermediate component and intermediate interface");
 		else
 			System.out.println("Could not reconnect existing components to the intermediate component and intermediate interface");
-		return appLoop;
+		return app;
 	}
 
 
 	private UnitApplication runFourthRule(EGraph graph) {
-		UnitApplication appLoop = new UnitApplicationImpl(engine);
-		appLoop.setEGraph(graph);
-		LoopUnit loop = new LoopUnitImpl();
-		loop.setSubUnit(removeDuplicateRequiredRoles);
-		appLoop.setUnit(loop);
-		boolean success = appLoop.execute(monitor);
+		UnitApplication app = new UnitApplicationImpl(engine);
+		app.setEGraph(graph);
+		app.setUnit(removeDuplicateRequiredRolesLoop);
+		boolean success = app.execute(monitor);
 		if(success)
 			System.out.println("Successfully removed duplicate required roles");
 		else
 			System.out.println("Could not remove duplicate required roles");
-		return appLoop;
+		return app;
+	}
+	
+	private void runLastRule(EGraph graph) {
+		//Removing all the traces
+		Trace root = RunnerHelper.getTraceRoot(graph);
+		List<Trace> assemblyConnectors = RunnerHelper.getTraces(root, TRACE_AssemblyConnector, true);
+		for(Trace trace : assemblyConnectors) {
+			if(trace.getSource().size() > 0) {
+				EObject oldAssemblyConnector = (EObject) trace.getSource().get(0);
+				EcoreUtil.delete((EObject) oldAssemblyConnector, false);
+			}
+		}
+		//EcoreUtil.delete((EObject) root, true);
 	}
 
 
@@ -393,20 +599,20 @@ public class InsInterRunner extends PCMTransformerRunner {
 	public static void main(String[] args) {
 		String dirPath = "src/edu/squat/transformations/modifiability/insinter";
 		String henshinFilename = "insinter-modular.henshin";
-		String repositoryFilename;
-		String resultRepositoryFilename;
+		String repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, usageFilename;
+		String resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename, resultUsageFilename;
 
 		InsInterRunner runner = new InsInterRunner();
 
 		//Individual testing
 		repositoryFilename = "insert-test.repository";
 		resultRepositoryFilename = "insert-test-" + "#REPLACEMENT#" + ".repository";
-		runner.run(dirPath, repositoryFilename, henshinFilename, resultRepositoryFilename, true);
+		//runner.run(dirPath, repositoryFilename, henshinFilename, resultRepositoryFilename, true);
 		
 		//Multiple testing
 		repositoryFilename = "insert-mult.repository";
 		resultRepositoryFilename = "insert-mult-" + "#REPLACEMENT#" + ".repository";
-		runner.run(dirPath, repositoryFilename, henshinFilename, resultRepositoryFilename, true);
+		//runner.run(dirPath, repositoryFilename, henshinFilename, resultRepositoryFilename, true);
 		
 		//MediaStore3 testing
 		repositoryFilename = "ms.repository";
@@ -422,5 +628,20 @@ public class InsInterRunner extends PCMTransformerRunner {
 		repositoryFilename = "stplus.repository";
 		resultRepositoryFilename = "stplus-" + "#REPLACEMENT#" + ".repository";
 		//runner.run(dirPath, repositoryFilename, henshinFilename, resultRepositoryFilename, true);
+		
+		//Complete Individual testing
+		repositoryFilename = "insert-test.repository";
+		systemFilename = "insert-test.system";
+		resourceEnvironmentFilename = "insert-test.resourceenvironment";
+		allocationFilename = "insert-test.allocation";
+		resultRepositoryFilename = "insert-test-" + "#REPLACEMENT#" + ".repository";
+		resultSystemFilename = "insert-test-" + "#REPLACEMENT#" + ".system";
+		resultResourceEnvironmentFilename = "insert-test-" + "#REPLACEMENT#" + ".resourceenvironment";
+		resultAllocationFilename = "insert-test-" + "#REPLACEMENT#" + ".allocation";
+		runner.run(dirPath, 
+				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename,
+				henshinFilename, 
+				resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename,
+				true);
 	}
 }
