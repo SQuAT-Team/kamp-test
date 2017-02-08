@@ -301,6 +301,24 @@ public class InsInterRunner extends PCMTransformerRunner {
 		}
 		//Add all the connectors to the system model
 		systemRoot.getConnectors__ComposedStructure().addAll(connectorsToAdd);
+		//Filter duplicated connections
+		List<AssemblyConnector> duplicatedConnectors = new ArrayList<AssemblyConnector>();
+		for(int i = 0; i < systemRoot.getConnectors__ComposedStructure().size() - 1; i++) {
+			Connector connectorI = systemRoot.getConnectors__ComposedStructure().get(i);
+			if(connectorI instanceof AssemblyConnector) {
+				AssemblyConnector assemblyConnectorI = (AssemblyConnector) connectorI;
+				for(int j = i + 1; j < systemRoot.getConnectors__ComposedStructure().size() && !duplicatedConnectors.contains(assemblyConnectorI); j++) {
+					Connector connectorJ = systemRoot.getConnectors__ComposedStructure().get(j);
+					if(connectorJ instanceof AssemblyConnector) {
+						AssemblyConnector assemblyConnectorJ = (AssemblyConnector) connectorJ;
+						if(this.isDuplicated(assemblyConnectorI, assemblyConnectorJ)) {
+							duplicatedConnectors.add(assemblyConnectorJ);
+						}
+					}
+				}
+			}
+		}
+		systemRoot.getConnectors__ComposedStructure().removeAll(duplicatedConnectors);
 		//Find the first resource allocated to a assembly context
 		Allocation allocationRoot = RunnerHelper.getAllocationRoot(graph);
 		Map<ResourceContainer, Integer> counter = new HashMap<ResourceContainer, Integer>();
@@ -336,13 +354,21 @@ public class InsInterRunner extends PCMTransformerRunner {
 		traceRoot.getSubTraces().add(allocationTrace);
 	}
 
+	private boolean isDuplicated(AssemblyConnector assemblyConnectorI, AssemblyConnector assemblyConnectorJ) {
+		return 
+				assemblyConnectorI.getProvidingAssemblyContext_AssemblyConnector().equals(assemblyConnectorJ.getProvidingAssemblyContext_AssemblyConnector()) &&
+				assemblyConnectorI.getRequiringAssemblyContext_AssemblyConnector().equals(assemblyConnectorJ.getRequiringAssemblyContext_AssemblyConnector()) &&
+				assemblyConnectorI.getProvidedRole_AssemblyConnector().equals(assemblyConnectorJ.getProvidedRole_AssemblyConnector()) &&
+				assemblyConnectorI.getRequiredRole_AssemblyConnector().equals(assemblyConnectorJ.getRequiredRole_AssemblyConnector());
+	}
+
+
 	private RuleApplication runFirstRule(EGraph graph) {
 		RuleApplication app = new RuleApplicationImpl(engine);
 		app.setEGraph(graph);
 		app.setRule(markComponent2Isolate);
 		return app;
 	}
-
 
 	private RuleApplication runSecondRule(EGraph graph, String componentName, String interfaceName) {
 		RuleApplication app = new RuleApplicationImpl(engine);
