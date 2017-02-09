@@ -112,6 +112,7 @@ public class SplitRespRunner extends PCMTransformerRunner {
 		engine = new EngineImpl();
 		//engine.getOptions().put(engine.OPTION_CHECK_DANGLING, false);
 		
+		//TODO: Extend to n interfaces and do it like we make the other transformation (marking everything at once and avoiding undo)
 		//Find all possible matches for applying the tactic by checking the first rule
 		List<Match> matches = this.findMatchesFirstRule();
 		//For all matchings
@@ -232,6 +233,7 @@ public class SplitRespRunner extends PCMTransformerRunner {
 		return app;
 	}
 	
+	//TODO: Check the SEFF to see if we need to rewire the interfaces...
 	private RuleApplication runFourthRule(EGraph graph) {
 		RuleApplication app = new RuleApplicationImpl(engine);
 		app.setEGraph(graph);

@@ -407,6 +407,7 @@ public class InsInterRunner extends PCMTransformerRunner {
 
 
 	private void createSEFF(BasicComponent newComponent, OperationInterface newInterface) {
+		//TODO: Create external invocation in SEFF
 		SeffFactory factory = SeffFactory.eINSTANCE;
 		for(OperationSignature signature : newInterface.getSignatures__OperationInterface()) {
 			ResourceDemandingSEFF seff = factory.createResourceDemandingSEFF();
