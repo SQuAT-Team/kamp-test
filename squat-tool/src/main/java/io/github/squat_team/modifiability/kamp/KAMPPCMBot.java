@@ -77,12 +77,14 @@ public class KAMPPCMBot extends AbstractPCMBot {
 			//Run Change Impact Analyses
 			List<Activity> activities = KAMPHeadlessRunner.runAnalysis(baseAV, changedAV);
 			//Create the result
-			PCMResult result = new PCMResult(ResponseMeasureType.NUMERIC);
+			PCMResult result = null;
 			if(evaluationType.equals(TYPE_ELEMENTS)) {
+				result = new PCMResult(ResponseMeasureType.NUMERIC);
 				int changes = this.computeElementsReponse(activities);
 				result.setResponse(new Integer(changes));
 			}
 			else if(evaluationType.equals(TYPE_COMPLEXITY)) {
+				result = new PCMResult(ResponseMeasureType.DECIMAL);
 				float complexity = this.computeComplexityReponse(activities);
 				result.setResponse(new Float(complexity));
 			}
@@ -116,11 +118,11 @@ public class KAMPPCMBot extends AbstractPCMBot {
 				
 				BasicComponent component= (BasicComponent) activity.getElement();
 				//System.out.println(component.getEntityName());
-				int componentComplexity=getComplexityForComponent(component);
+				float componentComplexity=getComplexityForComponent(component);
 				if(componentIsMappedInScenario(component))
-					complexityResponse=complexityResponse+componentComplexity;
+					complexityResponse=(float) (complexityResponse+Math.pow(componentComplexity, 2));
 				else
-					complexityResponse=complexityResponse+componentComplexity/2;
+					complexityResponse=(float) (complexityResponse+Math.pow(componentComplexity, 2)/2);
 			}else{
 				System.out.println(activity.getElementType().name());
 				System.out.println("Implement this brach please");
@@ -152,14 +154,14 @@ public class KAMPPCMBot extends AbstractPCMBot {
 	}
 	private int getComplexityForComponent(BasicComponent component){
 		//For the moment I'm calculating the complexity of the component based on the number of operations in the interfaces provided
-		//System.out.println(component.getEntityName());
+		System.out.println(component.getEntityName());
 		int operations=0;
 		EList roles=component.getProvidedRoles_InterfaceProvidingEntity();
 		for (Iterator iterator = roles.iterator(); iterator.hasNext();) {
 			OperationProvidedRole role = (OperationProvidedRole) iterator.next();
-			//for(OperationSignature signature : role.getProvidedInterface__OperationProvidedRole().getSignatures__OperationInterface()){
-				//System.out.println(signature.getEntityName());
-			//}
+			for(OperationSignature signature : role.getProvidedInterface__OperationProvidedRole().getSignatures__OperationInterface()){
+				System.out.println(signature.getEntityName());
+			}
 			operations=operations+ role.getProvidedInterface__OperationProvidedRole().getSignatures__OperationInterface().size();
 		}
 		return operations;
