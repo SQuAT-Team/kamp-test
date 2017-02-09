@@ -1,12 +1,21 @@
 package io.github.squat_team.modifiability.kamp;
 
+import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.palladiosimulator.pcm.core.entity.InterfaceProvidingEntity;
 import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.repository.OperationInterface;
+import org.palladiosimulator.pcm.repository.OperationProvidedRole;
+import org.palladiosimulator.pcm.repository.OperationSignature;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
+import org.palladiosimulator.pcm.repository.impl.BasicComponentImpl;
+import org.palladiosimulator.pcm.repository.impl.OperationProvidedRoleImpl;
 
 import edu.kit.ipd.sdq.kamp.core.Activity;
+import edu.kit.ipd.sdq.kamp.core.ActivityElementType;
 import edu.kit.ipd.sdq.kamp.core.ArchitectureModelFactoryFacade;
 import edu.kit.ipd.sdq.kamp.core.ArchitectureModelLookup;
 import edu.kit.ipd.sdq.kamp.core.ArchitectureVersion;
@@ -28,7 +37,7 @@ public class KAMPPCMBot extends AbstractPCMBot {
 	protected ArchitectureVersion baseAV;
 	protected ArchitectureVersion changedAV;
 	//
-	private String evaluationType = TYPE_ELEMENTS;
+	private String evaluationType = TYPE_COMPLEXITY;
 	
 	public KAMPPCMBot(PCMScenario scenario) {
 		super(scenario);
@@ -73,9 +82,9 @@ public class KAMPPCMBot extends AbstractPCMBot {
 				int changes = this.computeElementsReponse(activities);
 				result.setResponse(new Integer(changes));
 			}
-			else if(evaluationType.equals(TYPE_ELEMENTS)) {
-				int complexity = this.computeComplexityReponse(activities);
-				result.setResponse(new Integer(complexity));
+			else if(evaluationType.equals(TYPE_COMPLEXITY)) {
+				float complexity = this.computeComplexityReponse(activities);
+				result.setResponse(new Float(complexity));
 			}
 			scenarioResult.setResult(result);	
 		} catch (Exception e) {
@@ -99,9 +108,61 @@ public class KAMPPCMBot extends AbstractPCMBot {
 		return numberOfChanges;
 	}
 	
-	private int computeComplexityReponse(List<Activity> activities) {
-		//TODO: SANTIAGO
-		return 0;
+	private float computeComplexityReponse(List<Activity> activities) {
+		//We compute the complexity of a component based on tje number of operations  
+		float complexityResponse=0;
+		for (Activity activity : activities) {
+			if(activity.getElementType()==ActivityElementType.BASICCOMPONENT){
+				
+				BasicComponent component= (BasicComponent) activity.getElement();
+				//System.out.println(component.getEntityName());
+				int componentComplexity=getComplexityForComponent(component);
+				if(componentIsMappedInScenario(component))
+					complexityResponse=complexityResponse+componentComplexity;
+				else
+					complexityResponse=complexityResponse+componentComplexity/2;
+			}else{
+				System.out.println(activity.getElementType().name());
+				System.out.println("Implement this brach please");
+			}
+			
+		}
+		//BasicComponent basicComponent = (BasicComponent) ArchitectureModelLookup.lookUpComponentByName(changedAV, componentName);
+		return complexityResponse;
+	}
+	
+	private boolean componentIsMappedInScenario(BasicComponent component){
+		ModifiabilityPCMScenario modifiabilityScenario=(ModifiabilityPCMScenario) scenario;
+		for(ModifiabilityInstruction change : modifiabilityScenario.getChanges()){
+			switch(change.element) {
+				case COMPONENT:
+					String componentName = change.parameters.get("name");
+					BasicComponent basicComponent = ArchitectureModelFactoryFacade.createBasicComponent(changedAV, componentName);
+					if(basicComponent==component)
+						return true;
+					break;
+				case INTERFACE:
+					String interfaceName = change.parameters.get("name");
+					OperationInterface operationInterface = ArchitectureModelFactoryFacade.createInterface(changedAV, interfaceName);
+					 //I'm not sure what we'll do when we map an interface instead of a component
+					break;
+			}
+		}
+		return false;
+	}
+	private int getComplexityForComponent(BasicComponent component){
+		//For the moment I'm calculating the complexity of the component based on the number of operations in the interfaces provided
+		//System.out.println(component.getEntityName());
+		int operations=0;
+		EList roles=component.getProvidedRoles_InterfaceProvidingEntity();
+		for (Iterator iterator = roles.iterator(); iterator.hasNext();) {
+			OperationProvidedRole role = (OperationProvidedRole) iterator.next();
+			//for(OperationSignature signature : role.getProvidedInterface__OperationProvidedRole().getSignatures__OperationInterface()){
+				//System.out.println(signature.getEntityName());
+			//}
+			operations=operations+ role.getProvidedInterface__OperationProvidedRole().getSignatures__OperationInterface().size();
+		}
+		return operations;
 	}
 	
 	private void setupChangedModel() throws Exception {

@@ -21,7 +21,7 @@ import io.github.squat_team.modifiability.ModifiabilityPCMScenario;
 import io.github.squat_team.util.SQuATHelper;
 
 public class SimpleTacticsPlusTest {
-	private static String machinePath = "/Users/alejandrorago/Documents/Implementacion/Repositorios/kamp-test/squat-tool/src/test/resources/";
+	private static String machinePath = "/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/src/test/resources/";
 	private static String dirPath = machinePath + "io/github/squat_team/casestudies/SimpleTactics+/";
 	private static String stplus_base = "stplus";
 	private static String stplus_alt0 = "stplus-0-Payment System";
