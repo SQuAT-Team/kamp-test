@@ -96,6 +96,8 @@ public class KAMPPCMBot extends AbstractPCMBot {
 				result.setResponse(new Integer(changes));
 			}
 			else if(evaluationType.equals(TYPE_COMPLEXITY)) {
+				
+				
 				result = new PCMResult(ResponseMeasureType.DECIMAL);
 				float complexity = this.computeComplexityReponse(activities);
 				result.setResponse(new Float(complexity));
@@ -164,9 +166,9 @@ public class KAMPPCMBot extends AbstractPCMBot {
 		}
 		return false;
 	}
-	private int getComplexityForComponent(BasicComponent component){
+	public int getComplexityForComponent(BasicComponent component){
 		//The complexity of the component is based on the kind of SEFFs that it containts
-		System.out.println(component.getEntityName());
+		//System.out.println(component.getEntityName());
 		int operations=0;
 		
 		EList<ServiceEffectSpecification> seffs=component.getServiceEffectSpecifications__BasicComponent();
@@ -176,8 +178,8 @@ public class KAMPPCMBot extends AbstractPCMBot {
 			if(serviceEffectSpecification instanceof ResourceDemandingSEFFImpl){
 				ResourceDemandingSEFFImpl resourceSEFF=(ResourceDemandingSEFFImpl) serviceEffectSpecification;
 				EList<AbstractAction> steps=resourceSEFF.getSteps_Behaviour();
-				activitiesValue = calculateComplexityForSteps(steps);
-				System.out.println(steps.size());
+				activitiesValue = activitiesValue+calculateComplexityForSteps(steps);
+			//	System.out.println(steps.size());
 			}
 			else{
 				System.out.println("ERROR: Without implementation. Please Implement for ServiceåEffectSpecificationImpl");

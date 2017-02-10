@@ -3,7 +3,9 @@ package io.github.squat_team.modifiability.kamp;
 import org.junit.Assert;
 import org.junit.Test;
 import org.palladiosimulator.pcm.allocation.Allocation;
+import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.repository.Repository;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
 import org.palladiosimulator.pcm.system.System;
 import org.palladiosimulator.pcm.usagemodel.UsageModel;
@@ -98,7 +100,7 @@ public class SimpleTacticsPlusTest {
 		ModifiabilityInstruction i2 = new ModifiabilityInstruction();
 		i2.operation = ModifiabilityOperation.MODIFY;
 		i2.element = ModifiabilityElement.COMPONENT;
-		i2.parameters.put("name", "BusinessTripMgmr");
+		i2.parameters.put("name", "BusinessTripMgmt");
 		scenario.addChange(i2);
 		return scenario;
 	}
@@ -110,6 +112,13 @@ public class SimpleTacticsPlusTest {
 		Allocation allocation = SQuATHelper.loadAllocationModel(baseAllocationFile[0]);
 		UsageModel usageModel = SQuATHelper.loadUsageModel(baseUsageFile[0]);
 		PCMArchitectureInstance instance = new PCMArchitectureInstance(name, repository, system, allocation, resourceEnvironment, usageModel);
+		
+		/*java.lang.System.out.println("SimpleTacticsPlus");
+		for(RepositoryComponent component:repository.getComponents__Repository()){
+			KAMPPCMBot bot = new KAMPPCMBot(null);
+			java.lang.System.out.println(component.getEntityName()+" "+bot.getComplexityForComponent((BasicComponent) component));
+		}*/
+		
 		return instance;
 	}
 	
@@ -120,6 +129,13 @@ public class SimpleTacticsPlusTest {
 		Allocation allocation = SQuATHelper.loadAllocationModel(baseAllocationFile[1]);
 		UsageModel usageModel = SQuATHelper.loadUsageModel(baseUsageFile[1]);
 		PCMArchitectureInstance instance = new PCMArchitectureInstance(name, repository, system, allocation, resourceEnvironment, usageModel);
+		
+		/*java.lang.System.out.println("SimpleTacticsPlusAlt0");
+		for(RepositoryComponent component:repository.getComponents__Repository()){
+			KAMPPCMBot bot = new KAMPPCMBot(null);
+			java.lang.System.out.println(component.getEntityName()+" "+bot.getComplexityForComponent((BasicComponent) component));
+		}*/
+		
 		return instance;
 	}
 	
@@ -130,6 +146,13 @@ public class SimpleTacticsPlusTest {
 		Allocation allocation = SQuATHelper.loadAllocationModel(baseAllocationFile[2]);
 		UsageModel usageModel = SQuATHelper.loadUsageModel(baseUsageFile[2]);
 		PCMArchitectureInstance instance = new PCMArchitectureInstance(name, repository, system, allocation, resourceEnvironment, usageModel);
+		
+		/*java.lang.System.out.println("SimpleTacticsPlusAlt1");
+		for(RepositoryComponent component:repository.getComponents__Repository()){
+			KAMPPCMBot bot = new KAMPPCMBot(null);
+			java.lang.System.out.println(component.getEntityName()+" "+bot.getComplexityForComponent((BasicComponent) component));
+		}*/
+		
 		return instance;
 	}
 }

@@ -175,7 +175,6 @@
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_C1Z3IO1jEeaVDI-nCmFxWg" entityName="Payment System-B">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_C1Z3Ie1jEeaVDI-nCmFxWg" providedInterface__OperationProvidedRole="_zdIuAOsyEd-swe4bkXmV_Q"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_C1iaAe1jEeaVDI-nCmFxWg" requiredInterface__OperationRequiredRole="_pPmroC6IEd-Jla2o7wkBzQ"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_34ISoOsyEd-swe4bkXmV_Q" describedService__SEFF="_1cTwcOsyEd-swe4bkXmV_Q">
       <steps_Behaviour xsi:type="seff:StartAction" id="_34JgwOsyEd-swe4bkXmV_Q" successor_AbstractAction="_u_HY0OtZEd-m3_hR0FtH3Q"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_34KH0OsyEd-swe4bkXmV_Q" predecessor_AbstractAction="_u_HY0OtZEd-m3_hR0FtH3Q"/>
@@ -618,7 +617,6 @@
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_C1R7UO1jEeaVDI-nCmFxWg" entityName="Payment System-A">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_C1R7Ue1jEeaVDI-nCmFxWg" providedInterface__OperationProvidedRole="_pPmroC6IEd-Jla2o7wkBzQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_C1iaAO1jEeaVDI-nCmFxWg" requiredInterface__OperationRequiredRole="_zdIuAOsyEd-swe4bkXmV_Q"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_qBCTIC6JEd-Jla2o7wkBzQ" describedService__SEFF="_8A9Bla7LEd-Z7e7zQl8I9w">
       <steps_Behaviour xsi:type="seff:StartAction" id="_qUBgkC6JEd-Jla2o7wkBzQ" successor_AbstractAction="_QG_9kC6KEd-Jla2o7wkBzQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_qUBgkS6JEd-Jla2o7wkBzQ" predecessor_AbstractAction="_QG_9kC6KEd-Jla2o7wkBzQ"/>
