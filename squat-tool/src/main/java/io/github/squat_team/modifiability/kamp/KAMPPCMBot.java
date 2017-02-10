@@ -13,6 +13,18 @@ import org.palladiosimulator.pcm.repository.OperationSignature;
 import org.palladiosimulator.pcm.repository.ProvidedRole;
 import org.palladiosimulator.pcm.repository.impl.BasicComponentImpl;
 import org.palladiosimulator.pcm.repository.impl.OperationProvidedRoleImpl;
+import org.palladiosimulator.pcm.seff.AbstractAction;
+import org.palladiosimulator.pcm.seff.AbstractBranchTransition;
+import org.palladiosimulator.pcm.seff.BranchAction;
+import org.palladiosimulator.pcm.seff.GuardedBranchTransition;
+import org.palladiosimulator.pcm.seff.LoopAction;
+import org.palladiosimulator.pcm.seff.ResourceDemandingBehaviour;
+import org.palladiosimulator.pcm.seff.SeffPackage;
+import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
+import org.palladiosimulator.pcm.seff.impl.InternalActionImpl;
+import org.palladiosimulator.pcm.seff.impl.ResourceDemandingSEFFImpl;
+import org.palladiosimulator.pcm.seff.impl.StartActionImpl;
+import org.palladiosimulator.pcm.seff.impl.StopActionImpl;
 
 import edu.kit.ipd.sdq.kamp.core.Activity;
 import edu.kit.ipd.sdq.kamp.core.ActivityElementType;
@@ -153,10 +165,27 @@ public class KAMPPCMBot extends AbstractPCMBot {
 		return false;
 	}
 	private int getComplexityForComponent(BasicComponent component){
-		//For the moment I'm calculating the complexity of the component based on the number of operations in the interfaces provided
+		//The complexity of the component is based on the kind of SEFFs that it containts
 		System.out.println(component.getEntityName());
 		int operations=0;
-		EList roles=component.getProvidedRoles_InterfaceProvidingEntity();
+		
+		EList<ServiceEffectSpecification> seffs=component.getServiceEffectSpecifications__BasicComponent();
+		int activitiesValue=0;
+		for (Iterator iterator = seffs.iterator(); iterator.hasNext();) {
+			ServiceEffectSpecification serviceEffectSpecification = (ServiceEffectSpecification) iterator.next();
+			if(serviceEffectSpecification instanceof ResourceDemandingSEFFImpl){
+				ResourceDemandingSEFFImpl resourceSEFF=(ResourceDemandingSEFFImpl) serviceEffectSpecification;
+				EList<AbstractAction> steps=resourceSEFF.getSteps_Behaviour();
+				activitiesValue = calculateComplexityForSteps(steps);
+				System.out.println(steps.size());
+			}
+			else{
+				System.out.println("ERROR: Without implementation. Please Implement for ServiceåEffectSpecificationImpl");
+			}
+			
+		}
+		
+		/*EList roles=component.getProvidedRoles_InterfaceProvidingEntity();
 		for (Iterator iterator = roles.iterator(); iterator.hasNext();) {
 			OperationProvidedRole role = (OperationProvidedRole) iterator.next();
 			for(OperationSignature signature : role.getProvidedInterface__OperationProvidedRole().getSignatures__OperationInterface()){
@@ -164,7 +193,81 @@ public class KAMPPCMBot extends AbstractPCMBot {
 			}
 			operations=operations+ role.getProvidedInterface__OperationProvidedRole().getSignatures__OperationInterface().size();
 		}
-		return operations;
+		return operations;*/
+		return activitiesValue;
+	}
+
+	private int calculateComplexityForSteps(EList<AbstractAction> steps) {
+		int activitiesValue=0;
+		for (Iterator iterator2 = steps.iterator(); iterator2.hasNext();) {
+			AbstractAction abstractAction = (AbstractAction) iterator2.next();
+			switch (abstractAction.eClass().getClassifierID())
+		    {
+		    case SeffPackage.STOP_ACTION:
+		    	activitiesValue=activitiesValue+0;//The value of this activity is 0 because it is not complex
+		    	break;
+		    case SeffPackage.RESOURCE_DEMANDING_BEHAVIOUR:
+		    	break;
+		    case SeffPackage.BRANCH_ACTION:
+		    	activitiesValue=activitiesValue+2;
+		    	BranchAction action=(BranchAction) abstractAction;
+		    	for(AbstractBranchTransition branch:action.getBranches_Branch()){
+		    		ResourceDemandingBehaviour rdb=branch.getBranchBehaviour_BranchTransition();
+		    		activitiesValue=activitiesValue+calculateComplexityForSteps(rdb.getSteps_Behaviour());	
+		    	}
+		    	break;
+		    case SeffPackage.START_ACTION:
+		    	activitiesValue=activitiesValue+0;//The value of this activity is 0 because it is not complex
+		    	break;
+		    case SeffPackage.RESOURCE_DEMANDING_SEFF:
+		    	break;
+		    case SeffPackage.RESOURCE_DEMANDING_INTERNAL_BEHAVIOUR:
+		    	break;
+		    case SeffPackage.RELEASE_ACTION:
+		    	break;
+		    case SeffPackage.LOOP_ACTION:
+		    	activitiesValue=activitiesValue+2;
+		    	LoopAction loopAction=(LoopAction) abstractAction;
+		    	activitiesValue=activitiesValue+calculateComplexityForSteps(loopAction.getBodyBehaviour_Loop().getSteps_Behaviour());	
+		    	break;
+		    case SeffPackage.FORK_ACTION:
+		    	activitiesValue=activitiesValue+2;
+		    	break;
+		    case SeffPackage.FORKED_BEHAVIOUR:
+		    	break;
+		    case SeffPackage.SYNCHRONISATION_POINT:
+		    	break;
+		    case SeffPackage.EXTERNAL_CALL_ACTION:
+		    	activitiesValue=activitiesValue+2;
+		    	break;
+		    case SeffPackage.CALL_RETURN_ACTION:
+		    	activitiesValue=activitiesValue+1;
+		    	break;
+		    case SeffPackage.PROBABILISTIC_BRANCH_TRANSITION:
+		    	break;
+		    case SeffPackage.ACQUIRE_ACTION:
+		    	break;
+		    case SeffPackage.COLLECTION_ITERATOR_ACTION:
+		    	break;
+		    case SeffPackage.GUARDED_BRANCH_TRANSITION:
+		    	break;
+		    case SeffPackage.SET_VARIABLE_ACTION:
+		    	activitiesValue=activitiesValue+1;
+		    	break;
+		    case SeffPackage.INTERNAL_CALL_ACTION:
+		    	activitiesValue=activitiesValue+1;
+		    	break;
+		    case SeffPackage.EMIT_EVENT_ACTION:
+		    	break;
+		    case SeffPackage.INTERNAL_ACTION:
+		    	activitiesValue=activitiesValue+1;
+		    	break;
+		    default:
+		        throw new IllegalArgumentException("The class '" + abstractAction.eClass().getName() + "' is not a valid classifier");
+		    }
+			
+		}
+		return activitiesValue;
 	}
 	
 	private void setupChangedModel() throws Exception {
