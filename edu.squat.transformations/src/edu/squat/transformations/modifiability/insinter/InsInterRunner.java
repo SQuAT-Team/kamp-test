@@ -208,7 +208,7 @@ public class InsInterRunner extends PCMTransformerRunner {
 		//Create the assembly context
 		AssemblyContext intermediateAssemblyContext = CompositionFactory.eINSTANCE.createAssemblyContext();
 		intermediateAssemblyContext.setEncapsulatedComponent__AssemblyContext(intermediateComponent);
-		intermediateAssemblyContext.setEntityName("Assembly_" + intermediateComponent.getEntityName() + " <" + intermediateComponent.getEntityName() + ">");
+		intermediateAssemblyContext.setEntityName(RunnerHelper.getAssemblyContextName(intermediateComponent));
 		systemRoot.getAssemblyContexts__ComposedStructure().add(intermediateAssemblyContext);
 		Trace assemblyContextTrace = TraceFactory.eINSTANCE.createTrace();
 		assemblyContextTrace.setName(TRACE_AssemblyContext);
@@ -240,7 +240,7 @@ public class InsInterRunner extends PCMTransformerRunner {
 							//&& interfaces.contains(requiredRole.getRequiredInterface__OperationRequiredRole())
 							) {
 						AssemblyConnector intermediateConnector = CompositionFactory.eINSTANCE.createAssemblyConnector();
-						intermediateConnector.setEntityName("Connector " + intermediateAssemblyContext.getEntityName() + " -> "+ requiringAssemblyContext.getEntityName());
+						intermediateConnector.setEntityName(RunnerHelper.getAssemblyConnectorName(requiringAssemblyContext, intermediateAssemblyContext));
 						intermediateConnector.setProvidingAssemblyContext_AssemblyConnector(intermediateAssemblyContext);
 						intermediateConnector.setRequiringAssemblyContext_AssemblyConnector(requiringAssemblyContext);
 						OperationProvidedRole intermediateProvidedRole = RunnerHelper.findProvidedRole(intermediateComponent, intermediateInterface);
@@ -283,7 +283,7 @@ public class InsInterRunner extends PCMTransformerRunner {
 				List<AssemblyContext> providingAssemblyContexts = RunnerHelper.findAssemblyContexts(providingComponent, systemRoot);
 				for(AssemblyContext providingAssemblyContext : providingAssemblyContexts) {
 					AssemblyConnector newConnector = CompositionFactory.eINSTANCE.createAssemblyConnector();
-					newConnector.setEntityName("Connector " + providingAssemblyContext.getEntityName() + " -> "+ intermediateAssemblyContext.getEntityName());
+					newConnector.setEntityName(RunnerHelper.getAssemblyConnectorName(intermediateAssemblyContext, providingAssemblyContext));
 					newConnector.setProvidingAssemblyContext_AssemblyConnector(providingAssemblyContext);
 					newConnector.setRequiringAssemblyContext_AssemblyConnector(intermediateAssemblyContext);
 					newConnector.setProvidedRole_AssemblyConnector(providingRole);
@@ -342,7 +342,7 @@ public class InsInterRunner extends PCMTransformerRunner {
 			}
 		}
 		AllocationContext intermediateAllocationContext = AllocationFactory.eINSTANCE.createAllocationContext();
-		intermediateAllocationContext.setEntityName("Allocation_" + intermediateAssemblyContext.getEntityName() + " <" + intermediateComponent.getEntityName() + ">");
+		intermediateAllocationContext.setEntityName(RunnerHelper.getAllocationContextName(intermediateAssemblyContext));
 		intermediateAllocationContext.setAssemblyContext_AllocationContext(intermediateAssemblyContext);
 		intermediateAllocationContext.setResourceContainer_AllocationContext(bestContainer);
 		allocationRoot.getAllocationContexts_Allocation().add(intermediateAllocationContext);

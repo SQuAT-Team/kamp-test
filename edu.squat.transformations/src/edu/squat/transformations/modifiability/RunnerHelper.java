@@ -140,8 +140,8 @@ public class RunnerHelper {
 	private static void saveResult(HenshinResourceSet resourceSet, EGraph graph, String fileName, EObject modelRoot) {
 		try {
 			Resource resource = resourceSet.createResource(fileName);
-			//Trace traceRoot = RunnerHelper.getTraceRoot(graph);
 			resource.getContents().add(modelRoot);
+			//Trace traceRoot = RunnerHelper.getTraceRoot(graph);
 			//resource.getContents().add((EObject) traceRoot);
 			resource.save(null);
 		} catch (IOException e) {
@@ -183,5 +183,32 @@ public class RunnerHelper {
 				return allocationContext.getResourceContainer_AllocationContext();
 		}
 		return null;
+	}
+	
+	public static String getSplitIdentifier(BasicComponent component, OperationInterface operationInterface) {
+		int position = -1;
+		for(int i = 0; i < component.getProvidedRoles_InterfaceProvidingEntity().size() && position == -1; i++) {
+			OperationProvidedRole operationProvidedRole = (OperationProvidedRole) component.getProvidedRoles_InterfaceProvidingEntity().get(i);
+			if(operationProvidedRole.getProvidedInterface__OperationProvidedRole().equals(operationInterface))
+				position = i;
+		}
+		String identifier = getCharForNumber(position);
+		return identifier;
+	}
+	
+	public static String getCharForNumber(int i) {
+	    return i < 0 || i > 25 ? "?" : String.valueOf((char) ('A' + i));
+	}
+	
+	public static String getAssemblyContextName(BasicComponent encapsulatedComponent) {
+		return "Assembly_" + encapsulatedComponent.getEntityName() + " <" + encapsulatedComponent.getEntityName() + ">";
+	}
+	
+	public static String getAssemblyConnectorName(AssemblyContext requiringAssemblyContext, AssemblyContext providingAssemblyContext) {
+		return "Connector " + requiringAssemblyContext.getEntityName() + " -> " + providingAssemblyContext.getEntityName();
+	}
+	
+	public static String getAllocationContextName(AssemblyContext assemblyContext) {
+		return "Allocation_" + assemblyContext.getEntityName() + " <" + assemblyContext.getEncapsulatedComponent__AssemblyContext().getEntityName() + ">";
 	}
 }

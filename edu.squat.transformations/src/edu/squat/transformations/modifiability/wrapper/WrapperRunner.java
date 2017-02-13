@@ -30,6 +30,9 @@ import org.palladiosimulator.pcm.repository.OperationProvidedRole;
 import org.palladiosimulator.pcm.repository.OperationRequiredRole;
 import org.palladiosimulator.pcm.repository.OperationSignature;
 import org.palladiosimulator.pcm.repository.Parameter;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
+import org.palladiosimulator.pcm.repository.Repository;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
 import org.palladiosimulator.pcm.repository.RepositoryFactory;
 import org.palladiosimulator.pcm.repository.RequiredRole;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
@@ -46,6 +49,7 @@ import edu.squat.transformations.modifiability.Tactic;
 public class WrapperRunner extends PCMTransformerRunner {
 	private final static String TRACE_Wrapped = "wrap";
 	private final static String TRACE_Affected = "affected";
+	@SuppressWarnings("unused")
 	private final static String TRACE_Wrapper = "wrapper";
 	private final static String TRACE_Connection = "connection";
 	private final static String TRACE_AssemblyContext = "assembly-cont";
@@ -112,26 +116,24 @@ public class WrapperRunner extends PCMTransformerRunner {
 				RuleApplication thirdRule = this.runThirdRule(tempGraph);
 				
 				//Duplicating the interface for the intermediate
-				BasicComponent oldComponent = (BasicComponent) thirdRule.getResultParameterValue("cWrap");
 				OperationInterface oldInterface = (OperationInterface) thirdRule.getResultParameterValue("iWrap");	
 				BasicComponent newComponent = (BasicComponent) thirdRule.getResultParameterValue("cWrapper");
 				OperationInterface newInterface = (OperationInterface) thirdRule.getResultParameterValue("iWrapper");		
 				this.duplicateInterface(oldInterface, newInterface);
 				
 				//Save the name for the files
-				String componentName = oldComponent.getEntityName();
 				String interfaceName = oldInterface.getEntityName();
-				String fileName = componentName + "<" + interfaceName + ">";
+				String fileName = interfaceName;
 				
 				//Creating a service effect specification for the intermediate
-				this.createSEFF(oldComponent, oldInterface, newComponent, newInterface);
+				this.createSEFF(oldInterface, newComponent, newInterface);
 				
 				//Configuring and executing the fourth rule
 				this.runFourthRule(tempGraph);
 				
 				if(this.arePerformanceModelsLoaded()) {
 					//Adjust the system and allocation models by executing a monolithic method (ugly but fast)
-					this.fixSystemAndAllocation(tempGraph, oldComponent, oldInterface, newComponent, newInterface);
+					this.fixSystemAndAllocation(tempGraph, oldInterface, newComponent, newInterface);
 				}
 
 				//Clean up and delete old assembly connectors
@@ -176,12 +178,18 @@ public class WrapperRunner extends PCMTransformerRunner {
 	private List<Trace> computeCandidates(Trace root) {
 		List<Trace> candidates = new ArrayList<Trace>();
 		List<Trace> wraps = RunnerHelper.getTraces(root, TRACE_Wrapped, false);
-		for(Trace wrap : wraps) {
-			List<Trace> affectedComponents = RunnerHelper.getTraces(wrap, TRACE_Affected, false);
-			if(affectedComponents.size() > 1)
+		for(Trace wrap : wraps)
+			//if(this.isCandidate(wrap))
 				candidates.add(wrap);
-		}
 		return candidates;
+	}
+	
+	private boolean isCandidate(Trace wrap) {
+		List<Trace> affectedComponents = RunnerHelper.getTraces(wrap, TRACE_Affected, false);
+		if(affectedComponents.size() > 1)
+			return true;
+		else
+			return false;
 	}
 	
 	private List<Integer> transformToPointers(Trace root, List<Trace> candidateTraces) {
@@ -200,21 +208,36 @@ public class WrapperRunner extends PCMTransformerRunner {
 		return candidate;
 	}
 
-
-	private void fixSystemAndAllocation(EGraph graph, BasicComponent oldComponent, OperationInterface oldInterface, BasicComponent newComponent, OperationInterface newInterface) {
+	private void fixSystemAndAllocation(EGraph graph, OperationInterface oldInterface, BasicComponent newComponent, OperationInterface newInterface) {
 		Trace traceRoot = RunnerHelper.getTraceRoot(graph);
+		Repository repositoryRoot = RunnerHelper.getRepositoryRoot(graph);
 		org.palladiosimulator.pcm.system.System systemRoot = RunnerHelper.getSystemRoot(graph);
 		
 		//Create the assembly context
 		AssemblyContext wrapperAssemblyContext = CompositionFactory.eINSTANCE.createAssemblyContext();
 		wrapperAssemblyContext.setEncapsulatedComponent__AssemblyContext(newComponent);
-		wrapperAssemblyContext.setEntityName("Assembly_" + newComponent.getEntityName() + " <" + newComponent.getEntityName() + ">");
+		wrapperAssemblyContext.setEntityName(RunnerHelper.getAssemblyContextName(newComponent));
 		systemRoot.getAssemblyContexts__ComposedStructure().add(wrapperAssemblyContext);
 		Trace assemblyContextTrace = TraceFactory.eINSTANCE.createTrace();
 		assemblyContextTrace.setName(TRACE_AssemblyContext);
 		//assemblyContextTrace.getSource().add(null);
 		assemblyContextTrace.getTarget().add((EObject) wrapperAssemblyContext);
 		traceRoot.getSubTraces().add(assemblyContextTrace);
+		
+		//Find providing components
+		List<BasicComponent> providingComponents = new ArrayList<BasicComponent>();
+		for(RepositoryComponent component : repositoryRoot.getComponents__Repository()) {
+			if(component instanceof BasicComponent) {
+				BasicComponent basicComponent = (BasicComponent) component;
+				for(ProvidedRole providedRole : basicComponent.getProvidedRoles_InterfaceProvidingEntity()) {
+					if(providedRole instanceof OperationProvidedRole) {
+						OperationProvidedRole operationProvidedRole = (OperationProvidedRole) providedRole;
+						if(operationProvidedRole.getProvidedInterface__OperationProvidedRole().equals(oldInterface))
+							providingComponents.add(basicComponent);
+					}
+				}
+			}
+		}
 		
 		//Find affected components
 		List<BasicComponent> affectedComponents = new ArrayList<BasicComponent>();
@@ -240,9 +263,9 @@ public class WrapperRunner extends PCMTransformerRunner {
 				BasicComponent providingComponent = (BasicComponent) providingAssemblyContext.getEncapsulatedComponent__AssemblyContext();
 				BasicComponent requiringComponent = (BasicComponent) requiringAssemblyContext.getEncapsulatedComponent__AssemblyContext();
 				
-				if(providingComponent.equals(oldComponent) && affectedComponents.contains(requiringComponent)) {
+				if(providingComponents.contains(providingComponent) && affectedComponents.contains(requiringComponent)) {
 					AssemblyConnector wrapperConnector = CompositionFactory.eINSTANCE.createAssemblyConnector();
-					wrapperConnector.setEntityName("Connector " + wrapperAssemblyContext.getEntityName() + " -> "+ requiringAssemblyContext.getEntityName());
+					wrapperConnector.setEntityName(RunnerHelper.getAssemblyConnectorName(requiringAssemblyContext, wrapperAssemblyContext));
 					wrapperConnector.setProvidingAssemblyContext_AssemblyConnector(wrapperAssemblyContext);
 					wrapperConnector.setRequiringAssemblyContext_AssemblyConnector(requiringAssemblyContext);
 					OperationProvidedRole wrapperProvidedRole = RunnerHelper.findProvidedRole(newComponent, newInterface);
@@ -259,39 +282,43 @@ public class WrapperRunner extends PCMTransformerRunner {
 				}
 			}
 		}
-		//Create a new assembly connector for between the wrapper and the wrapped component
-		List<AssemblyContext> wrapAssemblyContexts = RunnerHelper.findAssemblyContexts(oldComponent, systemRoot);
-		for(AssemblyContext wrapAssemblyContext : wrapAssemblyContexts) {
-			AssemblyConnector wrapConnector = CompositionFactory.eINSTANCE.createAssemblyConnector();
-			wrapConnector.setEntityName("Connector " + wrapAssemblyContext.getEntityName() + " -> "+ wrapperAssemblyContext.getEntityName());
-			wrapConnector.setProvidingAssemblyContext_AssemblyConnector(wrapAssemblyContext);
-			wrapConnector.setRequiringAssemblyContext_AssemblyConnector(wrapperAssemblyContext);
-			OperationProvidedRole wrapProvidedRole = RunnerHelper.findProvidedRole(oldComponent, oldInterface);
-			OperationRequiredRole wrapRequiredRole = RunnerHelper.findRequiredRole(newComponent, oldInterface);
-			wrapConnector.setProvidedRole_AssemblyConnector(wrapProvidedRole);
-			wrapConnector.setRequiredRole_AssemblyConnector(wrapRequiredRole);
-			connectorsToAdd.add(wrapConnector);
-			//
-			Trace connectorTrace = TraceFactory.eINSTANCE.createTrace();
-			connectorTrace.setName(TRACE_AssemblyConnector);
-			//connectorTrace.getSource().add(null);
-			connectorTrace.getTarget().add((EObject) wrapConnector);
-			traceRoot.getSubTraces().add(connectorTrace);
+		//Create a new assembly connector between the wrapper and the wrapped component
+		for(BasicComponent oldComponent : providingComponents) {
+			List<AssemblyContext> wrapAssemblyContexts = RunnerHelper.findAssemblyContexts(oldComponent, systemRoot);
+			for(AssemblyContext wrapAssemblyContext : wrapAssemblyContexts) {
+				AssemblyConnector wrapConnector = CompositionFactory.eINSTANCE.createAssemblyConnector();
+				wrapConnector.setEntityName(RunnerHelper.getAssemblyConnectorName(wrapperAssemblyContext, wrapAssemblyContext));
+				wrapConnector.setProvidingAssemblyContext_AssemblyConnector(wrapAssemblyContext);
+				wrapConnector.setRequiringAssemblyContext_AssemblyConnector(wrapperAssemblyContext);
+				OperationProvidedRole wrapProvidedRole = RunnerHelper.findProvidedRole(oldComponent, oldInterface);
+				OperationRequiredRole wrapRequiredRole = RunnerHelper.findRequiredRole(newComponent, oldInterface);
+				wrapConnector.setProvidedRole_AssemblyConnector(wrapProvidedRole);
+				wrapConnector.setRequiredRole_AssemblyConnector(wrapRequiredRole);
+				connectorsToAdd.add(wrapConnector);
+				//
+				Trace connectorTrace = TraceFactory.eINSTANCE.createTrace();
+				connectorTrace.setName(TRACE_AssemblyConnector);
+				//connectorTrace.getSource().add(null);
+				connectorTrace.getTarget().add((EObject) wrapConnector);
+				traceRoot.getSubTraces().add(connectorTrace);
+			}
 		}
+		
 		//Add all the connectors to the system model
 		systemRoot.getConnectors__ComposedStructure().addAll(connectorsToAdd);
-
 		
 		//Find the resources allocated to assembly contexts encapsulating the old component
 		Allocation allocationRoot = RunnerHelper.getAllocationRoot(graph);
 		Map<ResourceContainer, Integer> counter = new HashMap<ResourceContainer, Integer>();
-		List<AssemblyContext> assemblyContexts = RunnerHelper.findAssemblyContexts(oldComponent, systemRoot);
-		for(AssemblyContext assemblyContext : assemblyContexts) {
-			ResourceContainer resourceContainer = RunnerHelper.findAllocationResourceContainer(assemblyContext, allocationRoot);
-			if(counter.containsKey(resourceContainer))
-				counter.put(resourceContainer, counter.get(resourceContainer) + 1);
-			else
-				counter.put(resourceContainer, 1);
+		for(BasicComponent oldComponent : providingComponents) {
+			List<AssemblyContext> assemblyContexts = RunnerHelper.findAssemblyContexts(oldComponent, systemRoot);
+			for(AssemblyContext assemblyContext : assemblyContexts) {
+				ResourceContainer resourceContainer = RunnerHelper.findAllocationResourceContainer(assemblyContext, allocationRoot);
+				if(counter.containsKey(resourceContainer))
+					counter.put(resourceContainer, counter.get(resourceContainer) + 1);
+				else
+					counter.put(resourceContainer, 1);
+			}
 		}
 		//Allocate the assembly context to the resource with higher allocated resources
 		ResourceContainer bestContainer = null;
@@ -303,7 +330,7 @@ public class WrapperRunner extends PCMTransformerRunner {
 			}
 		}
 		AllocationContext wrapperAllocationContext = AllocationFactory.eINSTANCE.createAllocationContext();
-		wrapperAllocationContext.setEntityName("Allocation_" + wrapperAssemblyContext.getEntityName() + " <" + newComponent.getEntityName() + ">");
+		wrapperAllocationContext.setEntityName(RunnerHelper.getAllocationContextName(wrapperAssemblyContext));
 		wrapperAllocationContext.setAssemblyContext_AllocationContext(wrapperAssemblyContext);
 		wrapperAllocationContext.setResourceContainer_AllocationContext(bestContainer);
 		allocationRoot.getAllocationContexts_Allocation().add(wrapperAllocationContext);
@@ -341,7 +368,6 @@ public class WrapperRunner extends PCMTransformerRunner {
 		return app;
 	}
 
-
 	private void duplicateInterface(OperationInterface oldInterface, OperationInterface newInterface) {
 		RepositoryFactory factory = RepositoryFactory.eINSTANCE;
 		for(OperationSignature signature : oldInterface.getSignatures__OperationInterface()) {
@@ -360,7 +386,7 @@ public class WrapperRunner extends PCMTransformerRunner {
 		System.out.println("Successfully duplicated the interface of the wrapped component into the wrapper");
 	}
 
-	private void createSEFF(BasicComponent oldComponent, OperationInterface oldInterface, BasicComponent newComponent, OperationInterface newInterface) {
+	private void createSEFF(OperationInterface oldInterface, BasicComponent newComponent, OperationInterface newInterface) {
 		SeffFactory factory = SeffFactory.eINSTANCE;
 		for(OperationSignature signature : newInterface.getSignatures__OperationInterface()) {
 			ResourceDemandingSEFF seff = factory.createResourceDemandingSEFF();
@@ -395,7 +421,6 @@ public class WrapperRunner extends PCMTransformerRunner {
 		}
 		return null;
 	}
-
 
 	private OperationSignature findExternalSignature(OperationSignature newSignature, OperationInterface oldInterface) {
 		for(OperationSignature oldSignature : oldInterface.getSignatures__OperationInterface()) {
