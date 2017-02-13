@@ -88,7 +88,7 @@ public class SimpleTacticsPlusTest {
 	
 
 	private PCMScenario createModifiabilityScenario() {
-		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
+		/*ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
 		PCMResult expectedResult = new PCMResult(ResponseMeasureType.DECIMAL);
 		expectedResult.setResponse(new Float(5));
 		scenario.setExpectedResponse(expectedResult);
@@ -101,7 +101,124 @@ public class SimpleTacticsPlusTest {
 		i2.operation = ModifiabilityOperation.MODIFY;
 		i2.element = ModifiabilityElement.COMPONENT;
 		i2.parameters.put("name", "BusinessTripMgmt");
+		scenario.addChange(i2);*/
+		
+		/*ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
+		PCMResult expectedResult = new PCMResult(ResponseMeasureType.DECIMAL);
+		expectedResult.setResponse(new Float(5));
+		scenario.setExpectedResponse(expectedResult);
+		ModifiabilityInstruction i1 = new ModifiabilityInstruction();
+		i1.operation = ModifiabilityOperation.MODIFY;
+		i1.element = ModifiabilityElement.INTERFACE;
+		i1.parameters.put("name", "IExternalPayment");
+		scenario.addChange(i1);
+		ModifiabilityInstruction i2 = new ModifiabilityInstruction();
+		i2.operation = ModifiabilityOperation.CREATE;
+		i2.element = ModifiabilityElement.OPERATION;
+		i2.parameters.put("iname", "IExternalPayment");
+		i2.parameters.put("oname", "specialPay");
 		scenario.addChange(i2);
+		ModifiabilityInstruction i3 = new ModifiabilityInstruction();
+		i3.operation = ModifiabilityOperation.MODIFY;
+		i3.element = ModifiabilityElement.COMPONENT;
+		i3.parameters.put("name", "BusinessTripMgmt");
+		scenario.addChange(i3);*/
+		
+		
+		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
+		PCMResult expectedResult = new PCMResult(ResponseMeasureType.DECIMAL);
+		expectedResult.setResponse(new Float(5));
+		scenario.setExpectedResponse(expectedResult);
+		ModifiabilityInstruction i1 = new ModifiabilityInstruction();
+		i1.operation = ModifiabilityOperation.MODIFY;
+		i1.element = ModifiabilityElement.INTERFACE;
+		i1.parameters.put("name", "ITripDB");
+		scenario.addChange(i1);
+		
+		ModifiabilityInstruction i2 = new ModifiabilityInstruction();
+		i2.operation = ModifiabilityOperation.CREATE;
+		i2.element = ModifiabilityElement.INTERFACE;
+		i2.parameters.put("name", "Analytics");
+		scenario.addChange(i2);
+		
+		ModifiabilityInstruction i3 = new ModifiabilityInstruction();
+		i3.operation = ModifiabilityOperation.CREATE;
+		i3.element = ModifiabilityElement.OPERATION;
+		i3.parameters.put("iname", "Analytics");
+		i3.parameters.put("oname", "getLastTrips");
+		scenario.addChange(i3);
+		
+		ModifiabilityInstruction i4 = new ModifiabilityInstruction();
+		i4.operation = ModifiabilityOperation.CREATE;
+		i4.element = ModifiabilityElement.COMPONENT;
+		i4.parameters.put("name", "Insights");
+		scenario.addChange(i4);
+		
+		ModifiabilityInstruction i5 = new ModifiabilityInstruction();
+		i5.operation = ModifiabilityOperation.CREATE;
+		i5.element = ModifiabilityElement.PROVIDEDROLE;
+		i5.parameters.put("cname", "Insights");
+		i5.parameters.put("iname", "Analytics");
+		scenario.addChange(i5);
+		
+		ModifiabilityInstruction i6 = new ModifiabilityInstruction();
+		i6.operation = ModifiabilityOperation.CREATE;
+		i6.element = ModifiabilityElement.REQUIREDROLE;
+		i6.parameters.put("cname", "Insights");
+		i6.parameters.put("iname", "ITripDB");
+		scenario.addChange(i6);
+		
+		
+		
+		/*SCENARIO 2: this scenarios doesn't work because Kamp doesn't propagate changes to components when an operation is added to an interface  
+		 * ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
+		PCMResult expectedResult = new PCMResult(ResponseMeasureType.DECIMAL);
+		expectedResult.setResponse(new Float(5));
+		scenario.setExpectedResponse(expectedResult);
+		ModifiabilityInstruction i1 = new ModifiabilityInstruction();
+		i1.operation = ModifiabilityOperation.CREATE;
+		i1.element = ModifiabilityElement.OPERATION;
+		i1.parameters.put("iname", "ITripDB");
+		i1.parameters.put("oname", "executeReport");
+		scenario.addChange(i1);
+		
+		ModifiabilityInstruction i2 = new ModifiabilityInstruction();
+		i2.operation = ModifiabilityOperation.CREATE;
+		i2.element = ModifiabilityElement.INTERFACE;
+		i2.parameters.put("name", "Analytics");
+		scenario.addChange(i2);
+		
+		ModifiabilityInstruction i3 = new ModifiabilityInstruction();
+		i3.operation = ModifiabilityOperation.CREATE;
+		i3.element = ModifiabilityElement.OPERATION;
+		i3.parameters.put("iname", "Analytics");
+		i3.parameters.put("oname", "getLastTrips");
+		scenario.addChange(i3);
+		
+		
+		ModifiabilityInstruction i4 = new ModifiabilityInstruction();
+		i4.operation = ModifiabilityOperation.CREATE;
+		i4.element = ModifiabilityElement.COMPONENT;
+		i4.parameters.put("name", "Insights");
+		scenario.addChange(i4);
+		
+		ModifiabilityInstruction i5 = new ModifiabilityInstruction();
+		i5.operation = ModifiabilityOperation.CREATE;
+		i5.element = ModifiabilityElement.PROVIDEDROLE;
+		i5.parameters.put("cname", "Insights");
+		i5.parameters.put("iname", "Analytics");
+		scenario.addChange(i5);
+		
+		ModifiabilityInstruction i6 = new ModifiabilityInstruction();
+		i6.operation = ModifiabilityOperation.CREATE;
+		i6.element = ModifiabilityElement.REQUIREDROLE;
+		i6.parameters.put("cname", "Insights");
+		i6.parameters.put("iname", "ITripDB");
+		scenario.addChange(i6);*/
+		
+		
+		
+		
 		return scenario;
 	}
 	

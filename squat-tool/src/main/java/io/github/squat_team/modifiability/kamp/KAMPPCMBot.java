@@ -7,6 +7,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.palladiosimulator.pcm.core.entity.InterfaceProvidingEntity;
 import org.palladiosimulator.pcm.repository.BasicComponent;
+import org.palladiosimulator.pcm.repository.Interface;
 import org.palladiosimulator.pcm.repository.OperationInterface;
 import org.palladiosimulator.pcm.repository.OperationProvidedRole;
 import org.palladiosimulator.pcm.repository.OperationSignature;
@@ -31,6 +32,7 @@ import edu.kit.ipd.sdq.kamp.core.ActivityElementType;
 import edu.kit.ipd.sdq.kamp.core.ArchitectureModelFactoryFacade;
 import edu.kit.ipd.sdq.kamp.core.ArchitectureModelLookup;
 import edu.kit.ipd.sdq.kamp.core.ArchitectureVersion;
+
 import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMResult;
@@ -126,6 +128,7 @@ public class KAMPPCMBot extends AbstractPCMBot {
 	
 	private float computeComplexityReponse(List<Activity> activities) {
 		//We compute the complexity of a component based on tje number of operations  
+	//	io.github.squat_team.util.KAMPHelper.printActivities(activities, null);
 		float complexityResponse=0;
 		for (Activity activity : activities) {
 			if(activity.getElementType()==ActivityElementType.BASICCOMPONENT){
@@ -169,23 +172,26 @@ public class KAMPPCMBot extends AbstractPCMBot {
 	public int getComplexityForComponent(BasicComponent component){
 		//The complexity of the component is based on the kind of SEFFs that it containts
 		//System.out.println(component.getEntityName());
-		int operations=0;
-		
-		EList<ServiceEffectSpecification> seffs=component.getServiceEffectSpecifications__BasicComponent();
+		//int operations=0;
 		int activitiesValue=0;
-		for (Iterator iterator = seffs.iterator(); iterator.hasNext();) {
-			ServiceEffectSpecification serviceEffectSpecification = (ServiceEffectSpecification) iterator.next();
-			if(serviceEffectSpecification instanceof ResourceDemandingSEFFImpl){
-				ResourceDemandingSEFFImpl resourceSEFF=(ResourceDemandingSEFFImpl) serviceEffectSpecification;
-				EList<AbstractAction> steps=resourceSEFF.getSteps_Behaviour();
-				activitiesValue = activitiesValue+calculateComplexityForSteps(steps);
-			//	System.out.println(steps.size());
-			}
-			else{
-				System.out.println("ERROR: Without implementation. Please Implement for ServiceåEffectSpecificationImpl");
-			}
+		if(component!=null){
+			EList<ServiceEffectSpecification> seffs=component.getServiceEffectSpecifications__BasicComponent();
 			
+			for (Iterator iterator = seffs.iterator(); iterator.hasNext();) {
+				ServiceEffectSpecification serviceEffectSpecification = (ServiceEffectSpecification) iterator.next();
+				if(serviceEffectSpecification instanceof ResourceDemandingSEFFImpl){
+					ResourceDemandingSEFFImpl resourceSEFF=(ResourceDemandingSEFFImpl) serviceEffectSpecification;
+					EList<AbstractAction> steps=resourceSEFF.getSteps_Behaviour();
+					activitiesValue = activitiesValue+calculateComplexityForSteps(steps);
+				//	System.out.println(steps.size());
+				}
+				else{
+					System.out.println("ERROR: Without implementation. Please Implement for ServiceåEffectSpecificationImpl");
+				}
+				
+			}
 		}
+		
 		
 		/*EList roles=component.getProvidedRoles_InterfaceProvidingEntity();
 		for (Iterator iterator = roles.iterator(); iterator.hasNext();) {
@@ -300,28 +306,46 @@ public class KAMPPCMBot extends AbstractPCMBot {
 	}
 	
 	private void handleCreateElement(ModifiabilityInstruction instruction) {
+		String interfaceName;
+		OperationInterface operationInterface;
+		String componentName;
+		BasicComponent basicComponent;
 		switch(instruction.element) {
 		case ASSEMBLYCONNECTOR:
 			break;
 		case ASSEMBLYCONTEXT:
 			break;
 		case COMPONENT:
-			String componentName = instruction.parameters.get("name");
-			BasicComponent basicComponent = ArchitectureModelFactoryFacade.createBasicComponent(changedAV, componentName);
+			componentName = instruction.parameters.get("name");
+			basicComponent = ArchitectureModelFactoryFacade.createBasicComponent(changedAV, componentName);
 			break;
 		case DATATYPE:
 			break;
 		case INTERFACE:
-			String interfaceName = instruction.parameters.get("name");
-			OperationInterface operationInterface = ArchitectureModelFactoryFacade.createInterface(changedAV, interfaceName);
+			interfaceName = instruction.parameters.get("name");
+			operationInterface = ArchitectureModelFactoryFacade.createInterface(changedAV, interfaceName);
 			break;
 		case OPERATION:
+			interfaceName = instruction.parameters.get("iname");
+			String operationName = instruction.parameters.get("oname");
+			operationInterface=(OperationInterface) ArchitectureModelLookup.lookUpInterfaceByName(changedAV, interfaceName);
+			OperationSignature operationSignature=ArchitectureModelFactoryFacade.createSignatureForInterface(operationInterface, operationName);
 			break;
 		case PARAMETER:
 			break;
 		case PROVIDEDROLE:
+			componentName=instruction.parameters.get("cname");
+			basicComponent=(BasicComponent) ArchitectureModelLookup.lookUpComponentByName(changedAV, componentName);
+			interfaceName = instruction.parameters.get("iname");
+			operationInterface=(OperationInterface) ArchitectureModelLookup.lookUpInterfaceByName(changedAV, interfaceName);
+			ArchitectureModelFactoryFacade.createProvidedRole(basicComponent, operationInterface);
 			break;
 		case REQUIREDROLE:
+			componentName=instruction.parameters.get("cname");
+			basicComponent=(BasicComponent) ArchitectureModelLookup.lookUpComponentByName(changedAV, componentName);
+			interfaceName = instruction.parameters.get("iname");
+			operationInterface=(OperationInterface) ArchitectureModelLookup.lookUpInterfaceByName(changedAV, interfaceName);
+			ArchitectureModelFactoryFacade.createRequiredRole(basicComponent, operationInterface);
 			break;
 		case SIGNATURE:
 			break;

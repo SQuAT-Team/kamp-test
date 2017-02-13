@@ -20,7 +20,7 @@ import edu.kit.ipd.sdq.kamp.model.modificationmarks.ModificationRepository;
 import edu.squat.pcm.PCMHelper;
 
 public class MediaStoreKAMPTest extends AbstractKAMPTest {
-	public static String dirPath = "file:////Users/alejandrorago/Documents/Implementacion/Repositorios/kamp-test/MediaStore3-Nightly/Model/MediaStore3_Model/";
+	public static String dirPath = "file:////Users/santiagovidal/Documents/Programacion/kamp-test/MediaStore3-Nightly/Model/MediaStore3_Model/";
 
 	@Override
 	public String getInitialModelName() {
@@ -59,17 +59,17 @@ public class MediaStoreKAMPTest extends AbstractKAMPTest {
 		// Cloning the architecture for making changes to add a cache
 		ArchitectureVersion changedAV = KAMPHelper.createArchitectureVersionClone(baseAV, changeScenarioName);
 		// Searching components affected by this change scenario
-		OperationInterface downloadInterface = (OperationInterface) ArchitectureModelLookup.lookUpInterfaceByName(changedAV, "IDownload");
-		BasicComponent fileStorageComponent = (BasicComponent) ArchitectureModelLookup.lookUpComponentByName(changedAV, "FileStorage");
+		/*OperationInterface downloadInterface = (OperationInterface) ArchitectureModelLookup.lookUpInterfaceByName(changedAV, "IDownload");
+		BasicComponent fileStorageComponent = (BasicComponent) ArchitectureModelLookup.lookUpComponentByName(changedAV, "FileStorage");*/
 		OperationInterface fileStorageInterface = (OperationInterface) ArchitectureModelLookup.lookUpInterfaceByName(changedAV, "IFileStorage");
-		BasicComponent mediaAccessComponent = (BasicComponent) ArchitectureModelLookup.lookUpComponentByName(changedAV, "MediaAccess");
+		/*BasicComponent mediaAccessComponent = (BasicComponent) ArchitectureModelLookup.lookUpComponentByName(changedAV, "MediaAccess");*/
 		// Creating new elements and deleting existing ones
 		CompositeDataType dataType = ArchitectureModelFactoryFacade.createCompositeDatatype(baseAV, "mydatatype");
 		OperationSignature signature = ArchitectureModelFactoryFacade.createSignatureForInterface(fileStorageInterface, "myOperation");
 		ArchitectureModelFactoryFacade.createParameterForSignature(signature, "myParameter", dataType);
 		// Marking modifications for fulfilling this change scenario
-		ArchitectureModelFactoryFacade.assignInternalModificationMarkToInterface(changedAV, downloadInterface);
-		ArchitectureModelFactoryFacade.assignInternalModificationMarkToComponent(changedAV, mediaAccessComponent);
+		/*ArchitectureModelFactoryFacade.assignInternalModificationMarkToInterface(changedAV, downloadInterface);
+		ArchitectureModelFactoryFacade.assignInternalModificationMarkToComponent(changedAV, mediaAccessComponent);*/
 		//
 		return changedAV;
 	}
