@@ -235,7 +235,6 @@ public class WrapperRunner extends PCMTransformerRunner {
 		}
 	}
 
-
 	private List<Trace> computeCandidates(Trace root) {
 		List<Trace> candidates = new ArrayList<Trace>();
 		List<Trace> wraps = RunnerHelper.getTraces(root, TRACE_Wrapped, false);
@@ -456,7 +455,7 @@ public class WrapperRunner extends PCMTransformerRunner {
 			StartAction start = factory.createStartAction();
 			start.setEntityName("start");
 			ExternalCallAction externalCallAction = factory.createExternalCallAction();
-			externalCallAction.setEntityName("External_" + newInterface.getEntityName() + "_" + signature.getEntityName());
+			externalCallAction.setEntityName(RunnerHelper.getExternalCallActionName(newInterface, signature));
 			externalCallAction.setCalledService_ExternalService(this.findExternalSignature(signature, oldInterface));
 			externalCallAction.setRole_ExternalService(this.findExternalRole(newComponent, oldInterface));
 			StopAction stop = factory.createStopAction();
@@ -490,7 +489,6 @@ public class WrapperRunner extends PCMTransformerRunner {
 		}
 		return null;
 	}
-
 
 	private RuleApplication runFourthRule(EGraph graph) {
 		RuleApplication app = new RuleApplicationImpl(engine);
