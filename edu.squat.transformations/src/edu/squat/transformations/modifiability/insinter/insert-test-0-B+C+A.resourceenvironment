@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ASCII"?>
 <resourceenvironment:ResourceEnvironment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:resourceenvironment="http://palladiosimulator.org/PalladioComponentModel/ResourceEnvironment/5.1">
   <linkingResources__ResourceEnvironment id="_dyFfAO1uEeab86LP4wB6tQ" entityName="Network" connectedResourceContainers_LinkingResource="_Xp1HUO1uEeab86LP4wB6tQ _4L_ncO1tEeab86LP4wB6tQ">
     <communicationLinkResourceSpecifications_LinkingResource id="_dyV9sO1uEeab86LP4wB6tQ" failureProbability="0.001">
