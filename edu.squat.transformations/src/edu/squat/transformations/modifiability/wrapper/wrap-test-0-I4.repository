@@ -60,13 +60,13 @@
       <steps_Behaviour xsi:type="seff:StopAction" id="_no6bgu5xEeax88fmO4XU3A" entityName="stop" predecessor_AbstractAction="_no6bge5xEeax88fmO4XU3A"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_HaoDsfIiEea0epS6fEsD7Q" entityName="I4-Wrapper">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_HaoDsvIiEea0epS6fEsD7Q" providedInterface__OperationProvidedRole="_HaoDsPIiEea0epS6fEsD7Q"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_HaoDs_IiEea0epS6fEsD7Q" requiredInterface__OperationRequiredRole="_jrzswO5xEeax88fmO4XU3A"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_HcxYwfIiEea0epS6fEsD7Q" describedService__SEFF="_HcxYwPIiEea0epS6fEsD7Q">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_HcxYwvIiEea0epS6fEsD7Q" entityName="start" successor_AbstractAction="_Hc0cEPIiEea0epS6fEsD7Q"/>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_Hc0cEPIiEea0epS6fEsD7Q" entityName="External_I4-Wrapper_method4" predecessor_AbstractAction="_HcxYwvIiEea0epS6fEsD7Q" successor_AbstractAction="_Hc0cEfIiEea0epS6fEsD7Q" calledService_ExternalService="_lQH_MO5xEeax88fmO4XU3A" role_ExternalService="_HaoDs_IiEea0epS6fEsD7Q"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_Hc0cEfIiEea0epS6fEsD7Q" entityName="stop" predecessor_AbstractAction="_Hc0cEPIiEea0epS6fEsD7Q"/>
+  <components__Repository xsi:type="repository:BasicComponent" id="__CB5cfLDEeaEp9e4KQNp5A" entityName="I4-Wrapper">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="__CB5cvLDEeaEp9e4KQNp5A" providedInterface__OperationProvidedRole="__CB5cPLDEeaEp9e4KQNp5A"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="__CB5c_LDEeaEp9e4KQNp5A" requiredInterface__OperationRequiredRole="_jrzswO5xEeax88fmO4XU3A"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="__EcUQPLDEeaEp9e4KQNp5A" describedService__SEFF="__EbtMPLDEeaEp9e4KQNp5A">
+      <steps_Behaviour xsi:type="seff:StartAction" id="__EcUQfLDEeaEp9e4KQNp5A" entityName="start" successor_AbstractAction="__EeJcPLDEeaEp9e4KQNp5A"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="__EeJcPLDEeaEp9e4KQNp5A" entityName="External_I4-Wrapper_method4" predecessor_AbstractAction="__EcUQfLDEeaEp9e4KQNp5A" successor_AbstractAction="__EewgPLDEeaEp9e4KQNp5A" calledService_ExternalService="_lQH_MO5xEeax88fmO4XU3A" role_ExternalService="__CB5c_LDEeaEp9e4KQNp5A"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="__EewgPLDEeaEp9e4KQNp5A" entityName="stop" predecessor_AbstractAction="__EeJcPLDEeaEp9e4KQNp5A"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_u-1VoO5wEeax88fmO4XU3A" entityName="I1a">
@@ -93,7 +93,7 @@
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_jrzswO5xEeax88fmO4XU3A" entityName="I4">
     <signatures__OperationInterface id="_lQH_MO5xEeax88fmO4XU3A" entityName="method4"/>
   </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_HaoDsPIiEea0epS6fEsD7Q" entityName="I4-Wrapper">
-    <signatures__OperationInterface id="_HcxYwPIiEea0epS6fEsD7Q" entityName="method4"/>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="__CB5cPLDEeaEp9e4KQNp5A" entityName="I4-Wrapper">
+    <signatures__OperationInterface id="__EbtMPLDEeaEp9e4KQNp5A" entityName="method4"/>
   </interfaces__Repository>
 </repository:Repository>

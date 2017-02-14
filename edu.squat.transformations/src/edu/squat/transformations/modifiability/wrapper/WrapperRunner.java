@@ -36,9 +36,14 @@ import org.palladiosimulator.pcm.repository.RepositoryComponent;
 import org.palladiosimulator.pcm.repository.RepositoryFactory;
 import org.palladiosimulator.pcm.repository.RequiredRole;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
+import org.palladiosimulator.pcm.seff.AbstractAction;
+import org.palladiosimulator.pcm.seff.AbstractBranchTransition;
+import org.palladiosimulator.pcm.seff.BranchAction;
 import org.palladiosimulator.pcm.seff.ExternalCallAction;
+import org.palladiosimulator.pcm.seff.LoopAction;
 import org.palladiosimulator.pcm.seff.ResourceDemandingSEFF;
 import org.palladiosimulator.pcm.seff.SeffFactory;
+import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
 import org.palladiosimulator.pcm.seff.StartAction;
 import org.palladiosimulator.pcm.seff.StopAction;
 
@@ -131,6 +136,9 @@ public class WrapperRunner extends PCMTransformerRunner {
 				//Configuring and executing the fourth rule
 				this.runFourthRule(tempGraph);
 				
+				//Fix affected components SEFFs
+				this.fixAffectedSEFFs(tempGraph, oldInterface, newComponent, newInterface);
+				
 				if(this.arePerformanceModelsLoaded()) {
 					//Adjust the system and allocation models by executing a monolithic method (ugly but fast)
 					this.fixSystemAndAllocation(tempGraph, oldInterface, newComponent, newInterface);
@@ -174,6 +182,59 @@ public class WrapperRunner extends PCMTransformerRunner {
 			System.out.println("Could not mark components and interfaces that could use a wrapper");
 		}
 	}
+
+	private void fixAffectedSEFFs(EGraph tempGraph, OperationInterface oldInterface, BasicComponent newComponent, OperationInterface newInterface) {
+		Trace root = RunnerHelper.getTraceRoot(tempGraph);
+		Trace wrapTrace = RunnerHelper.getTraces(root, TRACE_Wrapped, false).get(0);
+		List<Trace> affectedTraces = RunnerHelper.getTraces(wrapTrace, TRACE_Affected, false);
+		for(Trace affectedTrace : affectedTraces) {
+			BasicComponent affectedComponent = (BasicComponent) affectedTrace.getSource().get(0);
+			List<Trace> connectionTraces = RunnerHelper.getTraces(affectedTrace, TRACE_Connection, false);
+			for(Trace connectionTrace : connectionTraces) {
+				OperationRequiredRole oldRequiredRole = (OperationRequiredRole) connectionTrace.getSource().get(0);
+				OperationRequiredRole newRequiredRole = (OperationRequiredRole) connectionTrace.getTarget().get(0);
+				this.fixAffectedSEFF(affectedComponent, oldInterface, newInterface, oldRequiredRole, newRequiredRole);
+			}
+		}
+	}
+	
+	private void fixAffectedSEFF(BasicComponent affectedComponent, OperationInterface oldInterface, OperationInterface newInterface, OperationRequiredRole oldRequiredRole, OperationRequiredRole newRequiredRole) {
+		Iterator<ServiceEffectSpecification> seffIterator = affectedComponent.getServiceEffectSpecifications__BasicComponent().iterator();
+    	while(seffIterator.hasNext()) {
+    		ResourceDemandingSEFF seff = (ResourceDemandingSEFF) seffIterator.next();
+    		this.fixAffectedSEFF(seff.getSteps_Behaviour(), oldInterface, newInterface, oldRequiredRole, newRequiredRole);
+		}
+	}
+	
+	private void fixAffectedSEFF(List<AbstractAction> actions, OperationInterface oldInterface, OperationInterface newInterface, OperationRequiredRole oldRequiredRole, OperationRequiredRole newRequiredRole) {
+    	Iterator<AbstractAction> actionIterator = actions.iterator();
+    	while(actionIterator.hasNext()) {
+    		AbstractAction action = actionIterator.next();
+			if(action instanceof BranchAction) {
+		    	BranchAction branchAction = (BranchAction) action;
+		    	Iterator<AbstractBranchTransition> branchTransitions = branchAction.getBranches_Branch().iterator();
+		    	while(branchTransitions.hasNext()) {
+		    		AbstractBranchTransition branchTransition = branchTransitions.next();
+		    		this.fixAffectedSEFF(branchTransition.getBranchBehaviour_BranchTransition().getSteps_Behaviour(), oldInterface, newInterface, oldRequiredRole, newRequiredRole);
+		    	}
+			}
+			if(action instanceof LoopAction) {
+				LoopAction loopAction = (LoopAction) action;
+				this.fixAffectedSEFF(loopAction.getBodyBehaviour_Loop().getSteps_Behaviour(), oldInterface, newInterface, oldRequiredRole, newRequiredRole);
+			}
+			if(action instanceof ExternalCallAction) {
+				ExternalCallAction externalCallAction = (ExternalCallAction) action;
+				OperationRequiredRole requiredRole = externalCallAction.getRole_ExternalService();
+				OperationSignature requiredSignature = externalCallAction.getCalledService_ExternalService();
+				OperationInterface requiredInterface = requiredRole.getRequiredInterface__OperationRequiredRole();
+				if(requiredRole.equals(oldRequiredRole) && requiredInterface.equals(oldInterface)) {
+					externalCallAction.setRole_ExternalService(newRequiredRole);
+					externalCallAction.setCalledService_ExternalService(this.findExternalSignature(requiredSignature, newInterface));
+				}
+			}
+		}
+	}
+
 
 	private List<Trace> computeCandidates(Trace root) {
 		List<Trace> candidates = new ArrayList<Trace>();
@@ -509,6 +570,23 @@ public class WrapperRunner extends PCMTransformerRunner {
 		resultResourceEnvironmentFilename = "stplus-" + "#REPLACEMENT#" + ".resourceenvironment";
 		resultAllocationFilename = "stplus-" + "#REPLACEMENT#" + ".allocation";
 		resultUsageFilename = "stplus-" + "#REPLACEMENT#" + ".usagemodel";
+		runner.run(dirPath, 
+				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, usageFilename,
+				henshinFilename, 
+				resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename, resultUsageFilename,
+				true);
+		
+		//Complete SimpleTactics+ testing after split responsability
+		repositoryFilename = "stplus-split.repository";
+		systemFilename = "stplus-split.system";
+		resourceEnvironmentFilename = "stplus-split.resourceenvironment";
+		allocationFilename = "stplus-split.allocation";
+		usageFilename = "stplus-split.usagemodel";
+		resultRepositoryFilename = "stplus-split-" + "#REPLACEMENT#" + ".repository";
+		resultSystemFilename = "stplus-split-" + "#REPLACEMENT#" + ".system";
+		resultResourceEnvironmentFilename = "stplus-split-" + "#REPLACEMENT#" + ".resourceenvironment";
+		resultAllocationFilename = "stplus-split-" + "#REPLACEMENT#" + ".allocation";
+		resultUsageFilename = "stplus-split-" + "#REPLACEMENT#" + ".usagemodel";
 		runner.run(dirPath, 
 				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, usageFilename,
 				henshinFilename, 

@@ -22,8 +22,8 @@
     <resourceContainer_AllocationContext href="wrap-test-1-I3c.resourceenvironment#_pFUjIO71Eea6wfovznEgkw"/>
     <assemblyContext_AllocationContext href="wrap-test-1-I3c.system#_DWw2oO72Eea6wfovznEgkw"/>
   </allocationContexts_Allocation>
-  <allocationContexts_Allocation id="_Hdg_o_IiEea0epS6fEsD7Q" entityName="Allocation_Assembly_I3c-Wrapper &lt;I3c-Wrapper> &lt;I3c-Wrapper>">
+  <allocationContexts_Allocation id="__F00UPLDEeaEp9e4KQNp5A" entityName="Allocation_Assembly_I3c-Wrapper &lt;I3c-Wrapper> &lt;I3c-Wrapper>">
     <resourceContainer_AllocationContext href="wrap-test-1-I3c.resourceenvironment#_pFUjIO71Eea6wfovznEgkw"/>
-    <assemblyContext_AllocationContext href="wrap-test-1-I3c.system#_Hdg_oPIiEea0epS6fEsD7Q"/>
+    <assemblyContext_AllocationContext href="wrap-test-1-I3c.system#__F0NQPLDEeaEp9e4KQNp5A"/>
   </allocationContexts_Allocation>
 </allocation:Allocation>

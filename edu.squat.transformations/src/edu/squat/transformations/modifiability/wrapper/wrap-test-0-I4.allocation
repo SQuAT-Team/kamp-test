@@ -22,8 +22,8 @@
     <resourceContainer_AllocationContext href="wrap-test-0-I4.resourceenvironment#_pFUjIO71Eea6wfovznEgkw"/>
     <assemblyContext_AllocationContext href="wrap-test-0-I4.system#_DWw2oO72Eea6wfovznEgkw"/>
   </allocationContexts_Allocation>
-  <allocationContexts_Allocation id="_Hc6isPIiEea0epS6fEsD7Q" entityName="Allocation_Assembly_I4-Wrapper &lt;I4-Wrapper> &lt;I4-Wrapper>">
+  <allocationContexts_Allocation id="__E0HsPLDEeaEp9e4KQNp5A" entityName="Allocation_Assembly_I4-Wrapper &lt;I4-Wrapper> &lt;I4-Wrapper>">
     <resourceContainer_AllocationContext href="wrap-test-0-I4.resourceenvironment#_oAPKYO71Eea6wfovznEgkw"/>
-    <assemblyContext_AllocationContext href="wrap-test-0-I4.system#_Hc57oPIiEea0epS6fEsD7Q"/>
+    <assemblyContext_AllocationContext href="wrap-test-0-I4.system#__EvPMPLDEeaEp9e4KQNp5A"/>
   </allocationContexts_Allocation>
 </allocation:Allocation>
