@@ -1,5 +1,7 @@
 package io.github.squat_team.modifiability.kamp;
 
+import java.util.Vector;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.palladiosimulator.pcm.allocation.Allocation;
@@ -23,22 +25,42 @@ import io.github.squat_team.modifiability.ModifiabilityPCMScenario;
 import io.github.squat_team.util.SQuATHelper;
 
 public class SimpleTacticsPlusTest {
-	private static String machinePath = "/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/src/test/resources/";
-	private static String dirPath = machinePath + "io/github/squat_team/casestudies/SimpleTactics+/";
-	private static String stplus_base = "stplus";
-	private static String stplus_alt0 = "stplus-0-Payment System";
-	private static String stplus_alt1 = "stplus-1-Payment System";
-	private static String[] repositoryFile = 
-		{ dirPath + stplus_base + ".repository", dirPath + stplus_alt0 + ".repository", dirPath + stplus_alt1 + ".repository"};
-	private static String[] resourceEnvironmentFile = 
-		{ dirPath + stplus_base + ".resourceenvironment", dirPath + stplus_alt0 + ".resourceenvironment", dirPath + stplus_alt1 + ".resourceenvironment"};
-	private static String[] baseSystemFile = 
-		{ dirPath + stplus_base + ".system", dirPath + stplus_alt0 + ".system", dirPath + stplus_alt1 + ".system"};
-	private static String[] baseAllocationFile = 
-		{ dirPath + stplus_base + ".allocation", dirPath + stplus_alt0 + ".allocation", dirPath + stplus_alt1 + ".allocation"};
-	private static String[] baseUsageFile = 
-		{ dirPath + stplus_base + ".usagemodel", dirPath + stplus_alt0 + ".usagemodel", dirPath + stplus_alt1 + ".usagemodel"};
+	private String machinePath;
+	private String dirPath;
+	private String[] modelNames;
+	//private String stplus_base = "stplus";
+	//private String stplus_alt0 = "stplus-0-Payment System";
+	//private String stplus_alt1 = "stplus-1-Payment System";
+	private String[] repositoryFile;
+	private String[] resourceEnvironmentFile;
+	private String[] baseSystemFile;
+	private String[] baseAllocationFile;
+	private String[] baseUsageFile;
 
+	
+	private void loadPCMModel() {
+		 //machinePath = "/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/src/test/resources/";
+		 //dirPath = machinePath + "io/github/squat_team/casestudies/SimpleTactics+/";
+		//modelNames = new String[]{"stplus","stplus-0-Payment System","stplus-1-Payment System"};
+		 machinePath ="/Users/santiagovidal/Downloads/";
+		 dirPath = machinePath + "stplus-final/";
+		 modelNames = new String[]{"stplus","stplus-0-Payment System","stplus-0-IExporter","stplus-1-ITripDB","stplus-2-IExternalPayment","stplus-3-IEmployeePayment","stplus-4-IBooking","stplus-5-IBusiness Trip","stplus-split-0-IExporter","stplus-split-1-ITripDB","stplus-split-2-IExternalPayment", "stplus-split-3-IEmployeePayment","stplus-split-4-IBooking","stplus-split-5-IBusiness Trip"};
+		 repositoryFile=new String[modelNames.length];
+		 resourceEnvironmentFile=new String[modelNames.length];
+		 baseSystemFile=new String[modelNames.length];
+		 baseAllocationFile=new String[modelNames.length];
+		 baseUsageFile=new String[modelNames.length];
+		 for (int i = 0; i < modelNames.length; i++) {
+			 repositoryFile[i]=dirPath + modelNames[i] + ".repository";
+			 resourceEnvironmentFile[i]= dirPath + modelNames[i] + ".resourceenvironment";
+			 baseSystemFile[i]=dirPath + modelNames[i] + ".system";
+			 baseAllocationFile[i]= dirPath + modelNames[i] + ".allocation";
+			 baseUsageFile[i]=dirPath + modelNames[i] + ".usagemodel";
+		 }
+		 
+	}
+	
+	
 	@SuppressWarnings("rawtypes")
 	@Test
 	public void testAnalysis() throws Exception {
@@ -47,43 +69,55 @@ public class SimpleTacticsPlusTest {
 		java.lang.System.out.println("The goal of the scenario is: " + ((Float)response_expected).floatValue());
 		KAMPPCMBot bot = new KAMPPCMBot(scenario);
 		//
-		PCMArchitectureInstance stplus_base = this.loadSimpleTacticsPlus("SimpleTactics+BASE");
+		loadPCMModel();
+		Vector<PCMArchitectureInstance> pcmInstances=new Vector<>();
+		for (int i = 0; i < modelNames.length; i++) {
+			PCMArchitectureInstance model=loadSpecificModel(repositoryFile[i], repositoryFile[i], resourceEnvironmentFile[i], baseSystemFile[i], baseAllocationFile[i], baseUsageFile[i]);
+			PCMScenarioResult scenarioResult = bot.analyze(model);
+			String satisfaction_alt1 = scenarioResult.isSatisfied() >= 0 ? "SATISFIED" : "NOT SATISFIED";
+			java.lang.System.out.println("The scenario satisfaction with " + model.getName() + " is: " + satisfaction_alt1);
+			Comparable response_alt1 = scenarioResult.getResult().getResponse();
+			java.lang.System.out.println("The number of affected components is: " + ((Float)response_alt1).floatValue());
+		}
+		/*PCMArchitectureInstance stplus_base = this.loadSimpleTacticsPlus("SimpleTactics+BASE");
 		PCMArchitectureInstance stplus_alt0 = this.loadSimpleTacticsPlusAlt0("SimpleTactics+ALT0");
-		PCMArchitectureInstance stplus_alt1 = this.loadSimpleTacticsPlusAlt1("SimpleTactics+ALT1");
+		PCMArchitectureInstance stplus_alt1 = this.loadSimpleTacticsPlusAlt1("SimpleTactics+ALT1");*/
 		//
-		PCMScenarioResult scenarioResult_base = bot.analyze(stplus_base);
+		/*PCMScenarioResult scenarioResult_base = bot.analyze(stplus_base);
 		String satisfaction_base = scenarioResult_base.isSatisfied() >= 0 ? "SATISFIED" : "NOT SATISFIED";
-		java.lang.System.out.println("The scenario satisfaction with " + stplus_base.getName() + " is: " + satisfaction_base);
+		java.lang.System.out.println("The scenario satisfaction with " + stplus_base.getName() + " is: " + satisfaction_base);*/
 		//Assert.assertTrue(scenarioResult_base.isSatisfied() < 0);
-		int AFFECTED_COMPONENTS = 6;
+		/*int AFFECTED_COMPONENTS = 6;
 		Comparable response_base = scenarioResult_base.getResult().getResponse();
-		java.lang.System.out.println("The number of affected components is: " + ((Float)response_base).floatValue());
+		java.lang.System.out.println("The number of affected components is: " + ((Float)response_base).floatValue());*/
 	//	Assert.assertEquals(((Float)response_base).floatValue(), AFFECTED_COMPONENTS);
 		//
-		PCMScenarioResult scenarioResult_alt0 = bot.analyze(stplus_alt0);
+		/*PCMScenarioResult scenarioResult_alt0 = bot.analyze(stplus_alt0);
 		String satisfaction_alt0 = scenarioResult_alt0.isSatisfied() >= 0 ? "SATISFIED" : "NOT SATISFIED";
-		java.lang.System.out.println("The scenario satisfaction with " + stplus_alt0.getName() + " is: " + satisfaction_alt0);
+		java.lang.System.out.println("The scenario satisfaction with " + stplus_alt0.getName() + " is: " + satisfaction_alt0);*/
 	//	Assert.assertTrue(scenarioResult_alt0.isSatisfied() < 0);
 		//int AFFECTED_COMPONENTS = 6;
-		Comparable response_alt0 = scenarioResult_alt0.getResult().getResponse();
-		java.lang.System.out.println("The number of affected components is: " + ((Float)response_alt0).floatValue());
+		/*Comparable response_alt0 = scenarioResult_alt0.getResult().getResponse();
+		java.lang.System.out.println("The number of affected components is: " + ((Float)response_alt0).floatValue());*/
 		//Assert.assertEquals(((Integer)response_alt0).intValue(), AFFECTED_COMPONENTS);
 		//
-		PCMScenarioResult scenarioResult_alt1 = bot.analyze(stplus_alt1);
+	/*	PCMScenarioResult scenarioResult_alt1 = bot.analyze(stplus_alt1);
 		String satisfaction_alt1 = scenarioResult_alt0.isSatisfied() >= 0 ? "SATISFIED" : "NOT SATISFIED";
-		java.lang.System.out.println("The scenario satisfaction with " + stplus_alt1.getName() + " is: " + satisfaction_alt1);
+		java.lang.System.out.println("The scenario satisfaction with " + stplus_alt1.getName() + " is: " + satisfaction_alt1);*/
 	//	Assert.assertTrue(scenarioResult_alt1.isSatisfied() < 0);
 		//int AFFECTED_COMPONENTS = 6;
-		Comparable response_alt1 = scenarioResult_alt1.getResult().getResponse();
-		java.lang.System.out.println("The number of affected components is: " + ((Float)response_alt1).floatValue());
+	/*	Comparable response_alt1 = scenarioResult_alt1.getResult().getResponse();
+		java.lang.System.out.println("The number of affected components is: " + ((Float)response_alt1).floatValue());*/
 		//Assert.assertEquals(((Integer)response_alt1).intValue(), AFFECTED_COMPONENTS);
 	}
 	
+	
+
 	//@Test
 	public void testAlternatives() {
 		PCMScenario scenario = this.createModifiabilityScenario();
 		KAMPPCMBot bot = new KAMPPCMBot(scenario);
-		PCMArchitectureInstance stplus = loadSimpleTacticsPlus("SimpleTactics+");
+	//	PCMArchitectureInstance stplus = loadSimpleTacticsPlus("SimpleTactics+");
 	}
 	
 
@@ -103,7 +137,7 @@ public class SimpleTacticsPlusTest {
 		i2.parameters.put("name", "BusinessTripMgmt");
 		scenario.addChange(i2);*/
 		
-		/*ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
+		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
 		PCMResult expectedResult = new PCMResult(ResponseMeasureType.DECIMAL);
 		expectedResult.setResponse(new Float(5));
 		scenario.setExpectedResponse(expectedResult);
@@ -122,10 +156,10 @@ public class SimpleTacticsPlusTest {
 		i3.operation = ModifiabilityOperation.MODIFY;
 		i3.element = ModifiabilityElement.COMPONENT;
 		i3.parameters.put("name", "BusinessTripMgmt");
-		scenario.addChange(i3);*/
+		scenario.addChange(i3);
 		
 		
-		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
+		/*ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
 		PCMResult expectedResult = new PCMResult(ResponseMeasureType.DECIMAL);
 		expectedResult.setResponse(new Float(5));
 		scenario.setExpectedResponse(expectedResult);
@@ -166,7 +200,7 @@ public class SimpleTacticsPlusTest {
 		i6.element = ModifiabilityElement.REQUIREDROLE;
 		i6.parameters.put("cname", "Insights");
 		i6.parameters.put("iname", "ITripDB");
-		scenario.addChange(i6);
+		scenario.addChange(i6);*/
 		
 		
 		
@@ -222,30 +256,40 @@ public class SimpleTacticsPlusTest {
 		return scenario;
 	}
 	
-	private PCMArchitectureInstance loadSimpleTacticsPlus(String name) {
+	private PCMArchitectureInstance loadSpecificModel(String name, String repositoryFile,String enviromentFile,String systemFile, String sllocationFile, String usageFile){
+		Repository repository = SQuATHelper.loadRepositoryModel(repositoryFile);
+		ResourceEnvironment resourceEnvironment = SQuATHelper.loadResourceEnvironmentModel(enviromentFile);
+		System system = SQuATHelper.loadSystemModel(systemFile);
+		Allocation allocation = SQuATHelper.loadAllocationModel(sllocationFile);
+		UsageModel usageModel = SQuATHelper.loadUsageModel(usageFile);
+		PCMArchitectureInstance instance = new PCMArchitectureInstance(name, repository, system, allocation, resourceEnvironment, usageModel);
+		return instance;
+	}
+	
+	/*private PCMArchitectureInstance loadSimpleTacticsPlus(String name) {
 		Repository repository = SQuATHelper.loadRepositoryModel(repositoryFile[0]);
 		ResourceEnvironment resourceEnvironment = SQuATHelper.loadResourceEnvironmentModel(resourceEnvironmentFile[0]);
 		System system = SQuATHelper.loadSystemModel(baseSystemFile[0]);
 		Allocation allocation = SQuATHelper.loadAllocationModel(baseAllocationFile[0]);
 		UsageModel usageModel = SQuATHelper.loadUsageModel(baseUsageFile[0]);
 		PCMArchitectureInstance instance = new PCMArchitectureInstance(name, repository, system, allocation, resourceEnvironment, usageModel);
-		
+		*/
 		/*java.lang.System.out.println("SimpleTacticsPlus");
 		for(RepositoryComponent component:repository.getComponents__Repository()){
 			KAMPPCMBot bot = new KAMPPCMBot(null);
 			java.lang.System.out.println(component.getEntityName()+" "+bot.getComplexityForComponent((BasicComponent) component));
 		}*/
 		
-		return instance;
-	}
+	/*	return instance;
+	}*/
 	
-	private PCMArchitectureInstance loadSimpleTacticsPlusAlt0(String name) {
+	/*private PCMArchitectureInstance loadSimpleTacticsPlusAlt0(String name) {
 		Repository repository = SQuATHelper.loadRepositoryModel(repositoryFile[1]);
 		ResourceEnvironment resourceEnvironment = SQuATHelper.loadResourceEnvironmentModel(resourceEnvironmentFile[1]);
 		System system = SQuATHelper.loadSystemModel(baseSystemFile[1]);
 		Allocation allocation = SQuATHelper.loadAllocationModel(baseAllocationFile[1]);
 		UsageModel usageModel = SQuATHelper.loadUsageModel(baseUsageFile[1]);
-		PCMArchitectureInstance instance = new PCMArchitectureInstance(name, repository, system, allocation, resourceEnvironment, usageModel);
+		PCMArchitectureInstance instance = new PCMArchitectureInstance(name, repository, system, allocation, resourceEnvironment, usageModel);*/
 		
 		/*java.lang.System.out.println("SimpleTacticsPlusAlt0");
 		for(RepositoryComponent component:repository.getComponents__Repository()){
@@ -253,16 +297,16 @@ public class SimpleTacticsPlusTest {
 			java.lang.System.out.println(component.getEntityName()+" "+bot.getComplexityForComponent((BasicComponent) component));
 		}*/
 		
-		return instance;
-	}
+	/*	return instance;
+	}*/
 	
-	private PCMArchitectureInstance loadSimpleTacticsPlusAlt1(String name) {
+	/*private PCMArchitectureInstance loadSimpleTacticsPlusAlt1(String name) {
 		Repository repository = SQuATHelper.loadRepositoryModel(repositoryFile[2]);
 		ResourceEnvironment resourceEnvironment = SQuATHelper.loadResourceEnvironmentModel(resourceEnvironmentFile[2]);
 		System system = SQuATHelper.loadSystemModel(baseSystemFile[2]);
 		Allocation allocation = SQuATHelper.loadAllocationModel(baseAllocationFile[2]);
 		UsageModel usageModel = SQuATHelper.loadUsageModel(baseUsageFile[2]);
-		PCMArchitectureInstance instance = new PCMArchitectureInstance(name, repository, system, allocation, resourceEnvironment, usageModel);
+		PCMArchitectureInstance instance = new PCMArchitectureInstance(name, repository, system, allocation, resourceEnvironment, usageModel);*/
 		
 		/*java.lang.System.out.println("SimpleTacticsPlusAlt1");
 		for(RepositoryComponent component:repository.getComponents__Repository()){
@@ -270,6 +314,6 @@ public class SimpleTacticsPlusTest {
 			java.lang.System.out.println(component.getEntityName()+" "+bot.getComplexityForComponent((BasicComponent) component));
 		}*/
 		
-		return instance;
-	}
+		/*return instance;
+	}*/
 }

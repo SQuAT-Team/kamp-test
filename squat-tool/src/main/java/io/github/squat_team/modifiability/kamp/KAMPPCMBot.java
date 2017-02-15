@@ -1,7 +1,9 @@
 package io.github.squat_team.modifiability.kamp;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -101,6 +103,7 @@ public class KAMPPCMBot extends AbstractPCMBot {
 				
 				
 				result = new PCMResult(ResponseMeasureType.DECIMAL);
+				
 				float complexity = this.computeComplexityReponse(activities);
 				result.setResponse(new Float(complexity));
 			}
@@ -130,10 +133,13 @@ public class KAMPPCMBot extends AbstractPCMBot {
 		//We compute the complexity of a component based on tje number of operations  
 	//	io.github.squat_team.util.KAMPHelper.printActivities(activities, null);
 		float complexityResponse=0;
+		Set<BasicComponent> affectedComponents=new HashSet<BasicComponent>();
 		for (Activity activity : activities) {
 			if(activity.getElementType()==ActivityElementType.BASICCOMPONENT){
 				
 				BasicComponent component= (BasicComponent) activity.getElement();
+				
+				affectedComponents.add(component);
 				//System.out.println(component.getEntityName());
 				float componentComplexity=getComplexityForComponent(component);
 				if(componentIsMappedInScenario(component))
@@ -146,6 +152,7 @@ public class KAMPPCMBot extends AbstractPCMBot {
 			}
 			
 		}
+		System.out.println("Affected components: "+affectedComponents.size());
 		//BasicComponent basicComponent = (BasicComponent) ArchitectureModelLookup.lookUpComponentByName(changedAV, componentName);
 		return complexityResponse;
 	}
