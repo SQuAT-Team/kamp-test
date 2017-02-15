@@ -17,6 +17,7 @@ import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.repository.OperationInterface;
 import org.palladiosimulator.pcm.repository.OperationProvidedRole;
 import org.palladiosimulator.pcm.repository.OperationRequiredRole;
+import org.palladiosimulator.pcm.repository.OperationSignature;
 import org.palladiosimulator.pcm.repository.ProvidedRole;
 import org.palladiosimulator.pcm.repository.Repository;
 import org.palladiosimulator.pcm.repository.RequiredRole;
@@ -210,5 +211,9 @@ public class RunnerHelper {
 	
 	public static String getAllocationContextName(AssemblyContext assemblyContext) {
 		return "Allocation_" + assemblyContext.getEntityName() + " <" + assemblyContext.getEncapsulatedComponent__AssemblyContext().getEntityName() + ">";
+	}
+	
+	public static String getExternalCallActionName(OperationInterface operationInterface, OperationSignature signature) {
+		return "External_" + operationInterface.getEntityName() + "_" + signature.getEntityName();
 	}
 }

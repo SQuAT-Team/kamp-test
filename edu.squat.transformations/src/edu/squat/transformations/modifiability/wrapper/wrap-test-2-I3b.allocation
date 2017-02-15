@@ -22,8 +22,8 @@
     <resourceContainer_AllocationContext href="wrap-test-2-I3b.resourceenvironment#_pFUjIO71Eea6wfovznEgkw"/>
     <assemblyContext_AllocationContext href="wrap-test-2-I3b.system#_DWw2oO72Eea6wfovznEgkw"/>
   </allocationContexts_Allocation>
-  <allocationContexts_Allocation id="_HdwQM_IiEea0epS6fEsD7Q" entityName="Allocation_Assembly_I3b-Wrapper &lt;I3b-Wrapper> &lt;I3b-Wrapper>">
+  <allocationContexts_Allocation id="__GbRQPLDEeaEp9e4KQNp5A" entityName="Allocation_Assembly_I3b-Wrapper &lt;I3b-Wrapper> &lt;I3b-Wrapper>">
     <resourceContainer_AllocationContext href="wrap-test-2-I3b.resourceenvironment#_pFUjIO71Eea6wfovznEgkw"/>
-    <assemblyContext_AllocationContext href="wrap-test-2-I3b.system#_HdwQMPIiEea0epS6fEsD7Q"/>
+    <assemblyContext_AllocationContext href="wrap-test-2-I3b.system#__GaqMPLDEeaEp9e4KQNp5A"/>
   </allocationContexts_Allocation>
 </allocation:Allocation>
