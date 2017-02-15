@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<allocation:Allocation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:allocation="http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1" id="_vUBS4C6NEd-Jla2o7wkBzQ" entityName="stplus.llocation">
+<allocation:Allocation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:allocation="http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1" id="_vUBS4C6NEd-Jla2o7wkBzQ" entityName="stplus.allocation">
   <targetResourceEnvironment_Allocation href="stplus-split.resourceenvironment#/"/>
   <system_Allocation href="stplus-split.system#_VreA0C6MEd-Jla2o7wkBzQ"/>
   <allocationContexts_Allocation id="_wTSXgC6NEd-Jla2o7wkBzQ" entityName="Allocation_Assembly_C1 &lt;C1> &lt;C1>">
