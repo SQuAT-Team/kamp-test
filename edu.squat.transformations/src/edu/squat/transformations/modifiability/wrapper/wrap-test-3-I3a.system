@@ -15,12 +15,12 @@
   <assemblyContexts__ComposedStructure id="_DWw2oO72Eea6wfovznEgkw" entityName="Assembly_C3 &lt;C3>">
     <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="wrap-test-3-I3a.repository#_wQr_EO5wEeax88fmO4XU3A"/>
   </assemblyContexts__ComposedStructure>
-  <assemblyContexts__ComposedStructure id="__GtlIPLDEeaEp9e4KQNp5A" entityName="Assembly_I3a-Wrapper &lt;I3a-Wrapper>">
-    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="wrap-test-3-I3a.repository#__GosofLDEeaEp9e4KQNp5A"/>
+  <assemblyContexts__ComposedStructure id="_fSgKUPQ8EeaUiskPcoQQvw" entityName="Assembly_I3a-Wrapper &lt;I3a-Wrapper>">
+    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="wrap-test-3-I3a.repository#_fSbR0fQ8EeaUiskPcoQQvw"/>
   </assemblyContexts__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="__GuMM_LDEeaEp9e4KQNp5A" entityName="Connector Assembly_I3a-Wrapper &lt;I3a-Wrapper> -> Assembly_C3 &lt;C3>" requiringAssemblyContext_AssemblyConnector="__GtlIPLDEeaEp9e4KQNp5A" providingAssemblyContext_AssemblyConnector="_DWw2oO72Eea6wfovznEgkw">
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_fSgxY_Q8EeaUiskPcoQQvw" entityName="Connector Assembly_I3a-Wrapper &lt;I3a-Wrapper> -> Assembly_C3 &lt;C3>" requiringAssemblyContext_AssemblyConnector="_fSgKUPQ8EeaUiskPcoQQvw" providingAssemblyContext_AssemblyConnector="_DWw2oO72Eea6wfovznEgkw">
     <providedRole_AssemblyConnector href="wrap-test-3-I3a.repository#_RxajwO5xEeax88fmO4XU3A"/>
-    <requiredRole_AssemblyConnector href="wrap-test-3-I3a.repository#__Goso_LDEeaEp9e4KQNp5A"/>
+    <requiredRole_AssemblyConnector href="wrap-test-3-I3a.repository#_fSbR0_Q8EeaUiskPcoQQvw"/>
   </connectors__ComposedStructure>
   <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_gZAd0O72Eea6wfovznEgkw" entityName="Connector Assembly_C3 &lt;C3> -> Assembly_C1 &lt;C1>" requiringAssemblyContext_AssemblyConnector="_2ucrQO71Eea6wfovznEgkw" providingAssemblyContext_AssemblyConnector="_y0k2sO71Eea6wfovznEgkw">
     <providedRole_AssemblyConnector href="wrap-test-3-I3a.repository#_QlWZQO5xEeax88fmO4XU3A"/>
@@ -38,16 +38,16 @@
     <providedRole_AssemblyConnector href="wrap-test-3-I3a.repository#_QlWZQO5xEeax88fmO4XU3A"/>
     <requiredRole_AssemblyConnector href="wrap-test-3-I3a.repository#_WKvUcO5xEeax88fmO4XU3A"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="__GuMMvLDEeaEp9e4KQNp5A" entityName="Connector Assembly_I3a-Wrapper &lt;I3a-Wrapper> -> Assembly_C3 &lt;C3>" requiringAssemblyContext_AssemblyConnector="__GtlIPLDEeaEp9e4KQNp5A" providingAssemblyContext_AssemblyConnector="_2ucrQO71Eea6wfovznEgkw">
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_fSgxYvQ8EeaUiskPcoQQvw" entityName="Connector Assembly_I3a-Wrapper &lt;I3a-Wrapper> -> Assembly_C3 &lt;C3>" requiringAssemblyContext_AssemblyConnector="_fSgKUPQ8EeaUiskPcoQQvw" providingAssemblyContext_AssemblyConnector="_2ucrQO71Eea6wfovznEgkw">
     <providedRole_AssemblyConnector href="wrap-test-3-I3a.repository#_RxajwO5xEeax88fmO4XU3A"/>
-    <requiredRole_AssemblyConnector href="wrap-test-3-I3a.repository#__Goso_LDEeaEp9e4KQNp5A"/>
+    <requiredRole_AssemblyConnector href="wrap-test-3-I3a.repository#_fSbR0_Q8EeaUiskPcoQQvw"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="__GuMMPLDEeaEp9e4KQNp5A" entityName="Connector Assembly_C1 &lt;C1> -> Assembly_I3a-Wrapper &lt;I3a-Wrapper>" requiringAssemblyContext_AssemblyConnector="_y0k2sO71Eea6wfovznEgkw" providingAssemblyContext_AssemblyConnector="__GtlIPLDEeaEp9e4KQNp5A">
-    <providedRole_AssemblyConnector href="wrap-test-3-I3a.repository#__GosovLDEeaEp9e4KQNp5A"/>
-    <requiredRole_AssemblyConnector href="wrap-test-3-I3a.repository#__GsXAPLDEeaEp9e4KQNp5A"/>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_fSgxYPQ8EeaUiskPcoQQvw" entityName="Connector Assembly_C1 &lt;C1> -> Assembly_I3a-Wrapper &lt;I3a-Wrapper>" requiringAssemblyContext_AssemblyConnector="_y0k2sO71Eea6wfovznEgkw" providingAssemblyContext_AssemblyConnector="_fSgKUPQ8EeaUiskPcoQQvw">
+    <providedRole_AssemblyConnector href="wrap-test-3-I3a.repository#_fSbR0vQ8EeaUiskPcoQQvw"/>
+    <requiredRole_AssemblyConnector href="wrap-test-3-I3a.repository#_fSe8MPQ8EeaUiskPcoQQvw"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="__GuMMfLDEeaEp9e4KQNp5A" entityName="Connector Assembly_C2 &lt;C2> -> Assembly_I3a-Wrapper &lt;I3a-Wrapper>" requiringAssemblyContext_AssemblyConnector="_15IM0O71Eea6wfovznEgkw" providingAssemblyContext_AssemblyConnector="__GtlIPLDEeaEp9e4KQNp5A">
-    <providedRole_AssemblyConnector href="wrap-test-3-I3a.repository#__GosovLDEeaEp9e4KQNp5A"/>
-    <requiredRole_AssemblyConnector href="wrap-test-3-I3a.repository#__Grv8PLDEeaEp9e4KQNp5A"/>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_fSgxYfQ8EeaUiskPcoQQvw" entityName="Connector Assembly_C2 &lt;C2> -> Assembly_I3a-Wrapper &lt;I3a-Wrapper>" requiringAssemblyContext_AssemblyConnector="_15IM0O71Eea6wfovznEgkw" providingAssemblyContext_AssemblyConnector="_fSgKUPQ8EeaUiskPcoQQvw">
+    <providedRole_AssemblyConnector href="wrap-test-3-I3a.repository#_fSbR0vQ8EeaUiskPcoQQvw"/>
+    <requiredRole_AssemblyConnector href="wrap-test-3-I3a.repository#_fSeVIPQ8EeaUiskPcoQQvw"/>
   </connectors__ComposedStructure>
 </system:System>

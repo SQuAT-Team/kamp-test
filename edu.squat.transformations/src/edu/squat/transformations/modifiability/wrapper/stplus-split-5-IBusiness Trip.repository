@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:reliability="http://palladiosimulator.org/PalladioComponentModel/Reliability/5.1" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.1" xmlns:seff="http://palladiosimulator.org/PalladioComponentModel/SEFF/5.1" xmlns:stoex="http://sdq.ipd.uka.de/StochasticExpressions/2.2" id="_XPYAYC6IEd-Jla2o7wkBzQ" entityName="stplus.epository">
+<repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:reliability="http://palladiosimulator.org/PalladioComponentModel/Reliability/5.1" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.1" xmlns:seff="http://palladiosimulator.org/PalladioComponentModel/SEFF/5.1" xmlns:stoex="http://sdq.ipd.uka.de/StochasticExpressions/2.2" id="_XPYAYC6IEd-Jla2o7wkBzQ" entityName="stplus.repository">
   <components__Repository xsi:type="repository:BasicComponent" id="_YyVn8C6IEd-Jla2o7wkBzQ" entityName="BusinessTripMgmt">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_fYvUMC6IEd-Jla2o7wkBzQ" entityName="Provided_I1_C1" providedInterface__OperationProvidedRole="_bh5lgC6IEd-Jla2o7wkBzQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_frf4IC6IEd-Jla2o7wkBzQ" entityName="Required_I2_C1" requiredInterface__OperationRequiredRole="_cyLhoC6IEd-Jla2o7wkBzQ"/>
@@ -632,18 +632,56 @@
       <capacity_PassiveResource specification="1"/>
     </passiveResource_BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="__fdcUfLDEeaEp9e4KQNp5A" entityName="IBusiness Trip-Wrapper">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="__fdcUvLDEeaEp9e4KQNp5A" providedInterface__OperationProvidedRole="__fdcUPLDEeaEp9e4KQNp5A"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="__feDYPLDEeaEp9e4KQNp5A" requiredInterface__OperationRequiredRole="_bh5lgC6IEd-Jla2o7wkBzQ"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="__fhGsvLDEeaEp9e4KQNp5A" describedService__SEFF="__fhGsPLDEeaEp9e4KQNp5A">
-      <steps_Behaviour xsi:type="seff:StartAction" id="__fhGs_LDEeaEp9e4KQNp5A" entityName="start" successor_AbstractAction="__fhGtPLDEeaEp9e4KQNp5A"/>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="__fhGtPLDEeaEp9e4KQNp5A" entityName="External_IBusiness Trip-Wrapper_plan" predecessor_AbstractAction="__fhGs_LDEeaEp9e4KQNp5A" successor_AbstractAction="__fhGtfLDEeaEp9e4KQNp5A" calledService_ExternalService="_8A9Bka7LEd-Z7e7zQl8I9w" role_ExternalService="__feDYPLDEeaEp9e4KQNp5A"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="__fhGtfLDEeaEp9e4KQNp5A" entityName="stop" predecessor_AbstractAction="__fhGtPLDEeaEp9e4KQNp5A"/>
+  <components__Repository xsi:type="repository:BasicComponent" id="_yfVccfUJEea0_pzw0043hw" entityName="IBusiness Trip-Wrapper">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_yfVccvUJEea0_pzw0043hw" providedInterface__OperationProvidedRole="_yfVccPUJEea0_pzw0043hw"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_yfVcc_UJEea0_pzw0043hw" requiredInterface__OperationRequiredRole="_bh5lgC6IEd-Jla2o7wkBzQ"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_yfcxMfUJEea0_pzw0043hw" describedService__SEFF="_yfcKIPUJEea0_pzw0043hw">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_yfcxMvUJEea0_pzw0043hw" entityName="start" successor_AbstractAction="_yfcxM_UJEea0_pzw0043hw"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_yfcxM_UJEea0_pzw0043hw" entityName="Overhead [IBusiness Trip-Wrapper]" predecessor_AbstractAction="_yfcxMvUJEea0_pzw0043hw" successor_AbstractAction="_yfcxNPUJEea0_pzw0043hw">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="15"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_yfcxNPUJEea0_pzw0043hw" entityName="External_IBusiness Trip-Wrapper_plan" predecessor_AbstractAction="_yfcxM_UJEea0_pzw0043hw" successor_AbstractAction="_yfcxNfUJEea0_pzw0043hw" calledService_ExternalService="_8A9Bka7LEd-Z7e7zQl8I9w" role_ExternalService="_yfVcc_UJEea0_pzw0043hw">
+        <inputVariableUsages__CallAction>
+          <variableCharacterisation_VariableUsage type="VALUE">
+            <specification_VariableCharacterisation specification="isBook.VALUE"/>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="isBook"/>
+        </inputVariableUsages__CallAction>
+        <inputVariableUsages__CallAction>
+          <variableCharacterisation_VariableUsage type="VALUE">
+            <specification_VariableCharacterisation specification="isBank.VALUE"/>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="isBank"/>
+        </inputVariableUsages__CallAction>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_yfcxNfUJEea0_pzw0043hw" entityName="stop" predecessor_AbstractAction="_yfcxNPUJEea0_pzw0043hw"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="__fhGtvLDEeaEp9e4KQNp5A" describedService__SEFF="__fhGsfLDEeaEp9e4KQNp5A">
-      <steps_Behaviour xsi:type="seff:StartAction" id="__fhGt_LDEeaEp9e4KQNp5A" entityName="start" successor_AbstractAction="__fhGuPLDEeaEp9e4KQNp5A"/>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="__fhGuPLDEeaEp9e4KQNp5A" entityName="External_IBusiness Trip-Wrapper_export" predecessor_AbstractAction="__fhGt_LDEeaEp9e4KQNp5A" successor_AbstractAction="__fhGufLDEeaEp9e4KQNp5A" calledService_ExternalService="_e8D_0F_JEeahZew5WJ0QOQ" role_ExternalService="__feDYPLDEeaEp9e4KQNp5A"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="__fhGufLDEeaEp9e4KQNp5A" entityName="stop" predecessor_AbstractAction="__fhGuPLDEeaEp9e4KQNp5A"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_yfdYQPUJEea0_pzw0043hw" describedService__SEFF="_yfcxMPUJEea0_pzw0043hw">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_yfdYQfUJEea0_pzw0043hw" entityName="start" successor_AbstractAction="_yfdYQvUJEea0_pzw0043hw"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_yfdYQvUJEea0_pzw0043hw" entityName="Overhead [IBusiness Trip-Wrapper]" predecessor_AbstractAction="_yfdYQfUJEea0_pzw0043hw" successor_AbstractAction="_yfdYQ_UJEea0_pzw0043hw">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="15"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_yfdYQ_UJEea0_pzw0043hw" entityName="External_IBusiness Trip-Wrapper_export" predecessor_AbstractAction="_yfdYQvUJEea0_pzw0043hw" successor_AbstractAction="_yfd_UPUJEea0_pzw0043hw" calledService_ExternalService="_e8D_0F_JEeahZew5WJ0QOQ" role_ExternalService="_yfVcc_UJEea0_pzw0043hw">
+        <inputVariableUsages__CallAction>
+          <variableCharacterisation_VariableUsage type="VALUE">
+            <specification_VariableCharacterisation specification="idz.VALUE"/>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="idz"/>
+        </inputVariableUsages__CallAction>
+        <returnVariableUsage__CallReturnAction>
+          <variableCharacterisation_VariableUsage type="VALUE">
+            <specification_VariableCharacterisation specification="return.VALUE"/>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="return"/>
+        </returnVariableUsage__CallReturnAction>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_yfd_UPUJEea0_pzw0043hw" entityName="stop" predecessor_AbstractAction="_yfdYQ_UJEea0_pzw0043hw"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_bh5lgC6IEd-Jla2o7wkBzQ" entityName="IBusiness Trip">
@@ -694,8 +732,8 @@
       <parameters__OperationSignature dataType__Parameter="_XnGwLF43EeavvL8WcdoZSg" parameterName="idx"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="__fdcUPLDEeaEp9e4KQNp5A" entityName="IBusiness Trip-Wrapper">
-    <signatures__OperationInterface id="__fhGsPLDEeaEp9e4KQNp5A" entityName="plan">
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_yfVccPUJEea0_pzw0043hw" entityName="IBusiness Trip-Wrapper">
+    <signatures__OperationInterface id="_yfcKIPUJEea0_pzw0043hw" entityName="plan">
       <parameters__OperationSignature parameterName="isBook">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
       </parameters__OperationSignature>
@@ -703,7 +741,7 @@
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
       </parameters__OperationSignature>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="__fhGsfLDEeaEp9e4KQNp5A" entityName="export" returnType__OperationSignature="_7_wCbF_SEeahZew5WJ0QOQ">
+    <signatures__OperationInterface id="_yfcxMPUJEea0_pzw0043hw" entityName="export" returnType__OperationSignature="_7_wCbF_SEeahZew5WJ0QOQ">
       <parameters__OperationSignature dataType__Parameter="_XnGwLF43EeavvL8WcdoZSg" parameterName="idz"/>
     </signatures__OperationInterface>
   </interfaces__Repository>

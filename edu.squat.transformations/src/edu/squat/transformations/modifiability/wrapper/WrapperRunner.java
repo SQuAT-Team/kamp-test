@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.henshin.interpreter.EGraph;
@@ -19,34 +20,54 @@ import org.eclipse.emf.henshin.trace.TraceFactory;
 import org.palladiosimulator.pcm.allocation.Allocation;
 import org.palladiosimulator.pcm.allocation.AllocationContext;
 import org.palladiosimulator.pcm.allocation.AllocationFactory;
+import org.palladiosimulator.pcm.core.CoreFactory;
+import org.palladiosimulator.pcm.core.PCMRandomVariable;
 import org.palladiosimulator.pcm.core.composition.AssemblyConnector;
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.core.composition.CompositionFactory;
 import org.palladiosimulator.pcm.core.composition.Connector;
 import org.palladiosimulator.pcm.core.composition.ProvidedDelegationConnector;
+import org.palladiosimulator.pcm.core.entity.EntityFactory;
+import org.palladiosimulator.pcm.core.entity.ResourceProvidedRole;
+import org.palladiosimulator.pcm.parameter.ParameterFactory;
+import org.palladiosimulator.pcm.parameter.VariableCharacterisation;
+import org.palladiosimulator.pcm.parameter.VariableCharacterisationType;
+import org.palladiosimulator.pcm.parameter.VariableUsage;
 import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.repository.OperationInterface;
 import org.palladiosimulator.pcm.repository.OperationProvidedRole;
 import org.palladiosimulator.pcm.repository.OperationRequiredRole;
 import org.palladiosimulator.pcm.repository.OperationSignature;
 import org.palladiosimulator.pcm.repository.Parameter;
+import org.palladiosimulator.pcm.repository.PrimitiveDataType;
 import org.palladiosimulator.pcm.repository.ProvidedRole;
 import org.palladiosimulator.pcm.repository.Repository;
 import org.palladiosimulator.pcm.repository.RepositoryComponent;
 import org.palladiosimulator.pcm.repository.RepositoryFactory;
 import org.palladiosimulator.pcm.repository.RequiredRole;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
+import org.palladiosimulator.pcm.resourcetype.ProcessingResourceType;
+import org.palladiosimulator.pcm.resourcetype.ResourceType;
+import org.palladiosimulator.pcm.resourcetype.ResourcetypeFactory;
 import org.palladiosimulator.pcm.seff.AbstractAction;
 import org.palladiosimulator.pcm.seff.AbstractBranchTransition;
 import org.palladiosimulator.pcm.seff.BranchAction;
 import org.palladiosimulator.pcm.seff.ExternalCallAction;
+import org.palladiosimulator.pcm.seff.InternalAction;
+import org.palladiosimulator.pcm.seff.InternalCallAction;
 import org.palladiosimulator.pcm.seff.LoopAction;
+import org.palladiosimulator.pcm.seff.ResourceDemandingInternalBehaviour;
 import org.palladiosimulator.pcm.seff.ResourceDemandingSEFF;
 import org.palladiosimulator.pcm.seff.SeffFactory;
 import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
 import org.palladiosimulator.pcm.seff.StartAction;
 import org.palladiosimulator.pcm.seff.StopAction;
+import org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand;
+import org.palladiosimulator.pcm.seff.seff_performance.SeffPerformanceFactory;
 
+import de.uka.ipd.sdq.stoex.StoexFactory;
+import de.uka.ipd.sdq.stoex.VariableReference;
+import edu.squat.pcm.PCMDefault;
 import edu.squat.transformations.modifiability.PCMTransformerRunner;
 import edu.squat.transformations.modifiability.RunnerHelper;
 import edu.squat.transformations.modifiability.Tactic;
@@ -447,31 +468,152 @@ public class WrapperRunner extends PCMTransformerRunner {
 	}
 
 	private void createSEFF(OperationInterface oldInterface, BasicComponent newComponent, OperationInterface newInterface) {
-		SeffFactory factory = SeffFactory.eINSTANCE;
+		SeffFactory sFactory = SeffFactory.eINSTANCE;
 		for(OperationSignature signature : newInterface.getSignatures__OperationInterface()) {
-			ResourceDemandingSEFF seff = factory.createResourceDemandingSEFF();
+			ResourceDemandingSEFF seff = sFactory.createResourceDemandingSEFF();
 			seff.setDescribedService__SEFF(signature);
 			//
-			StartAction start = factory.createStartAction();
+			StartAction start = sFactory.createStartAction();
 			start.setEntityName("start");
-			ExternalCallAction externalCallAction = factory.createExternalCallAction();
+			//Create an internal call simulating the overhead of the wrapper
+			InternalAction internalAction = sFactory.createInternalAction();
+			internalAction.setEntityName("Overhead" + " [" + newComponent.getEntityName() + "]");
+			ParametricResourceDemand cpuDemand = SeffPerformanceFactory.eINSTANCE.createParametricResourceDemand();
+			cpuDemand.setRequiredResource_ParametricResourceDemand(PCMDefault.getCPU());
+			PCMRandomVariable consumptionVariable = CoreFactory.eINSTANCE.createPCMRandomVariable();
+			consumptionVariable.setSpecification("15");
+			cpuDemand.setSpecification_ParametericResourceDemand(consumptionVariable);
+			internalAction.getResourceDemand_Action().add(cpuDemand);
+			//
+			ExternalCallAction externalCallAction = sFactory.createExternalCallAction();
 			externalCallAction.setEntityName(RunnerHelper.getExternalCallActionName(newInterface, signature));
-			externalCallAction.setCalledService_ExternalService(this.findExternalSignature(signature, oldInterface));
-			externalCallAction.setRole_ExternalService(this.findExternalRole(newComponent, oldInterface));
-			StopAction stop = factory.createStopAction();
+			OperationSignature externalSignature = this.findExternalSignature(signature, oldInterface);
+			OperationRequiredRole externalRole = this.findExternalRole(newComponent, oldInterface);
+			externalCallAction.setCalledService_ExternalService(externalSignature);
+			externalCallAction.setRole_ExternalService(externalRole);
+			//Pass along the values to the real implementation
+			for(Parameter parameter : externalSignature.getParameters__OperationSignature()) {
+				VariableUsage variableUsage = ParameterFactory.eINSTANCE.createVariableUsage();
+				//Reference
+				VariableReference variableReference = StoexFactory.eINSTANCE.createVariableReference();
+				variableReference.setReferenceName(parameter.getParameterName());
+				variableUsage.setNamedReference__VariableUsage(variableReference);
+				externalCallAction.getInputVariableUsages__CallAction().add(variableUsage);
+				//Characterisation
+				VariableCharacterisation variableCharacterisation = ParameterFactory.eINSTANCE.createVariableCharacterisation();
+				variableCharacterisation.setType(VariableCharacterisationType.VALUE);
+				PCMRandomVariable valueVariable = CoreFactory.eINSTANCE.createPCMRandomVariable();
+				valueVariable.setSpecification(parameter.getParameterName() + "." + VariableCharacterisationType.VALUE.name());
+				variableCharacterisation.setSpecification_VariableCharacterisation(valueVariable);
+				variableUsage.getVariableCharacterisation_VariableUsage().add(variableCharacterisation);
+			}
+			if(externalSignature.getReturnType__OperationSignature() != null) {
+				VariableUsage returnUsage = ParameterFactory.eINSTANCE.createVariableUsage();
+				//Reference
+				VariableReference variableReference = StoexFactory.eINSTANCE.createVariableReference();
+				variableReference.setReferenceName("return");
+				returnUsage.setNamedReference__VariableUsage(variableReference);
+				externalCallAction.getReturnVariableUsage__CallReturnAction().add(returnUsage);
+				//Characterisation
+				VariableCharacterisation variableCharacterisation = ParameterFactory.eINSTANCE.createVariableCharacterisation();
+				variableCharacterisation.setType(VariableCharacterisationType.VALUE);
+				PCMRandomVariable valueVariable = CoreFactory.eINSTANCE.createPCMRandomVariable();
+				valueVariable.setSpecification("return" + "." + VariableCharacterisationType.VALUE.name());
+				variableCharacterisation.setSpecification_VariableCharacterisation(valueVariable);
+				returnUsage.getVariableCharacterisation_VariableUsage().add(variableCharacterisation);
+			}
+			//
+			StopAction stop = sFactory.createStopAction();
 			stop.setEntityName("stop");
 			//
-			start.setSuccessor_AbstractAction(externalCallAction);
-			externalCallAction.setPredecessor_AbstractAction(start);
+			start.setSuccessor_AbstractAction(internalAction);
+			internalAction.setPredecessor_AbstractAction(start);
+			internalAction.setSuccessor_AbstractAction(externalCallAction);
+			externalCallAction.setPredecessor_AbstractAction(internalAction);
 			externalCallAction.setSuccessor_AbstractAction(stop);
 			stop.setPredecessor_AbstractAction(externalCallAction);
 			seff.getSteps_Behaviour().add(start);
+			seff.getSteps_Behaviour().add(internalAction);
 			seff.getSteps_Behaviour().add(externalCallAction);
 			seff.getSteps_Behaviour().add(stop);
 			newComponent.getServiceEffectSpecifications__BasicComponent().add(seff);
 		}
 		System.out.println("Successfully created a simple SEFF for the wrapper component and interface");
 	}
+	
+
+//		Find a similar external action to replicate in the wrapper
+//		List<ExternalCallAction> similarActions = this.collectSimilarExternalCalls(newComponent, oldInterface, externalSignature);
+//		if(similarActions.size() > 0) {
+//			ExternalCallAction similarAction = similarActions.get(0);
+//			EList<VariableUsage> similarInput = similarAction.getInputVariableUsages__CallAction();
+//			EList<VariableUsage> similarReturn = similarAction.getReturnVariableUsage__CallReturnAction();
+//			externalCallAction.getInputVariableUsages__CallAction().addAll(EcoreUtil.copyAll(similarInput));
+//			externalCallAction.getReturnVariableUsage__CallReturnAction().addAll(EcoreUtil.copyAll(similarReturn));
+//		}
+	
+//	private VariableUsage findVariableUsage(EList<VariableUsage> variableUsages, String name) {
+//		for(VariableUsage usage : variableUsages) {
+//			if(usage.getNamedReference__VariableUsage() != null) 
+//				if(usage.getNamedReference__VariableUsage().getReferenceName().equals(name))
+//					return usage;
+//		}
+//		return null;
+//	}
+//		
+//	private List<ExternalCallAction> collectSimilarExternalCalls(BasicComponent newComponent, OperationInterface oldInterface, OperationSignature signature) {
+//		List<ExternalCallAction> externalCallActions = new ArrayList<ExternalCallAction>();
+//		Repository repository = newComponent.getRepository__RepositoryComponent();
+//		Iterator<RepositoryComponent> components = repository.getComponents__Repository().iterator();
+//		while(components.hasNext()) {
+//			BasicComponent component = (BasicComponent) components.next();
+//			if(!component.equals(newComponent)) {
+//				externalCallActions.addAll(this.collectExternalCalls(component, oldInterface, signature));
+//			}
+//		}
+//		return externalCallActions;
+//	}
+//	
+//	private List<ExternalCallAction> collectExternalCalls(BasicComponent component, OperationInterface oldInterface, OperationSignature signature) {
+//		List<ExternalCallAction> externalCallActions = new ArrayList<ExternalCallAction>();
+//		Iterator<ServiceEffectSpecification> seffIterator = component.getServiceEffectSpecifications__BasicComponent().iterator();
+//		OperationRequiredRole oldRequiredRole = this.findExternalRole(component, oldInterface);
+//    	while(seffIterator.hasNext()) {
+//    		ResourceDemandingSEFF seff = (ResourceDemandingSEFF) seffIterator.next();
+//    		externalCallActions.addAll(this.collectExternalCalls(seff.getSteps_Behaviour(), oldInterface, oldRequiredRole, signature));
+//		}
+//		return externalCallActions;
+//	}
+//	
+//	private List<ExternalCallAction> collectExternalCalls(List<AbstractAction> actions, OperationInterface oldInterface, OperationRequiredRole oldRequiredRole, OperationSignature signature) {
+//		List<ExternalCallAction> externalCallActions = new ArrayList<ExternalCallAction>();
+//		Iterator<AbstractAction> actionIterator = actions.iterator();
+//    	while(actionIterator.hasNext()) {
+//    		AbstractAction action = actionIterator.next();
+//			if(action instanceof BranchAction) {
+//		    	BranchAction branchAction = (BranchAction) action;
+//		    	Iterator<AbstractBranchTransition> branchTransitions = branchAction.getBranches_Branch().iterator();
+//		    	while(branchTransitions.hasNext()) {
+//		    		AbstractBranchTransition branchTransition = branchTransitions.next();
+//		    		externalCallActions.addAll(this.collectExternalCalls(branchTransition.getBranchBehaviour_BranchTransition().getSteps_Behaviour(), oldInterface, oldRequiredRole, signature));
+//		    	}
+//			}
+//			if(action instanceof LoopAction) {
+//				LoopAction loopAction = (LoopAction) action;
+//				externalCallActions.addAll(this.collectExternalCalls(loopAction.getBodyBehaviour_Loop().getSteps_Behaviour(), oldInterface, oldRequiredRole, signature));
+//			}
+//			if(action instanceof ExternalCallAction) {
+//				ExternalCallAction externalCallAction = (ExternalCallAction) action;
+//				OperationRequiredRole requiredRole = externalCallAction.getRole_ExternalService();
+//				OperationSignature requiredSignature = externalCallAction.getCalledService_ExternalService();
+//				OperationInterface requiredInterface = requiredRole.getRequiredInterface__OperationRequiredRole();
+//				if(requiredRole.equals(oldRequiredRole) && requiredInterface.equals(oldInterface) && requiredSignature.equals(signature)) {
+//					externalCallActions.add(externalCallAction);
+//				}
+//			}
+//		}
+//		return externalCallActions;
+//	}
 
 	private OperationRequiredRole findExternalRole(BasicComponent newComponent, OperationInterface oldInterface) {
 		for(RequiredRole requiredRole : newComponent.getRequiredRoles_InterfaceRequiringEntity()) {
@@ -551,11 +693,11 @@ public class WrapperRunner extends PCMTransformerRunner {
 		resultSystemFilename = "wrap-test-" + "#REPLACEMENT#" + ".system";
 		resultResourceEnvironmentFilename = "wrap-test-" + "#REPLACEMENT#" + ".resourceenvironment";
 		resultAllocationFilename = "wrap-test-" + "#REPLACEMENT#" + ".allocation";
-		runner.run(dirPath, 
+		/*runner.run(dirPath, 
 				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename,
 				henshinFilename, 
 				resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename,
-				true);
+				true);*/
 		
 		//Complete SimpleTactics+ testing
 		repositoryFilename = "stplus.repository";
@@ -568,11 +710,11 @@ public class WrapperRunner extends PCMTransformerRunner {
 		resultResourceEnvironmentFilename = "stplus-" + "#REPLACEMENT#" + ".resourceenvironment";
 		resultAllocationFilename = "stplus-" + "#REPLACEMENT#" + ".allocation";
 		resultUsageFilename = "stplus-" + "#REPLACEMENT#" + ".usagemodel";
-		runner.run(dirPath, 
+		/*runner.run(dirPath, 
 				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, usageFilename,
 				henshinFilename, 
 				resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename, resultUsageFilename,
-				true);
+				true);*/
 		
 		//Complete SimpleTactics+ testing after split responsability
 		repositoryFilename = "stplus-split.repository";
