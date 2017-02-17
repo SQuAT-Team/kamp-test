@@ -152,7 +152,7 @@
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_ZZH7IC6IEd-Jla2o7wkBzQ" entityName="BookingSystem">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_gCeNsC6IEd-Jla2o7wkBzQ" entityName="Provided_I2_C2" providedInterface__OperationProvidedRole="_cyLhoC6IEd-Jla2o7wkBzQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_ydAhMfUJEea0_pzw0043hw" requiredInterface__OperationRequiredRole="_yc3-UPUJEea0_pzw0043hw"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_0QsEsfVeEea_wfCjFPidZw" requiredInterface__OperationRequiredRole="_0QM8gPVeEea_wfCjFPidZw"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_phvvEC6JEd-Jla2o7wkBzQ" describedService__SEFF="_8A9Bk67LEd-Z7e7zQl8I9w">
       <steps_Behaviour xsi:type="seff:StartAction" id="_pwjnIC6JEd-Jla2o7wkBzQ" successor_AbstractAction="_HcazEC6KEd-Jla2o7wkBzQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_pwkOMC6JEd-Jla2o7wkBzQ" predecessor_AbstractAction="_DIhMgOtZEd-m3_hR0FtH3Q"/>
@@ -163,7 +163,7 @@
         </resourceDemand_Action>
         <internalFailureOccurrenceDescriptions__InternalAction failureProbability="1.0E-4" softwareInducedFailureType__InternalFailureOccurrenceDescription="_PL68dtrQEd-YZv0HsvRIgQ"/>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_DIhMgOtZEd-m3_hR0FtH3Q" predecessor_AbstractAction="_HcazEC6KEd-Jla2o7wkBzQ" successor_AbstractAction="_pwkOMC6JEd-Jla2o7wkBzQ" calledService_ExternalService="_yc820PUJEea0_pzw0043hw" role_ExternalService="_ydAhMfUJEea0_pzw0043hw">
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_DIhMgOtZEd-m3_hR0FtH3Q" predecessor_AbstractAction="_HcazEC6KEd-Jla2o7wkBzQ" successor_AbstractAction="_pwkOMC6JEd-Jla2o7wkBzQ" calledService_ExternalService="_0QeCQPVeEea_wfCjFPidZw" role_ExternalService="_0QsEsfVeEea_wfCjFPidZw">
         <inputVariableUsages__CallAction>
           <variableCharacterisation_VariableUsage type="VALUE">
             <specification_VariableCharacterisation specification="isBank.VALUE"/>
@@ -192,7 +192,7 @@
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="__VPcQOtlEd-m3_hR0FtH3Q" entityName="QuickBooking">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_AhcwsOtmEd-m3_hR0FtH3Q" providedInterface__OperationProvidedRole="_cyLhoC6IEd-Jla2o7wkBzQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_ydAhMPUJEea0_pzw0043hw" requiredInterface__OperationRequiredRole="_yc3-UPUJEea0_pzw0043hw"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_0QsEsPVeEea_wfCjFPidZw" requiredInterface__OperationRequiredRole="_0QM8gPVeEea_wfCjFPidZw"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_AhdXwOtmEd-m3_hR0FtH3Q" describedService__SEFF="_8A9Bk67LEd-Z7e7zQl8I9w">
       <steps_Behaviour xsi:type="seff:StartAction" id="_Ahd-0OtmEd-m3_hR0FtH3Q" successor_AbstractAction="_c1GMgOtmEd-m3_hR0FtH3Q"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_Ahd-0etmEd-m3_hR0FtH3Q" predecessor_AbstractAction="_5R5l8O13Ed-XnbkEivYoKw"/>
@@ -210,7 +210,7 @@
         </resourceDemand_Action>
         <internalFailureOccurrenceDescriptions__InternalAction failureProbability="1.0E-4" softwareInducedFailureType__InternalFailureOccurrenceDescription="_PL68dtrQEd-YZv0HsvRIgQ"/>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_5R5l8O13Ed-XnbkEivYoKw" predecessor_AbstractAction="_fEh4gOtmEd-m3_hR0FtH3Q" successor_AbstractAction="_Ahd-0etmEd-m3_hR0FtH3Q" calledService_ExternalService="_yc820PUJEea0_pzw0043hw" role_ExternalService="_ydAhMPUJEea0_pzw0043hw">
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_5R5l8O13Ed-XnbkEivYoKw" predecessor_AbstractAction="_fEh4gOtmEd-m3_hR0FtH3Q" successor_AbstractAction="_Ahd-0etmEd-m3_hR0FtH3Q" calledService_ExternalService="_0QeCQPVeEea_wfCjFPidZw" role_ExternalService="_0QsEsPVeEea_wfCjFPidZw">
         <inputVariableUsages__CallAction>
           <variableCharacterisation_VariableUsage type="VALUE">
             <specification_VariableCharacterisation specification="isBank.VALUE"/>
@@ -632,18 +632,18 @@
       <capacity_PassiveResource specification="1"/>
     </passiveResource_BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_yc3-UfUJEea0_pzw0043hw" entityName="IExternalPayment-Wrapper">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_yc3-UvUJEea0_pzw0043hw" providedInterface__OperationProvidedRole="_yc3-UPUJEea0_pzw0043hw"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_yc3-U_UJEea0_pzw0043hw" requiredInterface__OperationRequiredRole="_zdIuAOsyEd-swe4bkXmV_Q"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_yc820fUJEea0_pzw0043hw" describedService__SEFF="_yc820PUJEea0_pzw0043hw">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_yc820vUJEea0_pzw0043hw" entityName="start" successor_AbstractAction="_yc820_UJEea0_pzw0043hw"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_yc820_UJEea0_pzw0043hw" entityName="Overhead [IExternalPayment-Wrapper]" predecessor_AbstractAction="_yc820vUJEea0_pzw0043hw" successor_AbstractAction="_yc821PUJEea0_pzw0043hw">
+  <components__Repository xsi:type="repository:BasicComponent" id="_0QM8gfVeEea_wfCjFPidZw" entityName="IExternalPayment-Wrapper">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_0QM8gvVeEea_wfCjFPidZw" providedInterface__OperationProvidedRole="_0QM8gPVeEea_wfCjFPidZw"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_0QM8g_VeEea_wfCjFPidZw" requiredInterface__OperationRequiredRole="_zdIuAOsyEd-swe4bkXmV_Q"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_0QeCQfVeEea_wfCjFPidZw" describedService__SEFF="_0QeCQPVeEea_wfCjFPidZw">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_0QeCQvVeEea_wfCjFPidZw" entityName="start" successor_AbstractAction="_0QeCQ_VeEea_wfCjFPidZw"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_0QeCQ_VeEea_wfCjFPidZw" entityName="Overhead [IExternalPayment-Wrapper]" predecessor_AbstractAction="_0QeCQvVeEea_wfCjFPidZw" successor_AbstractAction="_0QeCRPVeEea_wfCjFPidZw">
         <resourceDemand_Action>
           <specification_ParametericResourceDemand specification="15"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_yc821PUJEea0_pzw0043hw" entityName="External_IExternalPayment-Wrapper_pay" predecessor_AbstractAction="_yc820_UJEea0_pzw0043hw" successor_AbstractAction="_yc821fUJEea0_pzw0043hw" calledService_ExternalService="_1cTwcOsyEd-swe4bkXmV_Q" role_ExternalService="_yc3-U_UJEea0_pzw0043hw">
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_0QeCRPVeEea_wfCjFPidZw" entityName="External_IExternalPayment-Wrapper_pay" predecessor_AbstractAction="_0QeCQ_VeEea_wfCjFPidZw" successor_AbstractAction="_0QepUPVeEea_wfCjFPidZw" calledService_ExternalService="_1cTwcOsyEd-swe4bkXmV_Q" role_ExternalService="_0QM8g_VeEea_wfCjFPidZw">
         <inputVariableUsages__CallAction>
           <variableCharacterisation_VariableUsage type="VALUE">
             <specification_VariableCharacterisation specification="isBank.VALUE"/>
@@ -651,7 +651,7 @@
           <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="isBank"/>
         </inputVariableUsages__CallAction>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_yc821fUJEea0_pzw0043hw" entityName="stop" predecessor_AbstractAction="_yc821PUJEea0_pzw0043hw"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_0QepUPVeEea_wfCjFPidZw" entityName="stop" predecessor_AbstractAction="_0QeCRPVeEea_wfCjFPidZw"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_bh5lgC6IEd-Jla2o7wkBzQ" entityName="IBusiness Trip">
@@ -702,8 +702,8 @@
       <parameters__OperationSignature dataType__Parameter="_XnGwLF43EeavvL8WcdoZSg" parameterName="idx"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_yc3-UPUJEea0_pzw0043hw" entityName="IExternalPayment-Wrapper">
-    <signatures__OperationInterface id="_yc820PUJEea0_pzw0043hw" entityName="pay">
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_0QM8gPVeEea_wfCjFPidZw" entityName="IExternalPayment-Wrapper">
+    <signatures__OperationInterface id="_0QeCQPVeEea_wfCjFPidZw" entityName="pay">
       <parameters__OperationSignature parameterName="isBank">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
       </parameters__OperationSignature>

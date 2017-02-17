@@ -60,11 +60,14 @@ import org.palladiosimulator.pcm.seff.ResourceDemandingInternalBehaviour;
 import org.palladiosimulator.pcm.seff.ResourceDemandingSEFF;
 import org.palladiosimulator.pcm.seff.SeffFactory;
 import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
+import org.palladiosimulator.pcm.seff.SetVariableAction;
 import org.palladiosimulator.pcm.seff.StartAction;
 import org.palladiosimulator.pcm.seff.StopAction;
 import org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand;
 import org.palladiosimulator.pcm.seff.seff_performance.SeffPerformanceFactory;
 
+import de.uka.ipd.sdq.stoex.AbstractNamedReference;
+import de.uka.ipd.sdq.stoex.NamespaceReference;
 import de.uka.ipd.sdq.stoex.StoexFactory;
 import de.uka.ipd.sdq.stoex.VariableReference;
 import edu.squat.pcm.PCMDefault;
@@ -488,39 +491,70 @@ public class WrapperRunner extends PCMTransformerRunner {
 			ExternalCallAction externalCallAction = sFactory.createExternalCallAction();
 			externalCallAction.setEntityName(RunnerHelper.getExternalCallActionName(newInterface, signature));
 			OperationSignature externalSignature = this.findExternalSignature(signature, oldInterface);
-			OperationRequiredRole externalRole = this.findExternalRole(newComponent, oldInterface);
+			OperationRequiredRole externalRole = this.findRequiredRole(newComponent, oldInterface);
 			externalCallAction.setCalledService_ExternalService(externalSignature);
 			externalCallAction.setRole_ExternalService(externalRole);
-			//Pass along the values to the real implementation
-			for(Parameter parameter : externalSignature.getParameters__OperationSignature()) {
-				VariableUsage variableUsage = ParameterFactory.eINSTANCE.createVariableUsage();
-				//Reference
-				VariableReference variableReference = StoexFactory.eINSTANCE.createVariableReference();
-				variableReference.setReferenceName(parameter.getParameterName());
-				variableUsage.setNamedReference__VariableUsage(variableReference);
-				externalCallAction.getInputVariableUsages__CallAction().add(variableUsage);
-				//Characterisation
-				VariableCharacterisation variableCharacterisation = ParameterFactory.eINSTANCE.createVariableCharacterisation();
-				variableCharacterisation.setType(VariableCharacterisationType.VALUE);
-				PCMRandomVariable valueVariable = CoreFactory.eINSTANCE.createPCMRandomVariable();
-				valueVariable.setSpecification(parameter.getParameterName() + "." + VariableCharacterisationType.VALUE.name());
-				variableCharacterisation.setSpecification_VariableCharacterisation(valueVariable);
-				variableUsage.getVariableCharacterisation_VariableUsage().add(variableCharacterisation);
+			
+			//Find a similar external action to replicate the variable caracterisation in the wrapper
+			List<ExternalCallAction> similarExternalActions = this.collectSimilarExternalCalls(newComponent, oldInterface, externalSignature);
+			if(similarExternalActions.size() > 0) {
+				ExternalCallAction similarAction = similarExternalActions.get(0);
+				EList<VariableUsage> similarInput = similarAction.getInputVariableUsages__CallAction();
+				//EList<VariableUsage> similarReturn = similarAction.getReturnVariableUsage__CallReturnAction();
+				//externalCallAction.getInputVariableUsages__CallAction().addAll(EcoreUtil.copyAll(similarInput));
+				//externalCallAction.getReturnVariableUsage__CallReturnAction().addAll(EcoreUtil.copyAll(similarReturn));
+				for(Parameter parameter : externalSignature.getParameters__OperationSignature()) {
+					VariableUsage variableUsage = ParameterFactory.eINSTANCE.createVariableUsage();
+					externalCallAction.getInputVariableUsages__CallAction().add(variableUsage);
+					//Reference
+					variableUsage.setNamedReference__VariableUsage(this.createReference(parameter.getParameterName()));
+					//Find the characterisation type in a similar action
+					List<VariableCharacterisation> similarCharacterisation = this.findCharacterisation(parameter, similarInput);
+					VariableCharacterisationType type;
+					if(similarCharacterisation.size() > 0)
+						type = similarCharacterisation.get(0).getType();
+					else 
+						type = VariableCharacterisationType.VALUE;
+					//Characterisation
+					variableUsage.getVariableCharacterisation_VariableUsage().add(this.createCharacterisation(type, parameter.getParameterName() + "." + type.name()));
+				}
 			}
+			
+			SetVariableAction returnSetAction = null;
 			if(externalSignature.getReturnType__OperationSignature() != null) {
-				VariableUsage returnUsage = ParameterFactory.eINSTANCE.createVariableUsage();
-				//Reference
-				VariableReference variableReference = StoexFactory.eINSTANCE.createVariableReference();
-				variableReference.setReferenceName("return");
-				returnUsage.setNamedReference__VariableUsage(variableReference);
-				externalCallAction.getReturnVariableUsage__CallReturnAction().add(returnUsage);
-				//Characterisation
-				VariableCharacterisation variableCharacterisation = ParameterFactory.eINSTANCE.createVariableCharacterisation();
-				variableCharacterisation.setType(VariableCharacterisationType.VALUE);
-				PCMRandomVariable valueVariable = CoreFactory.eINSTANCE.createPCMRandomVariable();
-				valueVariable.setSpecification("return" + "." + VariableCharacterisationType.VALUE.name());
-				variableCharacterisation.setSpecification_VariableCharacterisation(valueVariable);
-				returnUsage.getVariableCharacterisation_VariableUsage().add(variableCharacterisation);
+				List<SetVariableAction> similarReturnActions = this.collectSimilarReturnSetVariables(newComponent, externalSignature);
+				if(similarReturnActions.size() > 0) {
+ 					SetVariableAction similarReturnAction = similarReturnActions.get(0);
+ 					returnSetAction = sFactory.createSetVariableAction();
+ 					returnSetAction.setEntityName("SetReturn" + " [" + oldInterface.getEntityName() + "." + externalSignature.getEntityName() + "]");
+ 					int variableNumber = 1;
+ 					for(VariableUsage similarReturnVariableUsage : similarReturnAction.getLocalVariableUsages_SetVariableAction()) {
+ 						VariableUsage externalReturnVariableUsage = ParameterFactory.eINSTANCE.createVariableUsage();
+ 						VariableUsage setReturnVariableUsage = ParameterFactory.eINSTANCE.createVariableUsage();
+ 						//
+ 						AbstractNamedReference similarNameReference = similarReturnVariableUsage.getNamedReference__VariableUsage();
+ 						VariableCharacterisation similarVariableCharacterisation = similarReturnVariableUsage.getVariableCharacterisation_VariableUsage().get(0);
+ 						VariableCharacterisationType similarType = similarVariableCharacterisation.getType();
+ 						String localVariable = "returnVar" + variableNumber++;
+ 						//
+ 						String externalName = similarNameReference.getReferenceName();
+ 						externalReturnVariableUsage.getVariableCharacterisation_VariableUsage().add(this.createCharacterisation(similarType, this.computeVariableReferenceName(similarNameReference) + "." + similarType.getName()));
+ 						externalReturnVariableUsage.setNamedReference__VariableUsage(this.createReference(localVariable));
+ 						setReturnVariableUsage.getVariableCharacterisation_VariableUsage().add(this.createCharacterisation(similarType, localVariable + "." + similarType.getName()));
+ 						setReturnVariableUsage.setNamedReference__VariableUsage(EcoreUtil.copy(similarNameReference));
+ 						//
+ 						externalCallAction.getReturnVariableUsage__CallReturnAction().add(externalReturnVariableUsage);
+ 						returnSetAction.getLocalVariableUsages_SetVariableAction().add(setReturnVariableUsage);
+ 					}
+				}
+				else {
+					VariableUsage returnUsage = ParameterFactory.eINSTANCE.createVariableUsage();
+					externalCallAction.getReturnVariableUsage__CallReturnAction().add(returnUsage);
+					//Reference
+					returnUsage.setNamedReference__VariableUsage(this.createReference("return"));
+					//Characterisation
+					returnUsage.getVariableCharacterisation_VariableUsage().add(this.createCharacterisation(VariableCharacterisationType.VALUE, "return" + "." + VariableCharacterisationType.VALUE.name()));
+				}
 			}
 			//
 			StopAction stop = sFactory.createStopAction();
@@ -530,93 +564,176 @@ public class WrapperRunner extends PCMTransformerRunner {
 			internalAction.setPredecessor_AbstractAction(start);
 			internalAction.setSuccessor_AbstractAction(externalCallAction);
 			externalCallAction.setPredecessor_AbstractAction(internalAction);
-			externalCallAction.setSuccessor_AbstractAction(stop);
-			stop.setPredecessor_AbstractAction(externalCallAction);
+			if(returnSetAction == null) {
+				externalCallAction.setSuccessor_AbstractAction(stop);
+				stop.setPredecessor_AbstractAction(externalCallAction);
+			}
+			else {
+				externalCallAction.setSuccessor_AbstractAction(returnSetAction);
+				returnSetAction.setPredecessor_AbstractAction(externalCallAction);
+				returnSetAction.setSuccessor_AbstractAction(stop);
+				stop.setPredecessor_AbstractAction(returnSetAction);
+			}
 			seff.getSteps_Behaviour().add(start);
 			seff.getSteps_Behaviour().add(internalAction);
 			seff.getSteps_Behaviour().add(externalCallAction);
+			if(returnSetAction != null)
+				seff.getSteps_Behaviour().add(returnSetAction);
 			seff.getSteps_Behaviour().add(stop);
 			newComponent.getServiceEffectSpecifications__BasicComponent().add(seff);
 		}
 		System.out.println("Successfully created a simple SEFF for the wrapper component and interface");
 	}
 	
-
-//		Find a similar external action to replicate in the wrapper
-//		List<ExternalCallAction> similarActions = this.collectSimilarExternalCalls(newComponent, oldInterface, externalSignature);
-//		if(similarActions.size() > 0) {
-//			ExternalCallAction similarAction = similarActions.get(0);
-//			EList<VariableUsage> similarInput = similarAction.getInputVariableUsages__CallAction();
-//			EList<VariableUsage> similarReturn = similarAction.getReturnVariableUsage__CallReturnAction();
-//			externalCallAction.getInputVariableUsages__CallAction().addAll(EcoreUtil.copyAll(similarInput));
-//			externalCallAction.getReturnVariableUsage__CallReturnAction().addAll(EcoreUtil.copyAll(similarReturn));
-//		}
+	private String computeVariableReferenceName(AbstractNamedReference reference) {
+		String name = null;
+		if(reference instanceof VariableReference)
+			name = ((VariableReference)reference).getReferenceName();
+		else if(reference instanceof NamespaceReference)
+			name = ((NamespaceReference)reference).getReferenceName() + "." + this.computeVariableReferenceName(((NamespaceReference)reference).getInnerReference_NamespaceReference());
+		return name;
+	}
 	
-//	private VariableUsage findVariableUsage(EList<VariableUsage> variableUsages, String name) {
-//		for(VariableUsage usage : variableUsages) {
-//			if(usage.getNamedReference__VariableUsage() != null) 
-//				if(usage.getNamedReference__VariableUsage().getReferenceName().equals(name))
-//					return usage;
-//		}
-//		return null;
-//	}
-//		
-//	private List<ExternalCallAction> collectSimilarExternalCalls(BasicComponent newComponent, OperationInterface oldInterface, OperationSignature signature) {
-//		List<ExternalCallAction> externalCallActions = new ArrayList<ExternalCallAction>();
-//		Repository repository = newComponent.getRepository__RepositoryComponent();
-//		Iterator<RepositoryComponent> components = repository.getComponents__Repository().iterator();
-//		while(components.hasNext()) {
-//			BasicComponent component = (BasicComponent) components.next();
-//			if(!component.equals(newComponent)) {
-//				externalCallActions.addAll(this.collectExternalCalls(component, oldInterface, signature));
-//			}
-//		}
-//		return externalCallActions;
-//	}
-//	
-//	private List<ExternalCallAction> collectExternalCalls(BasicComponent component, OperationInterface oldInterface, OperationSignature signature) {
-//		List<ExternalCallAction> externalCallActions = new ArrayList<ExternalCallAction>();
-//		Iterator<ServiceEffectSpecification> seffIterator = component.getServiceEffectSpecifications__BasicComponent().iterator();
-//		OperationRequiredRole oldRequiredRole = this.findExternalRole(component, oldInterface);
-//    	while(seffIterator.hasNext()) {
-//    		ResourceDemandingSEFF seff = (ResourceDemandingSEFF) seffIterator.next();
-//    		externalCallActions.addAll(this.collectExternalCalls(seff.getSteps_Behaviour(), oldInterface, oldRequiredRole, signature));
-//		}
-//		return externalCallActions;
-//	}
-//	
-//	private List<ExternalCallAction> collectExternalCalls(List<AbstractAction> actions, OperationInterface oldInterface, OperationRequiredRole oldRequiredRole, OperationSignature signature) {
-//		List<ExternalCallAction> externalCallActions = new ArrayList<ExternalCallAction>();
-//		Iterator<AbstractAction> actionIterator = actions.iterator();
-//    	while(actionIterator.hasNext()) {
-//    		AbstractAction action = actionIterator.next();
-//			if(action instanceof BranchAction) {
-//		    	BranchAction branchAction = (BranchAction) action;
-//		    	Iterator<AbstractBranchTransition> branchTransitions = branchAction.getBranches_Branch().iterator();
-//		    	while(branchTransitions.hasNext()) {
-//		    		AbstractBranchTransition branchTransition = branchTransitions.next();
-//		    		externalCallActions.addAll(this.collectExternalCalls(branchTransition.getBranchBehaviour_BranchTransition().getSteps_Behaviour(), oldInterface, oldRequiredRole, signature));
-//		    	}
-//			}
-//			if(action instanceof LoopAction) {
-//				LoopAction loopAction = (LoopAction) action;
-//				externalCallActions.addAll(this.collectExternalCalls(loopAction.getBodyBehaviour_Loop().getSteps_Behaviour(), oldInterface, oldRequiredRole, signature));
-//			}
-//			if(action instanceof ExternalCallAction) {
-//				ExternalCallAction externalCallAction = (ExternalCallAction) action;
-//				OperationRequiredRole requiredRole = externalCallAction.getRole_ExternalService();
-//				OperationSignature requiredSignature = externalCallAction.getCalledService_ExternalService();
-//				OperationInterface requiredInterface = requiredRole.getRequiredInterface__OperationRequiredRole();
-//				if(requiredRole.equals(oldRequiredRole) && requiredInterface.equals(oldInterface) && requiredSignature.equals(signature)) {
-//					externalCallActions.add(externalCallAction);
-//				}
-//			}
-//		}
-//		return externalCallActions;
-//	}
+	private VariableReference createReference(String name) {
+		VariableReference variableReference = StoexFactory.eINSTANCE.createVariableReference();
+		variableReference.setReferenceName(name);
+		return variableReference;
+	}
 
-	private OperationRequiredRole findExternalRole(BasicComponent newComponent, OperationInterface oldInterface) {
-		for(RequiredRole requiredRole : newComponent.getRequiredRoles_InterfaceRequiringEntity()) {
+	private VariableCharacterisation createCharacterisation(VariableCharacterisationType type, String specification) {
+		VariableCharacterisation variableCharacterisation = ParameterFactory.eINSTANCE.createVariableCharacterisation();
+		variableCharacterisation.setType(type);
+		PCMRandomVariable valueVariable = CoreFactory.eINSTANCE.createPCMRandomVariable();
+		valueVariable.setSpecification(specification);
+		variableCharacterisation.setSpecification_VariableCharacterisation(valueVariable);
+		return variableCharacterisation;
+	}
+	
+	private List<SetVariableAction> collectSimilarReturnSetVariables(BasicComponent newComponent, OperationSignature signature) {
+		List<SetVariableAction> variableCallActions = new ArrayList<SetVariableAction>();
+		Repository repository = newComponent.getRepository__RepositoryComponent();
+		Iterator<RepositoryComponent> components = repository.getComponents__Repository().iterator();
+		while(components.hasNext()) {
+			BasicComponent component = (BasicComponent) components.next();
+			if(!component.equals(newComponent)) {
+				variableCallActions.addAll(this.collectReturnSetVariables(component, signature));
+			}
+		}
+		return variableCallActions;
+	}
+
+	private List<SetVariableAction> collectReturnSetVariables(BasicComponent component, OperationSignature signature) {
+		List<SetVariableAction> variableCallActions = new ArrayList<SetVariableAction>();
+		Iterator<ServiceEffectSpecification> seffIterator = component.getServiceEffectSpecifications__BasicComponent().iterator();
+    	while(seffIterator.hasNext()) {
+    		ResourceDemandingSEFF seff = (ResourceDemandingSEFF) seffIterator.next();
+    		if(seff.getDescribedService__SEFF().equals(signature))
+    			variableCallActions.addAll(this.collectReturnSetVariables(seff.getSteps_Behaviour()));
+		}
+		return variableCallActions;
+	}
+	
+	private List<SetVariableAction> collectReturnSetVariables(List<AbstractAction> actions) {
+		List<SetVariableAction> setVariableActions = new ArrayList<SetVariableAction>();
+		Iterator<AbstractAction> actionIterator = actions.iterator();
+    	while(actionIterator.hasNext() && setVariableActions.size() == 0) {
+    		AbstractAction action = actionIterator.next();
+			if(action instanceof SetVariableAction) {
+				SetVariableAction setVariableAction = (SetVariableAction) action;
+				AbstractAction successor = setVariableAction.getSuccessor_AbstractAction();
+				if(successor != null && successor instanceof StopAction) {
+					setVariableActions.add(setVariableAction);
+				}
+			}
+		}
+		return setVariableActions;
+	}
+
+	private List<VariableCharacterisation> findCharacterisation(Parameter parameter, EList<VariableUsage> similarInput) {
+		List<VariableCharacterisation> similarVariableCharacterisation = new ArrayList<VariableCharacterisation>();
+		for(VariableUsage similarUsageVariable : similarInput) {
+			AbstractNamedReference namedReference = similarUsageVariable.getNamedReference__VariableUsage();
+			if(namedReference != null && namedReference.getReferenceName().equals(parameter.getParameterName()))
+				similarVariableCharacterisation.addAll(similarUsageVariable.getVariableCharacterisation_VariableUsage());
+		}
+		return similarVariableCharacterisation;
+	}
+
+
+	private VariableUsage findVariableUsage(EList<VariableUsage> variableUsages, String name) {
+		for(VariableUsage usage : variableUsages) {
+			if(usage.getNamedReference__VariableUsage() != null) 
+				if(usage.getNamedReference__VariableUsage().getReferenceName().equals(name))
+					return usage;
+		}
+		return null;
+	}
+		
+	private List<ExternalCallAction> collectSimilarExternalCalls(BasicComponent newComponent, OperationInterface oldInterface, OperationSignature signature) {
+		List<ExternalCallAction> externalCallActions = new ArrayList<ExternalCallAction>();
+		Repository repository = newComponent.getRepository__RepositoryComponent();
+		Iterator<RepositoryComponent> components = repository.getComponents__Repository().iterator();
+		while(components.hasNext()) {
+			BasicComponent component = (BasicComponent) components.next();
+			if(!component.equals(newComponent)) {
+				externalCallActions.addAll(this.collectExternalCalls(component, oldInterface, signature));
+			}
+		}
+		return externalCallActions;
+	}
+	
+	private List<ExternalCallAction> collectExternalCalls(BasicComponent component, OperationInterface oldInterface, OperationSignature signature) {
+		List<ExternalCallAction> externalCallActions = new ArrayList<ExternalCallAction>();
+		Iterator<ServiceEffectSpecification> seffIterator = component.getServiceEffectSpecifications__BasicComponent().iterator();
+		OperationRequiredRole oldRequiredRole = this.findRequiredRole(component, oldInterface);
+    	while(seffIterator.hasNext()) {
+    		ResourceDemandingSEFF seff = (ResourceDemandingSEFF) seffIterator.next();
+    		externalCallActions.addAll(this.collectExternalCalls(seff.getSteps_Behaviour(), oldInterface, oldRequiredRole, signature));
+		}
+		return externalCallActions;
+	}
+	
+	private List<ExternalCallAction> collectExternalCalls(List<AbstractAction> actions, OperationInterface oldInterface, OperationRequiredRole oldRequiredRole, OperationSignature signature) {
+		List<ExternalCallAction> externalCallActions = new ArrayList<ExternalCallAction>();
+		Iterator<AbstractAction> actionIterator = actions.iterator();
+    	while(actionIterator.hasNext()) {
+    		AbstractAction action = actionIterator.next();
+			if(action instanceof BranchAction) {
+		    	BranchAction branchAction = (BranchAction) action;
+		    	Iterator<AbstractBranchTransition> branchTransitions = branchAction.getBranches_Branch().iterator();
+		    	while(branchTransitions.hasNext()) {
+		    		AbstractBranchTransition branchTransition = branchTransitions.next();
+		    		externalCallActions.addAll(this.collectExternalCalls(branchTransition.getBranchBehaviour_BranchTransition().getSteps_Behaviour(), oldInterface, oldRequiredRole, signature));
+		    	}
+			}
+			if(action instanceof LoopAction) {
+				LoopAction loopAction = (LoopAction) action;
+				externalCallActions.addAll(this.collectExternalCalls(loopAction.getBodyBehaviour_Loop().getSteps_Behaviour(), oldInterface, oldRequiredRole, signature));
+			}
+			if(action instanceof ExternalCallAction) {
+				ExternalCallAction externalCallAction = (ExternalCallAction) action;
+				OperationRequiredRole requiredRole = externalCallAction.getRole_ExternalService();
+				OperationSignature requiredSignature = externalCallAction.getCalledService_ExternalService();
+				OperationInterface requiredInterface = requiredRole.getRequiredInterface__OperationRequiredRole();
+				if(requiredRole.equals(oldRequiredRole) && requiredInterface.equals(oldInterface) && requiredSignature.equals(signature)) {
+					externalCallActions.add(externalCallAction);
+				}
+			}
+		}
+		return externalCallActions;
+	}
+
+	private OperationProvidedRole findProvidedRole(BasicComponent component, OperationInterface operationInterface) {
+		for(ProvidedRole providedRole : component.getProvidedRoles_InterfaceProvidingEntity()) {
+			OperationProvidedRole operationProvidedRole = (OperationProvidedRole) providedRole;
+			if(operationProvidedRole.getProvidedInterface__OperationProvidedRole().equals(operationInterface))
+				return operationProvidedRole;
+		}
+		return null;
+	}
+	
+	private OperationRequiredRole findRequiredRole(BasicComponent component, OperationInterface oldInterface) {
+		for(RequiredRole requiredRole : component.getRequiredRoles_InterfaceRequiringEntity()) {
 			OperationRequiredRole operationRequiredRole = (OperationRequiredRole) requiredRole;
 			if(operationRequiredRole.getRequiredInterface__OperationRequiredRole().equals(oldInterface))
 				return operationRequiredRole;
@@ -710,11 +827,11 @@ public class WrapperRunner extends PCMTransformerRunner {
 		resultResourceEnvironmentFilename = "stplus-" + "#REPLACEMENT#" + ".resourceenvironment";
 		resultAllocationFilename = "stplus-" + "#REPLACEMENT#" + ".allocation";
 		resultUsageFilename = "stplus-" + "#REPLACEMENT#" + ".usagemodel";
-		/*runner.run(dirPath, 
+		runner.run(dirPath, 
 				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, usageFilename,
 				henshinFilename, 
 				resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename, resultUsageFilename,
-				true);*/
+				true);
 		
 		//Complete SimpleTactics+ testing after split responsability
 		repositoryFilename = "stplus-split.repository";
