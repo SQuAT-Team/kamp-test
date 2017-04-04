@@ -26,5 +26,5 @@ public abstract class AbstractPCMBot {
 		this.scenario = scenario;
 	}
 
-	public abstract Proposal makeConcession();
+	
 }

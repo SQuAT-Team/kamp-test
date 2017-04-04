@@ -438,9 +438,4 @@ public class KAMPPCMBot extends AbstractPCMBot {
 		return null;
 	}
 
-	@Override
-	public Proposal makeConcession() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

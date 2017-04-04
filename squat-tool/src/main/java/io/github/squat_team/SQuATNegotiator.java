@@ -2,7 +2,9 @@ package io.github.squat_team;
 
 import java.util.*;
 
+import io.github.squat_team.agentsUtils.LoadHelper;
 import io.github.squat_team.agentsUtils.Proposal;
+import io.github.squat_team.agentsUtils.SillyBot;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.model.PCMScenarioResult;
@@ -14,7 +16,11 @@ public class SQuATNegotiator {
 	private PCMArchitectureInstance initialArchitecture;
 	private List<AbstractPCMBot> bots;
 	private List<PCMScenario> scenarios;
+	
 	//private Map<AbstractPCMBot, PCMScenario> bot2scenarioLinkage;
+	
+	private List<PCMArchitectureInstance> architectureAlternatives;
+	private List<SillyBot> sillyBots;
 	
 	
 	public SQuATNegotiator(PCMArchitectureInstance initialArchitecture) {
@@ -107,15 +113,15 @@ public class SQuATNegotiator {
 	}
 	
 	public void negotiateBaseOnMultipleArchitectures(){
-		List<PCMArchitectureInstance> architectureAlternatives;//I have to load the alternatives
+		//architectureAlternatives=loadArchitecturalAlternatives(); This should be done for real. Now I'm hardcoding the results
 		//Step 1: Collect initial proposals
-		HashMap<AbstractPCMBot,Proposal> proposals = collectInitialProposals();
+		HashMap<SillyBot,Proposal> proposals = collectInitialProposals();
 		
 		//Step 2: Loop until you reach an Agreement or a Conflict
 		while(!checkAgreement(proposals)){
 
 			//Select Agent who has to concede
-			List<AbstractPCMBot> shouldConcede = selectWhoHasToConcede();
+			List<SillyBot> shouldConcede = selectWhoHasToConcede();
 
 			if (shouldConcede.isEmpty()){
 				//Step 4: CONFLICT REACHED
@@ -125,7 +131,7 @@ public class SQuATNegotiator {
 			else{				
 				System.out.println("Step 3.b: Agent/s who has to concede [#= "+ shouldConcede.size()+"]=> "+ shouldConcede.toString());
 				
-				for (AbstractPCMBot concedingAg : shouldConcede){
+				for (SillyBot concedingAg : shouldConcede){
 					//Make "concedingAg" to concede
 					Proposal newProposal;
 			
@@ -143,7 +149,12 @@ public class SQuATNegotiator {
 		
 	}
 
-	private void printAgreement(HashMap<AbstractPCMBot, Proposal> proposals) {
+/*	private List<PCMArchitectureInstance> loadArchitecturalAlternatives() {
+		// TODO Auto-generated method stub
+		return null;
+	}*/
+
+	private void printAgreement(HashMap<SillyBot, Proposal> proposals) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -153,19 +164,21 @@ public class SQuATNegotiator {
 		
 	}
 
-	private List<AbstractPCMBot> selectWhoHasToConcede() {
+	private List<SillyBot> selectWhoHasToConcede() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	private boolean checkAgreement(HashMap<AbstractPCMBot, Proposal> proposals) {
+	private boolean checkAgreement(HashMap<SillyBot, Proposal> proposals) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	private HashMap<AbstractPCMBot, Proposal> collectInitialProposals() {
+	private HashMap<SillyBot, Proposal> collectInitialProposals() {
 		// TODO Auto-generated method stub
 		//Each agent has to make a ranking with the alternatives and select the best for its scenario 
+		sillyBots=new LoadHelper().loadBotsWithInformation();
+		
 		return null;
 	}
 	
