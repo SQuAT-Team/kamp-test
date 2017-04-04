@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<allocation:Allocation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:allocation="http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1" id="_vUBS4C6NEd-Jla2o7wkBzQ" entityName="stplus.llocation">
+<allocation:Allocation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:allocation="http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1" id="_vUBS4C6NEd-Jla2o7wkBzQ" entityName="stplus.allocation">
   <targetResourceEnvironment_Allocation href="stplus-split-0-IExporter.resourceenvironment#/"/>
   <system_Allocation href="stplus-split-0-IExporter.system#_VreA0C6MEd-Jla2o7wkBzQ"/>
   <allocationContexts_Allocation id="_wTSXgC6NEd-Jla2o7wkBzQ" entityName="Allocation_Assembly_C1 &lt;C1> &lt;C1>">
@@ -26,8 +26,8 @@
     <resourceContainer_AllocationContext href="stplus-split-0-IExporter.resourceenvironment#_vxqJwS6QEd-pNfzbJsur0g"/>
     <assemblyContext_AllocationContext href="stplus-split-0-IExporter.system#_Ik2bIPIiEeaol5Qr5J_yfg"/>
   </allocationContexts_Allocation>
-  <allocationContexts_Allocation id="__blB4PLDEeaEp9e4KQNp5A" entityName="Allocation_Assembly_IExporter-Wrapper &lt;IExporter-Wrapper> &lt;IExporter-Wrapper>">
+  <allocationContexts_Allocation id="_0NjRIfVeEea_wfCjFPidZw" entityName="Allocation_Assembly_IExporter-Wrapper &lt;IExporter-Wrapper> &lt;IExporter-Wrapper>">
     <resourceContainer_AllocationContext href="stplus-split-0-IExporter.resourceenvironment#_g7HJEC6MEd-Jla2o7wkBzQ"/>
-    <assemblyContext_AllocationContext href="stplus-split-0-IExporter.system#__bka0PLDEeaEp9e4KQNp5A"/>
+    <assemblyContext_AllocationContext href="stplus-split-0-IExporter.system#_0NiqEPVeEea_wfCjFPidZw"/>
   </allocationContexts_Allocation>
 </allocation:Allocation>
