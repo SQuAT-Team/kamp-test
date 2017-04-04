@@ -2,6 +2,7 @@ package io.github.squat_team;
 
 import java.util.*;
 
+import io.github.squat_team.agentsUtils.Proposal;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.model.PCMScenarioResult;
@@ -105,5 +106,67 @@ public class SQuATNegotiator {
 		// TODO Auto-generated method stub
 	}
 	
+	public void negotiateBaseOnMultipleArchitectures(){
+		List<PCMArchitectureInstance> architectureAlternatives;//I have to load the alternatives
+		//Step 1: Collect initial proposals
+		HashMap<AbstractPCMBot,Proposal> proposals = collectInitialProposals();
+		
+		//Step 2: Loop until you reach an Agreement or a Conflict
+		while(!checkAgreement(proposals)){
+
+			//Select Agent who has to concede
+			List<AbstractPCMBot> shouldConcede = selectWhoHasToConcede();
+
+			if (shouldConcede.isEmpty()){
+				//Step 4: CONFLICT REACHED
+				createNegotiationResult(); //conflict 
+				return; 
+			}				
+			else{				
+				System.out.println("Step 3.b: Agent/s who has to concede [#= "+ shouldConcede.size()+"]=> "+ shouldConcede.toString());
+				
+				for (AbstractPCMBot concedingAg : shouldConcede){
+					//Make "concedingAg" to concede
+					Proposal newProposal;
+			
+					newProposal = concedingAg.makeConcession();//I have to implement this method
+						
+					System.out.println("Step 3.c: New Proposal made by the agent => "+newProposal.toString());
+					//Update proposals map
+					proposals.put(concedingAg, newProposal);			
+					
+				}
+			}
+		}
+		//At this point an agreement should have been found => return it
+		printAgreement(proposals);
+		
+	}
+
+	private void printAgreement(HashMap<AbstractPCMBot, Proposal> proposals) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void createNegotiationResult() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private List<AbstractPCMBot> selectWhoHasToConcede() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private boolean checkAgreement(HashMap<AbstractPCMBot, Proposal> proposals) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private HashMap<AbstractPCMBot, Proposal> collectInitialProposals() {
+		// TODO Auto-generated method stub
+		//Each agent has to make a ranking with the alternatives and select the best for its scenario 
+		return null;
+	}
 	
 }

@@ -137,7 +137,7 @@ public class SimpleTacticsPlusTest {
 		i2.parameters.put("name", "BusinessTripMgmt");
 		scenario.addChange(i2);*/
 		
-		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
+		/*ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
 		PCMResult expectedResult = new PCMResult(ResponseMeasureType.DECIMAL);
 		expectedResult.setResponse(new Float(5));
 		scenario.setExpectedResponse(expectedResult);
@@ -156,10 +156,10 @@ public class SimpleTacticsPlusTest {
 		i3.operation = ModifiabilityOperation.MODIFY;
 		i3.element = ModifiabilityElement.COMPONENT;
 		i3.parameters.put("name", "BusinessTripMgmt");
-		scenario.addChange(i3);
+		scenario.addChange(i3);*/
 		
 		
-		/*ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
+		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
 		PCMResult expectedResult = new PCMResult(ResponseMeasureType.DECIMAL);
 		expectedResult.setResponse(new Float(5));
 		scenario.setExpectedResponse(expectedResult);
@@ -200,7 +200,7 @@ public class SimpleTacticsPlusTest {
 		i6.element = ModifiabilityElement.REQUIREDROLE;
 		i6.parameters.put("cname", "Insights");
 		i6.parameters.put("iname", "ITripDB");
-		scenario.addChange(i6);*/
+		scenario.addChange(i6);
 		
 		
 		
