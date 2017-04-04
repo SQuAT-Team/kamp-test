@@ -7,5 +7,11 @@ public class PerformanceProposal extends Proposal {
 		super(pcmArchitecture);
 		this.responseTime=responseTime;
 	}
-	
+	public float getResponseTime() {
+		return responseTime;
+	}
+	@Override
+	public String toString() {
+		return responseTime+"";
+	}
 }

@@ -10,8 +10,23 @@ public class PerformanceBot extends SillyBot {
 
 	@Override
 	public void insertInOrder(Proposal p) {
-		// TODO Auto-generated method stub
-		
+		PerformanceProposal currentProposal = (PerformanceProposal) p;
+		if (orderedProposals.size() == 0) {
+			orderedProposals.add(currentProposal);
+		} else if (((PerformanceProposal) orderedProposals.get(0)).getResponseTime() > currentProposal
+				.getResponseTime()) {
+			orderedProposals.add(0, currentProposal);
+		} else if (((PerformanceProposal) orderedProposals.get(orderedProposals.size() - 1))
+				.getResponseTime() < currentProposal.getResponseTime()) {
+			orderedProposals.add(currentProposal);
+		} else {
+			int i = 0;
+			while (((PerformanceProposal) orderedProposals.get(i)).getResponseTime() < currentProposal
+					.getResponseTime()) {
+				i++;
+			}
+			orderedProposals.add(i, currentProposal);
+		}
 	}
 
 	@Override
@@ -19,5 +34,10 @@ public class PerformanceBot extends SillyBot {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
+	@Override
+	protected boolean makeImprovement(Proposal proposal) {
+		return ((PerformanceProposal)proposal).getResponseTime()<=originalResponseTime;
+	}
+
 }

@@ -2,7 +2,6 @@ package io.github.squat_team;
 
 import java.util.List;
 
-import io.github.squat_team.agentsUtils.Proposal;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.model.PCMScenarioResult;

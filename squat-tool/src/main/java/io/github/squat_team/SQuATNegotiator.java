@@ -22,7 +22,9 @@ public class SQuATNegotiator {
 	private List<PCMArchitectureInstance> architectureAlternatives;
 	private List<SillyBot> sillyBots;
 	
-	
+	public SQuATNegotiator(){
+		
+	}
 	public SQuATNegotiator(PCMArchitectureInstance initialArchitecture) {
 		this.initialArchitecture = initialArchitecture;
 		this.bots = new ArrayList<AbstractPCMBot>();
@@ -175,11 +177,16 @@ public class SQuATNegotiator {
 	}
 
 	private HashMap<SillyBot, Proposal> collectInitialProposals() {
-		// TODO Auto-generated method stub
+		HashMap<SillyBot, Proposal> ret= new HashMap<>();
 		//Each agent has to make a ranking with the alternatives and select the best for its scenario 
 		sillyBots=new LoadHelper().loadBotsWithInformation();
-		
-		return null;
+		for (Iterator<SillyBot> iterator = sillyBots.iterator(); iterator.hasNext();) {
+			SillyBot bot = (SillyBot) iterator.next();
+			ret.put(bot, bot.getBestProposal());
+		}
+		return ret;
 	}
-	
+	public static void main(String[] args) {
+		new SQuATNegotiator().negotiateBaseOnMultipleArchitectures();
+	}
 }

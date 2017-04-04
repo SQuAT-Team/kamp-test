@@ -8,5 +8,15 @@ public class ModifiabilityProposal extends Proposal {
 		this.affectedComponents = affectedComponents;
 		this.complexity = complexity;
 	}
+	public int getAffectedComponents() {
+		return affectedComponents;
+	}
+	public float getComplexity() {
+		return complexity;
+	}
+	@Override
+	public String toString() {
+		return complexity+" - "+affectedComponents;
+	}
 	
 }
