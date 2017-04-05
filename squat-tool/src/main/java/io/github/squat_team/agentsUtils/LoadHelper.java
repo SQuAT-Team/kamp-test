@@ -15,10 +15,10 @@ public class LoadHelper {
 	}
 
 	public List<SillyBot> loadBotsWithInformation() {
-		ModifiabilityBot m1Bot=new ModifiabilityBot(4,123);
-		ModifiabilityBot m2Bot=new ModifiabilityBot(8,352);
-		PerformanceBot p1Bot=new PerformanceBot(111.76f);
-		PerformanceBot p2Bot=new PerformanceBot(74.02f);
+		ModifiabilityBot m1Bot=new ModifiabilityBot(4,123,"m1");
+		ModifiabilityBot m2Bot=new ModifiabilityBot(8,352,"m2");
+		PerformanceBot p1Bot=new PerformanceBot(111.76f,"p1");
+		PerformanceBot p2Bot=new PerformanceBot(74.02f,"p2");
 		
 		//I have to add Sebastians architectures
 		

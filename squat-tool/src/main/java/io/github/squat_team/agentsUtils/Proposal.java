@@ -11,5 +11,8 @@ public abstract class Proposal {
 	public String getArchitectureName() {
 		return architectureName;
 	}
-	
+	@Override
+	public String toString() {
+		return architectureName;
+	}
 }

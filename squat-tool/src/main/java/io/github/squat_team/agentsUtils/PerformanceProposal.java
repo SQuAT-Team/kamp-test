@@ -12,6 +12,6 @@ public class PerformanceProposal extends Proposal {
 	}
 	@Override
 	public String toString() {
-		return responseTime+"";
+		return super.toString()+" "+responseTime;
 	}
 }

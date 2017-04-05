@@ -5,14 +5,19 @@ import java.util.Iterator;
 import java.util.List;
 
 public abstract class SillyBot {
+	private String name;
 	protected List<Proposal> orderedProposals;
 	public abstract void insertInOrder(Proposal p);
-	public abstract Proposal makeConcession();
+	public Proposal makeConcession(){
+		currentConcessionIndex++;
+		return getCurrentProposal();
+	}
 	protected int currentConcessionIndex;
 	
-	public SillyBot() {
+	public SillyBot(String name) {
 		orderedProposals=new ArrayList<Proposal>();
 		currentConcessionIndex=0;
+		this.name=name;
 	}
 	public Proposal getBestProposal() {
 		if(makeImprovementRegardingOriginal(orderedProposals.get(currentConcessionIndex)))
@@ -20,7 +25,12 @@ public abstract class SillyBot {
 		return null;
 	}
 	protected abstract boolean makeImprovementRegardingOriginal(Proposal proposal);
-	public abstract boolean acceptableUtilityValue(Proposal proposal);
+	public boolean acceptableUtilityValue(Proposal proposal) {
+		float currentUtilty=getUtilityFor(orderedProposals.get(currentConcessionIndex));
+		float proposalUtility=getUtilityFor(this.getProposalForArchitecture(proposal.getArchitectureName()));
+		
+		return (proposalUtility>=currentUtilty);
+	}
 	
 	protected Proposal getProposalForArchitecture(String pcmArchitecture){
 		for (Iterator<Proposal> iterator = orderedProposals.iterator(); iterator.hasNext();) {
@@ -31,4 +41,12 @@ public abstract class SillyBot {
 		return null;
 	}
 	public abstract boolean canConcede();
+	public abstract float getUtilityFor(Proposal proposal);
+	public Proposal getCurrentProposal() {
+		return orderedProposals.get(currentConcessionIndex);
+	}
+	@Override
+	public String toString() {
+		return "Agent "+name;
+	}
 }

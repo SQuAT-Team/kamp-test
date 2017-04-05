@@ -3,8 +3,8 @@ package io.github.squat_team.agentsUtils;
 public class PerformanceBot extends SillyBot {
 	private float originalResponseTime;
 
-	public PerformanceBot(float originalResponseTime) {
-		super();
+	public PerformanceBot(float originalResponseTime, String name) {
+		super(name);
 		this.originalResponseTime = originalResponseTime;
 	}
 
@@ -29,22 +29,11 @@ public class PerformanceBot extends SillyBot {
 		}
 	}
 
-	@Override
-	public Proposal makeConcession() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	protected boolean makeImprovementRegardingOriginal(Proposal proposal) {
 		return ((PerformanceProposal)proposal).getResponseTime()<=originalResponseTime;
-	}
-
-	@Override
-	public boolean acceptableUtilityValue(Proposal proposal) {
-		float currentResponseTime=((PerformanceProposal)orderedProposals.get(currentConcessionIndex)).getResponseTime();
-		float proposalResponseTime=((PerformanceProposal)this.getProposalForArchitecture(proposal.getArchitectureName())).getResponseTime();
-		return (proposalResponseTime<=currentResponseTime);
 	}
 
 	@Override
@@ -55,6 +44,14 @@ public class PerformanceBot extends SillyBot {
 		float currentResponseTime=((PerformanceProposal)orderedProposals.get(currentConcessionIndex)).getResponseTime();
 		float nextResponseTime=((PerformanceProposal)orderedProposals.get(currentConcessionIndex+1)).getResponseTime();
 		return (((nextResponseTime/currentResponseTime)-1)*100)<=5;
+	}
+
+	@Override
+	public float getUtilityFor(Proposal proposal) {
+		float bestResponseTime=((PerformanceProposal)orderedProposals.get(0)).getResponseTime();
+		float proposalResponseTime=((PerformanceProposal)this.getProposalForArchitecture(proposal.getArchitectureName())).getResponseTime();
+		
+		return bestResponseTime/proposalResponseTime;
 	}
 
 }

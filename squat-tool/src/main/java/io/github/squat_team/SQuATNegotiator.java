@@ -1,10 +1,11 @@
 package io.github.squat_team;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import io.github.squat_team.agentsUtils.LoadHelper;
-import io.github.squat_team.agentsUtils.Proposal;
-import io.github.squat_team.agentsUtils.SillyBot;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.model.PCMScenarioResult;
@@ -19,13 +20,8 @@ public class SQuATNegotiator {
 	
 	//private Map<AbstractPCMBot, PCMScenario> bot2scenarioLinkage;
 	
-	//private List<PCMArchitectureInstance> architectureAlternatives;
-	private List<SillyBot> sillyBots;
-	private Proposal agreementProposal;
-	
-	public SQuATNegotiator(){
-		agreementProposal=null;
-	}
+
+
 	public SQuATNegotiator(PCMArchitectureInstance initialArchitecture) {
 		this.initialArchitecture = initialArchitecture;
 		this.bots = new ArrayList<AbstractPCMBot>();
@@ -115,96 +111,5 @@ public class SQuATNegotiator {
 		// TODO Auto-generated method stub
 	}
 	
-	public void negotiateBaseOnMultipleArchitectures(){
-		//architectureAlternatives=loadArchitecturalAlternatives(); This should be done for real. Now I'm hardcoding the results
-		//Step 1: Collect initial proposals
-		HashMap<SillyBot,Proposal> proposals = collectInitialProposals();
-		
-		//Step 2: Loop until you reach an Agreement or a Conflict
-		while(!checkAgreement(proposals)){
-
-			//Select Agent who has to concede
-			List<SillyBot> shouldConcede = selectWhoHasToConcede();
-
-			if (shouldConcede.isEmpty()){
-				//Step 4: CONFLICT REACHED
-				createNegotiationResult(); //conflict 
-				return; 
-			}				
-			else{				
-				System.out.println("Step 3.b: Agent/s who has to concede [#= "+ shouldConcede.size()+"]=> "+ shouldConcede.toString());
-				
-				for (SillyBot concedingAg : shouldConcede){
-					//Make "concedingAg" to concede
-					Proposal newProposal;
-			
-					newProposal = concedingAg.makeConcession();//I have to implement this method
-						
-					System.out.println("Step 3.c: New Proposal made by the agent => "+newProposal.toString());
-					//Update proposals map
-					proposals.put(concedingAg, newProposal);			
-					
-				}
-			}
-		}
-		//At this point an agreement should have been found => return it
-		printAgreement(proposals);
-		
-	}
-
-/*	private List<PCMArchitectureInstance> loadArchitecturalAlternatives() {
-		// TODO Auto-generated method stub
-		return null;
-	}*/
-
-	private void printAgreement(HashMap<SillyBot, Proposal> proposals) {
-		// TODO Auto-generated method stub
-	}
-
-	private void createNegotiationResult() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private List<SillyBot> selectWhoHasToConcede() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	/**
-	 * Checks if there is an agreement (between the agents) for one of the proposals 
-	 * @param proposals
-	 * @return
-	 */
-	private boolean checkAgreement(HashMap<SillyBot, Proposal> proposals) {
-		for (Iterator<Proposal> iterator = proposals.values().iterator(); iterator.hasNext();) {
-			Proposal proposal = (Proposal) iterator.next();
-			if(checkAgreementForAgents(proposal)){
-				agreementProposal=proposal;
-				return true;
-			}
-		}
-		return false;
-	}
-
-	private boolean checkAgreementForAgents(Proposal proposal) {
-		for (Iterator<SillyBot> iterator = sillyBots.iterator(); iterator.hasNext();) {
-			SillyBot sillyBot = (SillyBot) iterator.next();
-			if(!sillyBot.acceptableUtilityValue(proposal))
-				return false;
-		}
-		return true;
-	}
-	private HashMap<SillyBot, Proposal> collectInitialProposals() {
-		HashMap<SillyBot, Proposal> ret= new HashMap<>();
-		//Each agent has to make a ranking with the alternatives and select the best for its scenario 
-		sillyBots=new LoadHelper().loadBotsWithInformation();
-		for (Iterator<SillyBot> iterator = sillyBots.iterator(); iterator.hasNext();) {
-			SillyBot bot = (SillyBot) iterator.next();
-			ret.put(bot, bot.getBestProposal());
-		}
-		return ret;
-	}
-	public static void main(String[] args) {
-		new SQuATNegotiator().negotiateBaseOnMultipleArchitectures();
-	}
+	
 }

@@ -3,8 +3,8 @@ package io.github.squat_team.agentsUtils;
 public class ModifiabilityBot extends SillyBot {
 	private int originalAffectedComponents;
 	private float originalComplexity;
-	public ModifiabilityBot(int originalAffectedComponents, float originalComplexity) {
-		super();
+	public ModifiabilityBot(int originalAffectedComponents, float originalComplexity, String name) {
+		super(name);
 		this.originalAffectedComponents = originalAffectedComponents;
 		this.originalComplexity = originalComplexity;
 	}
@@ -28,30 +28,26 @@ public class ModifiabilityBot extends SillyBot {
 		}
 		
 	}
-	@Override
-	public Proposal makeConcession() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	@Override
 	protected boolean makeImprovementRegardingOriginal(Proposal proposal) {
 		return ((ModifiabilityProposal)proposal).getComplexity()<=originalComplexity;
 	}
-	@Override
-	public boolean acceptableUtilityValue(Proposal proposal) {
-		float currentComplexity=((ModifiabilityProposal)orderedProposals.get(currentConcessionIndex)).getComplexity();
-		float proposalComplexity=((ModifiabilityProposal)this.getProposalForArchitecture(proposal.getArchitectureName())).getComplexity();
-		
-		return (proposalComplexity<=currentComplexity);
-	}
+
 	@Override
 	public boolean canConcede() {
 		//can concede if the following option in the ranking is not worse than an arbitrary 5% decline
 		if(orderedProposals.size()==(currentConcessionIndex+1))
 			return false;//no more options
-		float currentComplexity=((ModifiabilityProposal)orderedProposals.get(currentConcessionIndex)).getComplexity();
+		//float currentComplexity=((ModifiabilityProposal)orderedProposals.get(currentConcessionIndex)).getComplexity();
 		float nextComplexity=((ModifiabilityProposal)orderedProposals.get(currentConcessionIndex+1)).getComplexity();
-		return (((nextComplexity/currentComplexity)-1)*100)<=5;
+		return (((nextComplexity/originalComplexity)-1)*100)<=5;
 	}
-	
+	@Override
+	public float getUtilityFor(Proposal proposal) {
+		float bestResponseTime=((ModifiabilityProposal)orderedProposals.get(0)).getComplexity();
+		float proposalResponseTime=((ModifiabilityProposal)this.getProposalForArchitecture(proposal.getArchitectureName())).getComplexity();
+		
+		return bestResponseTime/proposalResponseTime;
+	}
 }

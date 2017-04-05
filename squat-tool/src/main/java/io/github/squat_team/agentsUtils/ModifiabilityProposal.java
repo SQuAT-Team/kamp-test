@@ -16,7 +16,7 @@ public class ModifiabilityProposal extends Proposal {
 	}
 	@Override
 	public String toString() {
-		return complexity+" - "+affectedComponents;
+		return super.toString()+" "+complexity+" - "+affectedComponents;
 	}
 	
 }
