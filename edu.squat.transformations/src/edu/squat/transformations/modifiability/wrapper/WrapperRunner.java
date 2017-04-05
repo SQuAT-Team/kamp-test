@@ -827,11 +827,11 @@ public class WrapperRunner extends PCMTransformerRunner {
 		resultResourceEnvironmentFilename = "stplus-" + "#REPLACEMENT#" + ".resourceenvironment";
 		resultAllocationFilename = "stplus-" + "#REPLACEMENT#" + ".allocation";
 		resultUsageFilename = "stplus-" + "#REPLACEMENT#" + ".usagemodel";
-		runner.run(dirPath, 
+		/*runner.run(dirPath, 
 				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, usageFilename,
 				henshinFilename, 
 				resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename, resultUsageFilename,
-				true);
+				true);*/
 		
 		//Complete SimpleTactics+ testing after split responsability
 		repositoryFilename = "stplus-split.repository";
@@ -844,6 +844,23 @@ public class WrapperRunner extends PCMTransformerRunner {
 		resultResourceEnvironmentFilename = "stplus-split-" + "#REPLACEMENT#" + ".resourceenvironment";
 		resultAllocationFilename = "stplus-split-" + "#REPLACEMENT#" + ".allocation";
 		resultUsageFilename = "stplus-split-" + "#REPLACEMENT#" + ".usagemodel";
+		/*runner.run(dirPath, 
+				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, usageFilename,
+				henshinFilename, 
+				resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename, resultUsageFilename,
+				true);*/
+		
+		//CoCoME testing
+		repositoryFilename = "cocome.repository";
+		systemFilename = "cocome.system";
+		resourceEnvironmentFilename = "cocome.resourceenvironment";
+		allocationFilename = "cocome.allocation";
+		usageFilename = "cocome.usagemodel";
+		resultRepositoryFilename = "cocome-" + "#REPLACEMENT#" + ".repository";
+		resultSystemFilename = "cocome-" + "#REPLACEMENT#" + ".system";
+		resultResourceEnvironmentFilename = "cocome-" + "#REPLACEMENT#" + ".resourceenvironment";
+		resultAllocationFilename = "cocome-" + "#REPLACEMENT#" + ".allocation";
+		resultUsageFilename = "cocome-" + "#REPLACEMENT#" + ".usagemodel";
 		runner.run(dirPath, 
 				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, usageFilename,
 				henshinFilename, 

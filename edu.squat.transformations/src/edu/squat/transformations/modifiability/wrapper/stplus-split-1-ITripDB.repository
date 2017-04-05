@@ -4,7 +4,7 @@
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_fYvUMC6IEd-Jla2o7wkBzQ" entityName="Provided_I1_C1" providedInterface__OperationProvidedRole="_bh5lgC6IEd-Jla2o7wkBzQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_frf4IC6IEd-Jla2o7wkBzQ" entityName="Required_I2_C1" requiredInterface__OperationRequiredRole="_cyLhoC6IEd-Jla2o7wkBzQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_rng-MC6IEd-Jla2o7wkBzQ" entityName="Required_I3_C1" requiredInterface__OperationRequiredRole="_pPmroC6IEd-Jla2o7wkBzQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_0PTkovVeEea_wfCjFPidZw" requiredInterface__OperationRequiredRole="_0PJzoPVeEea_wfCjFPidZw"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_LnrgQvn0EeaYad8u2cLPSA" requiredInterface__OperationRequiredRole="_LnhIMPn0EeaYad8u2cLPSA"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_vUtoRV_UEeahZew5WJ0QOQ" entityName="Required_Exporter_Interface" requiredInterface__OperationRequiredRole="_1Qmmp1_OEeahZew5WJ0QOQ"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_oLsiIC6JEd-Jla2o7wkBzQ" describedService__SEFF="_8A9Bka7LEd-Z7e7zQl8I9w">
       <steps_Behaviour xsi:type="seff:StartAction" id="_pLgZUC6JEd-Jla2o7wkBzQ" successor_AbstractAction="_vGuakC6JEd-Jla2o7wkBzQ"/>
@@ -29,7 +29,7 @@
             </steps_Behaviour>
             <steps_Behaviour xsi:type="seff:StartAction" id="_2L0N8C6JEd-Jla2o7wkBzQ" successor_AbstractAction="_5mRioC6JEd-Jla2o7wkBzQ"/>
             <steps_Behaviour xsi:type="seff:StopAction" id="_2L01AC6JEd-Jla2o7wkBzQ" predecessor_AbstractAction="_rprWRl7qEeavvL8WcdoZSg"/>
-            <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_rprWRl7qEeavvL8WcdoZSg" entityName="callAddFile" predecessor_AbstractAction="_5mRioC6JEd-Jla2o7wkBzQ" successor_AbstractAction="_2L01AC6JEd-Jla2o7wkBzQ" calledService_ExternalService="_0PPTMPVeEea_wfCjFPidZw" role_ExternalService="_0PTkovVeEea_wfCjFPidZw">
+            <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_rprWRl7qEeavvL8WcdoZSg" entityName="callAddFile" predecessor_AbstractAction="_5mRioC6JEd-Jla2o7wkBzQ" successor_AbstractAction="_2L01AC6JEd-Jla2o7wkBzQ" calledService_ExternalService="_LnmAsPn0EeaYad8u2cLPSA" role_ExternalService="_LnrgQvn0EeaYad8u2cLPSA">
               <inputVariableUsages__CallAction>
                 <variableCharacterisation_VariableUsage type="BYTESIZE">
                   <specification_VariableCharacterisation specification="IntPMF[(1000000; 0.4)(1500000; 0.6)]"/>
@@ -45,7 +45,7 @@
             <steps_Behaviour xsi:type="seff:StartAction" id="_3V3mQC6JEd-Jla2o7wkBzQ" successor_AbstractAction="_6vz9kC6JEd-Jla2o7wkBzQ"/>
             <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_6vz9kC6JEd-Jla2o7wkBzQ" predecessor_AbstractAction="_3V3mQC6JEd-Jla2o7wkBzQ" successor_AbstractAction="_ZtdRJl_CEeahZew5WJ0QOQ" calledService_ExternalService="_8A9Bla7LEd-Z7e7zQl8I9w" role_ExternalService="_rng-MC6IEd-Jla2o7wkBzQ"/>
             <steps_Behaviour xsi:type="seff:StopAction" id="_3V3mQS6JEd-Jla2o7wkBzQ" predecessor_AbstractAction="_ZtdRJl_CEeahZew5WJ0QOQ"/>
-            <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_ZtdRJl_CEeahZew5WJ0QOQ" entityName="updateFileCall" predecessor_AbstractAction="_6vz9kC6JEd-Jla2o7wkBzQ" successor_AbstractAction="_3V3mQS6JEd-Jla2o7wkBzQ" calledService_ExternalService="_0PPTMvVeEea_wfCjFPidZw" role_ExternalService="_0PTkovVeEea_wfCjFPidZw">
+            <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_ZtdRJl_CEeahZew5WJ0QOQ" entityName="updateFileCall" predecessor_AbstractAction="_6vz9kC6JEd-Jla2o7wkBzQ" successor_AbstractAction="_3V3mQS6JEd-Jla2o7wkBzQ" calledService_ExternalService="_LnmAsvn0EeaYad8u2cLPSA" role_ExternalService="_LnrgQvn0EeaYad8u2cLPSA">
               <inputVariableUsages__CallAction>
                 <variableCharacterisation_VariableUsage type="BYTESIZE">
                   <specification_VariableCharacterisation specification="IntPMF[(1; 0.05)(2; 0.2)(3; 0.5)(4; 0.2)(6; 0.05)]"/>
@@ -87,7 +87,7 @@
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_QWlc0F_MEeahZew5WJ0QOQ" entityName="Exporter">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_gsQ_4V_OEeahZew5WJ0QOQ" providedInterface__OperationProvidedRole="_1Qmmp1_OEeahZew5WJ0QOQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_0PTkofVeEea_wfCjFPidZw" requiredInterface__OperationRequiredRole="_0PJzoPVeEea_wfCjFPidZw"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_LnrgQfn0EeaYad8u2cLPSA" requiredInterface__OperationRequiredRole="_LnhIMPn0EeaYad8u2cLPSA"/>
     <componentParameterUsage_ImplementationComponentType>
       <variableCharacterisation_VariableUsage type="BYTESIZE">
         <specification_VariableCharacterisation specification="IntPMF[(10; 0.2)(12; 0.6)(14; 0.2)]"/>
@@ -97,7 +97,7 @@
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_mOJFV1_UEeahZew5WJ0QOQ" describedService__SEFF="_4qi98F_OEeahZew5WJ0QOQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_-E0mkl_UEeahZew5WJ0QOQ" successor_AbstractAction="__eTiBl_UEeahZew5WJ0QOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="__BBJEF_UEeahZew5WJ0QOQ" predecessor_AbstractAction="_5Hc6KWCDEeaQ-qRnqvu5Tg"/>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="__eTiBl_UEeahZew5WJ0QOQ" entityName="getFilesFromDB" predecessor_AbstractAction="_-E0mkl_UEeahZew5WJ0QOQ" successor_AbstractAction="_8fV3hF_JEeahZew5WJ0QOQ" calledService_ExternalService="_0PPTMfVeEea_wfCjFPidZw" role_ExternalService="_0PTkofVeEea_wfCjFPidZw">
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="__eTiBl_UEeahZew5WJ0QOQ" entityName="getFilesFromDB" predecessor_AbstractAction="_-E0mkl_UEeahZew5WJ0QOQ" successor_AbstractAction="_8fV3hF_JEeahZew5WJ0QOQ" calledService_ExternalService="_LnmAsfn0EeaYad8u2cLPSA" role_ExternalService="_LnrgQfn0EeaYad8u2cLPSA">
         <inputVariableUsages__CallAction>
           <variableCharacterisation_VariableUsage type="NUMBER_OF_ELEMENTS">
             <specification_VariableCharacterisation specification="idx.NUMBER_OF_ELEMENTS"/>
@@ -522,7 +522,7 @@
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_K9EFUHXDEeauMPtoFodBVw" entityName="AlternativeExporter">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_FlG3QXXFEeauMPtoFodBVw" providedInterface__OperationProvidedRole="_1Qmmp1_OEeahZew5WJ0QOQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_0PTkoPVeEea_wfCjFPidZw" requiredInterface__OperationRequiredRole="_0PJzoPVeEea_wfCjFPidZw"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_LnrgQPn0EeaYad8u2cLPSA" requiredInterface__OperationRequiredRole="_LnhIMPn0EeaYad8u2cLPSA"/>
     <componentParameterUsage_ImplementationComponentType>
       <variableCharacterisation_VariableUsage type="BYTESIZE">
         <specification_VariableCharacterisation specification="IntPMF[(10; 0.2)(12; 0.6)(14; 0.2)]"/>
@@ -532,7 +532,7 @@
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_mOJFV1_UEeahZew5WJ0QOQ1" describedService__SEFF="_4qi98F_OEeahZew5WJ0QOQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_-E0mkl_UEeahZew5WJ0QOQ1" successor_AbstractAction="__eTiBl_UEeahZew5WJ0QOQ1"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="__BBJEF_UEeahZew5WJ0QOQ1" predecessor_AbstractAction="_5Hc6KWCDEeaQ-qRnqvu5Tg1"/>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="__eTiBl_UEeahZew5WJ0QOQ1" entityName="getFilesFromDB" predecessor_AbstractAction="_-E0mkl_UEeahZew5WJ0QOQ1" successor_AbstractAction="_8fV3hF_JEeahZew5WJ0QOQ1" calledService_ExternalService="_0PPTMfVeEea_wfCjFPidZw" role_ExternalService="_0PTkoPVeEea_wfCjFPidZw">
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="__eTiBl_UEeahZew5WJ0QOQ1" entityName="getFilesFromDB" predecessor_AbstractAction="_-E0mkl_UEeahZew5WJ0QOQ1" successor_AbstractAction="_8fV3hF_JEeahZew5WJ0QOQ1" calledService_ExternalService="_LnmAsfn0EeaYad8u2cLPSA" role_ExternalService="_LnrgQPn0EeaYad8u2cLPSA">
         <inputVariableUsages__CallAction>
           <variableCharacterisation_VariableUsage type="NUMBER_OF_ELEMENTS">
             <specification_VariableCharacterisation specification="idx.NUMBER_OF_ELEMENTS"/>
@@ -632,18 +632,18 @@
       <capacity_PassiveResource specification="1"/>
     </passiveResource_BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_0PJzofVeEea_wfCjFPidZw" entityName="ITripDB-Wrapper">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_0PJzovVeEea_wfCjFPidZw" providedInterface__OperationProvidedRole="_0PJzoPVeEea_wfCjFPidZw"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_0PJzo_VeEea_wfCjFPidZw" requiredInterface__OperationRequiredRole="_znbSN141EeavvL8WcdoZSg"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_0PP6QPVeEea_wfCjFPidZw" describedService__SEFF="_0PPTMPVeEea_wfCjFPidZw">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_0PP6QfVeEea_wfCjFPidZw" entityName="start" successor_AbstractAction="_0PP6QvVeEea_wfCjFPidZw"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_0PP6QvVeEea_wfCjFPidZw" entityName="Overhead [ITripDB-Wrapper]" predecessor_AbstractAction="_0PP6QfVeEea_wfCjFPidZw" successor_AbstractAction="_0PP6Q_VeEea_wfCjFPidZw">
+  <components__Repository xsi:type="repository:BasicComponent" id="_LnhIMfn0EeaYad8u2cLPSA" entityName="ITripDB-Wrapper">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_LnhIMvn0EeaYad8u2cLPSA" providedInterface__OperationProvidedRole="_LnhIMPn0EeaYad8u2cLPSA"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_LnhIM_n0EeaYad8u2cLPSA" requiredInterface__OperationRequiredRole="_znbSN141EeavvL8WcdoZSg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_LnmAs_n0EeaYad8u2cLPSA" describedService__SEFF="_LnmAsPn0EeaYad8u2cLPSA">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_LnmAtPn0EeaYad8u2cLPSA" entityName="start" successor_AbstractAction="_LnmAtfn0EeaYad8u2cLPSA"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_LnmAtfn0EeaYad8u2cLPSA" entityName="Overhead [ITripDB-Wrapper]" predecessor_AbstractAction="_LnmAtPn0EeaYad8u2cLPSA" successor_AbstractAction="_LnmnwPn0EeaYad8u2cLPSA">
         <resourceDemand_Action>
           <specification_ParametericResourceDemand specification="15"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_0PP6Q_VeEea_wfCjFPidZw" entityName="External_ITripDB-Wrapper_addFile" predecessor_AbstractAction="_0PP6QvVeEea_wfCjFPidZw" successor_AbstractAction="_0PP6RPVeEea_wfCjFPidZw" calledService_ExternalService="_337eEF41EeavvL8WcdoZSg" role_ExternalService="_0PJzo_VeEea_wfCjFPidZw">
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_LnmnwPn0EeaYad8u2cLPSA" entityName="External_ITripDB-Wrapper_addFile" predecessor_AbstractAction="_LnmAtfn0EeaYad8u2cLPSA" successor_AbstractAction="_Lnmnwfn0EeaYad8u2cLPSA" calledService_ExternalService="_337eEF41EeavvL8WcdoZSg" role_ExternalService="_LnhIM_n0EeaYad8u2cLPSA">
         <inputVariableUsages__CallAction>
           <variableCharacterisation_VariableUsage type="BYTESIZE">
             <specification_VariableCharacterisation specification="file.BYTESIZE"/>
@@ -651,17 +651,17 @@
           <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="file"/>
         </inputVariableUsages__CallAction>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_0PP6RPVeEea_wfCjFPidZw" entityName="stop" predecessor_AbstractAction="_0PP6Q_VeEea_wfCjFPidZw"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_Lnmnwfn0EeaYad8u2cLPSA" entityName="stop" predecessor_AbstractAction="_LnmnwPn0EeaYad8u2cLPSA"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_0PP6RfVeEea_wfCjFPidZw" describedService__SEFF="_0PPTMfVeEea_wfCjFPidZw">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_0PP6RvVeEea_wfCjFPidZw" entityName="start" successor_AbstractAction="_0PP6R_VeEea_wfCjFPidZw"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_0PP6R_VeEea_wfCjFPidZw" entityName="Overhead [ITripDB-Wrapper]" predecessor_AbstractAction="_0PP6RvVeEea_wfCjFPidZw" successor_AbstractAction="_0PP6SPVeEea_wfCjFPidZw">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_Lnmnwvn0EeaYad8u2cLPSA" describedService__SEFF="_LnmAsfn0EeaYad8u2cLPSA">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_Lnmnw_n0EeaYad8u2cLPSA" entityName="start" successor_AbstractAction="_LnmnxPn0EeaYad8u2cLPSA"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_LnmnxPn0EeaYad8u2cLPSA" entityName="Overhead [ITripDB-Wrapper]" predecessor_AbstractAction="_Lnmnw_n0EeaYad8u2cLPSA" successor_AbstractAction="_Lnmnxfn0EeaYad8u2cLPSA">
         <resourceDemand_Action>
           <specification_ParametericResourceDemand specification="15"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_0PP6SPVeEea_wfCjFPidZw" entityName="External_ITripDB-Wrapper_queryDB" predecessor_AbstractAction="_0PP6R_VeEea_wfCjFPidZw" successor_AbstractAction="_0PQhUPVeEea_wfCjFPidZw" calledService_ExternalService="_DMVxkF42EeavvL8WcdoZSg" role_ExternalService="_0PJzo_VeEea_wfCjFPidZw">
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_Lnmnxfn0EeaYad8u2cLPSA" entityName="External_ITripDB-Wrapper_queryDB" predecessor_AbstractAction="_LnmnxPn0EeaYad8u2cLPSA" successor_AbstractAction="_Lnmnxvn0EeaYad8u2cLPSA" calledService_ExternalService="_DMVxkF42EeavvL8WcdoZSg" role_ExternalService="_LnhIM_n0EeaYad8u2cLPSA">
         <inputVariableUsages__CallAction>
           <variableCharacterisation_VariableUsage type="NUMBER_OF_ELEMENTS">
             <specification_VariableCharacterisation specification="ids.NUMBER_OF_ELEMENTS"/>
@@ -672,42 +672,42 @@
           <variableCharacterisation_VariableUsage type="NUMBER_OF_ELEMENTS">
             <specification_VariableCharacterisation specification="RETURN.NUMBER_OF_ELEMENTS"/>
           </variableCharacterisation_VariableUsage>
-          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="returnVar0"/>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="returnVar1"/>
         </returnVariableUsage__CallReturnAction>
         <returnVariableUsage__CallReturnAction>
           <variableCharacterisation_VariableUsage type="BYTESIZE">
-            <specification_VariableCharacterisation specification="RETURN.BYTESIZE"/>
+            <specification_VariableCharacterisation specification="RETURN.INNER.BYTESIZE"/>
           </variableCharacterisation_VariableUsage>
-          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="returnVar1"/>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="returnVar2"/>
         </returnVariableUsage__CallReturnAction>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_0PQhUPVeEea_wfCjFPidZw" entityName="SetReturn [ITripDB.queryDB]" predecessor_AbstractAction="_0PP6SPVeEea_wfCjFPidZw" successor_AbstractAction="_0PQhUfVeEea_wfCjFPidZw">
+      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_Lnmnxvn0EeaYad8u2cLPSA" entityName="SetReturn [ITripDB.queryDB]" predecessor_AbstractAction="_Lnmnxfn0EeaYad8u2cLPSA" successor_AbstractAction="_Lnmnx_n0EeaYad8u2cLPSA">
         <localVariableUsages_SetVariableAction>
           <variableCharacterisation_VariableUsage type="NUMBER_OF_ELEMENTS">
-            <specification_VariableCharacterisation specification="returnVar0.NUMBER_OF_ELEMENTS"/>
+            <specification_VariableCharacterisation specification="returnVar1.NUMBER_OF_ELEMENTS"/>
           </variableCharacterisation_VariableUsage>
           <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="RETURN"/>
         </localVariableUsages_SetVariableAction>
         <localVariableUsages_SetVariableAction>
           <variableCharacterisation_VariableUsage type="BYTESIZE">
-            <specification_VariableCharacterisation specification="returnVar1.BYTESIZE"/>
+            <specification_VariableCharacterisation specification="returnVar2.BYTESIZE"/>
           </variableCharacterisation_VariableUsage>
           <namedReference__VariableUsage xsi:type="stoex:NamespaceReference" referenceName="RETURN">
             <innerReference_NamespaceReference xsi:type="stoex:VariableReference" referenceName="INNER"/>
           </namedReference__VariableUsage>
         </localVariableUsages_SetVariableAction>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_0PQhUfVeEea_wfCjFPidZw" entityName="stop" predecessor_AbstractAction="_0PQhUPVeEea_wfCjFPidZw"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_Lnmnx_n0EeaYad8u2cLPSA" entityName="stop" predecessor_AbstractAction="_Lnmnxvn0EeaYad8u2cLPSA"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_0PQhUvVeEea_wfCjFPidZw" describedService__SEFF="_0PPTMvVeEea_wfCjFPidZw">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_0PQhU_VeEea_wfCjFPidZw" entityName="start" successor_AbstractAction="_0PQhVPVeEea_wfCjFPidZw"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_0PQhVPVeEea_wfCjFPidZw" entityName="Overhead [ITripDB-Wrapper]" predecessor_AbstractAction="_0PQhU_VeEea_wfCjFPidZw" successor_AbstractAction="_0PQhVfVeEea_wfCjFPidZw">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_LnmnyPn0EeaYad8u2cLPSA" describedService__SEFF="_LnmAsvn0EeaYad8u2cLPSA">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_Lnmnyfn0EeaYad8u2cLPSA" entityName="start" successor_AbstractAction="_LnnO0Pn0EeaYad8u2cLPSA"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_LnnO0Pn0EeaYad8u2cLPSA" entityName="Overhead [ITripDB-Wrapper]" predecessor_AbstractAction="_Lnmnyfn0EeaYad8u2cLPSA" successor_AbstractAction="_LnnO0fn0EeaYad8u2cLPSA">
         <resourceDemand_Action>
           <specification_ParametericResourceDemand specification="15"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_0PQhVfVeEea_wfCjFPidZw" entityName="External_ITripDB-Wrapper_updateFile" predecessor_AbstractAction="_0PQhVPVeEea_wfCjFPidZw" successor_AbstractAction="_0PRIYPVeEea_wfCjFPidZw" calledService_ExternalService="_Ib8qAF42EeavvL8WcdoZSg" role_ExternalService="_0PJzo_VeEea_wfCjFPidZw">
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_LnnO0fn0EeaYad8u2cLPSA" entityName="External_ITripDB-Wrapper_updateFile" predecessor_AbstractAction="_LnnO0Pn0EeaYad8u2cLPSA" successor_AbstractAction="_LnnO0vn0EeaYad8u2cLPSA" calledService_ExternalService="_Ib8qAF42EeavvL8WcdoZSg" role_ExternalService="_LnhIM_n0EeaYad8u2cLPSA">
         <inputVariableUsages__CallAction>
           <variableCharacterisation_VariableUsage type="BYTESIZE">
             <specification_VariableCharacterisation specification="textUpdate.BYTESIZE"/>
@@ -715,7 +715,7 @@
           <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="textUpdate"/>
         </inputVariableUsages__CallAction>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_0PRIYPVeEea_wfCjFPidZw" entityName="stop" predecessor_AbstractAction="_0PQhVfVeEea_wfCjFPidZw"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_LnnO0vn0EeaYad8u2cLPSA" entityName="stop" predecessor_AbstractAction="_LnnO0fn0EeaYad8u2cLPSA"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_bh5lgC6IEd-Jla2o7wkBzQ" entityName="IBusiness Trip">
@@ -766,14 +766,14 @@
       <parameters__OperationSignature dataType__Parameter="_XnGwLF43EeavvL8WcdoZSg" parameterName="idx"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_0PJzoPVeEea_wfCjFPidZw" entityName="ITripDB-Wrapper">
-    <signatures__OperationInterface id="_0PPTMPVeEea_wfCjFPidZw" entityName="addFile">
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_LnhIMPn0EeaYad8u2cLPSA" entityName="ITripDB-Wrapper">
+    <signatures__OperationInterface id="_LnmAsPn0EeaYad8u2cLPSA" entityName="addFile">
       <parameters__OperationSignature dataType__Parameter="_-ixwDV42EeavvL8WcdoZSg" parameterName="file"/>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="_0PPTMfVeEea_wfCjFPidZw" entityName="queryDB" returnType__OperationSignature="_7_wCbF_SEeahZew5WJ0QOQ">
+    <signatures__OperationInterface id="_LnmAsfn0EeaYad8u2cLPSA" entityName="queryDB" returnType__OperationSignature="_7_wCbF_SEeahZew5WJ0QOQ">
       <parameters__OperationSignature dataType__Parameter="_XnGwLF43EeavvL8WcdoZSg" parameterName="ids"/>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="_0PPTMvVeEea_wfCjFPidZw" entityName="updateFile">
+    <signatures__OperationInterface id="_LnmAsvn0EeaYad8u2cLPSA" entityName="updateFile">
       <parameters__OperationSignature parameterName="textUpdate">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
       </parameters__OperationSignature>

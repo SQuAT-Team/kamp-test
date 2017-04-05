@@ -841,10 +841,27 @@ public class InsInterRunner extends PCMTransformerRunner {
 		resultSystemFilename = "insert-test-" + "#REPLACEMENT#" + ".system";
 		resultResourceEnvironmentFilename = "insert-test-" + "#REPLACEMENT#" + ".resourceenvironment";
 		resultAllocationFilename = "insert-test-" + "#REPLACEMENT#" + ".allocation";
-		runner.run(dirPath, 
+		/*runner.run(dirPath, 
 				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename,
 				henshinFilename, 
 				resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename,
+				true);*/
+		
+		//CoCoME testing
+		repositoryFilename = "cocome.repository";
+		systemFilename = "cocome.system";
+		resourceEnvironmentFilename = "cocome.resourceenvironment";
+		allocationFilename = "cocome.allocation";
+		usageFilename = "cocome.usagemodel";
+		resultRepositoryFilename = "cocome-" + "#REPLACEMENT#" + ".repository";
+		resultSystemFilename = "cocome-" + "#REPLACEMENT#" + ".system";
+		resultResourceEnvironmentFilename = "cocome-" + "#REPLACEMENT#" + ".resourceenvironment";
+		resultAllocationFilename = "cocome-" + "#REPLACEMENT#" + ".allocation";
+		resultUsageFilename = "cocome-" + "#REPLACEMENT#" + ".usagemodel";
+		runner.run(dirPath, 
+				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, usageFilename,
+				henshinFilename, 
+				resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename, resultUsageFilename,
 				true);
 	}
 }
