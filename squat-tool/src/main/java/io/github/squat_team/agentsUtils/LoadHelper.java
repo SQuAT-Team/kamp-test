@@ -3,7 +3,6 @@ package io.github.squat_team.agentsUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.model.PCMArchitectureInstance;
 
 public class LoadHelper {

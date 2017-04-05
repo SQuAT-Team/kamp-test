@@ -34,8 +34,24 @@ public class ModifiabilityBot extends SillyBot {
 		return null;
 	}
 	@Override
-	protected boolean makeImprovement(Proposal proposal) {
+	protected boolean makeImprovementRegardingOriginal(Proposal proposal) {
 		return ((ModifiabilityProposal)proposal).getComplexity()<=originalComplexity;
+	}
+	@Override
+	public boolean acceptableUtilityValue(Proposal proposal) {
+		float currentComplexity=((ModifiabilityProposal)orderedProposals.get(currentConcessionIndex)).getComplexity();
+		float proposalComplexity=((ModifiabilityProposal)this.getProposalForArchitecture(proposal.getArchitectureName())).getComplexity();
+		
+		return (proposalComplexity<=currentComplexity);
+	}
+	@Override
+	public boolean canConcede() {
+		//can concede if the following option in the ranking is not worse than an arbitrary 5% decline
+		if(orderedProposals.size()==(currentConcessionIndex+1))
+			return false;//no more options
+		float currentComplexity=((ModifiabilityProposal)orderedProposals.get(currentConcessionIndex)).getComplexity();
+		float nextComplexity=((ModifiabilityProposal)orderedProposals.get(currentConcessionIndex+1)).getComplexity();
+		return (((nextComplexity/currentComplexity)-1)*100)<=5;
 	}
 	
 }

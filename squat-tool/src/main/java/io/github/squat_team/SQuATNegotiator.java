@@ -19,11 +19,12 @@ public class SQuATNegotiator {
 	
 	//private Map<AbstractPCMBot, PCMScenario> bot2scenarioLinkage;
 	
-	private List<PCMArchitectureInstance> architectureAlternatives;
+	//private List<PCMArchitectureInstance> architectureAlternatives;
 	private List<SillyBot> sillyBots;
+	private Proposal agreementProposal;
 	
 	public SQuATNegotiator(){
-		
+		agreementProposal=null;
 	}
 	public SQuATNegotiator(PCMArchitectureInstance initialArchitecture) {
 		this.initialArchitecture = initialArchitecture;
@@ -158,7 +159,6 @@ public class SQuATNegotiator {
 
 	private void printAgreement(HashMap<SillyBot, Proposal> proposals) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	private void createNegotiationResult() {
@@ -170,12 +170,30 @@ public class SQuATNegotiator {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	/**
+	 * Checks if there is an agreement (between the agents) for one of the proposals 
+	 * @param proposals
+	 * @return
+	 */
 	private boolean checkAgreement(HashMap<SillyBot, Proposal> proposals) {
-		// TODO Auto-generated method stub
+		for (Iterator<Proposal> iterator = proposals.values().iterator(); iterator.hasNext();) {
+			Proposal proposal = (Proposal) iterator.next();
+			if(checkAgreementForAgents(proposal)){
+				agreementProposal=proposal;
+				return true;
+			}
+		}
 		return false;
 	}
 
+	private boolean checkAgreementForAgents(Proposal proposal) {
+		for (Iterator<SillyBot> iterator = sillyBots.iterator(); iterator.hasNext();) {
+			SillyBot sillyBot = (SillyBot) iterator.next();
+			if(!sillyBot.acceptableUtilityValue(proposal))
+				return false;
+		}
+		return true;
+	}
 	private HashMap<SillyBot, Proposal> collectInitialProposals() {
 		HashMap<SillyBot, Proposal> ret= new HashMap<>();
 		//Each agent has to make a ranking with the alternatives and select the best for its scenario 
