@@ -70,7 +70,7 @@ public class SimpleTacticsPlusTest {
 		KAMPPCMBot bot = new KAMPPCMBot(scenario);
 		//
 		loadPCMModel();
-		Vector<PCMArchitectureInstance> pcmInstances=new Vector<>();
+		Vector<PCMArchitectureInstance> pcmInstances=new Vector<PCMArchitectureInstance>();
 		for (int i = 0; i < modelNames.length; i++) {
 			PCMArchitectureInstance model=loadSpecificModel(repositoryFile[i], repositoryFile[i], resourceEnvironmentFile[i], baseSystemFile[i], baseAllocationFile[i], baseUsageFile[i]);
 			PCMScenarioResult scenarioResult = bot.analyze(model);
