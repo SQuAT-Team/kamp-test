@@ -36,7 +36,7 @@ public class PerformanceBot extends SillyBot {
 		return ((PerformanceProposal)proposal).getResponseTime()<=originalResponseTime;
 	}
 
-	@Override
+	/*@Override
 	public boolean canConcede() {
 		//can concede if the following option in the ranking is not worse than an arbitrary 5% decline
 		if(orderedProposals.size()==(currentConcessionIndex+1))
@@ -44,7 +44,7 @@ public class PerformanceBot extends SillyBot {
 		float currentResponseTime=((PerformanceProposal)orderedProposals.get(currentConcessionIndex)).getResponseTime();
 		float nextResponseTime=((PerformanceProposal)orderedProposals.get(currentConcessionIndex+1)).getResponseTime();
 		return (((nextResponseTime/currentResponseTime)-1)*100)<=5;
-	}
+	}*/
 
 	@Override
 	public float getUtilityFor(Proposal proposal) {
@@ -52,6 +52,12 @@ public class PerformanceBot extends SillyBot {
 		float proposalResponseTime=((PerformanceProposal)this.getProposalForArchitecture(proposal.getArchitectureName())).getResponseTime();
 		
 		return bestResponseTime/proposalResponseTime;
+	}
+	
+	@Override
+	public float getResponse(Proposal p) {
+		Proposal proposal=getProposalForArchitecture(p.getArchitectureName());
+		return ((PerformanceProposal)proposal).getResponseTime();
 	}
 
 }

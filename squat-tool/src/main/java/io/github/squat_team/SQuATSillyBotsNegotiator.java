@@ -69,7 +69,54 @@ public class SQuATSillyBotsNegotiator {
 		System.out.println("Agreement achieved!!!!!");
 		System.out.println("Agreement: "+agreementProposal);
 		printCurrentState();
+		printNonDominatedAlternatives();
 	}
+
+	private void printNonDominatedAlternatives() {
+		List<Proposal> nonDominated=new ArrayList<>();
+		
+		List<Proposal> proposals=sillyBots.get(0).getOrderedProposals();
+		for (Iterator<Proposal> iterator = proposals.iterator(); iterator.hasNext();) {
+			Proposal proposal = (Proposal) iterator.next();
+			if(!isDominatedByAtLeastOneProposal(proposal))
+				nonDominated.add(proposal);
+		}
+		
+		System.out.println("Non dominated alternatives");
+		for (Iterator<Proposal> iterator = nonDominated.iterator(); iterator.hasNext();) {
+			Proposal proposal = (Proposal) iterator.next();
+			System.out.println(proposal);
+		}
+	}
+	private boolean isDominatedByAtLeastOneProposal(Proposal proposal){
+		List<Proposal> otherProposals=new ArrayList<>(sillyBots.get(0).getOrderedProposals());
+		otherProposals.remove(proposal);
+		for (Iterator<Proposal> iterator2 = otherProposals.iterator(); iterator2.hasNext();) {
+			Proposal proposal2 = (Proposal) iterator2.next();
+			if(isDominatedBy(proposal,proposal2))
+				return true;
+		}
+		return false;
+	}
+
+	private boolean isDominatedBy(Proposal proposal, Proposal proposal2) {
+		
+		boolean allEqual=true;
+		for (Iterator<SillyBot> iterator = sillyBots.iterator(); iterator.hasNext();) {
+			SillyBot bot = (SillyBot) iterator.next();
+			//Si le gano en al menos uno entonces no es dominado
+			if((bot.getResponse(proposal)<bot.getResponse(proposal2)))
+				return false;
+			if((bot.getResponse(proposal)!=bot.getResponse(proposal2)))
+				allEqual= false;
+		}
+		
+		
+		if(allEqual)
+			return false;
+		return true;
+	}
+
 
 	private void createNegotiationResult() {
 		System.out.println("Conflict.");
@@ -80,7 +127,7 @@ public class SQuATSillyBotsNegotiator {
 		for (Iterator<SillyBot> iterator = sillyBots.iterator(); iterator.hasNext();) {
 			SillyBot bot = (SillyBot) iterator.next();
 			System.out.print(bot.toString());
-			System.out.print(" Current proposal "+ bot.getCurrentProposal());
+			System.out.print(" Current proposal "+ bot.getCurrentProposal() + " ("+(bot.getCurrentConcessionIndex()+1)+") ");
 			String acceptedProposals=" AcceptedProposals: ";
 			List<SillyBot> otherAgents = new ArrayList<>(sillyBots); 
 			otherAgents.remove(bot);
@@ -190,12 +237,14 @@ public class SQuATSillyBotsNegotiator {
 		return true;
 	}
 	private HashMap<SillyBot, Proposal> collectInitialProposals() {
+		System.out.println("Intial Proposals");
 		HashMap<SillyBot, Proposal> ret= new HashMap<>();
 		//Each agent has to make a ranking with the alternatives and select the best for its scenario 
 		sillyBots=new LoadHelper().loadBotsWithInformation();
 		for (Iterator<SillyBot> iterator = sillyBots.iterator(); iterator.hasNext();) {
 			SillyBot bot = (SillyBot) iterator.next();
 			ret.put(bot, bot.getBestProposal());
+			System.out.println(bot+" "+bot.getBestProposal());
 		}
 		return ret;
 	}

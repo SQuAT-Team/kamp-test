@@ -34,7 +34,7 @@ public class ModifiabilityBot extends SillyBot {
 		return ((ModifiabilityProposal)proposal).getComplexity()<=originalComplexity;
 	}
 
-	@Override
+	/*@Override
 	public boolean canConcede() {
 		//can concede if the following option in the ranking is not worse than an arbitrary 5% decline
 		if(orderedProposals.size()==(currentConcessionIndex+1))
@@ -42,7 +42,7 @@ public class ModifiabilityBot extends SillyBot {
 		//float currentComplexity=((ModifiabilityProposal)orderedProposals.get(currentConcessionIndex)).getComplexity();
 		float nextComplexity=((ModifiabilityProposal)orderedProposals.get(currentConcessionIndex+1)).getComplexity();
 		return (((nextComplexity/originalComplexity)-1)*100)<=5;
-	}
+	}*/
 	@Override
 	public float getUtilityFor(Proposal proposal) {
 		float bestResponseTime=((ModifiabilityProposal)orderedProposals.get(0)).getComplexity();
@@ -50,4 +50,10 @@ public class ModifiabilityBot extends SillyBot {
 		
 		return bestResponseTime/proposalResponseTime;
 	}
+	@Override
+	public float getResponse(Proposal p) {
+		Proposal proposal=getProposalForArchitecture(p.getArchitectureName());
+		return ((ModifiabilityProposal)proposal).getComplexity();
+	}
+	
 }

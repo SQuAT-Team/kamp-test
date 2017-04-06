@@ -40,7 +40,12 @@ public abstract class SillyBot {
 		}
 		return null;
 	}
-	public abstract boolean canConcede();
+	public boolean canConcede(){
+		if(orderedProposals.size()==(currentConcessionIndex+1))
+			return false;
+		else 
+			return true;
+	}
 	public abstract float getUtilityFor(Proposal proposal);
 	public Proposal getCurrentProposal() {
 		return orderedProposals.get(currentConcessionIndex);
@@ -49,4 +54,11 @@ public abstract class SillyBot {
 	public String toString() {
 		return "Agent "+name;
 	}
+	public int getCurrentConcessionIndex() {
+		return currentConcessionIndex;
+	}
+	public List<Proposal> getOrderedProposals() {
+		return orderedProposals;
+	}
+	public abstract float getResponse(Proposal p);
 }
