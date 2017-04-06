@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.palladiosimulator.pcm.core.entity.InterfaceProvidingEntity;
 import org.palladiosimulator.pcm.repository.BasicComponent;
@@ -83,15 +84,13 @@ public class KAMPPCMBot extends AbstractPCMBot {
 			baseAV = baseWrapper.transformToKAMP();
 			//Pessimistic approach for CIA - This could be configured from outside...
 			ArchitectureModelFactoryFacade.setupComponentInternalDependenciesPessimistic(baseAV);
-			
 			//Second create the changed model
 			ArchitectureVersionWrapper changedWrapper = new ArchitectureVersionWrapper(currentArchitecture);
 			changedAV = changedWrapper.transformToKAMP();
 			this.setupChangedModel();
 			//Pessimistic approach for CIA - This could be configured from outside...
 			ArchitectureModelFactoryFacade.setupComponentInternalDependenciesPessimistic(changedAV);
-			
-			//Run Change Impact Analyses
+			//Run CIA
 			List<Activity> activities = KAMPHeadlessRunner.runAnalysis(baseAV, changedAV);
 			//Create the result
 			PCMResult result = null;
@@ -101,10 +100,7 @@ public class KAMPPCMBot extends AbstractPCMBot {
 				result.setResponse(new Integer(changes));
 			}
 			else if(evaluationType.equals(TYPE_COMPLEXITY)) {
-				
-				
 				result = new PCMResult(ResponseMeasureType.DECIMAL);
-				
 				float complexity = this.computeComplexityReponse(activities);
 				result.setResponse(new Float(complexity));
 			}
@@ -119,9 +115,12 @@ public class KAMPPCMBot extends AbstractPCMBot {
 		//We should define how we measure changes -> work hours, complexity, number of changes, etc.
 		int numberOfChanges = 0;
 		for (Activity activity : activities) {
-			activity.getElement();
-			activity.getElementType();
-			numberOfChanges++;
+			EObject element = activity.getElement();
+			ActivityElementType type = activity.getElementType();
+			//Count only basic components and interfaces, the other elements are not relevant
+			if (type.equals(ActivityElementType.BASICCOMPONENT) || type.equals(ActivityElementType.BASICCOMPONENT)) {
+				numberOfChanges++;
+			}
 			if (!activity.getSubactivities().isEmpty())
 				numberOfChanges += computeElementsReponse(activity.getSubactivities());
 			if (!activity.getFollowupActivities().isEmpty())
@@ -131,157 +130,155 @@ public class KAMPPCMBot extends AbstractPCMBot {
 	}
 	
 	private float computeComplexityReponse(List<Activity> activities) {
-		//We compute the complexity of a component based on tje number of operations  
-	//	io.github.squat_team.util.KAMPHelper.printActivities(activities, null);
-		float complexityResponse=0;
-		Set<BasicComponent> affectedComponents=new HashSet<BasicComponent>();
+		// We compute the complexity of a component based on the number of operations
+		// io.github.squat_team.util.KAMPHelper.printActivities(activities, null);
+		float complexityResponse = 0;
+		Set<BasicComponent> affectedComponents = new HashSet<BasicComponent>();
 		for (Activity activity : activities) {
-			if(activity.getElementType()==ActivityElementType.BASICCOMPONENT){
-				
-				BasicComponent component= (BasicComponent) activity.getElement();
-				
+			if (activity.getElementType() == ActivityElementType.BASICCOMPONENT) {
+				BasicComponent component = (BasicComponent) activity.getElement();
 				affectedComponents.add(component);
-				//System.out.println(component.getEntityName());
-				float componentComplexity=getComplexityForComponent(component);
-				if(componentIsMappedInScenario(component))
-					complexityResponse=(float) (complexityResponse+Math.pow(componentComplexity, 2));
+				// System.out.println(component.getEntityName());
+				float componentComplexity = getComplexityForComponent(component);
+				if (componentIsMappedInScenario(component))
+					complexityResponse = (float) (complexityResponse + Math.pow(componentComplexity, 2));
 				else
-					complexityResponse=(float) (complexityResponse+Math.pow(componentComplexity, 2)/2);
-			}else{
-				System.out.println(activity.getElementType().name());
-				System.out.println("Implement this brach please");
+					complexityResponse = (float) (complexityResponse + Math.pow(componentComplexity, 2) / 2);
+			} else {
+				//System.out.println(activity.getElementType().name());
+				//System.out.println("Implement this brach please");
 			}
-			
+
 		}
-		System.out.println("Affected components: "+affectedComponents.size());
-		//BasicComponent basicComponent = (BasicComponent) ArchitectureModelLookup.lookUpComponentByName(changedAV, componentName);
+		//System.out.println("Affected components: " + affectedComponents.size());
+		// BasicComponent basicComponent = (BasicComponent)
+		// ArchitectureModelLookup.lookUpComponentByName(changedAV,
+		// componentName);
 		return complexityResponse;
 	}
 	
-	private boolean componentIsMappedInScenario(BasicComponent component){
-		ModifiabilityPCMScenario modifiabilityScenario=(ModifiabilityPCMScenario) scenario;
-		for(ModifiabilityInstruction change : modifiabilityScenario.getChanges()){
-			switch(change.element) {
-				case COMPONENT:
-					String componentName = change.parameters.get("name");
-					BasicComponent basicComponent = ArchitectureModelFactoryFacade.createBasicComponent(changedAV, componentName);
-					if(basicComponent==component)
-						return true;
-					break;
-				case INTERFACE:
-					String interfaceName = change.parameters.get("name");
-					OperationInterface operationInterface = ArchitectureModelFactoryFacade.createInterface(changedAV, interfaceName);
-					 //I'm not sure what we'll do when we map an interface instead of a component
-					break;
+	private boolean componentIsMappedInScenario(BasicComponent component) {
+		ModifiabilityPCMScenario modifiabilityScenario = (ModifiabilityPCMScenario) scenario;
+		for (ModifiabilityInstruction change : modifiabilityScenario.getChanges()) {
+			switch (change.element) {
+			case COMPONENT:
+				String componentName = change.parameters.get("name");
+				BasicComponent basicComponent = ArchitectureModelFactoryFacade.createBasicComponent(changedAV, componentName);
+				if (basicComponent == component)
+					return true;
+				break;
+			case INTERFACE:
+				String interfaceName = change.parameters.get("name");
+				OperationInterface operationInterface = ArchitectureModelFactoryFacade.createInterface(changedAV, interfaceName);
+				// I'm not sure what we'll do when we map an interface instead of a component
+				break;
 			}
 		}
 		return false;
 	}
-	public int getComplexityForComponent(BasicComponent component){
+	
+	public int getComplexityForComponent(BasicComponent component) {
 		//The complexity of the component is based on the kind of SEFFs that it containts
 		//System.out.println(component.getEntityName());
-		//int operations=0;
-		int activitiesValue=0;
-		if(component!=null){
-			EList<ServiceEffectSpecification> seffs=component.getServiceEffectSpecifications__BasicComponent();
-			
-			for (Iterator iterator = seffs.iterator(); iterator.hasNext();) {
+		//int operations = 0;
+		int activitiesValue = 0;
+		if (component != null) {
+			EList<ServiceEffectSpecification> seffs = component.getServiceEffectSpecifications__BasicComponent();
+			for (Iterator<ServiceEffectSpecification> iterator = seffs.iterator(); iterator.hasNext();) {
 				ServiceEffectSpecification serviceEffectSpecification = (ServiceEffectSpecification) iterator.next();
-				if(serviceEffectSpecification instanceof ResourceDemandingSEFFImpl){
-					ResourceDemandingSEFFImpl resourceSEFF=(ResourceDemandingSEFFImpl) serviceEffectSpecification;
-					EList<AbstractAction> steps=resourceSEFF.getSteps_Behaviour();
-					activitiesValue = activitiesValue+calculateComplexityForSteps(steps);
-				//	System.out.println(steps.size());
-				}
-				else{
+				if (serviceEffectSpecification instanceof ResourceDemandingSEFFImpl) {
+					ResourceDemandingSEFFImpl resourceSEFF = (ResourceDemandingSEFFImpl) serviceEffectSpecification;
+					EList<AbstractAction> steps = resourceSEFF.getSteps_Behaviour();
+					activitiesValue = activitiesValue + calculateComplexityForSteps(steps);
+					//System.out.println(steps.size());
+				} else {
 					System.out.println("ERROR: Without implementation. Please Implement for ServiceåEffectSpecificationImpl");
 				}
-				
 			}
 		}
-		
-		
-		/*EList roles=component.getProvidedRoles_InterfaceProvidingEntity();
-		for (Iterator iterator = roles.iterator(); iterator.hasNext();) {
-			OperationProvidedRole role = (OperationProvidedRole) iterator.next();
-			for(OperationSignature signature : role.getProvidedInterface__OperationProvidedRole().getSignatures__OperationInterface()){
-				System.out.println(signature.getEntityName());
-			}
-			operations=operations+ role.getProvidedInterface__OperationProvidedRole().getSignatures__OperationInterface().size();
-		}
-		return operations;*/
+		/*
+		 * EList roles=component.getProvidedRoles_InterfaceProvidingEntity();
+		 * for (Iterator iterator = roles.iterator(); iterator.hasNext();) {
+		 * OperationProvidedRole role = (OperationProvidedRole) iterator.next();
+		 * for(OperationSignature signature :
+		 * role.getProvidedInterface__OperationProvidedRole().
+		 * getSignatures__OperationInterface()){
+		 * System.out.println(signature.getEntityName()); }
+		 * operations=operations+
+		 * role.getProvidedInterface__OperationProvidedRole().
+		 * getSignatures__OperationInterface().size(); } return operations;
+		 */
 		return activitiesValue;
 	}
 
 	private int calculateComplexityForSteps(EList<AbstractAction> steps) {
-		int activitiesValue=0;
-		for (Iterator iterator2 = steps.iterator(); iterator2.hasNext();) {
-			AbstractAction abstractAction = (AbstractAction) iterator2.next();
-			switch (abstractAction.eClass().getClassifierID())
-		    {
-		    case SeffPackage.STOP_ACTION:
-		    	activitiesValue=activitiesValue+0;//The value of this activity is 0 because it is not complex
-		    	break;
-		    case SeffPackage.RESOURCE_DEMANDING_BEHAVIOUR:
-		    	break;
-		    case SeffPackage.BRANCH_ACTION:
-		    	activitiesValue=activitiesValue+2;
-		    	BranchAction action=(BranchAction) abstractAction;
-		    	for(AbstractBranchTransition branch:action.getBranches_Branch()){
-		    		ResourceDemandingBehaviour rdb=branch.getBranchBehaviour_BranchTransition();
-		    		activitiesValue=activitiesValue+calculateComplexityForSteps(rdb.getSteps_Behaviour());	
-		    	}
-		    	break;
-		    case SeffPackage.START_ACTION:
-		    	activitiesValue=activitiesValue+0;//The value of this activity is 0 because it is not complex
-		    	break;
-		    case SeffPackage.RESOURCE_DEMANDING_SEFF:
-		    	break;
-		    case SeffPackage.RESOURCE_DEMANDING_INTERNAL_BEHAVIOUR:
-		    	break;
-		    case SeffPackage.RELEASE_ACTION:
-		    	break;
-		    case SeffPackage.LOOP_ACTION:
-		    	activitiesValue=activitiesValue+2;
-		    	LoopAction loopAction=(LoopAction) abstractAction;
-		    	activitiesValue=activitiesValue+calculateComplexityForSteps(loopAction.getBodyBehaviour_Loop().getSteps_Behaviour());	
-		    	break;
-		    case SeffPackage.FORK_ACTION:
-		    	activitiesValue=activitiesValue+2;
-		    	break;
-		    case SeffPackage.FORKED_BEHAVIOUR:
-		    	break;
-		    case SeffPackage.SYNCHRONISATION_POINT:
-		    	break;
-		    case SeffPackage.EXTERNAL_CALL_ACTION:
-		    	activitiesValue=activitiesValue+2;
-		    	break;
-		    case SeffPackage.CALL_RETURN_ACTION:
-		    	activitiesValue=activitiesValue+1;
-		    	break;
-		    case SeffPackage.PROBABILISTIC_BRANCH_TRANSITION:
-		    	break;
-		    case SeffPackage.ACQUIRE_ACTION:
-		    	break;
-		    case SeffPackage.COLLECTION_ITERATOR_ACTION:
-		    	break;
-		    case SeffPackage.GUARDED_BRANCH_TRANSITION:
-		    	break;
-		    case SeffPackage.SET_VARIABLE_ACTION:
-		    	activitiesValue=activitiesValue+1;
-		    	break;
-		    case SeffPackage.INTERNAL_CALL_ACTION:
-		    	activitiesValue=activitiesValue+1;
-		    	break;
-		    case SeffPackage.EMIT_EVENT_ACTION:
-		    	break;
-		    case SeffPackage.INTERNAL_ACTION:
-		    	activitiesValue=activitiesValue+1;
-		    	break;
-		    default:
-		        throw new IllegalArgumentException("The class '" + abstractAction.eClass().getName() + "' is not a valid classifier");
-		    }
-			
+		int activitiesValue = 0;
+		for (Iterator<AbstractAction> it = steps.iterator(); it.hasNext();) {
+			AbstractAction abstractAction = (AbstractAction) it.next();
+			switch (abstractAction.eClass().getClassifierID()) {
+			case SeffPackage.STOP_ACTION:
+				activitiesValue = activitiesValue + 0; //The value of this activity is 0 because it is not complex
+				break;
+			case SeffPackage.RESOURCE_DEMANDING_BEHAVIOUR:
+				break;
+			case SeffPackage.BRANCH_ACTION:
+				activitiesValue = activitiesValue + 2;
+				BranchAction action = (BranchAction) abstractAction;
+				for (AbstractBranchTransition branch : action.getBranches_Branch()) {
+					ResourceDemandingBehaviour rdb = branch.getBranchBehaviour_BranchTransition();
+					activitiesValue = activitiesValue + calculateComplexityForSteps(rdb.getSteps_Behaviour());
+				}
+				break;
+			case SeffPackage.START_ACTION:
+				activitiesValue = activitiesValue + 0; //The value of this activity is 0 because it is not complex
+				break;
+			case SeffPackage.RESOURCE_DEMANDING_SEFF:
+				break;
+			case SeffPackage.RESOURCE_DEMANDING_INTERNAL_BEHAVIOUR:
+				break;
+			case SeffPackage.RELEASE_ACTION:
+				break;
+			case SeffPackage.LOOP_ACTION:
+				activitiesValue = activitiesValue + 2;
+				LoopAction loopAction = (LoopAction) abstractAction;
+				activitiesValue = activitiesValue + calculateComplexityForSteps(loopAction.getBodyBehaviour_Loop().getSteps_Behaviour());
+				break;
+			case SeffPackage.FORK_ACTION:
+				activitiesValue = activitiesValue + 2;
+				break;
+			case SeffPackage.FORKED_BEHAVIOUR:
+				break;
+			case SeffPackage.SYNCHRONISATION_POINT:
+				break;
+			case SeffPackage.EXTERNAL_CALL_ACTION:
+				activitiesValue = activitiesValue + 2;
+				break;
+			case SeffPackage.CALL_RETURN_ACTION:
+				activitiesValue = activitiesValue + 1;
+				break;
+			case SeffPackage.PROBABILISTIC_BRANCH_TRANSITION:
+				break;
+			case SeffPackage.ACQUIRE_ACTION:
+				break;
+			case SeffPackage.COLLECTION_ITERATOR_ACTION:
+				break;
+			case SeffPackage.GUARDED_BRANCH_TRANSITION:
+				break;
+			case SeffPackage.SET_VARIABLE_ACTION:
+				activitiesValue = activitiesValue + 1;
+				break;
+			case SeffPackage.INTERNAL_CALL_ACTION:
+				activitiesValue = activitiesValue + 1;
+				break;
+			case SeffPackage.EMIT_EVENT_ACTION:
+				break;
+			case SeffPackage.INTERNAL_ACTION:
+				activitiesValue = activitiesValue + 1;
+				break;
+			default:
+				throw new IllegalArgumentException("The class '" + abstractAction.eClass().getName() + "' is not a valid classifier");
+			}
+
 		}
 		return activitiesValue;
 	}
@@ -437,5 +434,4 @@ public class KAMPPCMBot extends AbstractPCMBot {
 	public List<PCMScenarioResult> searchForAlternatives(PCMArchitectureInstance currentArchitecture) {
 		return null;
 	}
-
 }
