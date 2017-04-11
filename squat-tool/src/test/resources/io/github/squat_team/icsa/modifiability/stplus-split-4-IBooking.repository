@@ -2,7 +2,7 @@
 <repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:reliability="http://palladiosimulator.org/PalladioComponentModel/Reliability/5.1" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.1" xmlns:seff="http://palladiosimulator.org/PalladioComponentModel/SEFF/5.1" xmlns:stoex="http://sdq.ipd.uka.de/StochasticExpressions/2.2" id="_XPYAYC6IEd-Jla2o7wkBzQ" entityName="stplus.repository">
   <components__Repository xsi:type="repository:BasicComponent" id="_YyVn8C6IEd-Jla2o7wkBzQ" entityName="BusinessTripMgmt">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_fYvUMC6IEd-Jla2o7wkBzQ" entityName="Provided_I1_C1" providedInterface__OperationProvidedRole="_bh5lgC6IEd-Jla2o7wkBzQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_zBMaoBocEee0ce8-K1V5Ag" requiredInterface__OperationRequiredRole="_zBBbgBocEee0ce8-K1V5Ag"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_7k6moB7nEeesPJRgjiZKBw" requiredInterface__OperationRequiredRole="_7ko50B7nEeesPJRgjiZKBw"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_rng-MC6IEd-Jla2o7wkBzQ" entityName="Required_I3_C1" requiredInterface__OperationRequiredRole="_pPmroC6IEd-Jla2o7wkBzQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_zpVJ5V7pEeavvL8WcdoZSg" entityName="Required_DB_Interface" requiredInterface__OperationRequiredRole="_znbSN141EeavvL8WcdoZSg"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_vUtoRV_UEeahZew5WJ0QOQ" entityName="Required_Exporter_Interface" requiredInterface__OperationRequiredRole="_1Qmmp1_OEeahZew5WJ0QOQ"/>
@@ -19,7 +19,7 @@
       <steps_Behaviour xsi:type="seff:BranchAction" id="_0EkNkC6JEd-Jla2o7wkBzQ" predecessor_AbstractAction="_vGuakC6JEd-Jla2o7wkBzQ" successor_AbstractAction="_pLhAYC6JEd-Jla2o7wkBzQ">
         <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_Bwzn8OszEd-swe4bkXmV_Q">
           <branchBehaviour_BranchTransition id="_uBiA54sAEeG0c6Q1F-wA1Q">
-            <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_5mRioC6JEd-Jla2o7wkBzQ" predecessor_AbstractAction="_2L0N8C6JEd-Jla2o7wkBzQ" successor_AbstractAction="_rprWRl7qEeavvL8WcdoZSg" calledService_ExternalService="_zBHiIBocEee0ce8-K1V5Ag" role_ExternalService="_zBMaoBocEee0ce8-K1V5Ag">
+            <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_5mRioC6JEd-Jla2o7wkBzQ" predecessor_AbstractAction="_2L0N8C6JEd-Jla2o7wkBzQ" successor_AbstractAction="_rprWRl7qEeavvL8WcdoZSg" calledService_ExternalService="_7kskMB7nEeesPJRgjiZKBw" role_ExternalService="_7k6moB7nEeesPJRgjiZKBw">
               <inputVariableUsages__CallAction>
                 <variableCharacterisation_VariableUsage type="VALUE">
                   <specification_VariableCharacterisation specification="isBank.VALUE"/>
@@ -332,18 +332,18 @@
       <capacity_PassiveResource specification="1"/>
     </passiveResource_BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_zBBbgRocEee0ce8-K1V5Ag" entityName="IBooking-Wrapper">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_zBBbghocEee0ce8-K1V5Ag" providedInterface__OperationProvidedRole="_zBBbgBocEee0ce8-K1V5Ag"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_zBBbgxocEee0ce8-K1V5Ag" requiredInterface__OperationRequiredRole="_cyLhoC6IEd-Jla2o7wkBzQ"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_zBHiIRocEee0ce8-K1V5Ag" describedService__SEFF="_zBHiIBocEee0ce8-K1V5Ag">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_zBHiIhocEee0ce8-K1V5Ag" entityName="start" successor_AbstractAction="_zBHiIxocEee0ce8-K1V5Ag"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_zBHiIxocEee0ce8-K1V5Ag" entityName="Overhead [IBooking-Wrapper]" predecessor_AbstractAction="_zBHiIhocEee0ce8-K1V5Ag" successor_AbstractAction="_zBHiJBocEee0ce8-K1V5Ag">
+  <components__Repository xsi:type="repository:BasicComponent" id="_7ko50R7nEeesPJRgjiZKBw" entityName="IBooking-Wrapper">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_7ko50h7nEeesPJRgjiZKBw" providedInterface__OperationProvidedRole="_7ko50B7nEeesPJRgjiZKBw"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_7ko50x7nEeesPJRgjiZKBw" requiredInterface__OperationRequiredRole="_cyLhoC6IEd-Jla2o7wkBzQ"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_7kskMR7nEeesPJRgjiZKBw" describedService__SEFF="_7kskMB7nEeesPJRgjiZKBw">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_7kskMh7nEeesPJRgjiZKBw" entityName="start" successor_AbstractAction="_7kskMx7nEeesPJRgjiZKBw"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_7kskMx7nEeesPJRgjiZKBw" entityName="Overhead [IBooking-Wrapper]" predecessor_AbstractAction="_7kskMh7nEeesPJRgjiZKBw" successor_AbstractAction="_7kskNB7nEeesPJRgjiZKBw">
         <resourceDemand_Action>
-          <specification_ParametericResourceDemand specification="15"/>
+          <specification_ParametericResourceDemand specification="2"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_zBHiJBocEee0ce8-K1V5Ag" entityName="External_IBooking-Wrapper_book" predecessor_AbstractAction="_zBHiIxocEee0ce8-K1V5Ag" successor_AbstractAction="_zBHiJRocEee0ce8-K1V5Ag" calledService_ExternalService="_8A9Bk67LEd-Z7e7zQl8I9w" role_ExternalService="_zBBbgxocEee0ce8-K1V5Ag">
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_7kskNB7nEeesPJRgjiZKBw" entityName="External_IBooking-Wrapper_book" predecessor_AbstractAction="_7kskMx7nEeesPJRgjiZKBw" successor_AbstractAction="_7ktLQB7nEeesPJRgjiZKBw" calledService_ExternalService="_8A9Bk67LEd-Z7e7zQl8I9w" role_ExternalService="_7ko50x7nEeesPJRgjiZKBw">
         <inputVariableUsages__CallAction>
           <variableCharacterisation_VariableUsage type="VALUE">
             <specification_VariableCharacterisation specification="isBank.VALUE"/>
@@ -351,7 +351,7 @@
           <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="isBank"/>
         </inputVariableUsages__CallAction>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_zBHiJRocEee0ce8-K1V5Ag" entityName="stop" predecessor_AbstractAction="_zBHiJBocEee0ce8-K1V5Ag"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_7ktLQB7nEeesPJRgjiZKBw" entityName="stop" predecessor_AbstractAction="_7kskNB7nEeesPJRgjiZKBw"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_bh5lgC6IEd-Jla2o7wkBzQ" entityName="IBusiness Trip">
@@ -402,8 +402,8 @@
       <parameters__OperationSignature dataType__Parameter="_XnGwLF43EeavvL8WcdoZSg" parameterName="idx"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_zBBbgBocEee0ce8-K1V5Ag" entityName="IBooking-Wrapper">
-    <signatures__OperationInterface id="_zBHiIBocEee0ce8-K1V5Ag" entityName="book">
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_7ko50B7nEeesPJRgjiZKBw" entityName="IBooking-Wrapper">
+    <signatures__OperationInterface id="_7kskMB7nEeesPJRgjiZKBw" entityName="book">
       <parameters__OperationSignature parameterName="isBank">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
       </parameters__OperationSignature>
