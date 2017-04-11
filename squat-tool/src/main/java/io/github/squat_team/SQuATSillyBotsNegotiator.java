@@ -68,7 +68,7 @@ public class SQuATSillyBotsNegotiator {
 	private void printAgreement(HashMap<SillyBot, Proposal> proposals) {
 		System.out.println("Agreement achieved!!!!!");
 		System.out.println("Agreement: "+agreementProposal);
-		printCurrentState();
+		printCurrentState(agreementProposal);
 		printNonDominatedAlternatives();
 	}
 
@@ -120,10 +120,10 @@ public class SQuATSillyBotsNegotiator {
 
 	private void createNegotiationResult() {
 		System.out.println("Conflict.");
-		printCurrentState();
+		printCurrentState(null);
 	}
 
-	private void printCurrentState() {
+	private void printCurrentState(Proposal agreementProposal) {
 		for (Iterator<SillyBot> iterator = sillyBots.iterator(); iterator.hasNext();) {
 			SillyBot bot = (SillyBot) iterator.next();
 			System.out.print(bot.toString());
@@ -137,6 +137,8 @@ public class SQuATSillyBotsNegotiator {
 					acceptedProposals=acceptedProposals+bot2.toString()+" ";
 			}
 			System.out.println(acceptedProposals);
+			if(agreementProposal!=null)
+				System.out.println("Index of agreement proposal: "+bot.getIndexForArchitecture(agreementProposal.getArchitectureName()));
 		}
 	}
 

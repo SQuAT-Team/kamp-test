@@ -31,7 +31,10 @@ public abstract class SillyBot {
 		
 		return (proposalUtility>=currentUtilty);
 	}
-	
+	public int getIndexForArchitecture(String pcmArchitecture){
+		Proposal p=getProposalForArchitecture(pcmArchitecture);
+		return orderedProposals.indexOf(p);
+	}
 	protected Proposal getProposalForArchitecture(String pcmArchitecture){
 		for (Iterator<Proposal> iterator = orderedProposals.iterator(); iterator.hasNext();) {
 			Proposal proposal = (Proposal) iterator.next();
