@@ -3,7 +3,7 @@
   <components__Repository xsi:type="repository:BasicComponent" id="_YyVn8C6IEd-Jla2o7wkBzQ" entityName="BusinessTripMgmt">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_fYvUMC6IEd-Jla2o7wkBzQ" entityName="Provided_I1_C1" providedInterface__OperationProvidedRole="_bh5lgC6IEd-Jla2o7wkBzQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_frf4IC6IEd-Jla2o7wkBzQ" entityName="Required_I2_C1" requiredInterface__OperationRequiredRole="_cyLhoC6IEd-Jla2o7wkBzQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_13DWARozEeeJ_L2yrmskLA" requiredInterface__OperationRequiredRole="_127aMBozEeeJ_L2yrmskLA"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_7j7vMR7nEeesPJRgjiZKBw" requiredInterface__OperationRequiredRole="_7jzzYB7nEeesPJRgjiZKBw"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_zpVJ5V7pEeavvL8WcdoZSg" entityName="Required_DB_Interface" requiredInterface__OperationRequiredRole="_znbSN141EeavvL8WcdoZSg"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_vUtoRV_UEeahZew5WJ0QOQ" entityName="Required_Exporter_Interface" requiredInterface__OperationRequiredRole="_1Qmmp1_OEeahZew5WJ0QOQ"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_oLsiIC6JEd-Jla2o7wkBzQ" describedService__SEFF="_8A9Bka7LEd-Z7e7zQl8I9w">
@@ -43,7 +43,7 @@
         <branches_Branch xsi:type="seff:GuardedBranchTransition" id="_C9QM8OszEd-swe4bkXmV_Q">
           <branchBehaviour_BranchTransition id="_uBin84sAEeG0c6Q1F-wA1Q">
             <steps_Behaviour xsi:type="seff:StartAction" id="_3V3mQC6JEd-Jla2o7wkBzQ" successor_AbstractAction="_6vz9kC6JEd-Jla2o7wkBzQ"/>
-            <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_6vz9kC6JEd-Jla2o7wkBzQ" predecessor_AbstractAction="_3V3mQC6JEd-Jla2o7wkBzQ" successor_AbstractAction="_ZtdRJl_CEeahZew5WJ0QOQ" calledService_ExternalService="_13ASsBozEeeJ_L2yrmskLA" role_ExternalService="_13DWARozEeeJ_L2yrmskLA"/>
+            <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_6vz9kC6JEd-Jla2o7wkBzQ" predecessor_AbstractAction="_3V3mQC6JEd-Jla2o7wkBzQ" successor_AbstractAction="_ZtdRJl_CEeahZew5WJ0QOQ" calledService_ExternalService="_7j3dwB7nEeesPJRgjiZKBw" role_ExternalService="_7j7vMR7nEeesPJRgjiZKBw"/>
             <steps_Behaviour xsi:type="seff:StopAction" id="_3V3mQS6JEd-Jla2o7wkBzQ" predecessor_AbstractAction="_ZtdRJl_CEeahZew5WJ0QOQ"/>
             <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_ZtdRJl_CEeahZew5WJ0QOQ" entityName="updateFileCall" predecessor_AbstractAction="_6vz9kC6JEd-Jla2o7wkBzQ" successor_AbstractAction="_3V3mQS6JEd-Jla2o7wkBzQ" calledService_ExternalService="_Ib8qAF42EeavvL8WcdoZSg" role_ExternalService="_zpVJ5V7pEeavvL8WcdoZSg">
               <inputVariableUsages__CallAction>
@@ -293,7 +293,7 @@
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_LJy94BoTEeehZ5jbSGNsYQ" entityName="Payment System-B">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_LJy94RoTEeehZ5jbSGNsYQ" providedInterface__OperationProvidedRole="_zdIuAOsyEd-swe4bkXmV_Q"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_13DWABozEeeJ_L2yrmskLA" requiredInterface__OperationRequiredRole="_127aMBozEeeJ_L2yrmskLA"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_7j7vMB7nEeesPJRgjiZKBw" requiredInterface__OperationRequiredRole="_7jzzYB7nEeesPJRgjiZKBw"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_34ISoOsyEd-swe4bkXmV_Q" describedService__SEFF="_1cTwcOsyEd-swe4bkXmV_Q">
       <steps_Behaviour xsi:type="seff:StartAction" id="_34JgwOsyEd-swe4bkXmV_Q" successor_AbstractAction="_u_HY0OtZEd-m3_hR0FtH3Q"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_34KH0OsyEd-swe4bkXmV_Q" predecessor_AbstractAction="_u_HY0OtZEd-m3_hR0FtH3Q"/>
@@ -332,19 +332,19 @@
       <capacity_PassiveResource specification="1"/>
     </passiveResource_BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_127aMRozEeeJ_L2yrmskLA" entityName="IEmployeePayment-Wrapper">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_127aMhozEeeJ_L2yrmskLA" providedInterface__OperationProvidedRole="_127aMBozEeeJ_L2yrmskLA"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_127aMxozEeeJ_L2yrmskLA" requiredInterface__OperationRequiredRole="_pPmroC6IEd-Jla2o7wkBzQ"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_13ASsRozEeeJ_L2yrmskLA" describedService__SEFF="_13ASsBozEeeJ_L2yrmskLA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_13ASshozEeeJ_L2yrmskLA" entityName="start" successor_AbstractAction="_13ASsxozEeeJ_L2yrmskLA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_13ASsxozEeeJ_L2yrmskLA" entityName="Overhead [IEmployeePayment-Wrapper]" predecessor_AbstractAction="_13ASshozEeeJ_L2yrmskLA" successor_AbstractAction="_13AStBozEeeJ_L2yrmskLA">
+  <components__Repository xsi:type="repository:BasicComponent" id="_7jzzYR7nEeesPJRgjiZKBw" entityName="IEmployeePayment-Wrapper">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_7jzzYh7nEeesPJRgjiZKBw" providedInterface__OperationProvidedRole="_7jzzYB7nEeesPJRgjiZKBw"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_7jzzYx7nEeesPJRgjiZKBw" requiredInterface__OperationRequiredRole="_pPmroC6IEd-Jla2o7wkBzQ"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_7j3dwR7nEeesPJRgjiZKBw" describedService__SEFF="_7j3dwB7nEeesPJRgjiZKBw">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_7j3dwh7nEeesPJRgjiZKBw" entityName="start" successor_AbstractAction="_7j3dwx7nEeesPJRgjiZKBw"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_7j3dwx7nEeesPJRgjiZKBw" entityName="Overhead [IEmployeePayment-Wrapper]" predecessor_AbstractAction="_7j3dwh7nEeesPJRgjiZKBw" successor_AbstractAction="_7j3dxB7nEeesPJRgjiZKBw">
         <resourceDemand_Action>
-          <specification_ParametericResourceDemand specification="15"/>
+          <specification_ParametericResourceDemand specification="2"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_13AStBozEeeJ_L2yrmskLA" entityName="External_IEmployeePayment-Wrapper_reimburse" predecessor_AbstractAction="_13ASsxozEeeJ_L2yrmskLA" successor_AbstractAction="_13AStRozEeeJ_L2yrmskLA" calledService_ExternalService="_8A9Bla7LEd-Z7e7zQl8I9w" role_ExternalService="_127aMxozEeeJ_L2yrmskLA"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_13AStRozEeeJ_L2yrmskLA" entityName="stop" predecessor_AbstractAction="_13AStBozEeeJ_L2yrmskLA"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_7j3dxB7nEeesPJRgjiZKBw" entityName="External_IEmployeePayment-Wrapper_reimburse" predecessor_AbstractAction="_7j3dwx7nEeesPJRgjiZKBw" successor_AbstractAction="_7j4E0B7nEeesPJRgjiZKBw" calledService_ExternalService="_8A9Bla7LEd-Z7e7zQl8I9w" role_ExternalService="_7jzzYx7nEeesPJRgjiZKBw"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_7j4E0B7nEeesPJRgjiZKBw" entityName="stop" predecessor_AbstractAction="_7j3dxB7nEeesPJRgjiZKBw"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_bh5lgC6IEd-Jla2o7wkBzQ" entityName="IBusiness Trip">
@@ -395,8 +395,8 @@
       <parameters__OperationSignature dataType__Parameter="_XnGwLF43EeavvL8WcdoZSg" parameterName="idx"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_127aMBozEeeJ_L2yrmskLA" entityName="IEmployeePayment-Wrapper">
-    <signatures__OperationInterface id="_13ASsBozEeeJ_L2yrmskLA" entityName="reimburse"/>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_7jzzYB7nEeesPJRgjiZKBw" entityName="IEmployeePayment-Wrapper">
+    <signatures__OperationInterface id="_7j3dwB7nEeesPJRgjiZKBw" entityName="reimburse"/>
   </interfaces__Repository>
   <failureTypes__Repository xsi:type="reliability:SoftwareInducedFailureType" id="_PL68dtrQEd-YZv0HsvRIgQ" entityName="SWFailure" internalFailureOccurrenceDescriptions__SoftwareInducedFailureType="//@components__Repository.0/@serviceEffectSpecifications__BasicComponent.0/@steps_Behaviour.2/@internalFailureOccurrenceDescriptions__InternalAction.0 //@components__Repository.2/@serviceEffectSpecifications__BasicComponent.0/@steps_Behaviour.2/@internalFailureOccurrenceDescriptions__InternalAction.0 //@components__Repository.3/@serviceEffectSpecifications__BasicComponent.0/@steps_Behaviour.2/@internalFailureOccurrenceDescriptions__InternalAction.0 //@components__Repository.5/@serviceEffectSpecifications__BasicComponent.0/@steps_Behaviour.2/@branches_Branch.0/@branchBehaviour_BranchTransition/@steps_Behaviour.2/@internalFailureOccurrenceDescriptions__InternalAction.0 //@components__Repository.5/@serviceEffectSpecifications__BasicComponent.0/@steps_Behaviour.2/@branches_Branch.1/@branchBehaviour_BranchTransition/@steps_Behaviour.2/@internalFailureOccurrenceDescriptions__InternalAction.0 //@components__Repository.4/@serviceEffectSpecifications__BasicComponent.1/@steps_Behaviour.2/@bodyBehaviour_Loop/@steps_Behaviour.2/@internalFailureOccurrenceDescriptions__InternalAction.0 //@components__Repository.4/@serviceEffectSpecifications__BasicComponent.1/@steps_Behaviour.2/@bodyBehaviour_Loop/@steps_Behaviour.3/@internalFailureOccurrenceDescriptions__InternalAction.0 //@components__Repository.1/@serviceEffectSpecifications__BasicComponent.0/@steps_Behaviour.3/@bodyBehaviour_Loop/@steps_Behaviour.3/@internalFailureOccurrenceDescriptions__InternalAction.0 //@components__Repository.1/@serviceEffectSpecifications__BasicComponent.0/@steps_Behaviour.3/@bodyBehaviour_Loop/@steps_Behaviour.4/@internalFailureOccurrenceDescriptions__InternalAction.0 //@components__Repository.4/@serviceEffectSpecifications__BasicComponent.2/@steps_Behaviour.2/@internalFailureOccurrenceDescriptions__InternalAction.0 //@components__Repository.4/@serviceEffectSpecifications__BasicComponent.2/@steps_Behaviour.4/@internalFailureOccurrenceDescriptions__InternalAction.0 //@components__Repository.4/@serviceEffectSpecifications__BasicComponent.2/@steps_Behaviour.3/@internalFailureOccurrenceDescriptions__InternalAction.0 //@components__Repository.4/@serviceEffectSpecifications__BasicComponent.0/@steps_Behaviour.2/@internalFailureOccurrenceDescriptions__InternalAction.0 //@components__Repository.4/@serviceEffectSpecifications__BasicComponent.2/@steps_Behaviour.5/@internalFailureOccurrenceDescriptions__InternalAction.0 //@components__Repository.4/@serviceEffectSpecifications__BasicComponent.0/@steps_Behaviour.3/@internalFailureOccurrenceDescriptions__InternalAction.0"/>
   <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_-ixwDV42EeavvL8WcdoZSg" entityName="File"/>

@@ -173,9 +173,9 @@
       </steps_Behaviour>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_LMbbIBoTEeehZ5jbSGNsYQ" entityName="Payment System-A">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_LMbbIRoTEeehZ5jbSGNsYQ" providedInterface__OperationProvidedRole="_pPmroC6IEd-Jla2o7wkBzQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_LMklEBoTEeehZ5jbSGNsYQ" requiredInterface__OperationRequiredRole="_zdIuAOsyEd-swe4bkXmV_Q"/>
+  <components__Repository xsi:type="repository:BasicComponent" id="__UzYwB7nEeevt6tuD0un0A" entityName="Payment System-A">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="__UzYwR7nEeevt6tuD0un0A" providedInterface__OperationProvidedRole="_pPmroC6IEd-Jla2o7wkBzQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="__U7UkB7nEeevt6tuD0un0A" requiredInterface__OperationRequiredRole="_zdIuAOsyEd-swe4bkXmV_Q"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_qBCTIC6JEd-Jla2o7wkBzQ" describedService__SEFF="_8A9Bla7LEd-Z7e7zQl8I9w">
       <steps_Behaviour xsi:type="seff:StartAction" id="_qUBgkC6JEd-Jla2o7wkBzQ" successor_AbstractAction="_QG_9kC6KEd-Jla2o7wkBzQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_qUBgkS6JEd-Jla2o7wkBzQ" predecessor_AbstractAction="_QG_9kC6KEd-Jla2o7wkBzQ"/>
@@ -187,7 +187,7 @@
         <internalFailureOccurrenceDescriptions__InternalAction failureProbability="1.0E-4" softwareInducedFailureType__InternalFailureOccurrenceDescription="_PL68dtrQEd-YZv0HsvRIgQ"/>
       </steps_Behaviour>
     </serviceEffectSpecifications__BasicComponent>
-    <passiveResource_BasicComponent id="_LMjW8xoTEeehZ5jbSGNsYQ" entityName="semaphore">
+    <passiveResource_BasicComponent id="__U6Gch7nEeevt6tuD0un0A" entityName="semaphore">
       <capacity_PassiveResource specification="1"/>
     </passiveResource_BasicComponent>
   </components__Repository>
@@ -291,9 +291,9 @@
       </steps_Behaviour>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_LJy94BoTEeehZ5jbSGNsYQ" entityName="Payment System-B">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_LJy94RoTEeehZ5jbSGNsYQ" providedInterface__OperationProvidedRole="_zdIuAOsyEd-swe4bkXmV_Q"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_LMklERoTEeehZ5jbSGNsYQ" requiredInterface__OperationRequiredRole="_pPmroC6IEd-Jla2o7wkBzQ"/>
+  <components__Repository xsi:type="repository:BasicComponent" id="__SPM8B7nEeevt6tuD0un0A" entityName="Payment System-B">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="__SPM8R7nEeevt6tuD0un0A" providedInterface__OperationProvidedRole="_zdIuAOsyEd-swe4bkXmV_Q"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="__U7UkR7nEeevt6tuD0un0A" requiredInterface__OperationRequiredRole="_pPmroC6IEd-Jla2o7wkBzQ"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_34ISoOsyEd-swe4bkXmV_Q" describedService__SEFF="_1cTwcOsyEd-swe4bkXmV_Q">
       <steps_Behaviour xsi:type="seff:StartAction" id="_34JgwOsyEd-swe4bkXmV_Q" successor_AbstractAction="_u_HY0OtZEd-m3_hR0FtH3Q"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_34KH0OsyEd-swe4bkXmV_Q" predecessor_AbstractAction="_u_HY0OtZEd-m3_hR0FtH3Q"/>
@@ -328,7 +328,7 @@
         </branches_Branch>
       </steps_Behaviour>
     </serviceEffectSpecifications__BasicComponent>
-    <passiveResource_BasicComponent id="_LMjW8RoTEeehZ5jbSGNsYQ" entityName="semaphore">
+    <passiveResource_BasicComponent id="__U6GcB7nEeevt6tuD0un0A" entityName="semaphore">
       <capacity_PassiveResource specification="1"/>
     </passiveResource_BasicComponent>
   </components__Repository>
