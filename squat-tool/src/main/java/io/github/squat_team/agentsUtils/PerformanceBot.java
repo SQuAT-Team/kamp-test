@@ -3,8 +3,8 @@ package io.github.squat_team.agentsUtils;
 public class PerformanceBot extends SillyBot {
 	private float originalResponseTime;
 
-	public PerformanceBot(float originalResponseTime, String name) {
-		super(name);
+	public PerformanceBot(float originalResponseTime, String name,float scenatioThreshold) {
+		super(name,scenatioThreshold);
 		this.originalResponseTime = originalResponseTime;
 	}
 
@@ -46,18 +46,21 @@ public class PerformanceBot extends SillyBot {
 		return (((nextResponseTime/currentResponseTime)-1)*100)<=5;
 	}*/
 
-	@Override
+	/*@Override
 	public float getUtilityFor(Proposal proposal) {
 		float bestResponseTime=((PerformanceProposal)orderedProposals.get(0)).getResponseTime();
 		float proposalResponseTime=((PerformanceProposal)this.getProposalForArchitecture(proposal.getArchitectureName())).getResponseTime();
 		
 		return bestResponseTime/proposalResponseTime;
-	}
+	}*/
 	
 	@Override
 	public float getResponse(Proposal p) {
 		Proposal proposal=getProposalForArchitecture(p.getArchitectureName());
 		return ((PerformanceProposal)proposal).getResponseTime();
 	}
-
+	@Override
+	protected float getScenarioMeasureFor(Proposal proposal) {
+		return ((PerformanceProposal)proposal).getResponseTime();
+	}
 }

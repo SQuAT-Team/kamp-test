@@ -27,9 +27,9 @@ public class SQuATSillyBotsNegotiator {
 		//architectureAlternatives=loadArchitecturalAlternatives(); This should be done for real. Now I'm hardcoding the results
 		//Step 1: Collect initial proposals
 		HashMap<SillyBot,Proposal> proposals = collectInitialProposals();
-		
+		boolean redoRequest=true;
 		//Step 2: Loop until you reach an Agreement or a Conflict
-		while(!checkAgreement(proposals)){
+		while((!checkAgreement(proposals))||redoRequest){
 
 			//Select Agent who has to concede
 			List<SillyBot> shouldConcede = selectWhoHasToConcede();
@@ -51,7 +51,16 @@ public class SQuATSillyBotsNegotiator {
 					System.out.println("Step 3.c: New Proposal made by the agent => "+newProposal.toString());
 					//Update proposals map
 					proposals.put(concedingAg, newProposal);			
-					
+				}
+				if(checkAgreement(proposals)){
+					System.out.println("Agreement: "+agreementProposal);
+					printCurrentState(agreementProposal);
+					System.out.println("REDO? (Y/N): ");
+					Scanner scan = new Scanner(System.in);
+					String answer = scan.next();
+					if(!answer.toUpperCase().equals("Y"))
+						redoRequest=false;
+					//scan.close();
 				}
 			}
 		}
@@ -196,8 +205,8 @@ public class SQuATSillyBotsNegotiator {
 		
 		for (SillyBot ag : otherAgents){
 			Proposal otherAgProp = ag.getCurrentProposal();
-			if (myAgent.getUtilityFor(otherAgProp) < minUtility){
-				minUtility = myAgent.getUtilityFor(otherAgProp);
+			if (myAgent.getUtilityFor(otherAgProp.getArchitectureName()) < minUtility){
+				minUtility = myAgent.getUtilityFor(otherAgProp.getArchitectureName());
 			}
 		}
 
@@ -253,4 +262,5 @@ public class SQuATSillyBotsNegotiator {
 	public static void main(String[] args) {
 		new SQuATSillyBotsNegotiator().negotiateBaseOnMultipleArchitectures();
 	}
+
 }

@@ -14,10 +14,10 @@ public class LoadHelper {
 		return ret;
 	}
 	public List<SillyBot> loadBotsWithInformation() {
-		ModifiabilityBot m1Bot=new ModifiabilityBot(3, 115,"m1");
-		ModifiabilityBot m2Bot=new ModifiabilityBot(5, 190.5f,"m2");
-		PerformanceBot p1Bot=new PerformanceBot(111.7639f,"p1");
-		PerformanceBot p2Bot=new PerformanceBot(74.0173f,"p2");
+		ModifiabilityBot m1Bot=new ModifiabilityBot(3, 115,"m1",120);
+		ModifiabilityBot m2Bot=new ModifiabilityBot(5, 190.5f,"m2",300);
+		PerformanceBot p1Bot=new PerformanceBot(111.7639f,"p1",112);
+		PerformanceBot p2Bot=new PerformanceBot(74.0173f,"p2",75);
 		
 		m1Bot.insertInOrder(new ModifiabilityProposal(4, 111.0f, "stplus-0-Payment System"));
 		m1Bot.insertInOrder(new ModifiabilityProposal(3, 115.0f, "stplus-0-IExporter"));
@@ -165,6 +165,12 @@ public class LoadHelper {
 		ret.add(m2Bot);
 		ret.add(p1Bot);
 		ret.add(p2Bot);
+		
+		
+		m1Bot.printUtilies();
+		m2Bot.printUtilies();
+		p1Bot.printUtilies();
+		p2Bot.printUtilies();
 		return ret;
 	}
 	/*Data for first version of the paper
