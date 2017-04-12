@@ -58,10 +58,10 @@ public class TesterECSA {
 		TesterECSA tester = new TesterECSA();
 		// Run first level transformations
 		filename = "stplus";
-		//tester.runWrapper(dirPath, filename);
+		tester.runWrapper(dirPath, filename);
 		//tester.runSplitResp(dirPath, filename);
 		// Run second level transformations
 		filename = "stplus-split";
-		tester.runWrapper(dirPath, filename);
+		//tester.runWrapper(dirPath, filename);
 	}
 }

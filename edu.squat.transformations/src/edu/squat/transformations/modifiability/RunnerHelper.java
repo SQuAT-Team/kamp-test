@@ -186,6 +186,14 @@ public class RunnerHelper {
 		return null;
 	}
 	
+	public static OperationSignature findSignature(OperationSignature signature, OperationInterface operationInterface) {
+		for(OperationSignature aSignature : operationInterface.getSignatures__OperationInterface()) {
+			if(aSignature.getEntityName().equals(signature.getEntityName()))
+				return aSignature;
+		}
+		return null;
+	}
+	
 	public static String getSplitIdentifier(BasicComponent component, OperationInterface operationInterface) {
 		int position = -1;
 		for(int i = 0; i < component.getProvidedRoles_InterfaceProvidingEntity().size() && position == -1; i++) {

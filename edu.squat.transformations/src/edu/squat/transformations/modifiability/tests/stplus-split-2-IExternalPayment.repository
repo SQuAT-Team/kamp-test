@@ -152,7 +152,7 @@
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_ZZH7IC6IEd-Jla2o7wkBzQ" entityName="BookingSystem">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_gCeNsC6IEd-Jla2o7wkBzQ" entityName="Provided_I2_C2" providedInterface__OperationProvidedRole="_cyLhoC6IEd-Jla2o7wkBzQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_12JXERozEeeJ_L2yrmskLA" requiredInterface__OperationRequiredRole="_11_mEBozEeeJ_L2yrmskLA"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_7jNWcR7nEeesPJRgjiZKBw" requiredInterface__OperationRequiredRole="_7i-F4B7nEeesPJRgjiZKBw"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_phvvEC6JEd-Jla2o7wkBzQ" describedService__SEFF="_8A9Bk67LEd-Z7e7zQl8I9w">
       <steps_Behaviour xsi:type="seff:StartAction" id="_pwjnIC6JEd-Jla2o7wkBzQ" successor_AbstractAction="_HcazEC6KEd-Jla2o7wkBzQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_pwkOMC6JEd-Jla2o7wkBzQ" predecessor_AbstractAction="_DIhMgOtZEd-m3_hR0FtH3Q"/>
@@ -163,7 +163,7 @@
         </resourceDemand_Action>
         <internalFailureOccurrenceDescriptions__InternalAction failureProbability="1.0E-4" softwareInducedFailureType__InternalFailureOccurrenceDescription="_PL68dtrQEd-YZv0HsvRIgQ"/>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_DIhMgOtZEd-m3_hR0FtH3Q" predecessor_AbstractAction="_HcazEC6KEd-Jla2o7wkBzQ" successor_AbstractAction="_pwkOMC6JEd-Jla2o7wkBzQ" calledService_ExternalService="_12EekBozEeeJ_L2yrmskLA" role_ExternalService="_12JXERozEeeJ_L2yrmskLA">
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_DIhMgOtZEd-m3_hR0FtH3Q" predecessor_AbstractAction="_HcazEC6KEd-Jla2o7wkBzQ" successor_AbstractAction="_pwkOMC6JEd-Jla2o7wkBzQ" calledService_ExternalService="_7jJsEB7nEeesPJRgjiZKBw" role_ExternalService="_7jNWcR7nEeesPJRgjiZKBw">
         <inputVariableUsages__CallAction>
           <variableCharacterisation_VariableUsage type="VALUE">
             <specification_VariableCharacterisation specification="isBank.VALUE"/>
@@ -175,7 +175,7 @@
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_LMbbIBoTEeehZ5jbSGNsYQ" entityName="Payment System-A">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_LMbbIRoTEeehZ5jbSGNsYQ" providedInterface__OperationProvidedRole="_pPmroC6IEd-Jla2o7wkBzQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_12JXEBozEeeJ_L2yrmskLA" requiredInterface__OperationRequiredRole="_11_mEBozEeeJ_L2yrmskLA"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_7jNWcB7nEeesPJRgjiZKBw" requiredInterface__OperationRequiredRole="_7i-F4B7nEeesPJRgjiZKBw"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_qBCTIC6JEd-Jla2o7wkBzQ" describedService__SEFF="_8A9Bla7LEd-Z7e7zQl8I9w">
       <steps_Behaviour xsi:type="seff:StartAction" id="_qUBgkC6JEd-Jla2o7wkBzQ" successor_AbstractAction="_QG_9kC6KEd-Jla2o7wkBzQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_qUBgkS6JEd-Jla2o7wkBzQ" predecessor_AbstractAction="_QG_9kC6KEd-Jla2o7wkBzQ"/>
@@ -332,18 +332,18 @@
       <capacity_PassiveResource specification="1"/>
     </passiveResource_BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_11_mERozEeeJ_L2yrmskLA" entityName="IExternalPayment-Wrapper">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_11_mEhozEeeJ_L2yrmskLA" providedInterface__OperationProvidedRole="_11_mEBozEeeJ_L2yrmskLA"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_11_mExozEeeJ_L2yrmskLA" requiredInterface__OperationRequiredRole="_zdIuAOsyEd-swe4bkXmV_Q"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_12EekRozEeeJ_L2yrmskLA" describedService__SEFF="_12EekBozEeeJ_L2yrmskLA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_12EekhozEeeJ_L2yrmskLA" entityName="start" successor_AbstractAction="_12EekxozEeeJ_L2yrmskLA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_12EekxozEeeJ_L2yrmskLA" entityName="Overhead [IExternalPayment-Wrapper]" predecessor_AbstractAction="_12EekhozEeeJ_L2yrmskLA" successor_AbstractAction="_12FFoBozEeeJ_L2yrmskLA">
+  <components__Repository xsi:type="repository:BasicComponent" id="_7i-F4R7nEeesPJRgjiZKBw" entityName="IExternalPayment-Wrapper">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_7i-F4h7nEeesPJRgjiZKBw" providedInterface__OperationProvidedRole="_7i-F4B7nEeesPJRgjiZKBw"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_7i-F4x7nEeesPJRgjiZKBw" requiredInterface__OperationRequiredRole="_zdIuAOsyEd-swe4bkXmV_Q"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_7jJsER7nEeesPJRgjiZKBw" describedService__SEFF="_7jJsEB7nEeesPJRgjiZKBw">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_7jJsEh7nEeesPJRgjiZKBw" entityName="start" successor_AbstractAction="_7jJsEx7nEeesPJRgjiZKBw"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_7jJsEx7nEeesPJRgjiZKBw" entityName="Overhead [IExternalPayment-Wrapper]" predecessor_AbstractAction="_7jJsEh7nEeesPJRgjiZKBw" successor_AbstractAction="_7jJsFB7nEeesPJRgjiZKBw">
         <resourceDemand_Action>
-          <specification_ParametericResourceDemand specification="15"/>
+          <specification_ParametericResourceDemand specification="2"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_12FFoBozEeeJ_L2yrmskLA" entityName="External_IExternalPayment-Wrapper_pay" predecessor_AbstractAction="_12EekxozEeeJ_L2yrmskLA" successor_AbstractAction="_12FFoRozEeeJ_L2yrmskLA" calledService_ExternalService="_1cTwcOsyEd-swe4bkXmV_Q" role_ExternalService="_11_mExozEeeJ_L2yrmskLA">
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_7jJsFB7nEeesPJRgjiZKBw" entityName="External_IExternalPayment-Wrapper_pay" predecessor_AbstractAction="_7jJsEx7nEeesPJRgjiZKBw" successor_AbstractAction="_7jKTIB7nEeesPJRgjiZKBw" calledService_ExternalService="_1cTwcOsyEd-swe4bkXmV_Q" role_ExternalService="_7i-F4x7nEeesPJRgjiZKBw">
         <inputVariableUsages__CallAction>
           <variableCharacterisation_VariableUsage type="VALUE">
             <specification_VariableCharacterisation specification="isBank.VALUE"/>
@@ -351,7 +351,7 @@
           <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="isBank"/>
         </inputVariableUsages__CallAction>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_12FFoRozEeeJ_L2yrmskLA" entityName="stop" predecessor_AbstractAction="_12FFoBozEeeJ_L2yrmskLA"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_7jKTIB7nEeesPJRgjiZKBw" entityName="stop" predecessor_AbstractAction="_7jJsFB7nEeesPJRgjiZKBw"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_bh5lgC6IEd-Jla2o7wkBzQ" entityName="IBusiness Trip">
@@ -402,8 +402,8 @@
       <parameters__OperationSignature dataType__Parameter="_XnGwLF43EeavvL8WcdoZSg" parameterName="idx"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_11_mEBozEeeJ_L2yrmskLA" entityName="IExternalPayment-Wrapper">
-    <signatures__OperationInterface id="_12EekBozEeeJ_L2yrmskLA" entityName="pay">
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_7i-F4B7nEeesPJRgjiZKBw" entityName="IExternalPayment-Wrapper">
+    <signatures__OperationInterface id="_7jJsEB7nEeesPJRgjiZKBw" entityName="pay">
       <parameters__OperationSignature parameterName="isBank">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
       </parameters__OperationSignature>

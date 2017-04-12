@@ -65,6 +65,14 @@ import org.palladiosimulator.pcm.seff.StartAction;
 import org.palladiosimulator.pcm.seff.StopAction;
 import org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand;
 import org.palladiosimulator.pcm.seff.seff_performance.SeffPerformanceFactory;
+import org.palladiosimulator.pcm.usagemodel.AbstractUserAction;
+import org.palladiosimulator.pcm.usagemodel.Branch;
+import org.palladiosimulator.pcm.usagemodel.BranchTransition;
+import org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall;
+import org.palladiosimulator.pcm.usagemodel.Loop;
+import org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour;
+import org.palladiosimulator.pcm.usagemodel.UsageModel;
+import org.palladiosimulator.pcm.usagemodel.UsageScenario;
 
 import de.uka.ipd.sdq.stoex.AbstractNamedReference;
 import de.uka.ipd.sdq.stoex.NamespaceReference;
@@ -166,6 +174,8 @@ public class WrapperRunner extends PCMTransformerRunner {
 				if(this.arePerformanceModelsLoaded()) {
 					//Adjust the system and allocation models by executing a monolithic method (ugly but fast)
 					this.fixSystemAndAllocation(tempGraph, oldInterface, newComponent, newInterface);
+					//Adjust the usage model
+					this.fixUsageModel(tempGraph, oldInterface, newComponent, newInterface);
 				}
 
 				//Clean up and delete old assembly connectors
@@ -253,7 +263,7 @@ public class WrapperRunner extends PCMTransformerRunner {
 				OperationInterface requiredInterface = requiredRole.getRequiredInterface__OperationRequiredRole();
 				if(requiredRole.equals(oldRequiredRole) && requiredInterface.equals(oldInterface)) {
 					externalCallAction.setRole_ExternalService(newRequiredRole);
-					externalCallAction.setCalledService_ExternalService(this.findExternalSignature(requiredSignature, newInterface));
+					externalCallAction.setCalledService_ExternalService(RunnerHelper.findSignature(requiredSignature, newInterface));
 				}
 			}
 		}
@@ -331,13 +341,13 @@ public class WrapperRunner extends PCMTransformerRunner {
 			BasicComponent affectedComponent = (BasicComponent) affectedTrace.getSource().get(0);
 			affectedComponents.add(affectedComponent);
 		}
+		
 		//Reconnect the assembly connectors
 		List<Connector> connectorsToAdd = new ArrayList<Connector>();
 		Iterator<Connector> connectors = systemRoot.getConnectors__ComposedStructure().iterator();
 		while(connectors.hasNext()) {
 			Connector connector = connectors.next();
 			if(connector instanceof ProvidedDelegationConnector) {
-				//ProvidedDelegationConnector oldDelegationConnector = (ProvidedDelegationConnector) connector;
 				//DO NOTHING
 			}
 			if(connector instanceof AssemblyConnector) {
@@ -388,6 +398,26 @@ public class WrapperRunner extends PCMTransformerRunner {
 			}
 		}
 		
+		//Update delegation connectors and provided role
+		Iterator<Connector> delegationConnectors = systemRoot.getConnectors__ComposedStructure().iterator();
+		while(delegationConnectors.hasNext()) {
+			Connector connector = delegationConnectors.next();
+			if(connector instanceof ProvidedDelegationConnector) {
+				ProvidedDelegationConnector delegationConnector = (ProvidedDelegationConnector) connector;
+				AssemblyContext oldProvidingAssemblyContext = delegationConnector.getAssemblyContext_ProvidedDelegationConnector();
+				OperationProvidedRole oldInnerProvidedRole = delegationConnector.getInnerProvidedRole_ProvidedDelegationConnector();
+				OperationProvidedRole outterProvidedRole = delegationConnector.getOuterProvidedRole_ProvidedDelegationConnector();
+				for(BasicComponent oldComponent : providingComponents) {
+					if(RunnerHelper.findProvidedRole(oldComponent, oldInterface).equals(oldInnerProvidedRole)) {
+						delegationConnector.setAssemblyContext_ProvidedDelegationConnector(wrapperAssemblyContext);
+						OperationProvidedRole newInnerProvidedRole = RunnerHelper.findProvidedRole(newComponent, newInterface);
+						delegationConnector.setInnerProvidedRole_ProvidedDelegationConnector(newInnerProvidedRole);
+						outterProvidedRole.setProvidedInterface__OperationProvidedRole(newInterface);
+					}
+				}
+			}
+		}
+		
 		//Add all the connectors to the system model
 		systemRoot.getConnectors__ComposedStructure().addAll(connectorsToAdd);
 		
@@ -424,6 +454,51 @@ public class WrapperRunner extends PCMTransformerRunner {
 		//allocationTrace.getSource().add(null);
 		allocationTrace.getTarget().add((EObject) wrapperAllocationContext);
 		traceRoot.getSubTraces().add(allocationTrace);
+	}
+	
+	private void fixUsageModel(EGraph graph, OperationInterface oldInterface, BasicComponent newComponent, OperationInterface newInterface) {
+		Trace traceRoot = RunnerHelper.getTraceRoot(graph);
+		Repository repositoryRoot = RunnerHelper.getRepositoryRoot(graph);
+		org.palladiosimulator.pcm.system.System systemRoot = RunnerHelper.getSystemRoot(graph);
+		UsageModel usageRoot = RunnerHelper.getUsageRoot(graph);
+		
+		//Find entry points recursively
+		for(UsageScenario usageScenario : usageRoot.getUsageScenario_UsageModel()) {
+			ScenarioBehaviour scenarioBehavior = usageScenario.getScenarioBehaviour_UsageScenario();
+			EList<AbstractUserAction> actions = scenarioBehavior.getActions_ScenarioBehaviour();
+			this.fixUsageModel(graph, oldInterface, newComponent, newInterface, actions);
+		}
+	}
+	
+	private void fixUsageModel(EGraph graph, OperationInterface oldInterface, BasicComponent newComponent, OperationInterface newInterface, EList<AbstractUserAction> actions) {
+		for(AbstractUserAction action : actions)
+			this.fixUsageModel(graph, oldInterface, newComponent, newInterface, action);
+	}
+	
+	private void fixUsageModel(EGraph graph, OperationInterface oldInterface, BasicComponent newComponent, OperationInterface newInterface, AbstractUserAction action) {
+		if(action instanceof Branch) {
+			Branch branch = (Branch) action;
+			for(BranchTransition branchTransition : branch.getBranchTransitions_Branch()) {
+				ScenarioBehaviour branchedBehavior = branchTransition.getBranchedBehaviour_BranchTransition();
+				this.fixUsageModel(graph, oldInterface, newComponent, newInterface, branchedBehavior.getActions_ScenarioBehaviour());
+			}
+		}
+		if(action instanceof Loop) {
+			Loop loop = (Loop) action;
+			ScenarioBehaviour bodyBehavior = loop.getBodyBehaviour_Loop();
+			this.fixUsageModel(graph, oldInterface, newComponent, newInterface, bodyBehavior.getActions_ScenarioBehaviour());
+		}
+		if(action instanceof EntryLevelSystemCall) {
+			EntryLevelSystemCall call = (EntryLevelSystemCall) action;
+			//The provided role is updated, no need to change it
+			OperationProvidedRole providedRole = call.getProvidedRole_EntryLevelSystemCall();
+			//Modify the signature of the call
+			if(providedRole.getProvidedInterface__OperationProvidedRole().equals(newInterface)) {
+				OperationSignature oldSignature = call.getOperationSignature__EntryLevelSystemCall();
+				OperationSignature newSignature = RunnerHelper.findSignature(oldSignature, newInterface);
+				call.setOperationSignature__EntryLevelSystemCall(newSignature);
+			}
+		}
 	}
 
 	private RuleApplication runFirstRule(EGraph graph) {
@@ -484,13 +559,13 @@ public class WrapperRunner extends PCMTransformerRunner {
 			ParametricResourceDemand cpuDemand = SeffPerformanceFactory.eINSTANCE.createParametricResourceDemand();
 			cpuDemand.setRequiredResource_ParametricResourceDemand(PCMDefault.getCPU());
 			PCMRandomVariable consumptionVariable = CoreFactory.eINSTANCE.createPCMRandomVariable();
-			consumptionVariable.setSpecification("15");
+			consumptionVariable.setSpecification("2");
 			cpuDemand.setSpecification_ParametericResourceDemand(consumptionVariable);
 			internalAction.getResourceDemand_Action().add(cpuDemand);
 			//
 			ExternalCallAction externalCallAction = sFactory.createExternalCallAction();
 			externalCallAction.setEntityName(RunnerHelper.getExternalCallActionName(newInterface, signature));
-			OperationSignature externalSignature = this.findExternalSignature(signature, oldInterface);
+			OperationSignature externalSignature = RunnerHelper.findSignature(signature, oldInterface);
 			OperationRequiredRole externalRole = this.findRequiredRole(newComponent, oldInterface);
 			externalCallAction.setCalledService_ExternalService(externalSignature);
 			externalCallAction.setRole_ExternalService(externalRole);
@@ -737,14 +812,6 @@ public class WrapperRunner extends PCMTransformerRunner {
 			OperationRequiredRole operationRequiredRole = (OperationRequiredRole) requiredRole;
 			if(operationRequiredRole.getRequiredInterface__OperationRequiredRole().equals(oldInterface))
 				return operationRequiredRole;
-		}
-		return null;
-	}
-
-	private OperationSignature findExternalSignature(OperationSignature newSignature, OperationInterface oldInterface) {
-		for(OperationSignature oldSignature : oldInterface.getSignatures__OperationInterface()) {
-			if(oldSignature.getEntityName().equals(newSignature.getEntityName()))
-				return oldSignature;
 		}
 		return null;
 	}

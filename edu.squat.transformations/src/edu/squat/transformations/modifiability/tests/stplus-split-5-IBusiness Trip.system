@@ -18,8 +18,8 @@
   <assemblyContexts__ComposedStructure id="_LMlMIBoTEeehZ5jbSGNsYQ" entityName="Assembly_Payment System-B &lt;Payment System-B>">
     <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="stplus-split-5-IBusiness%20Trip.repository#_LJy94BoTEeehZ5jbSGNsYQ"/>
   </assemblyContexts__ComposedStructure>
-  <assemblyContexts__ComposedStructure id="_14wmMBozEeeJ_L2yrmskLA" entityName="Assembly_IBusiness Trip-Wrapper &lt;IBusiness Trip-Wrapper>">
-    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="stplus-split-5-IBusiness%20Trip.repository#_14h8sRozEeeJ_L2yrmskLA"/>
+  <assemblyContexts__ComposedStructure id="_7lspwB7nEeesPJRgjiZKBw" entityName="Assembly_IBusiness Trip-Wrapper &lt;IBusiness Trip-Wrapper>">
+    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="stplus-split-5-IBusiness%20Trip.repository#_7lf1cR7nEeesPJRgjiZKBw"/>
   </assemblyContexts__ComposedStructure>
   <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_cIRFIC6MEd-Jla2o7wkBzQ" entityName="Connector Assembly_C1 &lt;C1> -> Assembly_C2 &lt;C2>" requiringAssemblyContext_AssemblyConnector="_X594sC6MEd-Jla2o7wkBzQ" providingAssemblyContext_AssemblyConnector="_YXdtAC6MEd-Jla2o7wkBzQ">
     <providedRole_AssemblyConnector href="stplus-split-5-IBusiness%20Trip.repository#_gCeNsC6IEd-Jla2o7wkBzQ"/>
@@ -33,8 +33,8 @@
     <providedRole_AssemblyConnector href="stplus-split-5-IBusiness%20Trip.repository#_LMbbIRoTEeehZ5jbSGNsYQ"/>
     <requiredRole_AssemblyConnector href="stplus-split-5-IBusiness%20Trip.repository#_LMklERoTEeehZ5jbSGNsYQ"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_bwKHIC6MEd-Jla2o7wkBzQ" entityName="ProvDelegation Provided_I1 -> Provided_I1_C1" outerProvidedRole_ProvidedDelegationConnector="_WazzEC6MEd-Jla2o7wkBzQ" assemblyContext_ProvidedDelegationConnector="_X594sC6MEd-Jla2o7wkBzQ">
-    <innerProvidedRole_ProvidedDelegationConnector href="stplus-split-5-IBusiness%20Trip.repository#_fYvUMC6IEd-Jla2o7wkBzQ"/>
+  <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_bwKHIC6MEd-Jla2o7wkBzQ" entityName="ProvDelegation Provided_I1 -> Provided_I1_C1" outerProvidedRole_ProvidedDelegationConnector="_WazzEC6MEd-Jla2o7wkBzQ" assemblyContext_ProvidedDelegationConnector="_7lspwB7nEeesPJRgjiZKBw">
+    <innerProvidedRole_ProvidedDelegationConnector href="stplus-split-5-IBusiness%20Trip.repository#_7lf1ch7nEeesPJRgjiZKBw"/>
   </connectors__ComposedStructure>
   <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_l6_ftl7rEeavvL8WcdoZSg" entityName="DBConnector" requiringAssemblyContext_AssemblyConnector="_X594sC6MEd-Jla2o7wkBzQ" providingAssemblyContext_AssemblyConnector="_-tTDEF7oEeavvL8WcdoZSg">
     <providedRole_AssemblyConnector href="stplus-split-5-IBusiness%20Trip.repository#_-P7lIV45EeavvL8WcdoZSg"/>
@@ -56,11 +56,11 @@
     <providedRole_AssemblyConnector href="stplus-split-5-IBusiness%20Trip.repository#_LMbbIRoTEeehZ5jbSGNsYQ"/>
     <requiredRole_AssemblyConnector href="stplus-split-5-IBusiness%20Trip.repository#_rng-MC6IEd-Jla2o7wkBzQ"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_14wmMRozEeeJ_L2yrmskLA" entityName="Connector Assembly_IBusiness Trip-Wrapper &lt;IBusiness Trip-Wrapper> -> Assembly_BusinessTripMgmt" requiringAssemblyContext_AssemblyConnector="_14wmMBozEeeJ_L2yrmskLA" providingAssemblyContext_AssemblyConnector="_X594sC6MEd-Jla2o7wkBzQ">
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_7ltQ0B7nEeesPJRgjiZKBw" entityName="Connector Assembly_IBusiness Trip-Wrapper &lt;IBusiness Trip-Wrapper> -> Assembly_BusinessTripMgmt" requiringAssemblyContext_AssemblyConnector="_7lspwB7nEeesPJRgjiZKBw" providingAssemblyContext_AssemblyConnector="_X594sC6MEd-Jla2o7wkBzQ">
     <providedRole_AssemblyConnector href="stplus-split-5-IBusiness%20Trip.repository#_fYvUMC6IEd-Jla2o7wkBzQ"/>
-    <requiredRole_AssemblyConnector href="stplus-split-5-IBusiness%20Trip.repository#_14h8sxozEeeJ_L2yrmskLA"/>
+    <requiredRole_AssemblyConnector href="stplus-split-5-IBusiness%20Trip.repository#_7lf1cx7nEeesPJRgjiZKBw"/>
   </connectors__ComposedStructure>
   <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_WazzEC6MEd-Jla2o7wkBzQ" entityName="Provided_I1">
-    <providedInterface__OperationProvidedRole href="stplus-split-5-IBusiness%20Trip.repository#_bh5lgC6IEd-Jla2o7wkBzQ"/>
+    <providedInterface__OperationProvidedRole href="stplus-split-5-IBusiness%20Trip.repository#_7lf1cB7nEeesPJRgjiZKBw"/>
   </providedRoles_InterfaceProvidingEntity>
 </system:System>

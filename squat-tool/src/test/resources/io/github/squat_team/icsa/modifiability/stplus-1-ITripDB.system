@@ -15,8 +15,8 @@
   <assemblyContexts__ComposedStructure id="_Ha2JcGCTEeaQ-qRnqvu5Tg" entityName="Assembly_Exporter">
     <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="stplus-1-ITripDB.repository#_QWlc0F_MEeahZew5WJ0QOQ"/>
   </assemblyContexts__ComposedStructure>
-  <assemblyContexts__ComposedStructure id="_HkbZsBoTEee4X-X-16iUdg" entityName="Assembly_ITripDB-Wrapper &lt;ITripDB-Wrapper>">
-    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="stplus-1-ITripDB.repository#_HkS20RoTEee4X-X-16iUdg"/>
+  <assemblyContexts__ComposedStructure id="_A4gnMB7oEeeAq4dDx3VETg" entityName="Assembly_ITripDB-Wrapper &lt;ITripDB-Wrapper>">
+    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="stplus-1-ITripDB.repository#_A4WPIR7oEeeAq4dDx3VETg"/>
   </assemblyContexts__ComposedStructure>
   <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_cIRFIC6MEd-Jla2o7wkBzQ" entityName="Connector Assembly_C1 &lt;C1> -> Assembly_C2 &lt;C2>" requiringAssemblyContext_AssemblyConnector="_X594sC6MEd-Jla2o7wkBzQ" providingAssemblyContext_AssemblyConnector="_YXdtAC6MEd-Jla2o7wkBzQ">
     <providedRole_AssemblyConnector href="stplus-1-ITripDB.repository#_gCeNsC6IEd-Jla2o7wkBzQ"/>
@@ -33,21 +33,21 @@
   <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_bwKHIC6MEd-Jla2o7wkBzQ" entityName="ProvDelegation Provided_I1 -> Provided_I1_C1" outerProvidedRole_ProvidedDelegationConnector="_WazzEC6MEd-Jla2o7wkBzQ" assemblyContext_ProvidedDelegationConnector="_X594sC6MEd-Jla2o7wkBzQ">
     <innerProvidedRole_ProvidedDelegationConnector href="stplus-1-ITripDB.repository#_fYvUMC6IEd-Jla2o7wkBzQ"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_HkbZsxoTEee4X-X-16iUdg" entityName="Connector Assembly_ITripDB-Wrapper &lt;ITripDB-Wrapper> -> Assembly_TripDB" requiringAssemblyContext_AssemblyConnector="_HkbZsBoTEee4X-X-16iUdg" providingAssemblyContext_AssemblyConnector="_-tTDEF7oEeavvL8WcdoZSg">
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_A4hOQR7oEeeAq4dDx3VETg" entityName="Connector Assembly_ITripDB-Wrapper &lt;ITripDB-Wrapper> -> Assembly_TripDB" requiringAssemblyContext_AssemblyConnector="_A4gnMB7oEeeAq4dDx3VETg" providingAssemblyContext_AssemblyConnector="_-tTDEF7oEeavvL8WcdoZSg">
     <providedRole_AssemblyConnector href="stplus-1-ITripDB.repository#_-P7lIV45EeavvL8WcdoZSg"/>
-    <requiredRole_AssemblyConnector href="stplus-1-ITripDB.repository#_HkS20xoTEee4X-X-16iUdg"/>
+    <requiredRole_AssemblyConnector href="stplus-1-ITripDB.repository#_A4WPIx7oEeeAq4dDx3VETg"/>
   </connectors__ComposedStructure>
   <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_RMitBmCTEeaQ-qRnqvu5Tg" entityName="Connector Exporter-Front" requiringAssemblyContext_AssemblyConnector="_X594sC6MEd-Jla2o7wkBzQ" providingAssemblyContext_AssemblyConnector="_Ha2JcGCTEeaQ-qRnqvu5Tg">
     <providedRole_AssemblyConnector href="stplus-1-ITripDB.repository#_gsQ_4V_OEeahZew5WJ0QOQ"/>
     <requiredRole_AssemblyConnector href="stplus-1-ITripDB.repository#_vUtoRV_UEeahZew5WJ0QOQ"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_HkbZshoTEee4X-X-16iUdg" entityName="Connector Assembly_Exporter -> Assembly_ITripDB-Wrapper &lt;ITripDB-Wrapper>" requiringAssemblyContext_AssemblyConnector="_Ha2JcGCTEeaQ-qRnqvu5Tg" providingAssemblyContext_AssemblyConnector="_HkbZsBoTEee4X-X-16iUdg">
-    <providedRole_AssemblyConnector href="stplus-1-ITripDB.repository#_HkS20hoTEee4X-X-16iUdg"/>
-    <requiredRole_AssemblyConnector href="stplus-1-ITripDB.repository#_HkYWYBoTEee4X-X-16iUdg"/>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_A4hOQB7oEeeAq4dDx3VETg" entityName="Connector Assembly_Exporter -> Assembly_ITripDB-Wrapper &lt;ITripDB-Wrapper>" requiringAssemblyContext_AssemblyConnector="_Ha2JcGCTEeaQ-qRnqvu5Tg" providingAssemblyContext_AssemblyConnector="_A4gnMB7oEeeAq4dDx3VETg">
+    <providedRole_AssemblyConnector href="stplus-1-ITripDB.repository#_A4WPIh7oEeeAq4dDx3VETg"/>
+    <requiredRole_AssemblyConnector href="stplus-1-ITripDB.repository#_A4c80B7oEeeAq4dDx3VETg"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_HkbZsRoTEee4X-X-16iUdg" entityName="Connector Assembly_BusinessTripMgmt -> Assembly_ITripDB-Wrapper &lt;ITripDB-Wrapper>" requiringAssemblyContext_AssemblyConnector="_X594sC6MEd-Jla2o7wkBzQ" providingAssemblyContext_AssemblyConnector="_HkbZsBoTEee4X-X-16iUdg">
-    <providedRole_AssemblyConnector href="stplus-1-ITripDB.repository#_HkS20hoTEee4X-X-16iUdg"/>
-    <requiredRole_AssemblyConnector href="stplus-1-ITripDB.repository#_HkYWYRoTEee4X-X-16iUdg"/>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_A4gnMR7oEeeAq4dDx3VETg" entityName="Connector Assembly_BusinessTripMgmt -> Assembly_ITripDB-Wrapper &lt;ITripDB-Wrapper>" requiringAssemblyContext_AssemblyConnector="_X594sC6MEd-Jla2o7wkBzQ" providingAssemblyContext_AssemblyConnector="_A4gnMB7oEeeAq4dDx3VETg">
+    <providedRole_AssemblyConnector href="stplus-1-ITripDB.repository#_A4WPIh7oEeeAq4dDx3VETg"/>
+    <requiredRole_AssemblyConnector href="stplus-1-ITripDB.repository#_A4c80R7oEeeAq4dDx3VETg"/>
   </connectors__ComposedStructure>
   <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_WazzEC6MEd-Jla2o7wkBzQ" entityName="Provided_I1">
     <providedInterface__OperationProvidedRole href="stplus-1-ITripDB.repository#_bh5lgC6IEd-Jla2o7wkBzQ"/>

@@ -164,8 +164,9 @@ public class SimpleTacticsECSATest {
 		this.resultsMap.clear();
 		String evaluationType; ResponseMeasureType type; Comparable response;
 		//Modifiability
-		//this.setModifiabilityPCMModel();
-		this.setPerformancePCMModel();
+		this.setModifiabilityPCMModel();
+		//Performance
+		//this.setPerformancePCMModel();
 		//Affected components
 		evaluationType = KAMPPCMBot.TYPE_ELEMENTS;
 		type = ResponseMeasureType.NUMERIC;
@@ -362,12 +363,13 @@ public class SimpleTacticsECSATest {
 	public void printCode() {
 		for(AnalysisResult r : results) {
 			if(r.qa.equals("Modifiability")) {
-				String classType = r.qa + "Bot";
 				String variableName = r.scenario + "Bot";
+				String methodName = ".insertInOrder";
+				String classType = r.qa + "Proposal";
 				String components = r.measureValues.get(KAMPPCMBot.TYPE_ELEMENTS).toString();
-				String complexity = r.measureValues.get(KAMPPCMBot.TYPE_COMPLEXITY).toString();
+				String complexity = r.measureValues.get(KAMPPCMBot.TYPE_COMPLEXITY).toString() + "f";
 				String parameters = "(" + components + ", " + complexity + ", \"" + r.model + "\")";
-				String codeLine = classType + " " + variableName + " = new " + classType + parameters;
+				String codeLine = variableName + methodName + "(" + "new " + classType + parameters + ")" + ";";
 				java.lang.System.out.println(codeLine);
 			}
 		}
