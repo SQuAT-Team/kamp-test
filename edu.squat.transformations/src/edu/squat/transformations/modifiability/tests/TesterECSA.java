@@ -52,16 +52,18 @@ public class TesterECSA {
 	}
 	
 	public static void main(String[] args) {
-		String dirPath = "src/edu/squat/transformations/modifiability/tests";
 		String filename;
-		//
+		// Modifiability
+		String modPath = "test/ecsa/modifiability";
 		TesterECSA tester = new TesterECSA();
 		// Run first level transformations
-		filename = "stplus";
-		tester.runWrapper(dirPath, filename);
-		//tester.runSplitResp(dirPath, filename);
+		filename = "stplus"; 
+		tester.runWrapper(modPath, filename); 
+		tester.runSplitResp(modPath, filename);
 		// Run second level transformations
-		filename = "stplus-split";
-		//tester.runWrapper(dirPath, filename);
+		filename = "stplus-split"; 
+		tester.runWrapper(modPath, filename);
+		// Performance
+		String perfPath = "src/edu/squat/transformations/performance/tests";
 	}
 }
