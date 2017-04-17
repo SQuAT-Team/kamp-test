@@ -1,0 +1,50 @@
+
+-------------------
+Candidate: candidate195
+result: 111.78269999999999
+-------------------
+
+-------------------
+Candidate: candidate247
+result: 22.81521
+-------------------
+
+-------------------
+Candidate: candidate263
+result: 111.78269999999999
+-------------------
+
+-------------------
+Candidate: candidate333
+result: 127.65870000000001
+-------------------
+
+-------------------
+Candidate: candidate350
+result: error (unsolvable)
+-------------------
+
+-------------------
+Candidate: candidate396
+result: 188.7133
+-------------------
+
+-------------------
+Candidate: candidate405
+result: 32.8668
+-------------------
+
+-------------------
+Candidate: candidate425
+result: error (unsolvable)
+-------------------
+
+-------------------
+Candidate: candidate426
+result: error (unsolvable)
+-------------------
+
+-------------------
+Candidate: candidate464
+result: error (unsolvable)
+-------------------
