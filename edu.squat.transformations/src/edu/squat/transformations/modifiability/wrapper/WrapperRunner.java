@@ -163,7 +163,7 @@ public class WrapperRunner extends PCMTransformerRunner {
 				String fileName = interfaceName;
 				
 				//Creating a service effect specification for the intermediate
-				this.createSEFF(oldInterface, newComponent, newInterface);
+				this.createSEFF(tempGraph, oldInterface, newComponent, newInterface);
 				
 				//Configuring and executing the fourth rule
 				this.runFourthRule(tempGraph);
@@ -545,8 +545,9 @@ public class WrapperRunner extends PCMTransformerRunner {
 		System.out.println("Successfully duplicated the interface of the wrapped component into the wrapper");
 	}
 
-	private void createSEFF(OperationInterface oldInterface, BasicComponent newComponent, OperationInterface newInterface) {
+	private void createSEFF(EGraph graph, OperationInterface oldInterface, BasicComponent newComponent, OperationInterface newInterface) {
 		SeffFactory sFactory = SeffFactory.eINSTANCE;
+		UsageModel usageModel = RunnerHelper.getUsageRoot(graph);
 		for(OperationSignature signature : newInterface.getSignatures__OperationInterface()) {
 			ResourceDemandingSEFF seff = sFactory.createResourceDemandingSEFF();
 			seff.setDescribedService__SEFF(signature);
@@ -566,18 +567,40 @@ public class WrapperRunner extends PCMTransformerRunner {
 			ExternalCallAction externalCallAction = sFactory.createExternalCallAction();
 			externalCallAction.setEntityName(RunnerHelper.getExternalCallActionName(newInterface, signature));
 			OperationSignature externalSignature = RunnerHelper.findSignature(signature, oldInterface);
-			OperationRequiredRole externalRole = this.findRequiredRole(newComponent, oldInterface);
+			OperationRequiredRole externalRole = RunnerHelper.findRequiredRole(newComponent, oldInterface);
 			externalCallAction.setCalledService_ExternalService(externalSignature);
 			externalCallAction.setRole_ExternalService(externalRole);
 			
 			//Find a similar external action to replicate the variable caracterisation in the wrapper
 			List<ExternalCallAction> similarExternalActions = this.collectSimilarExternalCalls(newComponent, oldInterface, externalSignature);
+			//Check if there is a reference in the usage model, in case it is a entry interface...
+			List<EntryLevelSystemCall> similarEntryCalls = this.collectSimilarEntryCalls(usageModel, newComponent, oldInterface, externalSignature);
+			
 			if(similarExternalActions.size() > 0) {
 				ExternalCallAction similarAction = similarExternalActions.get(0);
 				EList<VariableUsage> similarInput = similarAction.getInputVariableUsages__CallAction();
 				//EList<VariableUsage> similarReturn = similarAction.getReturnVariableUsage__CallReturnAction();
 				//externalCallAction.getInputVariableUsages__CallAction().addAll(EcoreUtil.copyAll(similarInput));
 				//externalCallAction.getReturnVariableUsage__CallReturnAction().addAll(EcoreUtil.copyAll(similarReturn));
+				for(Parameter parameter : externalSignature.getParameters__OperationSignature()) {
+					VariableUsage variableUsage = ParameterFactory.eINSTANCE.createVariableUsage();
+					externalCallAction.getInputVariableUsages__CallAction().add(variableUsage);
+					//Reference
+					variableUsage.setNamedReference__VariableUsage(this.createReference(parameter.getParameterName()));
+					//Find the characterisation type in a similar action
+					List<VariableCharacterisation> similarCharacterisation = this.findCharacterisation(parameter, similarInput);
+					VariableCharacterisationType type;
+					if(similarCharacterisation.size() > 0)
+						type = similarCharacterisation.get(0).getType();
+					else 
+						type = VariableCharacterisationType.VALUE;
+					//Characterisation
+					variableUsage.getVariableCharacterisation_VariableUsage().add(this.createCharacterisation(type, parameter.getParameterName() + "." + type.name()));
+				}
+			}
+			else if(similarEntryCalls.size() > 0) {
+				EntryLevelSystemCall similarCall = similarEntryCalls.get(0);
+				EList<VariableUsage> similarInput = similarCall.getInputParameterUsages_EntryLevelSystemCall();
 				for(Parameter parameter : externalSignature.getParameters__OperationSignature()) {
 					VariableUsage variableUsage = ParameterFactory.eINSTANCE.createVariableUsage();
 					externalCallAction.getInputVariableUsages__CallAction().add(variableUsage);
@@ -621,6 +644,12 @@ public class WrapperRunner extends PCMTransformerRunner {
  						externalCallAction.getReturnVariableUsage__CallReturnAction().add(externalReturnVariableUsage);
  						returnSetAction.getLocalVariableUsages_SetVariableAction().add(setReturnVariableUsage);
  					}
+				}
+				else if(similarEntryCalls.size() > 0) {
+					EntryLevelSystemCall similarCall = similarEntryCalls.get(0);
+					EList<VariableUsage> similarReturn = similarCall.getOutputParameterUsages_EntryLevelSystemCall();
+					for(VariableUsage returnVariableUsage : similarReturn)
+						externalCallAction.getReturnVariableUsage__CallReturnAction().add(EcoreUtil.copy(returnVariableUsage));
 				}
 				else {
 					VariableUsage returnUsage = ParameterFactory.eINSTANCE.createVariableUsage();
@@ -743,7 +772,62 @@ public class WrapperRunner extends PCMTransformerRunner {
 		}
 		return null;
 	}
+	
+	private List<EntryLevelSystemCall> collectSimilarEntryCalls(UsageModel usageModel, BasicComponent newComponent, OperationInterface oldInterface, OperationSignature signature) {
+		List<EntryLevelSystemCall> entryCalls = new ArrayList<EntryLevelSystemCall>();
+		for(UsageScenario usageScenario : usageModel.getUsageScenario_UsageModel()) {
+			ScenarioBehaviour scenarioBehaviour = usageScenario.getScenarioBehaviour_UsageScenario();
+			entryCalls.addAll(this.collectEntryCalls(scenarioBehaviour.getActions_ScenarioBehaviour(), newComponent, oldInterface, signature));
+		}
+		return entryCalls;
+	}
+	
+	private List<EntryLevelSystemCall> collectEntryCalls(EList<AbstractUserAction> actions, 
+			BasicComponent newComponent, OperationInterface oldInterface, OperationSignature signature) {
+		List<EntryLevelSystemCall> entryCalls = new ArrayList<EntryLevelSystemCall>();
+		Iterator<AbstractUserAction> actionIterator = actions.iterator();
+    	while(actionIterator.hasNext()) {
+    		AbstractUserAction action = (AbstractUserAction) actionIterator.next();
+    		entryCalls.addAll(this.collectEntryCalls(action, newComponent, oldInterface, signature));
+		}
+		return entryCalls;
+	}
 		
+	private List<EntryLevelSystemCall> collectEntryCalls(AbstractUserAction action, 
+			BasicComponent newComponent, OperationInterface oldInterface, OperationSignature signature) {
+		List<EntryLevelSystemCall> entryCalls = new ArrayList<EntryLevelSystemCall>();
+		if(action instanceof Branch) {
+			Branch branchAction = (Branch) action;
+	    	Iterator<BranchTransition> branchTransitions = branchAction.getBranchTransitions_Branch().iterator();
+	    	while(branchTransitions.hasNext()) {
+	    		BranchTransition branchTransition = branchTransitions.next();
+	    		entryCalls.addAll(
+	    			this.collectEntryCalls(
+	    				branchTransition.getBranchedBehaviour_BranchTransition().getActions_ScenarioBehaviour(), 
+	    				newComponent, oldInterface, signature)
+	    		);
+	    	}
+		}
+		if(action instanceof Loop) {
+			Loop loopAction = (Loop) action;
+			entryCalls.addAll(
+				this.collectEntryCalls(
+					loopAction.getBodyBehaviour_Loop().getActions_ScenarioBehaviour(), 
+					newComponent, oldInterface, signature)
+			);
+		}
+		if(action instanceof EntryLevelSystemCall) {
+			EntryLevelSystemCall entryCall = (EntryLevelSystemCall) action;
+			//The provided role is found in the system model, no need to check it here...perhaps in the calling method is useful...
+			//OperationProvidedRole entryProvidedRole = entryCall.getProvidedRole_EntryLevelSystemCall();
+			OperationSignature entrySignature = entryCall.getOperationSignature__EntryLevelSystemCall();
+			if(entrySignature.equals(signature)) {
+				entryCalls.add(entryCall);
+			}
+		}
+		return entryCalls;
+	}
+
 	private List<ExternalCallAction> collectSimilarExternalCalls(BasicComponent newComponent, OperationInterface oldInterface, OperationSignature signature) {
 		List<ExternalCallAction> externalCallActions = new ArrayList<ExternalCallAction>();
 		Repository repository = newComponent.getRepository__RepositoryComponent();
@@ -760,7 +844,7 @@ public class WrapperRunner extends PCMTransformerRunner {
 	private List<ExternalCallAction> collectExternalCalls(BasicComponent component, OperationInterface oldInterface, OperationSignature signature) {
 		List<ExternalCallAction> externalCallActions = new ArrayList<ExternalCallAction>();
 		Iterator<ServiceEffectSpecification> seffIterator = component.getServiceEffectSpecifications__BasicComponent().iterator();
-		OperationRequiredRole oldRequiredRole = this.findRequiredRole(component, oldInterface);
+		OperationRequiredRole oldRequiredRole = RunnerHelper.findRequiredRole(component, oldInterface);
     	while(seffIterator.hasNext()) {
     		ResourceDemandingSEFF seff = (ResourceDemandingSEFF) seffIterator.next();
     		externalCallActions.addAll(this.collectExternalCalls(seff.getSteps_Behaviour(), oldInterface, oldRequiredRole, signature));
@@ -796,24 +880,6 @@ public class WrapperRunner extends PCMTransformerRunner {
 			}
 		}
 		return externalCallActions;
-	}
-
-	private OperationProvidedRole findProvidedRole(BasicComponent component, OperationInterface operationInterface) {
-		for(ProvidedRole providedRole : component.getProvidedRoles_InterfaceProvidingEntity()) {
-			OperationProvidedRole operationProvidedRole = (OperationProvidedRole) providedRole;
-			if(operationProvidedRole.getProvidedInterface__OperationProvidedRole().equals(operationInterface))
-				return operationProvidedRole;
-		}
-		return null;
-	}
-	
-	private OperationRequiredRole findRequiredRole(BasicComponent component, OperationInterface oldInterface) {
-		for(RequiredRole requiredRole : component.getRequiredRoles_InterfaceRequiringEntity()) {
-			OperationRequiredRole operationRequiredRole = (OperationRequiredRole) requiredRole;
-			if(operationRequiredRole.getRequiredInterface__OperationRequiredRole().equals(oldInterface))
-				return operationRequiredRole;
-		}
-		return null;
 	}
 
 	private RuleApplication runFourthRule(EGraph graph) {

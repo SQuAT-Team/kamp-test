@@ -52,16 +52,71 @@ public class TesterECSA {
 	}
 	
 	public static void main(String[] args) {
-		String dirPath = "src/edu/squat/transformations/modifiability/tests";
 		String filename;
-		//
+		// Modifiability
+		String modPath = "test/ecsa/modifiability";
 		TesterECSA tester = new TesterECSA();
-		// Run first level transformations
-		filename = "stplus";
-		tester.runWrapper(dirPath, filename);
-		//tester.runSplitResp(dirPath, filename);
+		
+		// Run first level transformations for the initial model
+		filename = "stplus"; 
+		//tester.runWrapper(modPath, filename); 
+		//tester.runSplitResp(modPath, filename);
 		// Run second level transformations
-		filename = "stplus-split";
-		//tester.runWrapper(dirPath, filename);
+		filename = "stplus-0-Payment System"; 
+		tester.runWrapper(modPath, filename);
+		
+		// Run first level transformations for the candidates of the two performance scenarios
+		filename = "default";
+		String perfPath = "test/ecsa/performance-modifiability/";
+		String perfScenario1 = perfPath + "ps1/";
+		String[] perfScenario1Candidates = new String[] { 
+			perfScenario1 + "candidate258_minPlus",
+			perfScenario1 + "candidate281_minPlus",
+			perfScenario1 + "candidate338_minPlus",
+			perfScenario1 + "candidate340_minPlus",
+			perfScenario1 + "candidate397_minPlus",
+			perfScenario1 + "candidate404_minPlus",
+			perfScenario1 + "candidate436_minPlus",
+			perfScenario1 + "candidate444_minPlus",
+			perfScenario1 + "candidate494_minPlus",
+			perfScenario1 + "candidate64_minPlus"
+		};
+		String perfScenario2 = perfPath + "ps2/";
+		String[] perfScenario2Candidates = new String[] { 
+			perfScenario2 + "candidate209_minPlus",
+			perfScenario2 + "candidate22_minPlus", 
+			perfScenario2 + "candidate325_minPlus",
+			perfScenario2 + "candidate330_minPlus", 
+			perfScenario2 + "candidate358_minPlus",
+			perfScenario2 + "candidate366_minPlus", 
+			perfScenario2 + "candidate416_minPlus",
+			perfScenario2 + "candidate476_minPlus", 
+			perfScenario2 + "candidate479_minPlus",
+			perfScenario2 + "candidate480_minPlus"
+		};
+		int index;
+		
+		index = 0;
+		//tester.runSplitResp(perfScenario1Candidates[index], filename);
+		//tester.runWrapper(perfScenario1Candidates[index], filename);
+
+		index = 0;
+		//tester.runSplitResp(perfScenario2Candidates[index], filename);
+		//tester.runWrapper(perfScenario2Candidates[index], filename);
+		
+//		for(String candidatePath : perfScenario1Candidates) {
+//			tester.runSplitResp(candidatePath, filename);
+//			tester.runWrapper(candidatePath, filename);
+//		}
+//		for(String candidatePath : perfScenario2Candidates) {
+//			tester.runSplitResp(candidatePath, filename);
+//			tester.runWrapper(candidatePath, filename); 
+//		}
+
+		// Run second level transformations for the candidates of the two performance scenarios
+		index = 9;
+		filename = "default-0-Payment System";
+		//tester.runWrapper(perfScenario1Candidates[index], filename);
+		//tester.runWrapper(perfScenario2Candidates[index], filename);
 	}
 }

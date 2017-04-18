@@ -20,10 +20,12 @@ import org.palladiosimulator.pcm.repository.OperationRequiredRole;
 import org.palladiosimulator.pcm.repository.OperationSignature;
 import org.palladiosimulator.pcm.repository.ProvidedRole;
 import org.palladiosimulator.pcm.repository.Repository;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
 import org.palladiosimulator.pcm.repository.RequiredRole;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
 import org.palladiosimulator.pcm.usagemodel.UsageModel;
+import org.palladiosimulator.pcm.usagemodel.UsageScenario;
 
 public class RunnerHelper {
 	
@@ -105,7 +107,7 @@ public class RunnerHelper {
 	public static UsageModel getUsageRoot(EGraph graph) {
 		UsageModel usage = null;
 		Iterator<EObject> i = graph.getRoots().iterator();
-		while(i.hasNext() && null == null) {
+		while(i.hasNext() && usage == null) {
 			EObject e = i.next();
 			if(e instanceof UsageModel)
 				usage = (UsageModel) e;
@@ -223,5 +225,29 @@ public class RunnerHelper {
 	
 	public static String getExternalCallActionName(OperationInterface operationInterface, OperationSignature signature) {
 		return "External_" + operationInterface.getEntityName() + "_" + signature.getEntityName();
+	}
+	
+	public static List<BasicComponent> collectProvidingComponents(Repository repository, OperationInterface operationInterface) {
+		List<BasicComponent> providingComponents = new ArrayList<BasicComponent>();
+		for(RepositoryComponent component : repository.getComponents__Repository()) {
+			if(component instanceof BasicComponent) {
+				BasicComponent basicComponent = (BasicComponent) component;
+				if(RunnerHelper.findProvidedRole(basicComponent, operationInterface) != null)
+					providingComponents.add(basicComponent);
+			}
+		}
+		return providingComponents;
+	}
+	
+	public static List<BasicComponent> collectRequiringComponents(Repository repository, OperationInterface operationInterface) {
+		List<BasicComponent> requiringComponents = new ArrayList<BasicComponent>();
+		for(RepositoryComponent component : repository.getComponents__Repository()) {
+			if(component instanceof BasicComponent) {
+				BasicComponent basicComponent = (BasicComponent) component;
+				if(RunnerHelper.findProvidedRole(basicComponent, operationInterface) != null)
+					requiringComponents.add(basicComponent);
+			}
+		}
+		return requiringComponents;
 	}
 }

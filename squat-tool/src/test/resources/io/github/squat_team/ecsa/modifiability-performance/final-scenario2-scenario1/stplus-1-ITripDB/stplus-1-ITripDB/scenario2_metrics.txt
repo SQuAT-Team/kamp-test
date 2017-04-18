@@ -1,0 +1,37 @@
+BOT FINISHED: 
+Population Size: 100
+Max Iterations: 10
+Runtime 61578 ms
+Real Iterations: 24
+
+Best 10 Candidates:
+----
+Name: candidate33
+Response Time: 17.87123
+----
+Name: candidate354
+Response Time: 19.13054
+----
+Name: candidate86
+Response Time: 19.9279
+----
+Name: candidate143
+Response Time: 20.67713
+----
+Name: candidate192
+Response Time: 24.5475
+----
+Name: candidate309
+Response Time: 25.32289
+----
+Name: candidate231
+Response Time: 25.33347
+----
+Name: candidate347
+Response Time: 25.33347
+----
+Name: candidate189
+Response Time: 26.2009
+----
+Name: candidate314
+Response Time: 26.2027
