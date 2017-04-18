@@ -248,10 +248,12 @@ public class SQuATSillyBotsNegotiator {
 		return true;
 	}
 	private HashMap<SillyBot, Proposal> collectInitialProposals() {
+		
 		System.out.println("Intial Proposals");
 		HashMap<SillyBot, Proposal> ret= new HashMap<>();
 		//Each agent has to make a ranking with the alternatives and select the best for its scenario 
 		sillyBots=new LoadHelper().loadBotsWithInformation();
+		System.out.println("Total proposals: "+sillyBots.get(0).getOrderedProposals().size());
 		for (Iterator<SillyBot> iterator = sillyBots.iterator(); iterator.hasNext();) {
 			SillyBot bot = (SillyBot) iterator.next();
 			ret.put(bot, bot.getBestProposal());

@@ -80,6 +80,11 @@ public abstract class SillyBot {
 		float expectedResponse=scenatioThreshold;
 		float n=1f;//indexInWhichUtilityBecomeZero();
 		float utility=(-1/(n*expectedResponse))*scenarioResponse+1;
+		
+		/*float p=1;
+		float t=1.2f;
+		float utility=(float) (1- Math.pow((scenarioResponse/(n*expectedResponse)), p/t));*/
+		
 		if(utility<0)
 			return 0;
 		return utility;
