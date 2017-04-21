@@ -27,7 +27,7 @@ public class SQuATSillyBotsNegotiator {
 		//architectureAlternatives=loadArchitecturalAlternatives(); This should be done for real. Now I'm hardcoding the results
 		//Step 1: Collect initial proposals
 		HashMap<SillyBot,Proposal> proposals = collectInitialProposals();
-		boolean redoRequest=true;
+		boolean redoRequest=false;
 		//Step 2: Loop until you reach an Agreement or a Conflict
 		while((!checkAgreement(proposals))||redoRequest){
 
@@ -146,8 +146,10 @@ public class SQuATSillyBotsNegotiator {
 					acceptedProposals=acceptedProposals+bot2.toString()+" ";
 			}
 			System.out.println(acceptedProposals);
-			if(agreementProposal!=null)
+			if(agreementProposal!=null){
 				System.out.println("Index of agreement proposal: "+bot.getIndexForArchitecture(agreementProposal.getArchitectureName()));
+				System.out.println("Utility function for bot: "+ bot.getUtilityFor(agreementProposal.getArchitectureName()));
+			}
 		}
 	}
 

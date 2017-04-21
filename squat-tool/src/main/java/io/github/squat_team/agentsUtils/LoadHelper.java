@@ -16,8 +16,8 @@ public class LoadHelper {
 	public List<SillyBot> loadBotsWithInformation() {
 		ModifiabilityBot m1Bot=new ModifiabilityBot(3, 115f,"m1",120f);
 		ModifiabilityBot m2Bot=new ModifiabilityBot(5, 190.5f,"m2",300f);
-		PerformanceBot p1Bot=new PerformanceBot(111.7639f,"p1",112f);
-		PerformanceBot p2Bot=new PerformanceBot(74.0173f,"p2",75f);
+		PerformanceBot p1Bot=new PerformanceBot(111.7639f,"p1",30f);
+		PerformanceBot p2Bot=new PerformanceBot(74.0173f,"p2",40f);
 		
 		//First level - Modifiability tactics
 		m1Bot.insertInOrder(new ModifiabilityProposal(4, 111.0f, "stplus-mod-split(PaymentSystem)"));
@@ -2265,12 +2265,18 @@ public class LoadHelper {
 		p2Bot.insertInOrder(new PerformanceProposal(26.18786f, "stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-447"));
 		p2Bot.insertInOrder(new PerformanceProposal(25.58386f, "stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-482"));
 		
+		
 		List<SillyBot> ret=new ArrayList<>();
 		ret.add(m1Bot);
 		ret.add(m2Bot);
 		ret.add(p1Bot);
 		ret.add(p2Bot);
 		
+		
+		/*System.out.println(m1Bot.getUtilityFor("stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-355"));
+		System.out.println(m2Bot.getUtilityFor("stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-355"));
+		System.out.println(p1Bot.getUtilityFor("stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-355"));
+		System.out.println(p2Bot.getUtilityFor("stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-355"));*/
 		
 		m1Bot.printUtilies();
 		m2Bot.printUtilies();

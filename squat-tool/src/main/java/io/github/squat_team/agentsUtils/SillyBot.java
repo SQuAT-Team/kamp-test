@@ -7,9 +7,24 @@ import java.util.List;
 public abstract class SillyBot {
 	private String name;
 	protected List<Proposal> orderedProposals;
-	public abstract void insertInOrder(Proposal p);
+	public void insertInOrder(Proposal p){
+		float utilityProposal=getUtilityFor(p);
+		if (orderedProposals.size() == 0) {
+			orderedProposals.add(p);
+		} else if (getUtilityFor(orderedProposals.get(0)) < utilityProposal) {
+			orderedProposals.add(0, p);
+		} else if (getUtilityFor(orderedProposals.get(orderedProposals.size() - 1)) > utilityProposal) {
+			orderedProposals.add(p);
+		} else {
+			int i = 0; 
+			while (getUtilityFor(orderedProposals.get(i)) > utilityProposal) {
+				i++;
+			}
+			orderedProposals.add(i, p);
+		}
+	}
 	private float scenatioThreshold;
-	private Integer indexInWhichUtilityBecomeZero;
+//	private Integer indexInWhichUtilityBecomeZero;
 	public Proposal makeConcession(){
 		currentConcessionIndex++;
 		return getCurrentProposal();
@@ -21,17 +36,19 @@ public abstract class SillyBot {
 		currentConcessionIndex=0;
 		this.name=name;
 		this.scenatioThreshold=scenatioThreshold;
-		indexInWhichUtilityBecomeZero=null;
+//		indexInWhichUtilityBecomeZero=null;
 	}
 	public Proposal getBestProposal() {
-		if(makeImprovementRegardingOriginal(orderedProposals.get(currentConcessionIndex)))
+		//if(makeImprovementRegardingOriginal(orderedProposals.get(currentConcessionIndex)))
 			return orderedProposals.get(currentConcessionIndex);
-		return null;
+	//	return null;
 	}
-	protected abstract boolean makeImprovementRegardingOriginal(Proposal proposal);
+	//protected abstract boolean makeImprovementRegardingOriginal(Proposal proposal);
 	
 	public boolean acceptableUtilityValue(Proposal proposal) {
 		float currentUtilty=getUtilityFor(orderedProposals.get(currentConcessionIndex));
+		if(proposal==null)
+			System.out.println("Problema");
 		float proposalUtility=getUtilityFor(this.getProposalForArchitecture(proposal.getArchitectureName()));
 		
 		return (proposalUtility>=currentUtilty);
@@ -78,16 +95,23 @@ public abstract class SillyBot {
 	public float getUtilityFor(Proposal proposal){
 		float scenarioResponse=getScenarioMeasureFor(proposal);
 		float expectedResponse=scenatioThreshold;
-		float n=1f;//indexInWhichUtilityBecomeZero();
-		float utility=(-1/(n*expectedResponse))*scenarioResponse+1;
+		//float n=1f;//indexInWhichUtilityBecomeZero();
+		//float utility=(-1/(n*expectedResponse))*scenarioResponse+1;
+		float utility=0;
+		if(scenarioResponse<=expectedResponse)
+			utility= 2- expectedResponse/scenarioResponse;
+		else
+			utility= 2- 1.10f*scenarioResponse/expectedResponse;
 		
+		if(utility >= 0 && utility<=1)
+			return utility;
+		else
+			return 0;
 		/*float p=1;
 		float t=1.2f;
 		float utility=(float) (1- Math.pow((scenarioResponse/(n*expectedResponse)), p/t));*/
-		
-		if(utility<0)
-			return 0;
-		return utility;
+	
+		//return utility;
 	}
 	/*private int indexInWhichUtilityBecomeZero() {
 		if(indexInWhichUtilityBecomeZero==null){
@@ -102,11 +126,17 @@ public abstract class SillyBot {
 	}*/
 	protected abstract float getScenarioMeasureFor(Proposal proposal);
 	public void printUtilies(){
+		int differentFromZero=0;
 		System.out.print("Utilities for "+name+" [");
 		for (Iterator<Proposal> iterator = orderedProposals.iterator(); iterator.hasNext();) {
 			Proposal proposal = (Proposal) iterator.next();
-			System.out.print(getUtilityFor(proposal)+" ");
+			float utility=getUtilityFor(proposal);
+			System.out.print(utility+" ");
+			if(utility>0)
+				differentFromZero++;
+				
 		}
 		System.out.println("]");
+		System.out.println("Different from zero: "+differentFromZero);
 	}
 }
