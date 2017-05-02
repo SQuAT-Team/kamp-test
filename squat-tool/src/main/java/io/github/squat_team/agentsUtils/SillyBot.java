@@ -130,6 +130,10 @@ public abstract class SillyBot {
 		System.out.print("Utilities for "+name+" [");
 		for (Iterator<Proposal> iterator = orderedProposals.iterator(); iterator.hasNext();) {
 			Proposal proposal = (Proposal) iterator.next();
+			/*if(proposal.getArchitectureName().equals("stplus-ps2-476-mod-split(PaymentSystem)-wrapper(IExporter)")){
+				System.out.println("Esta->");
+				System.out.println(proposal);
+			}*/
 			float utility=getUtilityFor(proposal);
 			System.out.print(utility+" ");
 			if(utility>0)
