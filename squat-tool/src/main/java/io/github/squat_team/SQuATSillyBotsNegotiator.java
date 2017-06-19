@@ -17,9 +17,10 @@ public class SQuATSillyBotsNegotiator {
 	//private List<PCMArchitectureInstance> architectureAlternatives;
 	private List<SillyBot> sillyBots;
 	private Proposal agreementProposal;
-	
+	private int currentLevelOfTransformations;
 	public SQuATSillyBotsNegotiator(){
 		agreementProposal=null;
+		currentLevelOfTransformations=1;
 	}
 	
 	
