@@ -82,7 +82,7 @@
     <resourceContainer_AllocationContext href="cocome-0-SaleRegisteredEvent.resourceenvironment#_bTYxAOEhEduBSuO8WivxSA"/>
     <assemblyContext_AllocationContext href="cocome-0-SaleRegisteredEvent.system#_LoXbYFfjEd26K8JlmYJ10w"/>
   </allocationContexts_Allocation>
-  <allocationContexts_Allocation id="_qBEgkPn0Eea-VZ6CKSY3KA" entityName="Allocation_Assembly_SaleRegisteredEvent-Wrapper &lt;SaleRegisteredEvent-Wrapper> &lt;SaleRegisteredEvent-Wrapper>">
-    <assemblyContext_AllocationContext href="cocome-0-SaleRegisteredEvent.system#_qBD5gPn0Eea-VZ6CKSY3KA"/>
+  <allocationContexts_Allocation id="_UmOwUFWhEee_vbhS72O32Q" entityName="Allocation_Assembly_SaleRegisteredEvent-Wrapper &lt;SaleRegisteredEvent-Wrapper> &lt;SaleRegisteredEvent-Wrapper>">
+    <assemblyContext_AllocationContext href="cocome-0-SaleRegisteredEvent.system#_UmNiMFWhEee_vbhS72O32Q"/>
   </allocationContexts_Allocation>
 </allocation:Allocation>

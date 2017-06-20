@@ -60,8 +60,8 @@
   <assemblyContexts__ComposedStructure id="_LoXbYFfjEd26K8JlmYJ10w" entityName="Data.Enterprise_EnterpriseServer">
     <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="cocome-1-StoreIf.repository#_-3VggNCgEduC9O_qbthgAg"/>
   </assemblyContexts__ComposedStructure>
-  <assemblyContexts__ComposedStructure id="_qCjuUPn0Eea-VZ6CKSY3KA" entityName="Assembly_StoreIf-Wrapper &lt;StoreIf-Wrapper>">
-    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="cocome-1-StoreIf.repository#_qB9RYfn0Eea-VZ6CKSY3KA"/>
+  <assemblyContexts__ComposedStructure id="_VUkdAFWhEee_vbhS72O32Q" entityName="Assembly_StoreIf-Wrapper &lt;StoreIf-Wrapper>">
+    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="cocome-1-StoreIf.repository#_VDFrcVWhEee_vbhS72O32Q"/>
   </assemblyContexts__ComposedStructure>
   <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_RBRDsFcoEd23wcZsd06DZg" entityName="CashDeskConnectorIf" outerProvidedRole_ProvidedDelegationConnector="_MSQMUFcnEd23wcZsd06DZg" assemblyContext_ProvidedDelegationConnector="_3AwvMFcnEd23wcZsd06DZg">
     <innerProvidedRole_ProvidedDelegationConnector href="cocome-1-StoreIf.repository#__f6UsNCmEduC9O_qbthgAg"/>
@@ -72,13 +72,13 @@
   <connectors__ComposedStructure xsi:type="composition:RequiredDelegationConnector" id="_ieLPYFc8Ed23wcZsd06DZg" entityName="SaleRegisteredEvent" outerRequiredRole_RequiredDelegationConnector="_l5n00Fc3Ed23wcZsd06DZg" assemblyContext_RequiredDelegationConnector="_etALMFc5Ed23wcZsd06DZg">
     <innerRequiredRole_RequiredDelegationConnector href="cocome-1-StoreIf.repository#_aa6McdCwEduW_YoCCnq0vw"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_qCkVYvn0Eea-VZ6CKSY3KA" entityName="Connector Assembly_StoreIf-Wrapper &lt;StoreIf-Wrapper> -> Application.Store_Store_2_Server" requiringAssemblyContext_AssemblyConnector="_qCjuUPn0Eea-VZ6CKSY3KA" providingAssemblyContext_AssemblyConnector="_etALMFc5Ed23wcZsd06DZg">
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_VUkdBVWhEee_vbhS72O32Q" entityName="Connector Assembly_StoreIf-Wrapper &lt;StoreIf-Wrapper> -> Application.Store_Store_2_Server" requiringAssemblyContext_AssemblyConnector="_VUkdAFWhEee_vbhS72O32Q" providingAssemblyContext_AssemblyConnector="_etALMFc5Ed23wcZsd06DZg">
     <providedRole_AssemblyConnector href="cocome-1-StoreIf.repository#_8phWYNCmEduC9O_qbthgAg"/>
-    <requiredRole_AssemblyConnector href="cocome-1-StoreIf.repository#_qB9RY_n0Eea-VZ6CKSY3KA"/>
+    <requiredRole_AssemblyConnector href="cocome-1-StoreIf.repository#_VDFrc1WhEee_vbhS72O32Q"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_qCkVYfn0Eea-VZ6CKSY3KA" entityName="Connector Assembly_StoreIf-Wrapper &lt;StoreIf-Wrapper> -> Application.Store_Store_1_Server" requiringAssemblyContext_AssemblyConnector="_qCjuUPn0Eea-VZ6CKSY3KA" providingAssemblyContext_AssemblyConnector="_3AwvMFcnEd23wcZsd06DZg">
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_VUkdBFWhEee_vbhS72O32Q" entityName="Connector Assembly_StoreIf-Wrapper &lt;StoreIf-Wrapper> -> Application.Store_Store_1_Server" requiringAssemblyContext_AssemblyConnector="_VUkdAFWhEee_vbhS72O32Q" providingAssemblyContext_AssemblyConnector="_3AwvMFcnEd23wcZsd06DZg">
     <providedRole_AssemblyConnector href="cocome-1-StoreIf.repository#_8phWYNCmEduC9O_qbthgAg"/>
-    <requiredRole_AssemblyConnector href="cocome-1-StoreIf.repository#_qB9RY_n0Eea-VZ6CKSY3KA"/>
+    <requiredRole_AssemblyConnector href="cocome-1-StoreIf.repository#_VDFrc1WhEee_vbhS72O32Q"/>
   </connectors__ComposedStructure>
   <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_RgKJsFcpEd23wcZsd06DZg" entityName="ProductDispatcherIf" requiringAssemblyContext_AssemblyConnector="_3AwvMFcnEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_-W_gcFcoEd23wcZsd06DZg">
     <providedRole_AssemblyConnector href="cocome-1-StoreIf.repository#_gMw-sNCiEduC9O_qbthgAg"/>
@@ -148,9 +148,9 @@
     <providedRole_AssemblyConnector href="cocome-1-StoreIf.repository#_wrdB4NCmEduC9O_qbthgAg"/>
     <requiredRole_AssemblyConnector href="cocome-1-StoreIf.repository#_vsrnUdC4EduW_YoCCnq0vw"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_qCkVYPn0Eea-VZ6CKSY3KA" entityName="Connector GUI.Store_Store_2_Client -> Assembly_StoreIf-Wrapper &lt;StoreIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_8jo5MFc4Ed23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_qCjuUPn0Eea-VZ6CKSY3KA">
-    <providedRole_AssemblyConnector href="cocome-1-StoreIf.repository#_qB9RYvn0Eea-VZ6CKSY3KA"/>
-    <requiredRole_AssemblyConnector href="cocome-1-StoreIf.repository#_qCdAofn0Eea-VZ6CKSY3KA"/>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_VUkdA1WhEee_vbhS72O32Q" entityName="Connector GUI.Store_Store_2_Client -> Assembly_StoreIf-Wrapper &lt;StoreIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_8jo5MFc4Ed23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_VUkdAFWhEee_vbhS72O32Q">
+    <providedRole_AssemblyConnector href="cocome-1-StoreIf.repository#_VDFrclWhEee_vbhS72O32Q"/>
+    <requiredRole_AssemblyConnector href="cocome-1-StoreIf.repository#_VUeWYVWhEee_vbhS72O32Q"/>
   </connectors__ComposedStructure>
   <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_yPSiQFc9Ed23wcZsd06DZg" entityName="ProductDispatcherIf" requiringAssemblyContext_AssemblyConnector="_etALMFc5Ed23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_-W_gcFcoEd23wcZsd06DZg">
     <providedRole_AssemblyConnector href="cocome-1-StoreIf.repository#_gMw-sNCiEduC9O_qbthgAg"/>
@@ -168,13 +168,13 @@
     <providedRole_AssemblyConnector href="cocome-1-StoreIf.repository#_d1Mf0NChEduC9O_qbthgAg"/>
     <requiredRole_AssemblyConnector href="cocome-1-StoreIf.repository#_h-Kq4dCiEduC9O_qbthgAg"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_qCjuUfn0Eea-VZ6CKSY3KA" entityName="Connector GUI.Store_Store_1_Client -> Assembly_StoreIf-Wrapper &lt;StoreIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_nf0w4FcnEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_qCjuUPn0Eea-VZ6CKSY3KA">
-    <providedRole_AssemblyConnector href="cocome-1-StoreIf.repository#_qB9RYvn0Eea-VZ6CKSY3KA"/>
-    <requiredRole_AssemblyConnector href="cocome-1-StoreIf.repository#_qCdAofn0Eea-VZ6CKSY3KA"/>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_VUkdAVWhEee_vbhS72O32Q" entityName="Connector GUI.Store_Store_1_Client -> Assembly_StoreIf-Wrapper &lt;StoreIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_nf0w4FcnEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_VUkdAFWhEee_vbhS72O32Q">
+    <providedRole_AssemblyConnector href="cocome-1-StoreIf.repository#_VDFrclWhEee_vbhS72O32Q"/>
+    <requiredRole_AssemblyConnector href="cocome-1-StoreIf.repository#_VUeWYVWhEee_vbhS72O32Q"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_qCjuUvn0Eea-VZ6CKSY3KA" entityName="Connector Application.ProductDispatcher_EnterpriseServer -> Assembly_StoreIf-Wrapper &lt;StoreIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_-W_gcFcoEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_qCjuUPn0Eea-VZ6CKSY3KA">
-    <providedRole_AssemblyConnector href="cocome-1-StoreIf.repository#_qB9RYvn0Eea-VZ6CKSY3KA"/>
-    <requiredRole_AssemblyConnector href="cocome-1-StoreIf.repository#_qCdAoPn0Eea-VZ6CKSY3KA"/>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_VUkdAlWhEee_vbhS72O32Q" entityName="Connector Application.ProductDispatcher_EnterpriseServer -> Assembly_StoreIf-Wrapper &lt;StoreIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_-W_gcFcoEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_VUkdAFWhEee_vbhS72O32Q">
+    <providedRole_AssemblyConnector href="cocome-1-StoreIf.repository#_VDFrclWhEee_vbhS72O32Q"/>
+    <requiredRole_AssemblyConnector href="cocome-1-StoreIf.repository#_VUeWYFWhEee_vbhS72O32Q"/>
   </connectors__ComposedStructure>
   <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_MSQMUFcnEd23wcZsd06DZg" entityName="CashDeskConnectorIf_Store_1">
     <providedInterface__OperationProvidedRole href="cocome-1-StoreIf.repository#_WoD42tCjEduC9O_qbthgAg"/>

@@ -51,6 +51,7 @@ import org.palladiosimulator.pcm.repository.ProvidedRole;
 import org.palladiosimulator.pcm.repository.Repository;
 import org.palladiosimulator.pcm.repository.RequiredRole;
 
+import edu.squat.transformations.ArchitecturalVersion;
 import edu.squat.transformations.modifiability.PCMTransformerRunner;
 import edu.squat.transformations.modifiability.RunnerHelper;
 import edu.squat.transformations.modifiability.Tactic;
@@ -106,7 +107,9 @@ public class SplitRespRunner extends PCMTransformerRunner {
 		cleanUpManual = (Rule) module.getUnit("cleanUpManual");
 	}
 
-	public void run(boolean saveResult) {
+	public List<ArchitecturalVersion> run(boolean saveResult) {
+		List<ArchitecturalVersion> ret= new ArrayList<>();
+		
 		candidateTactics = new ArrayList<Tactic>();
 		//Create and configure an engine
 		engine = new EngineImpl();
@@ -154,6 +157,8 @@ public class SplitRespRunner extends PCMTransformerRunner {
 				//Store the results
 				this.addTactic(seed, tempGraph, match);
 				if (saveResult) {
+					String nameOfTheModel=resultRepositoryFilename.replaceAll(".repository", "").replace("#REPLACEMENT#", String.valueOf(match) + "-" + seed.getEntityName());
+					ret.add(new ArchitecturalVersion(nameOfTheModel, dirPath));
 					RunnerHelper.saveRepositoryResult(
 							resourceSet, 
 							tempGraph, 
@@ -182,6 +187,7 @@ public class SplitRespRunner extends PCMTransformerRunner {
 				app.undo(monitor);
 			}
 		}
+		return ret;
 	}
 
 	private List<Match> findMatchesFirstRule() {

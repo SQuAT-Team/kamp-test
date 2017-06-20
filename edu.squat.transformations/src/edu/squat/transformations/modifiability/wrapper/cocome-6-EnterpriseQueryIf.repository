@@ -119,7 +119,7 @@
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_XDTf09CiEduC9O_qbthgAg" entityName="TradingSystem.Inventory.Application.ProductDispatcher">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_gMw-sNCiEduC9O_qbthgAg" entityName="ProductDispatcherIf" providedInterface__OperationProvidedRole="_dbS8pNCiEduC9O_qbthgAg"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_qGcIwfn0Eea-VZ6CKSY3KA" requiredInterface__OperationRequiredRole="_qGLqEPn0Eea-VZ6CKSY3KA"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_chJ_gVWhEee_vbhS72O32Q" requiredInterface__OperationRequiredRole="_cVF5cFWhEee_vbhS72O32Q"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_jJt4AdCiEduC9O_qbthgAg" entityName="PersistenceIf" requiredInterface__OperationRequiredRole="_F8ovQNChEduC9O_qbthgAg"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_kzNlYdCiEduC9O_qbthgAg" entityName="StoreQueryIf" requiredInterface__OperationRequiredRole="_HSKXwNChEduC9O_qbthgAg"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_AXZsESDlEdyyNLPIIGbfMQ" entityName="StoreIf" requiredInterface__OperationRequiredRole="_4153pNCiEduC9O_qbthgAg"/>
@@ -133,7 +133,7 @@
       <steps_Behaviour xsi:type="seff:StartAction" id="_BHJ0kNLyEduQ7qbNANXHPw" successor_AbstractAction="_EJT-ANLyEduQ7qbNANXHPw"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_BYli0NLyEduQ7qbNANXHPw" predecessor_AbstractAction="_A2scgN7AEduAmOtZLewIEg"/>
       <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_EJT-ANLyEduQ7qbNANXHPw" entityName="getPersistenceContext" predecessor_AbstractAction="_BHJ0kNLyEduQ7qbNANXHPw" successor_AbstractAction="__MsdkNLyEduQ7qbNANXHPw" calledService_ExternalService="_2NL5V1cvEeGI_ZRmqWdpYA" role_ExternalService="_jJt4AdCiEduC9O_qbthgAg"/>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="__MsdkNLyEduQ7qbNANXHPw" entityName="queryEnterpriseById" predecessor_AbstractAction="_EJT-ANLyEduQ7qbNANXHPw" successor_AbstractAction="_Y6-ZoNLzEduQ7qbNANXHPw" calledService_ExternalService="_qGP7gPn0Eea-VZ6CKSY3KA" role_ExternalService="_qGcIwfn0Eea-VZ6CKSY3KA"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="__MsdkNLyEduQ7qbNANXHPw" entityName="queryEnterpriseById" predecessor_AbstractAction="_EJT-ANLyEduQ7qbNANXHPw" successor_AbstractAction="_Y6-ZoNLzEduQ7qbNANXHPw" calledService_ExternalService="_cVPDYFWhEee_vbhS72O32Q" role_ExternalService="_chJ_gVWhEee_vbhS72O32Q"/>
       <steps_Behaviour xsi:type="seff:InternalAction" id="_Y6-ZoNLzEduQ7qbNANXHPw" entityName="removeCallingStore" predecessor_AbstractAction="__MsdkNLyEduQ7qbNANXHPw" successor_AbstractAction="_trQxsNLzEduQ7qbNANXHPw">
         <resourceDemand_Action>
           <specification_ParametericResourceDemand specification="1"/>
@@ -232,7 +232,7 @@
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_URW_1dCmEduC9O_qbthgAg" entityName="TradingSystem.Inventory.Application.Reporting">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_wrdB4NCmEduC9O_qbthgAg" entityName="ReportingIf" providedInterface__OperationProvidedRole="_vebx9NCiEduC9O_qbthgAg"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_qGcIwPn0Eea-VZ6CKSY3KA" requiredInterface__OperationRequiredRole="_qGLqEPn0Eea-VZ6CKSY3KA"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_chJ_gFWhEee_vbhS72O32Q" requiredInterface__OperationRequiredRole="_cVF5cFWhEee_vbhS72O32Q"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_lmx-EdCnEduC9O_qbthgAg" entityName="PersistenceIf" requiredInterface__OperationRequiredRole="_F8ovQNChEduC9O_qbthgAg"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_t5HAodCnEduC9O_qbthgAg" entityName="StoreQueryIf" requiredInterface__OperationRequiredRole="_HSKXwNChEduC9O_qbthgAg"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_ifiR9yCfEdyrYp4aNf6BNw" describedService__SEFF="_2NO8qVcvEeGI_ZRmqWdpYA">
@@ -398,18 +398,18 @@
       <steps_Behaviour xsi:type="seff:StopAction" id="_rg798B_8Edy5k9ER1TBmjg" predecessor_AbstractAction="_rYcwUB_8Edy5k9ER1TBmjg"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_qGLqEfn0Eea-VZ6CKSY3KA" entityName="EnterpriseQueryIf-Wrapper">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_qGLqEvn0Eea-VZ6CKSY3KA" providedInterface__OperationProvidedRole="_qGLqEPn0Eea-VZ6CKSY3KA"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_qGLqE_n0Eea-VZ6CKSY3KA" requiredInterface__OperationRequiredRole="_Eldg8NChEduC9O_qbthgAg"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_qGP7gvn0Eea-VZ6CKSY3KA" describedService__SEFF="_qGP7gPn0Eea-VZ6CKSY3KA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_qGP7g_n0Eea-VZ6CKSY3KA" entityName="start" successor_AbstractAction="_qGP7hPn0Eea-VZ6CKSY3KA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_qGP7hPn0Eea-VZ6CKSY3KA" entityName="Overhead [EnterpriseQueryIf-Wrapper]" predecessor_AbstractAction="_qGP7g_n0Eea-VZ6CKSY3KA" successor_AbstractAction="_qGP7hfn0Eea-VZ6CKSY3KA">
+  <components__Repository xsi:type="repository:BasicComponent" id="_cVGggFWhEee_vbhS72O32Q" entityName="EnterpriseQueryIf-Wrapper">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_cVGggVWhEee_vbhS72O32Q" providedInterface__OperationProvidedRole="_cVF5cFWhEee_vbhS72O32Q"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_cVGgglWhEee_vbhS72O32Q" requiredInterface__OperationRequiredRole="_Eldg8NChEduC9O_qbthgAg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_chFuEFWhEee_vbhS72O32Q" describedService__SEFF="_cVPDYFWhEee_vbhS72O32Q">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_chFuEVWhEee_vbhS72O32Q" entityName="start" successor_AbstractAction="_chFuElWhEee_vbhS72O32Q"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_chFuElWhEee_vbhS72O32Q" entityName="Overhead [EnterpriseQueryIf-Wrapper]" predecessor_AbstractAction="_chFuEVWhEee_vbhS72O32Q" successor_AbstractAction="_chFuE1WhEee_vbhS72O32Q">
         <resourceDemand_Action>
-          <specification_ParametericResourceDemand specification="15"/>
+          <specification_ParametericResourceDemand specification="2"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_qGP7hfn0Eea-VZ6CKSY3KA" entityName="External_EnterpriseQueryIf-Wrapper_queryEnterpriseById" predecessor_AbstractAction="_qGP7hPn0Eea-VZ6CKSY3KA" successor_AbstractAction="_qGP7hvn0Eea-VZ6CKSY3KA" calledService_ExternalService="_2NLSRFcvEeGI_ZRmqWdpYA" role_ExternalService="_qGLqE_n0Eea-VZ6CKSY3KA">
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_chFuE1WhEee_vbhS72O32Q" entityName="External_EnterpriseQueryIf-Wrapper_queryEnterpriseById" predecessor_AbstractAction="_chFuElWhEee_vbhS72O32Q" successor_AbstractAction="_chFuFFWhEee_vbhS72O32Q" calledService_ExternalService="_2NLSRFcvEeGI_ZRmqWdpYA" role_ExternalService="_cVGgglWhEee_vbhS72O32Q">
         <inputVariableUsages__CallAction>
           <variableCharacterisation_VariableUsage type="VALUE">
             <specification_VariableCharacterisation specification="enterpriseId.VALUE"/>
@@ -429,17 +429,17 @@
           <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="return"/>
         </returnVariableUsage__CallReturnAction>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_qGP7hvn0Eea-VZ6CKSY3KA" entityName="stop" predecessor_AbstractAction="_qGP7hfn0Eea-VZ6CKSY3KA"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_chFuFFWhEee_vbhS72O32Q" entityName="stop" predecessor_AbstractAction="_chFuE1WhEee_vbhS72O32Q"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_qGQikPn0Eea-VZ6CKSY3KA" describedService__SEFF="_qGP7gfn0Eea-VZ6CKSY3KA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_qGQikfn0Eea-VZ6CKSY3KA" entityName="start" successor_AbstractAction="_qGQikvn0Eea-VZ6CKSY3KA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_qGQikvn0Eea-VZ6CKSY3KA" entityName="Overhead [EnterpriseQueryIf-Wrapper]" predecessor_AbstractAction="_qGQikfn0Eea-VZ6CKSY3KA" successor_AbstractAction="_qGQik_n0Eea-VZ6CKSY3KA">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_chGVIFWhEee_vbhS72O32Q" describedService__SEFF="_cVPDYVWhEee_vbhS72O32Q">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_chGVIVWhEee_vbhS72O32Q" entityName="start" successor_AbstractAction="_chGVIlWhEee_vbhS72O32Q"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_chGVIlWhEee_vbhS72O32Q" entityName="Overhead [EnterpriseQueryIf-Wrapper]" predecessor_AbstractAction="_chGVIVWhEee_vbhS72O32Q" successor_AbstractAction="_chGVI1WhEee_vbhS72O32Q">
         <resourceDemand_Action>
-          <specification_ParametericResourceDemand specification="15"/>
+          <specification_ParametericResourceDemand specification="2"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_qGQik_n0Eea-VZ6CKSY3KA" entityName="External_EnterpriseQueryIf-Wrapper_getMeanTimeToDelivery" predecessor_AbstractAction="_qGQikvn0Eea-VZ6CKSY3KA" successor_AbstractAction="_qGQilPn0Eea-VZ6CKSY3KA" calledService_ExternalService="_2NL5UlcvEeGI_ZRmqWdpYA" role_ExternalService="_qGLqE_n0Eea-VZ6CKSY3KA">
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_chGVI1WhEee_vbhS72O32Q" entityName="External_EnterpriseQueryIf-Wrapper_getMeanTimeToDelivery" predecessor_AbstractAction="_chGVIlWhEee_vbhS72O32Q" successor_AbstractAction="_chGVJFWhEee_vbhS72O32Q" calledService_ExternalService="_2NL5UlcvEeGI_ZRmqWdpYA" role_ExternalService="_cVGgglWhEee_vbhS72O32Q">
         <returnVariableUsage__CallReturnAction>
           <variableCharacterisation_VariableUsage type="VALUE">
             <specification_VariableCharacterisation specification="return.VALUE"/>
@@ -447,7 +447,7 @@
           <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="return"/>
         </returnVariableUsage__CallReturnAction>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_qGQilPn0Eea-VZ6CKSY3KA" entityName="stop" predecessor_AbstractAction="_qGQik_n0Eea-VZ6CKSY3KA"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_chGVJFWhEee_vbhS72O32Q" entityName="stop" predecessor_AbstractAction="_chGVI1WhEee_vbhS72O32Q"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_WoD42tCjEduC9O_qbthgAg" entityName="CashDeskConnectorIf">
@@ -664,8 +664,8 @@
     <signatures__OperationInterface id="_2NQx1VcvEeGI_ZRmqWdpYA" entityName="flushDatabase"/>
   </interfaces__Repository>
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_RQoSZNCpEduC9O_qbthgAg" entityName="SaleRegisteredEvent"/>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_qGLqEPn0Eea-VZ6CKSY3KA" entityName="EnterpriseQueryIf-Wrapper">
-    <signatures__OperationInterface id="_qGP7gPn0Eea-VZ6CKSY3KA" entityName="queryEnterpriseById">
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_cVF5cFWhEee_vbhS72O32Q" entityName="EnterpriseQueryIf-Wrapper">
+    <signatures__OperationInterface id="_cVPDYFWhEee_vbhS72O32Q" entityName="queryEnterpriseById">
       <parameters__OperationSignature parameterName="enterpriseId">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
       </parameters__OperationSignature>
@@ -674,7 +674,7 @@
       </parameters__OperationSignature>
       <returnType__OperationSignature xsi:type="repository:CompositeDataType" href="cocomeTypes.repository#_43Fu5tFcEducE6dFyopUlg"/>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="_qGP7gfn0Eea-VZ6CKSY3KA" entityName="getMeanTimeToDelivery">
+    <signatures__OperationInterface id="_cVPDYVWhEee_vbhS72O32Q" entityName="getMeanTimeToDelivery">
       <parameters__OperationSignature parameterName="supplier">
         <dataType__Parameter xsi:type="repository:CompositeDataType" href="cocomeTypes.repository#_HzcZdtFdEducE6dFyopUlg"/>
       </parameters__OperationSignature>

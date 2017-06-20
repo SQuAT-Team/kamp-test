@@ -50,5 +50,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/org.palladiosimulator.pcm.componentinternaldependencies"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/org.palladiosimulator.pcm.fieldofactivityannotations"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/org.palladiosimulator.pcm.internalmodificationmark"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/edu.squat.transformations"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

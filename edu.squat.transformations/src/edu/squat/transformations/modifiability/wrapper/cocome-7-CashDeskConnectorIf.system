@@ -60,11 +60,11 @@
   <assemblyContexts__ComposedStructure id="_LoXbYFfjEd26K8JlmYJ10w" entityName="Data.Enterprise_EnterpriseServer">
     <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="cocome-7-CashDeskConnectorIf.repository#_-3VggNCgEduC9O_qbthgAg"/>
   </assemblyContexts__ComposedStructure>
-  <assemblyContexts__ComposedStructure id="_qHeDgPn0Eea-VZ6CKSY3KA" entityName="Assembly_CashDeskConnectorIf-Wrapper &lt;CashDeskConnectorIf-Wrapper>">
-    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="cocome-7-CashDeskConnectorIf.repository#_qG6p4fn0Eea-VZ6CKSY3KA"/>
+  <assemblyContexts__ComposedStructure id="_dETv4FWhEee_vbhS72O32Q" entityName="Assembly_CashDeskConnectorIf-Wrapper &lt;CashDeskConnectorIf-Wrapper>">
+    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="cocome-7-CashDeskConnectorIf.repository#_csklUVWhEee_vbhS72O32Q"/>
   </assemblyContexts__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_RBRDsFcoEd23wcZsd06DZg" entityName="CashDeskConnectorIf" outerProvidedRole_ProvidedDelegationConnector="_MSQMUFcnEd23wcZsd06DZg" assemblyContext_ProvidedDelegationConnector="_3AwvMFcnEd23wcZsd06DZg">
-    <innerProvidedRole_ProvidedDelegationConnector href="cocome-7-CashDeskConnectorIf.repository#__f6UsNCmEduC9O_qbthgAg"/>
+  <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_RBRDsFcoEd23wcZsd06DZg" entityName="CashDeskConnectorIf" outerProvidedRole_ProvidedDelegationConnector="_MSQMUFcnEd23wcZsd06DZg" assemblyContext_ProvidedDelegationConnector="_dETv4FWhEee_vbhS72O32Q">
+    <innerProvidedRole_ProvidedDelegationConnector href="cocome-7-CashDeskConnectorIf.repository#_csklUlWhEee_vbhS72O32Q"/>
   </connectors__ComposedStructure>
   <connectors__ComposedStructure xsi:type="composition:RequiredDelegationConnector" id="_pTresFcoEd23wcZsd06DZg" entityName="SaleRegisteredEvent" outerRequiredRole_RequiredDelegationConnector="_TWiHYFcnEd23wcZsd06DZg" assemblyContext_RequiredDelegationConnector="_3AwvMFcnEd23wcZsd06DZg">
     <innerRequiredRole_RequiredDelegationConnector href="cocome-7-CashDeskConnectorIf.repository#_aa6McdCwEduW_YoCCnq0vw"/>
@@ -168,16 +168,16 @@
     <providedRole_AssemblyConnector href="cocome-7-CashDeskConnectorIf.repository#_d1Mf0NChEduC9O_qbthgAg"/>
     <requiredRole_AssemblyConnector href="cocome-7-CashDeskConnectorIf.repository#_h-Kq4dCiEduC9O_qbthgAg"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_qHeqkPn0Eea-VZ6CKSY3KA" entityName="Connector Assembly_CashDeskConnectorIf-Wrapper &lt;CashDeskConnectorIf-Wrapper> -> Application.Store_Store_1_Server" requiringAssemblyContext_AssemblyConnector="_qHeDgPn0Eea-VZ6CKSY3KA" providingAssemblyContext_AssemblyConnector="_3AwvMFcnEd23wcZsd06DZg">
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_dETv4VWhEee_vbhS72O32Q" entityName="Connector Assembly_CashDeskConnectorIf-Wrapper &lt;CashDeskConnectorIf-Wrapper> -> Application.Store_Store_1_Server" requiringAssemblyContext_AssemblyConnector="_dETv4FWhEee_vbhS72O32Q" providingAssemblyContext_AssemblyConnector="_3AwvMFcnEd23wcZsd06DZg">
     <providedRole_AssemblyConnector href="cocome-7-CashDeskConnectorIf.repository#__f6UsNCmEduC9O_qbthgAg"/>
-    <requiredRole_AssemblyConnector href="cocome-7-CashDeskConnectorIf.repository#_qG6p4_n0Eea-VZ6CKSY3KA"/>
+    <requiredRole_AssemblyConnector href="cocome-7-CashDeskConnectorIf.repository#_csklU1WhEee_vbhS72O32Q"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_qHeqkfn0Eea-VZ6CKSY3KA" entityName="Connector Assembly_CashDeskConnectorIf-Wrapper &lt;CashDeskConnectorIf-Wrapper> -> Application.Store_Store_2_Server" requiringAssemblyContext_AssemblyConnector="_qHeDgPn0Eea-VZ6CKSY3KA" providingAssemblyContext_AssemblyConnector="_etALMFc5Ed23wcZsd06DZg">
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_dETv4lWhEee_vbhS72O32Q" entityName="Connector Assembly_CashDeskConnectorIf-Wrapper &lt;CashDeskConnectorIf-Wrapper> -> Application.Store_Store_2_Server" requiringAssemblyContext_AssemblyConnector="_dETv4FWhEee_vbhS72O32Q" providingAssemblyContext_AssemblyConnector="_etALMFc5Ed23wcZsd06DZg">
     <providedRole_AssemblyConnector href="cocome-7-CashDeskConnectorIf.repository#__f6UsNCmEduC9O_qbthgAg"/>
-    <requiredRole_AssemblyConnector href="cocome-7-CashDeskConnectorIf.repository#_qG6p4_n0Eea-VZ6CKSY3KA"/>
+    <requiredRole_AssemblyConnector href="cocome-7-CashDeskConnectorIf.repository#_csklU1WhEee_vbhS72O32Q"/>
   </connectors__ComposedStructure>
   <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_MSQMUFcnEd23wcZsd06DZg" entityName="CashDeskConnectorIf_Store_1">
-    <providedInterface__OperationProvidedRole href="cocome-7-CashDeskConnectorIf.repository#_WoD42tCjEduC9O_qbthgAg"/>
+    <providedInterface__OperationProvidedRole href="cocome-7-CashDeskConnectorIf.repository#_csklUFWhEee_vbhS72O32Q"/>
   </providedRoles_InterfaceProvidingEntity>
   <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_TWiHYFcnEd23wcZsd06DZg" entityName="SaleRegisteredEvent_Store_1">
     <requiredInterface__OperationRequiredRole href="cocome-7-CashDeskConnectorIf.repository#_RQoSZNCpEduC9O_qbthgAg"/>

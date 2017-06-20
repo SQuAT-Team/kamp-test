@@ -2,9 +2,11 @@ package io.github.squat_team;
 
 import java.util.*;
 
+import edu.squat.transformations.ArchitecturalVersion;
 import io.github.squat_team.agentsUtils.LoadHelper;
 import io.github.squat_team.agentsUtils.Proposal;
 import io.github.squat_team.agentsUtils.SillyBot;
+import io.github.squat_team.agentsUtils.transformations.ArchitecturalTransformationsFactory;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.model.PCMScenarioResult;
@@ -18,9 +20,12 @@ public class SQuATSillyBotsNegotiator {
 	private List<SillyBot> sillyBots;
 	private Proposal agreementProposal;
 	private int currentLevelOfTransformations;
+	private ArchitecturalTransformationsFactory archTransFactory;
+	
 	public SQuATSillyBotsNegotiator(){
 		agreementProposal=null;
 		currentLevelOfTransformations=1;
+		archTransFactory=new ArchitecturalTransformationsFactory();
 	}
 	
 	
@@ -251,6 +256,7 @@ public class SQuATSillyBotsNegotiator {
 		return true;
 	}
 	private HashMap<SillyBot, Proposal> collectInitialProposals() {
+		List<ArchitecturalVersion> versionsForLevel=archTransFactory.getArchitecturalTransformationsForLevel(1);
 		
 		System.out.println("Intial Proposals");
 		HashMap<SillyBot, Proposal> ret= new HashMap<>();

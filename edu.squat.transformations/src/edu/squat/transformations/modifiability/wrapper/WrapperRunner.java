@@ -79,6 +79,7 @@ import de.uka.ipd.sdq.stoex.NamespaceReference;
 import de.uka.ipd.sdq.stoex.StoexFactory;
 import de.uka.ipd.sdq.stoex.VariableReference;
 import edu.squat.pcm.PCMDefault;
+import edu.squat.transformations.ArchitecturalVersion;
 import edu.squat.transformations.modifiability.PCMTransformerRunner;
 import edu.squat.transformations.modifiability.RunnerHelper;
 import edu.squat.transformations.modifiability.Tactic;
@@ -116,7 +117,9 @@ public class WrapperRunner extends PCMTransformerRunner {
 	}
 	
 	@Override
-	public void run(boolean saveResult) {
+	public List<ArchitecturalVersion> run(boolean saveResult) {
+		List<ArchitecturalVersion> ret= new ArrayList<>();
+		
 		candidateTactics = new ArrayList<Tactic>();
 		//Create and configure an engine
 		engine = new EngineImpl();
@@ -184,6 +187,9 @@ public class WrapperRunner extends PCMTransformerRunner {
 				//Store the results
 				this.addTactic(null, tempGraph, null);
 				if (saveResult) {
+					String nameOfTheModel=resultRepositoryFilename.replaceAll(".repository", "").replace("#REPLACEMENT#", String.valueOf(counter) + "-" + fileName);
+					
+					ret.add(new ArchitecturalVersion(nameOfTheModel, dirPath));
 					RunnerHelper.saveRepositoryResult(
 							resourceSet, 
 							tempGraph, 
@@ -215,6 +221,7 @@ public class WrapperRunner extends PCMTransformerRunner {
 		else {
 			System.out.println("Could not mark components and interfaces that could use a wrapper");
 		}
+		return ret;
 	}
 
 	private void fixAffectedSEFFs(EGraph tempGraph, OperationInterface oldInterface, BasicComponent newComponent, OperationInterface newInterface) {

@@ -31,6 +31,7 @@ import org.palladiosimulator.pcm.usagemodel.UsagemodelPackage;
 import de.uka.ipd.sdq.identifier.IdentifierPackage;
 import de.uka.ipd.sdq.stoex.StoexPackage;
 import edu.squat.pcm.PCMHelper;
+import edu.squat.transformations.ArchitecturalVersion;
 
 public abstract class PCMTransformerRunner {
 	protected String dirPath;
@@ -205,7 +206,7 @@ public abstract class PCMTransformerRunner {
 	
 	public abstract void loadRules();
 
-	public abstract void run(boolean saveResult);
+	public abstract List<ArchitecturalVersion> run(boolean saveResult);
 	
 	public void run(String dirPath, 
 			String repositoryFilename, 
@@ -231,7 +232,7 @@ public abstract class PCMTransformerRunner {
 		this.run(saveResult);
 	}
 	
-	public void run(String dirPath, 
+	public List<ArchitecturalVersion> run(String dirPath, 
 			String repositoryFilename, String systemFilename, String resourceEnvironmentFilename, String allocationFilename, String usageFilename,
 			String henshinFilename, 
 			String resultRepositoryFilename, String resultSystemFilename, String resultResourceEnvironmentFilename, String resultAllocationFilename, String resultUsageFilename,
@@ -240,7 +241,7 @@ public abstract class PCMTransformerRunner {
 				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, usageFilename,
 				henshinFilename, 
 				resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename, resultUsageFilename);
-		this.run(saveResult);
+		return this.run(saveResult);
 	}
 	
 	protected void addTactic(BasicComponent seed, EGraph tempGraph, Match match) {

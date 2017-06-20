@@ -398,29 +398,36 @@
       <steps_Behaviour xsi:type="seff:StopAction" id="_rg798B_8Edy5k9ER1TBmjg" predecessor_AbstractAction="_rYcwUB_8Edy5k9ER1TBmjg"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_qG6p4fn0Eea-VZ6CKSY3KA" entityName="CashDeskConnectorIf-Wrapper">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_qG6p4vn0Eea-VZ6CKSY3KA" providedInterface__OperationProvidedRole="_qG6p4Pn0Eea-VZ6CKSY3KA"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_qG6p4_n0Eea-VZ6CKSY3KA" requiredInterface__OperationRequiredRole="_WoD42tCjEduC9O_qbthgAg"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_qHAJcfn0Eea-VZ6CKSY3KA" describedService__SEFF="_qG_iYPn0Eea-VZ6CKSY3KA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_qHAJcvn0Eea-VZ6CKSY3KA" entityName="start" successor_AbstractAction="_qHAJc_n0Eea-VZ6CKSY3KA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_qHAJc_n0Eea-VZ6CKSY3KA" entityName="Overhead [CashDeskConnectorIf-Wrapper]" predecessor_AbstractAction="_qHAJcvn0Eea-VZ6CKSY3KA" successor_AbstractAction="_qHAJdPn0Eea-VZ6CKSY3KA">
+  <components__Repository xsi:type="repository:BasicComponent" id="_csklUVWhEee_vbhS72O32Q" entityName="CashDeskConnectorIf-Wrapper">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_csklUlWhEee_vbhS72O32Q" providedInterface__OperationProvidedRole="_csklUFWhEee_vbhS72O32Q"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_csklU1WhEee_vbhS72O32Q" requiredInterface__OperationRequiredRole="_WoD42tCjEduC9O_qbthgAg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_dENCMFWhEee_vbhS72O32Q" describedService__SEFF="_csqr8FWhEee_vbhS72O32Q">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_dENCMVWhEee_vbhS72O32Q" entityName="start" successor_AbstractAction="_dENCMlWhEee_vbhS72O32Q"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_dENCMlWhEee_vbhS72O32Q" entityName="Overhead [CashDeskConnectorIf-Wrapper]" predecessor_AbstractAction="_dENCMVWhEee_vbhS72O32Q" successor_AbstractAction="_dENCM1WhEee_vbhS72O32Q">
         <resourceDemand_Action>
-          <specification_ParametericResourceDemand specification="15"/>
+          <specification_ParametericResourceDemand specification="2"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_qHAJdPn0Eea-VZ6CKSY3KA" entityName="External_CashDeskConnectorIf-Wrapper_bookSale" predecessor_AbstractAction="_qHAJc_n0Eea-VZ6CKSY3KA" successor_AbstractAction="_qHAJdfn0Eea-VZ6CKSY3KA" calledService_ExternalService="_2NKrM1cvEeGI_ZRmqWdpYA" role_ExternalService="_qG6p4_n0Eea-VZ6CKSY3KA"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_qHAJdfn0Eea-VZ6CKSY3KA" entityName="stop" predecessor_AbstractAction="_qHAJdPn0Eea-VZ6CKSY3KA"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_dENCM1WhEee_vbhS72O32Q" entityName="External_CashDeskConnectorIf-Wrapper_bookSale" predecessor_AbstractAction="_dENCMlWhEee_vbhS72O32Q" successor_AbstractAction="_dENCNFWhEee_vbhS72O32Q" calledService_ExternalService="_2NKrM1cvEeGI_ZRmqWdpYA" role_ExternalService="_csklU1WhEee_vbhS72O32Q">
+        <inputVariableUsages__CallAction>
+          <variableCharacterisation_VariableUsage type="NUMBER_OF_ELEMENTS">
+            <specification_VariableCharacterisation specification="saleTO.NUMBER_OF_ELEMENTS"/>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="saleTO"/>
+        </inputVariableUsages__CallAction>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_dENCNFWhEee_vbhS72O32Q" entityName="stop" predecessor_AbstractAction="_dENCM1WhEee_vbhS72O32Q"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_qHAJdvn0Eea-VZ6CKSY3KA" describedService__SEFF="_qHAJcPn0Eea-VZ6CKSY3KA">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_qHAJd_n0Eea-VZ6CKSY3KA" entityName="start" successor_AbstractAction="_qHAJePn0Eea-VZ6CKSY3KA"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_qHAJePn0Eea-VZ6CKSY3KA" entityName="Overhead [CashDeskConnectorIf-Wrapper]" predecessor_AbstractAction="_qHAJd_n0Eea-VZ6CKSY3KA" successor_AbstractAction="_qHAJefn0Eea-VZ6CKSY3KA">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_dENpQFWhEee_vbhS72O32Q" describedService__SEFF="_csqr8VWhEee_vbhS72O32Q">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_dENpQVWhEee_vbhS72O32Q" entityName="start" successor_AbstractAction="_dENpQlWhEee_vbhS72O32Q"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_dENpQlWhEee_vbhS72O32Q" entityName="Overhead [CashDeskConnectorIf-Wrapper]" predecessor_AbstractAction="_dENpQVWhEee_vbhS72O32Q" successor_AbstractAction="_dENpQ1WhEee_vbhS72O32Q">
         <resourceDemand_Action>
-          <specification_ParametericResourceDemand specification="15"/>
+          <specification_ParametericResourceDemand specification="2"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_qHAJefn0Eea-VZ6CKSY3KA" entityName="External_CashDeskConnectorIf-Wrapper_getProductWithStockItem" predecessor_AbstractAction="_qHAJePn0Eea-VZ6CKSY3KA" successor_AbstractAction="_qHAJevn0Eea-VZ6CKSY3KA" calledService_ExternalService="_2NLSQVcvEeGI_ZRmqWdpYA" role_ExternalService="_qG6p4_n0Eea-VZ6CKSY3KA">
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_dENpQ1WhEee_vbhS72O32Q" entityName="External_CashDeskConnectorIf-Wrapper_getProductWithStockItem" predecessor_AbstractAction="_dENpQlWhEee_vbhS72O32Q" successor_AbstractAction="_dENpRFWhEee_vbhS72O32Q" calledService_ExternalService="_2NLSQVcvEeGI_ZRmqWdpYA" role_ExternalService="_csklU1WhEee_vbhS72O32Q">
         <returnVariableUsage__CallReturnAction>
           <variableCharacterisation_VariableUsage type="VALUE">
             <specification_VariableCharacterisation specification="return.VALUE"/>
@@ -428,7 +435,7 @@
           <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="return"/>
         </returnVariableUsage__CallReturnAction>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_qHAJevn0Eea-VZ6CKSY3KA" entityName="stop" predecessor_AbstractAction="_qHAJefn0Eea-VZ6CKSY3KA"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_dENpRFWhEee_vbhS72O32Q" entityName="stop" predecessor_AbstractAction="_dENpQ1WhEee_vbhS72O32Q"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_WoD42tCjEduC9O_qbthgAg" entityName="CashDeskConnectorIf">
@@ -645,13 +652,13 @@
     <signatures__OperationInterface id="_2NQx1VcvEeGI_ZRmqWdpYA" entityName="flushDatabase"/>
   </interfaces__Repository>
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_RQoSZNCpEduC9O_qbthgAg" entityName="SaleRegisteredEvent"/>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_qG6p4Pn0Eea-VZ6CKSY3KA" entityName="CashDeskConnectorIf-Wrapper">
-    <signatures__OperationInterface id="_qG_iYPn0Eea-VZ6CKSY3KA" entityName="bookSale">
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_csklUFWhEee_vbhS72O32Q" entityName="CashDeskConnectorIf-Wrapper">
+    <signatures__OperationInterface id="_csqr8FWhEee_vbhS72O32Q" entityName="bookSale">
       <parameters__OperationSignature parameterName="saleTO">
         <dataType__Parameter xsi:type="repository:CompositeDataType" href="cocomeTypes.repository#_J-s5ptFpEducE6dFyopUlg"/>
       </parameters__OperationSignature>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="_qHAJcPn0Eea-VZ6CKSY3KA" entityName="getProductWithStockItem">
+    <signatures__OperationInterface id="_csqr8VWhEee_vbhS72O32Q" entityName="getProductWithStockItem">
       <parameters__OperationSignature parameterName="productBarCode">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
       </parameters__OperationSignature>
