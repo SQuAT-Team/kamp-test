@@ -20,7 +20,7 @@ public class ArchitecturalTransformationsFactory {
 	}
 	
 	public List<ArchitecturalVersion> getArchitecturalTransformationsForLevel(int level){
-		if(architecturesByLevel.get(level)==null)//TODO check that level is working. Not sure if it is the same number/object
+		if(architecturesByLevel.get(level)==null)
 			createArchitecturalTransformationsForLevel(level);
 		
 		//The results is the architectures created for this level plus the architectures created for previous levels

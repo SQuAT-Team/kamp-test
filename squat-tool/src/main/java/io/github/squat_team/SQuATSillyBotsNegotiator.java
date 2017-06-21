@@ -78,10 +78,7 @@ public class SQuATSillyBotsNegotiator {
 		return true;
 	}
 
-/*	private List<PCMArchitectureInstance> loadArchitecturalAlternatives() {
-		// TODO Auto-generated method stub
-		return null;
-	}*/
+
 
 	private void printAgreement(HashMap<SillyBot, Proposal> proposals) {
 		System.out.println("Agreement achieved!!!!!");

@@ -1,10 +1,8 @@
 package io.github.squat_team.agentsUtils;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import org.palladiosimulator.pcm.allocation.Allocation;
 import org.palladiosimulator.pcm.repository.Repository;
@@ -34,7 +32,7 @@ public class LoadHelper {
 		Float responseTimeScenario1=120f;
 		Float responseTimeScenario2=300f;
 		PCMScenario m1Scenario=createModifiabilityScenarioS1(ResponseMeasureType.DECIMAL,responseTimeScenario1);
-		PCMScenario m2Scenario=createModifiabilityScenarioS1(ResponseMeasureType.DECIMAL,responseTimeScenario2);
+		PCMScenario m2Scenario=createModifiabilityScenarioS2(ResponseMeasureType.DECIMAL,responseTimeScenario2);
 		
 		
 		ModifiabilityBot m1Bot=new ModifiabilityBot(/*3,*/ 115f,"m1",responseTimeScenario1);
@@ -45,12 +43,13 @@ public class LoadHelper {
 		
 		
 		for (Iterator<ArchitecturalVersion> iterator = architecturalAlternatives.iterator(); iterator.hasNext();) {
-			ArchitecturalVersion architecturalVersion = (ArchitecturalVersion) iterator.next();
+			ArchitecturalVersion architecturalVersion = iterator.next();
 			try {
 				m1Bot.insertInOrder(new ModifiabilityProposal(testModifiabilityScenario(m1Scenario,KAMPPCMBot.TYPE_COMPLEXITY,architecturalVersion), architecturalVersion.getFileName()));
 				m2Bot.insertInOrder(new ModifiabilityProposal(testModifiabilityScenario(m2Scenario,KAMPPCMBot.TYPE_COMPLEXITY,architecturalVersion), architecturalVersion.getFileName()));
+		
+				//TODO We must add the bots of performance here
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -71,7 +70,8 @@ public class LoadHelper {
 	
 	private float testModifiabilityScenario(PCMScenario scenario,String evaluationType, ArchitecturalVersion architecturalVersion) throws Exception {
 		boolean debug = true;
-		Comparable expectedResponse = scenario.getExpectedResult().getResponse();
+		@SuppressWarnings("unchecked")
+		Comparable<Float> expectedResponse = scenario.getExpectedResult().getResponse();
 		if(debug) java.lang.System.out.println("The goal of scenario: " + expectedResponse.toString());
 		KAMPPCMBot bot = new KAMPPCMBot(scenario);
 		bot.setEvaluationType(evaluationType);
@@ -82,7 +82,8 @@ public class LoadHelper {
 		PCMScenarioResult scenarioResult = bot.analyze(model);
 		String satisfaction_alt1 = scenarioResult.isSatisfied() >= 0 ? "SATISFIED" : "NOT SATISFIED";
 		if(debug) java.lang.System.out.println("The scenario satisfaction with " + model.getName() + " is: " + satisfaction_alt1);
-		Comparable response_alt1 = scenarioResult.getResult().getResponse();
+		@SuppressWarnings("unchecked")
+		Comparable<Float> response_alt1 = scenarioResult.getResult().getResponse();
 		return  ((Float) response_alt1).floatValue();
 	}
 	
@@ -97,7 +98,7 @@ public class LoadHelper {
 		return instance;
 	}
 	
-	private PCMScenario createModifiabilityScenarioS1(ResponseMeasureType type, Comparable response) {
+	private PCMScenario createModifiabilityScenarioS1(ResponseMeasureType type, Comparable<Float> response) {
 		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
 		PCMResult expectedResult = new PCMResult(type);
 		expectedResult.setResponse(response);
@@ -116,7 +117,7 @@ public class LoadHelper {
 		//
 		return scenario;
 	}
-	private PCMScenario createModifiabilityScenarioS2(ResponseMeasureType type, Comparable response) {	
+	private PCMScenario createModifiabilityScenarioS2(ResponseMeasureType type, Comparable<Float> response) {	
 		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
 		PCMResult expectedResult = new PCMResult(type);
 		expectedResult.setResponse(response);

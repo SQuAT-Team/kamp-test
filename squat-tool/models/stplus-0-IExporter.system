@@ -15,8 +15,8 @@
   <assemblyContexts__ComposedStructure id="_Ha2JcGCTEeaQ-qRnqvu5Tg" entityName="Assembly_Exporter">
     <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="stplus-0-IExporter.repository#_QWlc0F_MEeahZew5WJ0QOQ"/>
   </assemblyContexts__ComposedStructure>
-  <assemblyContexts__ComposedStructure id="_xboScFZeEeeVuaD_RqGJpA" entityName="Assembly_IExporter-Wrapper &lt;IExporter-Wrapper>">
-    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="stplus-0-IExporter.repository#_xWYmEFZeEeeVuaD_RqGJpA"/>
+  <assemblyContexts__ComposedStructure id="_glPf8FZlEeecEqFOgBmLgg" entityName="Assembly_IExporter-Wrapper &lt;IExporter-Wrapper>">
+    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="stplus-0-IExporter.repository#_gghYAVZlEeecEqFOgBmLgg"/>
   </assemblyContexts__ComposedStructure>
   <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_cIRFIC6MEd-Jla2o7wkBzQ" entityName="Connector Assembly_C1 &lt;C1> -> Assembly_C2 &lt;C2>" requiringAssemblyContext_AssemblyConnector="_X594sC6MEd-Jla2o7wkBzQ" providingAssemblyContext_AssemblyConnector="_YXdtAC6MEd-Jla2o7wkBzQ">
     <providedRole_AssemblyConnector href="stplus-0-IExporter.repository#_gCeNsC6IEd-Jla2o7wkBzQ"/>
@@ -37,17 +37,17 @@
     <providedRole_AssemblyConnector href="stplus-0-IExporter.repository#_-P7lIV45EeavvL8WcdoZSg"/>
     <requiredRole_AssemblyConnector href="stplus-0-IExporter.repository#_zpVJ5V7pEeavvL8WcdoZSg"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_xbo5gVZeEeeVuaD_RqGJpA" entityName="Connector Assembly_IExporter-Wrapper &lt;IExporter-Wrapper> -> Assembly_Exporter" requiringAssemblyContext_AssemblyConnector="_xboScFZeEeeVuaD_RqGJpA" providingAssemblyContext_AssemblyConnector="_Ha2JcGCTEeaQ-qRnqvu5Tg">
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_glQHAFZlEeecEqFOgBmLgg" entityName="Connector Assembly_IExporter-Wrapper &lt;IExporter-Wrapper> -> Assembly_Exporter" requiringAssemblyContext_AssemblyConnector="_glPf8FZlEeecEqFOgBmLgg" providingAssemblyContext_AssemblyConnector="_Ha2JcGCTEeaQ-qRnqvu5Tg">
     <providedRole_AssemblyConnector href="stplus-0-IExporter.repository#_gsQ_4V_OEeahZew5WJ0QOQ"/>
-    <requiredRole_AssemblyConnector href="stplus-0-IExporter.repository#_xWYmElZeEeeVuaD_RqGJpA"/>
+    <requiredRole_AssemblyConnector href="stplus-0-IExporter.repository#_gghYA1ZlEeecEqFOgBmLgg"/>
   </connectors__ComposedStructure>
   <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_aNtLhmCTEeaQ-qRnqvu5Tg" entityName="Connector Exporter-Back" requiringAssemblyContext_AssemblyConnector="_Ha2JcGCTEeaQ-qRnqvu5Tg" providingAssemblyContext_AssemblyConnector="_-tTDEF7oEeavvL8WcdoZSg">
     <providedRole_AssemblyConnector href="stplus-0-IExporter.repository#_-P7lIV45EeavvL8WcdoZSg"/>
     <requiredRole_AssemblyConnector href="stplus-0-IExporter.repository#_iUC2BV_OEeahZew5WJ0QOQ"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_xbo5gFZeEeeVuaD_RqGJpA" entityName="Connector Assembly_BusinessTripMgmt -> Assembly_IExporter-Wrapper &lt;IExporter-Wrapper>" requiringAssemblyContext_AssemblyConnector="_X594sC6MEd-Jla2o7wkBzQ" providingAssemblyContext_AssemblyConnector="_xboScFZeEeeVuaD_RqGJpA">
-    <providedRole_AssemblyConnector href="stplus-0-IExporter.repository#_xWYmEVZeEeeVuaD_RqGJpA"/>
-    <requiredRole_AssemblyConnector href="stplus-0-IExporter.repository#_xbkoEFZeEeeVuaD_RqGJpA"/>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_glPf8VZlEeecEqFOgBmLgg" entityName="Connector Assembly_BusinessTripMgmt -> Assembly_IExporter-Wrapper &lt;IExporter-Wrapper>" requiringAssemblyContext_AssemblyConnector="_X594sC6MEd-Jla2o7wkBzQ" providingAssemblyContext_AssemblyConnector="_glPf8FZlEeecEqFOgBmLgg">
+    <providedRole_AssemblyConnector href="stplus-0-IExporter.repository#_gghYAlZlEeecEqFOgBmLgg"/>
+    <requiredRole_AssemblyConnector href="stplus-0-IExporter.repository#_glL1kFZlEeecEqFOgBmLgg"/>
   </connectors__ComposedStructure>
   <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_WazzEC6MEd-Jla2o7wkBzQ" entityName="Provided_I1">
     <providedInterface__OperationProvidedRole href="stplus-0-IExporter.repository#_bh5lgC6IEd-Jla2o7wkBzQ"/>
