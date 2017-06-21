@@ -6,10 +6,16 @@ public class ArchitecturalVersion {
 	private String fileName;
 	private String path;
 	private String repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, usageFilename;
+	private String lastModifiedBy;
 	
-	public ArchitecturalVersion(String fileName,String path) {
+	
+	public static String MODIFIABILITY="modifiability";
+	public static String PERFORMANCE="performance";
+	
+	public ArchitecturalVersion(String fileName,String path,String lastModifiedBy) {
 		this.fileName=fileName;
 		this.path=path;
+		this.lastModifiedBy=lastModifiedBy;
 		repositoryFilename = fileName + ".repository";
 		systemFilename = fileName + ".system";
 		resourceEnvironmentFilename = fileName + ".resourceenvironment";
@@ -63,5 +69,7 @@ public class ArchitecturalVersion {
 	public void setUsageFilename(String usageFilename) {
 		this.usageFilename = usageFilename;
 	}
-	
+	public boolean lastModifiedByModifiability() {
+		return lastModifiedBy.equals(MODIFIABILITY);
+	}
 }

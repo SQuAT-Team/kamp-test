@@ -1,18 +1,16 @@
 package io.github.squat_team;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Scanner;
 
 import edu.squat.transformations.ArchitecturalVersion;
 import io.github.squat_team.agentsUtils.LoadHelper;
 import io.github.squat_team.agentsUtils.Proposal;
 import io.github.squat_team.agentsUtils.SillyBot;
 import io.github.squat_team.agentsUtils.transformations.ArchitecturalTransformationsFactory;
-import io.github.squat_team.model.PCMArchitectureInstance;
-import io.github.squat_team.model.PCMScenario;
-import io.github.squat_team.model.PCMScenarioResult;
-import io.github.squat_team.model.PCMTactic;
-import io.github.squat_team.utility.NaiveUtilityFunction;
-import io.github.squat_team.utility.UtilityComparator;
 
 public class SQuATSillyBotsNegotiator {
 
@@ -21,15 +19,20 @@ public class SQuATSillyBotsNegotiator {
 	private Proposal agreementProposal;
 	private int currentLevelOfTransformations;
 	private ArchitecturalTransformationsFactory archTransFactory;
+	private int maxNumberOfLevels;
 	
 	public SQuATSillyBotsNegotiator(){
 		agreementProposal=null;
 		currentLevelOfTransformations=1;
 		archTransFactory=new ArchitecturalTransformationsFactory();
+		maxNumberOfLevels=10;
 	}
 	
-	
-	public void negotiateBaseOnMultipleArchitectures(){
+	/**
+	 * 
+	 * @return false when a conflict is reached and true when there is an agreement
+	 */
+	public boolean negotiateBaseOnMultipleArchitectures(){
 		//architectureAlternatives=loadArchitecturalAlternatives(); This should be done for real. Now I'm hardcoding the results
 		//Step 1: Collect initial proposals
 		HashMap<SillyBot,Proposal> proposals = collectInitialProposals();
@@ -43,7 +46,7 @@ public class SQuATSillyBotsNegotiator {
 			if (shouldConcede.isEmpty()){
 				//Step 4: CONFLICT REACHED
 				createNegotiationResult(); //conflict 
-				return; 
+				return false; 
 			}				
 			else{				
 				System.out.println("Step 3.b: Agent/s who has to concede [#= "+ shouldConcede.size()+"]=> "+ shouldConcede.toString());
@@ -72,7 +75,7 @@ public class SQuATSillyBotsNegotiator {
 		}
 		//At this point an agreement should have been found => return it
 		printAgreement(proposals);
-		
+		return true;
 	}
 
 /*	private List<PCMArchitectureInstance> loadArchitecturalAlternatives() {
@@ -256,12 +259,12 @@ public class SQuATSillyBotsNegotiator {
 		return true;
 	}
 	private HashMap<SillyBot, Proposal> collectInitialProposals() {
-		List<ArchitecturalVersion> versionsForLevel=archTransFactory.getArchitecturalTransformationsForLevel(1);
+		List<ArchitecturalVersion> versionsForLevel=archTransFactory.getArchitecturalTransformationsForLevel(currentLevelOfTransformations);
 		
 		System.out.println("Intial Proposals");
 		HashMap<SillyBot, Proposal> ret= new HashMap<>();
 		//Each agent has to make a ranking with the alternatives and select the best for its scenario 
-		sillyBots=new LoadHelper().loadBotsWithInformation();
+		sillyBots=new LoadHelper().loadBotsForArchitecturalAlternatives(versionsForLevel);
 		System.out.println("Total proposals: "+sillyBots.get(0).getOrderedProposals().size());
 		for (Iterator<SillyBot> iterator = sillyBots.iterator(); iterator.hasNext();) {
 			SillyBot bot = (SillyBot) iterator.next();
@@ -269,6 +272,13 @@ public class SQuATSillyBotsNegotiator {
 			System.out.println(bot+" "+bot.getBestProposal());
 		}
 		return ret;
+	}
+	public void negotiatiateUntilAnAgreementIsReached(){
+		boolean agreement=false;
+		while(!agreement&&(currentLevelOfTransformations<=maxNumberOfLevels)){
+			agreement=negotiateBaseOnMultipleArchitectures();
+			currentLevelOfTransformations++;
+		}
 	}
 	public static void main(String[] args) {
 		new SQuATSillyBotsNegotiator().negotiateBaseOnMultipleArchitectures();

@@ -21,8 +21,6 @@ public class ModifiabilityTransformationsFactory {
 		ret.addAll(runWrapper());
 		ret.addAll(runSplitResp());
 		ret.addAll(runInsInter());
-		//TODO
-		
 		return ret;
 	}
 	public List<ArchitecturalVersion> runWrapper() {
@@ -41,7 +39,7 @@ public class ModifiabilityTransformationsFactory {
 	}
 	
 	private List<ArchitecturalVersion> runTransformation( PCMTransformerRunner runner, String henshinFilename) {
-		ArchitecturalVersion resultantArchitecture=new ArchitecturalVersion(currentInitialArchitecture.getFileName() + "-" + "#REPLACEMENT#",currentInitialArchitecture.getPath());
+		ArchitecturalVersion resultantArchitecture=new ArchitecturalVersion(currentInitialArchitecture.getFileName() + "-" + "#REPLACEMENT#",currentInitialArchitecture.getPath(),"");
 		return runner.run(currentInitialArchitecture.getPath(),
 				currentInitialArchitecture.getRepositoryFilename(), currentInitialArchitecture.getSystemFilename(), currentInitialArchitecture.getResourceEnvironmentFilename(), currentInitialArchitecture.getAllocationFilename(), currentInitialArchitecture.getUsageFilename(),
 			henshinFilename, 

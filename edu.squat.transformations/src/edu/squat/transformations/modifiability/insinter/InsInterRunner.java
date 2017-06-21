@@ -178,7 +178,7 @@ public class InsInterRunner extends PCMTransformerRunner {
 					this.addTactic(null, tempGraph, null);
 					if (saveResult) {
 						String nameOfTheModel=resultRepositoryFilename.replaceAll(".repository", "").replace("#REPLACEMENT#", String.valueOf(counter) + "-" + interfacesName);
-						ret.add(new ArchitecturalVersion(nameOfTheModel, dirPath));
+						ret.add(new ArchitecturalVersion(nameOfTheModel, dirPath,ArchitecturalVersion.MODIFIABILITY));
 						
 						RunnerHelper.saveRepositoryResult(
 								resourceSet, 

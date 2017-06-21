@@ -158,7 +158,7 @@ public class SplitRespRunner extends PCMTransformerRunner {
 				this.addTactic(seed, tempGraph, match);
 				if (saveResult) {
 					String nameOfTheModel=resultRepositoryFilename.replaceAll(".repository", "").replace("#REPLACEMENT#", String.valueOf(match) + "-" + seed.getEntityName());
-					ret.add(new ArchitecturalVersion(nameOfTheModel, dirPath));
+					ret.add(new ArchitecturalVersion(nameOfTheModel, dirPath,ArchitecturalVersion.MODIFIABILITY));
 					RunnerHelper.saveRepositoryResult(
 							resourceSet, 
 							tempGraph, 
