@@ -20,12 +20,14 @@ public class SQuATSillyBotsNegotiator {
 	private int currentLevelOfTransformations;
 	private ArchitecturalTransformationsFactory archTransFactory;
 	private int maxNumberOfLevels;
+	private boolean noMoreAlternatives;
 	
 	public SQuATSillyBotsNegotiator(){
 		agreementProposal=null;
 		currentLevelOfTransformations=1;
 		archTransFactory=new ArchitecturalTransformationsFactory();
 		maxNumberOfLevels=10;
+		noMoreAlternatives=false;
 	}
 	
 	/**
@@ -256,23 +258,28 @@ public class SQuATSillyBotsNegotiator {
 		return true;
 	}
 	private HashMap<SillyBot, Proposal> collectInitialProposals() {
-		List<ArchitecturalVersion> versionsForLevel=archTransFactory.getArchitecturalTransformationsForLevel(currentLevelOfTransformations);
-		
-		System.out.println("Intial Proposals");
 		HashMap<SillyBot, Proposal> ret= new HashMap<>();
-		//Each agent has to make a ranking with the alternatives and select the best for its scenario 
-		sillyBots=new LoadHelper().loadBotsForArchitecturalAlternatives(versionsForLevel);
-		System.out.println("Total proposals: "+sillyBots.get(0).getOrderedProposals().size());
-		for (Iterator<SillyBot> iterator = sillyBots.iterator(); iterator.hasNext();) {
-			SillyBot bot = (SillyBot) iterator.next();
-			ret.put(bot, bot.getBestProposal());
-			System.out.println(bot+" "+bot.getBestProposal());
+		List<ArchitecturalVersion> versionsUntilLevel=archTransFactory.getArchitecturalTransformationsUntilLevel(currentLevelOfTransformations);
+		List<ArchitecturalVersion> versionsForLevel=archTransFactory.transformationsForLevel(currentLevelOfTransformations);
+		if(versionsForLevel.size()==0){
+			noMoreAlternatives=true;
+		}else{
+			System.out.println("Intial Proposals");
+			
+			//Each agent has to make a ranking with the alternatives and select the best for its scenario 
+			sillyBots=new LoadHelper().loadBotsForArchitecturalAlternatives(versionsUntilLevel);
+			System.out.println("Total proposals: "+sillyBots.get(0).getOrderedProposals().size());
+			for (Iterator<SillyBot> iterator = sillyBots.iterator(); iterator.hasNext();) {
+				SillyBot bot = (SillyBot) iterator.next();
+				ret.put(bot, bot.getBestProposal());
+				System.out.println(bot+" "+bot.getBestProposal());
+			}
 		}
 		return ret;
 	}
 	public void negotiatiateUntilAnAgreementIsReached(){
 		boolean agreement=false;
-		while(!agreement&&(currentLevelOfTransformations<=maxNumberOfLevels)){
+		while(!agreement&&(currentLevelOfTransformations<=maxNumberOfLevels)&&!noMoreAlternatives){
 			agreement=negotiateBaseOnMultipleArchitectures();
 			currentLevelOfTransformations++;
 		}

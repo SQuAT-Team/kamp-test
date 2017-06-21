@@ -19,7 +19,7 @@ public class ArchitecturalTransformationsFactory {
 		architecturesByLevel=new Hashtable<>();
 	}
 	
-	public List<ArchitecturalVersion> getArchitecturalTransformationsForLevel(int level){
+	public List<ArchitecturalVersion> getArchitecturalTransformationsUntilLevel(int level){
 		if(architecturesByLevel.get(level)==null)
 			createArchitecturalTransformationsForLevel(level);
 		
@@ -59,6 +59,10 @@ public class ArchitecturalTransformationsFactory {
 			ArchitecturalVersion architecturalVersion) {
 		//TODO I also have to do it for PERFORMANCE
 		return new ArrayList<ArchitecturalVersion>();
+	}
+
+	public List<ArchitecturalVersion> transformationsForLevel(int level) {
+		return architecturesByLevel.get(level);
 	}
 	
 }
