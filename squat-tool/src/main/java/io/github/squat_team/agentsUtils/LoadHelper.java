@@ -45,8 +45,8 @@ public class LoadHelper {
 		for (Iterator<ArchitecturalVersion> iterator = architecturalAlternatives.iterator(); iterator.hasNext();) {
 			ArchitecturalVersion architecturalVersion = iterator.next();
 			try {
-				m1Bot.insertInOrder(new ModifiabilityProposal(testModifiabilityScenario(m1Scenario,KAMPPCMBot.TYPE_COMPLEXITY,architecturalVersion), architecturalVersion.getFileName()));
-				m2Bot.insertInOrder(new ModifiabilityProposal(testModifiabilityScenario(m2Scenario,KAMPPCMBot.TYPE_COMPLEXITY,architecturalVersion), architecturalVersion.getFileName()));
+				m1Bot.insertInOrder(new ModifiabilityProposal(calculateModifiabilityComplexity(m1Scenario,KAMPPCMBot.TYPE_COMPLEXITY,architecturalVersion), architecturalVersion.getFileName()));
+				m2Bot.insertInOrder(new ModifiabilityProposal(calculateModifiabilityComplexity(m2Scenario,KAMPPCMBot.TYPE_COMPLEXITY,architecturalVersion), architecturalVersion.getFileName()));
 		
 				//TODO We must add the bots of performance here
 			} catch (Exception e) {
@@ -68,7 +68,7 @@ public class LoadHelper {
 		return ret;
 	}
 	
-	private float testModifiabilityScenario(PCMScenario scenario,String evaluationType, ArchitecturalVersion architecturalVersion) throws Exception {
+	private float calculateModifiabilityComplexity(PCMScenario scenario,String evaluationType, ArchitecturalVersion architecturalVersion) throws Exception {
 		boolean debug = true;
 		@SuppressWarnings("unchecked")
 		Comparable<Float> expectedResponse = scenario.getExpectedResult().getResponse();
