@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Percentage.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fastpan</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.performance.analysis.result.valueobject</a> &gt; <span class="el_source">Percentage.java</span></div><h1>Percentage.java</h1><pre class="source lang-java linenums">package de.fakeller.performance.analysis.result.valueobject;
+
+import java.util.Locale;
+
+public class Percentage extends AbstractValueObject&lt;Double&gt; {
+
+    protected Percentage(final double percentage) {
+<span class="fc" id="L8">        super(percentage);</span>
+<span class="fc" id="L9">    }</span>
+
+    /**
+     * Creates a percentage.
+     *
+     * @param percentage pass a number in the interval between [0.0;1.0] to represent 0% to 100%.
+     */
+
+    public static Percentage of(final double percentage) {
+<span class="fc" id="L18">        return new Percentage(percentage);</span>
+    }
+
+    public double getPercentage() {
+<span class="fc" id="L22">        return this.value;</span>
+    }
+
+    public String toHumanReadable() {
+<span class="fc" id="L26">        return String.format(Locale.ROOT, &quot;%.2f%%&quot;, 100.0 * getPercentage());</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

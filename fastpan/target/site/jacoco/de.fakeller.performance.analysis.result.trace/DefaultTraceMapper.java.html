@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DefaultTraceMapper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fastpan</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.performance.analysis.result.trace</a> &gt; <span class="el_source">DefaultTraceMapper.java</span></div><h1>DefaultTraceMapper.java</h1><pre class="source lang-java linenums">package de.fakeller.performance.analysis.result.trace;
+
+import de.fakeller.performance.analysis.result.AttachedResult;
+import de.fakeller.performance.analysis.result.PerformanceResult;
+import de.fakeller.performance.analysis.result.PerformanceResultWriter;
+import de.fakeller.performance.analysis.result.Result;
+
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.logging.Logger;
+
+/**
+ * @author Fabian Keller
+ */
+public class DefaultTraceMapper&lt;FROM, TO&gt; implements TraceMapper&lt;FROM, TO&gt; {
+
+<span class="fc" id="L18">    private static final Logger log = Logger.getLogger(DefaultTraceMapper.class.getName());</span>
+
+    private final Supplier&lt;PerformanceResultWriter&lt;TO&gt;&gt; resultWriterFactory;
+    private final Function&lt;FROM, Optional&lt;TO&gt;&gt; traceMapper;
+
+    /**
+     * Initialize a trace mapper.
+     *
+     * @param resultWriterFactory when called, creates a new {@link PerformanceResultWriter}
+     * @param traceMapper         maps a {@link FROM} model object to its corresponding {@link TO} object. If there is
+     *                            no such corresponding element, the method may return {@link Optional#empty()}.
+     */
+<span class="fc" id="L30">    public DefaultTraceMapper(final Supplier&lt;PerformanceResultWriter&lt;TO&gt;&gt; resultWriterFactory, final Function&lt;FROM, Optional&lt;TO&gt;&gt; traceMapper) {</span>
+<span class="fc" id="L31">        this.resultWriterFactory = resultWriterFactory;</span>
+<span class="fc" id="L32">        this.traceMapper = traceMapper;</span>
+<span class="fc" id="L33">    }</span>
+
+    @Override
+    public PerformanceResult&lt;TO&gt; map(final PerformanceResult&lt;FROM&gt; result) {
+<span class="fc" id="L37">        final PerformanceResultWriter&lt;TO&gt; writer = this.resultWriterFactory.get();</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        if (!result.hasResults()) {</span>
+<span class="fc" id="L39">            return writer.get();</span>
+        }
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        for (final Result&lt;FROM&gt; res : result.getResults()) {</span>
+<span class="fc" id="L42">            final Optional&lt;TO&gt; traced = this.traceMapper.apply(res.attachedTo());</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">            if (traced.isPresent()) {</span>
+<span class="fc" id="L44">                writer.attach(new AttachedResult&lt;TO&gt;(traced.get(), res.value()));</span>
+            } else {
+<span class="fc" id="L46">                log.fine(String.format(&quot;Could not trace element '%s' in result trace mapper. Skipping result.&quot;, res.attachedTo()));</span>
+            }
+<span class="fc" id="L48">        }</span>
+<span class="fc" id="L49">        return writer.get();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

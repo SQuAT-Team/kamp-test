@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NormalDistributionMetric.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fastpan</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.performance.analysis.result.metric.probabilistic</a> &gt; <span class="el_source">NormalDistributionMetric.java</span></div><h1>NormalDistributionMetric.java</h1><pre class="source lang-java linenums">package de.fakeller.performance.analysis.result.metric.probabilistic;
+
+import de.fakeller.performance.analysis.result.metric.AbstractPerformanceMetric;
+import de.fakeller.performance.analysis.result.quantity.PerformanceQuantity;
+import de.fakeller.performance.analysis.result.valueobject.statistics.StandardDeviation;
+import de.fakeller.performance.analysis.result.valueobject.statistics.Variance;
+
+import java.util.Locale;
+
+/**
+ * Represents a normal distribution of the metric, parametrized by the mean mu and the variance sigma.
+ */
+public class NormalDistributionMetric&lt;Q extends PerformanceQuantity&gt; extends AbstractPerformanceMetric&lt;Q&gt; implements ProbabilisticMetric&lt;Q&gt; {
+
+    private Q mu;
+    private Variance sigma;
+
+    public NormalDistributionMetric(Q mu, StandardDeviation std) {
+<span class="fc" id="L19">        this(mu, new Variance(std.getStandardDeviation() * std.getStandardDeviation()));</span>
+<span class="fc" id="L20">    }</span>
+
+    public NormalDistributionMetric(Q mu, Variance sigma) {
+<span class="fc" id="L23">        super((Class&lt;Q&gt;) mu.getClass());</span>
+<span class="fc" id="L24">        this.mu = mu;</span>
+<span class="fc" id="L25">        this.sigma = sigma;</span>
+<span class="fc" id="L26">    }</span>
+
+    @Override
+    public String toHumanReadable() {
+<span class="fc" id="L30">        return String.format(Locale.ROOT, &quot;N(mu=(%s), sigma=%.4f)&quot;, mu.toHumanReadable(), sigma.getVariance());</span>
+    }
+
+    public Q getMu() {
+<span class="fc" id="L34">        return mu;</span>
+    }
+
+    public Variance getSigma() {
+<span class="fc" id="L38">        return sigma;</span>
+    }
+
+    @Override
+    public boolean equals(Object o) {
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">        if (this == o) return true;</span>
+<span class="pc bpc" id="L44" title="2 of 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+
+<span class="fc" id="L46">        NormalDistributionMetric&lt;?&gt; that = (NormalDistributionMetric&lt;?&gt;) o;</span>
+
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        if (!mu.equals(that.mu)) return false;</span>
+<span class="fc" id="L49">        return sigma.equals(that.sigma);</span>
+
+    }
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L55">        int result = mu.hashCode();</span>
+<span class="fc" id="L56">        result = 31 * result + sigma.hashCode();</span>
+<span class="fc" id="L57">        return result;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
