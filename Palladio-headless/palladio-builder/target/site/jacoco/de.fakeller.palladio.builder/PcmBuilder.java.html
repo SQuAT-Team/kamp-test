@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PcmBuilder.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Builder</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.builder</a> &gt; <span class="el_source">PcmBuilder.java</span></div><h1>PcmBuilder.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.builder;
+
+import de.fakeller.palladio.builder.allocation.AllocationBuilder;
+import de.fakeller.palladio.builder.allocation.impl.AllocationBuilderImpl;
+import de.fakeller.palladio.builder.repository.RepositoryBuilder;
+import de.fakeller.palladio.builder.repository.impl.RepositoryBuilderImpl;
+import de.fakeller.palladio.builder.resourceenvironment.ResourceEnvironmentBuilder;
+import de.fakeller.palladio.builder.resourceenvironment.impl.ResourceEnvironmentBuilderImpl;
+import de.fakeller.palladio.builder.system.SystemBuilder;
+import de.fakeller.palladio.builder.system.impl.SystemBuilderImpl;
+import de.fakeller.palladio.builder.usage.UsageBuilder;
+import de.fakeller.palladio.builder.usage.impl.UsageBuilderImpl;
+import de.fakeller.palladio.environment.PCMResourceSetPartitionFactory;
+import de.fakeller.palladio.environment.util.PalladioResourceRepository;
+import de.fakeller.palladio.environment.util.PalladioResourceRepositoryImpl;
+import org.eclipse.emf.common.util.URI;
+import org.palladiosimulator.analyzer.workflow.blackboard.PCMResourceSetPartition;
+import org.palladiosimulator.solver.models.PCMInstance;
+
+/**
+ * Entry point to building {@link PCMInstance}s.
+ */
+public class PcmBuilder {
+
+    private final PCMResourceSetPartition rsp;
+
+    private final RepositoryBuilder repository;
+    private final SystemBuilder system;
+    private final ResourceEnvironmentBuilder env;
+    private final AllocationBuilder allocation;
+    private final UsageBuilder usage;
+
+<span class="nc" id="L33">    public PcmBuilder() {</span>
+        // setup palladio requirements
+<span class="nc" id="L35">        this.rsp = new PCMResourceSetPartitionFactory.DefaultFactory().create();</span>
+<span class="nc" id="L36">        final PalladioResourceRepository resources = new PalladioResourceRepositoryImpl(this.rsp.getResourceTypeRepository());</span>
+
+        // setup builders
+<span class="nc" id="L39">        this.repository = new RepositoryBuilderImpl();</span>
+<span class="nc" id="L40">        this.system = new SystemBuilderImpl();</span>
+<span class="nc" id="L41">        this.env = new ResourceEnvironmentBuilderImpl(resources);</span>
+<span class="nc" id="L42">        this.allocation = new AllocationBuilderImpl(this.system, this.env);</span>
+<span class="nc" id="L43">        this.usage = new UsageBuilderImpl(this.system);</span>
+<span class="nc" id="L44">    }</span>
+
+    public RepositoryBuilder repository() {
+<span class="nc" id="L47">        return this.repository;</span>
+    }
+
+    public SystemBuilder system() {
+<span class="nc" id="L51">        return this.system;</span>
+    }
+
+    public ResourceEnvironmentBuilder resourceEnvironment() {
+<span class="nc" id="L55">        return this.env;</span>
+    }
+
+    public AllocationBuilder allocation() {
+<span class="nc" id="L59">        return this.allocation;</span>
+    }
+
+    public UsageBuilder usage() {
+<span class="nc" id="L63">        return this.usage;</span>
+    }
+
+    public PCMInstance build() {
+<span class="nc" id="L67">        this.rsp.setContents(URI.createFileURI(&quot;default.repository&quot;), this.repository.build());</span>
+<span class="nc" id="L68">        this.rsp.setContents(URI.createFileURI(&quot;default.system&quot;), this.system.build());</span>
+<span class="nc" id="L69">        this.rsp.setContents(URI.createFileURI(&quot;default.resourceenvironment&quot;), this.env.build());</span>
+<span class="nc" id="L70">        this.rsp.setContents(URI.createFileURI(&quot;default.allocation&quot;), this.allocation.build());</span>
+<span class="nc" id="L71">        this.rsp.setContents(URI.createFileURI(&quot;default.usagemodel&quot;), this.usage.build());</span>
+<span class="nc" id="L72">        this.rsp.resolveAllProxies();</span>
+<span class="nc" id="L73">        return new PCMInstance(this.rsp);</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

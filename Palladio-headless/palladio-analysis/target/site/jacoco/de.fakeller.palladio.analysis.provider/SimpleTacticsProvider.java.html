@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SimpleTacticsProvider.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Analysis</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.analysis.provider</a> &gt; <span class="el_source">SimpleTacticsProvider.java</span></div><h1>SimpleTacticsProvider.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.analysis.provider;
+
+import de.fakeller.palladio.analysis.PcmProvider;
+import de.fakeller.palladio.builder.PcmBuilder;
+import de.fakeller.palladio.builder.repository.ComponentBuilder;
+import de.fakeller.palladio.builder.repository.InterfaceBuilder;
+import de.fakeller.palladio.builder.repository.ParameterType;
+import de.fakeller.palladio.builder.repository.SignatureBuilder;
+import de.fakeller.palladio.builder.repository.failure.SoftwareInducedFailureBuilder;
+import de.fakeller.palladio.builder.resourceenvironment.ContainerBuilder;
+import de.fakeller.palladio.builder.resourceenvironment.LinkBuilder;
+import de.fakeller.palladio.builder.resourceenvironment.ProcessingResourceBuilder;
+import de.fakeller.palladio.builder.system.AssemblyBuilder;
+import org.palladiosimulator.solver.models.PCMInstance;
+
+<span class="nc" id="L16">public class SimpleTacticsProvider implements PcmProvider {</span>
+
+    @Override
+    public PCMInstance provide() {
+<span class="nc" id="L20">        final PcmBuilder builder = new PcmBuilder();</span>
+
+        // // // REPOSITORY // // //
+
+        // create interfaces in repository
+<span class="nc" id="L25">        final InterfaceBuilder i_businessTrip = builder.repository().withInterface(&quot;IBusiness Trip&quot;);</span>
+<span class="nc" id="L26">        final SignatureBuilder s_plan = i_businessTrip.createOperation(&quot;plan&quot;)</span>
+<span class="nc" id="L27">                .withParameter(&quot;isBook&quot;, ParameterType.BOOL)</span>
+<span class="nc" id="L28">                .withParameter(&quot;isBank&quot;, ParameterType.BOOL);</span>
+
+<span class="nc" id="L30">        final InterfaceBuilder i_booking = builder.repository().withInterface(&quot;IBooking&quot;);</span>
+<span class="nc" id="L31">        final SignatureBuilder s_book = i_booking.createOperation(&quot;book&quot;)</span>
+<span class="nc" id="L32">                .withParameter(&quot;isBank&quot;, ParameterType.BOOL);</span>
+
+<span class="nc" id="L34">        final InterfaceBuilder i_employeePayment = builder.repository().withInterface(&quot;IEmployeePayment&quot;);</span>
+<span class="nc" id="L35">        final SignatureBuilder s_reimburse = i_employeePayment.createOperation(&quot;reimburse&quot;);</span>
+
+
+<span class="nc" id="L38">        final InterfaceBuilder i_externalPayment = builder.repository().withInterface(&quot;IExternalPayment&quot;);</span>
+<span class="nc" id="L39">        final SignatureBuilder s_pay = i_externalPayment.createOperation(&quot;pay&quot;)</span>
+<span class="nc" id="L40">                .withParameter(&quot;isBank&quot;, ParameterType.BOOL);</span>
+
+<span class="nc" id="L42">        final SoftwareInducedFailureBuilder f_swFailure = builder.repository().withSoftwareInducedFailure(&quot;SWFailure&quot;);</span>
+
+
+        // create components in repository
+
+        // @formatter:off
+<span class="nc" id="L48">        final ComponentBuilder c_businessTripMgmt = builder.repository().withComponent(&quot;BusinessTripMgmt&quot;)</span>
+<span class="nc" id="L49">            .provides(i_businessTrip)</span>
+<span class="nc" id="L50">            .requires(i_booking)</span>
+<span class="nc" id="L51">            .requires(i_employeePayment)</span>
+<span class="nc" id="L52">            .withServiceEffectSpecification(s_plan)</span>
+<span class="nc" id="L53">                .start()</span>
+<span class="nc" id="L54">                .internalAction(&quot;action&quot;)</span>
+<span class="nc" id="L55">                    .withCpuDemand(&quot;4&quot;)</span>
+<span class="nc" id="L56">                .end()</span>
+<span class="nc" id="L57">                .branch(&quot;aName&quot;)</span>
+<span class="nc" id="L58">                    .createBranch(&quot;aName&quot;, &quot;isBook.VALUE&quot;)</span>
+<span class="nc" id="L59">                        .start()</span>
+<span class="nc" id="L60">                        .externalCall(s_book)</span>
+<span class="nc" id="L61">                            .withInputVariableUsage(&quot;isBank&quot;, &quot;isBank.VALUE&quot;)</span>
+<span class="nc" id="L62">                        .end()</span>
+<span class="nc" id="L63">                        .stop()</span>
+<span class="nc" id="L64">                    .end()</span>
+<span class="nc" id="L65">                    .createBranch(&quot;aName&quot;, &quot;NOT isBook.VALUE&quot;)</span>
+<span class="nc" id="L66">                        .start()</span>
+<span class="nc" id="L67">                        .externalCall(s_reimburse).end()</span>
+<span class="nc" id="L68">                        .stop()</span>
+<span class="nc" id="L69">                    .end()</span>
+<span class="nc" id="L70">                .end()</span>
+<span class="nc" id="L71">                .stop()</span>
+<span class="nc" id="L72">            .end();</span>
+
+<span class="nc" id="L74">        final ComponentBuilder c_bookingSystem = builder.repository().withComponent(&quot;BookingSystem&quot;)</span>
+<span class="nc" id="L75">            .provides(i_booking)</span>
+<span class="nc" id="L76">            .requires(i_externalPayment)</span>
+<span class="nc" id="L77">            .withServiceEffectSpecification(s_book)</span>
+<span class="nc" id="L78">                .start()</span>
+<span class="nc" id="L79">                .internalAction(&quot;aName&quot;)</span>
+<span class="nc" id="L80">                    .withCpuDemand(&quot;5&quot;)</span>
+<span class="nc" id="L81">                    .withFailure(1.0e-4, f_swFailure)</span>
+<span class="nc" id="L82">                .end()</span>
+<span class="nc" id="L83">                .externalCall(s_pay)</span>
+<span class="nc" id="L84">                    .withInputVariableUsage(&quot;isBank&quot;, &quot;isBank.VALUE&quot;)</span>
+<span class="nc" id="L85">                .end()</span>
+<span class="nc" id="L86">                .stop()</span>
+<span class="nc" id="L87">            .end();</span>
+
+<span class="nc" id="L89">        final ComponentBuilder c_paymentSystem = builder.repository().withComponent(&quot;Payment System&quot;)</span>
+<span class="nc" id="L90">            .provides(i_employeePayment)</span>
+<span class="nc" id="L91">            .provides(i_externalPayment)</span>
+<span class="nc" id="L92">            .withServiceEffectSpecification(s_reimburse)</span>
+<span class="nc" id="L93">                .start()</span>
+<span class="nc" id="L94">                .internalAction()</span>
+<span class="nc" id="L95">                    .withCpuDemand(&quot;3&quot;)</span>
+<span class="nc" id="L96">                .end()</span>
+<span class="nc" id="L97">                .stop()</span>
+<span class="nc" id="L98">            .end()</span>
+<span class="nc" id="L99">            .withServiceEffectSpecification(s_pay)</span>
+<span class="nc" id="L100">                .start()</span>
+<span class="nc" id="L101">                .branch(&quot;isBank?&quot;)</span>
+<span class="nc" id="L102">                    .createBranch(&quot;aName&quot;, &quot;isBank.VALUE&quot;)</span>
+<span class="nc" id="L103">                        .start()</span>
+<span class="nc" id="L104">                        .internalAction(&quot;bankPayment&quot;)</span>
+<span class="nc" id="L105">                            .withCpuDemand(&quot;3&quot;)</span>
+<span class="nc" id="L106">                            .withFailure(1.0e-4, f_swFailure)</span>
+<span class="nc" id="L107">                        .end()</span>
+<span class="nc" id="L108">                        .stop()</span>
+<span class="nc" id="L109">                    .end()</span>
+<span class="nc" id="L110">                    .createBranch(&quot;aName&quot;, &quot;NOT isBank.VALUE&quot;)</span>
+<span class="nc" id="L111">                        .start()</span>
+<span class="nc" id="L112">                        .internalAction(&quot;CCpayment&quot;)</span>
+<span class="nc" id="L113">                            .withCpuDemand(&quot;4&quot;)</span>
+<span class="nc" id="L114">                            .withFailure(3.0e-4, f_swFailure)</span>
+<span class="nc" id="L115">                        .end()</span>
+<span class="nc" id="L116">                        .stop()</span>
+<span class="nc" id="L117">                    .end()</span>
+<span class="nc" id="L118">                .end()</span>
+<span class="nc" id="L119">                .stop()</span>
+<span class="nc" id="L120">            .end();</span>
+
+<span class="nc" id="L122">        final ComponentBuilder c_quickBooking = builder.repository().withComponent(&quot;QuickBooking&quot;)</span>
+<span class="nc" id="L123">            .provides(i_booking)</span>
+<span class="nc" id="L124">            .requires(i_externalPayment)</span>
+<span class="nc" id="L125">            .withServiceEffectSpecification(s_book)</span>
+<span class="nc" id="L126">                .start()</span>
+<span class="nc" id="L127">                .internalAction(&quot;checkCache&quot;)</span>
+<span class="nc" id="L128">                    .withCpuDemand(&quot;0.5&quot;)</span>
+<span class="nc" id="L129">                    .withFailure(2.5e-4, f_swFailure)</span>
+<span class="nc" id="L130">                .end()</span>
+<span class="nc" id="L131">                .internalAction(&quot;determineCheapest&quot;)</span>
+<span class="nc" id="L132">                    .withCpuDemand(&quot;2.5&quot;)</span>
+<span class="nc" id="L133">                    .withFailure(1.0e-4, f_swFailure)</span>
+<span class="nc" id="L134">                .end()</span>
+<span class="nc" id="L135">                .externalCall(s_pay)</span>
+<span class="nc" id="L136">                    .withInputVariableUsage(&quot;isBank&quot;, &quot;isBank.VALUE&quot;)</span>
+<span class="nc" id="L137">                .end()</span>
+<span class="nc" id="L138">                .stop()</span>
+<span class="nc" id="L139">            .end();</span>
+        // @formatter:on
+
+        // // // SYSTEM // // //
+<span class="nc" id="L143">        final AssemblyBuilder a_businessTripMgmt = builder.system().assemble(c_businessTripMgmt);</span>
+<span class="nc" id="L144">        final AssemblyBuilder a_bookingSystem = builder.system().assemble(c_bookingSystem);</span>
+<span class="nc" id="L145">        final AssemblyBuilder a_paymentSystem = builder.system().assemble(c_paymentSystem);</span>
+
+<span class="nc" id="L147">        a_businessTripMgmt.provideToSystem(i_businessTrip);</span>
+<span class="nc" id="L148">        a_bookingSystem.provideFor(a_businessTripMgmt, i_booking);</span>
+<span class="nc" id="L149">        a_paymentSystem.provideFor(a_businessTripMgmt, i_employeePayment);</span>
+<span class="nc" id="L150">        a_bookingSystem.requireFrom(a_paymentSystem, i_externalPayment);</span>
+
+
+        // // // RESOURCE ENVIRONMENT // // //
+<span class="nc" id="L154">        final ContainerBuilder e_server1 = builder.resourceEnvironment().createContainer(&quot;Server1&quot;)</span>
+<span class="nc" id="L155">                .withCpu(3.5)</span>
+<span class="nc" id="L156">                .withMTTF(300000.0)</span>
+<span class="nc" id="L157">                .withMTTR(6.0)</span>
+<span class="nc" id="L158">                .withNumberOfReplicas(1)</span>
+<span class="nc" id="L159">                .withRequiredByContainer(false)</span>
+<span class="nc" id="L160">                .withSchedulingPolicy(ProcessingResourceBuilder.SchedulingPolicy.PROCESSOR_SHARING)</span>
+<span class="nc" id="L161">                .end();</span>
+<span class="nc" id="L162">        final ContainerBuilder e_server2 = builder.resourceEnvironment().createContainer(&quot;server2&quot;)</span>
+<span class="nc" id="L163">                .withCpu(4.0)</span>
+<span class="nc" id="L164">                .withMTTF(250000.0)</span>
+<span class="nc" id="L165">                .withMTTR(3.0)</span>
+<span class="nc" id="L166">                .withNumberOfReplicas(1)</span>
+<span class="nc" id="L167">                .withRequiredByContainer(false)</span>
+<span class="nc" id="L168">                .withSchedulingPolicy(ProcessingResourceBuilder.SchedulingPolicy.PROCESSOR_SHARING)</span>
+<span class="nc" id="L169">                .end();</span>
+<span class="nc" id="L170">        final ContainerBuilder e_server3 = builder.resourceEnvironment().createContainer(&quot;Server3&quot;)</span>
+<span class="nc" id="L171">                .withCpu(3.0)</span>
+<span class="nc" id="L172">                .withMTTF(275000.0)</span>
+<span class="nc" id="L173">                .withMTTR(4.0)</span>
+<span class="nc" id="L174">                .withNumberOfReplicas(1)</span>
+<span class="nc" id="L175">                .withRequiredByContainer(false)</span>
+<span class="nc" id="L176">                .withSchedulingPolicy(ProcessingResourceBuilder.SchedulingPolicy.PROCESSOR_SHARING)</span>
+<span class="nc" id="L177">                .end();</span>
+<span class="nc" id="L178">        final LinkBuilder e_network = builder.resourceEnvironment().createLink(&quot;aName&quot;)</span>
+<span class="nc" id="L179">                .between(e_server1, e_server2, e_server3)</span>
+<span class="nc" id="L180">                .withLatency(0.015)</span>
+<span class="nc" id="L181">                .withThroughput(2000000000)</span>
+<span class="nc" id="L182">                .withFailureProbability(2.0e-4);</span>
+
+        // // // ALLOCATION // // //
+<span class="nc" id="L185">        builder.allocation().allocate(a_businessTripMgmt, e_server1);</span>
+<span class="nc" id="L186">        builder.allocation().allocate(a_bookingSystem, e_server2);</span>
+<span class="nc" id="L187">        builder.allocation().allocate(a_paymentSystem, e_server3);</span>
+
+        // // // USAGE // // //
+        // @formatter:off
+<span class="nc" id="L191">        builder.usage()</span>
+<span class="nc" id="L192">            .createScenario(&quot;defaultUsageScenario&quot;)</span>
+<span class="nc" id="L193">                .withOpenWorkload(0.5)</span>
+<span class="nc" id="L194">                .withBehaviour()</span>
+<span class="nc" id="L195">                    .start()</span>
+<span class="nc" id="L196">                    .entryLevelSystemCall(s_plan)</span>
+<span class="nc" id="L197">                        .withInputVariableUsage(&quot;isBook&quot;, &quot;BoolPMF[(true;0.8)(false;0.2)]&quot;)</span>
+<span class="nc" id="L198">                        .withInputVariableUsage(&quot;isBank&quot;, &quot;BoolPMF[(true;0.4)(false;0.6)]&quot;)</span>
+<span class="nc" id="L199">                    .end()</span>
+<span class="nc" id="L200">                    .stop()</span>
+<span class="nc" id="L201">                .end()</span>
+<span class="nc" id="L202">            .end();</span>
+        // @formatter:on
+
+<span class="nc" id="L205">        return builder.build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

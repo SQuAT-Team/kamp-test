@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractHierarchicalBuilder.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Builder</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.builder</a> &gt; <span class="el_source">AbstractHierarchicalBuilder.java</span></div><h1>AbstractHierarchicalBuilder.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.builder;
+
+import org.palladiosimulator.pcm.core.entity.Entity;
+
+/**
+ * Provides common functionality to implement a {@link EntityHierarchicalBuilder}.
+ */
+abstract public class AbstractHierarchicalBuilder&lt;
+        SELF extends EntityHierarchicalBuilder&lt;SELF, TYPE, PARENT&gt;,
+        TYPE extends Entity,
+        PARENT extends BaseBuilder&lt;?&gt;
+        &gt; implements EntityHierarchicalBuilder&lt;SELF, TYPE, PARENT&gt; {
+
+    /**
+     * Access the parent builder
+     */
+    protected final PARENT belongsTo;
+
+    /**
+     * The model under construction
+     */
+    protected TYPE eModel;
+
+<span class="fc" id="L24">    public AbstractHierarchicalBuilder(final PARENT belongsTo) {</span>
+<span class="fc" id="L25">        this.belongsTo = belongsTo;</span>
+<span class="fc" id="L26">        this.eModel = newEModel();</span>
+<span class="fc" id="L27">        registerParent();</span>
+<span class="fc" id="L28">    }</span>
+
+    /**
+     * The method must return a new object of type {@link TYPE}.
+     */
+    abstract protected TYPE newEModel();
+
+    /**
+     * The method must register the parent model stored in {@link AbstractHierarchicalBuilder#belongsTo} with the actual
+     * model instance stored in {@link AbstractHierarchicalBuilder#eModel}.
+     */
+    abstract protected void registerParent();
+
+    @Override
+    public PARENT end() {
+<span class="fc" id="L43">        return this.belongsTo;</span>
+    }
+
+    @Override
+    public TYPE getReference() {
+<span class="fc" id="L48">        return this.eModel;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

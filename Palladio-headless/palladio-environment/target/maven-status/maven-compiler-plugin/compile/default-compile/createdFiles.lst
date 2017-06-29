@@ -1,0 +1,11 @@
+de/fakeller/palladio/environment/uriconverter/PrefixConverter.class
+de/fakeller/palladio/environment/util/PalladioResourceRepositoryImpl.class
+de/fakeller/palladio/environment/PalladioEclipseEnvironment.class
+de/fakeller/palladio/config/PcmModelConfig.class
+de/fakeller/palladio/environment/PCMResourceSetPartitionFactory.class
+de/fakeller/palladio/environment/uriconverter/URIConverterHandler.class
+de/fakeller/palladio/environment/uriconverter/URIConverterInterceptor.class
+de/fakeller/palladio/config/AbstractPropertiesConfig.class
+de/fakeller/palladio/environment/util/PalladioResourceRepository.class
+de/fakeller/palladio/environment/PCMResourceSetPartitionFactory$DefaultFactory.class
+de/fakeller/palladio/environment/util/PalladioResourceRepository$INSTANCE.class

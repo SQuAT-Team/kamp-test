@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>URIConverterHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Environment</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.environment.uriconverter</a> &gt; <span class="el_source">URIConverterHandler.java</span></div><h1>URIConverterHandler.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.environment.uriconverter;
+
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.URIConverter;
+import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
+
+/**
+ * Intercepts URIs to be converted by the Eclipse {@link URIConverter}.
+ */
+public class URIConverterHandler extends ExtensibleURIConverterImpl {
+
+<span class="fc" id="L16">    private static final Logger log = Logger.getLogger(URIConverterHandler.class.getName());</span>
+
+    private URIConverter delegate;
+
+<span class="fc" id="L20">    private List&lt;URIConverterInterceptor&gt; interceptors = new ArrayList&lt;&gt;();</span>
+
+    /**
+     * Provide a delegate {@link URIConverter} to handle conversions not handled by the registered interceptors.
+     */
+<span class="fc" id="L25">    public URIConverterHandler(URIConverter delegate) {</span>
+<span class="fc" id="L26">        this.delegate = delegate;</span>
+<span class="fc" id="L27">    }</span>
+
+    /**
+     * Adds an interceptor to this handlers.
+     * &lt;p&gt;
+     * Note: Interceptors will be called in the order they are added to the handler. The first interceptor that is able
+     * to convert the URI will convert the URI.
+     */
+    public URIConverterHandler addInterceptor(URIConverterInterceptor interceptor) {
+<span class="fc" id="L36">        this.interceptors.add(interceptor);</span>
+<span class="fc" id="L37">        return this;</span>
+    }
+
+    @Override
+    public URI normalize(URI uri) {
+<span class="fc" id="L42">        URI normalized = doNormalize(uri);</span>
+<span class="fc" id="L43">        log.fine(String.format(&quot;Normalize uri '%s' to '%s'&quot;, uri, normalized));</span>
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">        if (!new java.io.File(normalized.toString()).exists()) {</span>
+<span class="fc" id="L45">            log.warning(&quot;Normalized URI is not a file: &quot; + normalized);</span>
+        }
+<span class="fc" id="L47">        return normalized;</span>
+    }
+
+    private URI doNormalize(URI uri) {
+<span class="pc bpc" id="L51" title="1 of 2 branches missed.">        for (URIConverterInterceptor interceptor : this.interceptors) {</span>
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">            if (interceptor.canConvert(uri)) {</span>
+<span class="fc" id="L53">                return interceptor.convert(uri);</span>
+            }
+<span class="nc" id="L55">        }</span>
+<span class="nc" id="L56">        return delegate.normalize(uri);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PrefixConverter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Environment</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.environment.uriconverter</a> &gt; <span class="el_source">PrefixConverter.java</span></div><h1>PrefixConverter.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.environment.uriconverter;
+
+import org.eclipse.emf.common.util.URI;
+
+/**
+ * If the URI to be converted matches the given prefix, the prefix is replaced by the given replacement.
+ */
+public class PrefixConverter implements URIConverterInterceptor {
+
+    private String prefix;
+    private String replacement;
+
+<span class="fc" id="L13">    public PrefixConverter(String prefix, String replacement) {</span>
+<span class="fc" id="L14">        this.prefix = prefix;</span>
+<span class="fc" id="L15">        this.replacement = replacement;</span>
+<span class="fc" id="L16">    }</span>
+
+    @Override
+    public boolean canConvert(URI uri) {
+<span class="fc" id="L20">        return uri.toString().startsWith(this.prefix);</span>
+    }
+
+    @Override
+    public URI convert(URI uri) {
+<span class="fc" id="L25">        return URI.createURI(uri.toString().replace(this.prefix, this.replacement));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

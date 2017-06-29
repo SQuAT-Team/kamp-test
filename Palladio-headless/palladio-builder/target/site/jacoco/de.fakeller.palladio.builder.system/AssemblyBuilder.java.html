@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AssemblyBuilder.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Builder</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.builder.system</a> &gt; <span class="el_source">AssemblyBuilder.java</span></div><h1>AssemblyBuilder.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.builder.system;
+
+import de.fakeller.palladio.builder.EntityHierarchicalBuilder;
+import de.fakeller.palladio.builder.repository.InterfaceBuilder;
+import org.palladiosimulator.pcm.core.composition.AssemblyContext;
+
+/**
+ * Builds a Palladio {@link AssemblyContext} that can be connected to different parts of the system.
+ */
+public interface AssemblyBuilder extends EntityHierarchicalBuilder&lt;AssemblyBuilder, AssemblyContext, SystemBuilder&gt; {
+
+    /**
+     * Connect the given assembly to an interface required by the component in this assembly.
+     * &lt;p&gt;
+     * Note: use this method in case the requiredRole and providedRole are not the same (i.e. through inheritance).
+     * Otherwise use {@link AssemblyBuilder#requireFrom(AssemblyBuilder, InterfaceBuilder)}.
+     *
+     * @param requiredRole      the role required by the component in this assembly
+     * @param providingAssembly the assembly context that can satisfy the required role
+     * @param providedRole      the provided role that satisfies the required role
+     * @return provides fluent interface
+     */
+    AssemblyBuilder requireFrom(InterfaceBuilder requiredRole, AssemblyBuilder providingAssembly, InterfaceBuilder providedRole);
+
+    /**
+     * Connect the given assembly to an interface required by the component in this assembly.
+     *
+     * @param providingAssembly the assembly context that can satisfy the required role
+     * @param iface             the shared interface
+     * @return provides fluent interface
+     */
+    default AssemblyBuilder requireFrom(final AssemblyBuilder providingAssembly, final InterfaceBuilder iface) {
+<span class="fc" id="L33">        return requireFrom(iface, providingAssembly, iface);</span>
+    }
+
+    /**
+     * Connect the given assembly to a role provided by the component in this assembly.
+     * &lt;p&gt;
+     * Note: use this method in case the requiredRole and providedRole are not the same (i.e. through inheritance).
+     * Otherwise use {@link AssemblyBuilder#provideFor(AssemblyBuilder, InterfaceBuilder)}.
+     *
+     * @param providedRole      the role provided by the component in this assembly
+     * @param requiringAssembly the assembly context that requires the provided role
+     * @param requiredRole      the role of the other component that requires the provided interface
+     * @return provides fluent interface
+     */
+    AssemblyBuilder provideFor(InterfaceBuilder providedRole, AssemblyBuilder requiringAssembly, InterfaceBuilder requiredRole);
+
+    /**
+     * Connect the given assembly to an interface provided by the component in this assembly.
+     *
+     * @param requiringAssembly the assembly context that requires the provided role
+     * @param iface             the shared interface
+     * @return provides fluent interface
+     */
+    default AssemblyBuilder provideFor(final AssemblyBuilder requiringAssembly, final InterfaceBuilder iface) {
+<span class="fc" id="L57">        return provideFor(iface, requiringAssembly, iface);</span>
+    }
+
+    /**
+     * The system provides the specified interface. Each system must provide at least one interface to be valid.
+     */
+    AssemblyBuilder provideToSystem(InterfaceBuilder providedRole);
+
+    /**
+     * The system requires the specified interface.
+     */
+    AssemblyBuilder requireFromSystem(InterfaceBuilder requiredRole);
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

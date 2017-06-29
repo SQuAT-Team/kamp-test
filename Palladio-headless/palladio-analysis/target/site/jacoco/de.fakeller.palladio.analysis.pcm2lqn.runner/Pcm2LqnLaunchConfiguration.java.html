@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Pcm2LqnLaunchConfiguration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Analysis</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.analysis.pcm2lqn.runner</a> &gt; <span class="el_source">Pcm2LqnLaunchConfiguration.java</span></div><h1>Pcm2LqnLaunchConfiguration.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.analysis.pcm2lqn.runner;
+
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.debug.core.*;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
+
+/**
+ * Custom implementation of the launch configuration as the one's provided by Palladio are too restrictive.
+ */
+public class Pcm2LqnLaunchConfiguration implements ILaunchConfiguration {
+
+<span class="nc" id="L22">    private final Map&lt;String, Object&gt; attr = new HashMap&lt;&gt;();</span>
+
+<span class="nc" id="L24">    private final Logger log = Logger.getLogger(Pcm2LqnLaunchConfiguration.class.getName());</span>
+
+<span class="nc" id="L26">    private Pcm2LqnLaunchConfiguration(final Map&lt;String, Object&gt; attr) {</span>
+<span class="nc" id="L27">        this.attr.putAll(attr);</span>
+<span class="nc" id="L28">        this.log.info(&quot;Using ILaunchConfiguration from &quot; + this.getClass().getName() + &quot; with attributes:&quot;);</span>
+<span class="nc" id="L29">        this.log.info(this.toString());</span>
+<span class="nc" id="L30">    }</span>
+
+    public static ILaunchConfiguration asIsFromExample() {
+<span class="nc" id="L33">        final Map&lt;String, Object&gt; attr = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L34">        attr.put(&quot;LINEDebug&quot;, true);</span>
+<span class="nc" id="L35">        attr.put(&quot;LINEOutputDir&quot;, &quot;/Volumes/Daten/PalladioTests/Eclipse.app/Contents/MacOS&quot;);</span>
+<span class="nc" id="L36">        attr.put(&quot;LINEPropFile&quot;, &quot;/Volumes/Daten/PalladioTests/Eclipse.app/Contents/MacOSLINE.properties&quot;);</span>
+<span class="nc" id="L37">        attr.put(&quot;LQNS Stop On Message Loss&quot;, true);</span>
+<span class="nc" id="L38">        attr.put(&quot;LQSIM Stop On Message Loss&quot;, true);</span>
+<span class="nc" id="L39">        attr.put(&quot;SREOutputDir&quot;, &quot;D:\\Programme\\eclipse\\eclipse-dsl-luna-RC3-win32&quot;);</span>
+<span class="nc" id="L40">        attr.put(&quot;SREUseInputModel&quot;, false);</span>
+<span class="nc" id="L41">        attr.put(&quot;accuracyQualityAnnotationFile&quot;, &quot;&quot;);</span>
+<span class="nc" id="L42">        attr.put(&quot;allocationFile&quot;, &quot;platform:/resource/Simple Tactics Example/default.allocation&quot;);</span>
+<span class="nc" id="L43">        attr.put(&quot;blocks&quot;, &quot;&quot;);</span>
+<span class="nc" id="L44">        attr.put(&quot;clear&quot;, true);</span>
+<span class="nc" id="L45">        attr.put(&quot;convValue&quot;, &quot;0.001&quot;);</span>
+<span class="nc" id="L46">        attr.put(&quot;de.uka.ipd.sdq.workflowengine.debuglevel&quot;, 2);</span>
+<span class="nc" id="L47">        attr.put(&quot;eventMiddlewareRepositoryFile&quot;, &quot;pathmap://PCM_MODELS/default_event_middleware.repository&quot;);</span>
+<span class="nc" id="L48">        attr.put(&quot;infiniteTaskMultiplicity&quot;, true);</span>
+<span class="nc" id="L49">        attr.put(&quot;itLimit&quot;, &quot;50&quot;);</span>
+<span class="nc" id="L50">        attr.put(&quot;lqnPragmas&quot;, &quot;&quot;);</span>
+<span class="nc" id="L51">        attr.put(&quot;lqnsOutputDir&quot;, &quot;/Volumes/Daten/PalladioTests/workspace/Output&quot;);</span>
+<span class="nc" id="L52">        attr.put(&quot;lqsimOutputDir&quot;, &quot;D:\\Programme\\eclipse\\eclipse-dsl-luna-RC3-win32&quot;);</span>
+<span class="nc" id="L53">        attr.put(&quot;lqsimoutput&quot;, &quot;Human Readable Output&quot;);</span>
+<span class="nc" id="L54">        attr.put(&quot;maxDomain&quot;, 256);</span>
+<span class="nc" id="L55">        attr.put(&quot;mwRepositoryFile&quot;, &quot;pathmap://PCM_MODELS/Glassfish.repository&quot;);</span>
+<span class="nc" id="L56">        attr.put(&quot;outpath&quot;, &quot;de.uka.ipd.sdq.temporary&quot;);</span>
+<span class="nc" id="L57">        attr.put(&quot;output&quot;, &quot;Human Readable Output&quot;);</span>
+<span class="nc" id="L58">        attr.put(&quot;printInt&quot;, &quot;10&quot;);</span>
+<span class="nc" id="L59">        attr.put(&quot;psQuantum&quot;, &quot;0.001&quot;);</span>
+<span class="nc" id="L60">        attr.put(&quot;rmiRepositoryFile&quot;, &quot;pathmap://PCM_MODELS/Glassfish.repository&quot;);</span>
+<span class="nc" id="L61">        attr.put(&quot;runTime&quot;, &quot;&quot;);</span>
+<span class="nc" id="L62">        attr.put(&quot;samplingDist&quot;, &quot;1.0&quot;);</span>
+<span class="nc" id="L63">        attr.put(&quot;simulateAccuracy&quot;, false);</span>
+<span class="nc" id="L64">        attr.put(&quot;solver&quot;, &quot;LQNS (Layered Queueing Network Solver)&quot;);</span>
+<span class="nc" id="L65">        attr.put(&quot;underCoeff&quot;, &quot;0.5&quot;);</span>
+<span class="nc" id="L66">        attr.put(&quot;usageFile&quot;, &quot;platform:/resource/Simple Tactics Example/default.usagemodel&quot;);</span>
+<span class="nc" id="L67">        return new Pcm2LqnLaunchConfiguration(attr);</span>
+    }
+
+    public static ILaunchConfiguration adjusted(final PcmLqnsAnalyzerConfig config) {
+<span class="nc" id="L71">        final Map&lt;String, Object&gt; attr = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L72">        attr.put(&quot;LINEDebug&quot;, true);</span>
+<span class="nc" id="L73">        attr.put(&quot;LINEOutputDir&quot;, &quot;/Volumes/Daten/PalladioTests/Eclipse.app/Contents/MacOS&quot;);</span>
+<span class="nc" id="L74">        attr.put(&quot;LINEPropFile&quot;, &quot;/Volumes/Daten/PalladioTests/Eclipse.app/Contents/MacOSLINE.properties&quot;);</span>
+<span class="nc" id="L75">        attr.put(&quot;LQNS Stop On Message Loss&quot;, true);</span>
+<span class="nc" id="L76">        attr.put(&quot;LQSIM Stop On Message Loss&quot;, true);</span>
+<span class="nc" id="L77">        attr.put(&quot;SREOutputDir&quot;, &quot;D:\\Programme\\eclipse\\eclipse-dsl-luna-RC3-win32&quot;);</span>
+<span class="nc" id="L78">        attr.put(&quot;SREUseInputModel&quot;, false);</span>
+<span class="nc" id="L79">        attr.put(&quot;accuracyQualityAnnotationFile&quot;, &quot;&quot;);</span>
+<span class="nc" id="L80">        attr.put(&quot;allocationFile&quot;, config.getAllocationModel());</span>
+<span class="nc" id="L81">        attr.put(&quot;blocks&quot;, &quot;&quot;);</span>
+<span class="nc" id="L82">        attr.put(&quot;clear&quot;, true);</span>
+<span class="nc" id="L83">        attr.put(&quot;convValue&quot;, &quot;0.001&quot;);</span>
+<span class="nc" id="L84">        attr.put(&quot;de.uka.ipd.sdq.workflowengine.debuglevel&quot;, 2);</span>
+<span class="nc" id="L85">        attr.put(&quot;eventMiddlewareRepositoryFile&quot;, &quot;pathmap://PCM_MODELS/default_event_middleware.repository&quot;);</span>
+<span class="nc" id="L86">        attr.put(&quot;infiniteTaskMultiplicity&quot;, true);</span>
+<span class="nc" id="L87">        attr.put(&quot;itLimit&quot;, &quot;50&quot;);</span>
+<span class="nc" id="L88">        attr.put(&quot;lqnPragmas&quot;, &quot;&quot;);</span>
+<span class="nc" id="L89">        attr.put(&quot;lqnsOutputDir&quot;, config.getOutputPath());</span>
+<span class="nc" id="L90">        attr.put(&quot;lqsimOutputDir&quot;, &quot;D:\\Programme\\eclipse\\eclipse-dsl-luna-RC3-win32&quot;);</span>
+<span class="nc" id="L91">        attr.put(&quot;lqsimoutput&quot;, &quot;Human Readable Output&quot;);</span>
+<span class="nc" id="L92">        attr.put(&quot;maxDomain&quot;, 256);</span>
+<span class="nc" id="L93">        attr.put(&quot;mwRepositoryFile&quot;, &quot;pathmap://PCM_MODELS/Glassfish.repository&quot;);</span>
+<span class="nc" id="L94">        attr.put(&quot;outpath&quot;, &quot;de.uka.ipd.sdq.temporary&quot;);</span>
+<span class="nc" id="L95">        attr.put(&quot;output&quot;, &quot;XML Output&quot;);</span>
+<span class="nc" id="L96">        attr.put(&quot;printInt&quot;, &quot;10&quot;);</span>
+<span class="nc" id="L97">        attr.put(&quot;psQuantum&quot;, &quot;0.001&quot;);</span>
+<span class="nc" id="L98">        attr.put(&quot;rmiRepositoryFile&quot;, &quot;pathmap://PCM_MODELS/Glassfish.repository&quot;);</span>
+<span class="nc" id="L99">        attr.put(&quot;runTime&quot;, &quot;&quot;);</span>
+<span class="nc" id="L100">        attr.put(&quot;samplingDist&quot;, &quot;1.0&quot;);</span>
+<span class="nc" id="L101">        attr.put(&quot;simulateAccuracy&quot;, false);</span>
+<span class="nc" id="L102">        attr.put(&quot;solver&quot;, &quot;LQNS (Layered Queueing Network Solver)&quot;);</span>
+<span class="nc" id="L103">        attr.put(&quot;underCoeff&quot;, &quot;0.5&quot;);</span>
+<span class="nc" id="L104">        attr.put(&quot;usageFile&quot;, config.getUsageModel());</span>
+<span class="nc" id="L105">        return new Pcm2LqnLaunchConfiguration(attr);</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L110">        return this.attr.entrySet().stream().map((e) -&gt; {</span>
+<span class="nc" id="L111">            return String.format(&quot;|- %s: %s&quot;, e.getKey(), e.getValue().toString());</span>
+<span class="nc" id="L112">        }).collect(Collectors.joining(&quot;\n&quot;));</span>
+    }
+
+    @Override
+    public boolean contentsEqual(final ILaunchConfiguration iLaunchConfiguration) {
+<span class="nc" id="L117">        return iLaunchConfiguration.contentsEqual(this);</span>
+    }
+
+    @Override
+    public ILaunchConfigurationWorkingCopy copy(final String s) throws CoreException {
+<span class="nc" id="L122">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public void delete() throws CoreException {
+<span class="nc" id="L127">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public boolean exists() {
+<span class="nc" id="L132">        return false;</span>
+    }
+
+    private &lt;T&gt; T get(final String key, final T defaultValue) {
+<span class="nc" id="L136">        final Object val = this.attr.get(key);</span>
+<span class="nc bnc" id="L137" title="All 2 branches missed.">        if (null == val) {</span>
+<span class="nc" id="L138">            return defaultValue;</span>
+        } else {
+<span class="nc" id="L140">            return (T) val;</span>
+        }
+    }
+
+    @Override
+    public boolean getAttribute(final String s, final boolean b) throws CoreException {
+<span class="nc" id="L146">        return this.get(s, b);</span>
+    }
+
+    @Override
+    public int getAttribute(final String s, final int i) throws CoreException {
+<span class="nc" id="L151">        return this.get(s, i);</span>
+    }
+
+    @Override
+    public List&lt;String&gt; getAttribute(final String s, final List&lt;String&gt; list) throws CoreException {
+<span class="nc" id="L156">        return this.get(s, list);</span>
+    }
+
+    @Override
+    public Set&lt;String&gt; getAttribute(final String s, final Set&lt;String&gt; set) throws CoreException {
+<span class="nc" id="L161">        return this.get(s, set);</span>
+    }
+
+    @Override
+    public Map&lt;String, String&gt; getAttribute(final String s, final Map&lt;String, String&gt; map) throws CoreException {
+<span class="nc" id="L166">        return this.get(s, map);</span>
+    }
+
+    @Override
+    public String getAttribute(final String s, final String s1) throws CoreException {
+<span class="nc" id="L171">        return this.get(s, s1);</span>
+    }
+
+    @Override
+    public Map&lt;String, Object&gt; getAttributes() throws CoreException {
+<span class="nc" id="L176">        return this.attr;</span>
+    }
+
+    @Override
+    public String getCategory() throws CoreException {
+<span class="nc" id="L181">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public IFile getFile() {
+<span class="nc" id="L186">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public IPath getLocation() {
+<span class="nc" id="L191">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public IResource[] getMappedResources() throws CoreException {
+<span class="nc" id="L196">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public String getMemento() throws CoreException {
+<span class="nc" id="L201">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public String getName() {
+<span class="nc" id="L206">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public Set&lt;String&gt; getModes() throws CoreException {
+<span class="nc" id="L211">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public ILaunchDelegate getPreferredDelegate(final Set&lt;String&gt; set) throws CoreException {
+<span class="nc" id="L216">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public ILaunchConfigurationType getType() throws CoreException {
+<span class="nc" id="L221">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public ILaunchConfigurationWorkingCopy getWorkingCopy() throws CoreException {
+<span class="nc" id="L226">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public boolean hasAttribute(final String s) throws CoreException {
+<span class="nc" id="L231">        return this.attr.containsKey(s);</span>
+    }
+
+    @Override
+    public boolean isLocal() {
+<span class="nc" id="L236">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public boolean isMigrationCandidate() throws CoreException {
+<span class="nc" id="L241">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public boolean isWorkingCopy() {
+<span class="nc" id="L246">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public ILaunch launch(final String s, final IProgressMonitor iProgressMonitor) throws CoreException {
+<span class="nc" id="L251">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public ILaunch launch(final String s, final IProgressMonitor iProgressMonitor, final boolean b) throws CoreException {
+<span class="nc" id="L256">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public ILaunch launch(final String s, final IProgressMonitor iProgressMonitor, final boolean b, final boolean b1) throws CoreException {
+<span class="nc" id="L261">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public void migrate() throws CoreException {
+<span class="nc" id="L266">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public boolean supportsMode(final String s) throws CoreException {
+<span class="nc" id="L271">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public boolean isReadOnly() {
+<span class="nc" id="L276">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public Object getAdapter(final Class aClass) {
+<span class="nc" id="L281">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

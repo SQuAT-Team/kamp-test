@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ExternalCallBuilderImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Builder</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.builder.repository.seff.impl</a> &gt; <span class="el_source">ExternalCallBuilderImpl.java</span></div><h1>ExternalCallBuilderImpl.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.builder.repository.seff.impl;
+
+import de.fakeller.palladio.builder.BaseBuilder;
+import de.fakeller.palladio.builder.BaseHierarchicalBuilder;
+import de.fakeller.palladio.builder.BuilderException;
+import de.fakeller.palladio.builder.repository.ComponentBuilder;
+import de.fakeller.palladio.builder.repository.SignatureBuilder;
+import de.fakeller.palladio.builder.repository.seff.ExternalCallBuilder;
+import de.fakeller.palladio.builder.repository.seff.ResourceDemandBuilder;
+import de.fakeller.palladio.builder.util.impl.VariableUsageFactoryImpl;
+import org.palladiosimulator.pcm.parameter.VariableUsage;
+import org.palladiosimulator.pcm.repository.OperationInterface;
+import org.palladiosimulator.pcm.repository.OperationRequiredRole;
+import org.palladiosimulator.pcm.repository.RequiredRole;
+import org.palladiosimulator.pcm.seff.ExternalCallAction;
+import org.palladiosimulator.pcm.seff.SeffFactory;
+
+public class ExternalCallBuilderImpl&lt;PARENT extends ResourceDemandBuilder&lt;?&gt;&gt; implements ExternalCallBuilder&lt;PARENT&gt; {
+
+    private final PARENT belongsTo;
+    private final ExternalCallAction eModel;
+
+<span class="fc" id="L23">    public ExternalCallBuilderImpl(final PARENT belongsTo) {</span>
+<span class="fc" id="L24">        this.belongsTo = belongsTo;</span>
+<span class="fc" id="L25">        this.eModel = SeffFactory.eINSTANCE.createExternalCallAction();</span>
+<span class="fc" id="L26">    }</span>
+
+    @Override
+    public ExternalCallBuilder&lt;PARENT&gt; withCalledService(final SignatureBuilder signature) {
+        // set signature
+<span class="fc" id="L31">        this.eModel.setCalledService_ExternalService(signature.getReference());</span>
+
+        // find component this call builder is located in
+<span class="fc" id="L34">        BaseHierarchicalBuilder builder = this;</span>
+<span class="pc bpc" id="L35" title="1 of 4 branches missed.">        while (builder != null &amp;&amp; !(builder instanceof ComponentBuilder)) {</span>
+<span class="fc" id="L36">            final BaseBuilder parent = builder.end();</span>
+<span class="pc bpc" id="L37" title="1 of 2 branches missed.">            if (parent instanceof BaseHierarchicalBuilder) {</span>
+<span class="fc" id="L38">                builder = (BaseHierarchicalBuilder) parent;</span>
+            } else {
+<span class="nc" id="L40">                builder = null;</span>
+            }
+<span class="fc" id="L42">        }</span>
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">        if (null == builder) {</span>
+<span class="nc" id="L44">            throw new BuilderException(this, &quot;Could not locate parent component this ExternalCallAction belongs to. Something must have gone utterly wrong. Please file a bug.&quot;);</span>
+        }
+<span class="fc" id="L46">        final ComponentBuilder cmp = (ComponentBuilder) builder;</span>
+
+        // locate OperationRequiredRole in the component, that offers the given signature.
+<span class="fc" id="L49">        final OperationInterface sigIface = signature.getReference().getInterface__OperationSignature();</span>
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">        for (final RequiredRole required : cmp.getReference().getRequiredRoles_InterfaceRequiringEntity()) {</span>
+<span class="pc bpc" id="L51" title="1 of 2 branches missed.">            if (!(required instanceof OperationRequiredRole)) {</span>
+<span class="nc" id="L52">                continue;</span>
+            }
+
+<span class="fc" id="L55">            final OperationRequiredRole orr = (OperationRequiredRole) required;</span>
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">            if (sigIface.equals(orr.getRequiredInterface__OperationRequiredRole())) {</span>
+<span class="fc" id="L57">                this.eModel.setRole_ExternalService(orr);</span>
+<span class="fc" id="L58">                break;</span>
+            }
+<span class="nc" id="L60">        }</span>
+<span class="pc bpc" id="L61" title="1 of 2 branches missed.">        if (null == this.eModel.getRole_ExternalService()) {</span>
+<span class="nc" id="L62">            throw new BuilderException(this, String.format(&quot;Could not find an interface providing the signature %s in component %s.&quot;, signature.getEntityName(), cmp.getEntityName()));</span>
+        }
+
+<span class="fc" id="L65">        return this;</span>
+    }
+
+    @Override
+    public ExternalCallBuilder&lt;PARENT&gt; withRetryCount(final int retryCount) {
+<span class="fc" id="L70">        this.eModel.setRetryCount(retryCount);</span>
+<span class="fc" id="L71">        return this;</span>
+    }
+
+    @Override
+    public ExternalCallBuilderImpl&lt;PARENT&gt; withInputVariableUsage(final String name, final String specification) {
+        // create usage model
+<span class="nc" id="L77">        final VariableUsage varusg = new VariableUsageFactoryImpl().valueUsage(name, specification);</span>
+
+        // link model
+<span class="nc" id="L80">        varusg.setCallAction__VariableUsage(this.eModel);</span>
+<span class="nc" id="L81">        this.eModel.getInputVariableUsages__CallAction().add(varusg);</span>
+
+<span class="nc" id="L83">        return this;</span>
+    }
+
+    @Override
+    public ExternalCallBuilder&lt;PARENT&gt; withReturnVariableUsage(final String name, final String specification) {
+        // fixme: implement method, but there is no example in SimpleTacticsExample to see how its supposed to be done
+<span class="nc" id="L89">        throw new RuntimeException(&quot;NYI&quot;);</span>
+    }
+
+    @Override
+    public PARENT end() {
+<span class="fc" id="L94">        return this.belongsTo;</span>
+    }
+
+    @Override
+    public ExternalCallAction getReference() {
+<span class="fc" id="L99">        return this.eModel;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

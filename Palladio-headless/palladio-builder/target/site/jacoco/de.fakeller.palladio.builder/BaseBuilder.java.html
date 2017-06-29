@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BaseBuilder.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Builder</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.builder</a> &gt; <span class="el_source">BaseBuilder.java</span></div><h1>BaseBuilder.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.builder;
+
+import org.eclipse.emf.cdo.CDOObject;
+
+/**
+ * Base interface for building {@link CDOObject}s.
+ *
+ * @param &lt;TYPE&gt; The model class ({@link CDOObject}) that is built by this builder
+ */
+public interface BaseBuilder&lt;TYPE extends CDOObject&gt; {
+
+    /**
+     * Returns a reference to the palladio model.
+     * &lt;p&gt;
+     * Note: calls to this method should only be performed by builders, as the sole purpose of the method is to return
+     * an object reference. The returned object may not have been fully constructed and is thus likely to have an
+     * inconsistent state.
+     *
+     * @return reference to the object under construction
+     */
+    TYPE getReference();
+
+    /**
+     * Returns the built palladio model instance. Ensures the returned model is fully constructed and consistent.
+     * &lt;p&gt;
+     * Validates and builds the model instance.
+     *
+     * @return the built instance.
+     * @deprecated - this method will most likely be removed in the near future as there is no need for it
+     */
+    default TYPE build() throws BuilderException {
+<span class="nc" id="L32">        return this.getReference();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

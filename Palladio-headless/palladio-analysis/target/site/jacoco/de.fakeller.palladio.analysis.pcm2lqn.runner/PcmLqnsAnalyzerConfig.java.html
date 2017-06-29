@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PcmLqnsAnalyzerConfig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Analysis</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.analysis.pcm2lqn.runner</a> &gt; <span class="el_source">PcmLqnsAnalyzerConfig.java</span></div><h1>PcmLqnsAnalyzerConfig.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.analysis.pcm2lqn.runner;
+
+import de.fakeller.palladio.config.PcmModelConfig;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Properties;
+
+/**
+ * Config parameters to locate PCM models on the file system.
+ */
+public class PcmLqnsAnalyzerConfig extends PcmModelConfig {
+
+    private static final String PROPERTY_OUTPUT_PATH = &quot;Output_Path&quot;;
+
+    public PcmLqnsAnalyzerConfig() {
+<span class="fc" id="L18">        super();</span>
+<span class="fc" id="L19">    }</span>
+
+    public PcmLqnsAnalyzerConfig(final Properties config) {
+<span class="nc" id="L22">        super(config);</span>
+<span class="nc" id="L23">    }</span>
+
+    /**
+     * Cretes a default configuration for the {@link PcmLqnsAnalyzer}, suitable in most use cases.
+     */
+    public static PcmLqnsAnalyzerConfig defaultConfig() {
+<span class="fc" id="L29">        final PcmLqnsAnalyzerConfig config = new PcmLqnsAnalyzerConfig();</span>
+
+        // default model names
+<span class="fc" id="L32">        config.setAllocationModel(&quot;default.allocation&quot;);</span>
+<span class="fc" id="L33">        config.setUsageModel(&quot;default.usagemodel&quot;);</span>
+
+        // default output path
+        final Path output;
+        try {
+<span class="fc" id="L38">            output = Files.createTempDirectory(&quot;lqns-analysis&quot;);</span>
+<span class="nc" id="L39">        } catch (final IOException e) {</span>
+<span class="nc" id="L40">            throw new RuntimeException(&quot;Cannot create temporary directory for LQNS results&quot;, e);</span>
+<span class="fc" id="L41">        }</span>
+<span class="fc" id="L42">        config.setOutputPath(output.toString());</span>
+
+<span class="fc" id="L44">        return config;</span>
+    }
+
+    public String getOutputPath() {
+<span class="fc" id="L48">        return this.getPropertyNotNull(PROPERTY_OUTPUT_PATH);</span>
+    }
+
+    public void setOutputPath(final String outputPath) {
+<span class="fc" id="L52">        this.setProperty(PROPERTY_OUTPUT_PATH, outputPath);</span>
+<span class="fc" id="L53">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

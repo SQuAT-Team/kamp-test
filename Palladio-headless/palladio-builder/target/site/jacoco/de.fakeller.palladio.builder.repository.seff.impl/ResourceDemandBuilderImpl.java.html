@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ResourceDemandBuilderImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Builder</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.builder.repository.seff.impl</a> &gt; <span class="el_source">ResourceDemandBuilderImpl.java</span></div><h1>ResourceDemandBuilderImpl.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.builder.repository.seff.impl;
+
+import de.fakeller.palladio.builder.BaseBuilder;
+import de.fakeller.palladio.builder.BuilderException;
+import de.fakeller.palladio.builder.repository.ComponentBuilder;
+import de.fakeller.palladio.builder.repository.SignatureBuilder;
+import de.fakeller.palladio.builder.repository.seff.BranchBuilder;
+import de.fakeller.palladio.builder.repository.seff.ExternalCallBuilder;
+import de.fakeller.palladio.builder.repository.seff.InternalActionBuilder;
+import de.fakeller.palladio.builder.repository.seff.ResourceDemandBuilder;
+import org.palladiosimulator.pcm.seff.AbstractAction;
+import org.palladiosimulator.pcm.seff.ResourceDemandingBehaviour;
+import org.palladiosimulator.pcm.seff.ResourceDemandingSEFF;
+import org.palladiosimulator.pcm.seff.SeffFactory;
+
+public class ResourceDemandBuilderImpl&lt;PARENT extends BaseBuilder&lt;?&gt;&gt; implements ResourceDemandBuilder&lt;PARENT&gt; {
+
+    private final PARENT belongsTo;
+
+    private final ResourceDemandingBehaviour eModel;
+
+    private AbstractAction predecessor;
+
+<span class="fc" id="L24">    private ResourceDemandBuilderImpl(final ResourceDemandingBehaviour eModel, final PARENT belongsTo) {</span>
+<span class="fc" id="L25">        this.eModel = eModel;</span>
+<span class="fc" id="L26">        this.belongsTo = belongsTo;</span>
+<span class="fc" id="L27">    }</span>
+
+
+    // // CONSTRUCTOR METHODS // //
+
+    /**
+     * Creates a {@link ResourceDemandBuilder} to be used by {@link ComponentBuilder}s, as this will create a root-level
+     * resource demand.
+     */
+    public static ResourceDemandBuilder&lt;ComponentBuilder&gt; rootResourceDemand(final ComponentBuilder belongsTo, final SignatureBuilder affectedOperation) {
+        // create demand
+<span class="fc" id="L38">        final ResourceDemandingSEFF eModel = SeffFactory.eINSTANCE.createResourceDemandingSEFF();</span>
+        // link SEFF demand to the belonging component
+<span class="fc" id="L40">        eModel.setBasicComponent_ServiceEffectSpecification(belongsTo.getReference());</span>
+<span class="fc" id="L41">        belongsTo.getReference().getServiceEffectSpecifications__BasicComponent().add(eModel);</span>
+        // link SEFF demand to the actual operation - one-directional only
+<span class="fc" id="L43">        eModel.setDescribedService__SEFF(affectedOperation.getReference());</span>
+
+<span class="fc" id="L45">        return new ResourceDemandBuilderImpl&lt;ComponentBuilder&gt;(eModel, belongsTo);</span>
+    }
+
+    /**
+     * Creates a {@link ResourceDemandBuilder} to be used in nested control flow resource demands, as can be reached by
+     * using {@link BranchBuilder}s.
+     */
+    public static &lt;P extends BaseBuilder&lt;?&gt;&gt; ResourceDemandBuilder&lt;P&gt; nestedResourceDemand(final P belongsTo) {
+<span class="fc" id="L53">        final ResourceDemandingBehaviour eModel = SeffFactory.eINSTANCE.createResourceDemandingBehaviour();</span>
+<span class="fc" id="L54">        return new ResourceDemandBuilderImpl&lt;P&gt;(eModel, belongsTo);</span>
+    }
+
+
+    // // QUEUING LOGIC // //
+
+    private ResourceDemandBuilder&lt;PARENT&gt; enqueueAction(final AbstractAction action) {
+        // double-link
+<span class="fc bfc" id="L62" title="All 2 branches covered.">        if (null != this.predecessor) {</span>
+<span class="fc" id="L63">            action.setPredecessor_AbstractAction(this.predecessor);</span>
+<span class="fc" id="L64">            this.predecessor.setSuccessor_AbstractAction(action);</span>
+        }
+
+        // link to parent model
+<span class="fc" id="L68">        this.eModel.getSteps_Behaviour().add(action);</span>
+<span class="fc" id="L69">        action.setResourceDemandingBehaviour_AbstractAction(this.eModel);</span>
+
+<span class="fc" id="L71">        this.predecessor = action;</span>
+<span class="fc" id="L72">        return this;</span>
+    }
+
+    private void assertPredecessor() {
+<span class="fc bfc" id="L76" title="All 2 branches covered.">        if (null == this.predecessor) {</span>
+<span class="fc" id="L77">            throw new BuilderException(this, &quot;The action you are trying to create requires a previous action to be registered. If you have not set an action yet, begin with the start() action.&quot;);</span>
+        }
+<span class="fc" id="L79">    }</span>
+
+
+    // // NON-BUILDER ACTIONS // //
+
+    @Override
+    public ResourceDemandBuilder&lt;PARENT&gt; start() {
+<span class="fc" id="L86">        final int noExistingActions = this.getReference().getSteps_Behaviour().size();</span>
+<span class="fc bfc" id="L87" title="All 2 branches covered.">        if (noExistingActions &gt; 0) {</span>
+<span class="fc" id="L88">            throw new BuilderException(this, String.format(&quot;There are already %d actions defined for this resource demand specification. Cannot add the START action again!&quot;, noExistingActions));</span>
+        }
+<span class="fc" id="L90">        return enqueueAction(SeffFactory.eINSTANCE.createStartAction());</span>
+    }
+
+    @Override
+    public ResourceDemandBuilder&lt;PARENT&gt; stop() {
+<span class="fc" id="L95">        assertPredecessor();</span>
+<span class="fc" id="L96">        return enqueueAction(SeffFactory.eINSTANCE.createStopAction());</span>
+    }
+
+
+    // // BUILDER ACTIONS // //
+
+    @Override
+    public InternalActionBuilder&lt;ResourceDemandBuilder&lt;PARENT&gt;&gt; internalAction() {
+<span class="fc" id="L104">        assertPredecessor();</span>
+<span class="fc" id="L105">        final InternalActionBuilder&lt;ResourceDemandBuilder&lt;PARENT&gt;&gt; builder = new InternalActionBuilderImpl&lt;&gt;(this);</span>
+<span class="fc" id="L106">        enqueueAction(builder.getReference());</span>
+<span class="fc" id="L107">        return builder;</span>
+    }
+
+    @Override
+    public ExternalCallBuilder&lt;ResourceDemandBuilder&lt;PARENT&gt;&gt; externalCall() {
+<span class="fc" id="L112">        assertPredecessor();</span>
+<span class="fc" id="L113">        final ExternalCallBuilder&lt;ResourceDemandBuilder&lt;PARENT&gt;&gt; builder = new ExternalCallBuilderImpl&lt;&gt;(this);</span>
+<span class="fc" id="L114">        enqueueAction(builder.getReference());</span>
+<span class="fc" id="L115">        return builder;</span>
+    }
+
+    @Override
+    public BranchBuilder&lt;ResourceDemandBuilder&lt;PARENT&gt;&gt; branch() {
+<span class="fc" id="L120">        assertPredecessor();</span>
+<span class="fc" id="L121">        final BranchBuilderImpl&lt;ResourceDemandBuilder&lt;PARENT&gt;&gt; builder = new BranchBuilderImpl&lt;&gt;(this);</span>
+<span class="fc" id="L122">        enqueueAction(builder.getReference());</span>
+<span class="fc" id="L123">        return builder;</span>
+    }
+
+
+    // // BUILDER API METHODS // //
+
+    @Override
+    public PARENT end() {
+<span class="fc" id="L131">        return this.belongsTo;</span>
+    }
+
+    @Override
+    public ResourceDemandingBehaviour getReference() {
+<span class="fc" id="L136">        return this.eModel;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
