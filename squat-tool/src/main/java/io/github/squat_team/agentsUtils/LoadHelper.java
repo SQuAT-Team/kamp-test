@@ -22,6 +22,8 @@ import io.github.squat_team.modifiability.ModifiabilityInstruction;
 import io.github.squat_team.modifiability.ModifiabilityOperation;
 import io.github.squat_team.modifiability.ModifiabilityPCMScenario;
 import io.github.squat_team.modifiability.kamp.KAMPPCMBot;
+import io.github.squat_team.performance.AbstractPerformancePCMScenario;
+import io.github.squat_team.performance.peropteryx.PerOpteryxPCMBot;
 import io.github.squat_team.util.SQuATHelper;
 
 public class LoadHelper {
@@ -37,22 +39,26 @@ public class LoadHelper {
 		
 		ModifiabilityBot m1Bot=new ModifiabilityBot(/*3,*/ 115f,"m1",responseTimeScenario1);
 		ModifiabilityBot m2Bot=new ModifiabilityBot(/*5,*/ 190.5f,"m2",responseTimeScenario2);
-		PerformanceBot p1Bot=new PerformanceBot(111.7639f,"p1",30f);
-		PerformanceBot p2Bot=new PerformanceBot(74.0173f,"p2",40f);
+		PerformanceBot p1Bot=new PerformanceBot(111.7639f,"p1",30f);//Workload
+		PerformanceBot p2Bot=new PerformanceBot(74.0173f,"p2",40f);//CPU
 		
 		
 		
 		for (Iterator<ArchitecturalVersion> iterator = architecturalAlternatives.iterator(); iterator.hasNext();) {
 			ArchitecturalVersion architecturalVersion = iterator.next();
 			try {
-				m1Bot.insertInOrder(new ModifiabilityProposal(calculateModifiabilityComplexity(m1Scenario,KAMPPCMBot.TYPE_COMPLEXITY,architecturalVersion), architecturalVersion.getFileName()));
-				m2Bot.insertInOrder(new ModifiabilityProposal(calculateModifiabilityComplexity(m2Scenario,KAMPPCMBot.TYPE_COMPLEXITY,architecturalVersion), architecturalVersion.getFileName()));
-		
-				//TODO We must add the bots of performance here
+				
+				
+				
+				m1Bot.insertInOrder(new ModifiabilityProposal(calculateModifiabilityComplexity(m1Scenario,KAMPPCMBot.TYPE_COMPLEXITY,architecturalVersion), architecturalVersion.getName()));
+				m2Bot.insertInOrder(new ModifiabilityProposal(calculateModifiabilityComplexity(m2Scenario,KAMPPCMBot.TYPE_COMPLEXITY,architecturalVersion), architecturalVersion.getName()));
+				
+				p1Bot.insertInOrder(new PerformanceProposal(calculatePerformanceComplexityForScenario(PerformanceScenarioHelper.createScenarioOfWorkload(), architecturalVersion), architecturalVersion.getName()));
+				p2Bot.insertInOrder(new PerformanceProposal(calculatePerformanceComplexityForScenario(PerformanceScenarioHelper.createScenarioOfCPU(), architecturalVersion), architecturalVersion.getName()));
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
 		}
 		
 		List<SillyBot> ret=new ArrayList<>();
@@ -85,6 +91,16 @@ public class LoadHelper {
 		@SuppressWarnings("unchecked")
 		Comparable<Float> response_alt1 = scenarioResult.getResult().getResponse();
 		return  ((Float) response_alt1).floatValue();
+	}
+	
+	private float calculatePerformanceComplexityForScenario(AbstractPerformancePCMScenario scenario, ArchitecturalVersion architecturalVersion){
+		PerOpteryxPCMBot bot=PerformanceScenarioHelper.createPCMBot(scenario);
+		PCMArchitectureInstance architecture=PerformanceScenarioHelper.createArchitecture(architecturalVersion);
+		PCMScenarioResult result =bot.analyze(architecture);
+		if(result==null)//is unsolvable
+			return 9999f;
+		else 
+			return new Float(result.getResult().getResponse().toString()).floatValue();	
 	}
 	
 	private PCMArchitectureInstance loadSpecificModel(ArchitecturalVersion architecturalVersion) {

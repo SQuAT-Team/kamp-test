@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" output="target/classes" path="src/main/java">
+	<classpathentry excluding="io/github/squat_team/model/PCMArchitectureInstance.java" kind="src" output="target/classes" path="src/main/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
@@ -51,5 +51,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/org.palladiosimulator.pcm.fieldofactivityannotations"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/org.palladiosimulator.pcm.internalmodificationmark"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/edu.squat.transformations"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/squat-tool-performance-bot"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Headless-PerOpteryx-src"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

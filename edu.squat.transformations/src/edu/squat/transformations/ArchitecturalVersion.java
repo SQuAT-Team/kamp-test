@@ -1,10 +1,13 @@
 package edu.squat.transformations;
 
+import java.io.File;
+
 //import io.github.squat_team.model.PCMArchitectureInstance;
 
 public class ArchitecturalVersion {
 	private String fileName;
 	private String path;
+	private String absolutePath;
 	private String repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, usageFilename;
 	private String lastModifiedBy;
 	
@@ -15,6 +18,7 @@ public class ArchitecturalVersion {
 	public ArchitecturalVersion(String fileName,String path,String lastModifiedBy) {
 		this.fileName=fileName;
 		this.path=path;
+		this.absolutePath=new File(path).getAbsolutePath();
 		this.lastModifiedBy=lastModifiedBy;
 		repositoryFilename = fileName + ".repository";
 		systemFilename = fileName + ".system";
@@ -71,5 +75,11 @@ public class ArchitecturalVersion {
 	}
 	public boolean lastModifiedByModifiability() {
 		return lastModifiedBy.equals(MODIFIABILITY);
+	}
+	public String getAbsolutePath() {
+		return absolutePath;
+	}
+	public String getName(){
+		return absolutePath+File.separator+fileName;
 	}
 }

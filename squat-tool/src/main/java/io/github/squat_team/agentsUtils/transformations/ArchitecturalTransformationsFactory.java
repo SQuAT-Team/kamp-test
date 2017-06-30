@@ -1,4 +1,5 @@
 package io.github.squat_team.agentsUtils.transformations;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -10,12 +11,14 @@ public class ArchitecturalTransformationsFactory {
 	
 	private Hashtable<Integer, List<ArchitecturalVersion>> architecturesByLevel;
 	private ModifiabilityTransformationsFactory modifiabilityTrans;
+	private PerformanceTransformationFactory performanceTrans;
 	private ArchitecturalVersion initialArchitecture;
 	
 	
 	public ArchitecturalTransformationsFactory() {
 		modifiabilityTrans=new ModifiabilityTransformationsFactory();
-		initialArchitecture=new ArchitecturalVersion("stplus","models","");
+		initialArchitecture=new ArchitecturalVersion("default","models","");
+		performanceTrans=new PerformanceTransformationFactory();
 		architecturesByLevel=new Hashtable<>();
 	}
 	
@@ -57,8 +60,7 @@ public class ArchitecturalTransformationsFactory {
 	}
 	private List<ArchitecturalVersion> generateArchitecturalVersionsUsingPerformanceTransformations(
 			ArchitecturalVersion architecturalVersion) {
-		//TODO I also have to do it for PERFORMANCE
-		return new ArrayList<ArchitecturalVersion>();
+		return performanceTrans.generateArchitecturalVersionsUsingPerformanceTransformations(architecturalVersion);
 	}
 
 	public List<ArchitecturalVersion> transformationsForLevel(int level) {
