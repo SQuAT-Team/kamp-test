@@ -12,12 +12,13 @@ public class ArchitecturalTransformationsFactory {
 	private Hashtable<Integer, List<ArchitecturalVersion>> architecturesByLevel;
 	private ModifiabilityTransformationsFactory modifiabilityTrans;
 	private PerformanceTransformationFactory performanceTrans;
-	private ArchitecturalVersion initialArchitecture;
-	
+	//private ArchitecturalVersion initialArchitecture1;
+	private ArchitecturalVersion initialArchitecture2;
 	
 	public ArchitecturalTransformationsFactory() {
 		modifiabilityTrans=new ModifiabilityTransformationsFactory();
-		initialArchitecture=new ArchitecturalVersion("default","models","");
+		//initialArchitecture1=new ArchitecturalVersion("stplus","models","");
+		initialArchitecture2=new ArchitecturalVersion("default","models","");
 		performanceTrans=new PerformanceTransformationFactory();
 		architecturesByLevel=new Hashtable<>();
 	}
@@ -38,8 +39,8 @@ public class ArchitecturalTransformationsFactory {
 		 architecturesByLevel.put(level, transformationForLevel);
 		 if(level==1){
 			 //Applied transformations to initial architecture and save it on the hashtable
-			 transformationForLevel.addAll(generateArchitecturalVersionsUsingModifiabilityTransformations(initialArchitecture));
-			 transformationForLevel.addAll(generateArchitecturalVersionsUsingPerformanceTransformations(initialArchitecture));
+			 transformationForLevel.addAll(generateArchitecturalVersionsUsingModifiabilityTransformations(initialArchitecture2));
+			 transformationForLevel.addAll(generateArchitecturalVersionsUsingPerformanceTransformations(initialArchitecture2));
 		 }else{
 			 List<ArchitecturalVersion> architecturesPreviousLevel=architecturesByLevel.get(level-1);
 			 for (Iterator<ArchitecturalVersion> iterator = architecturesPreviousLevel.iterator(); iterator.hasNext();) {

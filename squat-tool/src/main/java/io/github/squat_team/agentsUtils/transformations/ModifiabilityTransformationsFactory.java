@@ -19,6 +19,7 @@ public class ModifiabilityTransformationsFactory {
 	public List<ArchitecturalVersion> runModifiabilityTransformationsInAModel(ArchitecturalVersion initialArchitecture){
 		List<ArchitecturalVersion> ret=new ArrayList<>();
 		this.currentInitialArchitecture=initialArchitecture;
+		
 		ret.addAll(runWrapper());
 		ret.addAll(runSplitResp());
 		ret.addAll(runInsInter());
