@@ -253,7 +253,7 @@
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="__f6UsNCmEduC9O_qbthgAg" entityName="CashDeskConnectorIf" providedInterface__OperationProvidedRole="_WoD42tCjEduC9O_qbthgAg"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_0k7YYdCnEduC9O_qbthgAg" entityName="PersistenceIf" requiredInterface__OperationRequiredRole="_F8ovQNChEduC9O_qbthgAg"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_4OSEsdCnEduC9O_qbthgAg" entityName="StoreQueryIf" requiredInterface__OperationRequiredRole="_HSKXwNChEduC9O_qbthgAg"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_UmJQwFWhEee_vbhS72O32Q" requiredInterface__OperationRequiredRole="_UMWQsFWhEee_vbhS72O32Q"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_iafkMGCTEeeHW9Kc4Dpukw" requiredInterface__OperationRequiredRole="_hkskoGCTEeeHW9Kc4Dpukw"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_IpnV8dItEduQ7qbNANXHPw" entityName="ProductDispatcherIf" requiredInterface__OperationRequiredRole="_dbS8pNCiEduC9O_qbthgAg"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="bookSale" describedService__SEFF="_2NKrM1cvEeGI_ZRmqWdpYA">
       <steps_Behaviour xsi:type="seff:StartAction" id="_ckGrcNJOEduQ7qbNANXHPw" successor_AbstractAction="_qPZWwNJOEduQ7qbNANXHPw"/>
@@ -398,9 +398,9 @@
       <steps_Behaviour xsi:type="seff:StopAction" id="_rg798B_8Edy5k9ER1TBmjg" predecessor_AbstractAction="_rYcwUB_8Edy5k9ER1TBmjg"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_UMWQsVWhEee_vbhS72O32Q" entityName="SaleRegisteredEvent-Wrapper">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_UMWQslWhEee_vbhS72O32Q" providedInterface__OperationProvidedRole="_UMWQsFWhEee_vbhS72O32Q"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_UMWQs1WhEee_vbhS72O32Q" requiredInterface__OperationRequiredRole="_RQoSZNCpEduC9O_qbthgAg"/>
+  <components__Repository xsi:type="repository:BasicComponent" id="_hkskoWCTEeeHW9Kc4Dpukw" entityName="SaleRegisteredEvent-Wrapper">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_hkskomCTEeeHW9Kc4Dpukw" providedInterface__OperationProvidedRole="_hkskoGCTEeeHW9Kc4Dpukw"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_hksko2CTEeeHW9Kc4Dpukw" requiredInterface__OperationRequiredRole="_RQoSZNCpEduC9O_qbthgAg"/>
   </components__Repository>
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_WoD42tCjEduC9O_qbthgAg" entityName="CashDeskConnectorIf">
     <signatures__OperationInterface id="_2NKrM1cvEeGI_ZRmqWdpYA" entityName="bookSale">
@@ -616,5 +616,5 @@
     <signatures__OperationInterface id="_2NQx1VcvEeGI_ZRmqWdpYA" entityName="flushDatabase"/>
   </interfaces__Repository>
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_RQoSZNCpEduC9O_qbthgAg" entityName="SaleRegisteredEvent"/>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_UMWQsFWhEee_vbhS72O32Q" entityName="SaleRegisteredEvent-Wrapper"/>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_hkskoGCTEeeHW9Kc4Dpukw" entityName="SaleRegisteredEvent-Wrapper"/>
 </repository:Repository>

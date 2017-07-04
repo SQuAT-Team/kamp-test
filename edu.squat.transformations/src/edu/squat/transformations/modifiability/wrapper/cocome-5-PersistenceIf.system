@@ -60,8 +60,8 @@
   <assemblyContexts__ComposedStructure id="_LoXbYFfjEd26K8JlmYJ10w" entityName="Data.Enterprise_EnterpriseServer">
     <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="cocome-5-PersistenceIf.repository#_-3VggNCgEduC9O_qbthgAg"/>
   </assemblyContexts__ComposedStructure>
-  <assemblyContexts__ComposedStructure id="_cGs4IFWhEee_vbhS72O32Q" entityName="Assembly_PersistenceIf-Wrapper &lt;PersistenceIf-Wrapper>">
-    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="cocome-5-PersistenceIf.repository#_b8WCQVWhEee_vbhS72O32Q"/>
+  <assemblyContexts__ComposedStructure id="_n1In8GCTEeeHW9Kc4Dpukw" entityName="Assembly_PersistenceIf-Wrapper &lt;PersistenceIf-Wrapper>">
+    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="cocome-5-PersistenceIf.repository#_n08asWCTEeeHW9Kc4Dpukw"/>
   </assemblyContexts__ComposedStructure>
   <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_RBRDsFcoEd23wcZsd06DZg" entityName="CashDeskConnectorIf" outerProvidedRole_ProvidedDelegationConnector="_MSQMUFcnEd23wcZsd06DZg" assemblyContext_ProvidedDelegationConnector="_3AwvMFcnEd23wcZsd06DZg">
     <innerProvidedRole_ProvidedDelegationConnector href="cocome-5-PersistenceIf.repository#__f6UsNCmEduC9O_qbthgAg"/>
@@ -88,13 +88,13 @@
     <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_wrdB4NCmEduC9O_qbthgAg"/>
     <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_vsrnUdC4EduW_YoCCnq0vw"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_cGtfOFWhEee_vbhS72O32Q" entityName="Connector Assembly_PersistenceIf-Wrapper &lt;PersistenceIf-Wrapper> -> Data.Persistence_Store_2_Server" requiringAssemblyContext_AssemblyConnector="_cGs4IFWhEee_vbhS72O32Q" providingAssemblyContext_AssemblyConnector="_sREGwFcxEd23wcZsd06DZg">
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_n1JPBWCTEeeHW9Kc4Dpukw" entityName="Connector Assembly_PersistenceIf-Wrapper &lt;PersistenceIf-Wrapper> -> Data.Persistence_Store_2_Server" requiringAssemblyContext_AssemblyConnector="_n1In8GCTEeeHW9Kc4Dpukw" providingAssemblyContext_AssemblyConnector="_sREGwFcxEd23wcZsd06DZg">
     <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_bT0IMNChEduC9O_qbthgAg"/>
-    <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_b8WCQ1WhEee_vbhS72O32Q"/>
+    <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_n08as2CTEeeHW9Kc4Dpukw"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_cGtfN1WhEee_vbhS72O32Q" entityName="Connector Assembly_PersistenceIf-Wrapper &lt;PersistenceIf-Wrapper> -> Data.Persistence_Store_1_Server" requiringAssemblyContext_AssemblyConnector="_cGs4IFWhEee_vbhS72O32Q" providingAssemblyContext_AssemblyConnector="_d2D1wFcxEd23wcZsd06DZg">
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_n1JPBGCTEeeHW9Kc4Dpukw" entityName="Connector Assembly_PersistenceIf-Wrapper &lt;PersistenceIf-Wrapper> -> Data.Persistence_Store_1_Server" requiringAssemblyContext_AssemblyConnector="_n1In8GCTEeeHW9Kc4Dpukw" providingAssemblyContext_AssemblyConnector="_d2D1wFcxEd23wcZsd06DZg">
     <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_bT0IMNChEduC9O_qbthgAg"/>
-    <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_b8WCQ1WhEee_vbhS72O32Q"/>
+    <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_n08as2CTEeeHW9Kc4Dpukw"/>
   </connectors__ComposedStructure>
   <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_PS4H4FcrEd23wcZsd06DZg" entityName="StoreQueryIf" requiringAssemblyContext_AssemblyConnector="_3AwvMFcnEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_07dvQFcqEd23wcZsd06DZg">
     <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_OmzqENChEduC9O_qbthgAg"/>
@@ -120,21 +120,21 @@
     <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_d1Mf0NChEduC9O_qbthgAg"/>
     <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_b-BUEdCnEduC9O_qbthgAg"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_cGtfNlWhEee_vbhS72O32Q" entityName="Connector Assembly_PersistenceIf-Wrapper &lt;PersistenceIf-Wrapper> -> Data.Persistence_EnterpriseServer" requiringAssemblyContext_AssemblyConnector="_cGs4IFWhEee_vbhS72O32Q" providingAssemblyContext_AssemblyConnector="_jN79kFcqEd23wcZsd06DZg">
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_n1JPA2CTEeeHW9Kc4Dpukw" entityName="Connector Assembly_PersistenceIf-Wrapper &lt;PersistenceIf-Wrapper> -> Data.Persistence_EnterpriseServer" requiringAssemblyContext_AssemblyConnector="_n1In8GCTEeeHW9Kc4Dpukw" providingAssemblyContext_AssemblyConnector="_jN79kFcqEd23wcZsd06DZg">
     <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_bT0IMNChEduC9O_qbthgAg"/>
-    <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_b8WCQ1WhEee_vbhS72O32Q"/>
+    <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_n08as2CTEeeHW9Kc4Dpukw"/>
   </connectors__ComposedStructure>
   <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_uJoJ4Fc8Ed23wcZsd06DZg" entityName="StoreQueryIf" requiringAssemblyContext_AssemblyConnector="_etALMFc5Ed23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_XiFg0FcyEd23wcZsd06DZg">
     <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_OmzqENChEduC9O_qbthgAg"/>
     <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_4OSEsdCnEduC9O_qbthgAg"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_cGtfNVWhEee_vbhS72O32Q" entityName="Connector Application.Store_Store_1_Server -> Assembly_PersistenceIf-Wrapper &lt;PersistenceIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_3AwvMFcnEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_cGs4IFWhEee_vbhS72O32Q">
-    <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_b8WCQlWhEee_vbhS72O32Q"/>
-    <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_cGomsFWhEee_vbhS72O32Q"/>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_n1JPAmCTEeeHW9Kc4Dpukw" entityName="Connector Application.Store_Store_1_Server -> Assembly_PersistenceIf-Wrapper &lt;PersistenceIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_3AwvMFcnEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_n1In8GCTEeeHW9Kc4Dpukw">
+    <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_n08asmCTEeeHW9Kc4Dpukw"/>
+    <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_n1FkoGCTEeeHW9Kc4Dpukw"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_cGtfNFWhEee_vbhS72O32Q" entityName="Connector Application.Reporting_Store_2_Server -> Assembly_PersistenceIf-Wrapper &lt;PersistenceIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_9sosIFc5Ed23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_cGs4IFWhEee_vbhS72O32Q">
-    <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_b8WCQlWhEee_vbhS72O32Q"/>
-    <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_cGomsVWhEee_vbhS72O32Q"/>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_n1JPAWCTEeeHW9Kc4Dpukw" entityName="Connector Application.Reporting_Store_2_Server -> Assembly_PersistenceIf-Wrapper &lt;PersistenceIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_9sosIFc5Ed23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_n1In8GCTEeeHW9Kc4Dpukw">
+    <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_n08asmCTEeeHW9Kc4Dpukw"/>
+    <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_n1FkoWCTEeeHW9Kc4Dpukw"/>
   </connectors__ComposedStructure>
   <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_2B01MFc8Ed23wcZsd06DZg" entityName="EnterspriseQueryIf" requiringAssemblyContext_AssemblyConnector="_9sosIFc5Ed23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_DtLL4FcyEd23wcZsd06DZg">
     <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_d1Mf0NChEduC9O_qbthgAg"/>
@@ -156,9 +156,9 @@
     <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_gMw-sNCiEduC9O_qbthgAg"/>
     <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_IpnV8dItEduQ7qbNANXHPw"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_cGtfM1WhEee_vbhS72O32Q" entityName="Connector Application.Store_Store_2_Server -> Assembly_PersistenceIf-Wrapper &lt;PersistenceIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_etALMFc5Ed23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_cGs4IFWhEee_vbhS72O32Q">
-    <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_b8WCQlWhEee_vbhS72O32Q"/>
-    <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_cGomsFWhEee_vbhS72O32Q"/>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_n1JPAGCTEeeHW9Kc4Dpukw" entityName="Connector Application.Store_Store_2_Server -> Assembly_PersistenceIf-Wrapper &lt;PersistenceIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_etALMFc5Ed23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_n1In8GCTEeeHW9Kc4Dpukw">
+    <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_n08asmCTEeeHW9Kc4Dpukw"/>
+    <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_n1FkoGCTEeeHW9Kc4Dpukw"/>
   </connectors__ComposedStructure>
   <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_S_0xIFfjEd26K8JlmYJ10w" entityName="EnterpriseQueryIf" requiringAssemblyContext_AssemblyConnector="_FPU0wFcqEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_LoXbYFfjEd26K8JlmYJ10w">
     <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_d1Mf0NChEduC9O_qbthgAg"/>
@@ -168,17 +168,17 @@
     <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_d1Mf0NChEduC9O_qbthgAg"/>
     <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_h-Kq4dCiEduC9O_qbthgAg"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_cGtfMFWhEee_vbhS72O32Q" entityName="Connector Application.ProductDispatcher_EnterpriseServer -> Assembly_PersistenceIf-Wrapper &lt;PersistenceIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_-W_gcFcoEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_cGs4IFWhEee_vbhS72O32Q">
-    <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_b8WCQlWhEee_vbhS72O32Q"/>
-    <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_cGomslWhEee_vbhS72O32Q"/>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_n1In8WCTEeeHW9Kc4Dpukw" entityName="Connector Application.ProductDispatcher_EnterpriseServer -> Assembly_PersistenceIf-Wrapper &lt;PersistenceIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_-W_gcFcoEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_n1In8GCTEeeHW9Kc4Dpukw">
+    <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_n08asmCTEeeHW9Kc4Dpukw"/>
+    <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_n1FkomCTEeeHW9Kc4Dpukw"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_cGtfMVWhEee_vbhS72O32Q" entityName="Connector Application.Reporting_EnterpriseServer -> Assembly_PersistenceIf-Wrapper &lt;PersistenceIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_FPU0wFcqEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_cGs4IFWhEee_vbhS72O32Q">
-    <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_b8WCQlWhEee_vbhS72O32Q"/>
-    <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_cGomsVWhEee_vbhS72O32Q"/>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_n1In8mCTEeeHW9Kc4Dpukw" entityName="Connector Application.Reporting_EnterpriseServer -> Assembly_PersistenceIf-Wrapper &lt;PersistenceIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_FPU0wFcqEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_n1In8GCTEeeHW9Kc4Dpukw">
+    <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_n08asmCTEeeHW9Kc4Dpukw"/>
+    <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_n1FkoWCTEeeHW9Kc4Dpukw"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_cGtfMlWhEee_vbhS72O32Q" entityName="Connector Application.Reporting_Store_1_Server -> Assembly_PersistenceIf-Wrapper &lt;PersistenceIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_yO4eIFczEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_cGs4IFWhEee_vbhS72O32Q">
-    <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_b8WCQlWhEee_vbhS72O32Q"/>
-    <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_cGomsVWhEee_vbhS72O32Q"/>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_n1In82CTEeeHW9Kc4Dpukw" entityName="Connector Application.Reporting_Store_1_Server -> Assembly_PersistenceIf-Wrapper &lt;PersistenceIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_yO4eIFczEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_n1In8GCTEeeHW9Kc4Dpukw">
+    <providedRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_n08asmCTEeeHW9Kc4Dpukw"/>
+    <requiredRole_AssemblyConnector href="cocome-5-PersistenceIf.repository#_n1FkoWCTEeeHW9Kc4Dpukw"/>
   </connectors__ComposedStructure>
   <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_MSQMUFcnEd23wcZsd06DZg" entityName="CashDeskConnectorIf_Store_1">
     <providedInterface__OperationProvidedRole href="cocome-5-PersistenceIf.repository#_WoD42tCjEduC9O_qbthgAg"/>

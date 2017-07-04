@@ -82,8 +82,8 @@
     <resourceContainer_AllocationContext href="cocome-1-StoreIf.resourceenvironment#_bTYxAOEhEduBSuO8WivxSA"/>
     <assemblyContext_AllocationContext href="cocome-1-StoreIf.system#_LoXbYFfjEd26K8JlmYJ10w"/>
   </allocationContexts_Allocation>
-  <allocationContexts_Allocation id="_VUlEEFWhEee_vbhS72O32Q" entityName="Allocation_Assembly_StoreIf-Wrapper &lt;StoreIf-Wrapper> &lt;StoreIf-Wrapper>">
-    <resourceContainer_AllocationContext href="cocome-1-StoreIf.resourceenvironment#_PNgBAVcdEd23wcZsd06DZg"/>
-    <assemblyContext_AllocationContext href="cocome-1-StoreIf.system#_VUkdAFWhEee_vbhS72O32Q"/>
+  <allocationContexts_Allocation id="_kF0dkGCTEeeHW9Kc4Dpukw" entityName="Allocation_Assembly_StoreIf-Wrapper &lt;StoreIf-Wrapper> &lt;StoreIf-Wrapper>">
+    <resourceContainer_AllocationContext href="cocome-1-StoreIf.resourceenvironment#_ZVdrwOEhEduBSuO8WivxSA"/>
+    <assemblyContext_AllocationContext href="cocome-1-StoreIf.system#_kFzPcGCTEeeHW9Kc4Dpukw"/>
   </allocationContexts_Allocation>
 </allocation:Allocation>

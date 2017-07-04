@@ -12,9 +12,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.henshin.interpreter.EGraph;
 import org.eclipse.emf.henshin.interpreter.Engine;
 import org.eclipse.emf.henshin.interpreter.RuleApplication;
+import org.eclipse.emf.henshin.interpreter.impl.EGraphImpl;
 import org.eclipse.emf.henshin.interpreter.impl.EngineImpl;
 import org.eclipse.emf.henshin.interpreter.impl.RuleApplicationImpl;
 import org.eclipse.emf.henshin.model.Rule;
+import org.eclipse.emf.henshin.model.resource.HenshinResourceSet;
 import org.eclipse.emf.henshin.trace.Trace;
 import org.eclipse.emf.henshin.trace.TraceFactory;
 import org.palladiosimulator.pcm.allocation.Allocation;
@@ -124,17 +126,18 @@ public class WrapperRunner extends PCMTransformerRunner {
 		//Create and configure an engine
 		engine = new EngineImpl();
 		//engine.getOptions().put(engine.OPTION_CHECK_DANGLING, false);
-
+		EGraph tempGraph1 = graph.copy(null);
 		//Run the first and second rule to create the initial traces
-		RuleApplication firstRule = this.runFirstRule(graph);
+		RuleApplication firstRule = this.runFirstRule(tempGraph1);
 		boolean successFirstRule = firstRule.execute(monitor);
-		RuleApplication secondRule = this.runSecondRule(graph);
+		RuleApplication secondRule = this.runSecondRule(tempGraph1);
 		boolean successSecondRule = secondRule.execute(monitor);
 		
 		//If the transformation was successful continue with the other rules
 		if(successFirstRule && successSecondRule) {
 			System.out.println("Successfully marked components and interfaces that could be wrapped");
-			Trace root = RunnerHelper.getTraceRoot(graph);
+			
+			Trace root = RunnerHelper.getTraceRoot(tempGraph1);
 			
 			List<Trace> candidateTraces = this.computeCandidates(root);
 			//Avoiding references to the graph because we are going to clone it...we need emf-less references
@@ -143,7 +146,8 @@ public class WrapperRunner extends PCMTransformerRunner {
 			int counter = 0;
 			while(counter < candidatePointers.size()) {
 				//Cloning the graph
-				EGraph tempGraph = graph.copy(null);
+				
+				EGraph tempGraph = tempGraph1.copy(null);
 				Trace tempRoot = RunnerHelper.getTraceRoot(tempGraph);
 				//Repository tempRepository = RunnerHelper.getRepositoryRoot(tempGraph);
 				//Getting the interfaces
@@ -154,7 +158,7 @@ public class WrapperRunner extends PCMTransformerRunner {
 			
 				//Configuring and executing the third rule
 				RuleApplication thirdRule = this.runThirdRule(tempGraph);
-				
+			
 				//Duplicating the interface for the intermediate
 				OperationInterface oldInterface = (OperationInterface) thirdRule.getResultParameterValue("iWrap");	
 				BasicComponent newComponent = (BasicComponent) thirdRule.getResultParameterValue("cWrapper");
@@ -167,7 +171,7 @@ public class WrapperRunner extends PCMTransformerRunner {
 				
 				//Creating a service effect specification for the intermediate
 				this.createSEFF(tempGraph, oldInterface, newComponent, newInterface);
-				
+			
 				//Configuring and executing the fourth rule
 				this.runFourthRule(tempGraph);
 				
@@ -215,14 +219,17 @@ public class WrapperRunner extends PCMTransformerRunner {
 								resultUsageFilename.replace("#REPLACEMENT#", String.valueOf(counter) + "-" + fileName));
 					}
 				}
+				
 				counter++;
 			}
 		}
 		else {
 			System.out.println("Could not mark components and interfaces that could use a wrapper");
 		}
+		
 		return ret;
 	}
+	
 
 	private void fixAffectedSEFFs(EGraph tempGraph, OperationInterface oldInterface, BasicComponent newComponent, OperationInterface newInterface) {
 		Trace root = RunnerHelper.getTraceRoot(tempGraph);
@@ -565,12 +572,16 @@ public class WrapperRunner extends PCMTransformerRunner {
 			InternalAction internalAction = sFactory.createInternalAction();
 			internalAction.setEntityName("Overhead" + " [" + newComponent.getEntityName() + "]");
 			ParametricResourceDemand cpuDemand = SeffPerformanceFactory.eINSTANCE.createParametricResourceDemand();
+			
 			cpuDemand.setRequiredResource_ParametricResourceDemand(PCMDefault.getCPU());
+			
 			PCMRandomVariable consumptionVariable = CoreFactory.eINSTANCE.createPCMRandomVariable();
+			
 			consumptionVariable.setSpecification("2");
 			cpuDemand.setSpecification_ParametericResourceDemand(consumptionVariable);
 			internalAction.getResourceDemand_Action().add(cpuDemand);
 			//
+			
 			ExternalCallAction externalCallAction = sFactory.createExternalCallAction();
 			externalCallAction.setEntityName(RunnerHelper.getExternalCallActionName(newInterface, signature));
 			OperationSignature externalSignature = RunnerHelper.findSignature(signature, oldInterface);

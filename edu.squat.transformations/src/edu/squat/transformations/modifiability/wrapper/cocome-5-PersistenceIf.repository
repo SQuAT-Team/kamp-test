@@ -120,7 +120,7 @@
   <components__Repository xsi:type="repository:BasicComponent" id="_XDTf09CiEduC9O_qbthgAg" entityName="TradingSystem.Inventory.Application.ProductDispatcher">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_gMw-sNCiEduC9O_qbthgAg" entityName="ProductDispatcherIf" providedInterface__OperationProvidedRole="_dbS8pNCiEduC9O_qbthgAg"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_h-Kq4dCiEduC9O_qbthgAg" entityName="EnterpriseQueryIf" requiredInterface__OperationRequiredRole="_Eldg8NChEduC9O_qbthgAg"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_cGomslWhEee_vbhS72O32Q" requiredInterface__OperationRequiredRole="_b8WCQFWhEee_vbhS72O32Q"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_n1FkomCTEeeHW9Kc4Dpukw" requiredInterface__OperationRequiredRole="_n08asGCTEeeHW9Kc4Dpukw"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_kzNlYdCiEduC9O_qbthgAg" entityName="StoreQueryIf" requiredInterface__OperationRequiredRole="_HSKXwNChEduC9O_qbthgAg"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_AXZsESDlEdyyNLPIIGbfMQ" entityName="StoreIf" requiredInterface__OperationRequiredRole="_4153pNCiEduC9O_qbthgAg"/>
     <componentParameterUsage_ImplementationComponentType>
@@ -132,7 +132,7 @@
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="orderProductsAvailableAtOtherStores" describedService__SEFF="_2NO8o1cvEeGI_ZRmqWdpYA">
       <steps_Behaviour xsi:type="seff:StartAction" id="_BHJ0kNLyEduQ7qbNANXHPw" successor_AbstractAction="_EJT-ANLyEduQ7qbNANXHPw"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_BYli0NLyEduQ7qbNANXHPw" predecessor_AbstractAction="_A2scgN7AEduAmOtZLewIEg"/>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_EJT-ANLyEduQ7qbNANXHPw" entityName="getPersistenceContext" predecessor_AbstractAction="_BHJ0kNLyEduQ7qbNANXHPw" successor_AbstractAction="__MsdkNLyEduQ7qbNANXHPw" calledService_ExternalService="_b8a6wFWhEee_vbhS72O32Q" role_ExternalService="_cGomslWhEee_vbhS72O32Q"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_EJT-ANLyEduQ7qbNANXHPw" entityName="getPersistenceContext" predecessor_AbstractAction="_BHJ0kNLyEduQ7qbNANXHPw" successor_AbstractAction="__MsdkNLyEduQ7qbNANXHPw" calledService_ExternalService="_n1BTMGCTEeeHW9Kc4Dpukw" role_ExternalService="_n1FkomCTEeeHW9Kc4Dpukw"/>
       <steps_Behaviour xsi:type="seff:ExternalCallAction" id="__MsdkNLyEduQ7qbNANXHPw" entityName="queryEnterpriseById" predecessor_AbstractAction="_EJT-ANLyEduQ7qbNANXHPw" successor_AbstractAction="_Y6-ZoNLzEduQ7qbNANXHPw" calledService_ExternalService="_2NLSRFcvEeGI_ZRmqWdpYA" role_ExternalService="_h-Kq4dCiEduC9O_qbthgAg"/>
       <steps_Behaviour xsi:type="seff:InternalAction" id="_Y6-ZoNLzEduQ7qbNANXHPw" entityName="removeCallingStore" predecessor_AbstractAction="__MsdkNLyEduQ7qbNANXHPw" successor_AbstractAction="_trQxsNLzEduQ7qbNANXHPw">
         <resourceDemand_Action>
@@ -233,7 +233,7 @@
   <components__Repository xsi:type="repository:BasicComponent" id="_URW_1dCmEduC9O_qbthgAg" entityName="TradingSystem.Inventory.Application.Reporting">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_wrdB4NCmEduC9O_qbthgAg" entityName="ReportingIf" providedInterface__OperationProvidedRole="_vebx9NCiEduC9O_qbthgAg"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_b-BUEdCnEduC9O_qbthgAg" entityName="EnterpriseQueryIf" requiredInterface__OperationRequiredRole="_Eldg8NChEduC9O_qbthgAg"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_cGomsVWhEee_vbhS72O32Q" requiredInterface__OperationRequiredRole="_b8WCQFWhEee_vbhS72O32Q"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_n1FkoWCTEeeHW9Kc4Dpukw" requiredInterface__OperationRequiredRole="_n08asGCTEeeHW9Kc4Dpukw"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_t5HAodCnEduC9O_qbthgAg" entityName="StoreQueryIf" requiredInterface__OperationRequiredRole="_HSKXwNChEduC9O_qbthgAg"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_ifiR9yCfEdyrYp4aNf6BNw" describedService__SEFF="_2NO8qVcvEeGI_ZRmqWdpYA">
       <steps_Behaviour xsi:type="seff:StartAction" id="_ifiR-CCfEdyrYp4aNf6BNw" successor_AbstractAction="_ifiR-SCfEdyrYp4aNf6BNw"/>
@@ -251,7 +251,7 @@
   <components__Repository xsi:type="repository:BasicComponent" id="_6tZA5dCmEduC9O_qbthgAg" entityName="TradingSystem.Inventory.Application.Store">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_8phWYNCmEduC9O_qbthgAg" entityName="StoreIf" providedInterface__OperationProvidedRole="_4153pNCiEduC9O_qbthgAg"/>
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="__f6UsNCmEduC9O_qbthgAg" entityName="CashDeskConnectorIf" providedInterface__OperationProvidedRole="_WoD42tCjEduC9O_qbthgAg"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_cGomsFWhEee_vbhS72O32Q" requiredInterface__OperationRequiredRole="_b8WCQFWhEee_vbhS72O32Q"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_n1FkoGCTEeeHW9Kc4Dpukw" requiredInterface__OperationRequiredRole="_n08asGCTEeeHW9Kc4Dpukw"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_4OSEsdCnEduC9O_qbthgAg" entityName="StoreQueryIf" requiredInterface__OperationRequiredRole="_HSKXwNChEduC9O_qbthgAg"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_aa6McdCwEduW_YoCCnq0vw" entityName="SaleRegisteredEvent" requiredInterface__OperationRequiredRole="_RQoSZNCpEduC9O_qbthgAg"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_IpnV8dItEduQ7qbNANXHPw" entityName="ProductDispatcherIf" requiredInterface__OperationRequiredRole="_dbS8pNCiEduC9O_qbthgAg"/>
@@ -264,7 +264,7 @@
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_qPZWwNJOEduQ7qbNANXHPw" entityName="getPersistenceContext" predecessor_AbstractAction="_ckGrcNJOEduQ7qbNANXHPw" successor_AbstractAction="_m1YuANJOEduQ7qbNANXHPw" calledService_ExternalService="_b8a6wFWhEee_vbhS72O32Q" role_ExternalService="_cGomsFWhEee_vbhS72O32Q"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_qPZWwNJOEduQ7qbNANXHPw" entityName="getPersistenceContext" predecessor_AbstractAction="_ckGrcNJOEduQ7qbNANXHPw" successor_AbstractAction="_m1YuANJOEduQ7qbNANXHPw" calledService_ExternalService="_n1BTMGCTEeeHW9Kc4Dpukw" role_ExternalService="_n1FkoGCTEeeHW9Kc4Dpukw"/>
       <steps_Behaviour xsi:type="seff:LoopAction" id="_wAfysNJOEduQ7qbNANXHPw" entityName="ProductWithStockItemIterator" predecessor_AbstractAction="_m1YuANJOEduQ7qbNANXHPw" successor_AbstractAction="_dbRHgNJPEduQ7qbNANXHPw">
         <bodyBehaviour_Loop id="_EIWgAaTJEeGVosGVY5oxwg">
           <steps_Behaviour xsi:type="seff:StopAction" id="_2ZFscNJOEduQ7qbNANXHPw" predecessor_AbstractAction="_3isY0NJOEduQ7qbNANXHPw"/>
@@ -273,7 +273,7 @@
         </bodyBehaviour_Loop>
         <iterationCount_LoopAction specification="saleTO.NUMBER_OF_ELEMENTS"/>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_M7N1kNJPEduQ7qbNANXHPw" entityName="getPersistenceContext" predecessor_AbstractAction="_dbRHgNJPEduQ7qbNANXHPw" successor_AbstractAction="_YeyxANJQEduQ7qbNANXHPw" calledService_ExternalService="_b8a6wFWhEee_vbhS72O32Q" role_ExternalService="_cGomsFWhEee_vbhS72O32Q"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_M7N1kNJPEduQ7qbNANXHPw" entityName="getPersistenceContext" predecessor_AbstractAction="_dbRHgNJPEduQ7qbNANXHPw" successor_AbstractAction="_YeyxANJQEduQ7qbNANXHPw" calledService_ExternalService="_n1BTMGCTEeeHW9Kc4Dpukw" role_ExternalService="_n1FkoGCTEeeHW9Kc4Dpukw"/>
       <steps_Behaviour xsi:type="seff:InternalAction" id="_dbRHgNJPEduQ7qbNANXHPw" entityName="catchBlock" predecessor_AbstractAction="_wAfysNJOEduQ7qbNANXHPw" successor_AbstractAction="_M7N1kNJPEduQ7qbNANXHPw">
         <resourceDemand_Action>
           <specification_ParametericResourceDemand specification="20"/>
@@ -398,18 +398,18 @@
       <steps_Behaviour xsi:type="seff:StopAction" id="_rg798B_8Edy5k9ER1TBmjg" predecessor_AbstractAction="_rYcwUB_8Edy5k9ER1TBmjg"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_b8WCQVWhEee_vbhS72O32Q" entityName="PersistenceIf-Wrapper">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_b8WCQlWhEee_vbhS72O32Q" providedInterface__OperationProvidedRole="_b8WCQFWhEee_vbhS72O32Q"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_b8WCQ1WhEee_vbhS72O32Q" requiredInterface__OperationRequiredRole="_F8ovQNChEduC9O_qbthgAg"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_cGk8UFWhEee_vbhS72O32Q" describedService__SEFF="_b8a6wFWhEee_vbhS72O32Q">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_cGk8UVWhEee_vbhS72O32Q" entityName="start" successor_AbstractAction="_cGk8UlWhEee_vbhS72O32Q"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_cGk8UlWhEee_vbhS72O32Q" entityName="Overhead [PersistenceIf-Wrapper]" predecessor_AbstractAction="_cGk8UVWhEee_vbhS72O32Q" successor_AbstractAction="_cGk8U1WhEee_vbhS72O32Q">
+  <components__Repository xsi:type="repository:BasicComponent" id="_n08asWCTEeeHW9Kc4Dpukw" entityName="PersistenceIf-Wrapper">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_n08asmCTEeeHW9Kc4Dpukw" providedInterface__OperationProvidedRole="_n08asGCTEeeHW9Kc4Dpukw"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_n08as2CTEeeHW9Kc4Dpukw" requiredInterface__OperationRequiredRole="_F8ovQNChEduC9O_qbthgAg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_n1B6QGCTEeeHW9Kc4Dpukw" describedService__SEFF="_n1BTMGCTEeeHW9Kc4Dpukw">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_n1B6QWCTEeeHW9Kc4Dpukw" entityName="start" successor_AbstractAction="_n1B6QmCTEeeHW9Kc4Dpukw"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_n1B6QmCTEeeHW9Kc4Dpukw" entityName="Overhead [PersistenceIf-Wrapper]" predecessor_AbstractAction="_n1B6QWCTEeeHW9Kc4Dpukw" successor_AbstractAction="_n1B6Q2CTEeeHW9Kc4Dpukw">
         <resourceDemand_Action>
           <specification_ParametericResourceDemand specification="2"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_cGk8U1WhEee_vbhS72O32Q" entityName="External_PersistenceIf-Wrapper_getPersistenceContext" predecessor_AbstractAction="_cGk8UlWhEee_vbhS72O32Q" successor_AbstractAction="_cGljYFWhEee_vbhS72O32Q" calledService_ExternalService="_2NL5V1cvEeGI_ZRmqWdpYA" role_ExternalService="_b8WCQ1WhEee_vbhS72O32Q">
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_n1B6Q2CTEeeHW9Kc4Dpukw" entityName="External_PersistenceIf-Wrapper_getPersistenceContext" predecessor_AbstractAction="_n1B6QmCTEeeHW9Kc4Dpukw" successor_AbstractAction="_n1ChUGCTEeeHW9Kc4Dpukw" calledService_ExternalService="_2NL5V1cvEeGI_ZRmqWdpYA" role_ExternalService="_n08as2CTEeeHW9Kc4Dpukw">
         <returnVariableUsage__CallReturnAction>
           <variableCharacterisation_VariableUsage type="VALUE">
             <specification_VariableCharacterisation specification="return.VALUE"/>
@@ -417,7 +417,7 @@
           <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="return"/>
         </returnVariableUsage__CallReturnAction>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_cGljYFWhEee_vbhS72O32Q" entityName="stop" predecessor_AbstractAction="_cGk8U1WhEee_vbhS72O32Q"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_n1ChUGCTEeeHW9Kc4Dpukw" entityName="stop" predecessor_AbstractAction="_n1B6Q2CTEeeHW9Kc4Dpukw"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_WoD42tCjEduC9O_qbthgAg" entityName="CashDeskConnectorIf">
@@ -634,8 +634,8 @@
     <signatures__OperationInterface id="_2NQx1VcvEeGI_ZRmqWdpYA" entityName="flushDatabase"/>
   </interfaces__Repository>
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_RQoSZNCpEduC9O_qbthgAg" entityName="SaleRegisteredEvent"/>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_b8WCQFWhEee_vbhS72O32Q" entityName="PersistenceIf-Wrapper">
-    <signatures__OperationInterface id="_b8a6wFWhEee_vbhS72O32Q" entityName="getPersistenceContext">
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_n08asGCTEeeHW9Kc4Dpukw" entityName="PersistenceIf-Wrapper">
+    <signatures__OperationInterface id="_n1BTMGCTEeeHW9Kc4Dpukw" entityName="getPersistenceContext">
       <returnType__OperationSignature xsi:type="repository:CompositeDataType" href="cocomeTypes.repository#_C72_dtFdEducE6dFyopUlg"/>
     </signatures__OperationInterface>
   </interfaces__Repository>

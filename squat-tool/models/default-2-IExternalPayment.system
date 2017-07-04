@@ -15,8 +15,8 @@
   <assemblyContexts__ComposedStructure id="_Ha2JcGCTEeaQ-qRnqvu5Tg" entityName="Assembly_Exporter">
     <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="default-2-IExternalPayment.repository#_QWlc0F_MEeahZew5WJ0QOQ"/>
   </assemblyContexts__ComposedStructure>
-  <assemblyContexts__ComposedStructure id="_RYoMcF_UEee8JO-KxclTVg" entityName="Assembly_IExternalPayment-Wrapper &lt;IExternalPayment-Wrapper>">
-    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="default-2-IExternalPayment.repository#_RYebcV_UEee8JO-KxclTVg"/>
+  <assemblyContexts__ComposedStructure id="_AMO5MGCVEeeQmrp1LwDzSg" entityName="Assembly_IExternalPayment-Wrapper &lt;IExternalPayment-Wrapper>">
+    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="default-2-IExternalPayment.repository#_AJJwAWCVEeeQmrp1LwDzSg"/>
   </assemblyContexts__ComposedStructure>
   <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_cIRFIC6MEd-Jla2o7wkBzQ" entityName="Connector Assembly_C1 &lt;C1> -> Assembly_C2 &lt;C2>" requiringAssemblyContext_AssemblyConnector="_X594sC6MEd-Jla2o7wkBzQ" providingAssemblyContext_AssemblyConnector="_YXdtAC6MEd-Jla2o7wkBzQ">
     <providedRole_AssemblyConnector href="default-2-IExternalPayment.repository#_gCeNsC6IEd-Jla2o7wkBzQ"/>
@@ -26,9 +26,9 @@
     <providedRole_AssemblyConnector href="default-2-IExternalPayment.repository#_rGi_IC6IEd-Jla2o7wkBzQ"/>
     <requiredRole_AssemblyConnector href="default-2-IExternalPayment.repository#_rng-MC6IEd-Jla2o7wkBzQ"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_RYoMcl_UEee8JO-KxclTVg" entityName="Connector Assembly_IExternalPayment-Wrapper &lt;IExternalPayment-Wrapper> -> Assembly_PaymentSystem" requiringAssemblyContext_AssemblyConnector="_RYoMcF_UEee8JO-KxclTVg" providingAssemblyContext_AssemblyConnector="_Y4vOEC6MEd-Jla2o7wkBzQ">
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_AMQuYGCVEeeQmrp1LwDzSg" entityName="Connector Assembly_IExternalPayment-Wrapper &lt;IExternalPayment-Wrapper> -> Assembly_PaymentSystem" requiringAssemblyContext_AssemblyConnector="_AMO5MGCVEeeQmrp1LwDzSg" providingAssemblyContext_AssemblyConnector="_Y4vOEC6MEd-Jla2o7wkBzQ">
     <providedRole_AssemblyConnector href="default-2-IExternalPayment.repository#_34DaIOsyEd-swe4bkXmV_Q"/>
-    <requiredRole_AssemblyConnector href="default-2-IExternalPayment.repository#_RYebc1_UEee8JO-KxclTVg"/>
+    <requiredRole_AssemblyConnector href="default-2-IExternalPayment.repository#_AJJwA2CVEeeQmrp1LwDzSg"/>
   </connectors__ComposedStructure>
   <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_bwKHIC6MEd-Jla2o7wkBzQ" entityName="ProvDelegation Provided_I1 -> Provided_I1_C1" outerProvidedRole_ProvidedDelegationConnector="_WazzEC6MEd-Jla2o7wkBzQ" assemblyContext_ProvidedDelegationConnector="_X594sC6MEd-Jla2o7wkBzQ">
     <innerProvidedRole_ProvidedDelegationConnector href="default-2-IExternalPayment.repository#_fYvUMC6IEd-Jla2o7wkBzQ"/>
@@ -45,9 +45,9 @@
     <providedRole_AssemblyConnector href="default-2-IExternalPayment.repository#_-P7lIV45EeavvL8WcdoZSg"/>
     <requiredRole_AssemblyConnector href="default-2-IExternalPayment.repository#_iUC2BV_OEeahZew5WJ0QOQ"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_RYoMcV_UEee8JO-KxclTVg" entityName="Connector Assembly_BookingSystem -> Assembly_IExternalPayment-Wrapper &lt;IExternalPayment-Wrapper>" requiringAssemblyContext_AssemblyConnector="_YXdtAC6MEd-Jla2o7wkBzQ" providingAssemblyContext_AssemblyConnector="_RYoMcF_UEee8JO-KxclTVg">
-    <providedRole_AssemblyConnector href="default-2-IExternalPayment.repository#_RYebcl_UEee8JO-KxclTVg"/>
-    <requiredRole_AssemblyConnector href="default-2-IExternalPayment.repository#_RYlJIF_UEee8JO-KxclTVg"/>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_AMQHUGCVEeeQmrp1LwDzSg" entityName="Connector Assembly_BookingSystem -> Assembly_IExternalPayment-Wrapper &lt;IExternalPayment-Wrapper>" requiringAssemblyContext_AssemblyConnector="_YXdtAC6MEd-Jla2o7wkBzQ" providingAssemblyContext_AssemblyConnector="_AMO5MGCVEeeQmrp1LwDzSg">
+    <providedRole_AssemblyConnector href="default-2-IExternalPayment.repository#_AJJwAmCVEeeQmrp1LwDzSg"/>
+    <requiredRole_AssemblyConnector href="default-2-IExternalPayment.repository#_AKt2QGCVEeeQmrp1LwDzSg"/>
   </connectors__ComposedStructure>
   <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_WazzEC6MEd-Jla2o7wkBzQ" entityName="Provided_I1">
     <providedInterface__OperationProvidedRole href="default-2-IExternalPayment.repository#_bh5lgC6IEd-Jla2o7wkBzQ"/>

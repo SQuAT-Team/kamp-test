@@ -89,6 +89,7 @@ public abstract class PCMTransformerRunner {
 	public PCMTransformerRunner() {
 		monitor = new LoggingApplicationMonitor();
 		((LoggingApplicationMonitor) monitor).setLogStream(System.out);
+		resourceSet=null;
 	}
 	
 	public boolean arePerformanceModelsLoaded() {
@@ -136,10 +137,14 @@ public abstract class PCMTransformerRunner {
 		this.resultAllocationFilename = resultAllocationFilename;
 		this.resultUsageFilename = resultUsageFilename;
 	}
+	public void setResourceSet(HenshinResourceSet resourceSet) {
+		this.resourceSet = resourceSet;
+	}
 	
 	private void loadModels() {
 		// Create a resource set with a base directory
-		resourceSet = new HenshinResourceSet(dirPath);
+		if(resourceSet==null)
+			resourceSet = new HenshinResourceSet(dirPath);
 		// Load the module
 		module = resourceSet.getModule(henshinFilename, false);
 		// Load the example model into an EGraph
@@ -232,6 +237,7 @@ public abstract class PCMTransformerRunner {
 		this.run(saveResult);
 	}
 	
+
 	public List<ArchitecturalVersion> run(String dirPath, 
 			String repositoryFilename, String systemFilename, String resourceEnvironmentFilename, String allocationFilename, String usageFilename,
 			String henshinFilename, 
