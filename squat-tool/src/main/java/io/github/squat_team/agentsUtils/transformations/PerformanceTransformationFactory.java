@@ -13,6 +13,8 @@ import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMScenarioResult;
 import io.github.squat_team.performance.AbstractPerformancePCMScenario;
 import io.github.squat_team.performance.peropteryx.PerOpteryxPCMBot;
+import io.github.squat_team.util.PCMWorkingCopyCreator;
+import test.TestConstants;
 
 public class PerformanceTransformationFactory {
 
@@ -44,11 +46,18 @@ public class PerformanceTransformationFactory {
 		
 		for (Iterator<PCMScenarioResult> iterator = results.iterator(); iterator.hasNext();) {
 			PCMScenarioResult pcmScenarioResult = (PCMScenarioResult) iterator.next();
+			
 			PCMArchitectureInstance archInstance=pcmScenarioResult.getResultingArchitecture();
 			URI uri=archInstance.getUsageModel().eResource().getURI();
 			File modelFile=new File(uri.toFileString());
-			
-			ret.add(new ArchitecturalVersion(modelFile.getName().substring(0, modelFile.getName().lastIndexOf('.')), modelFile.getParent(), ArchitecturalVersion.PERFORMANCE));
+			String newModelName=modelFile.getParentFile().getParentFile().getName()+"-"+modelFile.getParentFile().getName();
+			PCMWorkingCopyCreator copyCreator=new PCMWorkingCopyCreator(newModelName, new File(TestConstants.MAIN_STORAGE_PATH));
+			PCMArchitectureInstance archInstanceInRightLocation=copyCreator.createWorkingCopy(archInstance);
+			File modelFileRightLocation=new File(archInstanceInRightLocation.getUsageModel().eResource().getURI().toFileString());
+			ArchitecturalVersion newAlternative=new ArchitecturalVersion(modelFileRightLocation.getName().substring(0, modelFileRightLocation.getName().lastIndexOf('.')), modelFileRightLocation.getParent(), ArchitecturalVersion.PERFORMANCE);
+		
+			newAlternative.setFullPathToAlternativeRepository(archInstanceInRightLocation.getRepositoryWithAlternatives().eResource().getURI().toFileString());
+			ret.add(newAlternative);
 		}
 		
 		return ret;

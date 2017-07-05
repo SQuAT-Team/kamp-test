@@ -64,7 +64,13 @@ public class PerformanceScenarioHelper {
 		ResourceEnvironment resourceenvironment = SQuATHelper.loadResourceEnvironmentModel("file:/"+ architecturalVersion.getAbsolutePath() +File.separator+architecturalVersion.getResourceEnvironmentFilename());
 		Repository repository = SQuATHelper.loadRepositoryModel("file:/" +architecturalVersion.getAbsolutePath() +File.separator+architecturalVersion.getRepositoryFilename());
 		UsageModel usageModel = SQuATHelper.loadUsageModel("file:/" + architecturalVersion.getAbsolutePath() +File.separator+architecturalVersion.getUsageFilename());
+		
 		PCMArchitectureInstance architecture = new PCMArchitectureInstance(architecturalVersion.getFileName(), repository, system, allocation,resourceenvironment, usageModel);
+		if(architecturalVersion.getFullPathToAlternativeRepository()!=null){
+			Repository repositoryAlternatives = SQuATHelper.loadRepositoryModel("file:/" +architecturalVersion.getFullPathToAlternativeRepository());
+			architecture.setRepositoryWithAlternatives(repositoryAlternatives);
+		}
+		
 		return architecture;	
 	}
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<designdecision:DecisionSpace xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:designdecision="http://sdq.ipd.uka.de/DesignDecision/3.0" xmlns:specific="http://sdq.ipd.uka.de/DesignDecision/Specific/3.0" id="_ewSKEF_UEee8JO-KxclTVg">
+<designdecision:DecisionSpace xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:designdecision="http://sdq.ipd.uka.de/DesignDecision/3.0" xmlns:specific="http://sdq.ipd.uka.de/DesignDecision/Specific/3.0" id="_wRdMwGF_EeeuFbLEJQwTxQ">
   <degreesOfFreedom xsi:type="specific:ContinuousProcessingRateDegree" lowerBoundIncluded="false" to="9.0" from="2.25">
     <primaryChanged href="bot_workingcopy.resourceenvironment#_g7HJEC6MEd-Jla2o7wkBzQ"/>
     <processingresourcetype href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
@@ -31,6 +31,22 @@
   <degreesOfFreedom xsi:type="specific:ContinuousProcessingRateDegree" lowerBoundIncluded="false" to="2000000.0" from="500000.0">
     <primaryChanged href="bot_workingcopy.resourceenvironment#_7jiyMV5LEeavvL8WcdoZSg"/>
     <processingresourcetype href="pathmap://PCM_MODELS/Palladio.resourcetype#_BIjHoQ3KEdyouMqirZIhzQ"/>
+  </degreesOfFreedom>
+  <degreesOfFreedom xsi:type="specific:AssembledComponentDegree">
+    <primaryChanged href="bot_workingcopy.system#_-tTDEF7oEeavvL8WcdoZSg"/>
+    <classDesignOptions href="bot_workingcopy.repository#B_letEAF41EeavvL8WcdoZSg"/>
+    <classDesignOptions href="bot_workingcopy.repository#C_letEAF41EeavvL8WcdoZSg"/>
+    <classDesignOptions href="bot_workingcopy.repository#_letEAF41EeavvL8WcdoZSg"/>
+  </degreesOfFreedom>
+  <degreesOfFreedom xsi:type="specific:AssembledComponentDegree">
+    <primaryChanged href="bot_workingcopy.system#_Ha2JcGCTEeaQ-qRnqvu5Tg"/>
+    <classDesignOptions href="bot_workingcopy.repository#_K9EFUHXDEeauMPtoFodBVw"/>
+    <classDesignOptions href="bot_workingcopy.repository#_QWlc0F_MEeahZew5WJ0QOQ"/>
+  </degreesOfFreedom>
+  <degreesOfFreedom xsi:type="specific:AssembledComponentDegree">
+    <primaryChanged href="bot_workingcopy.system#_YXdtAC6MEd-Jla2o7wkBzQ"/>
+    <classDesignOptions href="bot_workingcopy.repository#_ZZH7IC6IEd-Jla2o7wkBzQ"/>
+    <classDesignOptions href="bot_workingcopy.repository#__VPcQOtlEd-m3_hR0FtH3Q"/>
   </degreesOfFreedom>
   <degreesOfFreedom xsi:type="specific:AllocationDegree">
     <primaryChanged href="bot_workingcopy.allocation#_wTSXgC6NEd-Jla2o7wkBzQ"/>

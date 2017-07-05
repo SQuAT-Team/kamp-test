@@ -19,6 +19,7 @@ public class ArchitecturalTransformationsFactory {
 		modifiabilityTrans=new ModifiabilityTransformationsFactory();
 		//initialArchitecture1=new ArchitecturalVersion("stplus","models","");
 		initialArchitecture2=new ArchitecturalVersion("default","models","");
+		initialArchitecture2.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/alternativeRepository.repository");
 		performanceTrans=new PerformanceTransformationFactory();
 		architecturesByLevel=new Hashtable<>();
 	}

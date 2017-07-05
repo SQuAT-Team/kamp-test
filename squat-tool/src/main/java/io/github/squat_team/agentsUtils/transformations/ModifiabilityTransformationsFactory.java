@@ -12,6 +12,9 @@ import edu.squat.transformations.modifiability.PCMTransformerRunner;
 import edu.squat.transformations.modifiability.insinter.InsInterRunner;
 import edu.squat.transformations.modifiability.splitrespn.SplitRespNRunner;
 import edu.squat.transformations.modifiability.wrapper.WrapperRunner;
+import io.github.squat_team.agentsUtils.PerformanceScenarioHelper;
+import io.github.squat_team.model.PCMArchitectureInstance;
+import io.github.squat_team.util.PCMRepositoryModifier;
 
 public class ModifiabilityTransformationsFactory {
 	private final static String wrapperHenshinFilename = "wrapper-modular.henshin";
@@ -19,28 +22,59 @@ public class ModifiabilityTransformationsFactory {
 	private final static String insinterHenshinFilename = "insinter-modular.henshin";
 	private ArchitecturalVersion currentInitialArchitecture;
 	private HenshinResourceSet resourceSet;
+	private PCMRepositoryModifier repoModifier;
 	
 	public List<ArchitecturalVersion> runModifiabilityTransformationsInAModel(ArchitecturalVersion initialArchitecture){
 		List<ArchitecturalVersion> ret=new ArrayList<>();
 		this.currentInitialArchitecture=initialArchitecture;
 		resourceSet = new HenshinResourceSet(currentInitialArchitecture.getAbsolutePath());
 		
+		
+		mergeRepository();
+		
 		ret.addAll(runWrapper());
 		List<ArchitecturalVersion> splitAlternatives=runSplitResp();
 		
 		ret.addAll(splitAlternatives);
+		
+		
+		splitRepository(ret);
 		
 		for (Iterator<ArchitecturalVersion> iterator = splitAlternatives.iterator(); iterator.hasNext();) {
 			ArchitecturalVersion architecturalVersion = (ArchitecturalVersion) iterator.next();
 			if(!currentInitialArchitecture.getAbsolutePath().equals(architecturalVersion.getAbsolutePath()))
 				resourceSet = new HenshinResourceSet(architecturalVersion.getAbsolutePath());
 			currentInitialArchitecture=architecturalVersion;
-			
-			ret.addAll(runWrapper());
+			mergeRepository();
+			List<ArchitecturalVersion> ret2=runWrapper();
+			ret.addAll(ret2);
+			splitRepository(ret2);
 		}
 		
-		//ret.addAll(runInsInter());
+	
+
+		
+	
 		return ret;
+	}
+
+	private void splitRepository(List<ArchitecturalVersion> ret) {
+		// remove alternative components
+		for (Iterator<ArchitecturalVersion> iterator = ret.iterator(); iterator.hasNext();) {
+			ArchitecturalVersion architecturalVersion = (ArchitecturalVersion) iterator.next();
+			PCMArchitectureInstance loadedArchitecture = PerformanceScenarioHelper.createArchitecture(architecturalVersion);
+			
+			repoModifier.separateRepository(loadedArchitecture);
+			architecturalVersion.setFullPathToAlternativeRepository(loadedArchitecture.getRepositoryWithAlternatives().eResource().getURI().toFileString());
+		}
+		PCMArchitectureInstance loadedInitialArchitecture = PerformanceScenarioHelper.createArchitecture(currentInitialArchitecture);
+		repoModifier.separateRepository(PerformanceScenarioHelper.createArchitecture(currentInitialArchitecture));
+		currentInitialArchitecture.setFullPathToAlternativeRepository(loadedInitialArchitecture.getRepositoryWithAlternatives().eResource().getURI().toFileString());
+	}
+
+	private void mergeRepository() {
+		repoModifier=new PCMRepositoryModifier(PerformanceScenarioHelper.createArchitecture(currentInitialArchitecture));
+		repoModifier.mergeRepositories();
 	}
 
 	public List<ArchitecturalVersion> runWrapper() {

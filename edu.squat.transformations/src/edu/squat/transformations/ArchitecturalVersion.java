@@ -10,6 +10,7 @@ public class ArchitecturalVersion {
 	private String absolutePath;
 	private String repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, usageFilename;
 	private String lastModifiedBy;
+	private String fullPathToAlternativeRepository; //the model that has the alternatives components
 	
 	
 	public static String MODIFIABILITY="modifiability";
@@ -81,5 +82,11 @@ public class ArchitecturalVersion {
 	}
 	public String getName(){
 		return absolutePath+File.separator+fileName;
+	}
+	public void setFullPathToAlternativeRepository(String fullPathToAlternativeRepository) {
+		this.fullPathToAlternativeRepository = fullPathToAlternativeRepository;
+	}
+	public String getFullPathToAlternativeRepository() {
+		return fullPathToAlternativeRepository;
 	}
 }

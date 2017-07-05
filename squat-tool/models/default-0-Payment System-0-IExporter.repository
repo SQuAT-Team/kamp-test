@@ -5,7 +5,7 @@
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_frf4IC6IEd-Jla2o7wkBzQ" entityName="Required_I2_C1" requiredInterface__OperationRequiredRole="_cyLhoC6IEd-Jla2o7wkBzQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_rng-MC6IEd-Jla2o7wkBzQ" entityName="Required_I3_C1" requiredInterface__OperationRequiredRole="_pPmroC6IEd-Jla2o7wkBzQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_zpVJ5V7pEeavvL8WcdoZSg" entityName="Required_DB_Interface" requiredInterface__OperationRequiredRole="_znbSN141EeavvL8WcdoZSg"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_IUTzkGCVEeeQmrp1LwDzSg" requiredInterface__OperationRequiredRole="_ISQlIGCVEeeQmrp1LwDzSg"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_my7c0GF_EeeuFbLEJQwTxQ" requiredInterface__OperationRequiredRole="_myzhAGF_EeeuFbLEJQwTxQ"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_oLsiIC6JEd-Jla2o7wkBzQ" describedService__SEFF="_8A9Bka7LEd-Z7e7zQl8I9w">
       <steps_Behaviour xsi:type="seff:StartAction" id="_pLgZUC6JEd-Jla2o7wkBzQ" successor_AbstractAction="_vGuakC6JEd-Jla2o7wkBzQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_pLhAYC6JEd-Jla2o7wkBzQ" predecessor_AbstractAction="_0EkNkC6JEd-Jla2o7wkBzQ"/>
@@ -60,7 +60,7 @@
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_TViop1_JEeahZew5WJ0QOQ" describedService__SEFF="_e8D_0F_JEeahZew5WJ0QOQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_oXbuEl_JEeahZew5WJ0QOQ" successor_AbstractAction="_p9Y_Rl_JEeahZew5WJ0QOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_pcyMkF_JEeahZew5WJ0QOQ" predecessor_AbstractAction="_mymbCWCJEeaQ-qRnqvu5Tg"/>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_p9Y_Rl_JEeahZew5WJ0QOQ" entityName="callExporter" predecessor_AbstractAction="_oXbuEl_JEeahZew5WJ0QOQ" successor_AbstractAction="_mymbCWCJEeaQ-qRnqvu5Tg" calledService_ExternalService="_ITWxUGCVEeeQmrp1LwDzSg" role_ExternalService="_IUTzkGCVEeeQmrp1LwDzSg">
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_p9Y_Rl_JEeahZew5WJ0QOQ" entityName="callExporter" predecessor_AbstractAction="_oXbuEl_JEeahZew5WJ0QOQ" successor_AbstractAction="_mymbCWCJEeaQ-qRnqvu5Tg" calledService_ExternalService="_my5AkGF_EeeuFbLEJQwTxQ" role_ExternalService="_my7c0GF_EeeuFbLEJQwTxQ">
         <inputVariableUsages__CallAction>
           <variableCharacterisation_VariableUsage type="NUMBER_OF_ELEMENTS">
             <specification_VariableCharacterisation specification="idz.NUMBER_OF_ELEMENTS"/>
@@ -169,9 +169,9 @@
       </steps_Behaviour>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_FWafEGCVEeeQmrp1LwDzSg" entityName="Payment System-A">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_FWbGIGCVEeeQmrp1LwDzSg" providedInterface__OperationProvidedRole="_pPmroC6IEd-Jla2o7wkBzQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_FYQSIGCVEeeQmrp1LwDzSg" requiredInterface__OperationRequiredRole="_zdIuAOsyEd-swe4bkXmV_Q"/>
+  <components__Repository xsi:type="repository:BasicComponent" id="_mdNrgGF_EeeuFbLEJQwTxQ" entityName="Payment System-A">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_mdNrgWF_EeeuFbLEJQwTxQ" providedInterface__OperationProvidedRole="_pPmroC6IEd-Jla2o7wkBzQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_mdW1cGF_EeeuFbLEJQwTxQ" requiredInterface__OperationRequiredRole="_zdIuAOsyEd-swe4bkXmV_Q"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_qBCTIC6JEd-Jla2o7wkBzQ" describedService__SEFF="_8A9Bla7LEd-Z7e7zQl8I9w">
       <steps_Behaviour xsi:type="seff:StartAction" id="_qUBgkC6JEd-Jla2o7wkBzQ" successor_AbstractAction="_QG_9kC6KEd-Jla2o7wkBzQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_qUBgkS6JEd-Jla2o7wkBzQ" predecessor_AbstractAction="_QG_9kC6KEd-Jla2o7wkBzQ"/>
@@ -182,7 +182,7 @@
         </resourceDemand_Action>
       </steps_Behaviour>
     </serviceEffectSpecifications__BasicComponent>
-    <passiveResource_BasicComponent id="_FX2CcGCVEeeQmrp1LwDzSg" entityName="semaphore">
+    <passiveResource_BasicComponent id="_mdVnU2F_EeeuFbLEJQwTxQ" entityName="semaphore">
       <capacity_PassiveResource specification="1"/>
     </passiveResource_BasicComponent>
   </components__Repository>
@@ -278,9 +278,45 @@
       </steps_Behaviour>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_FPuBMGCVEeeQmrp1LwDzSg" entityName="Payment System-B">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_FPuBMWCVEeeQmrp1LwDzSg" providedInterface__OperationProvidedRole="_zdIuAOsyEd-swe4bkXmV_Q"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_FYQ5MGCVEeeQmrp1LwDzSg" requiredInterface__OperationRequiredRole="_pPmroC6IEd-Jla2o7wkBzQ"/>
+  <components__Repository xsi:type="repository:BasicComponent" id="_myzhAWF_EeeuFbLEJQwTxQ" entityName="IExporter-Wrapper">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_myzhAmF_EeeuFbLEJQwTxQ" providedInterface__OperationProvidedRole="_myzhAGF_EeeuFbLEJQwTxQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_myzhA2F_EeeuFbLEJQwTxQ" requiredInterface__OperationRequiredRole="_1Qmmp1_OEeahZew5WJ0QOQ"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_my5noGF_EeeuFbLEJQwTxQ" describedService__SEFF="_my5AkGF_EeeuFbLEJQwTxQ">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_my5noWF_EeeuFbLEJQwTxQ" entityName="start" successor_AbstractAction="_my5nomF_EeeuFbLEJQwTxQ"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_my5nomF_EeeuFbLEJQwTxQ" entityName="Overhead [IExporter-Wrapper]" predecessor_AbstractAction="_my5noWF_EeeuFbLEJQwTxQ" successor_AbstractAction="_my5no2F_EeeuFbLEJQwTxQ">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="2"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_my5no2F_EeeuFbLEJQwTxQ" entityName="External_IExporter-Wrapper_exportTrips" predecessor_AbstractAction="_my5nomF_EeeuFbLEJQwTxQ" successor_AbstractAction="_my6OsGF_EeeuFbLEJQwTxQ" calledService_ExternalService="_4qi98F_OEeahZew5WJ0QOQ" role_ExternalService="_myzhA2F_EeeuFbLEJQwTxQ">
+        <inputVariableUsages__CallAction>
+          <variableCharacterisation_VariableUsage type="NUMBER_OF_ELEMENTS">
+            <specification_VariableCharacterisation specification="idx.NUMBER_OF_ELEMENTS"/>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="idx"/>
+        </inputVariableUsages__CallAction>
+        <returnVariableUsage__CallReturnAction>
+          <variableCharacterisation_VariableUsage type="BYTESIZE">
+            <specification_VariableCharacterisation specification="RETURNEXPORTTRIPS.BYTESIZE"/>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="returnVar1"/>
+        </returnVariableUsage__CallReturnAction>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_my6OsGF_EeeuFbLEJQwTxQ" entityName="SetReturn [IExporter.exportTrips]" predecessor_AbstractAction="_my5no2F_EeeuFbLEJQwTxQ" successor_AbstractAction="_my6OsWF_EeeuFbLEJQwTxQ">
+        <localVariableUsages_SetVariableAction>
+          <variableCharacterisation_VariableUsage type="BYTESIZE">
+            <specification_VariableCharacterisation specification="returnVar1.BYTESIZE"/>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="RETURNEXPORTTRIPS"/>
+        </localVariableUsages_SetVariableAction>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_my6OsWF_EeeuFbLEJQwTxQ" entityName="stop" predecessor_AbstractAction="_my6OsGF_EeeuFbLEJQwTxQ"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_mb7SEGF_EeeuFbLEJQwTxQ" entityName="Payment System-B">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_mb7SEWF_EeeuFbLEJQwTxQ" providedInterface__OperationProvidedRole="_zdIuAOsyEd-swe4bkXmV_Q"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_mdXcgGF_EeeuFbLEJQwTxQ" requiredInterface__OperationRequiredRole="_pPmroC6IEd-Jla2o7wkBzQ"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_34ISoOsyEd-swe4bkXmV_Q" describedService__SEFF="_1cTwcOsyEd-swe4bkXmV_Q">
       <steps_Behaviour xsi:type="seff:StartAction" id="_34JgwOsyEd-swe4bkXmV_Q" successor_AbstractAction="_u_HY0OtZEd-m3_hR0FtH3Q"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_34KH0OsyEd-swe4bkXmV_Q" predecessor_AbstractAction="_u_HY0OtZEd-m3_hR0FtH3Q"/>
@@ -313,45 +349,9 @@
         </branches_Branch>
       </steps_Behaviour>
     </serviceEffectSpecifications__BasicComponent>
-    <passiveResource_BasicComponent id="_FX1bYGCVEeeQmrp1LwDzSg" entityName="semaphore">
+    <passiveResource_BasicComponent id="_mdVnUWF_EeeuFbLEJQwTxQ" entityName="semaphore">
       <capacity_PassiveResource specification="1"/>
     </passiveResource_BasicComponent>
-  </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_ISQlIWCVEeeQmrp1LwDzSg" entityName="IExporter-Wrapper">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_ISQlImCVEeeQmrp1LwDzSg" providedInterface__OperationProvidedRole="_ISQlIGCVEeeQmrp1LwDzSg"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_ISQlI2CVEeeQmrp1LwDzSg" requiredInterface__OperationRequiredRole="_1Qmmp1_OEeahZew5WJ0QOQ"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_ITi-kGCVEeeQmrp1LwDzSg" describedService__SEFF="_ITWxUGCVEeeQmrp1LwDzSg">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_ITi-kWCVEeeQmrp1LwDzSg" entityName="start" successor_AbstractAction="_ITi-kmCVEeeQmrp1LwDzSg"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_ITi-kmCVEeeQmrp1LwDzSg" entityName="Overhead [IExporter-Wrapper]" predecessor_AbstractAction="_ITi-kWCVEeeQmrp1LwDzSg" successor_AbstractAction="_ITjloGCVEeeQmrp1LwDzSg">
-        <resourceDemand_Action>
-          <specification_ParametericResourceDemand specification="2"/>
-          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
-        </resourceDemand_Action>
-      </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_ITjloGCVEeeQmrp1LwDzSg" entityName="External_IExporter-Wrapper_exportTrips" predecessor_AbstractAction="_ITi-kmCVEeeQmrp1LwDzSg" successor_AbstractAction="_ITnQAGCVEeeQmrp1LwDzSg" calledService_ExternalService="_4qi98F_OEeahZew5WJ0QOQ" role_ExternalService="_ISQlI2CVEeeQmrp1LwDzSg">
-        <inputVariableUsages__CallAction>
-          <variableCharacterisation_VariableUsage type="NUMBER_OF_ELEMENTS">
-            <specification_VariableCharacterisation specification="idx.NUMBER_OF_ELEMENTS"/>
-          </variableCharacterisation_VariableUsage>
-          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="idx"/>
-        </inputVariableUsages__CallAction>
-        <returnVariableUsage__CallReturnAction>
-          <variableCharacterisation_VariableUsage type="BYTESIZE">
-            <specification_VariableCharacterisation specification="RETURNEXPORTTRIPS.BYTESIZE"/>
-          </variableCharacterisation_VariableUsage>
-          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="returnVar1"/>
-        </returnVariableUsage__CallReturnAction>
-      </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_ITnQAGCVEeeQmrp1LwDzSg" entityName="SetReturn [IExporter.exportTrips]" predecessor_AbstractAction="_ITjloGCVEeeQmrp1LwDzSg" successor_AbstractAction="_IToeIGCVEeeQmrp1LwDzSg">
-        <localVariableUsages_SetVariableAction>
-          <variableCharacterisation_VariableUsage type="BYTESIZE">
-            <specification_VariableCharacterisation specification="returnVar1.BYTESIZE"/>
-          </variableCharacterisation_VariableUsage>
-          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="RETURNEXPORTTRIPS"/>
-        </localVariableUsages_SetVariableAction>
-      </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_IToeIGCVEeeQmrp1LwDzSg" entityName="stop" predecessor_AbstractAction="_ITnQAGCVEeeQmrp1LwDzSg"/>
-    </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_bh5lgC6IEd-Jla2o7wkBzQ" entityName="IBusiness Trip">
     <signatures__OperationInterface id="_8A9Bka7LEd-Z7e7zQl8I9w" entityName="plan">
@@ -401,8 +401,8 @@
       <parameters__OperationSignature dataType__Parameter="_XnGwLF43EeavvL8WcdoZSg" parameterName="idx"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_ISQlIGCVEeeQmrp1LwDzSg" entityName="IExporter-Wrapper">
-    <signatures__OperationInterface id="_ITWxUGCVEeeQmrp1LwDzSg" entityName="exportTrips" returnType__OperationSignature="_7_wCbF_SEeahZew5WJ0QOQ">
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_myzhAGF_EeeuFbLEJQwTxQ" entityName="IExporter-Wrapper">
+    <signatures__OperationInterface id="_my5AkGF_EeeuFbLEJQwTxQ" entityName="exportTrips" returnType__OperationSignature="_7_wCbF_SEeahZew5WJ0QOQ">
       <parameters__OperationSignature dataType__Parameter="_XnGwLF43EeavvL8WcdoZSg" parameterName="idx"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
