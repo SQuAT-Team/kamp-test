@@ -54,7 +54,7 @@ public class PerformanceTransformationFactory {
 			PCMWorkingCopyCreator copyCreator=new PCMWorkingCopyCreator(newModelName, new File(TestConstants.MAIN_STORAGE_PATH));
 			PCMArchitectureInstance archInstanceInRightLocation=copyCreator.createWorkingCopy(archInstance);
 			File modelFileRightLocation=new File(archInstanceInRightLocation.getUsageModel().eResource().getURI().toFileString());
-			ArchitecturalVersion newAlternative=new ArchitecturalVersion(modelFileRightLocation.getName().substring(0, modelFileRightLocation.getName().lastIndexOf('.')), modelFileRightLocation.getParent(), ArchitecturalVersion.PERFORMANCE);
+			ArchitecturalVersion newAlternative=new ArchitecturalVersion(modelFileRightLocation.getName().substring(0, modelFileRightLocation.getName().lastIndexOf('.')), modelFileRightLocation.getParentFile().getName(), ArchitecturalVersion.PERFORMANCE);
 		
 			newAlternative.setFullPathToAlternativeRepository(archInstanceInRightLocation.getRepositoryWithAlternatives().eResource().getURI().toFileString());
 			ret.add(newAlternative);

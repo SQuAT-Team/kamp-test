@@ -1,5 +1,4 @@
 package io.github.squat_team.agentsUtils.transformations;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;

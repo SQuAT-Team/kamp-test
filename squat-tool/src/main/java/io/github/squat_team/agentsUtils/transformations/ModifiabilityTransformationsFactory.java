@@ -12,6 +12,7 @@ import edu.squat.transformations.modifiability.PCMTransformerRunner;
 import edu.squat.transformations.modifiability.insinter.InsInterRunner;
 import edu.squat.transformations.modifiability.splitrespn.SplitRespNRunner;
 import edu.squat.transformations.modifiability.wrapper.WrapperRunner;
+import io.github.squat_team.HenshinResourceSetManager;
 import io.github.squat_team.agentsUtils.PerformanceScenarioHelper;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.util.PCMRepositoryModifier;
@@ -27,7 +28,7 @@ public class ModifiabilityTransformationsFactory {
 	public List<ArchitecturalVersion> runModifiabilityTransformationsInAModel(ArchitecturalVersion initialArchitecture){
 		List<ArchitecturalVersion> ret=new ArrayList<>();
 		this.currentInitialArchitecture=initialArchitecture;
-		resourceSet = new HenshinResourceSet(currentInitialArchitecture.getAbsolutePath());
+		resourceSet = HenshinResourceSetManager.getInstance().getHenshinResourceSet(currentInitialArchitecture.getAbsolutePath());
 		
 		
 		mergeRepository();
@@ -42,8 +43,7 @@ public class ModifiabilityTransformationsFactory {
 		
 		for (Iterator<ArchitecturalVersion> iterator = splitAlternatives.iterator(); iterator.hasNext();) {
 			ArchitecturalVersion architecturalVersion = (ArchitecturalVersion) iterator.next();
-			if(!currentInitialArchitecture.getAbsolutePath().equals(architecturalVersion.getAbsolutePath()))
-				resourceSet = new HenshinResourceSet(architecturalVersion.getAbsolutePath());
+			resourceSet = HenshinResourceSetManager.getInstance().getHenshinResourceSet(currentInitialArchitecture.getAbsolutePath());
 			currentInitialArchitecture=architecturalVersion;
 			mergeRepository();
 			List<ArchitecturalVersion> ret2=runWrapper();

@@ -31,16 +31,18 @@ public class LoadHelper {
 	
 	
 	public List<SillyBot> loadBotsForArchitecturalAlternatives(List<ArchitecturalVersion> architecturalAlternatives){
-		Float responseTimeScenario1=120f;
-		Float responseTimeScenario2=300f;
+		Float responseTimeScenario1=120f;//120f;
+		Float responseTimeScenario2=300f;//300f;
+		Float responseTimePScenario1=30f;//30f;
+		Float responseTimePScenario2=40f;//40f;
 		PCMScenario m1Scenario=createModifiabilityScenarioS1(ResponseMeasureType.DECIMAL,responseTimeScenario1);
 		PCMScenario m2Scenario=createModifiabilityScenarioS2(ResponseMeasureType.DECIMAL,responseTimeScenario2);
 		
 		
-		ModifiabilityBot m1Bot=new ModifiabilityBot(/*3,*/ 115f,"m1",responseTimeScenario1);
-		ModifiabilityBot m2Bot=new ModifiabilityBot(/*5,*/ 190.5f,"m2",responseTimeScenario2);
-		PerformanceBot p1Bot=new PerformanceBot(111.7639f,"p1",30f);//Workload
-		PerformanceBot p2Bot=new PerformanceBot(74.0173f,"p2",40f);//CPU
+		ModifiabilityBot m1Bot=new ModifiabilityBot(115f,"m1",responseTimeScenario1);
+		ModifiabilityBot m2Bot=new ModifiabilityBot(190.5f,"m2",responseTimeScenario2);
+		PerformanceBot p1Bot=new PerformanceBot(111.7639f,"p1",responseTimePScenario1);//Workload
+		PerformanceBot p2Bot=new PerformanceBot(74.0173f,"p2",responseTimePScenario2);//CPU
 		
 		
 		

@@ -69,8 +69,10 @@ public class SQuATSillyBotsNegotiator {
 					System.out.println("REDO? (Y/N): ");
 					Scanner scan = new Scanner(System.in);
 					String answer = scan.next();
-					if(!answer.toUpperCase().equals("Y"))
+					if(!answer.trim().toUpperCase().equals("Y"))
 						redoRequest=false;
+					else
+						redoRequest=true;
 					//scan.close();
 				}
 			}
@@ -259,6 +261,7 @@ public class SQuATSillyBotsNegotiator {
 	}
 	private HashMap<SillyBot, Proposal> collectInitialProposals() {
 		HashMap<SillyBot, Proposal> ret= new HashMap<>();
+		System.out.println("Level of transformations: "+ currentLevelOfTransformations);
 		List<ArchitecturalVersion> versionsUntilLevel=archTransFactory.getArchitecturalTransformationsUntilLevel(currentLevelOfTransformations);
 		List<ArchitecturalVersion> versionsForLevel=archTransFactory.transformationsForLevel(currentLevelOfTransformations);
 		if(versionsForLevel.size()==0){
@@ -285,7 +288,7 @@ public class SQuATSillyBotsNegotiator {
 		}
 	}
 	public static void main(String[] args) {
-		new SQuATSillyBotsNegotiator().negotiateBaseOnMultipleArchitectures();
+		new SQuATSillyBotsNegotiator().negotiatiateUntilAnAgreementIsReached();
 	}
 
 }
