@@ -16,9 +16,10 @@ public class ArchitecturalTransformationsFactory {
 	
 	public ArchitecturalTransformationsFactory() {
 		modifiabilityTrans=new ModifiabilityTransformationsFactory();
-		//initialArchitecture1=new ArchitecturalVersion("stplus","models","");
-		initialArchitecture2=new ArchitecturalVersion("default","models","");
-		initialArchitecture2.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/alternativeRepository.repository");
+		//initialArchitecture2=new ArchitecturalVersion("default","models","");
+		//initialArchitecture2.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/alternativeRepository.repository");
+		initialArchitecture2=new ArchitecturalVersion("cocome","models/cocome","");
+		initialArchitecture2.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocome/cocome.repository");
 		performanceTrans=new PerformanceTransformationFactory();
 		architecturesByLevel=new Hashtable<>();
 	}

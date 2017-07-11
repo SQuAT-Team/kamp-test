@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:composition="http://palladiosimulator.org/PalladioComponentModel/Core/Composition/5.1" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.1" xsi:schemaLocation="http://palladiosimulator.org/PalladioComponentModel/Core/Composition/5.1 http://palladiosimulator.org/PalladioComponentModel/5.1#//core/composition http://palladiosimulator.org/PalladioComponentModel/Repository/5.1 http://palladiosimulator.org/PalladioComponentModel/5.1#//repository" xmi:id="_VJ3UAGYXEeez3M2yyhOrNQ" type="CompositeModel" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_WFCi0GYXEeez3M2yyhOrNQ" type="2002" fontName=".SF NS Text">
+    <children xmi:type="notation:DecorationNode" xmi:id="_WFDJ4GYXEeez3M2yyhOrNQ" type="5012"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_WFDJ4WYXEeez3M2yyhOrNQ" type="7002">
+      <children xmi:type="notation:Shape" xmi:id="_WFEYAGYXEeez3M2yyhOrNQ" type="3006" fontName=".SF NS Text">
+        <children xmi:type="notation:DecorationNode" xmi:id="_WFE_EGYXEeez3M2yyhOrNQ" type="5009"/>
+        <element xmi:type="composition:AssemblyContext" href="cocome-cloud.repository#_0A7s4LC_Eea4bqS8ZK-LhA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WFEYAWYXEeez3M2yyhOrNQ"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_WFE_EWYXEeez3M2yyhOrNQ" type="3006" fontName=".SF NS Text">
+        <children xmi:type="notation:DecorationNode" xmi:id="_WFE_E2YXEeez3M2yyhOrNQ" type="5009"/>
+        <element xmi:type="composition:AssemblyContext" href="cocome-cloud.repository#_6qvScLC_Eea4bqS8ZK-LhA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WFE_EmYXEeez3M2yyhOrNQ" x="200"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_WFE_FGYXEeez3M2yyhOrNQ" type="3006" fontName=".SF NS Text">
+        <children xmi:type="notation:DecorationNode" xmi:id="_WFE_FmYXEeez3M2yyhOrNQ" type="5009"/>
+        <element xmi:type="composition:AssemblyContext" href="cocome-cloud.repository#_8tsosLC_Eea4bqS8ZK-LhA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WFE_FWYXEeez3M2yyhOrNQ" x="400"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_WFE_F2YXEeez3M2yyhOrNQ" type="3006" fontName=".SF NS Text">
+        <children xmi:type="notation:DecorationNode" xmi:id="_WFE_GWYXEeez3M2yyhOrNQ" type="5009"/>
+        <element xmi:type="composition:AssemblyContext" href="cocome-cloud.repository#_4GNNAGYVEeez3M2yyhOrNQ"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WFE_GGYXEeez3M2yyhOrNQ" x="620" y="218"/>
+      </children>
+    </children>
+    <element xmi:type="repository:CompositeComponent" href="cocome-cloud.repository#_vR7VWK_9Eeal2oK95oef3A"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WFCi0WYXEeez3M2yyhOrNQ" width="985"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_VJ3UAWYXEeez3M2yyhOrNQ"/>
+  <element xmi:type="repository:CompositeComponent" href="cocome-cloud.repository#_vR7VWK_9Eeal2oK95oef3A"/>
+</notation:Diagram>
