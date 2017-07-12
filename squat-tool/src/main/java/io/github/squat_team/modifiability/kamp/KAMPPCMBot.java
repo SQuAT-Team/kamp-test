@@ -15,6 +15,7 @@ import org.palladiosimulator.pcm.repository.OperationInterface;
 import org.palladiosimulator.pcm.repository.OperationProvidedRole;
 import org.palladiosimulator.pcm.repository.OperationSignature;
 import org.palladiosimulator.pcm.repository.ProvidedRole;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
 import org.palladiosimulator.pcm.repository.impl.BasicComponentImpl;
 import org.palladiosimulator.pcm.repository.impl.OperationProvidedRoleImpl;
 import org.palladiosimulator.pcm.seff.AbstractAction;
@@ -367,8 +368,8 @@ public class KAMPPCMBot extends AbstractPCMBot {
 			break;
 		case COMPONENT:
 			String componentName = instruction.parameters.get("name");
-			BasicComponent basicComponent = 
-					(BasicComponent) ArchitectureModelLookup.lookUpComponentByName(changedAV, componentName);
+			RepositoryComponent basicComponent = 
+					(RepositoryComponent) ArchitectureModelLookup.lookUpComponentByName(changedAV, componentName);
 			ArchitectureModelFactoryFacade.deleteComponentConnector(basicComponent);
 			break;
 		case DATATYPE:
@@ -403,8 +404,8 @@ public class KAMPPCMBot extends AbstractPCMBot {
 			break;
 		case COMPONENT:
 			String componentName = instruction.parameters.get("name");
-			BasicComponent basicComponent = 
-					(BasicComponent) ArchitectureModelLookup.lookUpComponentByName(changedAV, componentName);
+			RepositoryComponent basicComponent = 
+					(RepositoryComponent) ArchitectureModelLookup.lookUpComponentByName(changedAV, componentName);
 			ArchitectureModelFactoryFacade.assignInternalModificationMarkToComponent(changedAV, basicComponent);
 			break;
 		case DATATYPE:

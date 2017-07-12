@@ -12,14 +12,14 @@ public class ArchitecturalTransformationsFactory {
 	private ModifiabilityTransformationsFactory modifiabilityTrans;
 	private PerformanceTransformationFactory performanceTrans;
 	//private ArchitecturalVersion initialArchitecture1;
-	private ArchitecturalVersion initialArchitecture2;
+	private ArchitecturalVersion initialArchitecture;
 	
 	public ArchitecturalTransformationsFactory() {
 		modifiabilityTrans=new ModifiabilityTransformationsFactory();
 		//initialArchitecture2=new ArchitecturalVersion("default","models","");
 		//initialArchitecture2.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/alternativeRepository.repository");
-		initialArchitecture2=new ArchitecturalVersion("cocome","models/cocome","");
-		initialArchitecture2.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocome/cocome.repository");
+		initialArchitecture=new ArchitecturalVersion("cocome-cloud","models/cocome","");
+		initialArchitecture.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocome/cocome-cloud.repository");
 		performanceTrans=new PerformanceTransformationFactory();
 		architecturesByLevel=new Hashtable<>();
 	}
@@ -40,8 +40,8 @@ public class ArchitecturalTransformationsFactory {
 		 architecturesByLevel.put(level, transformationForLevel);
 		 if(level==1){
 			 //Applied transformations to initial architecture and save it on the hashtable
-			 transformationForLevel.addAll(generateArchitecturalVersionsUsingModifiabilityTransformations(initialArchitecture2));
-			 transformationForLevel.addAll(generateArchitecturalVersionsUsingPerformanceTransformations(initialArchitecture2));
+			 transformationForLevel.addAll(generateArchitecturalVersionsUsingModifiabilityTransformations(initialArchitecture));
+			 transformationForLevel.addAll(generateArchitecturalVersionsUsingPerformanceTransformations(initialArchitecture));
 		 }else{
 			 List<ArchitecturalVersion> architecturesPreviousLevel=architecturesByLevel.get(level-1);
 			 for (Iterator<ArchitecturalVersion> iterator = architecturesPreviousLevel.iterator(); iterator.hasNext();) {
@@ -68,5 +68,7 @@ public class ArchitecturalTransformationsFactory {
 	public List<ArchitecturalVersion> transformationsForLevel(int level) {
 		return architecturesByLevel.get(level);
 	}
-	
+	public ArchitecturalVersion getInitialArchitecture() {
+		return initialArchitecture;
+	}
 }

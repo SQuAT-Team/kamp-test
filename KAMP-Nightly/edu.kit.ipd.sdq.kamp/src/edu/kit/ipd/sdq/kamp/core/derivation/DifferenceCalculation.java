@@ -505,7 +505,7 @@ public class DifferenceCalculation {
 				//EObject changed = diffElement.getMatch().getLeft();	
 				EObject changed = ((ReferenceChange)diffElement).getValue();
 				AssemblyConnector architectureElement = (AssemblyConnector)(changed);
-				
+
 				String desc = calculateDescriptionForAssemblyConnector(architectureElement);
 				
 				Activity newActivity = new Activity(ActivityType.ARCHITECTUREMODELDIFF, ActivityElementType.ASSEMBLYCONNECTOR, architectureElement.getEntityName(), BasicActivity.ADD, 

@@ -243,7 +243,7 @@ public class ArchitectureModelFactoryFacade {
 	}
 
 	public static void deleteComponentConnector(
-			BasicComponent basicComponent) {
+			RepositoryComponent basicComponent) {
 		EcoreUtil.delete(basicComponent);
 	}
 

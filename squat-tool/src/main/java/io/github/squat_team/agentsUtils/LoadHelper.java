@@ -30,49 +30,42 @@ public class LoadHelper {
 	
 	
 	
-	public List<SillyBot> loadBotsForArchitecturalAlternatives(List<ArchitecturalVersion> architecturalAlternatives){
+	public List<SillyBot> loadBotsForArchitecturalAlternatives(List<ArchitecturalVersion> architecturalAlternatives, ArchitecturalVersion initialArchitecture){
 		Float responseTimeScenario1=120f;//120f;
 		Float responseTimeScenario2=300f;//300f;
 		Float responseTimePScenario1=30f;//30f;
 		Float responseTimePScenario2=40f;//40f;
 		PCMScenario m1Scenario=createModifiabilityScenarioS1(ResponseMeasureType.DECIMAL,responseTimeScenario1);
 		PCMScenario m2Scenario=createModifiabilityScenarioS2(ResponseMeasureType.DECIMAL,responseTimeScenario2);
+		List<SillyBot> ret=new ArrayList<>();
+		try {
+			ModifiabilityBot m1Bot=new ModifiabilityBot(/*115f*/calculateModifiabilityComplexity(m1Scenario,KAMPPCMBot.TYPE_COMPLEXITY,initialArchitecture),"m1",responseTimeScenario1);
+			ModifiabilityBot m2Bot=new ModifiabilityBot(/*190.5f*/calculateModifiabilityComplexity(m2Scenario,KAMPPCMBot.TYPE_COMPLEXITY,initialArchitecture),"m2",responseTimeScenario2);
+			PerformanceBot p1Bot=new PerformanceBot(/*111.7639f*/calculatePerformanceComplexityForScenario(PerformanceScenarioHelper.createScenarioOfWorkload(), initialArchitecture),"p1",responseTimePScenario1);//Workload
+			PerformanceBot p2Bot=new PerformanceBot(/*74.0173f*/calculatePerformanceComplexityForScenario(PerformanceScenarioHelper.createScenarioOfCPU(), initialArchitecture),"p2",responseTimePScenario2);//CPU
 		
+			for (Iterator<ArchitecturalVersion> iterator = architecturalAlternatives.iterator(); iterator.hasNext();) {
+				ArchitecturalVersion architecturalVersion = iterator.next();
 		
-		ModifiabilityBot m1Bot=new ModifiabilityBot(115f,"m1",responseTimeScenario1);
-		ModifiabilityBot m2Bot=new ModifiabilityBot(190.5f,"m2",responseTimeScenario2);
-		PerformanceBot p1Bot=new PerformanceBot(111.7639f,"p1",responseTimePScenario1);//Workload
-		PerformanceBot p2Bot=new PerformanceBot(74.0173f,"p2",responseTimePScenario2);//CPU
-		
-		
-		
-		for (Iterator<ArchitecturalVersion> iterator = architecturalAlternatives.iterator(); iterator.hasNext();) {
-			ArchitecturalVersion architecturalVersion = iterator.next();
-			try {
-				
-				
-				
 				m1Bot.insertInOrder(new ModifiabilityProposal(calculateModifiabilityComplexity(m1Scenario,KAMPPCMBot.TYPE_COMPLEXITY,architecturalVersion), architecturalVersion.getName()));
 				m2Bot.insertInOrder(new ModifiabilityProposal(calculateModifiabilityComplexity(m2Scenario,KAMPPCMBot.TYPE_COMPLEXITY,architecturalVersion), architecturalVersion.getName()));
 				
 				p1Bot.insertInOrder(new PerformanceProposal(calculatePerformanceComplexityForScenario(PerformanceScenarioHelper.createScenarioOfWorkload(), architecturalVersion), architecturalVersion.getName()));
-				p2Bot.insertInOrder(new PerformanceProposal(calculatePerformanceComplexityForScenario(PerformanceScenarioHelper.createScenarioOfCPU(), architecturalVersion), architecturalVersion.getName()));
-				
-			} catch (Exception e) {
-				e.printStackTrace();
+				p2Bot.insertInOrder(new PerformanceProposal(calculatePerformanceComplexityForScenario(PerformanceScenarioHelper.createScenarioOfCPU(), architecturalVersion), architecturalVersion.getName()));	
 			}
+		
+			ret.add(m1Bot);
+			ret.add(m2Bot);
+			ret.add(p1Bot);
+			ret.add(p2Bot);
+		
+			m1Bot.printUtilies();
+			m2Bot.printUtilies();
+			p1Bot.printUtilies();
+			p2Bot.printUtilies();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-		List<SillyBot> ret=new ArrayList<>();
-		ret.add(m1Bot);
-		ret.add(m2Bot);
-		ret.add(p1Bot);
-		ret.add(p2Bot);
-		
-		m1Bot.printUtilies();
-		m2Bot.printUtilies();
-		p1Bot.printUtilies();
-		p2Bot.printUtilies();
 		return ret;
 	}
 	
@@ -115,8 +108,34 @@ public class LoadHelper {
 				resourceEnvironment, usageModel);
 		return instance;
 	}
-	
 	private PCMScenario createModifiabilityScenarioS1(ResponseMeasureType type, Comparable<Float> response) {
+		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
+		PCMResult expectedResult = new PCMResult(type);
+		expectedResult.setResponse(response);
+		scenario.setExpectedResponse(expectedResult);
+		//
+		ModifiabilityInstruction i1 = new ModifiabilityInstruction();
+		i1.operation = ModifiabilityOperation.MODIFY;
+		i1.element = ModifiabilityElement.COMPONENT;
+		i1.parameters.put("name", "org.cocome.tradingsystem.inventory");
+		scenario.addChange(i1);
+		return scenario;
+	}
+	private PCMScenario createModifiabilityScenarioS2(ResponseMeasureType type, Comparable<Float> response) {
+		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
+		PCMResult expectedResult = new PCMResult(type);
+		expectedResult.setResponse(response);
+		scenario.setExpectedResponse(expectedResult);
+		//
+		ModifiabilityInstruction i1 = new ModifiabilityInstruction();
+		i1.operation = ModifiabilityOperation.MODIFY;
+		i1.element = ModifiabilityElement.COMPONENT;
+		i1.parameters.put("name", "org.cocome.tradingsystem.inventory.data");
+		scenario.addChange(i1);
+		return scenario;
+	}
+	/**SCENARIOS OF STPLUS+
+	 * private PCMScenario createModifiabilityScenarioS1(ResponseMeasureType type, Comparable<Float> response) {
 		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
 		PCMResult expectedResult = new PCMResult(type);
 		expectedResult.setResponse(response);
@@ -176,7 +195,7 @@ public class LoadHelper {
 		scenario.addChange(i6);
 		//
 		return scenario;
-	}
+	}**/
 	
 	public List<SillyBot> loadBotsWithInformation() {
 		ModifiabilityBot m1Bot=new ModifiabilityBot(/*3,*/ 115f,"m1",120f);
