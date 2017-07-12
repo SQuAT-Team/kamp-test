@@ -2563,8 +2563,8 @@
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_yCX1wLGAEeaCwqxzEIieVA" entityName="Provided_org.cocome.tradingsystem.inventory.IPersistenceContext" providedInterface__OperationProvidedRole="_kAT2UdYgEeWrM-HnT5f_ug"/>
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_8O9lkLGAEeaCwqxzEIieVA" entityName="Provided_org.cocome.tradingsystem.inventory.IStoreDataFactory" providedInterface__OperationProvidedRole="_xp7VaAbuEeaw45Je4nSaaQ"/>
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_WZFJELGBEeaCwqxzEIieVA" entityName="Provided_org.cocome.tradingsystem.inventory.IStockItem" providedInterface__OperationProvidedRole="_qtu_WAbuEeaw45Je4nSaaQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_4x4VUGYXEeez3M2yyhOrNQ" entityName="Provided_IUserManager" providedInterface__OperationProvidedRole="_8oRNJzSfEeal3vOMu7N_ww"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_9fCoAGYXEeez3M2yyhOrNQ" entityName="Provided_IAuthenticator" providedInterface__OperationProvidedRole="_m8odoF_BEea_gvFl-mCXRQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_4x4VUGYXEeez3M2yyhOrNQ" entityName="Provided_IUserManager" providedInterface__OperationProvidedRole="_942HaDSjEeal3vOMu7N_ww"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_9fCoAGYXEeez3M2yyhOrNQ" entityName="Provided_IAuthenticator" providedInterface__OperationProvidedRole="_84OX5zSjEeal3vOMu7N_ww"/>
   </components__Repository>
   <components__Repository xsi:type="repository:CompositeComponent" id="_vR7VWK_9Eeal2oK95oef3A" entityName="org.cocome.tradingsystem.inventory.data">
     <assemblyContexts__ComposedStructure id="_0A7s4LC_Eea4bqS8ZK-LhA" entityName="Assembly_org.cocome.tradingsystem.inventory.data.Persistence &lt;org.cocome.tradingsystem.inventory.data.Persistence>" encapsulatedComponent__AssemblyContext="_kBFSaNYgEeWrM-HnT5f_ug"/>
