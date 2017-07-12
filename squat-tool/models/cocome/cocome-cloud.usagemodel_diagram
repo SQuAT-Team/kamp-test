@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:usagemodel="http://palladiosimulator.org/PalladioComponentModel/UsageModel/5.1" xsi:schemaLocation="http://palladiosimulator.org/PalladioComponentModel/UsageModel/5.1 http://palladiosimulator.org/PalladioComponentModel/5.1#//usagemodel" xmi:id="_Gt2yAGcKEeeq-Oe48dcWUA" type="PCM Usage Model" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_Hv8hIGcKEeeq-Oe48dcWUA" type="2004">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Hv9vQGcKEeeq-Oe48dcWUA" type="5017"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_Hv9vQWcKEeeq-Oe48dcWUA" type="7012">
+      <children xmi:type="notation:Shape" xmi:id="_HwWw0GcKEeeq-Oe48dcWUA" type="3014" fontName=".SF NS Text">
+        <children xmi:type="notation:DecorationNode" xmi:id="_HwWw0mcKEeeq-Oe48dcWUA" type="7013">
+          <children xmi:type="notation:Node" xmi:id="_HwpEsGcKEeeq-Oe48dcWUA" type="3001">
+            <styles xmi:type="notation:DescriptionStyle" xmi:id="_HwpEsWcKEeeq-Oe48dcWUA"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_HwpEsmcKEeeq-Oe48dcWUA" fontName=".SF NS Text"/>
+            <styles xmi:type="notation:LineStyle" xmi:id="_HwpEs2cKEeeq-Oe48dcWUA"/>
+            <element xmi:type="usagemodel:Start" href="cocome-cloud.usagemodel#_N_UTQx1lEeevfrDB9FL4DQ"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HwpEtGcKEeeq-Oe48dcWUA" x="43" y="12"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_HwprwGcKEeeq-Oe48dcWUA" type="3002" fontName=".SF NS Text">
+            <element xmi:type="usagemodel:Stop" href="cocome-cloud.usagemodel#_N_UTRB1lEeevfrDB9FL4DQ"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HwprwWcKEeeq-Oe48dcWUA" x="199" y="164"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_6RTf0GcLEeeq-Oe48dcWUA" type="3003" fontName=".SF NS Text">
+            <children xmi:type="notation:DecorationNode" xmi:id="_6RTf0mcLEeeq-Oe48dcWUA" type="5004"/>
+            <children xmi:type="notation:DecorationNode" xmi:id="_6RTf02cLEeeq-Oe48dcWUA" type="7002">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_6RTf1GcLEeeq-Oe48dcWUA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_6RTf1WcLEeeq-Oe48dcWUA"/>
+            </children>
+            <element xmi:type="usagemodel:EntryLevelSystemCall" href="cocome-cloud.usagemodel#_3kDPYGcLEeeq-Oe48dcWUA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6RTf0WcLEeeq-Oe48dcWUA" x="159" y="12"/>
+          </children>
+        </children>
+        <element xmi:type="usagemodel:ScenarioBehaviour" href="cocome-cloud.usagemodel#_N_UTQh1lEeevfrDB9FL4DQ"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HwWw0WcKEeeq-Oe48dcWUA" x="-16" y="46" width="993" height="543"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_HwZNEGcKEeeq-Oe48dcWUA" type="3015">
+        <children xmi:type="notation:DecorationNode" xmi:id="_HwZNFWcKEeeq-Oe48dcWUA" type="5013"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_HwZNFmcKEeeq-Oe48dcWUA" type="5014"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_HwZNF2cKEeeq-Oe48dcWUA" type="5015"/>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_HwZNEWcKEeeq-Oe48dcWUA"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_HwZNEmcKEeeq-Oe48dcWUA" fontName=".SF NS Text"/>
+        <styles xmi:type="notation:LineStyle" xmi:id="_HwZNE2cKEeeq-Oe48dcWUA"/>
+        <element xmi:type="usagemodel:ClosedWorkload" href="cocome-cloud.usagemodel#//@usageScenario_UsageModel.0/@workload_UsageScenario"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HwZNFGcKEeeq-Oe48dcWUA" x="892" y="6"/>
+      </children>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_Hv8hIWcKEeeq-Oe48dcWUA"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_Hv8hImcKEeeq-Oe48dcWUA" fontName=".SF NS Text"/>
+    <styles xmi:type="notation:FillStyle" xmi:id="_Hv8hI2cKEeeq-Oe48dcWUA"/>
+    <element xmi:type="usagemodel:UsageScenario" href="cocome-cloud.usagemodel#_N_UTQB1lEeevfrDB9FL4DQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Hv8hJGcKEeeq-Oe48dcWUA" width="1121" height="689"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_Gt3ZEGcKEeeq-Oe48dcWUA"/>
+  <element xmi:type="usagemodel:UsageModel" href="cocome-cloud.usagemodel#/"/>
+  <edges xmi:type="notation:Connector" xmi:id="_KLV6oGcMEeeq-Oe48dcWUA" type="4002" source="_HwpEsGcKEeeq-Oe48dcWUA" target="_6RTf0GcLEeeq-Oe48dcWUA">
+    <styles xmi:type="notation:FontStyle" xmi:id="_KLV6oWcMEeeq-Oe48dcWUA" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_KLV6omcMEeeq-Oe48dcWUA" points="[0, 0, -116, 0]$[116, 0, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_KLXIwGcMEeeq-Oe48dcWUA" id="(0.0,0.35)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_KLXIwWcMEeeq-Oe48dcWUA" id="(0.0,0.14893617021276595)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_rwM78GcNEeeq-Oe48dcWUA" type="4002" source="_6RTf0GcLEeeq-Oe48dcWUA" target="_HwprwGcKEeeq-Oe48dcWUA">
+    <styles xmi:type="notation:FontStyle" xmi:id="_rwM78WcNEeeq-Oe48dcWUA" fontName=".SF NS Text"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_rwM78mcNEeeq-Oe48dcWUA" points="[0, 0, 25, -120]$[-23, 135, 2, 15]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_rwOxIGcNEeeq-Oe48dcWUA" id="(0.47058823529411764,1.0)"/>
+  </edges>
+</notation:Diagram>
