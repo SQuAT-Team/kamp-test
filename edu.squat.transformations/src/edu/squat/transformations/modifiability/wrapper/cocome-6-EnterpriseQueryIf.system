@@ -60,8 +60,8 @@
   <assemblyContexts__ComposedStructure id="_LoXbYFfjEd26K8JlmYJ10w" entityName="Data.Enterprise_EnterpriseServer">
     <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="cocome-6-EnterpriseQueryIf.repository#_-3VggNCgEduC9O_qbthgAg"/>
   </assemblyContexts__ComposedStructure>
-  <assemblyContexts__ComposedStructure id="_n2Wv8GCTEeeHW9Kc4Dpukw" entityName="Assembly_EnterpriseQueryIf-Wrapper &lt;EnterpriseQueryIf-Wrapper>">
-    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="cocome-6-EnterpriseQueryIf.repository#_n2B_0WCTEeeHW9Kc4Dpukw"/>
+  <assemblyContexts__ComposedStructure id="_qRv2QGiUEeeXloRWI8Jf3g" entityName="Assembly_EnterpriseQueryIf-Wrapper &lt;EnterpriseQueryIf-Wrapper>">
+    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="cocome-6-EnterpriseQueryIf.repository#_qRcUQWiUEeeXloRWI8Jf3g"/>
   </assemblyContexts__ComposedStructure>
   <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_RBRDsFcoEd23wcZsd06DZg" entityName="CashDeskConnectorIf" outerProvidedRole_ProvidedDelegationConnector="_MSQMUFcnEd23wcZsd06DZg" assemblyContext_ProvidedDelegationConnector="_3AwvMFcnEd23wcZsd06DZg">
     <innerProvidedRole_ProvidedDelegationConnector href="cocome-6-EnterpriseQueryIf.repository#__f6UsNCmEduC9O_qbthgAg"/>
@@ -116,9 +116,9 @@
     <providedRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_OmzqENChEduC9O_qbthgAg"/>
     <requiredRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_t5HAodCnEduC9O_qbthgAg"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_n2XXBGCTEeeHW9Kc4Dpukw" entityName="Connector Assembly_EnterpriseQueryIf-Wrapper &lt;EnterpriseQueryIf-Wrapper> -> Data.Enterprise_EnterpriseServer" requiringAssemblyContext_AssemblyConnector="_n2Wv8GCTEeeHW9Kc4Dpukw" providingAssemblyContext_AssemblyConnector="_LoXbYFfjEd26K8JlmYJ10w">
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_qRv2R2iUEeeXloRWI8Jf3g" entityName="Connector Assembly_EnterpriseQueryIf-Wrapper &lt;EnterpriseQueryIf-Wrapper> -> Data.Enterprise_EnterpriseServer" requiringAssemblyContext_AssemblyConnector="_qRv2QGiUEeeXloRWI8Jf3g" providingAssemblyContext_AssemblyConnector="_LoXbYFfjEd26K8JlmYJ10w">
     <providedRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_d1Mf0NChEduC9O_qbthgAg"/>
-    <requiredRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_n2B_02CTEeeHW9Kc4Dpukw"/>
+    <requiredRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_qRcUQ2iUEeeXloRWI8Jf3g"/>
   </connectors__ComposedStructure>
   <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_mD0vIFc2Ed23wcZsd06DZg" entityName="PersistenceIf" requiringAssemblyContext_AssemblyConnector="_yO4eIFczEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_d2D1wFcxEd23wcZsd06DZg">
     <providedRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_bT0IMNChEduC9O_qbthgAg"/>
@@ -136,9 +136,9 @@
     <providedRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_bT0IMNChEduC9O_qbthgAg"/>
     <requiredRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_lmx-EdCnEduC9O_qbthgAg"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_n2XXA2CTEeeHW9Kc4Dpukw" entityName="Connector Assembly_EnterpriseQueryIf-Wrapper &lt;EnterpriseQueryIf-Wrapper> -> Data.Enterprise_Store_2_Server" requiringAssemblyContext_AssemblyConnector="_n2Wv8GCTEeeHW9Kc4Dpukw" providingAssemblyContext_AssemblyConnector="_DtLL4FcyEd23wcZsd06DZg">
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_qRv2RmiUEeeXloRWI8Jf3g" entityName="Connector Assembly_EnterpriseQueryIf-Wrapper &lt;EnterpriseQueryIf-Wrapper> -> Data.Enterprise_Store_2_Server" requiringAssemblyContext_AssemblyConnector="_qRv2QGiUEeeXloRWI8Jf3g" providingAssemblyContext_AssemblyConnector="_DtLL4FcyEd23wcZsd06DZg">
     <providedRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_d1Mf0NChEduC9O_qbthgAg"/>
-    <requiredRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_n2B_02CTEeeHW9Kc4Dpukw"/>
+    <requiredRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_qRcUQ2iUEeeXloRWI8Jf3g"/>
   </connectors__ComposedStructure>
   <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_4oBbYFc8Ed23wcZsd06DZg" entityName="StoreQueryIf" requiringAssemblyContext_AssemblyConnector="_9sosIFc5Ed23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_XiFg0FcyEd23wcZsd06DZg">
     <providedRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_OmzqENChEduC9O_qbthgAg"/>
@@ -160,25 +160,25 @@
     <providedRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_bT0IMNChEduC9O_qbthgAg"/>
     <requiredRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_0k7YYdCnEduC9O_qbthgAg"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_n2XXAmCTEeeHW9Kc4Dpukw" entityName="Connector Assembly_EnterpriseQueryIf-Wrapper &lt;EnterpriseQueryIf-Wrapper> -> Data.Enterprise_Store_1_Server" requiringAssemblyContext_AssemblyConnector="_n2Wv8GCTEeeHW9Kc4Dpukw" providingAssemblyContext_AssemblyConnector="_2uaPYFcxEd23wcZsd06DZg">
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_qRv2RWiUEeeXloRWI8Jf3g" entityName="Connector Assembly_EnterpriseQueryIf-Wrapper &lt;EnterpriseQueryIf-Wrapper> -> Data.Enterprise_Store_1_Server" requiringAssemblyContext_AssemblyConnector="_qRv2QGiUEeeXloRWI8Jf3g" providingAssemblyContext_AssemblyConnector="_2uaPYFcxEd23wcZsd06DZg">
     <providedRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_d1Mf0NChEduC9O_qbthgAg"/>
-    <requiredRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_n2B_02CTEeeHW9Kc4Dpukw"/>
+    <requiredRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_qRcUQ2iUEeeXloRWI8Jf3g"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_n2XXAWCTEeeHW9Kc4Dpukw" entityName="Connector Application.ProductDispatcher_EnterpriseServer -> Assembly_EnterpriseQueryIf-Wrapper &lt;EnterpriseQueryIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_-W_gcFcoEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_n2Wv8GCTEeeHW9Kc4Dpukw">
-    <providedRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_n2B_0mCTEeeHW9Kc4Dpukw"/>
-    <requiredRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_n2UTsGCTEeeHW9Kc4Dpukw"/>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_qRv2RGiUEeeXloRWI8Jf3g" entityName="Connector Application.ProductDispatcher_EnterpriseServer -> Assembly_EnterpriseQueryIf-Wrapper &lt;EnterpriseQueryIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_-W_gcFcoEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_qRv2QGiUEeeXloRWI8Jf3g">
+    <providedRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_qRcUQmiUEeeXloRWI8Jf3g"/>
+    <requiredRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_qRrk0WiUEeeXloRWI8Jf3g"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_n2Wv8WCTEeeHW9Kc4Dpukw" entityName="Connector Application.Reporting_Store_1_Server -> Assembly_EnterpriseQueryIf-Wrapper &lt;EnterpriseQueryIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_yO4eIFczEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_n2Wv8GCTEeeHW9Kc4Dpukw">
-    <providedRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_n2B_0mCTEeeHW9Kc4Dpukw"/>
-    <requiredRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_n2TsoGCTEeeHW9Kc4Dpukw"/>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_qRv2QWiUEeeXloRWI8Jf3g" entityName="Connector Application.Reporting_Store_1_Server -> Assembly_EnterpriseQueryIf-Wrapper &lt;EnterpriseQueryIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_yO4eIFczEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_qRv2QGiUEeeXloRWI8Jf3g">
+    <providedRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_qRcUQmiUEeeXloRWI8Jf3g"/>
+    <requiredRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_qRrk0GiUEeeXloRWI8Jf3g"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_n2Wv8mCTEeeHW9Kc4Dpukw" entityName="Connector Application.Reporting_Store_2_Server -> Assembly_EnterpriseQueryIf-Wrapper &lt;EnterpriseQueryIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_9sosIFc5Ed23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_n2Wv8GCTEeeHW9Kc4Dpukw">
-    <providedRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_n2B_0mCTEeeHW9Kc4Dpukw"/>
-    <requiredRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_n2TsoGCTEeeHW9Kc4Dpukw"/>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_qRv2QmiUEeeXloRWI8Jf3g" entityName="Connector Application.Reporting_Store_2_Server -> Assembly_EnterpriseQueryIf-Wrapper &lt;EnterpriseQueryIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_9sosIFc5Ed23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_qRv2QGiUEeeXloRWI8Jf3g">
+    <providedRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_qRcUQmiUEeeXloRWI8Jf3g"/>
+    <requiredRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_qRrk0GiUEeeXloRWI8Jf3g"/>
   </connectors__ComposedStructure>
-  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_n2XXAGCTEeeHW9Kc4Dpukw" entityName="Connector Application.Reporting_EnterpriseServer -> Assembly_EnterpriseQueryIf-Wrapper &lt;EnterpriseQueryIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_FPU0wFcqEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_n2Wv8GCTEeeHW9Kc4Dpukw">
-    <providedRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_n2B_0mCTEeeHW9Kc4Dpukw"/>
-    <requiredRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_n2TsoGCTEeeHW9Kc4Dpukw"/>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_qRv2Q2iUEeeXloRWI8Jf3g" entityName="Connector Application.Reporting_EnterpriseServer -> Assembly_EnterpriseQueryIf-Wrapper &lt;EnterpriseQueryIf-Wrapper>" requiringAssemblyContext_AssemblyConnector="_FPU0wFcqEd23wcZsd06DZg" providingAssemblyContext_AssemblyConnector="_qRv2QGiUEeeXloRWI8Jf3g">
+    <providedRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_qRcUQmiUEeeXloRWI8Jf3g"/>
+    <requiredRole_AssemblyConnector href="cocome-6-EnterpriseQueryIf.repository#_qRrk0GiUEeeXloRWI8Jf3g"/>
   </connectors__ComposedStructure>
   <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_MSQMUFcnEd23wcZsd06DZg" entityName="CashDeskConnectorIf_Store_1">
     <providedInterface__OperationProvidedRole href="cocome-6-EnterpriseQueryIf.repository#_WoD42tCjEduC9O_qbthgAg"/>

@@ -82,8 +82,8 @@
     <resourceContainer_AllocationContext href="cocome-7-CashDeskConnectorIf.resourceenvironment#_bTYxAOEhEduBSuO8WivxSA"/>
     <assemblyContext_AllocationContext href="cocome-7-CashDeskConnectorIf.system#_LoXbYFfjEd26K8JlmYJ10w"/>
   </allocationContexts_Allocation>
-  <allocationContexts_Allocation id="_n3djMGCTEeeHW9Kc4Dpukw" entityName="Allocation_Assembly_CashDeskConnectorIf-Wrapper &lt;CashDeskConnectorIf-Wrapper> &lt;CashDeskConnectorIf-Wrapper>">
+  <allocationContexts_Allocation id="_qStfkmiUEeeXloRWI8Jf3g" entityName="Allocation_Assembly_CashDeskConnectorIf-Wrapper &lt;CashDeskConnectorIf-Wrapper> &lt;CashDeskConnectorIf-Wrapper>">
     <resourceContainer_AllocationContext href="cocome-7-CashDeskConnectorIf.resourceenvironment#_ZVdrwOEhEduBSuO8WivxSA"/>
-    <assemblyContext_AllocationContext href="cocome-7-CashDeskConnectorIf.system#_n3c8IGCTEeeHW9Kc4Dpukw"/>
+    <assemblyContext_AllocationContext href="cocome-7-CashDeskConnectorIf.system#_qSs4gGiUEeeXloRWI8Jf3g"/>
   </allocationContexts_Allocation>
 </allocation:Allocation>

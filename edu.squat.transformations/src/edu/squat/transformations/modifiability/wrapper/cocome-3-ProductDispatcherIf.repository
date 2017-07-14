@@ -254,7 +254,7 @@
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_0k7YYdCnEduC9O_qbthgAg" entityName="PersistenceIf" requiredInterface__OperationRequiredRole="_F8ovQNChEduC9O_qbthgAg"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_4OSEsdCnEduC9O_qbthgAg" entityName="StoreQueryIf" requiredInterface__OperationRequiredRole="_HSKXwNChEduC9O_qbthgAg"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_aa6McdCwEduW_YoCCnq0vw" entityName="SaleRegisteredEvent" requiredInterface__OperationRequiredRole="_RQoSZNCpEduC9O_qbthgAg"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_l0C58GCTEeeHW9Kc4Dpukw" requiredInterface__OperationRequiredRole="_lzx0MGCTEeeHW9Kc4Dpukw"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_qO26UGiUEeeXloRWI8Jf3g" requiredInterface__OperationRequiredRole="_qOrUIGiUEeeXloRWI8Jf3g"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="bookSale" describedService__SEFF="_2NKrM1cvEeGI_ZRmqWdpYA">
       <steps_Behaviour xsi:type="seff:StartAction" id="_ckGrcNJOEduQ7qbNANXHPw" successor_AbstractAction="_qPZWwNJOEduQ7qbNANXHPw"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_c4EJQNJOEduQ7qbNANXHPw" predecessor_AbstractAction="_6lsvcNJREduQ7qbNANXHPw"/>
@@ -289,7 +289,7 @@
       </steps_Behaviour>
       <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_1UJywNJQEduQ7qbNANXHPw" entityName="queryStoreById" predecessor_AbstractAction="_qZcYsNJQEduQ7qbNANXHPw" successor_AbstractAction="_-2XI0NJQEduQ7qbNANXHPw" calledService_ExternalService="_2NL5WlcvEeGI_ZRmqWdpYA" role_ExternalService="_4OSEsdCnEduC9O_qbthgAg"/>
       <steps_Behaviour xsi:type="seff:InternalAction" id="_-2XI0NJQEduQ7qbNANXHPw" entityName="prepare" predecessor_AbstractAction="_1UJywNJQEduQ7qbNANXHPw" successor_AbstractAction="_Gi_dUNJREduQ7qbNANXHPw"/>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_Gi_dUNJREduQ7qbNANXHPw" entityName="orderProductsAvailableAtOtherStores" predecessor_AbstractAction="_-2XI0NJQEduQ7qbNANXHPw" successor_AbstractAction="_m2h2INJREduQ7qbNANXHPw" calledService_ExternalService="_lz3TwGCTEeeHW9Kc4Dpukw" role_ExternalService="_l0C58GCTEeeHW9Kc4Dpukw">
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_Gi_dUNJREduQ7qbNANXHPw" entityName="orderProductsAvailableAtOtherStores" predecessor_AbstractAction="_-2XI0NJQEduQ7qbNANXHPw" successor_AbstractAction="_m2h2INJREduQ7qbNANXHPw" calledService_ExternalService="_qOu-gGiUEeeXloRWI8Jf3g" role_ExternalService="_qO26UGiUEeeXloRWI8Jf3g">
         <inputVariableUsages__CallAction>
           <variableCharacterisation_VariableUsage type="NUMBER_OF_ELEMENTS">
             <specification_VariableCharacterisation specification="saleTO.NUMBER_OF_ELEMENTS * IntPMF[ (0;0.99) (1;0.01) ]"/>
@@ -398,18 +398,18 @@
       <steps_Behaviour xsi:type="seff:StopAction" id="_rg798B_8Edy5k9ER1TBmjg" predecessor_AbstractAction="_rYcwUB_8Edy5k9ER1TBmjg"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-  <components__Repository xsi:type="repository:BasicComponent" id="_lzx0MWCTEeeHW9Kc4Dpukw" entityName="ProductDispatcherIf-Wrapper">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_lzx0MmCTEeeHW9Kc4Dpukw" providedInterface__OperationProvidedRole="_lzx0MGCTEeeHW9Kc4Dpukw"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_lzx0M2CTEeeHW9Kc4Dpukw" requiredInterface__OperationRequiredRole="_dbS8pNCiEduC9O_qbthgAg"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_lz3TwWCTEeeHW9Kc4Dpukw" describedService__SEFF="_lz3TwGCTEeeHW9Kc4Dpukw">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_lz3TwmCTEeeHW9Kc4Dpukw" entityName="start" successor_AbstractAction="_lz3Tw2CTEeeHW9Kc4Dpukw"/>
-      <steps_Behaviour xsi:type="seff:InternalAction" id="_lz3Tw2CTEeeHW9Kc4Dpukw" entityName="Overhead [ProductDispatcherIf-Wrapper]" predecessor_AbstractAction="_lz3TwmCTEeeHW9Kc4Dpukw" successor_AbstractAction="_lz3TxGCTEeeHW9Kc4Dpukw">
+  <components__Repository xsi:type="repository:BasicComponent" id="_qOrUIWiUEeeXloRWI8Jf3g" entityName="ProductDispatcherIf-Wrapper">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_qOrUImiUEeeXloRWI8Jf3g" providedInterface__OperationProvidedRole="_qOrUIGiUEeeXloRWI8Jf3g"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_qOrUI2iUEeeXloRWI8Jf3g" requiredInterface__OperationRequiredRole="_dbS8pNCiEduC9O_qbthgAg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_qOvlkGiUEeeXloRWI8Jf3g" describedService__SEFF="_qOu-gGiUEeeXloRWI8Jf3g">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_qOvlkWiUEeeXloRWI8Jf3g" entityName="start" successor_AbstractAction="_qOvlkmiUEeeXloRWI8Jf3g"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_qOvlkmiUEeeXloRWI8Jf3g" entityName="Overhead [ProductDispatcherIf-Wrapper]" predecessor_AbstractAction="_qOvlkWiUEeeXloRWI8Jf3g" successor_AbstractAction="_qOvlk2iUEeeXloRWI8Jf3g">
         <resourceDemand_Action>
           <specification_ParametericResourceDemand specification="2"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_lz3TxGCTEeeHW9Kc4Dpukw" entityName="External_ProductDispatcherIf-Wrapper_orderProductsAvailableAtOtherStores" predecessor_AbstractAction="_lz3Tw2CTEeeHW9Kc4Dpukw" successor_AbstractAction="_lz360GCTEeeHW9Kc4Dpukw" calledService_ExternalService="_2NO8o1cvEeGI_ZRmqWdpYA" role_ExternalService="_lzx0M2CTEeeHW9Kc4Dpukw">
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_qOvlk2iUEeeXloRWI8Jf3g" entityName="External_ProductDispatcherIf-Wrapper_orderProductsAvailableAtOtherStores" predecessor_AbstractAction="_qOvlkmiUEeeXloRWI8Jf3g" successor_AbstractAction="_qOwMoGiUEeeXloRWI8Jf3g" calledService_ExternalService="_2NO8o1cvEeGI_ZRmqWdpYA" role_ExternalService="_qOrUI2iUEeeXloRWI8Jf3g">
         <inputVariableUsages__CallAction>
           <variableCharacterisation_VariableUsage type="VALUE">
             <specification_VariableCharacterisation specification="enterpriseTO.VALUE"/>
@@ -435,7 +435,7 @@
           <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="returnVar1"/>
         </returnVariableUsage__CallReturnAction>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_lz360GCTEeeHW9Kc4Dpukw" entityName="SetReturn [ProductDispatcherIf.orderProductsAvailableAtOtherStores]" predecessor_AbstractAction="_lz3TxGCTEeeHW9Kc4Dpukw" successor_AbstractAction="_lz360WCTEeeHW9Kc4Dpukw">
+      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_qOwMoGiUEeeXloRWI8Jf3g" entityName="SetReturn [ProductDispatcherIf.orderProductsAvailableAtOtherStores]" predecessor_AbstractAction="_qOvlk2iUEeeXloRWI8Jf3g" successor_AbstractAction="_qOwMoWiUEeeXloRWI8Jf3g">
         <localVariableUsages_SetVariableAction>
           <variableCharacterisation_VariableUsage type="NUMBER_OF_ELEMENTS">
             <specification_VariableCharacterisation specification="returnVar1.NUMBER_OF_ELEMENTS"/>
@@ -443,7 +443,7 @@
           <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="RETURN"/>
         </localVariableUsages_SetVariableAction>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_lz360WCTEeeHW9Kc4Dpukw" entityName="stop" predecessor_AbstractAction="_lz360GCTEeeHW9Kc4Dpukw"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_qOwMoWiUEeeXloRWI8Jf3g" entityName="stop" predecessor_AbstractAction="_qOwMoGiUEeeXloRWI8Jf3g"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_WoD42tCjEduC9O_qbthgAg" entityName="CashDeskConnectorIf">
@@ -660,8 +660,8 @@
     <signatures__OperationInterface id="_2NQx1VcvEeGI_ZRmqWdpYA" entityName="flushDatabase"/>
   </interfaces__Repository>
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_RQoSZNCpEduC9O_qbthgAg" entityName="SaleRegisteredEvent"/>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_lzx0MGCTEeeHW9Kc4Dpukw" entityName="ProductDispatcherIf-Wrapper">
-    <signatures__OperationInterface id="_lz3TwGCTEeeHW9Kc4Dpukw" entityName="orderProductsAvailableAtOtherStores">
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_qOrUIGiUEeeXloRWI8Jf3g" entityName="ProductDispatcherIf-Wrapper">
+    <signatures__OperationInterface id="_qOu-gGiUEeeXloRWI8Jf3g" entityName="orderProductsAvailableAtOtherStores">
       <parameters__OperationSignature parameterName="enterpriseTO">
         <dataType__Parameter xsi:type="repository:CompositeDataType" href="cocomeTypes.repository#_1GiHBtFfEducE6dFyopUlg"/>
       </parameters__OperationSignature>
