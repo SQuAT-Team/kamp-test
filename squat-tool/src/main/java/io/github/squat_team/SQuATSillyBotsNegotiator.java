@@ -261,7 +261,7 @@ public class SQuATSillyBotsNegotiator {
 	}
 	private HashMap<SillyBot, Proposal> collectInitialProposals() {
 		//REMOVE THIS FIRST LINE. IT ONLY PURPOSES IS TO AVOID THE MODIFIABILITY TACTICS THAT ARE NOT WORKING WITH THE COMPOSITE COMPONETS
-		new LoadHelper().loadBotsForArchitecturalAlternatives(new ArrayList<ArchitecturalVersion>(),archTransFactory.getInitialArchitecture());
+//		new LoadHelper().loadBotsForArchitecturalAlternatives(new ArrayList<ArchitecturalVersion>(),archTransFactory.getInitialArchitecture());
 		HashMap<SillyBot, Proposal> ret= new HashMap<>();
 		System.out.println("Level of transformations: "+ currentLevelOfTransformations);
 		List<ArchitecturalVersion> versionsUntilLevel=archTransFactory.getArchitecturalTransformationsUntilLevel(currentLevelOfTransformations);

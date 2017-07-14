@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<allocation:Allocation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:allocation="http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1" id="_bxcIYGV8EeeuRPZPL8BAyA" entityName="defaultAllocation">
-  <targetResourceEnvironment_Allocation href="cocome-cloud.resourceenvironment#/"/>
-  <system_Allocation href="cocome-cloud.system#_35Lu0Ai5EeefyagWuy0aqA"/>
-</allocation:Allocation>

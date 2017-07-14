@@ -1877,11 +1877,11 @@
   <components__Repository xsi:type="repository:BasicComponent" id="_oFfIwDSjEeal3vOMu7N_ww" entityName="org.cocome.cloud.webservice.LoginManager">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_ug8wUTSjEeal3vOMu7N_ww" entityName="ILoginManager" providedInterface__OperationProvidedRole="_ZImaFTSgEeal3vOMu7N_ww"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_GUgsJTSkEeal3vOMu7N_ww" entityName="IAuthenticator" requiredInterface__OperationRequiredRole="_84OX5zSjEeal3vOMu7N_ww"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_G-Z9tTSkEeal3vOMu7N_ww" entityName="IUserManager"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_G-Z9tTSkEeal3vOMu7N_ww" entityName="IUserManager" requiredInterface__OperationRequiredRole="_942HaDSjEeal3vOMu7N_ww"/>
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_iQEYEDSkEeal3vOMu7N_ww" entityName="org.cocome.tradingsystem.inventory.application.UserManager">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_rBOrsTSkEeal3vOMu7N_ww" entityName="IAuthenticator" providedInterface__OperationProvidedRole="_84OX5zSjEeal3vOMu7N_ww"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_4rULMTSmEeal3vOMu7N_ww" entityName="IUserManager"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_4rULMTSmEeal3vOMu7N_ww" entityName="IUserManager" providedInterface__OperationProvidedRole="_942HaDSjEeal3vOMu7N_ww"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_-plgdTSmEeal3vOMu7N_ww" entityName="IPersistenceContext" requiredInterface__OperationRequiredRole="_kAT2UdYgEeWrM-HnT5f_ug"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_D6EipTSnEeal3vOMu7N_ww" entityName="org.cocome.tradingsystem.inventory.data.store.IStoreQuery" requiredInterface__OperationRequiredRole="_j8RD0NYgEeWrM-HnT5f_ug"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_EqnOwDSnEeal3vOMu7N_ww" entityName="IUserDataFactory" requiredInterface__OperationRequiredRole="_SgdHyDSoEeal3vOMu7N_ww"/>
@@ -4578,7 +4578,7 @@
       <parameter__EventType dataType__Parameter="_kAOWxNYgEeWrM-HnT5f_ug" parameterName="AccountSaleEventDataType"/>
     </eventTypes__EventGroup>
   </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_8oRNJzSfEeal3vOMu7N_ww" entityName="IUserManager"/>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_942HaDSjEeal3vOMu7N_ww" entityName="IUserManager"/>
   <interfaces__Repository xsi:type="repository:EventGroup" id="_Te2kIE-kEeeOMbxr3TEZOQ" entityName="LoginEvent">
     <eventTypes__EventGroup id="_WLsk4E-kEeeOMbxr3TEZOQ" entityName="LoginEvent">
       <parameter__EventType dataType__Parameter="_qTt7w2SDEeaYxPjtCxykSQ" parameterName="userRoleStoreID"/>

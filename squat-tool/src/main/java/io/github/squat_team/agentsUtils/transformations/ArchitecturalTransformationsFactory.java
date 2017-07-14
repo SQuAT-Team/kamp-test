@@ -18,8 +18,8 @@ public class ArchitecturalTransformationsFactory {
 		modifiabilityTrans=new ModifiabilityTransformationsFactory();
 		//initialArchitecture2=new ArchitecturalVersion("default","models","");
 		//initialArchitecture2.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/alternativeRepository.repository");
-		initialArchitecture=new ArchitecturalVersion("cocome-cloud","models/cocome","");
-		initialArchitecture.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocome/cocome-cloud.repository");
+		initialArchitecture=new ArchitecturalVersion("cocome-cloud","models/cocomeWithoutPickUpStoreAndServiceAdapter","");
+		initialArchitecture.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithoutPickUpStoreAndServiceAdapter/alternativescocome-cloud.repository");
 		performanceTrans=new PerformanceTransformationFactory();
 		architecturesByLevel=new Hashtable<>();
 	}
