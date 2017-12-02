@@ -11,8 +11,8 @@
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_j159INYgEeWrM-HnT5f_ug" entityName="org.cocome.tradingsystem.cashdeskline.cashdesk.CardReader">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_j159I9YgEeWrM-HnT5f_ug" entityName="ICardReaderModel" providedInterface__OperationProvidedRole="_j159IdYgEeWrM-HnT5f_ug"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_K-3x9datEee7CN4Qm4czKQ" requiredInterface__OperationRequiredRole="_LNYYl9ZsEee7CN4Qm4czKQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_VwHG9datEee7CN4Qm4czKQ" requiredInterface__OperationRequiredRole="_gQV1B9ZsEee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_K-3x9datEee7CN4Qm4czKQ" entityName="CreditCardInfoEvent" requiredInterface__OperationRequiredRole="_LNYYl9ZsEee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_VwHG9datEee7CN4Qm4czKQ" entityName="CreditCardPinEvent" requiredInterface__OperationRequiredRole="_gQV1B9ZsEee7CN4Qm4czKQ"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_NVp0pUh6Eee76qhR2wvsFA" describedService__SEFF="_xTiU8NbmEeWn1fcBwCRaXA">
       <steps_Behaviour xsi:type="seff:StartAction" id="_wVMtcEiKEeeAK9a9NwDLow" successor_AbstractAction="_dfqzptatEee7CN4Qm4czKQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_wgEgsEiKEeeAK9a9NwDLow" predecessor_AbstractAction="_dfqzptatEee7CN4Qm4czKQ"/>
@@ -144,8 +144,8 @@
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_j1-OkNYgEeWrM-HnT5f_ug" entityName="org.cocome.tradingsystem.cashdeskline.cashdesk.CashBoxEventHandler">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_e-3OIdawEee7CN4Qm4czKQ" providedInterface__OperationProvidedRole="_fKoUt9ZtEee7CN4Qm4czKQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_jWCq8dbKEee7CN4Qm4czKQ" providedInterface__OperationProvidedRole="_qKZIt9Z_Eee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_e-3OIdawEee7CN4Qm4czKQ" entityName="ChangeAmountCalculatedEvent" providedInterface__OperationProvidedRole="_fKoUt9ZtEee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_jWCq8dbKEee7CN4Qm4czKQ" entityName="CashBoxClosedEvent" providedInterface__OperationProvidedRole="_qKZIt9Z_Eee7CN4Qm4czKQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_sPrGpewoEeW_LdalkgkVnQ" entityName="ICashBoxModel" requiredInterface__OperationRequiredRole="_j16kMdYgEeWrM-HnT5f_ug"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_u3Yz0U-qEeeOMbxr3TEZOQ" describedService__SEFF="_iL000NZtEee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_u3Za4E-qEeeOMbxr3TEZOQ" successor_AbstractAction="_u3Za4U-qEeeOMbxr3TEZOQ"/>
@@ -158,20 +158,20 @@
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_gqSX6ewoEeW_LdalkgkVnQ" entityName="org.cocome.tradingsystem.cashdeskline.cashdesk.CashBox">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_mj52oewoEeW_LdalkgkVnQ" entityName="ICashBoxModel" providedInterface__OperationProvidedRole="_j16kMdYgEeWrM-HnT5f_ug"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:SourceRole" id="_qhacoE-rEeeOMbxr3TEZOQ" entityName="fireCashAmountEnteredEvent" eventGroup__SourceRole="_SZ2uIE-oEeeOMbxr3TEZOQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:SourceRole" id="_Z9jMQE-sEeeOMbxr3TEZOQ" entityName="fireSaleFinishedEvent" eventGroup__SourceRole="_geXKsE-oEeeOMbxr3TEZOQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:SourceRole" id="_tVc1EE-sEeeOMbxr3TEZOQ" entityName="firePaymentModeSelectedEvent" eventGroup__SourceRole="_kQMdkE-oEeeOMbxr3TEZOQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:SourceRole" id="_6MIzoE-sEeeOMbxr3TEZOQ" entityName="fireCashBoxNumPadKeypressEvent" eventGroup__SourceRole="_p8qRIE-oEeeOMbxr3TEZOQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:SourceRole" id="_NRdesE-tEeeOMbxr3TEZOQ" entityName="fireExpressModeDisabledEvent" eventGroup__SourceRole="_s1gGgE-oEeeOMbxr3TEZOQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:SourceRole" id="_sG3soE-tEeeOMbxr3TEZOQ" entityName="fireCashBoxClosedEvent" eventGroup__SourceRole="_ytmiUE-oEeeOMbxr3TEZOQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_PLQP1dbOEeeA6uet0yIgvw" entityName="CashAmountEnteredEvent" requiredInterface__OperationRequiredRole="_mNHFt9Z9Eee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_nJ2W9dbOEeeA6uet0yIgvw" entityName="SaleFinishedEvent" requiredInterface__OperationRequiredRole="_NUhmE9Z-Eee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_uIouBdbOEeeA6uet0yIgvw" entityName="PaymentModeSelectedEvent" requiredInterface__OperationRequiredRole="_gJReh9Z-Eee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_8gdvNdbOEeeA6uet0yIgvw" entityName="CashBoxNumpadKeypressEvent" requiredInterface__OperationRequiredRole="_J8kWV9Z_Eee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_ChMildbPEeeA6uet0yIgvw" entityName="ExpressModeDisabledEvent" requiredInterface__OperationRequiredRole="_aExwB9Z_Eee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_Ta0LFdbPEeeA6uet0yIgvw" entityName="CashBoxClosedEvent" requiredInterface__OperationRequiredRole="_qKZIt9Z_Eee7CN4Qm4czKQ"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_G9USN0h9Eee76qhR2wvsFA" describedService__SEFF="_j16kMtYgEeWrM-HnT5f_ug">
       <steps_Behaviour xsi:type="seff:StartAction" id="_yAXOxkiKEeeAK9a9NwDLow" successor_AbstractAction="_yAXOx0iKEeeAK9a9NwDLow"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_yAXOx0iKEeeAK9a9NwDLow" predecessor_AbstractAction="_yAXOxkiKEeeAK9a9NwDLow"/>
     </serviceEffectSpecifications__BasicComponent>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_eSjTR0h9Eee76qhR2wvsFA" describedService__SEFF="_j16kM9YgEeWrM-HnT5f_ug">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_yAXOykiKEeeAK9a9NwDLow" successor_AbstractAction="_-wjqMGA4EeeBd92_04LgdQ"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_yAXOy0iKEeeAK9a9NwDLow" predecessor_AbstractAction="_-wjqMGA4EeeBd92_04LgdQ"/>
-      <steps_Behaviour xsi:type="seff:EmitEventAction" id="_-wjqMGA4EeeBd92_04LgdQ" entityName="fireCashBoxClosedEvent" predecessor_AbstractAction="_yAXOykiKEeeAK9a9NwDLow" successor_AbstractAction="_yAXOy0iKEeeAK9a9NwDLow" eventType__EmitEventAction="_4tIb0E-oEeeOMbxr3TEZOQ" sourceRole__EmitEventAction="_sG3soE-tEeeOMbxr3TEZOQ"/>
+      <steps_Behaviour xsi:type="seff:StartAction" id="_yAXOykiKEeeAK9a9NwDLow" successor_AbstractAction="_hVq8ZtbPEeeA6uet0yIgvw"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_yAXOy0iKEeeAK9a9NwDLow" predecessor_AbstractAction="_hVq8ZtbPEeeA6uet0yIgvw"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_hVq8ZtbPEeeA6uet0yIgvw" entityName="fireCashBoxClosedEvent" predecessor_AbstractAction="_yAXOykiKEeeAK9a9NwDLow" successor_AbstractAction="_yAXOy0iKEeeAK9a9NwDLow" calledService_ExternalService="_ruh08NZ_Eee7CN4Qm4czKQ" role_ExternalService="_Ta0LFdbPEeeA6uet0yIgvw"/>
     </serviceEffectSpecifications__BasicComponent>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_hqlmF0h9Eee76qhR2wvsFA" describedService__SEFF="_j16kNNYgEeWrM-HnT5f_ug">
       <steps_Behaviour xsi:type="seff:StartAction" id="_yAXOzkiKEeeAK9a9NwDLow" successor_AbstractAction="_yAXOz0iKEeeAK9a9NwDLow"/>
@@ -302,12 +302,14 @@
   <components__Repository xsi:type="repository:BasicComponent" id="_j5nYcdYgEeWrM-HnT5f_ug" entityName="org.cocome.tradingsystem.cashdeskline.cashdesk.ExpressLightEventHandler">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_FyHNsE-sEeeOMbxr3TEZOQ" entityName="handleExpressModeEnabledEvent" eventGroup__SinkRole="_aHyqME-oEeeOMbxr3TEZOQ"/>
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_QRXlYE-tEeeOMbxr3TEZOQ" entityName="handleExpressModeDisabledEvent" eventGroup__SinkRole="_s1gGgE-oEeeOMbxr3TEZOQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_fr-lQdbQEeeA6uet0yIgvw" entityName="ExpressModeEnabledEvent" providedInterface__OperationProvidedRole="_-DSQp9Z9Eee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_gbxqgdbQEeeA6uet0yIgvw" entityName="ExpressModeDisabledEvent" providedInterface__OperationProvidedRole="_aExwB9Z_Eee7CN4Qm4czKQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_ra0-xewnEeW_LdalkgkVnQ" entityName="IExpressLightModel" requiredInterface__OperationRequiredRole="_j5mxYNYgEeWrM-HnT5f_ug"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_FyHNsU-sEeeOMbxr3TEZOQ" describedService__SEFF="_eU8AEE-oEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_FyHNsU-sEeeOMbxr3TEZOQ" describedService__SEFF="_BtwXQNZ-Eee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_FyHNsk-sEeeOMbxr3TEZOQ" successor_AbstractAction="_FyHNs0-sEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_FyHNs0-sEeeOMbxr3TEZOQ" predecessor_AbstractAction="_FyHNsk-sEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_QRYMcE-tEeeOMbxr3TEZOQ" describedService__SEFF="_vp5gwE-oEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_QRYMcE-tEeeOMbxr3TEZOQ" describedService__SEFF="_cc9vYNZ_Eee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_QRYMcU-tEeeOMbxr3TEZOQ" successor_AbstractAction="_QRYMck-tEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_QRYMck-tEeeOMbxr3TEZOQ" predecessor_AbstractAction="_QRYMcU-tEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
@@ -700,20 +702,20 @@
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_j5p0ttYgEeWrM-HnT5f_ug" entityName="org.cocome.tradingsystem.cashdeskline.cashdesk.PrinterEventHandler">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_KH83cE-qEeeOMbxr3TEZOQ" entityName="handleRunningTotalChangedEventSaleSuccessEvent" eventGroup__SinkRole="_3s6xcE-nEeeOMbxr3TEZOQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_fHksAE-qEeeOMbxr3TEZOQ" entityName="handleChangeAmountCalculatedEvent" eventGroup__SinkRole="_B0Gc0E-oEeeOMbxr3TEZOQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_U1OdAE-rEeeOMbxr3TEZOQ" entityName="handleCashAmountEnteredEvent" eventGroup__SinkRole="_SZ2uIE-oEeeOMbxr3TEZOQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_Off0kE-sEeeOMbxr3TEZOQ" entityName="handleSaleFinishedEvent" eventGroup__SinkRole="_geXKsE-oEeeOMbxr3TEZOQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_uDSzodbREeeA6uet0yIgvw" entityName="RunningTotalChangedEventSaleSuccessEvent" providedInterface__OperationProvidedRole="_wWMeR9ZsEee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_vjOVUdbREeeA6uet0yIgvw" entityName="ChangeAmountCalculatedEvent" providedInterface__OperationProvidedRole="_fKoUt9ZtEee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_v8kpcdbREeeA6uet0yIgvw" entityName="CashAmountEnteredEvent" providedInterface__OperationProvidedRole="_mNHFt9Z9Eee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_wUEjcdbREeeA6uet0yIgvw" entityName="SaleFinishedEvent" providedInterface__OperationProvidedRole="_NUhmE9Z-Eee7CN4Qm4czKQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_GNFLNewmEeW_LdalkgkVnQ" entityName="IPrinterModel" requiredInterface__OperationRequiredRole="_j5pNoNYgEeWrM-HnT5f_ug"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_KH83cU-qEeeOMbxr3TEZOQ" describedService__SEFF="_9FpwsE-nEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_KH83cU-qEeeOMbxr3TEZOQ" describedService__SEFF="_1xjTsNZsEee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_KH83ck-qEeeOMbxr3TEZOQ" successor_AbstractAction="_KH83c0-qEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_KH83c0-qEeeOMbxr3TEZOQ" predecessor_AbstractAction="_KH83ck-qEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_fHksAU-qEeeOMbxr3TEZOQ" describedService__SEFF="_Fi7fAE-oEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_fHksAU-qEeeOMbxr3TEZOQ" describedService__SEFF="_iL000NZtEee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_fHksAk-qEeeOMbxr3TEZOQ" successor_AbstractAction="_fHksA0-qEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_fHksA0-qEeeOMbxr3TEZOQ" predecessor_AbstractAction="_fHksAk-qEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_U1PEEE-rEeeOMbxr3TEZOQ" describedService__SEFF="_VMl7gE-oEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_U1PEEE-rEeeOMbxr3TEZOQ" describedService__SEFF="_ooe78NZ9Eee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_U1PEEU-rEeeOMbxr3TEZOQ" successor_AbstractAction="_U1PEEk-rEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_U1PEEk-rEeeOMbxr3TEZOQ" predecessor_AbstractAction="_U1PEEU-rEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
@@ -734,61 +736,61 @@
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_j5qbxdYgEeWrM-HnT5f_ug" entityName="org.cocome.tradingsystem.cashdeskline.cashdesk.UserDisplayEventHandler">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_sKMDME-pEeeOMbxr3TEZOQ" entityName="handleCreditCardScannedEvent" eventGroup__SinkRole="_rvt_oE-nEeeOMbxr3TEZOQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_ZM0k0E-qEeeOMbxr3TEZOQ" entityName="handleRunningTotalChangedEventSaleSuccessEvent" eventGroup__SinkRole="_3s6xcE-nEeeOMbxr3TEZOQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_iLd60E-qEeeOMbxr3TEZOQ" entityName="handleChangeAmountCalculatedEvent" eventGroup__SinkRole="_B0Gc0E-oEeeOMbxr3TEZOQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_2F3MsE-qEeeOMbxr3TEZOQ" entityName="handleInvalidInputEvent" eventGroup__SinkRole="_Hmc18E-oEeeOMbxr3TEZOQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_grBmUE-rEeeOMbxr3TEZOQ" entityName="handleCashAmountEnteredEvent" eventGroup__SinkRole="_SZ2uIE-oEeeOMbxr3TEZOQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_3IXWEE-rEeeOMbxr3TEZOQ" entityName="handleExpressModeEnabledEvent" eventGroup__SinkRole="_aHyqME-oEeeOMbxr3TEZOQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_gopyUE-sEeeOMbxr3TEZOQ" entityName="handlePaymentModeSelectedEvent" eventGroup__SinkRole="_kQMdkE-oEeeOMbxr3TEZOQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_1WAyME-sEeeOMbxr3TEZOQ" entityName="handleCashBoxNumPadKeypressEvent" eventGroup__SinkRole="_p8qRIE-oEeeOMbxr3TEZOQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_AKMtgE-tEeeOMbxr3TEZOQ" entityName="handleExpressModeDisabledEvent" eventGroup__SinkRole="_s1gGgE-oEeeOMbxr3TEZOQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_1MAtUNbSEeeA6uet0yIgvw" entityName="CreditCardScannedEvent" providedInterface__OperationProvidedRole="_LNYYl9ZsEee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_jqT7sdbTEeeA6uet0yIgvw" entityName="RunningTotalChangedEventSaleSuccessEvent" providedInterface__OperationProvidedRole="_wWMeR9ZsEee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_kTeNcdbTEeeA6uet0yIgvw" entityName="ChangeAmountCalculatedEvent" providedInterface__OperationProvidedRole="_fKoUt9ZtEee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_lV_aYdbTEeeA6uet0yIgvw" entityName="InvalidInputEvent" providedInterface__OperationProvidedRole="_uK85R9ZtEee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_luYsQdbTEeeA6uet0yIgvw" entityName="CashAmountEnteredEvent" providedInterface__OperationProvidedRole="_mNHFt9Z9Eee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_mCpsEdbTEeeA6uet0yIgvw" entityName="ExpressModeEnabledEvent" providedInterface__OperationProvidedRole="_-DSQp9Z9Eee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_mTu1AdbTEeeA6uet0yIgvw" entityName="PaymentModeSelectedEvent" providedInterface__OperationProvidedRole="_gJReh9Z-Eee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_mmZSUdbTEeeA6uet0yIgvw" entityName="CashBoxNumPadKeypressEvent" providedInterface__OperationProvidedRole="_J8kWV9Z_Eee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_nkkx0dbTEeeA6uet0yIgvw" entityName="ExpressModeDisabledEvent" providedInterface__OperationProvidedRole="_aExwB9Z_Eee7CN4Qm4czKQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_j5s4AtYgEeWrM-HnT5f_ug" entityName="IUserDisplayModel" requiredInterface__OperationRequiredRole="_j5rC0NYgEeWrM-HnT5f_ug"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_sKMqQE-pEeeOMbxr3TEZOQ" describedService__SEFF="_vYcZ0E-nEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_sKMqQE-pEeeOMbxr3TEZOQ" describedService__SEFF="_NnPL4NZsEee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_sKMqQU-pEeeOMbxr3TEZOQ" successor_AbstractAction="_sKMqQk-pEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_sKMqQk-pEeeOMbxr3TEZOQ" predecessor_AbstractAction="_sKMqQU-pEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_ZM0k0U-qEeeOMbxr3TEZOQ" describedService__SEFF="_9FpwsE-nEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_ZM0k0U-qEeeOMbxr3TEZOQ" describedService__SEFF="_1xjTsNZsEee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_ZM0k0k-qEeeOMbxr3TEZOQ" successor_AbstractAction="_ZM0k00-qEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_ZM0k00-qEeeOMbxr3TEZOQ" predecessor_AbstractAction="_ZM0k0k-qEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_iLd60U-qEeeOMbxr3TEZOQ" describedService__SEFF="_Fi7fAE-oEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_iLd60U-qEeeOMbxr3TEZOQ" describedService__SEFF="_iL000NZtEee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_iLeh4E-qEeeOMbxr3TEZOQ" successor_AbstractAction="_iLeh4U-qEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_iLeh4U-qEeeOMbxr3TEZOQ" predecessor_AbstractAction="_iLeh4E-qEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_2F3zwE-qEeeOMbxr3TEZOQ" describedService__SEFF="_KRA-wE-oEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_2F3zwE-qEeeOMbxr3TEZOQ" describedService__SEFF="_x6dQ4NZtEee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_2F3zwU-qEeeOMbxr3TEZOQ" successor_AbstractAction="_2F3zwk-qEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_2F3zwk-qEeeOMbxr3TEZOQ" predecessor_AbstractAction="_2F3zwU-qEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_2F3zw0-qEeeOMbxr3TEZOQ" describedService__SEFF="_KbqIgE-oEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_2F3zw0-qEeeOMbxr3TEZOQ" describedService__SEFF="_0wTcoNZtEee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_2F3zxE-qEeeOMbxr3TEZOQ" successor_AbstractAction="_2F3zxU-qEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_2F3zxU-qEeeOMbxr3TEZOQ" predecessor_AbstractAction="_2F3zxE-qEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_2F3zxk-qEeeOMbxr3TEZOQ" describedService__SEFF="_KjeAsE-oEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_2F3zxk-qEeeOMbxr3TEZOQ" describedService__SEFF="_3TPTcNZtEee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_2F3zx0-qEeeOMbxr3TEZOQ" successor_AbstractAction="_2F3zyE-qEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_2F3zyE-qEeeOMbxr3TEZOQ" predecessor_AbstractAction="_2F3zx0-qEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_2F4a0E-qEeeOMbxr3TEZOQ" describedService__SEFF="_KrIH4E-oEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_2F4a0E-qEeeOMbxr3TEZOQ" describedService__SEFF="_6-oAENZtEee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_2F4a0U-qEeeOMbxr3TEZOQ" successor_AbstractAction="_2F4a0k-qEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_2F4a0k-qEeeOMbxr3TEZOQ" predecessor_AbstractAction="_2F4a0U-qEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_grBmUU-rEeeOMbxr3TEZOQ" describedService__SEFF="_VMl7gE-oEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_grBmUU-rEeeOMbxr3TEZOQ" describedService__SEFF="_ooe78NZ9Eee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_grBmUk-rEeeOMbxr3TEZOQ" successor_AbstractAction="_grBmU0-rEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_grBmU0-rEeeOMbxr3TEZOQ" predecessor_AbstractAction="_grBmUk-rEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_3IXWEU-rEeeOMbxr3TEZOQ" describedService__SEFF="_eU8AEE-oEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_3IXWEU-rEeeOMbxr3TEZOQ" describedService__SEFF="_BtwXQNZ-Eee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_3IXWEk-rEeeOMbxr3TEZOQ" successor_AbstractAction="_3IXWE0-rEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_3IXWE0-rEeeOMbxr3TEZOQ" predecessor_AbstractAction="_3IXWEk-rEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_gopyUU-sEeeOMbxr3TEZOQ" describedService__SEFF="_nmSPoE-oEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_gopyUU-sEeeOMbxr3TEZOQ" describedService__SEFF="_lW_gkNZ-Eee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_gopyUk-sEeeOMbxr3TEZOQ" successor_AbstractAction="_gopyU0-sEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_gopyU0-sEeeOMbxr3TEZOQ" predecessor_AbstractAction="_gopyUk-sEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_1WAyMU-sEeeOMbxr3TEZOQ" describedService__SEFF="_rHBLcE-oEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_1WAyMU-sEeeOMbxr3TEZOQ" describedService__SEFF="_LOM9UNZ_Eee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_1WAyMk-sEeeOMbxr3TEZOQ" successor_AbstractAction="_1WAyM0-sEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_1WAyM0-sEeeOMbxr3TEZOQ" predecessor_AbstractAction="_1WAyMk-sEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_AKMtgU-tEeeOMbxr3TEZOQ" describedService__SEFF="_vp5gwE-oEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_AKMtgU-tEeeOMbxr3TEZOQ" describedService__SEFF="_cc9vYNZ_Eee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_AKNUkE-tEeeOMbxr3TEZOQ" successor_AbstractAction="_AKNUkU-tEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_AKNUkU-tEeeOMbxr3TEZOQ" predecessor_AbstractAction="_AKNUkE-tEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
@@ -1022,8 +1024,8 @@
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_j6DdU9YgEeWrM-HnT5f_ug" entityName="org.cocome.tradingsystem.cashdeskline.Coordinator">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_KuxbseuMEeWsnI9iaMkITA" entityName="ExpressModePolicy" providedInterface__OperationProvidedRole="_VGuuEOuMEeWsnI9iaMkITA"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_YUz0ME-pEeeOMbxr3TEZOQ" entityName="handleSaleRegisteredEvent" eventGroup__SinkRole="_EfPX8E-pEeeOMbxr3TEZOQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:SourceRole" id="_yFWIIE-rEeeOMbxr3TEZOQ" entityName="fireExpressModeEnabledEvent" eventGroup__SourceRole="_aHyqME-oEeeOMbxr3TEZOQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_PxmD0dbeEeeA6uet0yIgvw" entityName="SaleRegisteredEvent" providedInterface__OperationProvidedRole="_oYG2R9aAEee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_pCBmRdbeEeeA6uet0yIgvw" entityName="ExpressModeEnabledEvent" requiredInterface__OperationRequiredRole="_-DSQp9Z9Eee7CN4Qm4czKQ"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_edP73kiHEeepDoRoYh6rjA" seffTypeID="_edP730iHEeepDoRoYh6rjA" describedService__SEFF="_wSm9IBznEea8GbPCfF3wlg">
       <steps_Behaviour xsi:type="seff:StartAction" id="_yAdVZkiKEeeAK9a9NwDLow" successor_AbstractAction="_yAdVZ0iKEeeAK9a9NwDLow"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_yAdVZ0iKEeeAK9a9NwDLow" predecessor_AbstractAction="_yAdVZkiKEeeAK9a9NwDLow"/>
@@ -1044,7 +1046,7 @@
       <steps_Behaviour xsi:type="seff:StartAction" id="_yAdVdkiKEeeAK9a9NwDLow" successor_AbstractAction="_yAdVd0iKEeeAK9a9NwDLow"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_yAdVd0iKEeeAK9a9NwDLow" predecessor_AbstractAction="_yAdVdkiKEeeAK9a9NwDLow"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_YUz0MU-pEeeOMbxr3TEZOQ" describedService__SEFF="_HP3FcE-pEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_YUz0MU-pEeeOMbxr3TEZOQ" describedService__SEFF="_tmNS0NaAEee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_YUz0Mk-pEeeOMbxr3TEZOQ" successor_AbstractAction="_YUz0M0-pEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_YUz0M0-pEeeOMbxr3TEZOQ" predecessor_AbstractAction="_YUz0Mk-pEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
@@ -1382,9 +1384,9 @@
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_xH0xIOtTEeWsnI9iaMkITA" entityName="org.cocome.tradingsystem.inventory.application.store.StoreEventHandler">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_jpNuYE-uEeeOMbxr3TEZOQ" entityName="handleAccountSaleEvent" eventGroup__SinkRole="_8Au6kE-oEeeOMbxr3TEZOQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_k1vWkdbfEeeA6uet0yIgvw" entityName="AccountSaleEvent" providedInterface__OperationProvidedRole="_a7zpN9aAEee7CN4Qm4czKQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_4ksodTkdEea5ce_j36rGrw" entityName="IStoreInventoryManagerLocal" requiredInterface__OperationRequiredRole="_j_McAdYgEeWrM-HnT5f_ug"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_jpNuYU-uEeeOMbxr3TEZOQ" describedService__SEFF="_-gapEE-oEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_jpNuYU-uEeeOMbxr3TEZOQ" describedService__SEFF="_ccuCUNaAEee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_jpNuYk-uEeeOMbxr3TEZOQ" successor_AbstractAction="_nUcXsGfQEeeIq7luhFbPJw"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_jpNuY0-uEeeOMbxr3TEZOQ" predecessor_AbstractAction="_nUcXsGfQEeeIq7luhFbPJw"/>
       <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_nUcXsGfQEeeIq7luhFbPJw" entityName="IStoreInventoryManagerLoca.accountSale" predecessor_AbstractAction="_jpNuYk-uEeeOMbxr3TEZOQ" successor_AbstractAction="_jpNuY0-uEeeOMbxr3TEZOQ" calledService_ExternalService="_j_McAtYgEeWrM-HnT5f_ug" role_ExternalService="_4ksodTkdEea5ce_j36rGrw"/>
@@ -1405,20 +1407,30 @@
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:SourceRole" id="_liqOME-sEeeOMbxr3TEZOQ" entityName="firePaymentModeSelectedEvent" eventGroup__SourceRole="_kQMdkE-oEeeOMbxr3TEZOQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:SourceRole" id="_KE8fYE-tEeeOMbxr3TEZOQ" entityName="fireExpressModeDisabledEvent" eventGroup__SourceRole="_s1gGgE-oEeeOMbxr3TEZOQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:SourceRole" id="_W1VzQE-uEeeOMbxr3TEZOQ" entityName="fireAccountSaleEvent" eventGroup__SourceRole="_8Au6kE-oEeeOMbxr3TEZOQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_huI6NdbkEeeA6uet0yIgvw" entityName="SaleRegisteredEvent" requiredInterface__OperationRequiredRole="_oYG2R9aAEee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_i7hTVdbkEeeA6uet0yIgvw" entityName="RunningTotalChangedEventSaleSuccessEvent" requiredInterface__OperationRequiredRole="_wWMeR9ZsEee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_jUAr1dbkEeeA6uet0yIgvw" entityName="ChangeAmountCalculatedEvent" requiredInterface__OperationRequiredRole="_fKoUt9ZtEee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_j7rIxdbkEeeA6uet0yIgvw" entityName="InvalidInputEvent" requiredInterface__OperationRequiredRole="_uK85R9ZtEee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_kdLTVdbkEeeA6uet0yIgvw" entityName="CashAmountEnteredEvent" requiredInterface__OperationRequiredRole="_mNHFt9Z9Eee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_k1DAxdbkEeeA6uet0yIgvw" entityName="ExpressModeEnabledEvent" requiredInterface__OperationRequiredRole="_-DSQp9Z9Eee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_la8jJdbkEeeA6uet0yIgvw" entityName="SaleFinishedEvent" requiredInterface__OperationRequiredRole="_NUhmE9Z-Eee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_lyqfldbkEeeA6uet0yIgvw" entityName="PaymentModeSelectedEvent" requiredInterface__OperationRequiredRole="_gJReh9Z-Eee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_mKUKldbkEeeA6uet0yIgvw" entityName="ExpressModeDisabledEvent" requiredInterface__OperationRequiredRole="_aExwB9Z_Eee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_mhf7hdbkEeeA6uet0yIgvw" entityName="AccountSaleEvent" requiredInterface__OperationRequiredRole="_a7zpN9aAEee7CN4Qm4czKQ"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_RrhpgDczEeeZDv7WA-Oq_Q" describedService__SEFF="_j2DHFNYgEeWrM-HnT5f_ug">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_To4HADczEeeZDv7WA-Oq_Q" successor_AbstractAction="_62yWUE-wEeeOMbxr3TEZOQ">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_To4HADczEeeZDv7WA-Oq_Q" successor_AbstractAction="_TazFhtbmEeeA6uet0yIgvw">
         <resourceDemand_Action>
           <specification_ParametericResourceDemand specification="100000"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_To4HATczEeeZDv7WA-Oq_Q" predecessor_AbstractAction="_62yWUE-wEeeOMbxr3TEZOQ">
+      <steps_Behaviour xsi:type="seff:StopAction" id="_To4HATczEeeZDv7WA-Oq_Q" predecessor_AbstractAction="_TazFhtbmEeeA6uet0yIgvw">
         <resourceDemand_Action>
           <specification_ParametericResourceDemand specification="100000"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
-      <steps_Behaviour xsi:type="seff:EmitEventAction" id="_62yWUE-wEeeOMbxr3TEZOQ" entityName="saleStartedEvent" predecessor_AbstractAction="_To4HADczEeeZDv7WA-Oq_Q" successor_AbstractAction="_To4HATczEeeZDv7WA-Oq_Q" eventType__EmitEventAction="_xmz_wE-wEeeOMbxr3TEZOQ" sourceRole__EmitEventAction="_TuWmcE-pEeeOMbxr3TEZOQ"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_TazFhtbmEeeA6uet0yIgvw" entityName="saleStartedEvent" predecessor_AbstractAction="_To4HADczEeeZDv7WA-Oq_Q" successor_AbstractAction="_To4HATczEeeZDv7WA-Oq_Q" calledService_ExternalService="_rGhrsNZ9Eee7CN4Qm4czKQ" role_ExternalService="_kdLTVdbkEeeA6uet0yIgvw"/>
     </serviceEffectSpecifications__BasicComponent>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_edQjNEiHEeepDoRoYh6rjA" seffTypeID="_edQjNUiHEeepDoRoYh6rjA" describedService__SEFF="_j2DHEdYgEeWrM-HnT5f_ug">
       <steps_Behaviour xsi:type="seff:StartAction" id="_yAejv0iKEeeAK9a9NwDLow" successor_AbstractAction="_yAejwEiKEeeAK9a9NwDLow"/>
@@ -1437,27 +1449,27 @@
       <steps_Behaviour xsi:type="seff:StopAction" id="_yAejzEiKEeeAK9a9NwDLow" predecessor_AbstractAction="_yAejy0iKEeeAK9a9NwDLow"/>
     </serviceEffectSpecifications__BasicComponent>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_edQjPEiHEeepDoRoYh6rjA" seffTypeID="_edQjPUiHEeepDoRoYh6rjA" describedService__SEFF="_j2DHFtYgEeWrM-HnT5f_ug">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_yAejz0iKEeeAK9a9NwDLow" successor_AbstractAction="_EG-iMGfBEeeya_49uhYfRw"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_yAej0EiKEeeAK9a9NwDLow" predecessor_AbstractAction="_EG-iMGfBEeeya_49uhYfRw"/>
-      <steps_Behaviour xsi:type="seff:EmitEventAction" id="_EG-iMGfBEeeya_49uhYfRw" entityName="fireSaleFinishedEvent" predecessor_AbstractAction="_yAejz0iKEeeAK9a9NwDLow" successor_AbstractAction="_yAej0EiKEeeAK9a9NwDLow" eventType__EmitEventAction="_l6FqoFaaEeeJY7d6iKM31g" sourceRole__EmitEventAction="_TuWmcE-pEeeOMbxr3TEZOQ"/>
+      <steps_Behaviour xsi:type="seff:StartAction" id="_yAejz0iKEeeAK9a9NwDLow" successor_AbstractAction="_VhoPJtbmEeeA6uet0yIgvw"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_yAej0EiKEeeAK9a9NwDLow" predecessor_AbstractAction="_VhoPJtbmEeeA6uet0yIgvw"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_VhoPJtbmEeeA6uet0yIgvw" entityName="fireSaleFinishedEvent" predecessor_AbstractAction="_yAejz0iKEeeAK9a9NwDLow" successor_AbstractAction="_yAej0EiKEeeAK9a9NwDLow" calledService_ExternalService="_T5yC0NZ-Eee7CN4Qm4czKQ" role_ExternalService="_la8jJdbkEeeA6uet0yIgvw"/>
     </serviceEffectSpecifications__BasicComponent>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_edQjPkiHEeepDoRoYh6rjA" seffTypeID="_edRJ8EiHEeepDoRoYh6rjA" describedService__SEFF="_j2DHF9YgEeWrM-HnT5f_ug">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_yAej00iKEeeAK9a9NwDLow" successor_AbstractAction="_gFrmwGfXEeeIq7luhFbPJw"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_yAej1EiKEeeAK9a9NwDLow" predecessor_AbstractAction="_gFrmwGfXEeeIq7luhFbPJw"/>
-      <steps_Behaviour xsi:type="seff:EmitEventAction" id="_gFrmwGfXEeeIq7luhFbPJw" entityName="FirePaymentModeSelectedEvent" predecessor_AbstractAction="_yAej00iKEeeAK9a9NwDLow" successor_AbstractAction="_yAej1EiKEeeAK9a9NwDLow" eventType__EmitEventAction="_nmSPoE-oEeeOMbxr3TEZOQ" sourceRole__EmitEventAction="_TuWmcE-pEeeOMbxr3TEZOQ"/>
+      <steps_Behaviour xsi:type="seff:StartAction" id="_yAej00iKEeeAK9a9NwDLow" successor_AbstractAction="_IrNrdtboEeeA6uet0yIgvw"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_yAej1EiKEeeAK9a9NwDLow" predecessor_AbstractAction="_IrNrdtboEeeA6uet0yIgvw"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_IrNrdtboEeeA6uet0yIgvw" entityName="FirePaymentModeSelectedEvent" predecessor_AbstractAction="_yAej00iKEeeAK9a9NwDLow" successor_AbstractAction="_yAej1EiKEeeAK9a9NwDLow" calledService_ExternalService="_lW_gkNZ-Eee7CN4Qm4czKQ" role_ExternalService="_lyqfldbkEeeA6uet0yIgvw"/>
     </serviceEffectSpecifications__BasicComponent>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_edRJ8UiHEeepDoRoYh6rjA" seffTypeID="_edRJ8kiHEeepDoRoYh6rjA" describedService__SEFF="_j2E8QNYgEeWrM-HnT5f_ug">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_yAej10iKEeeAK9a9NwDLow" successor_AbstractAction="_CXPAgGA6EeeBd92_04LgdQ"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_yAej2EiKEeeAK9a9NwDLow" predecessor_AbstractAction="_IgbMUGA6EeeBd92_04LgdQ"/>
-      <steps_Behaviour xsi:type="seff:EmitEventAction" id="_CXPAgGA6EeeBd92_04LgdQ" entityName="fireCashAmountEnteredEvent" predecessor_AbstractAction="_yAej10iKEeeAK9a9NwDLow" successor_AbstractAction="_IgbMUGA6EeeBd92_04LgdQ" eventType__EmitEventAction="_VMl7gE-oEeeOMbxr3TEZOQ" sourceRole__EmitEventAction="_TuWmcE-pEeeOMbxr3TEZOQ"/>
-      <steps_Behaviour xsi:type="seff:EmitEventAction" id="_IgbMUGA6EeeBd92_04LgdQ" entityName="FireChangeAmountCalculatedEvent" predecessor_AbstractAction="_CXPAgGA6EeeBd92_04LgdQ" successor_AbstractAction="_yAej2EiKEeeAK9a9NwDLow" eventType__EmitEventAction="_Fi7fAE-oEeeOMbxr3TEZOQ" sourceRole__EmitEventAction="_TuWmcE-pEeeOMbxr3TEZOQ"/>
+      <steps_Behaviour xsi:type="seff:StartAction" id="_yAej10iKEeeAK9a9NwDLow" successor_AbstractAction="_xV3gNtboEeeA6uet0yIgvw"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_yAej2EiKEeeAK9a9NwDLow" predecessor_AbstractAction="_yYfa1tboEeeA6uet0yIgvw"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_xV3gNtboEeeA6uet0yIgvw" entityName="fireCashAmountEnteredEvent" predecessor_AbstractAction="_yAej10iKEeeAK9a9NwDLow" successor_AbstractAction="_yYfa1tboEeeA6uet0yIgvw" calledService_ExternalService="_ooe78NZ9Eee7CN4Qm4czKQ" role_ExternalService="_kdLTVdbkEeeA6uet0yIgvw"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_yYfa1tboEeeA6uet0yIgvw" entityName="fireChangeAmountCalculatedEvent" predecessor_AbstractAction="_xV3gNtboEeeA6uet0yIgvw" successor_AbstractAction="_yAej2EiKEeeAK9a9NwDLow" calledService_ExternalService="_iL000NZtEee7CN4Qm4czKQ" role_ExternalService="_jUAr1dbkEeeA6uet0yIgvw"/>
     </serviceEffectSpecifications__BasicComponent>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_edRJ80iHEeepDoRoYh6rjA" seffTypeID="_edRJ9EiHEeepDoRoYh6rjA" describedService__SEFF="_j2E8QdYgEeWrM-HnT5f_ug">
-      <steps_Behaviour xsi:type="seff:StartAction" id="_yAej20iKEeeAK9a9NwDLow" successor_AbstractAction="_prRcQGe8Eeeya_49uhYfRw"/>
-      <steps_Behaviour xsi:type="seff:StopAction" id="_yAej3EiKEeeAK9a9NwDLow" predecessor_AbstractAction="_2Yk1UGe8Eeeya_49uhYfRw"/>
-      <steps_Behaviour xsi:type="seff:EmitEventAction" id="_prRcQGe8Eeeya_49uhYfRw" entityName="fireAccountSaleEvent" predecessor_AbstractAction="_yAej20iKEeeAK9a9NwDLow" successor_AbstractAction="_titn4Ge8Eeeya_49uhYfRw" eventType__EmitEventAction="_-gapEE-oEeeOMbxr3TEZOQ" sourceRole__EmitEventAction="_TuWmcE-pEeeOMbxr3TEZOQ"/>
-      <steps_Behaviour xsi:type="seff:EmitEventAction" id="_titn4Ge8Eeeya_49uhYfRw" entityName="fireSaleSuccessEvent" predecessor_AbstractAction="_prRcQGe8Eeeya_49uhYfRw" successor_AbstractAction="_2Yk1UGe8Eeeya_49uhYfRw" eventType__EmitEventAction="_r78HoE-wEeeOMbxr3TEZOQ" sourceRole__EmitEventAction="_TuWmcE-pEeeOMbxr3TEZOQ"/>
-      <steps_Behaviour xsi:type="seff:EmitEventAction" id="_2Yk1UGe8Eeeya_49uhYfRw" entityName="fireSaleRegisteredEvents" predecessor_AbstractAction="_titn4Ge8Eeeya_49uhYfRw" successor_AbstractAction="_yAej3EiKEeeAK9a9NwDLow" eventType__EmitEventAction="_HP3FcE-pEeeOMbxr3TEZOQ" sourceRole__EmitEventAction="_TuWmcE-pEeeOMbxr3TEZOQ"/>
+      <steps_Behaviour xsi:type="seff:StartAction" id="_yAej20iKEeeAK9a9NwDLow" successor_AbstractAction="_2_4nQ9bpEeeA6uet0yIgvw"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_yAej3EiKEeeAK9a9NwDLow" predecessor_AbstractAction="_5uFS4dbpEeeA6uet0yIgvw"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_2_4nQ9bpEeeA6uet0yIgvw" entityName="fireAccountSaleEvent" predecessor_AbstractAction="_yAej20iKEeeAK9a9NwDLow" successor_AbstractAction="_5NHT1tbpEeeA6uet0yIgvw" calledService_ExternalService="_ccuCUNaAEee7CN4Qm4czKQ" role_ExternalService="_mhf7hdbkEeeA6uet0yIgvw"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_5NHT1tbpEeeA6uet0yIgvw" entityName="fireSaleSuccessEvent" predecessor_AbstractAction="_2_4nQ9bpEeeA6uet0yIgvw" successor_AbstractAction="_5uFS4dbpEeeA6uet0yIgvw" calledService_ExternalService="_5olPoNZsEee7CN4Qm4czKQ" role_ExternalService="_i7hTVdbkEeeA6uet0yIgvw"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_5uFS4dbpEeeA6uet0yIgvw" entityName="fireSaleRegisteredEvents" predecessor_AbstractAction="_5NHT1tbpEeeA6uet0yIgvw" successor_AbstractAction="_yAej3EiKEeeAK9a9NwDLow" calledService_ExternalService="_tmNS0NaAEee7CN4Qm4czKQ" role_ExternalService="_huI6NdbkEeeA6uet0yIgvw"/>
     </serviceEffectSpecifications__BasicComponent>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_edRJ9UiHEeepDoRoYh6rjA" seffTypeID="_edRJ9kiHEeepDoRoYh6rjA" describedService__SEFF="_j2E8QtYgEeWrM-HnT5f_ug">
       <steps_Behaviour xsi:type="seff:StartAction" id="_yAej30iKEeeAK9a9NwDLow" successor_AbstractAction="_x4QdEGfCEeeIq7luhFbPJw"/>
@@ -1465,9 +1477,9 @@
       <steps_Behaviour xsi:type="seff:BranchAction" id="_7nW_oGfCEeeIq7luhFbPJw" entityName="BranchAction1" predecessor_AbstractAction="_x4QdEGfCEeeIq7luhFbPJw" successor_AbstractAction="_Go7aMGfEEeeIq7luhFbPJw">
         <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_Jjm4EGfDEeeIq7luhFbPJw" entityName="InvalidCreditCardBranch" branchProbability="0.5">
           <branchBehaviour_BranchTransition id="_Jjp7YGfDEeeIq7luhFbPJw">
-            <steps_Behaviour xsi:type="seff:StartAction" id="_WcjgcGfDEeeIq7luhFbPJw" successor_AbstractAction="_9WI1oGfCEeeIq7luhFbPJw"/>
-            <steps_Behaviour xsi:type="seff:EmitEventAction" id="_9WI1oGfCEeeIq7luhFbPJw" entityName="fireInvalidCreditCardEvent" predecessor_AbstractAction="_WcjgcGfDEeeIq7luhFbPJw" successor_AbstractAction="_Hdqp0GfEEeeIq7luhFbPJw" eventType__EmitEventAction="_KbqIgE-oEeeOMbxr3TEZOQ" sourceRole__EmitEventAction="_TuWmcE-pEeeOMbxr3TEZOQ"/>
-            <steps_Behaviour xsi:type="seff:StopAction" id="_Hdqp0GfEEeeIq7luhFbPJw" predecessor_AbstractAction="_9WI1oGfCEeeIq7luhFbPJw"/>
+            <steps_Behaviour xsi:type="seff:StartAction" id="_WcjgcGfDEeeIq7luhFbPJw" successor_AbstractAction="_0r8ZRtbqEeeA6uet0yIgvw"/>
+            <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_0r8ZRtbqEeeA6uet0yIgvw" entityName="fireInvalidCreditCardEvent" predecessor_AbstractAction="_WcjgcGfDEeeIq7luhFbPJw" successor_AbstractAction="_Hdqp0GfEEeeIq7luhFbPJw" calledService_ExternalService="_0wTcoNZtEee7CN4Qm4czKQ" role_ExternalService="_j7rIxdbkEeeA6uet0yIgvw"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_Hdqp0GfEEeeIq7luhFbPJw" predecessor_AbstractAction="_0r8ZRtbqEeeA6uet0yIgvw"/>
           </branchBehaviour_BranchTransition>
         </branches_Branch>
         <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_-yBoAGfGEeeIq7luhFbPJw" entityName="ValidCreditCardBranch" branchProbability="0.5">
@@ -1478,18 +1490,18 @@
             <steps_Behaviour xsi:type="seff:BranchAction" id="_sWRo8GfHEeeIq7luhFbPJw" entityName="BranchAction1" predecessor_AbstractAction="_Xg2SMGfHEeeIq7luhFbPJw" successor_AbstractAction="_-yBoA2fGEeeIq7luhFbPJw">
               <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_xZww8GfHEeeIq7luhFbPJw" entityName="ProbabilisticBranchTransition1" branchProbability="0.3">
                 <branchBehaviour_BranchTransition id="_xZww8WfHEeeIq7luhFbPJw">
-                  <steps_Behaviour xsi:type="seff:StartAction" id="_xZww8mfHEeeIq7luhFbPJw" successor_AbstractAction="_-Wd38GfHEeeIq7luhFbPJw"/>
-                  <steps_Behaviour xsi:type="seff:StopAction" id="_xZww82fHEeeIq7luhFbPJw" predecessor_AbstractAction="_-Wd38GfHEeeIq7luhFbPJw"/>
-                  <steps_Behaviour xsi:type="seff:EmitEventAction" id="_-Wd38GfHEeeIq7luhFbPJw" entityName="fireInvalidCardEvent" predecessor_AbstractAction="_xZww8mfHEeeIq7luhFbPJw" successor_AbstractAction="_xZww82fHEeeIq7luhFbPJw" eventType__EmitEventAction="_KbqIgE-oEeeOMbxr3TEZOQ" sourceRole__EmitEventAction="_TuWmcE-pEeeOMbxr3TEZOQ"/>
+                  <steps_Behaviour xsi:type="seff:StartAction" id="_xZww8mfHEeeIq7luhFbPJw" successor_AbstractAction="_ZfCGltbrEeeA6uet0yIgvw"/>
+                  <steps_Behaviour xsi:type="seff:StopAction" id="_xZww82fHEeeIq7luhFbPJw" predecessor_AbstractAction="_ZfCGltbrEeeA6uet0yIgvw"/>
+                  <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_ZfCGltbrEeeA6uet0yIgvw" entityName="fireInvalidCardEvent" predecessor_AbstractAction="_xZww8mfHEeeIq7luhFbPJw" successor_AbstractAction="_xZww82fHEeeIq7luhFbPJw" calledService_ExternalService="_0wTcoNZtEee7CN4Qm4czKQ" role_ExternalService="_j7rIxdbkEeeA6uet0yIgvw"/>
                 </branchBehaviour_BranchTransition>
               </branches_Branch>
               <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_zQK48GfHEeeIq7luhFbPJw" entityName="ProbabilisticBranchTransition2" branchProbability="0.7">
                 <branchBehaviour_BranchTransition id="_zQLgAGfHEeeIq7luhFbPJw">
-                  <steps_Behaviour xsi:type="seff:StartAction" id="_zQLgAWfHEeeIq7luhFbPJw" successor_AbstractAction="_IWt04GfIEeeIq7luhFbPJw"/>
-                  <steps_Behaviour xsi:type="seff:StopAction" id="_zQLgAmfHEeeIq7luhFbPJw" predecessor_AbstractAction="_Q2NwwGfIEeeIq7luhFbPJw"/>
-                  <steps_Behaviour xsi:type="seff:EmitEventAction" id="_IWt04GfIEeeIq7luhFbPJw" entityName="fireAccountSaleEvent" predecessor_AbstractAction="_zQLgAWfHEeeIq7luhFbPJw" successor_AbstractAction="_JvXC0GfIEeeIq7luhFbPJw" eventType__EmitEventAction="_-gapEE-oEeeOMbxr3TEZOQ" sourceRole__EmitEventAction="_TuWmcE-pEeeOMbxr3TEZOQ"/>
-                  <steps_Behaviour xsi:type="seff:EmitEventAction" id="_JvXC0GfIEeeIq7luhFbPJw" entityName="fireSaleSuccessEvent" predecessor_AbstractAction="_IWt04GfIEeeIq7luhFbPJw" successor_AbstractAction="_Q2NwwGfIEeeIq7luhFbPJw" eventType__EmitEventAction="_r78HoE-wEeeOMbxr3TEZOQ" sourceRole__EmitEventAction="_TuWmcE-pEeeOMbxr3TEZOQ"/>
-                  <steps_Behaviour xsi:type="seff:EmitEventAction" id="_Q2NwwGfIEeeIq7luhFbPJw" entityName="fireSaleRegisteredEvent" predecessor_AbstractAction="_JvXC0GfIEeeIq7luhFbPJw" successor_AbstractAction="_zQLgAmfHEeeIq7luhFbPJw" eventType__EmitEventAction="_HP3FcE-pEeeOMbxr3TEZOQ" sourceRole__EmitEventAction="_TuWmcE-pEeeOMbxr3TEZOQ"/>
+                  <steps_Behaviour xsi:type="seff:StartAction" id="_zQLgAWfHEeeIq7luhFbPJw" successor_AbstractAction="_5py95tbrEeeA6uet0yIgvw"/>
+                  <steps_Behaviour xsi:type="seff:StopAction" id="_zQLgAmfHEeeIq7luhFbPJw" predecessor_AbstractAction="_8XWJRtbrEeeA6uet0yIgvw"/>
+                  <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_5py95tbrEeeA6uet0yIgvw" entityName="fireAccountSaleEvent" predecessor_AbstractAction="_zQLgAWfHEeeIq7luhFbPJw" successor_AbstractAction="_7DpsxtbrEeeA6uet0yIgvw" calledService_ExternalService="_ccuCUNaAEee7CN4Qm4czKQ" role_ExternalService="_mhf7hdbkEeeA6uet0yIgvw"/>
+                  <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_7DpsxtbrEeeA6uet0yIgvw" entityName="fireSaleSuccessEvent" predecessor_AbstractAction="_5py95tbrEeeA6uet0yIgvw" successor_AbstractAction="_8XWJRtbrEeeA6uet0yIgvw" calledService_ExternalService="_5olPoNZsEee7CN4Qm4czKQ" role_ExternalService="_i7hTVdbkEeeA6uet0yIgvw"/>
+                  <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_8XWJRtbrEeeA6uet0yIgvw" entityName="fireSaleRegisteredEvent" predecessor_AbstractAction="_7DpsxtbrEeeA6uet0yIgvw" successor_AbstractAction="_zQLgAmfHEeeIq7luhFbPJw" calledService_ExternalService="_tmNS0NaAEee7CN4Qm4czKQ" role_ExternalService="_huI6NdbkEeeA6uet0yIgvw"/>
                 </branchBehaviour_BranchTransition>
               </branches_Branch>
             </steps_Behaviour>
@@ -1516,45 +1528,45 @@
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_yc_bCetYEeWsnI9iaMkITA" entityName="org.cocome.tradingsystem.cashdeskline.cashdesk.CashDeskEventHandler">
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_jmVLwE-pEeeOMbxr3TEZOQ" entityName="handleCreditCardScannedEvent" eventGroup__SinkRole="_rvt_oE-nEeeOMbxr3TEZOQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_A4bM0E-qEeeOMbxr3TEZOQ" entityName="handleCreditCardPinEnteredEvent" eventGroup__SinkRole="_yH5psE-nEeeOMbxr3TEZOQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_mf02gE-rEeeOMbxr3TEZOQ" entityName="handleCashAmountEnteredEvent" eventGroup__SinkRole="_SZ2uIE-oEeeOMbxr3TEZOQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_Aa2OEE-sEeeOMbxr3TEZOQ" entityName="handleExpressModeEnabledEvent" eventGroup__SinkRole="_aHyqME-oEeeOMbxr3TEZOQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_XuVisE-sEeeOMbxr3TEZOQ" entityName="handleSaleFinishedEvent" eventGroup__SinkRole="_geXKsE-oEeeOMbxr3TEZOQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_pVcjUE-sEeeOMbxr3TEZOQ" entityName="handlePaymentModeSelectedEvent" eventGroup__SinkRole="_kQMdkE-oEeeOMbxr3TEZOQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_Ei3W4E-tEeeOMbxr3TEZOQ" entityName="handleExpressModeDisabledEvent" eventGroup__SinkRole="_s1gGgE-oEeeOMbxr3TEZOQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_oODoAE-tEeeOMbxr3TEZOQ" entityName="handleCashBoxClosedEvent" eventGroup__SinkRole="_ytmiUE-oEeeOMbxr3TEZOQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_3m4MIE-tEeeOMbxr3TEZOQ" entityName="handleProductBarcodeScannedEvent" eventGroup__SinkRole="_0-N6EE-oEeeOMbxr3TEZOQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_OoC1QdbzEeeA6uet0yIgvw" entityName="CreditCardScannedEvent" providedInterface__OperationProvidedRole="_LNYYl9ZsEee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_QVLsgdbzEeeA6uet0yIgvw" entityName="CreditCardPinEnteredEvent" providedInterface__OperationProvidedRole="_gQV1B9ZsEee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_Qt8KwdbzEeeA6uet0yIgvw" entityName="CashAmountEnteredEvent" providedInterface__OperationProvidedRole="_mNHFt9Z9Eee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_REOj0dbzEeeA6uet0yIgvw" entityName="ExpressModeEnabledEvent" providedInterface__OperationProvidedRole="_-DSQp9Z9Eee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_RdibsdbzEeeA6uet0yIgvw" entityName="SaleFinishedEvent" providedInterface__OperationProvidedRole="_NUhmE9Z-Eee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_Ry1WQdbzEeeA6uet0yIgvw" entityName="PaymentModeSelectedEvent" providedInterface__OperationProvidedRole="_gJReh9Z-Eee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_SMAEMdbzEeeA6uet0yIgvw" entityName="ExpressModeDisabledEvent" providedInterface__OperationProvidedRole="_aExwB9Z_Eee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_SkCwwNbzEeeA6uet0yIgvw" entityName="CashBoxClosedEvent" providedInterface__OperationProvidedRole="_qKZIt9Z_Eee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_S6T7sdbzEeeA6uet0yIgvw" entityName="ProductBarcodeScannedEvent" providedInterface__OperationProvidedRole="_L0FcJ9aAEee7CN4Qm4czKQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_G_Ep1ewbEeW_LdalkgkVnQ" entityName="ICashDeskModel" requiredInterface__OperationRequiredRole="_j2DHENYgEeWrM-HnT5f_ug"/>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_jmVy0E-pEeeOMbxr3TEZOQ" describedService__SEFF="_vYcZ0E-nEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_jmVy0E-pEeeOMbxr3TEZOQ" describedService__SEFF="_NnPL4NZsEee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_jmVy0U-pEeeOMbxr3TEZOQ" successor_AbstractAction="_jmVy0k-pEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_jmVy0k-pEeeOMbxr3TEZOQ" predecessor_AbstractAction="_jmVy0U-pEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_A4bM0U-qEeeOMbxr3TEZOQ" describedService__SEFF="_1kaz4E-nEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_A4bM0U-qEeeOMbxr3TEZOQ" describedService__SEFF="_jXOGYNZsEee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_A4bM0k-qEeeOMbxr3TEZOQ" successor_AbstractAction="_A4bM00-qEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_A4bM00-qEeeOMbxr3TEZOQ" predecessor_AbstractAction="_A4bM0k-qEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_mf02gU-rEeeOMbxr3TEZOQ" describedService__SEFF="_VMl7gE-oEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_mf02gU-rEeeOMbxr3TEZOQ" describedService__SEFF="_ooe78NZ9Eee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_mf02gk-rEeeOMbxr3TEZOQ" successor_AbstractAction="_mf02g0-rEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_mf02g0-rEeeOMbxr3TEZOQ" predecessor_AbstractAction="_mf02gk-rEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_Aa2OEU-sEeeOMbxr3TEZOQ" describedService__SEFF="_eU8AEE-oEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_Aa2OEU-sEeeOMbxr3TEZOQ" describedService__SEFF="_BtwXQNZ-Eee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_Aa21IE-sEeeOMbxr3TEZOQ" successor_AbstractAction="_Aa21IU-sEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_Aa21IU-sEeeOMbxr3TEZOQ" predecessor_AbstractAction="_Aa21IE-sEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_pVcjUU-sEeeOMbxr3TEZOQ" describedService__SEFF="_nmSPoE-oEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_pVcjUU-sEeeOMbxr3TEZOQ" describedService__SEFF="_lW_gkNZ-Eee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_pVcjUk-sEeeOMbxr3TEZOQ" successor_AbstractAction="_pVcjU0-sEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_pVcjU0-sEeeOMbxr3TEZOQ" predecessor_AbstractAction="_pVcjUk-sEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_Ei3W4U-tEeeOMbxr3TEZOQ" describedService__SEFF="_vp5gwE-oEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_Ei3W4U-tEeeOMbxr3TEZOQ" describedService__SEFF="_cc9vYNZ_Eee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_Ei3W4k-tEeeOMbxr3TEZOQ" successor_AbstractAction="_Ei3W40-tEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_Ei3W40-tEeeOMbxr3TEZOQ" predecessor_AbstractAction="_Ei3W4k-tEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_oODoAU-tEeeOMbxr3TEZOQ" describedService__SEFF="_4tIb0E-oEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_oODoAU-tEeeOMbxr3TEZOQ" describedService__SEFF="_ruh08NZ_Eee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_oOEPEE-tEeeOMbxr3TEZOQ" successor_AbstractAction="_oOEPEU-tEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_oOEPEU-tEeeOMbxr3TEZOQ" predecessor_AbstractAction="_oOEPEE-tEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_3m4zME-tEeeOMbxr3TEZOQ" describedService__SEFF="_2oV5kE-oEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_3m4zME-tEeeOMbxr3TEZOQ" describedService__SEFF="_NSq6ANaAEee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_3m4zMU-tEeeOMbxr3TEZOQ" successor_AbstractAction="_3m4zMk-tEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_3m4zMk-tEeeOMbxr3TEZOQ" predecessor_AbstractAction="_3m4zMU-tEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
@@ -2389,16 +2401,16 @@
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_NPlklWSLEeaYxPjtCxykSQ" entityName="ICredential.web.data.login" requiredInterface__OperationRequiredRole="_m8sIAl_BEea_gvFl-mCXRQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_j6hqBWUQEead_5QKkcGuDg" entityName="ICredentialFactory" requiredInterface__OperationRequiredRole="_Nz3i8GR2EeaYxPjtCxykSQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_UzaLxWq0EeaAnZVBu2pnYQ" entityName="IStoreInformation" requiredInterface__OperationRequiredRole="_kngqGGSHEeaYxPjtCxykSQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:SourceRole" id="_zEXZUE-kEeeOMbxr3TEZOQ" entityName="fireLoginEvent" eventGroup__SourceRole="_Te2kIE-kEeeOMbxr3TEZOQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:SourceRole" id="_QFmT4E-lEeeOMbxr3TEZOQ" entityName="fireLogoutEvent" eventGroup__SourceRole="_9QIpwE-kEeeOMbxr3TEZOQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_4pOgBddfEeeA6uet0yIgvw" entityName="LoginEvent" requiredInterface__OperationRequiredRole="_5g9Pl9ZqEee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_6f675ddfEeeA6uet0yIgvw" entityName="LogoutEvent" requiredInterface__OperationRequiredRole="_VWkEh9ZrEee7CN4Qm4czKQ"/>
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_t06IKWUTEead_5QKkcGuDg" entityName="org.cocome.cloud.web.frontend.navigation">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_Cg3AgWUZEead_5QKkcGuDg" entityName="INavigationMenu" providedInterface__OperationProvidedRole="_Rf5vkGUVEead_5QKkcGuDg"/>
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_r957gWUZEead_5QKkcGuDg" entityName="INavigationElement" providedInterface__OperationProvidedRole="_f9VFmGUZEead_5QKkcGuDg"/>
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_6s5fgWUZEead_5QKkcGuDg" entityName="ILabelResolver" providedInterface__OperationProvidedRole="_yz-beGUZEead_5QKkcGuDg"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_uizSoE-kEeeOMbxr3TEZOQ" entityName="handleLoginEvent" eventGroup__SinkRole="_Te2kIE-kEeeOMbxr3TEZOQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_IErxcE-lEeeOMbxr3TEZOQ" entityName="handleLogoutEvent" eventGroup__SinkRole="_9QIpwE-kEeeOMbxr3TEZOQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_kqetME-lEeeOMbxr3TEZOQ" entityName="handleChangeViewEvent" eventGroup__SinkRole="_WnxAYE-lEeeOMbxr3TEZOQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_QXUF8ddgEeeA6uet0yIgvw" entityName="LoginEvent" providedInterface__OperationProvidedRole="_5g9Pl9ZqEee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_iI2N4ddgEeeA6uet0yIgvw" entityName="LogoutEvent" providedInterface__OperationProvidedRole="_VWkEh9ZrEee7CN4Qm4czKQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_ij3V8ddgEeeA6uet0yIgvw" entityName="ChangeViewEvent" providedInterface__OperationProvidedRole="_0K6ih9ZrEee7CN4Qm4czKQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_gsjtpWUaEead_5QKkcGuDg" entityName="IUser" requiredInterface__OperationRequiredRole="_m8sIBl_BEea_gvFl-mCXRQ"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_edS_TUiHEeepDoRoYh6rjA" seffTypeID="_edS_TkiHEeepDoRoYh6rjA" describedService__SEFF="_pL0yQGUVEead_5QKkcGuDg">
       <steps_Behaviour xsi:type="seff:StartAction" id="_yAhm5kiKEeeAK9a9NwDLow" successor_AbstractAction="_yAhm50iKEeeAK9a9NwDLow"/>
@@ -2428,15 +2440,15 @@
       <steps_Behaviour xsi:type="seff:StartAction" id="_yAhm_kiKEeeAK9a9NwDLow" successor_AbstractAction="_yAhm_0iKEeeAK9a9NwDLow"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_yAhm_0iKEeeAK9a9NwDLow" predecessor_AbstractAction="_yAhm_kiKEeeAK9a9NwDLow"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_uiz5sE-kEeeOMbxr3TEZOQ" describedService__SEFF="_WLsk4E-kEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_uiz5sE-kEeeOMbxr3TEZOQ" describedService__SEFF="_-gr48NZqEee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_uiz5sU-kEeeOMbxr3TEZOQ" successor_AbstractAction="_uiz5sk-kEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_uiz5sk-kEeeOMbxr3TEZOQ" predecessor_AbstractAction="_uiz5sU-kEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_IErxcU-lEeeOMbxr3TEZOQ" describedService__SEFF="_AEJpgE-lEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_IErxcU-lEeeOMbxr3TEZOQ" describedService__SEFF="_c6YbQNZrEee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_IEsYgE-lEeeOMbxr3TEZOQ" successor_AbstractAction="_IEsYgU-lEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_IEsYgU-lEeeOMbxr3TEZOQ" predecessor_AbstractAction="_IEsYgE-lEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_kqetMU-lEeeOMbxr3TEZOQ" describedService__SEFF="_Y3sboE-lEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_kqetMU-lEeeOMbxr3TEZOQ" describedService__SEFF="_2NznUNZrEee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_kqetMk-lEeeOMbxr3TEZOQ" successor_AbstractAction="_kqetM0-lEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_kqetM0-lEeeOMbxr3TEZOQ" predecessor_AbstractAction="_kqetMk-lEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
@@ -2447,11 +2459,11 @@
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_tS-GkGYBEeamEr6y5T9PEQ" entityName="IShowStockView" providedInterface__OperationProvidedRole="_zV_Y-GYBEeamEr6y5T9PEQ"/>
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_C05V8WYNEeamEr6y5T9PEQ" entityName="IstockOrderView" providedInterface__OperationProvidedRole="_ydLWIGYLEeamEr6y5T9PEQ"/>
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_j4-6kWYQEeamEr6y5T9PEQ" entityName="IReceiveOrderView" providedInterface__OperationProvidedRole="__nooaGYPEeamEr6y5T9PEQ"/>
-    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_l7b0ME-kEeeOMbxr3TEZOQ" entityName="handleLoginEvent" eventGroup__SinkRole="_Te2kIE-kEeeOMbxr3TEZOQ"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_Y7AI0ddhEeeA6uet0yIgvw" entityName="LoginEvent" providedInterface__OperationProvidedRole="_5g9Pl9ZqEee7CN4Qm4czKQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_9IRR1aZsEea90o6iaEaVPw" entityName="IStoreDAO" requiredInterface__OperationRequiredRole="_HwyUOKZjEea90o6iaEaVPw"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_E7QQdacyEea6yqnnpazPHg" entityName="IStorePersistence" requiredInterface__OperationRequiredRole="_m9UaI1_BEea_gvFl-mCXRQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_unDEFaZsEea90o6iaEaVPw" entityName="IEnterpriseDAO" requiredInterface__OperationRequiredRole="_EebyqKZjEea90o6iaEaVPw"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:SourceRole" id="_fx4mkE-lEeeOMbxr3TEZOQ" entityName="fireChangeViewEvent" eventGroup__SourceRole="_WnxAYE-lEeeOMbxr3TEZOQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_qjELtddhEeeA6uet0yIgvw" entityName="ChangeViewEvent" requiredInterface__OperationRequiredRole="_0K6ih9ZrEee7CN4Qm4czKQ"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_edS_W0iHEeepDoRoYh6rjA" seffTypeID="_edS_XEiHEeepDoRoYh6rjA" describedService__SEFF="_m1HxIGSHEeaYxPjtCxykSQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_yAhnAkiKEeeAK9a9NwDLow" successor_AbstractAction="_yAhnA0iKEeeAK9a9NwDLow"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_yAhnA0iKEeeAK9a9NwDLow" predecessor_AbstractAction="_yAhnAkiKEeeAK9a9NwDLow"/>
@@ -2580,7 +2592,7 @@
       <steps_Behaviour xsi:type="seff:StartAction" id="_yAiOBkiKEeeAK9a9NwDLow" successor_AbstractAction="_yAiOB0iKEeeAK9a9NwDLow"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_yAiOB0iKEeeAK9a9NwDLow" predecessor_AbstractAction="_yAiOBkiKEeeAK9a9NwDLow"/>
     </serviceEffectSpecifications__BasicComponent>
-    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_l7dCUE-kEeeOMbxr3TEZOQ" describedService__SEFF="_WLsk4E-kEeeOMbxr3TEZOQ">
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_l7dCUE-kEeeOMbxr3TEZOQ" describedService__SEFF="_-gr48NZqEee7CN4Qm4czKQ">
       <steps_Behaviour xsi:type="seff:StartAction" id="_l7e3gE-kEeeOMbxr3TEZOQ" successor_AbstractAction="_l7fekE-kEeeOMbxr3TEZOQ"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_l7fekE-kEeeOMbxr3TEZOQ" predecessor_AbstractAction="_l7e3gE-kEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
@@ -2806,7 +2818,7 @@
     <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_7XIvULDIEea4bqS8ZK-LhA" entityName="ProvDelegation Provided_IBarcodeScannerModel -> IBarcodeScannerModel" innerProvidedRole_ProvidedDelegationConnector="_j15WE9YgEeWrM-HnT5f_ug" outerProvidedRole_ProvidedDelegationConnector="_qYVr4LDIEea4bqS8ZK-LhA" assemblyContext_ProvidedDelegationConnector="_fbRW0LDHEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_-qhLoLDIEea4bqS8ZK-LhA" entityName="ProvDelegation Provided_IPrinterModel -> IPrinterModel" innerProvidedRole_ProvidedDelegationConnector="_0effAewkEeW_LdalkgkVnQ" outerProvidedRole_ProvidedDelegationConnector="_r-DFcLDIEea4bqS8ZK-LhA" assemblyContext_ProvidedDelegationConnector="_0chjELDHEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="__4faoLDIEea4bqS8ZK-LhA" entityName="ProvDelegation Provided_IUserDisplayModel -> IUserDisplayModel" innerProvidedRole_ProvidedDelegationConnector="_ocslQewdEeW_LdalkgkVnQ" outerProvidedRole_ProvidedDelegationConnector="_uJnlILDIEea4bqS8ZK-LhA" assemblyContext_ProvidedDelegationConnector="_3zW8ALDHEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_w9FOQFarEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" sinkRole__EventChannelSinkConnector="_mf02gE-rEeeOMbxr3TEZOQ" assemblyContext__EventChannelSinkConnector="_D05bQLDIEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_iyv-ELDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_w9FOQFarEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" assemblyContext__EventChannelSinkConnector="_D05bQLDIEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_iyv-ELDJEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_drOTQLF8EeaCwqxzEIieVA" entityName="Connector Assembly_org.cocome.tradingsystem.cashdeskline.cashdesk.ExpressLightEventHandler &lt;org.cocome.tradingsystem.cashdeskline.cashdesk.ExpressLightEventHandler> -> Assembly_org.cocome.tradingsystem.cashdeskline.cashdesk.ExpressLight &lt;org.cocome.tradingsystem.cashdeskline.cashdesk.ExpressLight>" requiringAssemblyContext_AssemblyConnector="_mI9W0LDHEea4bqS8ZK-LhA" providingAssemblyContext_AssemblyConnector="_oDuaYLDHEea4bqS8ZK-LhA" providedRole_AssemblyConnector="_lmRmMewnEeW_LdalkgkVnQ" requiredRole_AssemblyConnector="_ra0-xewnEeW_LdalkgkVnQ"/>
     <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_kl60gLF8EeaCwqxzEIieVA" entityName="Connector Assembly_org.cocome.tradingsystem.cashdeskline.cashdesk.CashBoxEventHandler &lt;org.cocome.tradingsystem.cashdeskline.cashdesk.CashBoxEventHandler> -> Assembly_org.cocome.tradingsystem.cashdeskline.cashdesk.CashBox &lt;org.cocome.tradingsystem.cashdeskline.cashdesk.CashBox>" requiringAssemblyContext_AssemblyConnector="_iFQ34LDHEea4bqS8ZK-LhA" providingAssemblyContext_AssemblyConnector="_jtZ6YLDHEea4bqS8ZK-LhA" providedRole_AssemblyConnector="_mj52oewoEeW_LdalkgkVnQ" requiredRole_AssemblyConnector="_sPrGpewoEeW_LdalkgkVnQ"/>
     <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_shwpsLF8EeaCwqxzEIieVA" entityName="Connector Assembly_org.cocome.tradingsystem.cashdeskline.cashdesk.CashDeskEventHandler &lt;org.cocome.tradingsystem.cashdeskline.cashdesk.CashDeskEventHandler> -> Assembly_org.cocome.tradingsystem.cashdeskline.cashdesk.CashDesk &lt;org.cocome.tradingsystem.cashdeskline.cashdesk.CashDesk>" requiringAssemblyContext_AssemblyConnector="_D05bQLDIEea4bqS8ZK-LhA" providingAssemblyContext_AssemblyConnector="__NX2gLDHEea4bqS8ZK-LhA" providedRole_AssemblyConnector="_vBFpIeuKEeWsnI9iaMkITA" requiredRole_AssemblyConnector="_G_Ep1ewbEeW_LdalkgkVnQ"/>
@@ -2816,43 +2828,43 @@
     <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_BZUucLF9EeaCwqxzEIieVA" entityName="Connector Assembly_org.cocome.tradingsystem.cashdeskline.cashdesk.CashDesk &lt;org.cocome.tradingsystem.cashdeskline.cashdesk.CashDesk> -> Assembly_org.cocome.tradingsystem.cashdeskline.Coordinator &lt;org.cocome.tradingsystem.cashdeskline.Coordinator>" requiringAssemblyContext_AssemblyConnector="__NX2gLDHEea4bqS8ZK-LhA" providingAssemblyContext_AssemblyConnector="_6xp5ILDHEea4bqS8ZK-LhA" providedRole_AssemblyConnector="_KuxbseuMEeWsnI9iaMkITA" requiredRole_AssemblyConnector="_94SohRgtEea9zdPO8i2hhg"/>
     <connectors__ComposedStructure xsi:type="composition:RequiredDelegationConnector" id="_awWBELF9EeaCwqxzEIieVA" entityName="ReqDelegation ExpressModePolicy -> Required_IStoreInventoryLocal" innerRequiredRole_RequiredDelegationConnector="_94SohRgtEea9zdPO8i2hhg" outerRequiredRole_RequiredDelegationConnector="_YgHD0LF9EeaCwqxzEIieVA" assemblyContext_RequiredDelegationConnector="__NX2gLDHEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_FuDNsFaqEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" assemblyContext__EventChannelSinkConnector="_iFQ34LDHEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_h3BVoLDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSourceConnector" id="_V7gTwFaqEeeoW6N85o3tLQ" entityName="newEventChannelSourceConnector" sourceRole__EventChannelSourceRole="_sG3soE-tEeeOMbxr3TEZOQ" assemblyContext__EventChannelSourceConnector="_jtZ6YLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSourceConnector="_h3BVoLDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_jUnp8FaqEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" sinkRole__EventChannelSinkConnector="_oODoAE-tEeeOMbxr3TEZOQ" assemblyContext__EventChannelSinkConnector="_D05bQLDIEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_h3BVoLDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_qslWAFaqEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" sinkRole__EventChannelSinkConnector="_KH83cE-qEeeOMbxr3TEZOQ" assemblyContext__EventChannelSinkConnector="_p_sX0LDHEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_VtTx0LDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSourceConnector" id="_V7gTwFaqEeeoW6N85o3tLQ" entityName="newEventChannelSourceConnector" assemblyContext__EventChannelSourceConnector="_jtZ6YLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSourceConnector="_h3BVoLDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_jUnp8FaqEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" assemblyContext__EventChannelSinkConnector="_D05bQLDIEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_h3BVoLDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_qslWAFaqEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" assemblyContext__EventChannelSinkConnector="_p_sX0LDHEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_VtTx0LDJEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:EventChannelSourceConnector" id="_6Zi-IFaqEeeoW6N85o3tLQ" entityName="newEventChannelSourceConnector" sourceRole__EventChannelSourceRole="_T4ngQE-qEeeOMbxr3TEZOQ" assemblyContext__EventChannelSourceConnector="__NX2gLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSourceConnector="_VtTx0LDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_GY8IUFarEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" sinkRole__EventChannelSinkConnector="_ZM0k0E-qEeeOMbxr3TEZOQ" assemblyContext__EventChannelSinkConnector="_17whMLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_VtTx0LDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_NfZNoFarEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" sinkRole__EventChannelSinkConnector="_Off0kE-sEeeOMbxr3TEZOQ" assemblyContext__EventChannelSinkConnector="_p_sX0LDHEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_RwsyULDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSourceConnector" id="_RFDswFarEeeoW6N85o3tLQ" entityName="newEventChannelSourceConnector" sourceRole__EventChannelSourceRole="_Z9jMQE-sEeeOMbxr3TEZOQ" assemblyContext__EventChannelSourceConnector="_jtZ6YLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSourceConnector="_RwsyULDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_eSkP4FarEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" sinkRole__EventChannelSinkConnector="_XuVisE-sEeeOMbxr3TEZOQ" assemblyContext__EventChannelSinkConnector="_D05bQLDIEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_RwsyULDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_nSCFQFarEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" sinkRole__EventChannelSinkConnector="_U1OdAE-rEeeOMbxr3TEZOQ" assemblyContext__EventChannelSinkConnector="_p_sX0LDHEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_iyv-ELDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_r3TAMFarEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" sinkRole__EventChannelSinkConnector="_grBmUE-rEeeOMbxr3TEZOQ" assemblyContext__EventChannelSinkConnector="_17whMLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_iyv-ELDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSourceConnector" id="_2oLI0FarEeeoW6N85o3tLQ" entityName="newEventChannelSourceConnector" sourceRole__EventChannelSourceRole="_qhacoE-rEeeOMbxr3TEZOQ" assemblyContext__EventChannelSourceConnector="_jtZ6YLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSourceConnector="_iyv-ELDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_GY8IUFarEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" assemblyContext__EventChannelSinkConnector="_17whMLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_VtTx0LDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_NfZNoFarEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" assemblyContext__EventChannelSinkConnector="_p_sX0LDHEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_RwsyULDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSourceConnector" id="_RFDswFarEeeoW6N85o3tLQ" entityName="newEventChannelSourceConnector" assemblyContext__EventChannelSourceConnector="_jtZ6YLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSourceConnector="_RwsyULDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_eSkP4FarEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" assemblyContext__EventChannelSinkConnector="_D05bQLDIEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_RwsyULDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_nSCFQFarEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" assemblyContext__EventChannelSinkConnector="_p_sX0LDHEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_iyv-ELDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_r3TAMFarEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" assemblyContext__EventChannelSinkConnector="_17whMLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_iyv-ELDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSourceConnector" id="_2oLI0FarEeeoW6N85o3tLQ" entityName="newEventChannelSourceConnector" assemblyContext__EventChannelSourceConnector="_jtZ6YLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSourceConnector="_iyv-ELDJEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:EventChannelSourceConnector" id="_8g-IMFarEeeoW6N85o3tLQ" entityName="newEventChannelSourceConnector" sourceRole__EventChannelSourceRole="_ah0MYE-rEeeOMbxr3TEZOQ" assemblyContext__EventChannelSourceConnector="__NX2gLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSourceConnector="_iyv-ELDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSourceConnector" id="_Al8ZgFasEeeoW6N85o3tLQ" entityName="newEventChannelSourceConnector" sourceRole__EventChannelSourceRole="_tVc1EE-sEeeOMbxr3TEZOQ" assemblyContext__EventChannelSourceConnector="_jtZ6YLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSourceConnector="_YvGH0LDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSourceConnector" id="_Al8ZgFasEeeoW6N85o3tLQ" entityName="newEventChannelSourceConnector" assemblyContext__EventChannelSourceConnector="_jtZ6YLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSourceConnector="_YvGH0LDJEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:EventChannelSourceConnector" id="_DbMIUFasEeeoW6N85o3tLQ" entityName="newEventChannelSourceConnector" sourceRole__EventChannelSourceRole="_liqOME-sEeeOMbxr3TEZOQ" assemblyContext__EventChannelSourceConnector="__NX2gLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSourceConnector="_YvGH0LDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_HgkpUFasEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" sinkRole__EventChannelSinkConnector="_pVcjUE-sEeeOMbxr3TEZOQ" assemblyContext__EventChannelSinkConnector="_D05bQLDIEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_YvGH0LDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_LYzfIFasEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" sinkRole__EventChannelSinkConnector="_gopyUE-sEeeOMbxr3TEZOQ" assemblyContext__EventChannelSinkConnector="_17whMLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_YvGH0LDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_HgkpUFasEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" assemblyContext__EventChannelSinkConnector="_D05bQLDIEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_YvGH0LDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_LYzfIFasEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" assemblyContext__EventChannelSinkConnector="_17whMLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_YvGH0LDJEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:EventChannelSourceConnector" id="_U6GPMFasEeeoW6N85o3tLQ" entityName="newEventChannelSourceConnector" sourceRole__EventChannelSourceRole="_KE8fYE-tEeeOMbxr3TEZOQ" assemblyContext__EventChannelSourceConnector="__NX2gLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSourceConnector="_eEKIALDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSourceConnector" id="_akowIFasEeeoW6N85o3tLQ" entityName="newEventChannelSourceConnector" sourceRole__EventChannelSourceRole="_NRdesE-tEeeOMbxr3TEZOQ" assemblyContext__EventChannelSourceConnector="_jtZ6YLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSourceConnector="_eEKIALDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_dufdAFasEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" sinkRole__EventChannelSinkConnector="_Ei3W4E-tEeeOMbxr3TEZOQ" assemblyContext__EventChannelSinkConnector="_D05bQLDIEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_YvGH0LDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSourceConnector" id="_akowIFasEeeoW6N85o3tLQ" entityName="newEventChannelSourceConnector" assemblyContext__EventChannelSourceConnector="_jtZ6YLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSourceConnector="_eEKIALDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_dufdAFasEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" assemblyContext__EventChannelSinkConnector="_D05bQLDIEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_YvGH0LDJEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_gJQ2UFasEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" sinkRole__EventChannelSinkConnector="_QRXlYE-tEeeOMbxr3TEZOQ" assemblyContext__EventChannelSinkConnector="_mI9W0LDHEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_YvGH0LDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_np1EwFasEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" sinkRole__EventChannelSinkConnector="_AKMtgE-tEeeOMbxr3TEZOQ" assemblyContext__EventChannelSinkConnector="_17whMLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_eEKIALDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_np1EwFasEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" assemblyContext__EventChannelSinkConnector="_17whMLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_eEKIALDJEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:EventChannelSourceConnector" id="_rkBCYFasEeeoW6N85o3tLQ" entityName="newEventChannelSourceConnector" assemblyContext__EventChannelSourceConnector="_hVvfcLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSourceConnector="_fKihQLDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_ujjVoFasEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" sinkRole__EventChannelSinkConnector="_jmVLwE-pEeeOMbxr3TEZOQ" assemblyContext__EventChannelSinkConnector="_D05bQLDIEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_fKihQLDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_xOIskFasEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" sinkRole__EventChannelSinkConnector="_sKMDME-pEeeOMbxr3TEZOQ" assemblyContext__EventChannelSinkConnector="_17whMLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_fKihQLDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSourceConnector" id="_0iFJkFasEeeoW6N85o3tLQ" entityName="newEventChannelSourceConnector" sourceRole__EventChannelSourceRole="_yFWIIE-rEeeOMbxr3TEZOQ" assemblyContext__EventChannelSourceConnector="_6xp5ILDHEea4bqS8ZK-LhA" eventChannel__EventChannelSourceConnector="_aoqRgLDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_ujjVoFasEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" assemblyContext__EventChannelSinkConnector="_D05bQLDIEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_fKihQLDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_xOIskFasEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" assemblyContext__EventChannelSinkConnector="_17whMLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_fKihQLDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSourceConnector" id="_0iFJkFasEeeoW6N85o3tLQ" entityName="newEventChannelSourceConnector" assemblyContext__EventChannelSourceConnector="_6xp5ILDHEea4bqS8ZK-LhA" eventChannel__EventChannelSourceConnector="_aoqRgLDJEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:EventChannelSourceConnector" id="_3jDAMFasEeeoW6N85o3tLQ" entityName="newEventChannelSourceConnector" sourceRole__EventChannelSourceRole="_9V7rkE-rEeeOMbxr3TEZOQ" assemblyContext__EventChannelSourceConnector="__NX2gLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSourceConnector="_aoqRgLDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_7nZmcFasEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" sinkRole__EventChannelSinkConnector="_Aa2OEE-sEeeOMbxr3TEZOQ" assemblyContext__EventChannelSinkConnector="_D05bQLDIEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_aoqRgLDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="__N2vwFasEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" sinkRole__EventChannelSinkConnector="_3IXWEE-rEeeOMbxr3TEZOQ" assemblyContext__EventChannelSinkConnector="_17whMLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_aoqRgLDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_7nZmcFasEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" assemblyContext__EventChannelSinkConnector="_D05bQLDIEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_aoqRgLDJEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="__N2vwFasEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" assemblyContext__EventChannelSinkConnector="_17whMLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_aoqRgLDJEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:EventChannelSinkConnector" id="_B78GoFatEeeoW6N85o3tLQ" entityName="newEventChannelSinkConnector" sinkRole__EventChannelSinkConnector="_FyHNsE-sEeeOMbxr3TEZOQ" assemblyContext__EventChannelSinkConnector="_mI9W0LDHEea4bqS8ZK-LhA" eventChannel__EventChannelSinkConnector="_aoqRgLDJEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:AssemblyEventConnector" id="_9jJPh1auEeeoW6N85o3tLQ" sinkRole__AssemblyEventConnector="_3m4MIE-tEeeOMbxr3TEZOQ" sinkAssemblyContext__AssemblyEventConnector="_D05bQLDIEea4bqS8ZK-LhA" sourceAssemblyContext__AssemblyEventConnector="_fbRW0LDHEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyEventConnector" id="_9jJPh1auEeeoW6N85o3tLQ" sinkAssemblyContext__AssemblyEventConnector="_D05bQLDIEea4bqS8ZK-LhA" sourceAssemblyContext__AssemblyEventConnector="_fbRW0LDHEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_bYpzsLF8EeaCwqxzEIieVA" entityName="Connector Assembly_org.cocome.tradingsystem.cashdeskline.cashdesk.PrinterEventHandler &lt;org.cocome.tradingsystem.cashdeskline.cashdesk.PrinterEventHandler> -> Assembly_org.cocome.tradingsystem.cashdeskline.cashdesk.Printer &lt;org.cocome.tradingsystem.cashdeskline.cashdesk.Printer>" requiringAssemblyContext_AssemblyConnector="_p_sX0LDHEea4bqS8ZK-LhA" providingAssemblyContext_AssemblyConnector="_0chjELDHEea4bqS8ZK-LhA" providedRole_AssemblyConnector="_0effAewkEeW_LdalkgkVnQ" requiredRole_AssemblyConnector="_GNFLNewmEeW_LdalkgkVnQ"/>
-    <connectors__ComposedStructure xsi:type="composition:AssemblyEventConnector" id="_EB5hB1bCEeed_brGeVcP9A" sinkRole__AssemblyEventConnector="_jpNuYE-uEeeOMbxr3TEZOQ" sourceRole__AssemblyEventConnector="_W1VzQE-uEeeOMbxr3TEZOQ" sinkAssemblyContext__AssemblyEventConnector="_FdRUwLFsEeaCwqxzEIieVA" sourceAssemblyContext__AssemblyEventConnector="__NX2gLDHEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:AssemblyEventConnector" id="_p12OZ1bCEeed_brGeVcP9A" sinkRole__AssemblyEventConnector="_YUz0ME-pEeeOMbxr3TEZOQ" sourceRole__AssemblyEventConnector="_TuWmcE-pEeeOMbxr3TEZOQ" sinkAssemblyContext__AssemblyEventConnector="_6xp5ILDHEea4bqS8ZK-LhA" sourceAssemblyContext__AssemblyEventConnector="__NX2gLDHEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:AssemblyEventConnector" id="_FMB8Z1bDEeed_brGeVcP9A" sinkRole__AssemblyEventConnector="_A4bM0E-qEeeOMbxr3TEZOQ" sinkAssemblyContext__AssemblyEventConnector="_D05bQLDIEea4bqS8ZK-LhA" sourceAssemblyContext__AssemblyEventConnector="_hVvfcLDHEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:AssemblyEventConnector" id="_UyTGp1bDEeed_brGeVcP9A" sinkRole__AssemblyEventConnector="_iLd60E-qEeeOMbxr3TEZOQ" sourceRole__AssemblyEventConnector="_nR1-wE-qEeeOMbxr3TEZOQ" sinkAssemblyContext__AssemblyEventConnector="_17whMLDHEea4bqS8ZK-LhA" sourceAssemblyContext__AssemblyEventConnector="__NX2gLDHEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:AssemblyEventConnector" id="_uacwF1bEEeed_brGeVcP9A" sinkRole__AssemblyEventConnector="_fHksAE-qEeeOMbxr3TEZOQ" sourceRole__AssemblyEventConnector="_nR1-wE-qEeeOMbxr3TEZOQ" sinkAssemblyContext__AssemblyEventConnector="_p_sX0LDHEea4bqS8ZK-LhA" sourceAssemblyContext__AssemblyEventConnector="__NX2gLDHEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:AssemblyEventConnector" id="_gPGhJ1bDEeed_brGeVcP9A" sinkRole__AssemblyEventConnector="_2F3MsE-qEeeOMbxr3TEZOQ" sourceRole__AssemblyEventConnector="_8Hy58E-qEeeOMbxr3TEZOQ" sinkAssemblyContext__AssemblyEventConnector="_17whMLDHEea4bqS8ZK-LhA" sourceAssemblyContext__AssemblyEventConnector="__NX2gLDHEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyEventConnector" id="_EB5hB1bCEeed_brGeVcP9A" sourceRole__AssemblyEventConnector="_W1VzQE-uEeeOMbxr3TEZOQ" sinkAssemblyContext__AssemblyEventConnector="_FdRUwLFsEeaCwqxzEIieVA" sourceAssemblyContext__AssemblyEventConnector="__NX2gLDHEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyEventConnector" id="_p12OZ1bCEeed_brGeVcP9A" sourceRole__AssemblyEventConnector="_TuWmcE-pEeeOMbxr3TEZOQ" sinkAssemblyContext__AssemblyEventConnector="_6xp5ILDHEea4bqS8ZK-LhA" sourceAssemblyContext__AssemblyEventConnector="__NX2gLDHEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyEventConnector" id="_FMB8Z1bDEeed_brGeVcP9A" sinkAssemblyContext__AssemblyEventConnector="_D05bQLDIEea4bqS8ZK-LhA" sourceAssemblyContext__AssemblyEventConnector="_hVvfcLDHEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyEventConnector" id="_UyTGp1bDEeed_brGeVcP9A" sourceRole__AssemblyEventConnector="_nR1-wE-qEeeOMbxr3TEZOQ" sinkAssemblyContext__AssemblyEventConnector="_17whMLDHEea4bqS8ZK-LhA" sourceAssemblyContext__AssemblyEventConnector="__NX2gLDHEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyEventConnector" id="_uacwF1bEEeed_brGeVcP9A" sourceRole__AssemblyEventConnector="_nR1-wE-qEeeOMbxr3TEZOQ" sinkAssemblyContext__AssemblyEventConnector="_p_sX0LDHEea4bqS8ZK-LhA" sourceAssemblyContext__AssemblyEventConnector="__NX2gLDHEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyEventConnector" id="_gPGhJ1bDEeed_brGeVcP9A" sourceRole__AssemblyEventConnector="_8Hy58E-qEeeOMbxr3TEZOQ" sinkAssemblyContext__AssemblyEventConnector="_17whMLDHEea4bqS8ZK-LhA" sourceAssemblyContext__AssemblyEventConnector="__NX2gLDHEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:AssemblyEventConnector" id="_sdOD11bDEeed_brGeVcP9A" sourceRole__AssemblyEventConnector="_nR1-wE-qEeeOMbxr3TEZOQ" sinkAssemblyContext__AssemblyEventConnector="_iFQ34LDHEea4bqS8ZK-LhA" sourceAssemblyContext__AssemblyEventConnector="__NX2gLDHEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:EventChannelSourceConnector" id="_tqF0sFbFEeed_brGeVcP9A" entityName="newEventChannelSourceConnector" sourceRole__EventChannelSourceRole="_TuV4AE-sEeeOMbxr3TEZOQ" assemblyContext__EventChannelSourceConnector="__NX2gLDHEea4bqS8ZK-LhA" eventChannel__EventChannelSourceConnector="_RwsyULDJEea4bqS8ZK-LhA"/>
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_kUwY0LDIEea4bqS8ZK-LhA" entityName="Provided_ICashBoxModel" providedInterface__OperationProvidedRole="_j16kMdYgEeWrM-HnT5f_ug"/>
@@ -2994,7 +3006,7 @@
     <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_hnxFkLCxEea4bqS8ZK-LhA" entityName="ProvDelegation Provided_ILabelResolver -> ILabelResolver" innerProvidedRole_ProvidedDelegationConnector="_6s5fgWUZEead_5QKkcGuDg" outerProvidedRole_ProvidedDelegationConnector="_pceNcLCwEea4bqS8ZK-LhA" assemblyContext_ProvidedDelegationConnector="_1dDf4LCvEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_j7pMsLCxEea4bqS8ZK-LhA" entityName="ProvDelegation Provided_IShowReportView -> IShowReportView" innerProvidedRole_ProvidedDelegationConnector="_-tqMEWYSEeamEr6y5T9PEQ" outerProvidedRole_ProvidedDelegationConnector="_dj5c8LCwEea4bqS8ZK-LhA" assemblyContext_ProvidedDelegationConnector="_30J6ILCvEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_k_tRwLCxEea4bqS8ZK-LhA" entityName="ProvDelegation Provided_IShowStockView -> IShowStockView" innerProvidedRole_ProvidedDelegationConnector="_tS-GkGYBEeamEr6y5T9PEQ" outerProvidedRole_ProvidedDelegationConnector="_azTkoLCwEea4bqS8ZK-LhA" assemblyContext_ProvidedDelegationConnector="_30J6ILCvEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:AssemblyEventConnector" id="_TaR2sLCyEea4bqS8ZK-LhA" entityName="EventConnector Assembly_org.cocome.cloud.web.frontend.login &lt;org.cocome.cloud.web.frontend.login> -> Assembly_org.cocome.cloud.web.frontend.navigation &lt;org.cocome.cloud.web.frontend.navigation>" sinkRole__AssemblyEventConnector="_IErxcE-lEeeOMbxr3TEZOQ" sourceRole__AssemblyEventConnector="_QFmT4E-lEeeOMbxr3TEZOQ" sinkAssemblyContext__AssemblyEventConnector="_1dDf4LCvEea4bqS8ZK-LhA" sourceAssemblyContext__AssemblyEventConnector="_zrrB0LCvEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyEventConnector" id="_TaR2sLCyEea4bqS8ZK-LhA" entityName="EventConnector Assembly_org.cocome.cloud.web.frontend.login &lt;org.cocome.cloud.web.frontend.login> -> Assembly_org.cocome.cloud.web.frontend.navigation &lt;org.cocome.cloud.web.frontend.navigation>" sinkAssemblyContext__AssemblyEventConnector="_1dDf4LCvEea4bqS8ZK-LhA" sourceAssemblyContext__AssemblyEventConnector="_zrrB0LCvEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_nGILsLCxEea4bqS8ZK-LhA" entityName="ProvDelegation Provided_IReceiveOrderView -> IReceiveOrderView" innerProvidedRole_ProvidedDelegationConnector="_j4-6kWYQEeamEr6y5T9PEQ" outerProvidedRole_ProvidedDelegationConnector="_VdFG0LCwEea4bqS8ZK-LhA" assemblyContext_ProvidedDelegationConnector="_30J6ILCvEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_oMUXsLCxEea4bqS8ZK-LhA" entityName="ProvDelegation Provided_IstockOrderView -> IstockOrderView" innerProvidedRole_ProvidedDelegationConnector="_C05V8WYNEeamEr6y5T9PEQ" outerProvidedRole_ProvidedDelegationConnector="_XHy8MLCwEea4bqS8ZK-LhA" assemblyContext_ProvidedDelegationConnector="_30J6ILCvEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:RequiredDelegationConnector" id="_rLLVgLCxEea4bqS8ZK-LhA" entityName="ReqDelegation IUser -> Required_IUser" innerRequiredRole_RequiredDelegationConnector="_gsjtpWUaEead_5QKkcGuDg" outerRequiredRole_RequiredDelegationConnector="_QPH-wLCxEea4bqS8ZK-LhA" assemblyContext_RequiredDelegationConnector="_1dDf4LCvEea4bqS8ZK-LhA"/>
@@ -3002,11 +3014,11 @@
     <connectors__ComposedStructure xsi:type="composition:RequiredDelegationConnector" id="_w7vl8LCxEea4bqS8ZK-LhA" entityName="ReqDelegation IStoreDAO -> Required_IStoreDAO" innerRequiredRole_RequiredDelegationConnector="_9IRR1aZsEea90o6iaEaVPw" outerRequiredRole_RequiredDelegationConnector="_41toULCwEea4bqS8ZK-LhA" assemblyContext_RequiredDelegationConnector="_30J6ILCvEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:RequiredDelegationConnector" id="_yoCIoLCxEea4bqS8ZK-LhA" entityName="ReqDelegation IStorePersistence -> Required_IStorePersistence" innerRequiredRole_RequiredDelegationConnector="_E7QQdacyEea6yqnnpazPHg" outerRequiredRole_RequiredDelegationConnector="_ACuBkLCxEea4bqS8ZK-LhA" assemblyContext_RequiredDelegationConnector="_30J6ILCvEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:RequiredDelegationConnector" id="_0F-GQLCxEea4bqS8ZK-LhA" entityName="ReqDelegation ICredentialFactory -> Required_ICredentialFactory" innerRequiredRole_RequiredDelegationConnector="_j6hqBWUQEead_5QKkcGuDg" outerRequiredRole_RequiredDelegationConnector="_MSpiILCxEea4bqS8ZK-LhA" assemblyContext_RequiredDelegationConnector="_zrrB0LCvEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:AssemblyEventConnector" id="_Wso_ULCyEea4bqS8ZK-LhA" entityName="EventConnector Assembly_org.cocome.cloud.web.frontend.store &lt;org.cocome.cloud.web.frontend.store> -> Assembly_org.cocome.cloud.web.frontend.navigation &lt;org.cocome.cloud.web.frontend.navigation>" sinkRole__AssemblyEventConnector="_kqetME-lEeeOMbxr3TEZOQ" sourceRole__AssemblyEventConnector="_fx4mkE-lEeeOMbxr3TEZOQ" sinkAssemblyContext__AssemblyEventConnector="_1dDf4LCvEea4bqS8ZK-LhA" sourceAssemblyContext__AssemblyEventConnector="_30J6ILCvEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyEventConnector" id="_Wso_ULCyEea4bqS8ZK-LhA" entityName="EventConnector Assembly_org.cocome.cloud.web.frontend.store &lt;org.cocome.cloud.web.frontend.store> -> Assembly_org.cocome.cloud.web.frontend.navigation &lt;org.cocome.cloud.web.frontend.navigation>" sinkAssemblyContext__AssemblyEventConnector="_1dDf4LCvEea4bqS8ZK-LhA" sourceAssemblyContext__AssemblyEventConnector="_30J6ILCvEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:RequiredDelegationConnector" id="_235bULCxEea4bqS8ZK-LhA" entityName="ReqDelegation ICredential.web.data.login -> Required_ICredential.web.data.login" innerRequiredRole_RequiredDelegationConnector="_NPlklWSLEeaYxPjtCxykSQ" outerRequiredRole_RequiredDelegationConnector="_Gjb8kLCxEea4bqS8ZK-LhA" assemblyContext_RequiredDelegationConnector="_zrrB0LCvEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:RequiredDelegationConnector" id="_4rrtILCxEea4bqS8ZK-LhA" entityName="ReqDelegation IAuthenticator -> Required_IAuthenticator" innerRequiredRole_RequiredDelegationConnector="_Oc9MFWSKEeaYxPjtCxykSQ" outerRequiredRole_RequiredDelegationConnector="_SddekLCxEea4bqS8ZK-LhA" assemblyContext_RequiredDelegationConnector="_zrrB0LCvEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:RequiredDelegationConnector" id="_EXLD4LCyEea4bqS8ZK-LhA" entityName="ReqDelegation ICashDeskDAO -> Required_ICashDeskDAO" innerRequiredRole_RequiredDelegationConnector="_nH4j1aZsEea90o6iaEaVPw" outerRequiredRole_RequiredDelegationConnector="_u9aGcLCwEea4bqS8ZK-LhA" assemblyContext_RequiredDelegationConnector="_rjgA0LCvEea4bqS8ZK-LhA"/>
-    <connectors__ComposedStructure xsi:type="composition:AssemblyEventConnector" id="_VWHRQLCyEea4bqS8ZK-LhA" entityName="EventConnector Assembly_org.cocome.cloud.web.frontend.login &lt;org.cocome.cloud.web.frontend.login> -> Assembly_org.cocome.cloud.web.frontend.store &lt;org.cocome.cloud.web.frontend.store>" sinkRole__AssemblyEventConnector="_l7b0ME-kEeeOMbxr3TEZOQ" sourceRole__AssemblyEventConnector="_zEXZUE-kEeeOMbxr3TEZOQ" sinkAssemblyContext__AssemblyEventConnector="_30J6ILCvEea4bqS8ZK-LhA" sourceAssemblyContext__AssemblyEventConnector="_zrrB0LCvEea4bqS8ZK-LhA"/>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyEventConnector" id="_VWHRQLCyEea4bqS8ZK-LhA" entityName="EventConnector Assembly_org.cocome.cloud.web.frontend.login &lt;org.cocome.cloud.web.frontend.login> -> Assembly_org.cocome.cloud.web.frontend.store &lt;org.cocome.cloud.web.frontend.store>" sinkAssemblyContext__AssemblyEventConnector="_30J6ILCvEea4bqS8ZK-LhA" sourceAssemblyContext__AssemblyEventConnector="_zrrB0LCvEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:RequiredDelegationConnector" id="_HcIpsLCyEea4bqS8ZK-LhA" entityName="ReqDelegation ICashDesk -> Required_org.cocome.cloud.web.data.cashdeskdata.ICashDesk" innerRequiredRole_RequiredDelegationConnector="_DugpNWSGEeaYxPjtCxykSQ" outerRequiredRole_RequiredDelegationConnector="_xkYIsLCwEea4bqS8ZK-LhA" assemblyContext_RequiredDelegationConnector="_rjgA0LCvEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:RequiredDelegationConnector" id="_JZfuQLCyEea4bqS8ZK-LhA" entityName="ReqDelegation IEnterpriseDAO -> Required_IEnterpriseDAO" innerRequiredRole_RequiredDelegationConnector="_qS-m1aZsEea90o6iaEaVPw" outerRequiredRole_RequiredDelegationConnector="_1PgWoLCwEea4bqS8ZK-LhA" assemblyContext_RequiredDelegationConnector="_xfs5gLCvEea4bqS8ZK-LhA"/>
     <connectors__ComposedStructure xsi:type="composition:RequiredDelegationConnector" id="_N-6aMLCyEea4bqS8ZK-LhA" entityName="ReqDelegation storeDAO -> Required_IStoreDAO" innerRequiredRole_RequiredDelegationConnector="__mx7paZsEea90o6iaEaVPw" outerRequiredRole_RequiredDelegationConnector="_41toULCwEea4bqS8ZK-LhA" assemblyContext_RequiredDelegationConnector="_xfs5gLCvEea4bqS8ZK-LhA"/>
