@@ -4,9 +4,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import io.github.squat_team.agentsUtils.concessionStrategies.ConcessionStrategy;
+import io.github.squat_team.agentsUtils.concessionStrategies.EgocentricConcession;
+import io.github.squat_team.agentsUtils.concessionStrategies.NashConcession;
+
 public abstract class SillyBot {
 	private String name;
 	protected List<Proposal> orderedProposals;
+	private ConcessionStrategy concessionStrategy;
 	public void insertInOrder(Proposal p){
 		float utilityProposal=getUtilityFor(p);
 		if (orderedProposals.size() == 0) {
@@ -25,28 +30,28 @@ public abstract class SillyBot {
 	}
 	private float scenatioThreshold;
 //	private Integer indexInWhichUtilityBecomeZero;
-	public Proposal makeConcession(){
-		currentConcessionIndex++;
-		return getCurrentProposal();
+	public Proposal makeConcession(List<SillyBot> sillyBots){
+		return concessionStrategy.makeConcession(sillyBots);
 	}
-	protected int currentConcessionIndex;
+
 	
 	public SillyBot(String name,float scenatioThreshold) {
 		orderedProposals=new ArrayList<Proposal>();
-		currentConcessionIndex=0;
+		concessionStrategy=new NashConcession(this);//EgocentricConcession(this);
+		
 		this.name=name;
 		this.scenatioThreshold=scenatioThreshold;
 //		indexInWhichUtilityBecomeZero=null;
 	}
 	public Proposal getBestProposal() {
 		//if(makeImprovementRegardingOriginal(orderedProposals.get(currentConcessionIndex)))
-			return orderedProposals.get(currentConcessionIndex);
+			return orderedProposals.get(concessionStrategy.getCurrentConcessionIndex());
 	//	return null;
 	}
 	//protected abstract boolean makeImprovementRegardingOriginal(Proposal proposal);
 	
 	public boolean acceptableUtilityValue(Proposal proposal) {
-		float currentUtilty=getUtilityFor(orderedProposals.get(currentConcessionIndex));
+		float currentUtilty=getUtilityFor(orderedProposals.get(concessionStrategy.getCurrentConcessionIndex()));
 		if(proposal==null)
 			System.out.println("Problema");
 		float proposalUtility=getUtilityFor(this.getProposalForArchitecture(proposal.getArchitectureName()));
@@ -66,21 +71,18 @@ public abstract class SillyBot {
 		return null;
 	}
 	public boolean canConcede(){
-		if(orderedProposals.size()==(currentConcessionIndex+1))
-			return false;
-		else 
-			return true;
+		return concessionStrategy.canConcede();
 	}
 	//public abstract float getUtilityFor(Proposal proposal);
 	public Proposal getCurrentProposal() {
-		return orderedProposals.get(currentConcessionIndex);
+		return orderedProposals.get(concessionStrategy.getCurrentConcessionIndex());
 	}
 	@Override
 	public String toString() {
 		return "Agent "+name;
 	}
 	public int getCurrentConcessionIndex() {
-		return currentConcessionIndex;
+		return concessionStrategy.getCurrentConcessionIndex();
 	}
 	public List<Proposal> getOrderedProposals() {
 		return orderedProposals;

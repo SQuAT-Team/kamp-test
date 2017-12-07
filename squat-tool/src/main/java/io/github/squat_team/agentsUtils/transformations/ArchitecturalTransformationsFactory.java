@@ -1,10 +1,13 @@
 package io.github.squat_team.agentsUtils.transformations;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import edu.squat.transformations.ArchitecturalVersion;
+import io.github.squat_team.agentsUtils.Proposal;
 
 public class ArchitecturalTransformationsFactory {
 	
@@ -16,10 +19,10 @@ public class ArchitecturalTransformationsFactory {
 	
 	public ArchitecturalTransformationsFactory() {
 		modifiabilityTrans=new ModifiabilityTransformationsFactory();
-		//initialArchitecture2=new ArchitecturalVersion("default","models","");
-		//initialArchitecture2.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/alternativeRepository.repository");
-		initialArchitecture=new ArchitecturalVersion("cocome-cloud","models/cocomeWithoutPickUpStoreAndServiceAdapter","");
-		initialArchitecture.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithoutPickUpStoreAndServiceAdapter/alternativescocome-cloud.repository");
+		initialArchitecture=new ArchitecturalVersion("default","models","");
+		initialArchitecture.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/alternativeRepository.repository");
+		//initialArchitecture=new ArchitecturalVersion("cocome-cloud","models/cocomeWithoutPickUpStoreAndServiceAdapter","");
+		//initialArchitecture.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithoutPickUpStoreAndServiceAdapter/alternativescocome-cloud.repository");
 		performanceTrans=new PerformanceTransformationFactory();
 		architecturesByLevel=new Hashtable<>();
 	}
@@ -54,6 +57,26 @@ public class ArchitecturalTransformationsFactory {
 				}
 			}
 		 }
+	}
+	public void replaceTransformationsForLevel(int level, Set<Proposal> proposalsForNextRound){
+		List<ArchitecturalVersion> fullList=architecturesByLevel.get(level);
+		Set<ArchitecturalVersion> newList= new HashSet<>();
+		for(Proposal p : proposalsForNextRound){
+			newList.add(findArchitecturalVersionByName(fullList, p.getArchitectureName()));
+		}
+		List<ArchitecturalVersion> reducedList=new ArrayList<ArchitecturalVersion>();
+		reducedList.addAll(newList);
+		
+		architecturesByLevel.put(level, reducedList);
+	}
+
+	private ArchitecturalVersion findArchitecturalVersionByName(List<ArchitecturalVersion> fullList,String architectureName) {
+		for (ArchitecturalVersion architecturalVersion : fullList) {
+			if(architecturalVersion.getName().equals(architectureName)){
+				return architecturalVersion;
+			}
+		}
+		return null;
 	}
 
 	private List<ArchitecturalVersion> generateArchitecturalVersionsUsingModifiabilityTransformations(
