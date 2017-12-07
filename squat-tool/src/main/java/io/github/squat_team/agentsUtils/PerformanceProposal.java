@@ -1,17 +1,17 @@
 package io.github.squat_team.agentsUtils;
 
 public class PerformanceProposal extends Proposal {
-	private float responseTime;
+	//private float responseTime;
 	
 	public PerformanceProposal(float responseTime,String pcmArchitecture) {
-		super(pcmArchitecture);
-		this.responseTime=responseTime;
+		super(pcmArchitecture,responseTime);
+		//this.responseTime=responseTime;
 	}
 	public float getResponseTime() {
-		return responseTime;
+		return getScenarioResponse();
 	}
 	@Override
 	public String toString() {
-		return super.toString()+" "+responseTime;
+		return super.toString()+" "+scenarioResponse;
 	}
 }

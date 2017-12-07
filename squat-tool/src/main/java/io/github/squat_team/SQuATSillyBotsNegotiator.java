@@ -52,16 +52,24 @@ public class SQuATSillyBotsNegotiator {
 			}				
 			else{				
 				System.out.println("Step 3.b: Agent/s who has to concede [#= "+ shouldConcede.size()+"]=> "+ shouldConcede.toString());
-				
+				boolean atLeastOneNewProposal=false;
 				for (SillyBot concedingAg : shouldConcede){
 					//Make "concedingAg" to concede
 					Proposal newProposal;
 			
-					newProposal = concedingAg.makeConcession();//I have to implement this method
-						
-					System.out.println("Step 3.c: New Proposal made by the agent => "+newProposal.toString());
-					//Update proposals map
-					proposals.put(concedingAg, newProposal);			
+					newProposal = concedingAg.makeConcession(sillyBots);//I have to implement this method
+					if(newProposal!=null){
+						System.out.println("Step 3.c: New Proposal made by the agent => "+newProposal.toString());
+						//Update proposals map
+						proposals.put(concedingAg, newProposal);	
+						atLeastOneNewProposal=true;
+					}
+							
+				}
+				if(!atLeastOneNewProposal){
+					//Step 4: CONFLICT REACHED
+					createNegotiationResult(); //conflict 
+					return false; 
 				}
 				if(checkAgreement(proposals)){
 					System.out.println("Agreement: "+agreementProposal);
@@ -261,7 +269,7 @@ public class SQuATSillyBotsNegotiator {
 	}
 	private HashMap<SillyBot, Proposal> collectInitialProposals() {
 		//REMOVE THIS FIRST LINE. IT ONLY PURPOSES IS TO AVOID THE MODIFIABILITY TACTICS THAT ARE NOT WORKING WITH THE COMPOSITE COMPONETS
-//		new LoadHelper().loadBotsForArchitecturalAlternatives(new ArrayList<ArchitecturalVersion>(),archTransFactory.getInitialArchitecture());
+		//new LoadHelper().loadBotsForArchitecturalAlternatives(new ArrayList<ArchitecturalVersion>(),archTransFactory.getInitialArchitecture());
 		HashMap<SillyBot, Proposal> ret= new HashMap<>();
 		System.out.println("Level of transformations: "+ currentLevelOfTransformations);
 		List<ArchitecturalVersion> versionsUntilLevel=archTransFactory.getArchitecturalTransformationsUntilLevel(currentLevelOfTransformations);

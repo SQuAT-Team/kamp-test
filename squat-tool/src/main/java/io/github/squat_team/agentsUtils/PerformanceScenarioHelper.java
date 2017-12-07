@@ -53,7 +53,7 @@ public class PerformanceScenarioHelper {
 		configuration.getPcmModelsConfig().setPathmapFolder(TestConstants.PCM_MODEL_FILES);
 		// init bot
 		PerOpteryxPCMBot bot = new PerOpteryxPCMBot(scenario, configuration);
-		bot.setDebugMode(true);
+		bot.setDebugMode(false);
 		bot.setDetailedAnalysis(true);		
 		return bot;
 	}

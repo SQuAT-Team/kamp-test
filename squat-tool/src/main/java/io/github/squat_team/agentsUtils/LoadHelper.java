@@ -108,7 +108,7 @@ public class LoadHelper {
 				resourceEnvironment, usageModel);
 		return instance;
 	}
-	private PCMScenario createModifiabilityScenarioS1(ResponseMeasureType type, Comparable<Float> response) {
+	/*private PCMScenario createModifiabilityScenarioS1(ResponseMeasureType type, Comparable<Float> response) {
 		//Adding a pickupshop
 		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
 		PCMResult expectedResult = new PCMResult(type);
@@ -266,9 +266,9 @@ public class LoadHelper {
 		i7.parameters.put("iname", "ServiceAdapter");
 		scenario.addChange(i7);
 		return scenario;
-	}
-	/**SCENARIOS OF STPLUS+
-	 * private PCMScenario createModifiabilityScenarioS1(ResponseMeasureType type, Comparable<Float> response) {
+	}*/
+	//SCENARIOS OF STPLUS+
+    private PCMScenario createModifiabilityScenarioS1(ResponseMeasureType type, Comparable<Float> response) {
 		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
 		PCMResult expectedResult = new PCMResult(type);
 		expectedResult.setResponse(response);
@@ -328,7 +328,7 @@ public class LoadHelper {
 		scenario.addChange(i6);
 		//
 		return scenario;
-	}**/
+	}
 	
 	public List<SillyBot> loadBotsWithInformation() {
 		ModifiabilityBot m1Bot=new ModifiabilityBot(/*3,*/ 115f,"m1",120f);
