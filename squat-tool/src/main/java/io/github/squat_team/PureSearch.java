@@ -32,7 +32,7 @@ public class PureSearch {
 		while(currentLevelOfTransformations<=maxNumberOfLevels){
 			createAlternativesForLevel();
 			if(!noMoreAlternatives){
-				filerBestKAlternatives(1);
+				filerBestKAlternatives(10);
 				currentLevelOfTransformations++;
 			}
 		}
@@ -79,7 +79,13 @@ public class PureSearch {
 			List<Proposal> filteredProposals=sillyBot.getOrderedProposals().subList(0, k);
 			System.out.println(sillyBot);
 			for (Proposal proposal : filteredProposals) {
-				System.out.println(proposal);
+				System.out.print(proposal.getArchitectureName()+"\t"+proposal.getScenarioResponse()+"\t");
+				for (SillyBot sillyBot2 : sillyBots) {
+					if(sillyBot2!=sillyBot){
+						System.out.print(sillyBot2.getProposalForArchitecture(proposal.getArchitectureName()).getScenarioResponse()+"\t");
+					}
+				}
+				System.out.println();
 			}
 			proposalsForNextRound.addAll(filteredProposals);
 		}
@@ -88,6 +94,6 @@ public class PureSearch {
 	}
 	
 	public static void main(String[] args) {
-		new PureSearch().searchUntilLevel(3);
+		new PureSearch().searchUntilLevel(5);
 	}
 }
