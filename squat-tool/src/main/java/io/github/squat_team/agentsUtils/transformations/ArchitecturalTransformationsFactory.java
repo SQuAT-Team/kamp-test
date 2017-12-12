@@ -62,7 +62,9 @@ public class ArchitecturalTransformationsFactory {
 		List<ArchitecturalVersion> fullList=architecturesByLevel.get(level);
 		Set<ArchitecturalVersion> newList= new HashSet<>();
 		for(Proposal p : proposalsForNextRound){
-			newList.add(findArchitecturalVersionByName(fullList, p.getArchitectureName()));
+			ArchitecturalVersion av=findArchitecturalVersionByName(fullList, p.getArchitectureName());
+			if(av!=null)
+				newList.add(av);
 		}
 		List<ArchitecturalVersion> reducedList=new ArrayList<ArchitecturalVersion>();
 		reducedList.addAll(newList);

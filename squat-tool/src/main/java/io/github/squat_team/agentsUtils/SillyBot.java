@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import io.github.squat_team.agentsUtils.concessionStrategies.ConcessionStrategy;
+import io.github.squat_team.agentsUtils.concessionStrategies.DesiresDistance;
 import io.github.squat_team.agentsUtils.concessionStrategies.EgocentricConcession;
 import io.github.squat_team.agentsUtils.concessionStrategies.NashConcession;
 
@@ -37,7 +38,7 @@ public abstract class SillyBot {
 	
 	public SillyBot(String name,float scenatioThreshold) {
 		orderedProposals=new ArrayList<Proposal>();
-		concessionStrategy=new NashConcession(this);//EgocentricConcession(this);
+		concessionStrategy=new DesiresDistance(this);//NashConcession(this);//EgocentricConcession(this);
 		
 		this.name=name;
 		this.scenatioThreshold=scenatioThreshold;
@@ -62,7 +63,7 @@ public abstract class SillyBot {
 		Proposal p=getProposalForArchitecture(pcmArchitecture);
 		return orderedProposals.indexOf(p);
 	}
-	protected Proposal getProposalForArchitecture(String pcmArchitecture){
+	public Proposal getProposalForArchitecture(String pcmArchitecture){
 		for (Iterator<Proposal> iterator = orderedProposals.iterator(); iterator.hasNext();) {
 			Proposal proposal = (Proposal) iterator.next();
 			if(proposal.getArchitectureName().equals(pcmArchitecture))

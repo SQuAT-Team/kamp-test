@@ -1,10 +1,14 @@
 package io.github.squat_team;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 import edu.squat.transformations.ArchitecturalVersion;
 import io.github.squat_team.agentsUtils.LoadHelper;
@@ -21,6 +25,7 @@ public class SQuATSillyBotsNegotiator {
 	private ArchitecturalTransformationsFactory archTransFactory;
 	private int maxNumberOfLevels;
 	private boolean noMoreAlternatives;
+	private boolean filterBestAlternatives;
 	
 	public SQuATSillyBotsNegotiator(){
 		agreementProposal=null;
@@ -28,6 +33,7 @@ public class SQuATSillyBotsNegotiator {
 		archTransFactory=new ArchitecturalTransformationsFactory();
 		maxNumberOfLevels=10;
 		noMoreAlternatives=false;
+		filterBestAlternatives=true;
 	}
 	
 	/**
@@ -290,10 +296,28 @@ public class SQuATSillyBotsNegotiator {
 		}
 		return ret;
 	}
+	private void filerBestKAlternatives(int k) {
+		Set<Proposal> proposalsForNextRound=new HashSet<>(); 
+		
+		//Each agent has to make a ranking with the alternatives and select the best K for its scenario 
+		for (SillyBot sillyBot : sillyBots) {
+			List<Proposal> filteredProposals=sillyBot.getOrderedProposals().subList(0, k);
+			System.out.println(sillyBot);
+			for (Proposal proposal : filteredProposals) {
+				System.out.println(proposal);
+			}
+			proposalsForNextRound.addAll(filteredProposals);
+		}
+		//I replace all the alternatives generated in ArchitecturalTransformationsFactory by this subset
+		archTransFactory.replaceTransformationsForLevel(currentLevelOfTransformations, proposalsForNextRound);
+	}
 	public void negotiatiateUntilAnAgreementIsReached(){
 		boolean agreement=false;
 		while(!agreement&&(currentLevelOfTransformations<=maxNumberOfLevels)&&!noMoreAlternatives){
 			agreement=negotiateBaseOnMultipleArchitectures();
+			if(filterBestAlternatives){
+				filerBestKAlternatives(10);
+			}
 			currentLevelOfTransformations++;
 		}
 	}
