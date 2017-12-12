@@ -11,28 +11,28 @@
     <activeResourceSpecifications_ResourceContainer id="_Q-Z9UK2VEeaxN4gXuIkS2A">
       <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
       <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
-      <processingRate_ProcessingResourceSpecification specification="1000.0"/>
+      <processingRate_ProcessingResourceSpecification specification="300.0"/>
     </activeResourceSpecifications_ResourceContainer>
   </resourceContainer_ResourceEnvironment>
   <resourceContainer_ResourceEnvironment id="_-5Q84K2UEeaxN4gXuIkS2A" entityName="enterprise-1">
     <activeResourceSpecifications_ResourceContainer id="_TboNsK2VEeaxN4gXuIkS2A">
       <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
       <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
-      <processingRate_ProcessingResourceSpecification specification="1000.0"/>
+      <processingRate_ProcessingResourceSpecification specification="800.0"/>
     </activeResourceSpecifications_ResourceContainer>
   </resourceContainer_ResourceEnvironment>
   <resourceContainer_ResourceEnvironment id="_BgmykK2VEeaxN4gXuIkS2A" entityName="store-1">
     <activeResourceSpecifications_ResourceContainer id="_U0oA8K2VEeaxN4gXuIkS2A">
       <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
       <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
-      <processingRate_ProcessingResourceSpecification specification="1000.0"/>
+      <processingRate_ProcessingResourceSpecification specification="500.0"/>
     </activeResourceSpecifications_ResourceContainer>
   </resourceContainer_ResourceEnvironment>
   <resourceContainer_ResourceEnvironment id="_FM6FMK2VEeaxN4gXuIkS2A" entityName="server">
     <activeResourceSpecifications_ResourceContainer id="_WV4YUK2VEeaxN4gXuIkS2A">
       <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
       <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
-      <processingRate_ProcessingResourceSpecification specification="1000.0"/>
+      <processingRate_ProcessingResourceSpecification specification="800.0"/>
     </activeResourceSpecifications_ResourceContainer>
   </resourceContainer_ResourceEnvironment>
 </resourceenvironment:ResourceEnvironment>
