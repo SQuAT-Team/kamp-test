@@ -1,5 +1,209 @@
 <?xml version="1.0" encoding="ASCII"?>
-<repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.1" id="_j1pecNYgEeWrM-HnT5f_ug" entityName="org.cocome.cloud">
+<repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.1" xmlns:seff="http://palladiosimulator.org/PalladioComponentModel/SEFF/5.1" id="_j1pecNYgEeWrM-HnT5f_ug" entityName="org.cocome.cloud">
+  <components__Repository xsi:type="repository:BasicComponent" id="_cje7mewdEeW_LdalkgkVnQX" entityName="org.cocome.tradingsystem.cashdeskline.cashdesk.AlternativeUserDisplay">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_ocslQewdEeW_LdalkgkVnQX" entityName="IUserDisplayModel" providedInterface__OperationProvidedRole="_j5rC0NYgEeWrM-HnT5f_ug"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_edOtwEiHEeepDoRoYh6rjAX" seffTypeID="_edOtwUiHEeepDoRoYh6rjA" describedService__SEFF="_j5rC0dYgEeWrM-HnT5f_ug">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_yAbgXkiKEeeAK9a9NwDLowX" successor_AbstractAction="_eQ0AvNtjEee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_yAbgX0iKEeeAK9a9NwDLowX" predecessor_AbstractAction="_eQ0AvNtjEee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_eQ0AvNtjEee4ToXBRRujSwX" entityName="TempPerformanceCosts" predecessor_AbstractAction="_yAbgXkiKEeeAK9a9NwDLowX" successor_AbstractAction="_yAbgX0iKEeeAK9a9NwDLowX">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="3"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_edOtwkiHEeepDoRoYh6rjAX" seffTypeID="_edOtw0iHEeepDoRoYh6rjA" describedService__SEFF="_j5s4ANYgEeWrM-HnT5f_ug">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_yAbgYkiKEeeAK9a9NwDLowX" successor_AbstractAction="_g6L2vNtjEee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_yAbgY0iKEeeAK9a9NwDLowX" predecessor_AbstractAction="_g6L2vNtjEee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_g6L2vNtjEee4ToXBRRujSwX" entityName="TempPerformanceCosts" predecessor_AbstractAction="_yAbgYkiKEeeAK9a9NwDLowX" successor_AbstractAction="_yAbgY0iKEeeAK9a9NwDLowX">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="1"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_edOtxEiHEeepDoRoYh6rjAX" seffTypeID="_edOtxUiHEeepDoRoYh6rjA" describedService__SEFF="_j5s4AdYgEeWrM-HnT5f_ug">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_yAbgZkiKEeeAK9a9NwDLowX" successor_AbstractAction="_hQA8zNtjEee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_yAbgZ0iKEeeAK9a9NwDLowX" predecessor_AbstractAction="_hQA8zNtjEee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_hQA8zNtjEee4ToXBRRujSwX" entityName="TempPerformanceCosts" predecessor_AbstractAction="_yAbgZkiKEeeAK9a9NwDLowX" successor_AbstractAction="_yAbgZ0iKEeeAK9a9NwDLowX">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="1"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_wDKjOewkEeW_LdalkgkVnQX" entityName="org.cocome.tradingsystem.cashdeskline.cashdesk.AlternativePrinter">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_0effAewkEeW_LdalkgkVnQX" entityName="IPrinterModel" providedInterface__OperationProvidedRole="_j5pNoNYgEeWrM-HnT5f_ug"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_edOtukiHEeepDoRoYh6rjAX" seffTypeID="_edOtu0iHEeepDoRoYh6rjA" describedService__SEFF="_j5pNodYgEeWrM-HnT5f_ug">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_yAbgUkiKEeeAK9a9NwDLowX" successor_AbstractAction="_kZJDLNteEee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_yAbgU0iKEeeAK9a9NwDLowX" predecessor_AbstractAction="_kZJDLNteEee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_kZJDLNteEee4ToXBRRujSwX" entityName="TempPerformanceCosts" predecessor_AbstractAction="_yAbgUkiKEeeAK9a9NwDLowX" successor_AbstractAction="_yAbgU0iKEeeAK9a9NwDLowX">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="6"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_edOtvEiHEeepDoRoYh6rjAX" seffTypeID="_edOtvUiHEeepDoRoYh6rjA" describedService__SEFF="_j5pNotYgEeWrM-HnT5f_ug">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_yAbgVkiKEeeAK9a9NwDLowX" successor_AbstractAction="_mTaXfNteEee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_yAbgV0iKEeeAK9a9NwDLowX" predecessor_AbstractAction="_dFaOTOApEee9Hbr80Hz01Q"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_mTaXfNteEee4ToXBRRujSwX" entityName="preparePrinting" predecessor_AbstractAction="_yAbgVkiKEeeAK9a9NwDLowX" successor_AbstractAction="_v-f-seAqEee9Hbr80Hz01Q">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="1"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_dFaOTOApEee9Hbr80Hz01Q" entityName="print" predecessor_AbstractAction="_v-f-seAqEee9Hbr80Hz01Q" successor_AbstractAction="_yAbgV0iKEeeAK9a9NwDLowX">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="4"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_v-f-seAqEee9Hbr80Hz01Q" entityName="getText" predecessor_AbstractAction="_mTaXfNteEee4ToXBRRujSwX" successor_AbstractAction="_dFaOTOApEee9Hbr80Hz01Q">
+        <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_wbD-4uAqEee9Hbr80Hz01Q" entityName="Cached" branchProbability="0.65">
+          <branchBehaviour_BranchTransition id="_2c0F8OAqEee9Hbr80Hz01Q">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_6V2NAuAqEee9Hbr80Hz01Q" successor_AbstractAction="_SLnITOArEee9Hbr80Hz01Q"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_8OeikOAqEee9Hbr80Hz01Q" predecessor_AbstractAction="_SLnITOArEee9Hbr80Hz01Q"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_SLnITOArEee9Hbr80Hz01Q" predecessor_AbstractAction="_6V2NAuAqEee9Hbr80Hz01Q" successor_AbstractAction="_8OeikOAqEee9Hbr80Hz01Q">
+              <resourceDemand_Action>
+                <specification_ParametericResourceDemand specification="1"/>
+                <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+              </resourceDemand_Action>
+            </steps_Behaviour>
+          </branchBehaviour_BranchTransition>
+        </branches_Branch>
+        <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_xjWcouAqEee9Hbr80Hz01Q" entityName="Query" branchProbability="0.35">
+          <branchBehaviour_BranchTransition id="_4LmjAOAqEee9Hbr80Hz01Q">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_9V8g8uAqEee9Hbr80Hz01Q" successor_AbstractAction="_TXN_zOArEee9Hbr80Hz01Q"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_90-mUOAqEee9Hbr80Hz01Q" predecessor_AbstractAction="_TXN_zOArEee9Hbr80Hz01Q"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_TXN_zOArEee9Hbr80Hz01Q" predecessor_AbstractAction="_9V8g8uAqEee9Hbr80Hz01Q" successor_AbstractAction="_90-mUOAqEee9Hbr80Hz01Q">
+              <resourceDemand_Action>
+                <specification_ParametericResourceDemand specification="4"/>
+                <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+              </resourceDemand_Action>
+            </steps_Behaviour>
+          </branchBehaviour_BranchTransition>
+        </branches_Branch>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_edOtvkiHEeepDoRoYh6rjAX" seffTypeID="_edOtv0iHEeepDoRoYh6rjA" describedService__SEFF="_j5pNo9YgEeWrM-HnT5f_ug">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_yAbgWkiKEeeAK9a9NwDLowX" successor_AbstractAction="_m0frTNteEee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_yAbgW0iKEeeAK9a9NwDLowX" predecessor_AbstractAction="_m0frTNteEee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_m0frTNteEee4ToXBRRujSwX" entityName="TempPerformanceCosts" predecessor_AbstractAction="_yAbgWkiKEeeAK9a9NwDLowX" successor_AbstractAction="_yAbgW0iKEeeAK9a9NwDLowX">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="4"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_gqSX6ewoEeW_LdalkgkVnQX" entityName="org.cocome.tradingsystem.cashdeskline.cashdesk.AlternativeCashBox">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_mj52oewoEeW_LdalkgkVnQX" entityName="ICashBoxModel" providedInterface__OperationProvidedRole="_j16kMdYgEeWrM-HnT5f_ug"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_PLQP1dbOEeeA6uet0yIgvw1X" entityName="CashAmountEnteredEvent1" requiredInterface__OperationRequiredRole="_mNHFt9Z9Eee7CN4Qm4czKQ1"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_nJ2W9dbOEeeA6uet0yIgvwX" entityName="SaleFinishedEvent" requiredInterface__OperationRequiredRole="_NUhmE9Z-Eee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_uIouBdbOEeeA6uet0yIgvw1X" entityName="PaymentModeSelectedEvent1" requiredInterface__OperationRequiredRole="_gJReh9Z-Eee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_8gdvNdbOEeeA6uet0yIgvwX" entityName="CashBoxNumpadKeypressEvent" requiredInterface__OperationRequiredRole="_J8kWV9Z_Eee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_ChMildbPEeeA6uet0yIgvwX" entityName="ExpressModeDisabledEvent" requiredInterface__OperationRequiredRole="_aExwB9Z_Eee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_Ta0LFdbPEeeA6uet0yIgvw1X" entityName="CashBoxClosedEvent1" requiredInterface__OperationRequiredRole="_qKZIt9Z_Eee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_Ta0LFdbPEeeA6uet0yIgvw2X" entityName="CashBoxClosedEvent2" requiredInterface__OperationRequiredRole="_qKZIt9Z_Eee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_PLQP1dbOEeeA6uet0yIgvw2X" entityName="CashAmountEnteredEvent2" requiredInterface__OperationRequiredRole="_mNHFt9Z9Eee7CN4Qm4czKQ1"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_PLQP1dbOEeeA6uet0yIgvw3X" entityName="CashAmountEnteredEvent3" requiredInterface__OperationRequiredRole="_mNHFt9Z9Eee7CN4Qm4czKQ1"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_nJ2W9dbOEeeA6uet0yIgvw2X" entityName="SaleFinishedEvent2" requiredInterface__OperationRequiredRole="_NUhmE9Z-Eee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_uIouBdbOEeeA6uet0yIgvw2X" entityName="PaymentModeSelectedEvent2" requiredInterface__OperationRequiredRole="_gJReh9Z-Eee7CN4Qm4czKQ"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_G9USN0h9Eee76qhR2wvsFAX" describedService__SEFF="_j16kMtYgEeWrM-HnT5f_ug">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_yAXOxkiKEeeAK9a9NwDLowX" successor_AbstractAction="_6x_5XNtPEee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_yAXOx0iKEeeAK9a9NwDLowX" predecessor_AbstractAction="_6x_5XNtPEee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_6x_5XNtPEee4ToXBRRujSwX" entityName="TempPerformanceCosts" predecessor_AbstractAction="_yAXOxkiKEeeAK9a9NwDLowX" successor_AbstractAction="_yAXOx0iKEeeAK9a9NwDLowX">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="2"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_eSjTR0h9Eee76qhR2wvsFAX" describedService__SEFF="_j16kM9YgEeWrM-HnT5f_ug">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_yAXOykiKEeeAK9a9NwDLowX" successor_AbstractAction="_hVq8ZtbPEeeA6uet0yIgvw1X"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_yAXOy0iKEeeAK9a9NwDLowX" predecessor_AbstractAction="_PKombNtQEee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_hVq8ZtbPEeeA6uet0yIgvw1X" entityName="fireCashBoxClosedEvent" predecessor_AbstractAction="_yAXOykiKEeeAK9a9NwDLowX" successor_AbstractAction="_hVq8ZtbPEeeA6uet0yIgvw2X" calledService_ExternalService="_ruh08NZ_Eee7CN4Qm4czKQ" role_ExternalService="_Ta0LFdbPEeeA6uet0yIgvw1X"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_hVq8ZtbPEeeA6uet0yIgvw2X" entityName="fireCashBoxClosedEvent" predecessor_AbstractAction="_hVq8ZtbPEeeA6uet0yIgvw1X" successor_AbstractAction="_PKombNtQEee4ToXBRRujSwX" calledService_ExternalService="_ruh08NZ_Eee7CN4Qm4czKQ" role_ExternalService="_Ta0LFdbPEeeA6uet0yIgvw1X"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_PKombNtQEee4ToXBRRujSwX" entityName="TempPerformanceCosts" predecessor_AbstractAction="_hVq8ZtbPEeeA6uet0yIgvw2X" successor_AbstractAction="_yAXOy0iKEeeAK9a9NwDLowX">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="2"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_hqlmF0h9Eee76qhR2wvsFAX" describedService__SEFF="_j16kNNYgEeWrM-HnT5f_ug">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_yAXOzkiKEeeAK9a9NwDLowX" successor_AbstractAction="_uPhazNtQEee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_yAXOz0iKEeeAK9a9NwDLowX" predecessor_AbstractAction="_uPhazNtQEee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_uPhazNtQEee4ToXBRRujSwX" entityName="TempPerformanceCosts" predecessor_AbstractAction="_yAXOzkiKEeeAK9a9NwDLowX" successor_AbstractAction="_yAXOz0iKEeeAK9a9NwDLowX">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="1"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_kD9RN0h9Eee76qhR2wvsFAX" describedService__SEFF="_j16kNdYgEeWrM-HnT5f_ug">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_yAXO0kiKEeeAK9a9NwDLowX" successor_AbstractAction="_ReNWHNtREee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_yAXO00iKEeeAK9a9NwDLowX" predecessor_AbstractAction="_ReNWHNtREee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_ReNWHNtREee4ToXBRRujSwX" entityName="TempPerformanceCosts" predecessor_AbstractAction="_yAXO0kiKEeeAK9a9NwDLowX" successor_AbstractAction="_yAXO00iKEeeAK9a9NwDLowX">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="4"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_oqeJV0h9Eee76qhR2wvsFAX" describedService__SEFF="_j17yUNYgEeWrM-HnT5f_ug">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_yAXO1kiKEeeAK9a9NwDLowX" successor_AbstractAction="_m3LezNtREee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_yAXO10iKEeeAK9a9NwDLowX" predecessor_AbstractAction="_m3LezNtREee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_m3LezNtREee4ToXBRRujSwX" entityName="TempPerformanceCosts" predecessor_AbstractAction="_yAXO1kiKEeeAK9a9NwDLowX" successor_AbstractAction="_yAXO10iKEeeAK9a9NwDLowX">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="4"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_snqXp0h9Eee76qhR2wvsFAX" describedService__SEFF="_j19ngNYgEeWrM-HnT5f_ug">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_yAXO2kiKEeeAK9a9NwDLowX" successor_AbstractAction="_oxf2bNtREee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_yAXO20iKEeeAK9a9NwDLowX" predecessor_AbstractAction="_oxf2bNtREee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_oxf2bNtREee4ToXBRRujSwX" entityName="TempPerformanceCosts" predecessor_AbstractAction="_yAXO2kiKEeeAK9a9NwDLowX" successor_AbstractAction="_yAXO20iKEeeAK9a9NwDLowX">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="2"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_j15WENYgEeWrM-HnT5f_ugX" entityName=" org.cocome.tradingsystem.cashdeskline.cashdesk.FastBarcodeScanner">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_j15WE9YgEeWrM-HnT5f_ugX" entityName="IBarcodeScannerModel" providedInterface__OperationProvidedRole="_j15WEdYgEeWrM-HnT5f_ug"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_6ViTFdaqEee7CN4Qm4czKQX" entityName="ProductBarcodeScannedEvent" requiredInterface__OperationRequiredRole="_L0FcJ9aAEee7CN4Qm4czKQ"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_zvIGZ0h5Eee76qhR2wvsFAX" describedService__SEFF="_xkWDANbkEeWn1fcBwCRaXA">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_AwLZgkiIEee76qhR2wvsFAX" successor_AbstractAction="_lRmJxtarEee7CN4Qm4czKQX"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_Bj8YwEiIEee76qhR2wvsFAX" predecessor_AbstractAction="_LjeZ3NtNEee4ToXBRRujSwX"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_lRmJxtarEee7CN4Qm4czKQX" entityName="fireProductBarcodeScannedEvent" predecessor_AbstractAction="_AwLZgkiIEee76qhR2wvsFAX" successor_AbstractAction="_LjeZ3NtNEee4ToXBRRujSwX" calledService_ExternalService="_NSq6ANaAEee7CN4Qm4czKQ" role_ExternalService="_6ViTFdaqEee7CN4Qm4czKQX"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_LjeZ3NtNEee4ToXBRRujSwX" entityName="TempPerformanceCosts" predecessor_AbstractAction="_lRmJxtarEee7CN4Qm4czKQX" successor_AbstractAction="_Bj8YwEiIEee76qhR2wvsFAX">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0.65"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_j15WENYgEeWrM-HnT5f_ugZ" entityName=" org.cocome.tradingsystem.cashdeskline.cashdesk.SlowBarcodeScanner">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_j15WE9YgEeWrM-HnT5f_ugZ" entityName="IBarcodeScannerModel" providedInterface__OperationProvidedRole="_j15WEdYgEeWrM-HnT5f_ug"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_6ViTFdaqEee7CN4Qm4czKQZ" entityName="ProductBarcodeScannedEvent" requiredInterface__OperationRequiredRole="_L0FcJ9aAEee7CN4Qm4czKQ"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_zvIGZ0h5Eee76qhR2wvsFAZ" describedService__SEFF="_xkWDANbkEeWn1fcBwCRaXA">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_AwLZgkiIEee76qhR2wvsFAZ" successor_AbstractAction="_lRmJxtarEee7CN4Qm4czKQZ"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_Bj8YwEiIEee76qhR2wvsFAZ" predecessor_AbstractAction="_LjeZ3NtNEee4ToXBRRujSwZ"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_lRmJxtarEee7CN4Qm4czKQZ" entityName="fireProductBarcodeScannedEvent" predecessor_AbstractAction="_AwLZgkiIEee76qhR2wvsFAZ" successor_AbstractAction="_LjeZ3NtNEee4ToXBRRujSwZ" calledService_ExternalService="_NSq6ANaAEee7CN4Qm4czKQ" role_ExternalService="_6ViTFdaqEee7CN4Qm4czKQZ"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_LjeZ3NtNEee4ToXBRRujSwZ" entityName="TempPerformanceCosts" predecessor_AbstractAction="_lRmJxtarEee7CN4Qm4czKQZ" successor_AbstractAction="_Bj8YwEiIEee76qhR2wvsFAZ">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="1.5"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_5atmgaZiEea90o6iaEaVPw" entityName="ICashDeskDAO">
     <signatures__OperationInterface id="_K5a5EKZjEea90o6iaEaVPw" entityName="startSale">
       <parameters__OperationSignature parameterName="cashDeskName">
@@ -2198,13 +2402,13 @@
       <parameters__OperationSignature dataType__Parameter="_j2DuINYgEeWrM-HnT5f_ug" parameterName="Parameter Name&#x9;PaymentModeRejectedEventDataType"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_mNHFt9Z9Eee7CN4Qm4czKQ" entityName="CashAmountEnteredEventSaleStartedEvent">
-    <signatures__OperationInterface id="_ooe78NZ9Eee7CN4Qm4czKQ" entityName="CashAmountEnteredEvent">
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_mNHFt9Z9Eee7CN4Qm4czKQ1" entityName="CashAmountEnteredEventSaleStartedEvent1">
+    <signatures__OperationInterface id="_ooe78NZ9Eee7CN4Qm4czKQ1" entityName="CashAmountEnteredEvent">
       <parameters__OperationSignature parameterName="amount">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.3"/>
       </parameters__OperationSignature>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="_rGhrsNZ9Eee7CN4Qm4czKQ" entityName="SaleStartedEvent">
+    <signatures__OperationInterface id="_rGhrsNZ9Eee7CN4Qm4czKQ1" entityName="SaleStartedEvent">
       <parameters__OperationSignature dataType__Parameter="_JrEsoFaZEeeJY7d6iKM31g" parameterName="saleStartedEvent"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
