@@ -969,6 +969,10 @@
         </resourceDemand_Action>
       </steps_Behaviour>
     </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_TVhCV0aDEeitouUJIWiQOA" describedService__SEFF="_5olPoNZsEee7CN4Qm4czKQ">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_bF4AQkaDEeitouUJIWiQOA" successor_AbstractAction="_dxMXAEaDEeitouUJIWiQOA"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_dxMXAEaDEeitouUJIWiQOA" predecessor_AbstractAction="_bF4AQkaDEeitouUJIWiQOA"/>
+    </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_wDKjOewkEeW_LdalkgkVnQ" entityName="org.cocome.tradingsystem.cashdeskline.cashdesk.Printer">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_0effAewkEeW_LdalkgkVnQ" entityName="IPrinterModel" providedInterface__OperationProvidedRole="_j5pNoNYgEeWrM-HnT5f_ug"/>
@@ -1143,6 +1147,10 @@
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_TVhCV0aDEeitouUJIWiQOA2" describedService__SEFF="_5olPoNZsEee7CN4Qm4czKQ">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_bF4AQkaDEeitouUJIWiQOA2" successor_AbstractAction="_dxMXAEaDEeitouUJIWiQOA2"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_dxMXAEaDEeitouUJIWiQOA2" predecessor_AbstractAction="_bF4AQkaDEeitouUJIWiQOA2"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_cje7mewdEeW_LdalkgkVnQ" entityName="org.cocome.tradingsystem.cashdeskline.cashdesk.UserDisplay">
@@ -1863,9 +1871,9 @@
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_ohcztREPEeaZraF8j4MsOw" entityName="IStoreInventoryLocal" requiredInterface__OperationRequiredRole="_j4ldsdYgEeWrM-HnT5f_ug"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_huI6NdbkEeeA6uet0yIgvw" entityName="SaleRegisteredEvent" requiredInterface__OperationRequiredRole="_oYG2R9aAEee7CN4Qm4czKQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_i7hTVdbkEeeA6uet0yIgvw" entityName="RunningTotalChangedEventSaleSuccessEvent" requiredInterface__OperationRequiredRole="_wWMeR9ZsEee7CN4Qm4czKQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_jUAr1dbkEeeA6uet0yIgvw1" entityName="ChangeAmountCalculatedEvent" requiredInterface__OperationRequiredRole="_fKoUt9ZtEee7CN4Qm4czKQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_jUAr1dbkEeeA6uet0yIgvw2" entityName="ChangeAmountCalculatedEvent" requiredInterface__OperationRequiredRole="_fKoUt9ZtEee7CN4Qm4czKQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_jUAr1dbkEeeA6uet0yIgvw3" entityName="ChangeAmountCalculatedEvent" requiredInterface__OperationRequiredRole="_fKoUt9ZtEee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_jUAr1dbkEeeA6uet0yIgvw1" entityName="ChangeAmountCalculatedEvent1" requiredInterface__OperationRequiredRole="_fKoUt9ZtEee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_jUAr1dbkEeeA6uet0yIgvw2" entityName="ChangeAmountCalculatedEvent2" requiredInterface__OperationRequiredRole="_fKoUt9ZtEee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_jUAr1dbkEeeA6uet0yIgvw3" entityName="ChangeAmountCalculatedEvent3" requiredInterface__OperationRequiredRole="_fKoUt9ZtEee7CN4Qm4czKQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_j7rIxdbkEeeA6uet0yIgvw" entityName="InvalidInputEvent" requiredInterface__OperationRequiredRole="_uK85R9ZtEee7CN4Qm4czKQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_kdLTVdbkEeeA6uet0yIgvw1" entityName="CashAmountEnteredEvent1" requiredInterface__OperationRequiredRole="_mNHFt9Z9Eee7CN4Qm4czKQ1"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_kdLTVdbkEeeA6uet0yIgvw3" entityName="CashAmountEnteredEvent3" requiredInterface__OperationRequiredRole="_mNHFt9Z9Eee7CN4Qm4czKQ1"/>
@@ -5599,7 +5607,7 @@
       </parameters__OperationSignature>
     </signatures__OperationInterface>
   </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_m8odoF_BEea_gvFl-mCXRQ" entityName="IAuthenticator">
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_m8odoF_BEea_gvFl-mCXRQ" entityName="IAuthenticator2">
     <signatures__OperationInterface id="_m9pEsF_BEea_gvFl-mCXRQ" entityName="checkCredentials">
       <parameters__OperationSignature dataType__Parameter="_m8pEsV_BEea_gvFl-mCXRQ" parameterName="user"/>
       <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
