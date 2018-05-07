@@ -3490,7 +3490,7 @@
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_5atmgaZiEea90o6iaEaVPw" entityName="ICashDeskDAO">
-    <signatures__OperationInterface id="_K5a5EKZjEea90o6iaEaVPw" entityName="startSale">
+    <signatures__OperationInterface id="_K5a5EKZjEea90o6iaEaVPw" entityName="startSaleDAO">
       <parameters__OperationSignature parameterName="cashDeskName">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
       </parameters__OperationSignature>
@@ -3498,7 +3498,7 @@
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
       </parameters__OperationSignature>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="_NL55EKZjEea90o6iaEaVPw" entityName="isInExpressMode">
+    <signatures__OperationInterface id="_NL55EKZjEea90o6iaEaVPw" entityName="isInExpressModeDAO">
       <parameters__OperationSignature parameterName="cashDeskName">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
       </parameters__OperationSignature>
@@ -3507,7 +3507,7 @@
       </parameters__OperationSignature>
       <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="_QNHAQKZjEea90o6iaEaVPw" entityName="getDisplayMessage">
+    <signatures__OperationInterface id="_QNHAQKZjEea90o6iaEaVPw" entityName="getDisplayMessageDAO">
       <parameters__OperationSignature parameterName="cashDeskName">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
       </parameters__OperationSignature>
@@ -3516,7 +3516,7 @@
       </parameters__OperationSignature>
       <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="_SyK-AKZjEea90o6iaEaVPw" entityName="getPrinterOutput" returnType__OperationSignature="_kRVU4tYgEeWrM-HnT5f_ug">
+    <signatures__OperationInterface id="_SyK-AKZjEea90o6iaEaVPw" entityName="getPrinterOutputDAO" returnType__OperationSignature="_kRVU4tYgEeWrM-HnT5f_ug">
       <parameters__OperationSignature parameterName="cashDeskName">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
       </parameters__OperationSignature>
@@ -3524,7 +3524,7 @@
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
       </parameters__OperationSignature>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="_fnZkAKZjEea90o6iaEaVPw" entityName="enterCashAmount">
+    <signatures__OperationInterface id="_fnZkAKZjEea90o6iaEaVPw" entityName="enterCashAmountDAO">
       <parameters__OperationSignature parameterName="cashDeskName">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
       </parameters__OperationSignature>
@@ -3535,7 +3535,7 @@
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.3"/>
       </parameters__OperationSignature>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="_5TIiYKZjEea90o6iaEaVPw" entityName="enterCardInfo">
+    <signatures__OperationInterface id="_5TIiYKZjEea90o6iaEaVPw" entityName="enterCardInfoDAO">
       <parameters__OperationSignature parameterName="cashDeskName">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
       </parameters__OperationSignature>
@@ -3549,7 +3549,7 @@
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
       </parameters__OperationSignature>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="_6silUKZjEea90o6iaEaVPw" entityName="startCashPayment">
+    <signatures__OperationInterface id="_6silUKZjEea90o6iaEaVPw" entityName="startCashPaymentDAO">
       <parameters__OperationSignature parameterName="cashDeskName">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
       </parameters__OperationSignature>
@@ -3557,7 +3557,7 @@
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
       </parameters__OperationSignature>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="_88SaYKZjEea90o6iaEaVPw" entityName="startCreditCardPayment">
+    <signatures__OperationInterface id="_88SaYKZjEea90o6iaEaVPw" entityName="startCreditCardPaymentDAO">
       <parameters__OperationSignature parameterName="cashDeskName">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
       </parameters__OperationSignature>
@@ -3565,7 +3565,7 @@
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
       </parameters__OperationSignature>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="_-0RPsKZjEea90o6iaEaVPw" entityName="enterBarcode">
+    <signatures__OperationInterface id="_-0RPsKZjEea90o6iaEaVPw" entityName="enterBarcodeDAO">
       <parameters__OperationSignature parameterName="cashDeskName">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
       </parameters__OperationSignature>
