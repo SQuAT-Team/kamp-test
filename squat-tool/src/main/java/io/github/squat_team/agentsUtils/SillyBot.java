@@ -13,6 +13,7 @@ public abstract class SillyBot {
 	private String name;
 	protected List<Proposal> orderedProposals;
 	private ConcessionStrategy concessionStrategy;
+	private float acceptableLoss;
 	public void insertInOrder(Proposal p){
 		float utilityProposal=getUtilityFor(p);
 		if (orderedProposals.size() == 0) {
@@ -38,10 +39,11 @@ public abstract class SillyBot {
 	
 	public SillyBot(String name,float scenatioThreshold) {
 		orderedProposals=new ArrayList<Proposal>();
-		concessionStrategy=new DesiresDistance(this);//NashConcession(this);//EgocentricConcession(this);
+		concessionStrategy=new DesiresDistance(this);//new DesiresDistance(this);//NashConcession(this);//EgocentricConcession(this)
 		
 		this.name=name;
 		this.scenatioThreshold=scenatioThreshold;
+		acceptableLoss=20;
 //		indexInWhichUtilityBecomeZero=null;
 	}
 	public Proposal getBestProposal() {
@@ -57,7 +59,8 @@ public abstract class SillyBot {
 			System.out.println("Problema");
 		float proposalUtility=getUtilityFor(this.getProposalForArchitecture(proposal.getArchitectureName()));
 		
-		return (proposalUtility>=currentUtilty);
+		float accetableLossValue=currentUtilty*acceptableLoss;
+		return (proposalUtility>=(currentUtilty-accetableLossValue));
 	}
 	public int getIndexForArchitecture(String pcmArchitecture){
 		Proposal p=getProposalForArchitecture(pcmArchitecture);

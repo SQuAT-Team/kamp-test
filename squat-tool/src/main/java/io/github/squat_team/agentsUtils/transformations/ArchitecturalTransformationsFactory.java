@@ -19,8 +19,8 @@ public class ArchitecturalTransformationsFactory {
 	
 	public ArchitecturalTransformationsFactory() {
 		modifiabilityTrans=new ModifiabilityTransformationsFactory();
-		initialArchitecture=new ArchitecturalVersion("default","models","");
-		initialArchitecture.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/alternativeRepository.repository");
+		initialArchitecture=new ArchitecturalVersion("cocome-cloud","models","");
+		initialArchitecture.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithResourceDemands/alternativeRepository.repository");
 		//initialArchitecture=new ArchitecturalVersion("cocome-cloud","models/cocomeWithoutPickUpStoreAndServiceAdapter","");
 		//initialArchitecture.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithoutPickUpStoreAndServiceAdapter/alternativescocome-cloud.repository");
 		performanceTrans=new PerformanceTransformationFactory();
@@ -83,6 +83,7 @@ public class ArchitecturalTransformationsFactory {
 
 	private List<ArchitecturalVersion> generateArchitecturalVersionsUsingModifiabilityTransformations(
 			ArchitecturalVersion architecturalVersion) {
+		//System.out.println("The architectural version is: "+architecturalVersion);
 		return modifiabilityTrans.runModifiabilityTransformationsInAModel(architecturalVersion);
 	}
 	private List<ArchitecturalVersion> generateArchitecturalVersionsUsingPerformanceTransformations(

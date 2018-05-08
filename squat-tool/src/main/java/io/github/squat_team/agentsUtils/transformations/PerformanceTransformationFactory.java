@@ -22,10 +22,21 @@ public class PerformanceTransformationFactory {
 	public List<ArchitecturalVersion> generateArchitecturalVersionsUsingPerformanceTransformations(
 			ArchitecturalVersion architecturalVersion) {
 		List<ArchitecturalVersion> ret=new ArrayList<ArchitecturalVersion>();
-		AbstractPerformancePCMScenario workloadScenario = PerformanceScenarioHelper.createScenarioOfWorkload();
+		/*AbstractPerformancePCMScenario workloadScenario = PerformanceScenarioHelper.createScenarioOfWorkload();
 		ret.addAll(createAlternativesForScenario(architecturalVersion, workloadScenario));
 		AbstractPerformancePCMScenario cpuScenario = PerformanceScenarioHelper.createScenarioOfCPU();
-		ret.addAll(createAlternativesForScenario(architecturalVersion, cpuScenario));
+		ret.addAll(createAlternativesForScenario(architecturalVersion, cpuScenario))*/
+		AbstractPerformancePCMScenario cocomeScenario1 = PerformanceScenarioHelper.createScenario1Cocome();
+		ret.addAll(createAlternativesForScenario(architecturalVersion, cocomeScenario1));
+		
+		AbstractPerformancePCMScenario cocomeScenario2 = PerformanceScenarioHelper.createScenario2Cocome();
+		ret.addAll(createAlternativesForScenario(architecturalVersion, cocomeScenario2));
+		
+		AbstractPerformancePCMScenario cocomeScenario3 = PerformanceScenarioHelper.createScenario3Cocome();
+		ret.addAll(createAlternativesForScenario(architecturalVersion, cocomeScenario3));
+		
+		AbstractPerformancePCMScenario cocomeScenario4 = PerformanceScenarioHelper.createScenario4Cocome();
+		ret.addAll(createAlternativesForScenario(architecturalVersion, cocomeScenario4));
 		return ret;
 	}
 
