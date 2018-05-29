@@ -70,7 +70,7 @@ public class LoadHelper {
 	}
 	
 	private float calculateModifiabilityComplexity(PCMScenario scenario,String evaluationType, ArchitecturalVersion architecturalVersion) throws Exception {
-		boolean debug = true;
+		boolean debug = false;
 		@SuppressWarnings("unchecked")
 		Comparable<Float> expectedResponse = scenario.getExpectedResult().getResponse();
 		if(debug) java.lang.System.out.println("The goal of scenario: " + expectedResponse.toString());

@@ -44,10 +44,10 @@ public class SQuATSillyBotsNegotiator {
 		//architectureAlternatives=loadArchitecturalAlternatives(); This should be done for real. Now I'm hardcoding the results
 		//Step 1: Collect initial proposals
 		HashMap<SillyBot,Proposal> proposals = collectInitialProposals();
-		boolean redoRequest=false;
+		boolean redoRequest=true;
 		//Step 2: Loop until you reach an Agreement or a Conflict
 		while((!checkAgreement(proposals))||redoRequest){
-
+			redoRequest=false;
 			//Select Agent who has to concede
 			List<SillyBot> shouldConcede = selectWhoHasToConcede();
 
@@ -103,6 +103,16 @@ public class SQuATSillyBotsNegotiator {
 		System.out.println("Agreement: "+agreementProposal);
 		printCurrentState(agreementProposal);
 		printNonDominatedAlternatives();
+		printForExcell();
+	}
+
+	private void printForExcell() {
+		System.out.print(agreementProposal.getArchitectureName()+"\t"+sillyBots.get(0).getOrderedProposals().size()+"\t");
+		for (SillyBot sillyBot : sillyBots) {
+			Proposal p=sillyBot.getProposalForArchitecture(agreementProposal.getArchitectureName());
+			System.out.print((sillyBot.getOrderedProposals().indexOf(p)+1)+"\t"+p.getScenarioResponse()+"\t"+sillyBot.getUtilityFor(p)+"\t");	
+		}
+		System.out.println();
 	}
 
 	private void printNonDominatedAlternatives() {
@@ -259,6 +269,7 @@ public class SQuATSillyBotsNegotiator {
 			Proposal proposal = (Proposal) iterator.next();
 			if(checkAgreementForAgents(proposal)){
 				agreementProposal=proposal;
+				printForExcell();
 				return true;
 			}
 		}
@@ -294,8 +305,28 @@ public class SQuATSillyBotsNegotiator {
 				System.out.println(bot+" "+bot.getBestProposal());
 			}
 		}
+		printTopAlternativesForBot(10);
 		return ret;
 	}
+	private void printTopAlternativesForBot(int topX) {
+		for (SillyBot sillyBot : sillyBots) {
+			List<Proposal> proposals=sillyBot.getOrderedProposals();
+			for(int i=0; i<topX;i++){
+				Proposal p=proposals.get(i);
+				System.out.print(p.getArchitectureName()+"\t"+p.getScenarioResponse()+"\t"+sillyBot.getUtilityFor(p)+"\t"+(i+1)+"\t");
+				for (SillyBot sillyBot2 : sillyBots) {
+					if(sillyBot!=sillyBot2){
+						Proposal pForBot2=sillyBot2.getProposalForArchitecture(p.getArchitectureName());
+						System.out.print(pForBot2.getScenarioResponse()+"\t"+sillyBot2.getUtilityFor(pForBot2)+"\t"+(sillyBot2.getOrderedProposals().indexOf(pForBot2)+1)+"\t");
+					}
+				}
+				System.out.println();
+			}
+			
+		}
+		
+	}
+
 	private void filerBestKAlternatives(int k) {
 		Set<Proposal> proposalsForNextRound=new HashSet<>(); 
 		
@@ -320,6 +351,7 @@ public class SQuATSillyBotsNegotiator {
 			}
 			currentLevelOfTransformations++;
 		}
+		System.out.println("Finish");
 	}
 	public static void main(String[] args) {
 		new SQuATSillyBotsNegotiator().negotiatiateUntilAnAgreementIsReached();

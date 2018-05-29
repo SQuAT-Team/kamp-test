@@ -30,7 +30,15 @@ public class DesiresDistance extends ConcessionStrategy {
 		float ret=0;
 		for (SillyBot sillyBot : sillyBots) {
 			if(!sillyBot.equals(bot)){
-				ret=ret+Math.abs(sillyBot.getUtilityFor(p.getArchitectureName())-sillyBot.getUtilityFor(sillyBot.getCurrentProposal()));
+				float currentUtility=sillyBot.getUtilityFor(sillyBot.getCurrentProposal());
+				float proposedUtility=sillyBot.getUtilityFor(p.getArchitectureName());
+				if((proposedUtility-currentUtility)>0){
+					ret=ret+0;//it doesnt take into account this bot
+				}
+				else{
+					ret=ret+Math.abs(proposedUtility-currentUtility);
+				}
+				
 			}
 		}
 		return ret;

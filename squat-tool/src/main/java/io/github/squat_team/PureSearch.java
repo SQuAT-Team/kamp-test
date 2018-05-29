@@ -29,7 +29,7 @@ public class PureSearch {
 	
 	private void searchUntilLevel(int i) {
 		maxNumberOfLevels=i;
-		while(currentLevelOfTransformations<=maxNumberOfLevels){
+		while((currentLevelOfTransformations<=maxNumberOfLevels)&&(!noMoreAlternatives)){
 			createAlternativesForLevel();
 			if(!noMoreAlternatives){
 				filerBestKAlternatives(10);

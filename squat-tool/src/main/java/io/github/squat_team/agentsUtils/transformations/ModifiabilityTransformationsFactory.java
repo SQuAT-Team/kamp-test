@@ -32,8 +32,11 @@ public class ModifiabilityTransformationsFactory {
 		
 		
 		mergeRepository();
-		
-		ret.addAll(runWrapper());
+		try{
+			ret.addAll(runWrapper());
+		} catch (Exception e) {
+			System.err.println("Error in Wrapper");
+		}
 		List<ArchitecturalVersion> splitAlternatives=runSplitResp();
 		
 		ret.addAll(splitAlternatives);
@@ -46,7 +49,12 @@ public class ModifiabilityTransformationsFactory {
 			resourceSet = HenshinResourceSetManager.getInstance().getHenshinResourceSet(currentInitialArchitecture.getAbsolutePath());
 			currentInitialArchitecture=architecturalVersion;
 			mergeRepository();
-			List<ArchitecturalVersion> ret2=runWrapper();
+			List<ArchitecturalVersion> ret2;
+			try{
+				ret2=runWrapper();
+			}catch (Exception e) {
+				ret2=new ArrayList<ArchitecturalVersion>();
+			}
 			ret.addAll(ret2);
 			splitRepository(ret2);
 		}
