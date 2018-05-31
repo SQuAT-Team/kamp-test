@@ -56,11 +56,29 @@ public class JournalTest {
 		dirPath = machinePath + "squat-tool/src/test/resources/io/github/squat_team/journal/cocomeWithResourceDemands/";
 		String[] localPath = new String[] {
 				// initial architecture
-				"cocome-cloud"
+				"cocome-cloud",
+				// split responsibility
+//				"cocome-cloud-17-org.cocome.tradingsystem.cashdeskline.cashdesk.ExpressLightEventHandler",
+				"cocome-cloud-5-org.cocome.cloud.web.data.cashdeskdata"
+				// wrapper
+//				"cocome-cloud-30-IExpressLightModel",
+//				"cocome-cloud-31-IExpressLight",
+//				"cocome-cloud-57-ICashDeskQuery",
+//				"cocome-cloud-60-org.cocome.cloud.web.data.cashdeskdata.ICashDesk",
+//				"cocome-cloud-88-ICashDeskDAO"
 		};
 		modelNames = new String[] {
 				// initial architecture
-				"cocome-cloud"
+				"cocome-cloud",
+				// split responsibility
+//				"cocome-cloud-split-ExpressLightEventHandler",
+				"cocome-cloud-split-cashdeskdata"
+				// wrapper
+//				"cocome-cloud-wrapper-IExpressLightModel",
+//				"cocome-cloud-wrapper-IExpressLight",
+//				"cocome-cloud-wrapper-ICashDeskQuery",
+//				"cocome-cloud-wrapper-ICashDesk",
+//				"cocome-cloud-wrapper-ICashDeskDAO"
 		};
 		repositoryFile = new String[modelNames.length];
 		resourceEnvironmentFile = new String[modelNames.length];
@@ -108,6 +126,8 @@ public class JournalTest {
 		this.testModifiabilityScenario(this.createModifiabilityWithdrawMoney(type, response), "Cash Withdraw", evaluationType);
 		response = new Float(25000);
 		this.testModifiabilityScenario(this.createModifiabilityServiceLog(type, response), "Service Log", evaluationType);
+		//Print code
+		this.printCode();
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -414,12 +434,12 @@ public class JournalTest {
 		logProvRole.parameters.put("iname", "ILogStorage");
 		scenario.addChange(logProvRole);
 		//
-		ModifiabilityInstruction cashDeskDataLogReqRole = new ModifiabilityInstruction();
-		cashDeskDataLogReqRole.operation = ModifiabilityOperation.CREATE;
-		cashDeskDataLogReqRole.element = ModifiabilityElement.REQUIREDROLE;
-		cashDeskDataLogReqRole.parameters.put("cname", "org.cocome.cloud.web.data.cashdeskdata");
-		cashDeskDataLogReqRole.parameters.put("iname", "ILogStorage");
-		scenario.addChange(cashDeskDataLogReqRole);
+//		ModifiabilityInstruction cashDeskDataLogReqRole = new ModifiabilityInstruction();
+//		cashDeskDataLogReqRole.operation = ModifiabilityOperation.CREATE;
+//		cashDeskDataLogReqRole.element = ModifiabilityElement.REQUIREDROLE;
+//		cashDeskDataLogReqRole.parameters.put("cname", "org.cocome.cloud.web.data.cashdeskdata");
+//		cashDeskDataLogReqRole.parameters.put("iname", "ILogStorage");
+//		scenario.addChange(cashDeskDataLogReqRole);
 		//
 		ModifiabilityInstruction cashDeskInterface = new ModifiabilityInstruction();
 		cashDeskInterface.operation = ModifiabilityOperation.MODIFY;
@@ -438,6 +458,21 @@ public class JournalTest {
 		scenario.addChange(cashDeskQueryInterface);
 		//
 		return scenario;
+	}
+	
+	public void printCode() {
+		for(AnalysisResult r : results) {
+			if(r.qa.equals("Modifiability")) {
+				String variableName = r.scenario + "Bot";
+				String methodName = ".insertInOrder";
+				String classType = r.qa + "Proposal";
+				String components = r.measureValues.get(KAMPPCMBot.TYPE_ELEMENTS).toString();
+				String complexity = r.measureValues.get(KAMPPCMBot.TYPE_COMPLEXITY).toString() + "f";
+				String parameters = "(" + components + ", " + complexity + ", \"" + r.model + "\")";
+				String codeLine = variableName + methodName + "(" + "new " + classType + parameters + ")" + ";";
+				java.lang.System.out.println(codeLine);
+			}
+		}
 	}
 
 	class AnalysisResult {
