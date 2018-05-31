@@ -59,26 +59,30 @@ public class JournalTest {
 				"cocome-cloud",
 				// split responsibility
 //				"cocome-cloud-17-org.cocome.tradingsystem.cashdeskline.cashdesk.ExpressLightEventHandler",
-				"cocome-cloud-5-org.cocome.cloud.web.data.cashdeskdata"
+				"cocome-cloud-5-org.cocome.cloud.web.data.cashdeskdata",
 				// wrapper
-//				"cocome-cloud-30-IExpressLightModel",
-//				"cocome-cloud-31-IExpressLight",
-//				"cocome-cloud-57-ICashDeskQuery",
-//				"cocome-cloud-60-org.cocome.cloud.web.data.cashdeskdata.ICashDesk",
-//				"cocome-cloud-88-ICashDeskDAO"
+				"cocome-cloud-26-IUserDisplayModel",
+				"cocome-cloud-28-IPrinterModel",
+				"cocome-cloud-30-IExpressLightModel",
+				"cocome-cloud-31-IExpressLight",
+				"cocome-cloud-57-ICashDeskQuery",
+				"cocome-cloud-60-org.cocome.cloud.web.data.cashdeskdata.ICashDesk",
+				"cocome-cloud-88-ICashDeskDAO"
 		};
 		modelNames = new String[] {
 				// initial architecture
 				"cocome-cloud",
 				// split responsibility
 //				"cocome-cloud-split-ExpressLightEventHandler",
-				"cocome-cloud-split-cashdeskdata"
+				"cocome-cloud-split-cashdeskdata",
 				// wrapper
-//				"cocome-cloud-wrapper-IExpressLightModel",
-//				"cocome-cloud-wrapper-IExpressLight",
-//				"cocome-cloud-wrapper-ICashDeskQuery",
-//				"cocome-cloud-wrapper-ICashDesk",
-//				"cocome-cloud-wrapper-ICashDeskDAO"
+				"cocome-cloud-wrapper-IUserDisplayModel",
+				"cocome-cloud-wrapper-IPrinterModel",
+				"cocome-cloud-wrapper-IExpressLightModel",
+				"cocome-cloud-wrapper-IExpressLight",
+				"cocome-cloud-wrapper-ICashDeskQuery",
+				"cocome-cloud-wrapper-ICashDesk",
+				"cocome-cloud-wrapper-ICashDeskDAO"
 		};
 		repositoryFile = new String[modelNames.length];
 		resourceEnvironmentFile = new String[modelNames.length];
@@ -107,25 +111,25 @@ public class JournalTest {
 		//Affected components
 		evaluationType = KAMPPCMBot.TYPE_ELEMENTS;
 		type = ResponseMeasureType.NUMERIC;
-		response = new Integer(5);
-		this.testModifiabilityScenario(this.createModifiabilityNFC(type, response), "NFC Payment", evaluationType);
-		response = new Integer(3);
-		this.testModifiabilityScenario(this.createModifiabilityVIP(type, response), "VIP Cash Desks", evaluationType);
-		response = new Integer(8);
-		this.testModifiabilityScenario(this.createModifiabilityWithdrawMoney(type, response), "Cash Withdraw", evaluationType);
 		response = new Integer(4);
-		this.testModifiabilityScenario(this.createModifiabilityServiceLog(type, response), "Service Log", evaluationType);
+		this.testModifiabilityScenario(this.createModifiabilityNFC(type, response), "NFCPayment", evaluationType);
+		response = new Integer(5);
+		this.testModifiabilityScenario(this.createModifiabilityVIP(type, response), "VIPCashDesks", evaluationType);
+		response = new Integer(11);
+		this.testModifiabilityScenario(this.createModifiabilityWithdrawMoney(type, response), "CashWithdraw", evaluationType);
+		response = new Integer(3);
+		this.testModifiabilityScenario(this.createModifiabilityServiceLog(type, response), "ServiceLog", evaluationType);
 		//Complexity 
 		evaluationType = KAMPPCMBot.TYPE_COMPLEXITY;
 		type = ResponseMeasureType.DECIMAL;
-		response = new Float(1750);
-		this.testModifiabilityScenario(this.createModifiabilityNFC(type, response), "NFC Payment", evaluationType);
-		response = new Float(500);
-		this.testModifiabilityScenario(this.createModifiabilityVIP(type, response), "VIP Cash Desks", evaluationType);
-		response = new Float(50);
-		this.testModifiabilityScenario(this.createModifiabilityWithdrawMoney(type, response), "Cash Withdraw", evaluationType);
-		response = new Float(25000);
-		this.testModifiabilityScenario(this.createModifiabilityServiceLog(type, response), "Service Log", evaluationType);
+		response = new Float(1200);
+		this.testModifiabilityScenario(this.createModifiabilityNFC(type, response), "NFCPayment", evaluationType);
+		response = new Float(5000);
+		this.testModifiabilityScenario(this.createModifiabilityVIP(type, response), "VIPCashDesks", evaluationType);
+		response = new Float(200);
+		this.testModifiabilityScenario(this.createModifiabilityWithdrawMoney(type, response), "CashWithdraw", evaluationType);
+		response = new Float(2000);
+		this.testModifiabilityScenario(this.createModifiabilityServiceLog(type, response), "ServiceLog", evaluationType);
 		//Print code
 		this.printCode();
 	}
@@ -262,11 +266,11 @@ public class JournalTest {
 		setColorOp.parameters.put("iname", "IExpressLight");
 		setColorOp.parameters.put("oname", "setColor");
 		scenario.addChange(setColorOp);
-		ModifiabilityInstruction barLightComp = new ModifiabilityInstruction();
-		barLightComp.operation = ModifiabilityOperation.MODIFY;
-		barLightComp.element = ModifiabilityElement.COMPONENT;
-		barLightComp.parameters.put("name", "org.cocome.cloud.logic.webservice.cashdeskline.cashdeskservice.expresslight");
-		scenario.addChange(barLightComp);
+//		ModifiabilityInstruction barLightComp = new ModifiabilityInstruction();
+//		barLightComp.operation = ModifiabilityOperation.MODIFY;
+//		barLightComp.element = ModifiabilityElement.COMPONENT;
+//		barLightComp.parameters.put("name", "org.cocome.cloud.logic.webservice.cashdeskline.cashdeskservice.expresslight");
+//		scenario.addChange(barLightComp);
 		//
 		ModifiabilityInstruction VIPIdentifierInt = new ModifiabilityInstruction();
 		VIPIdentifierInt.operation = ModifiabilityOperation.CREATE;
@@ -291,18 +295,18 @@ public class JournalTest {
 		vipIdentifierProvRole.parameters.put("iname", "IVIPIdentifier");
 		scenario.addChange(vipIdentifierProvRole);
 		//
-		ModifiabilityInstruction connectorLink = new ModifiabilityInstruction();
-		connectorLink.operation = ModifiabilityOperation.CREATE;
-		connectorLink.element = ModifiabilityElement.REQUIREDROLE;
-		connectorLink.parameters.put("cname", "org.cocome.cloud.web.connector.cashdeskconnector");
-		connectorLink.parameters.put("iname", "IVIPIdentifier");
-		scenario.addChange(connectorLink);
+//		ModifiabilityInstruction connectorLink = new ModifiabilityInstruction();
+//		connectorLink.operation = ModifiabilityOperation.CREATE;
+//		connectorLink.element = ModifiabilityElement.REQUIREDROLE;
+//		connectorLink.parameters.put("cname", "org.cocome.cloud.web.data.cashdeskdata");
+//		connectorLink.parameters.put("iname", "IVIPIdentifier");
+//		scenario.addChange(connectorLink);
 		//
-		ModifiabilityInstruction cashDeskNewOps = new ModifiabilityInstruction();
-		cashDeskNewOps.operation = ModifiabilityOperation.MODIFY;
-		cashDeskNewOps.element = ModifiabilityElement.INTERFACE;
-		cashDeskNewOps.parameters.put("name", "ICashDeskQuery");
-		scenario.addChange(cashDeskNewOps);
+		ModifiabilityInstruction cashDeskInterface = new ModifiabilityInstruction();
+		cashDeskInterface.operation = ModifiabilityOperation.MODIFY;
+		cashDeskInterface.element = ModifiabilityElement.INTERFACE;
+		cashDeskInterface.parameters.put("name", "org.cocome.cloud.web.data.cashdeskdata.ICashDesk");
+		scenario.addChange(cashDeskInterface);
 		//
 		return scenario;
 	}
@@ -330,12 +334,24 @@ public class JournalTest {
 		signatureInt.element = ModifiabilityElement.INTERFACE;
 		signatureInt.parameters.put("name", "IDigitalSignature");
 		scenario.addChange(signatureInt);
-		ModifiabilityInstruction signatureOp = new ModifiabilityInstruction();
-		signatureOp.operation = ModifiabilityOperation.CREATE;
-		signatureOp.element = ModifiabilityElement.OPERATION;
-		signatureOp.parameters.put("iname", "IDigitalSignature");
-		signatureOp.parameters.put("oname", "saveAndValidateSignature");
-		scenario.addChange(signatureOp);
+		ModifiabilityInstruction validateSignatureOp = new ModifiabilityInstruction();
+		validateSignatureOp.operation = ModifiabilityOperation.CREATE;
+		validateSignatureOp.element = ModifiabilityElement.OPERATION;
+		validateSignatureOp.parameters.put("iname", "IDigitalSignature");
+		validateSignatureOp.parameters.put("oname", "validateSignature");
+		scenario.addChange(validateSignatureOp);
+		ModifiabilityInstruction saveSignatureOp = new ModifiabilityInstruction();
+		saveSignatureOp.operation = ModifiabilityOperation.CREATE;
+		saveSignatureOp.element = ModifiabilityElement.OPERATION;
+		saveSignatureOp.parameters.put("iname", "IDigitalSignature");
+		saveSignatureOp.parameters.put("oname", "saveSignature");
+		scenario.addChange(saveSignatureOp);
+		ModifiabilityInstruction getSignatureOp = new ModifiabilityInstruction();
+		getSignatureOp.operation = ModifiabilityOperation.CREATE;
+		getSignatureOp.element = ModifiabilityElement.OPERATION;
+		getSignatureOp.parameters.put("iname", "IDigitalSignature");
+		getSignatureOp.parameters.put("oname", "getSignature");
+		scenario.addChange(getSignatureOp);
 		//
 		ModifiabilityInstruction banelcoWithdrawComp = new ModifiabilityInstruction();
 		banelcoWithdrawComp.operation = ModifiabilityOperation.CREATE;
@@ -396,11 +412,22 @@ public class JournalTest {
 		cardReaderSignatureReqRole.parameters.put("cname", "org.cocome.tradingsystem.cashdeskline.cashdesk.CardReader");
 		cardReaderSignatureReqRole.parameters.put("iname", "IDigitalSignature");
 		scenario.addChange(cardReaderSignatureReqRole);
-		ModifiabilityInstruction cardReaderComp = new ModifiabilityInstruction();
-		cardReaderComp.operation = ModifiabilityOperation.MODIFY;
-		cardReaderComp.element = ModifiabilityElement.COMPONENT;
-		cardReaderComp.parameters.put("name", "org.cocome.tradingsystem.cashdeskline.cashdesk.CardReader");
-		scenario.addChange(cardReaderComp);
+		ModifiabilityInstruction cardReaderInt = new ModifiabilityInstruction();
+		cardReaderInt.operation = ModifiabilityOperation.MODIFY;
+		cardReaderInt.element = ModifiabilityElement.INTERFACE;
+		cardReaderInt.parameters.put("name", "ICardReaderModel");
+		scenario.addChange(cardReaderInt);
+		//
+		ModifiabilityInstruction printerInt = new ModifiabilityInstruction();
+		printerInt.operation = ModifiabilityOperation.MODIFY;
+		printerInt.element = ModifiabilityElement.INTERFACE;
+		printerInt.parameters.put("name", "IPrinterModel");
+		scenario.addChange(printerInt);
+		ModifiabilityInstruction displayInt = new ModifiabilityInstruction();
+		displayInt.operation = ModifiabilityOperation.MODIFY;
+		displayInt.element = ModifiabilityElement.INTERFACE;
+		displayInt.parameters.put("name", "IUserDisplayModel");
+		scenario.addChange(displayInt);
 		//
 		return scenario;
 	}
@@ -434,28 +461,11 @@ public class JournalTest {
 		logProvRole.parameters.put("iname", "ILogStorage");
 		scenario.addChange(logProvRole);
 		//
-//		ModifiabilityInstruction cashDeskDataLogReqRole = new ModifiabilityInstruction();
-//		cashDeskDataLogReqRole.operation = ModifiabilityOperation.CREATE;
-//		cashDeskDataLogReqRole.element = ModifiabilityElement.REQUIREDROLE;
-//		cashDeskDataLogReqRole.parameters.put("cname", "org.cocome.cloud.web.data.cashdeskdata");
-//		cashDeskDataLogReqRole.parameters.put("iname", "ILogStorage");
-//		scenario.addChange(cashDeskDataLogReqRole);
-		//
-		ModifiabilityInstruction cashDeskInterface = new ModifiabilityInstruction();
-		cashDeskInterface.operation = ModifiabilityOperation.MODIFY;
-		cashDeskInterface.element = ModifiabilityElement.INTERFACE;
-		cashDeskInterface.parameters.put("name", "org.cocome.cloud.web.data.cashdeskdata.ICashDesk");
-		scenario.addChange(cashDeskInterface);
 		ModifiabilityInstruction cashDeskDAOInterface = new ModifiabilityInstruction();
 		cashDeskDAOInterface.operation = ModifiabilityOperation.MODIFY;
 		cashDeskDAOInterface.element = ModifiabilityElement.INTERFACE;
 		cashDeskDAOInterface.parameters.put("name", "ICashDeskDAO");
 		scenario.addChange(cashDeskDAOInterface);
-		ModifiabilityInstruction cashDeskQueryInterface = new ModifiabilityInstruction();
-		cashDeskQueryInterface.operation = ModifiabilityOperation.MODIFY;
-		cashDeskQueryInterface.element = ModifiabilityElement.INTERFACE;
-		cashDeskQueryInterface.parameters.put("name", "ICashDeskQuery");
-		scenario.addChange(cashDeskQueryInterface);
 		//
 		return scenario;
 	}
