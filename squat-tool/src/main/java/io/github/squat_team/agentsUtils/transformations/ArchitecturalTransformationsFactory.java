@@ -19,7 +19,7 @@ public class ArchitecturalTransformationsFactory {
 	
 	public ArchitecturalTransformationsFactory() {
 		modifiabilityTrans=new ModifiabilityTransformationsFactory();
-		initialArchitecture=new ArchitecturalVersion("cocome-cloud","models","");
+		initialArchitecture=new ArchitecturalVersion("cocome-cloud","models/cocomeWithResourceDemands","");
 		initialArchitecture.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithResourceDemands/alternativeRepository.repository");
 		//initialArchitecture=new ArchitecturalVersion("cocome-cloud","models/cocomeWithoutPickUpStoreAndServiceAdapter","");
 		//initialArchitecture.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithoutPickUpStoreAndServiceAdapter/alternativescocome-cloud.repository");
