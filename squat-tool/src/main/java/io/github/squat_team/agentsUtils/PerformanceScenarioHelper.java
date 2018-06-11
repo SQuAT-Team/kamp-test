@@ -20,6 +20,7 @@ import io.github.squat_team.performance.PerformancePCMUsageScenario;
 import io.github.squat_team.performance.PerformancePCMWokloadScenario;
 import io.github.squat_team.performance.peropteryx.PerOpteryxPCMBot;
 import io.github.squat_team.performance.peropteryx.configuration.ConfigurationImprovedImproved;
+import io.github.squat_team.performance.peropteryx.configuration.DesigndecisionConfigImproved;
 import io.github.squat_team.util.SQuATHelper;
 import test.TestConstants;
 
@@ -100,6 +101,15 @@ public class PerformanceScenarioHelper {
 		return scenario;
 	}
 	
+	private static void configureCpuClockRate(ConfigurationImprovedImproved configuration) {
+		DesigndecisionConfigImproved designdecisionConfig = configuration.getDesignDecisionConfig();
+		
+		// Set the boundary values for the IDs of the servers
+		designdecisionConfig.setLimits("_78qo4K2UEeaxN4gXuIkS2A", 200, 600);
+		designdecisionConfig.setLimits("_-5Q84K2UEeaxN4gXuIkS2A", 600, 1600);
+		designdecisionConfig.setLimits("_BgmykK2VEeaxN4gXuIkS2A", 350, 1000);
+		designdecisionConfig.setLimits("_FM6FMK2VEeaxN4gXuIkS2A", 250, 800);
+	}
 
 	public static PerOpteryxPCMBot createPCMBot(AbstractPerformancePCMScenario scenario) {
 		// create configuration
@@ -110,6 +120,8 @@ public class PerformanceScenarioHelper {
 		configuration.getPerOpteryxConfig().setGenerationSize(25);
 		configuration.getPerOpteryxConfig().setMaxIterations(7);
 
+		configureCpuClockRate(configuration);
+		
 		configuration.getLqnsConfig().setLqnsOutputDir(TestConstants.LQN_OUTPUT);
 		configuration.getExporterConfig().setPcmOutputFolder(TestConstants.PCM_STORAGE_PATH);
 		configuration.getPcmModelsConfig().setPathmapFolder(TestConstants.PCM_MODEL_FILES);
