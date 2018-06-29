@@ -25,6 +25,35 @@ import io.github.squat_team.util.SQuATHelper;
 import test.TestConstants;
 
 public class PerformanceScenarioHelper {
+	private AbstractPerformancePCMScenario cocomeS1;
+	private AbstractPerformancePCMScenario cocomeS2;
+	private AbstractPerformancePCMScenario cocomeS3;
+	private AbstractPerformancePCMScenario cocomeS4;
+	private PerOpteryxPCMBot cocomeBotS1;
+	private PerOpteryxPCMBot cocomeBotS2;
+	private PerOpteryxPCMBot cocomeBotS3;
+	private PerOpteryxPCMBot cocomeBotS4;
+	
+	private static PerformanceScenarioHelper instance;
+	
+	public static PerformanceScenarioHelper getInstance(){
+		if(instance==null)
+			instance=new PerformanceScenarioHelper();
+		return instance;
+	}
+	private PerformanceScenarioHelper() {
+		cocomeS1=null;
+		cocomeS2=null;
+		cocomeS3=null;
+		cocomeS4=null;
+		cocomeBotS1=null;
+		cocomeBotS2=null;
+		cocomeBotS3=null;
+		cocomeBotS4=null;
+	}
+	
+	
+	
 	public static AbstractPerformancePCMScenario createScenarioOfWorkload() {
 		ArrayList<String> workloadIDs = new ArrayList<String>();
 		workloadIDs.add(TestConstants.WORKLOAD_ID);
@@ -51,54 +80,67 @@ public class PerformanceScenarioHelper {
 	
 	// COCOME
 	
-	public static AbstractPerformancePCMScenario createScenario1Cocome() {
-		ArrayList<String> workloadIDs = new ArrayList<String>();
-		workloadIDs.add("_VgwxwHr3Eeek77WF10mCCg");
-		AbstractPerformancePCMScenario scenario = new PerformancePCMWokloadScenario(OptimizationType.MINIMIZATION,
-				workloadIDs, 1.1);
-		PCMResult expectedResponse = new PCMResult(ResponseMeasureType.DECIMAL);
-		expectedResponse.setResponse(6.0);
-		scenario.setExpectedResponse(expectedResponse);
-		scenario.setMetric(PerformanceMetric.RESPONSE_TIME);
-		return scenario;
+	public AbstractPerformancePCMScenario createScenario1Cocome() {
+		if(cocomeS1==null){
+			ArrayList<String> workloadIDs = new ArrayList<String>();
+			workloadIDs.add("_VgwxwHr3Eeek77WF10mCCg");
+			AbstractPerformancePCMScenario scenario = new PerformancePCMWokloadScenario(OptimizationType.MINIMIZATION,
+					workloadIDs, 1.1);
+			PCMResult expectedResponse = new PCMResult(ResponseMeasureType.DECIMAL);
+			expectedResponse.setResponse(6.0);
+			scenario.setExpectedResponse(expectedResponse);
+			scenario.setMetric(PerformanceMetric.RESPONSE_TIME);
+			cocomeS1=scenario;
+		}
+		
+		return cocomeS1;
 	}
 	
-	public static AbstractPerformancePCMScenario createScenario2Cocome() {
-		ArrayList<String> workloadIDs = new ArrayList<String>();
-		workloadIDs.add("_VgwxwHr3Eeek77WF10mCCg");
-		AbstractPerformancePCMScenario scenario = new PerformancePCMWokloadScenario(OptimizationType.MINIMIZATION,
-				workloadIDs, 1.5);
-		PCMResult expectedResponse = new PCMResult(ResponseMeasureType.DECIMAL);
-		expectedResponse.setResponse(6.0);
-		scenario.setExpectedResponse(expectedResponse);
-		scenario.setMetric(PerformanceMetric.RESPONSE_TIME);
-		return scenario;
+	public AbstractPerformancePCMScenario createScenario2Cocome() {
+		if(cocomeS2==null){
+			ArrayList<String> workloadIDs = new ArrayList<String>();
+			workloadIDs.add("_VgwxwHr3Eeek77WF10mCCg");
+			AbstractPerformancePCMScenario scenario = new PerformancePCMWokloadScenario(OptimizationType.MINIMIZATION,
+					workloadIDs, 1.5);
+			PCMResult expectedResponse = new PCMResult(ResponseMeasureType.DECIMAL);
+			expectedResponse.setResponse(6.0);
+			scenario.setExpectedResponse(expectedResponse);
+			scenario.setMetric(PerformanceMetric.RESPONSE_TIME);
+			cocomeS2=scenario;
+		}
+		return cocomeS2;
 	}
 	
-	public static AbstractPerformancePCMScenario createScenario3Cocome() {
-		ArrayList<String> cpuIDs = new ArrayList<String>();
-		cpuIDs.add("_WV4YUK2VEeaxN4gXuIkS2A");
-		AbstractPerformancePCMScenario scenario = new PerformancePCMCPUScenario(OptimizationType.MINIMIZATION,
-				cpuIDs, 0.5);
-		PCMResult expectedResponse = new PCMResult(ResponseMeasureType.DECIMAL);
-		expectedResponse.setResponse(6.0);
-		scenario.setExpectedResponse(expectedResponse);
-		scenario.setMetric(PerformanceMetric.RESPONSE_TIME);
-		return scenario;
+	public AbstractPerformancePCMScenario createScenario3Cocome() {
+		if(cocomeS3==null){
+			ArrayList<String> cpuIDs = new ArrayList<String>();
+			cpuIDs.add("_WV4YUK2VEeaxN4gXuIkS2A");
+			AbstractPerformancePCMScenario scenario = new PerformancePCMCPUScenario(OptimizationType.MINIMIZATION,
+					cpuIDs, 0.5);
+			PCMResult expectedResponse = new PCMResult(ResponseMeasureType.DECIMAL);
+			expectedResponse.setResponse(6.0);
+			scenario.setExpectedResponse(expectedResponse);
+			scenario.setMetric(PerformanceMetric.RESPONSE_TIME);
+			cocomeS3=scenario;
+		}
+		return cocomeS3;
 	}
 	
-	public static AbstractPerformancePCMScenario createScenario4Cocome() {
-		String loopIterations =  "IntPMF[(1; 0.01)(2; 0.01)(3; 0.02)(4; 0.02)(5; 0.03)(6; 0.03)(7; 0.04)(8; 0.04)(9; 0.05)(10; 0.06)"
-				+ "(11; 0.06)(12; 0.06)(13; 0.08)(14; 0.09)(15; 0.10)(16; 0.09)(17; 0.07)(18; 0.06)(19; 0.05)(20; 0.03)]";;
-		ArrayList<String> loopIDs = new ArrayList<String>();
-		loopIDs.add("_fsG44tqFEee4ToXBRRujSw");
-		AbstractPerformancePCMScenario scenario = new PerformancePCMUsageScenario(OptimizationType.MINIMIZATION,
-				loopIDs, loopIterations);
-		PCMResult expectedResponse = new PCMResult(ResponseMeasureType.DECIMAL);
-		expectedResponse.setResponse(6.0);
-		scenario.setExpectedResponse(expectedResponse);
-		scenario.setMetric(PerformanceMetric.RESPONSE_TIME);
-		return scenario;
+	public AbstractPerformancePCMScenario createScenario4Cocome() {
+		if(cocomeS4==null){
+			String loopIterations =  "IntPMF[(1; 0.01)(2; 0.01)(3; 0.02)(4; 0.02)(5; 0.03)(6; 0.03)(7; 0.04)(8; 0.04)(9; 0.05)(10; 0.06)"
+					+ "(11; 0.06)(12; 0.06)(13; 0.08)(14; 0.09)(15; 0.10)(16; 0.09)(17; 0.07)(18; 0.06)(19; 0.05)(20; 0.03)]";;
+			ArrayList<String> loopIDs = new ArrayList<String>();
+			loopIDs.add("_fsG44tqFEee4ToXBRRujSw");
+			AbstractPerformancePCMScenario scenario = new PerformancePCMUsageScenario(OptimizationType.MINIMIZATION,
+					loopIDs, loopIterations);
+			PCMResult expectedResponse = new PCMResult(ResponseMeasureType.DECIMAL);
+			expectedResponse.setResponse(6.0);
+			scenario.setExpectedResponse(expectedResponse);
+			scenario.setMetric(PerformanceMetric.RESPONSE_TIME);
+			cocomeS4=scenario;
+		}
+		return cocomeS4;
 	}
 	
 	private static void configureCpuClockRate(ConfigurationImprovedImproved configuration) {
@@ -111,14 +153,22 @@ public class PerformanceScenarioHelper {
 		designdecisionConfig.setLimits("_FM6FMK2VEeaxN4gXuIkS2A", 250, 800);
 	}
 
-	public static PerOpteryxPCMBot createPCMBot(AbstractPerformancePCMScenario scenario) {
+	public PerOpteryxPCMBot createPCMBot(AbstractPerformancePCMScenario scenario) {
+		if(scenario==cocomeS1&&cocomeBotS1!=null)
+			return cocomeBotS1;
+		if(scenario==cocomeS2&&cocomeBotS2!=null)
+			return cocomeBotS2;
+		if(scenario==cocomeS3&&cocomeBotS3!=null)
+			return cocomeBotS3;
+		if(scenario==cocomeS4&&cocomeBotS4!=null)
+			return cocomeBotS4;
 		// create configuration
 		ConfigurationImprovedImproved configuration = new ConfigurationImprovedImproved();
 		// The number is rather small, but still the improvement is at around 80%. In
 		// addition, one run does only need to do small steps if several iterations are
 		// applied.
-		configuration.getPerOpteryxConfig().setGenerationSize(25);
-		configuration.getPerOpteryxConfig().setMaxIterations(7);
+		configuration.getPerOpteryxConfig().setGenerationSize(10/*25*/);
+		configuration.getPerOpteryxConfig().setMaxIterations(4/*7*/);
 
 		configureCpuClockRate(configuration);
 		
@@ -133,12 +183,23 @@ public class PerformanceScenarioHelper {
 		// usually use it for debugging. This can be done later if
 		// necessary, so we do not need it.
 		bot.setDetailedAnalysis(false);
+		
+		if(scenario==cocomeS1)
+			cocomeBotS1=bot;
+		if(scenario==cocomeS2)
+			cocomeBotS2=bot;
+		if(scenario==cocomeS3)
+			cocomeBotS3=bot;
+		if(scenario==cocomeS4)
+			cocomeBotS4=bot;
+		
 		return bot;
 	}
 
 	public static PCMArchitectureInstance createArchitecture(ArchitecturalVersion architecturalVersion) {
 		// create Instance
-		Allocation allocation = SQuATHelper.loadAllocationModel("file:/" + architecturalVersion.getAbsolutePath()
+		try{
+				Allocation allocation = SQuATHelper.loadAllocationModel("file:/" + architecturalVersion.getAbsolutePath()
 				+ File.separator + architecturalVersion.getAllocationFilename());
 		org.palladiosimulator.pcm.system.System system = SQuATHelper.loadSystemModel("file:/"
 				+ architecturalVersion.getAbsolutePath() + File.separator + architecturalVersion.getSystemFilename());
@@ -149,7 +210,7 @@ public class PerformanceScenarioHelper {
 				+ File.separator + architecturalVersion.getRepositoryFilename());
 		UsageModel usageModel = SQuATHelper.loadUsageModel("file:/" + architecturalVersion.getAbsolutePath()
 				+ File.separator + architecturalVersion.getUsageFilename());
-
+	
 		PCMArchitectureInstance architecture = new PCMArchitectureInstance(architecturalVersion.getFileName(),
 				repository, system, allocation, resourceenvironment, usageModel);
 		if (architecturalVersion.getFullPathToAlternativeRepository() != null) {
@@ -157,7 +218,11 @@ public class PerformanceScenarioHelper {
 					.loadRepositoryModel("file:/" + architecturalVersion.getFullPathToAlternativeRepository());
 			architecture.setRepositoryWithAlternatives(repositoryAlternatives);
 		}
-
+	
 		return architecture;
+		}catch (Exception e) {
+			return null;
+		}
+		
 	}
 }

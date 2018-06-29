@@ -581,8 +581,16 @@ public class SplitRespNRunner extends PCMTransformerRunner {
 		for(RequiredRole newRequiredRole : newComponent.getRequiredRoles_InterfaceRequiringEntity()) {
 			if(newRequiredRole instanceof OperationRequiredRole) {
 				OperationRequiredRole newOperationRequiredRole = (OperationRequiredRole) newRequiredRole;
-				if(newOperationRequiredRole.getRequiredInterface__OperationRequiredRole().equals(oldOperationRequiredRole.getRequiredInterface__OperationRequiredRole()))
-					return newOperationRequiredRole;
+				
+				if(newOperationRequiredRole!=null&&oldOperationRequiredRole!=null){
+					OperationInterface oiNew=newOperationRequiredRole.getRequiredInterface__OperationRequiredRole();
+					OperationInterface oiOld=oldOperationRequiredRole.getRequiredInterface__OperationRequiredRole();
+					if(oiNew!=null && oiOld!=null)
+						if(oiNew.equals(oiOld))
+							return newOperationRequiredRole;
+				}
+				
+				
 			}
 		}
 		return null;

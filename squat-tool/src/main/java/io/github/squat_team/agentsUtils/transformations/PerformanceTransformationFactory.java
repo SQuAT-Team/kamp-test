@@ -2,8 +2,10 @@ package io.github.squat_team.agentsUtils.transformations;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 
@@ -18,6 +20,25 @@ import test.TestConstants;
 
 public class PerformanceTransformationFactory {
 
+	private static PerformanceTransformationFactory instance;
+	private Map<AbstractPerformancePCMScenario, Map<String,Double>> architecturalResponse;
+	
+	public static PerformanceTransformationFactory getInstance(){
+		if(instance==null)
+			instance=new PerformanceTransformationFactory();
+		return instance;
+	}
+	private PerformanceTransformationFactory(){
+		architecturalResponse=new HashMap<>();
+		architecturalResponse.put(PerformanceScenarioHelper.getInstance().createScenario1Cocome(), new HashMap<String,Double>());
+		architecturalResponse.put(PerformanceScenarioHelper.getInstance().createScenario2Cocome(), new HashMap<String,Double>());
+		architecturalResponse.put(PerformanceScenarioHelper.getInstance().createScenario3Cocome(), new HashMap<String,Double>());
+		architecturalResponse.put(PerformanceScenarioHelper.getInstance().createScenario4Cocome(), new HashMap<String,Double>());
+	}
+	
+	public Double getComplexityForArchitecture(AbstractPerformancePCMScenario scenario, String architectureAbsolutePath){
+		return architecturalResponse.get(scenario).get(architectureAbsolutePath);
+	}
 	
 	public List<ArchitecturalVersion> generateArchitecturalVersionsUsingPerformanceTransformations(
 			ArchitecturalVersion architecturalVersion) {
@@ -26,31 +47,44 @@ public class PerformanceTransformationFactory {
 		ret.addAll(createAlternativesForScenario(architecturalVersion, workloadScenario));
 		AbstractPerformancePCMScenario cpuScenario = PerformanceScenarioHelper.createScenarioOfCPU();
 		ret.addAll(createAlternativesForScenario(architecturalVersion, cpuScenario))*/
-		AbstractPerformancePCMScenario cocomeScenario1 = PerformanceScenarioHelper.createScenario1Cocome();
-		ret.addAll(createAlternativesForScenario(architecturalVersion, cocomeScenario1));
+		PCMArchitectureInstance architecture=PerformanceScenarioHelper.createArchitecture(architecturalVersion);
 		
-		AbstractPerformancePCMScenario cocomeScenario2 = PerformanceScenarioHelper.createScenario2Cocome();
-		ret.addAll(createAlternativesForScenario(architecturalVersion, cocomeScenario2));
-		
-		AbstractPerformancePCMScenario cocomeScenario3 = PerformanceScenarioHelper.createScenario3Cocome();
-		ret.addAll(createAlternativesForScenario(architecturalVersion, cocomeScenario3));
-		
-		AbstractPerformancePCMScenario cocomeScenario4 = PerformanceScenarioHelper.createScenario4Cocome();
-		ret.addAll(createAlternativesForScenario(architecturalVersion, cocomeScenario4));
+		System.out.println("Loading performance scenario P1");
+		AbstractPerformancePCMScenario cocomeScenario1 = PerformanceScenarioHelper.getInstance().createScenario1Cocome();
+		ret.addAll(/*selectSubset(*/createAlternativesForScenario(architecture, cocomeScenario1)/*,20f)*/);
+		System.out.println("Loading performance scenario P2");
+		AbstractPerformancePCMScenario cocomeScenario2 = PerformanceScenarioHelper.getInstance().createScenario2Cocome();
+		ret.addAll(/*selectSubset(*/createAlternativesForScenario(architecture, cocomeScenario2)/*,20f)*/);
+		System.out.println("Loading performance scenario P3");
+		AbstractPerformancePCMScenario cocomeScenario3 = PerformanceScenarioHelper.getInstance().createScenario3Cocome();
+		ret.addAll(/*selectSubset(*/createAlternativesForScenario(architecture, cocomeScenario3)/*,20f)*/);
+		System.out.println("Loading performance scenario P4");
+		AbstractPerformancePCMScenario cocomeScenario4 = PerformanceScenarioHelper.getInstance().createScenario4Cocome();
+		ret.addAll(/*selectSubset(*/createAlternativesForScenario(architecture, cocomeScenario4)/*,20f)*/);
 		return ret;
 	}
 
-	
-
-	private List<ArchitecturalVersion> createAlternativesForScenario(ArchitecturalVersion architecturalVersion,
-			AbstractPerformancePCMScenario scenario) {
+	/**Select the first N architectures according to @param percentage
+	 * 
+	 * @param splitAlternatives
+	 * @param percentage
+	 * @return
+	 */
+	private List<ArchitecturalVersion> selectSubset(List<ArchitecturalVersion> splitAlternatives,
+			float percentage) {
+		int n=(int) ((percentage*splitAlternatives.size())/100f);
 		
+		return splitAlternatives.subList(0, n);
+	}
+
+	private List<ArchitecturalVersion> createAlternativesForScenario(PCMArchitectureInstance architecture,
+			AbstractPerformancePCMScenario scenario) {
 		
 		List<ArchitecturalVersion> ret=new ArrayList<ArchitecturalVersion>();
 		
 
-		PerOpteryxPCMBot bot=PerformanceScenarioHelper.createPCMBot(scenario);
-		PCMArchitectureInstance architecture=PerformanceScenarioHelper.createArchitecture(architecturalVersion);
+		PerOpteryxPCMBot bot=PerformanceScenarioHelper.getInstance().createPCMBot(scenario);
+		//PCMArchitectureInstance architecture=PerformanceScenarioHelper.createArchitecture(architecturalVersion);
 		
 		
 		List<PCMScenarioResult> results = bot.searchForAlternatives(architecture);
@@ -65,9 +99,14 @@ public class PerformanceTransformationFactory {
 			PCMWorkingCopyCreator copyCreator=new PCMWorkingCopyCreator(newModelName, new File(TestConstants.MAIN_STORAGE_PATH));
 			PCMArchitectureInstance archInstanceInRightLocation=copyCreator.createWorkingCopy(archInstance);
 			File modelFileRightLocation=new File(archInstanceInRightLocation.getUsageModel().eResource().getURI().toFileString());
-			ArchitecturalVersion newAlternative=new ArchitecturalVersion(modelFileRightLocation.getName().substring(0, modelFileRightLocation.getName().lastIndexOf('.')), modelFileRightLocation.getParentFile().getName(), ArchitecturalVersion.PERFORMANCE);
+			
+			
+			
+			ArchitecturalVersion newAlternative=new ArchitecturalVersion(modelFileRightLocation.getName().substring(0, modelFileRightLocation.getName().lastIndexOf('.')), modelFileRightLocation.getParentFile().getAbsolutePath/*getName*/(), ArchitecturalVersion.PERFORMANCE);
 		
 			newAlternative.setFullPathToAlternativeRepository(archInstanceInRightLocation.getRepositoryWithAlternatives().eResource().getURI().toFileString());
+			
+			architecturalResponse.get(scenario).put(newAlternative.getAbsolutePath(), (Double)pcmScenarioResult.getResult().getResponse());
 			ret.add(newAlternative);
 		}
 		

@@ -11,6 +11,7 @@ import org.palladiosimulator.pcm.system.System;
 import org.palladiosimulator.pcm.usagemodel.UsageModel;
 
 import edu.squat.transformations.ArchitecturalVersion;
+import io.github.squat_team.agentsUtils.transformations.PerformanceTransformationFactory;
 import io.github.squat_team.model.OptimizationType;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMResult;
@@ -49,66 +50,73 @@ public class LoadHelper {
 		PCMScenario m3Scenario = createModifiabilityWithdrawMoney(ResponseMeasureType.DECIMAL, responseTimeM3);
 		PCMScenario m4Scenario = createModifiabilityServiceLog(ResponseMeasureType.DECIMAL, responseTimeM4);
 		try {
+			
+			
+			PCMArchitectureInstance model = this.loadSpecificModel(initialArchitecture);
 			ModifiabilityBot m1Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m1Scenario,
-					KAMPPCMBot.TYPE_COMPLEXITY, initialArchitecture), "m1", responseTimeM1);
+					KAMPPCMBot.TYPE_COMPLEXITY, model), "m1", responseTimeM1);
 			ModifiabilityBot m2Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m2Scenario,
-					KAMPPCMBot.TYPE_COMPLEXITY, initialArchitecture), "m2", responseTimeM2);
+					KAMPPCMBot.TYPE_COMPLEXITY, model), "m2", responseTimeM2);
 			ModifiabilityBot m3Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m3Scenario,
-					KAMPPCMBot.TYPE_COMPLEXITY, initialArchitecture), "m3", responseTimeM3);
+					KAMPPCMBot.TYPE_COMPLEXITY, model), "m3", responseTimeM3);
 			ModifiabilityBot m4Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m4Scenario,
-					KAMPPCMBot.TYPE_COMPLEXITY, initialArchitecture), "m4", responseTimeM4);
+					KAMPPCMBot.TYPE_COMPLEXITY, model), "m4", responseTimeM4);
+			
+			PCMArchitectureInstance architecture = PerformanceScenarioHelper.createArchitecture(initialArchitecture);
 			PerformanceBot p1Bot = new PerformanceBot(
 					calculatePerformanceComplexityForScenario(
-							PerformanceScenarioHelper.createScenario1Cocome(), initialArchitecture),
+							PerformanceScenarioHelper.getInstance().createScenario1Cocome(), architecture, initialArchitecture.getAbsolutePath()),
 					"p1", responseTimeP1);
 			PerformanceBot p2Bot = new PerformanceBot(
 					calculatePerformanceComplexityForScenario(
-							PerformanceScenarioHelper.createScenario2Cocome(), initialArchitecture),
+							PerformanceScenarioHelper.getInstance().createScenario2Cocome(), architecture, initialArchitecture.getAbsolutePath()),
 					"p2", responseTimeP2);
 			PerformanceBot p3Bot = new PerformanceBot(
 					calculatePerformanceComplexityForScenario(
-							PerformanceScenarioHelper.createScenario3Cocome(), initialArchitecture),
+							PerformanceScenarioHelper.getInstance().createScenario3Cocome(), architecture, initialArchitecture.getAbsolutePath()),
 					"p3", responseTimeP3);
 			PerformanceBot p4Bot = new PerformanceBot(
 					calculatePerformanceComplexityForScenario(
-							PerformanceScenarioHelper.createScenario4Cocome(), initialArchitecture),
+							PerformanceScenarioHelper.getInstance().createScenario4Cocome(), architecture, initialArchitecture.getAbsolutePath()),
 					"p4", responseTimeP4);
 			
 			for (Iterator<ArchitecturalVersion> iterator = architecturalAlternatives.iterator(); iterator.hasNext();) {
 				ArchitecturalVersion architecturalVersion = iterator.next();
 
+				model = this.loadSpecificModel(architecturalVersion);
 				m1Bot.insertInOrder(new ModifiabilityProposal(
-						calculateModifiabilityComplexity(m1Scenario, KAMPPCMBot.TYPE_COMPLEXITY, architecturalVersion),
+						calculateModifiabilityComplexity(m1Scenario, KAMPPCMBot.TYPE_COMPLEXITY, model),
 						architecturalVersion.getName()));
 				m2Bot.insertInOrder(new ModifiabilityProposal(
-						calculateModifiabilityComplexity(m2Scenario, KAMPPCMBot.TYPE_COMPLEXITY, architecturalVersion),
+						calculateModifiabilityComplexity(m2Scenario, KAMPPCMBot.TYPE_COMPLEXITY, model),
 						architecturalVersion.getName()));
 				m3Bot.insertInOrder(new ModifiabilityProposal(
-						calculateModifiabilityComplexity(m3Scenario, KAMPPCMBot.TYPE_COMPLEXITY, architecturalVersion),
+						calculateModifiabilityComplexity(m3Scenario, KAMPPCMBot.TYPE_COMPLEXITY, model),
 						architecturalVersion.getName()));
 				m4Bot.insertInOrder(new ModifiabilityProposal(
-						calculateModifiabilityComplexity(m4Scenario, KAMPPCMBot.TYPE_COMPLEXITY, architecturalVersion),
+						calculateModifiabilityComplexity(m4Scenario, KAMPPCMBot.TYPE_COMPLEXITY, model),
 						architecturalVersion.getName()));
 
+				architecture = PerformanceScenarioHelper.createArchitecture(architecturalVersion);
 				p1Bot.insertInOrder(
 						new PerformanceProposal(
 								calculatePerformanceComplexityForScenario(
-										PerformanceScenarioHelper.createScenario1Cocome(), architecturalVersion),
+										PerformanceScenarioHelper.getInstance().createScenario1Cocome(), architecture, architecturalVersion.getAbsolutePath()),
 								architecturalVersion.getName()));
 				p2Bot.insertInOrder(
 						new PerformanceProposal(
 								calculatePerformanceComplexityForScenario(
-										PerformanceScenarioHelper.createScenario2Cocome(), architecturalVersion),
+										PerformanceScenarioHelper.getInstance().createScenario2Cocome(), architecture, architecturalVersion.getAbsolutePath()),
 								architecturalVersion.getName()));
 				p3Bot.insertInOrder(
 						new PerformanceProposal(
 								calculatePerformanceComplexityForScenario(
-										PerformanceScenarioHelper.createScenario3Cocome(), architecturalVersion),
+										PerformanceScenarioHelper.getInstance().createScenario3Cocome(), architecture, architecturalVersion.getAbsolutePath()),
 								architecturalVersion.getName()));
 				p4Bot.insertInOrder(
 						new PerformanceProposal(
 								calculatePerformanceComplexityForScenario(
-										PerformanceScenarioHelper.createScenario4Cocome(), architecturalVersion),
+										PerformanceScenarioHelper.getInstance().createScenario4Cocome(), architecture,architecturalVersion.getAbsolutePath()),
 								architecturalVersion.getName()));
 			}
 			ret.add(m1Bot);
@@ -197,7 +205,7 @@ public class LoadHelper {
 	
 
 	private float calculateModifiabilityComplexity(PCMScenario scenario, String evaluationType,
-			ArchitecturalVersion architecturalVersion) throws Exception {
+			PCMArchitectureInstance model) throws Exception {
 		boolean debug = false;
 		@SuppressWarnings("unchecked")
 		Comparable<Float> expectedResponse = scenario.getExpectedResult().getResponse();
@@ -208,27 +216,38 @@ public class LoadHelper {
 		if (debug)
 			java.lang.System.out.println("The evaluation type is: " + evaluationType);
 		//
-
-		PCMArchitectureInstance model = this.loadSpecificModel(architecturalVersion);
-		PCMScenarioResult scenarioResult = bot.analyze(model);
-		String satisfaction_alt1 = scenarioResult.isSatisfied() >= 0 ? "SATISFIED" : "NOT SATISFIED";
-		if (debug)
-			java.lang.System.out
-					.println("The scenario satisfaction with " + model.getName() + " is: " + satisfaction_alt1);
-		@SuppressWarnings("unchecked")
-		Comparable<Float> response_alt1 = scenarioResult.getResult().getResponse();
-		return ((Float) response_alt1).floatValue();
+		try{
+			//PCMArchitectureInstance model = this.loadSpecificModel(architecturalVersion);
+			PCMScenarioResult scenarioResult = bot.analyze(model);
+			String satisfaction_alt1 = scenarioResult.isSatisfied() >= 0 ? "SATISFIED" : "NOT SATISFIED";
+			if (debug)
+				java.lang.System.out
+						.println("The scenario satisfaction with " + model.getName() + " is: " + satisfaction_alt1);
+			@SuppressWarnings("unchecked")
+			Comparable<Float> response_alt1 = scenarioResult.getResult().getResponse();
+			return ((Float) response_alt1).floatValue();
+		}catch (Exception e) {
+			e.printStackTrace();
+			return Float.MAX_VALUE;
+		}
+		
 	}
 
 	private float calculatePerformanceComplexityForScenario(AbstractPerformancePCMScenario scenario,
-			ArchitecturalVersion architecturalVersion) {
-		PerOpteryxPCMBot bot = PerformanceScenarioHelper.createPCMBot(scenario);
-		PCMArchitectureInstance architecture = PerformanceScenarioHelper.createArchitecture(architecturalVersion);
-		PCMScenarioResult result = bot.analyze(architecture);
-		if (result == null)// is unsolvable
-			return 9999f;
-		else
-			return new Float(result.getResult().getResponse().toString()).floatValue();
+			PCMArchitectureInstance architecture, String absolutePathArchitecture) {
+		Double complexity=PerformanceTransformationFactory.getInstance().getComplexityForArchitecture(scenario, absolutePathArchitecture);
+		if(complexity!=null){
+			return new Float(complexity.toString());
+		}else{
+			PerOpteryxPCMBot bot = PerformanceScenarioHelper.getInstance().createPCMBot(scenario);
+			//PCMArchitectureInstance architecture = PerformanceScenarioHelper.createArchitecture(architecturalVersion);
+			PCMScenarioResult result = bot.analyze(architecture);
+			if (result == null)// is unsolvable
+				return 9999f;
+			else
+				return new Float(result.getResult().getResponse().toString()).floatValue();
+		}
+		
 	}
 
 	private PCMArchitectureInstance loadSpecificModel(ArchitecturalVersion architecturalVersion) {

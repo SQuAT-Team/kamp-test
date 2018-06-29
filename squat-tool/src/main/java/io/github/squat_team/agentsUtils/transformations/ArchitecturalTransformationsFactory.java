@@ -23,7 +23,7 @@ public class ArchitecturalTransformationsFactory {
 		initialArchitecture.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithResourceDemands/alternativeRepository.repository");
 		//initialArchitecture=new ArchitecturalVersion("cocome-cloud","models/cocomeWithoutPickUpStoreAndServiceAdapter","");
 		//initialArchitecture.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithoutPickUpStoreAndServiceAdapter/alternativescocome-cloud.repository");
-		performanceTrans=new PerformanceTransformationFactory();
+		performanceTrans=PerformanceTransformationFactory.getInstance();
 		architecturesByLevel=new Hashtable<>();
 	}
 	
@@ -47,7 +47,9 @@ public class ArchitecturalTransformationsFactory {
 			 transformationForLevel.addAll(generateArchitecturalVersionsUsingPerformanceTransformations(initialArchitecture));
 		 }else{
 			 List<ArchitecturalVersion> architecturesPreviousLevel=architecturesByLevel.get(level-1);
+			 int i=0;
 			 for (Iterator<ArchitecturalVersion> iterator = architecturesPreviousLevel.iterator(); iterator.hasNext();) {
+				System.out.println("*********PREVIOUS LEVEL ARCHITECTURES "+i+"/"+architecturesPreviousLevel.size()+"*********************************************");i++;
 				ArchitecturalVersion architecturalVersion = (ArchitecturalVersion) iterator.next();
 				//if the architecture was modified last time by performance now is going to be modified for modifiability. 
 				if(architecturalVersion.lastModifiedByModifiability()){

@@ -31,7 +31,7 @@ public class SQuATSillyBotsNegotiator {
 		agreementProposal=null;
 		currentLevelOfTransformations=1;
 		archTransFactory=new ArchitecturalTransformationsFactory();
-		maxNumberOfLevels=10;
+		maxNumberOfLevels=3;
 		noMoreAlternatives=false;
 		filterBestAlternatives=true;
 	}
@@ -347,7 +347,7 @@ public class SQuATSillyBotsNegotiator {
 		while(!agreement&&(currentLevelOfTransformations<=maxNumberOfLevels)&&!noMoreAlternatives){
 			agreement=negotiateBaseOnMultipleArchitectures();
 			if(filterBestAlternatives){
-				filerBestKAlternatives(10);
+				filerBestKAlternatives(5/*10*/);
 			}
 			currentLevelOfTransformations++;
 		}
