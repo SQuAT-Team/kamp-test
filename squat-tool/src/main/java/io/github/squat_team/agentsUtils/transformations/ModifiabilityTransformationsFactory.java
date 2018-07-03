@@ -52,7 +52,7 @@ public class ModifiabilityTransformationsFactory {
 		
 		//ret=selectSubset(ret,20f);
 		
-		splitRepository(ret);
+		//splitRepository(ret);
 		
 		/*List<ArchitecturalVersion> splitAlternatives=runSplitResp();
 		
@@ -109,26 +109,29 @@ public class ModifiabilityTransformationsFactory {
 		}
 	}
 
-	private void splitRepository(List<ArchitecturalVersion> ret) {
+	/**private void splitRepository(List<ArchitecturalVersion> ret) {
 		// remove alternative components
 		int i=0;
 		for (Iterator<ArchitecturalVersion> iterator = ret.iterator(); iterator.hasNext();) {
 			System.out.println("******************************************"+i+"/"+ret.size()+"*********************************************");i++;
 			ArchitecturalVersion architecturalVersion = (ArchitecturalVersion) iterator.next();
-			PCMArchitectureInstance loadedArchitecture = PerformanceScenarioHelper.createArchitecture(architecturalVersion);
-			if(loadedArchitecture!=null){
-				repoModifier.separateRepository(loadedArchitecture);
-				architecturalVersion.setFullPathToAlternativeRepository(loadedArchitecture.getRepositoryWithAlternatives().eResource().getURI().toFileString());
-			}
+			splitRepositoryForAlternative(architecturalVersion);
 			
 		}
 		PCMArchitectureInstance loadedInitialArchitecture = PerformanceScenarioHelper.createArchitecture(currentInitialArchitecture);
 		repoModifier.separateRepository(PerformanceScenarioHelper.createArchitecture(currentInitialArchitecture));
 		currentInitialArchitecture.setFullPathToAlternativeRepository(loadedInitialArchitecture.getRepositoryWithAlternatives().eResource().getURI().toFileString());
+	}**/
+	public void splitRepositoryForAlternative(PCMArchitectureInstance loadedArchitecture,ArchitecturalVersion architecturalVersion) {
+		
+		if(loadedArchitecture!=null){
+			repoModifier.separateRepository(loadedArchitecture);
+			architecturalVersion.setFullPathToAlternativeRepository(loadedArchitecture.getRepositoryWithAlternatives().eResource().getURI().toFileString());
+		}
 	}
 
 	private void mergeRepository() {
-		repoModifier=new PCMRepositoryModifier(PerformanceScenarioHelper.createArchitecture(currentInitialArchitecture));
+		repoModifier=new PCMRepositoryModifier(PerformanceScenarioHelper.createArchitecture(currentInitialArchitecture,null));
 		repoModifier.mergeRepositories();
 	}
 

@@ -36,7 +36,7 @@ public class MediaStoreTest {
 		KAMPPCMBot bot = new KAMPPCMBot(scenario);
 		PCMArchitectureInstance mediaStore = loadMediaStore("MediaStore");
 		
-		PCMScenarioResult scenarioResult = bot.analyze(mediaStore);
+		PCMScenarioResult scenarioResult = bot.analyze(mediaStore,"");
 		Assert.assertTrue(scenarioResult.isSatisfied() < 0);
 		
 		int AFFECTED_COMPONENTS = 16;

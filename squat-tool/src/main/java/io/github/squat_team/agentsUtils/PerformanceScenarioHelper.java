@@ -2,6 +2,7 @@ package io.github.squat_team.agentsUtils;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.concurrent.Executor;
 
 import org.palladiosimulator.pcm.allocation.Allocation;
 import org.palladiosimulator.pcm.repository.Repository;
@@ -52,7 +53,12 @@ public class PerformanceScenarioHelper {
 		cocomeBotS4=null;
 	}
 	
-	
+	public void resetBots(){
+		cocomeBotS1=null;
+		cocomeBotS2=null;
+		cocomeBotS3=null;
+		cocomeBotS4=null;
+	}
 	
 	public static AbstractPerformancePCMScenario createScenarioOfWorkload() {
 		ArrayList<String> workloadIDs = new ArrayList<String>();
@@ -167,17 +173,17 @@ public class PerformanceScenarioHelper {
 		// The number is rather small, but still the improvement is at around 80%. In
 		// addition, one run does only need to do small steps if several iterations are
 		// applied.
-		configuration.getPerOpteryxConfig().setGenerationSize(10/*25*/);
-		configuration.getPerOpteryxConfig().setMaxIterations(4/*7*/);
+		configuration.getPerOpteryxConfig().setGenerationSize(25);
+		configuration.getPerOpteryxConfig().setMaxIterations(7);
 
 		configureCpuClockRate(configuration);
 		
 		configuration.getLqnsConfig().setLqnsOutputDir(TestConstants.LQN_OUTPUT);
 		configuration.getExporterConfig().setPcmOutputFolder(TestConstants.PCM_STORAGE_PATH);
 		configuration.getPcmModelsConfig().setPathmapFolder(TestConstants.PCM_MODEL_FILES);
-
+		
 		// init bot
-		PerOpteryxPCMBot bot = new PerOpteryxPCMBot(scenario, configuration);
+		PerOpteryxPCMBot bot = new PerOpteryxPCMBot(scenario, configuration,obtainName(scenario));
 		bot.setDebugMode(false);
 		// This is another analysis run that outputs detailed CPU utilization, we
 		// usually use it for debugging. This can be done later if
@@ -196,7 +202,18 @@ public class PerformanceScenarioHelper {
 		return bot;
 	}
 
-	public static PCMArchitectureInstance createArchitecture(ArchitecturalVersion architecturalVersion) {
+	public String obtainName(AbstractPerformancePCMScenario scenario) {
+		if(scenario==cocomeS1)
+			return "perfomanceBot1";
+		if(scenario==cocomeS2)
+			return "perfomanceBot2";
+		if(scenario==cocomeS3)
+			return "perfomanceBot3";
+		if(scenario==cocomeS4)
+			return "perfomanceBot4";
+		return null;
+	}
+	public static PCMArchitectureInstance createArchitecture(ArchitecturalVersion architecturalVersion, Executor executor) {
 		// create Instance
 		try{
 				Allocation allocation = SQuATHelper.loadAllocationModel("file:/" + architecturalVersion.getAbsolutePath()
@@ -214,9 +231,14 @@ public class PerformanceScenarioHelper {
 		PCMArchitectureInstance architecture = new PCMArchitectureInstance(architecturalVersion.getFileName(),
 				repository, system, allocation, resourceenvironment, usageModel);
 		if (architecturalVersion.getFullPathToAlternativeRepository() != null) {
-			Repository repositoryAlternatives = SQuATHelper
+			if(executor==null){
+				Repository repositoryAlternatives = SQuATHelper
 					.loadRepositoryModel("file:/" + architecturalVersion.getFullPathToAlternativeRepository());
-			architecture.setRepositoryWithAlternatives(repositoryAlternatives);
+				architecture.setRepositoryWithAlternatives(repositoryAlternatives);
+			}else{
+				executor.execute(new BotModelLoading(architecturalVersion.getFullPathToAlternativeRepository(), architecture));
+			}
+			
 		}
 	
 		return architecture;

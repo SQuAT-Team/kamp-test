@@ -1,8 +1,19 @@
 package io.github.squat_team.agentsUtils;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import org.palladiosimulator.pcm.allocation.Allocation;
 import org.palladiosimulator.pcm.repository.Repository;
@@ -11,6 +22,7 @@ import org.palladiosimulator.pcm.system.System;
 import org.palladiosimulator.pcm.usagemodel.UsageModel;
 
 import edu.squat.transformations.ArchitecturalVersion;
+import io.github.squat_team.agentsUtils.transformations.ModifiabilityTransformationsFactory;
 import io.github.squat_team.agentsUtils.transformations.PerformanceTransformationFactory;
 import io.github.squat_team.model.OptimizationType;
 import io.github.squat_team.model.PCMArchitectureInstance;
@@ -28,14 +40,16 @@ import io.github.squat_team.performance.peropteryx.PerOpteryxPCMBot;
 import io.github.squat_team.util.SQuATHelper;
 
 public class LoadHelper {
+	
+	private static int MAXIMUM_ALTERNATIVES=50;
 
 	public List<SillyBot> loadBotsForArchitecturalAlternatives(List<ArchitecturalVersion> architecturalAlternatives,
-			ArchitecturalVersion initialArchitecture) {
-		return getCocomeAlternatives(architecturalAlternatives, initialArchitecture);
+			ArchitecturalVersion initialArchitecture, ModifiabilityTransformationsFactory modifiabilityTransformationsFactory) {
+		return getCocomeAlternatives(architecturalAlternatives, initialArchitecture,modifiabilityTransformationsFactory);
 		//return getSTPlusAlternatives(architecturalAlternatives, initialArchitecture);
 	}
 	private List<SillyBot> getCocomeAlternatives(List<ArchitecturalVersion> architecturalAlternatives,
-			ArchitecturalVersion initialArchitecture) {
+			ArchitecturalVersion initialArchitecture, ModifiabilityTransformationsFactory modifiabilityTransformationsFactory) {
 		List<SillyBot> ret = new ArrayList<>();
 		Float responseTimeM1 = 1200f;
 		Float responseTimeM2 = 5000f;
@@ -52,73 +66,135 @@ public class LoadHelper {
 		try {
 			
 			
-			PCMArchitectureInstance model = this.loadSpecificModel(initialArchitecture);
+			//PCMArchitectureInstance model = this.loadSpecificModel(initialArchitecture);
+			PCMArchitectureInstance architecture = PerformanceScenarioHelper.createArchitecture(initialArchitecture,null);
 			ModifiabilityBot m1Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m1Scenario,
-					KAMPPCMBot.TYPE_COMPLEXITY, model), "m1", responseTimeM1);
+					KAMPPCMBot.TYPE_COMPLEXITY, architecture), "m1", responseTimeM1);
 			ModifiabilityBot m2Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m2Scenario,
-					KAMPPCMBot.TYPE_COMPLEXITY, model), "m2", responseTimeM2);
+					KAMPPCMBot.TYPE_COMPLEXITY, architecture), "m2", responseTimeM2);
 			ModifiabilityBot m3Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m3Scenario,
-					KAMPPCMBot.TYPE_COMPLEXITY, model), "m3", responseTimeM3);
+					KAMPPCMBot.TYPE_COMPLEXITY, architecture), "m3", responseTimeM3);
 			ModifiabilityBot m4Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m4Scenario,
-					KAMPPCMBot.TYPE_COMPLEXITY, model), "m4", responseTimeM4);
+					KAMPPCMBot.TYPE_COMPLEXITY, architecture), "m4", responseTimeM4);
 			
-			PCMArchitectureInstance architecture = PerformanceScenarioHelper.createArchitecture(initialArchitecture);
+			
+			AbstractPerformancePCMScenario scenarioP1=PerformanceScenarioHelper.getInstance().createScenario1Cocome();
+			AbstractPerformancePCMScenario scenarioP2=PerformanceScenarioHelper.getInstance().createScenario2Cocome();
+			AbstractPerformancePCMScenario scenarioP3=PerformanceScenarioHelper.getInstance().createScenario3Cocome();
+			AbstractPerformancePCMScenario scenarioP4=PerformanceScenarioHelper.getInstance().createScenario4Cocome();
+			
+			
 			PerformanceBot p1Bot = new PerformanceBot(
 					calculatePerformanceComplexityForScenario(
-							PerformanceScenarioHelper.getInstance().createScenario1Cocome(), architecture, initialArchitecture.getAbsolutePath()),
+							scenarioP1, architecture, initialArchitecture.getAbsolutePath()+"/"+initialArchitecture.getRepositoryFilename()),
 					"p1", responseTimeP1);
 			PerformanceBot p2Bot = new PerformanceBot(
 					calculatePerformanceComplexityForScenario(
-							PerformanceScenarioHelper.getInstance().createScenario2Cocome(), architecture, initialArchitecture.getAbsolutePath()),
+							scenarioP2, architecture, initialArchitecture.getAbsolutePath()+"/"+initialArchitecture.getRepositoryFilename()),
 					"p2", responseTimeP2);
 			PerformanceBot p3Bot = new PerformanceBot(
 					calculatePerformanceComplexityForScenario(
-							PerformanceScenarioHelper.getInstance().createScenario3Cocome(), architecture, initialArchitecture.getAbsolutePath()),
+							scenarioP3, architecture, initialArchitecture.getAbsolutePath()+"/"+initialArchitecture.getRepositoryFilename()),
 					"p3", responseTimeP3);
 			PerformanceBot p4Bot = new PerformanceBot(
 					calculatePerformanceComplexityForScenario(
-							PerformanceScenarioHelper.getInstance().createScenario4Cocome(), architecture, initialArchitecture.getAbsolutePath()),
+							scenarioP4, architecture, initialArchitecture.getAbsolutePath()+"/"+initialArchitecture.getRepositoryFilename()),
 					"p4", responseTimeP4);
 			
+			Map<ArchitecturalVersion,PCMArchitectureInstance> instances=new HashMap<>();
+			ExecutorService executor2 = Executors.newFixedThreadPool(4);
+			int i=1;
 			for (Iterator<ArchitecturalVersion> iterator = architecturalAlternatives.iterator(); iterator.hasNext();) {
 				ArchitecturalVersion architecturalVersion = iterator.next();
-
-				model = this.loadSpecificModel(architecturalVersion);
+				java.lang.System.out.println("********MODIFIABILITY: LOADING "+i+" OF "+architecturalAlternatives.size()+" ARCHITECTURAL ALTERNATIVES INTO THE BOTS***********"); i++;
+				//model = this.loadSpecificModel(architecturalVersion);
+				architecture = PerformanceScenarioHelper.createArchitecture(architecturalVersion,executor2);
+				instances.put(architecturalVersion, architecture);
 				m1Bot.insertInOrder(new ModifiabilityProposal(
-						calculateModifiabilityComplexity(m1Scenario, KAMPPCMBot.TYPE_COMPLEXITY, model),
+						calculateModifiabilityComplexity(m1Scenario, KAMPPCMBot.TYPE_COMPLEXITY, architecture),
 						architecturalVersion.getName()));
 				m2Bot.insertInOrder(new ModifiabilityProposal(
-						calculateModifiabilityComplexity(m2Scenario, KAMPPCMBot.TYPE_COMPLEXITY, model),
+						calculateModifiabilityComplexity(m2Scenario, KAMPPCMBot.TYPE_COMPLEXITY, architecture),
 						architecturalVersion.getName()));
 				m3Bot.insertInOrder(new ModifiabilityProposal(
-						calculateModifiabilityComplexity(m3Scenario, KAMPPCMBot.TYPE_COMPLEXITY, model),
+						calculateModifiabilityComplexity(m3Scenario, KAMPPCMBot.TYPE_COMPLEXITY, architecture),
 						architecturalVersion.getName()));
 				m4Bot.insertInOrder(new ModifiabilityProposal(
-						calculateModifiabilityComplexity(m4Scenario, KAMPPCMBot.TYPE_COMPLEXITY, model),
+						calculateModifiabilityComplexity(m4Scenario, KAMPPCMBot.TYPE_COMPLEXITY, architecture),
 						architecturalVersion.getName()));
 
-				architecture = PerformanceScenarioHelper.createArchitecture(architecturalVersion);
-				p1Bot.insertInOrder(
+			}
+			Set<ArchitecturalVersion> bestAlternatives = null;
+			if(architecturalAlternatives.size()>MAXIMUM_ALTERNATIVES){
+				java.lang.System.out.println("*****ORIGINAL NUMBER OF ALTERNATIVES: "+architecturalAlternatives.size());
+				bestAlternatives = filterBestAlternatives(architecturalAlternatives,m1Bot);
+				bestAlternatives.addAll(filterBestAlternatives(architecturalAlternatives,m2Bot));
+				bestAlternatives.addAll(filterBestAlternatives(architecturalAlternatives,m3Bot));
+				bestAlternatives.addAll(filterBestAlternatives(architecturalAlternatives,m4Bot));
+				bestAlternatives.addAll(getPerformanceAlternatives(architecturalAlternatives,50));
+				filterList(architecturalAlternatives,bestAlternatives);
+				updateProposals(m1Bot,architecturalAlternatives);
+				updateProposals(m2Bot,architecturalAlternatives);
+				updateProposals(m3Bot,architecturalAlternatives);
+				updateProposals(m4Bot,architecturalAlternatives);
+				java.lang.System.out.println("*****FILTERED NUMBER OF ALTERNATIVES: "+architecturalAlternatives.size());
+			}
+			i=1;
+			for (ArchitecturalVersion architecturalVersion : architecturalAlternatives) {
+				if(architecturalVersion.lastModifiedByModifiability()){
+					java.lang.System.out.println("********Splitting repository: "+i+" OF "+architecturalAlternatives.size()+"***********"); i++;
+					modifiabilityTransformationsFactory.splitRepositoryForAlternative(instances.get(architecturalVersion),architecturalVersion);
+				}
+			}
+			
+			executor2.shutdown();
+			while (!executor2.awaitTermination(60, TimeUnit.SECONDS)){
+			    java.lang.System.err.println("Threads didn't finish in 60000 seconds!");
+			}
+			
+			 ExecutorService executor = Executors.newFixedThreadPool(4);
+			
+			i=1;
+			for (ArchitecturalVersion architecturalVersion : architecturalAlternatives) {
+				java.lang.System.out.println("********PERFORMANCE: LOADING "+i+" OF "+architecturalAlternatives.size()+" ARCHITECTURAL ALTERNATIVES INTO THE BOTS***********"); i++;
+				//architecture = PerformanceScenarioHelper.createArchitecture(architecturalVersion);
+				architecture=instances.get(architecturalVersion);
+				String absolutePathArchitecture=architecturalVersion.getAbsolutePath()+"/"+architecturalVersion.getRepositoryFilename();
+				String architecturalVersionName=architecturalVersion.getName();
+				executor.execute(new BotPerformanceCalculation(p1Bot, scenarioP1, architecture, absolutePathArchitecture, architecturalVersionName));
+				executor.execute(new BotPerformanceCalculation(p2Bot, scenarioP2, architecture, absolutePathArchitecture, architecturalVersionName));
+				executor.execute(new BotPerformanceCalculation(p3Bot, scenarioP3, architecture, absolutePathArchitecture, architecturalVersionName));
+				executor.execute(new BotPerformanceCalculation(p4Bot, scenarioP4, architecture, absolutePathArchitecture, architecturalVersionName));
+				
+				/*p1Bot.insertInOrder(
 						new PerformanceProposal(
 								calculatePerformanceComplexityForScenario(
-										PerformanceScenarioHelper.getInstance().createScenario1Cocome(), architecture, architecturalVersion.getAbsolutePath()),
+										PerformanceScenarioHelper.getInstance().createScenario1Cocome(), architecture, architecturalVersion.getAbsolutePath()+"/"+architecturalVersion.getRepositoryFilename()),
 								architecturalVersion.getName()));
 				p2Bot.insertInOrder(
 						new PerformanceProposal(
 								calculatePerformanceComplexityForScenario(
-										PerformanceScenarioHelper.getInstance().createScenario2Cocome(), architecture, architecturalVersion.getAbsolutePath()),
+										PerformanceScenarioHelper.getInstance().createScenario2Cocome(), architecture, architecturalVersion.getAbsolutePath()+"/"+architecturalVersion.getRepositoryFilename()),
 								architecturalVersion.getName()));
 				p3Bot.insertInOrder(
 						new PerformanceProposal(
 								calculatePerformanceComplexityForScenario(
-										PerformanceScenarioHelper.getInstance().createScenario3Cocome(), architecture, architecturalVersion.getAbsolutePath()),
+										PerformanceScenarioHelper.getInstance().createScenario3Cocome(), architecture, architecturalVersion.getAbsolutePath()+"/"+architecturalVersion.getRepositoryFilename()),
 								architecturalVersion.getName()));
 				p4Bot.insertInOrder(
 						new PerformanceProposal(
 								calculatePerformanceComplexityForScenario(
-										PerformanceScenarioHelper.getInstance().createScenario4Cocome(), architecture,architecturalVersion.getAbsolutePath()),
-								architecturalVersion.getName()));
+										PerformanceScenarioHelper.getInstance().createScenario4Cocome(), architecture,architecturalVersion.getAbsolutePath()+"/"+architecturalVersion.getRepositoryFilename()),
+								architecturalVersion.getName()));*/
 			}
+			
+			executor.shutdown();
+			while (!executor.awaitTermination(60, TimeUnit.SECONDS)){
+			    java.lang.System.err.println("Threads didn't finish in 60000 seconds!");
+			}
+			
+			
+			
 			ret.add(m1Bot);
 			ret.add(m2Bot);
 			ret.add(m3Bot);
@@ -203,7 +279,62 @@ public class LoadHelper {
 	}*/
 
 	
-
+	private void updateProposals(ModifiabilityBot m1Bot, List<ArchitecturalVersion> architecturalAlternatives) {
+		m1Bot.removeNotContainedProposals(architecturalAlternatives);
+	}
+	private Collection<? extends ArchitecturalVersion> getPerformanceAlternatives(
+			List<ArchitecturalVersion> architecturalAlternatives, int percentage) {
+		List<ArchitecturalVersion> performanceAlternatives=new ArrayList<>();
+		for (ArchitecturalVersion architecturalVersion : architecturalAlternatives) {
+			if(!architecturalVersion.lastModifiedByModifiability())
+				performanceAlternatives.add(architecturalVersion);
+		}
+		int itemsToSelect=(int)((percentage*performanceAlternatives.size())/100f);
+		Collections.shuffle(performanceAlternatives);
+		
+		return performanceAlternatives.subList(0, itemsToSelect);
+	}
+	
+	
+	
+	/**It removes from the list the alternatives that are not contained in the Set
+	 * 
+	 * @param architecturalAlternatives
+	 * @param bestAlternatives
+	 */
+	private void filterList(List<ArchitecturalVersion> architecturalAlternatives,
+			Set<ArchitecturalVersion> bestAlternatives) {
+		architecturalAlternatives.clear();
+		architecturalAlternatives.addAll(bestAlternatives);
+	}
+	private Set<ArchitecturalVersion> filterBestAlternatives(List<ArchitecturalVersion> architecturalAlternatives,
+			ModifiabilityBot m1Bot) {
+		
+		List<Proposal> proposalsForBot=m1Bot.getOrderedProposals();
+		
+		if(m1Bot.getUtilityFor(proposalsForBot.get(proposalsForBot.size()-1))>0){
+			return new HashSet<>(architecturalAlternatives.subList(0, MAXIMUM_ALTERNATIVES));
+		}
+		Set<ArchitecturalVersion> ret=new HashSet<>();
+		for (int i = 0; i < proposalsForBot.size(); i++) {
+			if(m1Bot.getUtilityFor(proposalsForBot.get(i))>0){
+				ret.add(getArchitecturalVersionByName(proposalsForBot.get(i).getArchitectureName(),architecturalAlternatives));
+			}else{
+				return ret;
+			}
+				
+		}
+		return ret;
+	}
+	
+	private ArchitecturalVersion getArchitecturalVersionByName(String architectureName,
+			List<ArchitecturalVersion> architecturalAlternatives) {
+		for (ArchitecturalVersion architecturalVersion : architecturalAlternatives) {
+			if(architecturalVersion.getName().equals(architectureName))
+				return architecturalVersion;
+		}
+		return null;
+	}
 	private float calculateModifiabilityComplexity(PCMScenario scenario, String evaluationType,
 			PCMArchitectureInstance model) throws Exception {
 		boolean debug = false;
@@ -218,7 +349,7 @@ public class LoadHelper {
 		//
 		try{
 			//PCMArchitectureInstance model = this.loadSpecificModel(architecturalVersion);
-			PCMScenarioResult scenarioResult = bot.analyze(model);
+			PCMScenarioResult scenarioResult = bot.analyze(model,"");
 			String satisfaction_alt1 = scenarioResult.isSatisfied() >= 0 ? "SATISFIED" : "NOT SATISFIED";
 			if (debug)
 				java.lang.System.out
@@ -233,15 +364,17 @@ public class LoadHelper {
 		
 	}
 
-	private float calculatePerformanceComplexityForScenario(AbstractPerformancePCMScenario scenario,
+	public static float calculatePerformanceComplexityForScenario(AbstractPerformancePCMScenario scenario,
 			PCMArchitectureInstance architecture, String absolutePathArchitecture) {
 		Double complexity=PerformanceTransformationFactory.getInstance().getComplexityForArchitecture(scenario, absolutePathArchitecture);
 		if(complexity!=null){
+			//java.lang.System.out.println("Funciono la cache");
 			return new Float(complexity.toString());
 		}else{
+			//java.lang.System.out.println("NOOO funciono la cache");
 			PerOpteryxPCMBot bot = PerformanceScenarioHelper.getInstance().createPCMBot(scenario);
 			//PCMArchitectureInstance architecture = PerformanceScenarioHelper.createArchitecture(architecturalVersion);
-			PCMScenarioResult result = bot.analyze(architecture);
+			PCMScenarioResult result = bot.analyze(architecture,PerformanceScenarioHelper.getInstance().obtainName(scenario)); 
 			if (result == null)// is unsolvable
 				return 9999f;
 			else

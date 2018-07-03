@@ -297,7 +297,7 @@ public class SQuATSillyBotsNegotiator {
 			System.out.println("Intial Proposals");
 			
 			//Each agent has to make a ranking with the alternatives and select the best for its scenario 
-			sillyBots=new LoadHelper().loadBotsForArchitecturalAlternatives(versionsUntilLevel,archTransFactory.getInitialArchitecture());
+			sillyBots=new LoadHelper().loadBotsForArchitecturalAlternatives(versionsUntilLevel,archTransFactory.getInitialArchitecture(),archTransFactory.getModifiabilityTrans());
 			System.out.println("Total proposals: "+sillyBots.get(0).getOrderedProposals().size());
 			for (Iterator<SillyBot> iterator = sillyBots.iterator(); iterator.hasNext();) {
 				SillyBot bot = (SillyBot) iterator.next();
@@ -347,7 +347,7 @@ public class SQuATSillyBotsNegotiator {
 		while(!agreement&&(currentLevelOfTransformations<=maxNumberOfLevels)&&!noMoreAlternatives){
 			agreement=negotiateBaseOnMultipleArchitectures();
 			if(filterBestAlternatives){
-				filerBestKAlternatives(5/*10*/);
+				filerBestKAlternatives(2/*10*/);
 			}
 			currentLevelOfTransformations++;
 		}

@@ -14,7 +14,7 @@ public abstract class SillyBot {
 	protected List<Proposal> orderedProposals;
 	private ConcessionStrategy concessionStrategy;
 	private float acceptableLoss;
-	public void insertInOrder(Proposal p){
+	public synchronized void insertInOrder(Proposal p){
 		float utilityProposal=getUtilityFor(p);
 		if (orderedProposals.size() == 0) {
 			orderedProposals.add(p);

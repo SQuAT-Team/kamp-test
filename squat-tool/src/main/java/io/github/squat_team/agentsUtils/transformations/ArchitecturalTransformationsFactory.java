@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import edu.squat.transformations.ArchitecturalVersion;
+import io.github.squat_team.agentsUtils.PerformanceScenarioHelper;
 import io.github.squat_team.agentsUtils.Proposal;
 
 public class ArchitecturalTransformationsFactory {
@@ -47,6 +48,7 @@ public class ArchitecturalTransformationsFactory {
 			 transformationForLevel.addAll(generateArchitecturalVersionsUsingPerformanceTransformations(initialArchitecture));
 		 }else{
 			 List<ArchitecturalVersion> architecturesPreviousLevel=architecturesByLevel.get(level-1);
+			 PerformanceScenarioHelper.getInstance().resetBots();
 			 int i=0;
 			 for (Iterator<ArchitecturalVersion> iterator = architecturesPreviousLevel.iterator(); iterator.hasNext();) {
 				System.out.println("*********PREVIOUS LEVEL ARCHITECTURES "+i+"/"+architecturesPreviousLevel.size()+"*********************************************");i++;
@@ -98,5 +100,8 @@ public class ArchitecturalTransformationsFactory {
 	}
 	public ArchitecturalVersion getInitialArchitecture() {
 		return initialArchitecture;
+	}
+	public ModifiabilityTransformationsFactory getModifiabilityTrans() {
+		return modifiabilityTrans;
 	}
 }

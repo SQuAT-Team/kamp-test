@@ -1,5 +1,10 @@
 package io.github.squat_team.agentsUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import edu.squat.transformations.ArchitecturalVersion;
+
 public class ModifiabilityBot extends SillyBot {
 	//private int originalAffectedComponents;
 	private float originalComplexity;
@@ -40,6 +45,23 @@ public class ModifiabilityBot extends SillyBot {
 	@Override
 	protected float getScenarioMeasureFor(Proposal proposal) {
 		return ((ModifiabilityProposal)proposal).getComplexity();
+	}
+
+	/**it removes the proposals that are not contained in the list
+	 * 
+	 * @param architecturalAlternatives
+	 */
+	public void removeNotContainedProposals(List<ArchitecturalVersion> architecturalAlternatives) {
+		List<Proposal> toBeKeeped=new ArrayList<>();
+		for (ArchitecturalVersion architecturalVersion : architecturalAlternatives) {
+			Proposal p=getProposalForArchitecture(architecturalVersion.getName());
+			if(p!=null)
+				toBeKeeped.add(p);
+		}
+		orderedProposals.clear();
+		for (Proposal proposal : toBeKeeped) {
+			this.insertInOrder(proposal);
+		}
 	}
 	
 }

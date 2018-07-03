@@ -71,7 +71,7 @@ public class KAMPPCMBot extends AbstractPCMBot {
 	}
 
 	@Override
-	public PCMScenarioResult analyze(PCMArchitectureInstance currentArchitecture) {
+	public PCMScenarioResult analyze(PCMArchitectureInstance currentArchitecture, String botName) {
 		//Run the propagation and create the result
 		PCMScenarioResult scenarioResult = new PCMScenarioResult(this);
 		//Register the initial architecture

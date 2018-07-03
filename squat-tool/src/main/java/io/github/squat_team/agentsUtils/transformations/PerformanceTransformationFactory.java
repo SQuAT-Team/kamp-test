@@ -20,8 +20,8 @@ import test.TestConstants;
 
 public class PerformanceTransformationFactory {
 
-	private static PerformanceTransformationFactory instance;
-	private Map<AbstractPerformancePCMScenario, Map<String,Double>> architecturalResponse;
+	private static volatile PerformanceTransformationFactory instance;
+	private volatile Map<AbstractPerformancePCMScenario, Map<String,Double>> architecturalResponse;
 	
 	public static PerformanceTransformationFactory getInstance(){
 		if(instance==null)
@@ -36,7 +36,7 @@ public class PerformanceTransformationFactory {
 		architecturalResponse.put(PerformanceScenarioHelper.getInstance().createScenario4Cocome(), new HashMap<String,Double>());
 	}
 	
-	public Double getComplexityForArchitecture(AbstractPerformancePCMScenario scenario, String architectureAbsolutePath){
+	public synchronized Double getComplexityForArchitecture(AbstractPerformancePCMScenario scenario, String architectureAbsolutePath){
 		return architecturalResponse.get(scenario).get(architectureAbsolutePath);
 	}
 	
@@ -47,7 +47,7 @@ public class PerformanceTransformationFactory {
 		ret.addAll(createAlternativesForScenario(architecturalVersion, workloadScenario));
 		AbstractPerformancePCMScenario cpuScenario = PerformanceScenarioHelper.createScenarioOfCPU();
 		ret.addAll(createAlternativesForScenario(architecturalVersion, cpuScenario))*/
-		PCMArchitectureInstance architecture=PerformanceScenarioHelper.createArchitecture(architecturalVersion);
+		PCMArchitectureInstance architecture=PerformanceScenarioHelper.createArchitecture(architecturalVersion,null);
 		
 		System.out.println("Loading performance scenario P1");
 		AbstractPerformancePCMScenario cocomeScenario1 = PerformanceScenarioHelper.getInstance().createScenario1Cocome();
@@ -96,7 +96,7 @@ public class PerformanceTransformationFactory {
 			URI uri=archInstance.getUsageModel().eResource().getURI();
 			File modelFile=new File(uri.toFileString());
 			String newModelName=modelFile.getParentFile().getParentFile().getName()+"-"+modelFile.getParentFile().getName();
-			PCMWorkingCopyCreator copyCreator=new PCMWorkingCopyCreator(newModelName, new File(TestConstants.MAIN_STORAGE_PATH));
+			PCMWorkingCopyCreator copyCreator=new PCMWorkingCopyCreator(newModelName, new File(TestConstants.MAIN_STORAGE_PATH),PerformanceScenarioHelper.getInstance().obtainName(scenario));
 			PCMArchitectureInstance archInstanceInRightLocation=copyCreator.createWorkingCopy(archInstance);
 			File modelFileRightLocation=new File(archInstanceInRightLocation.getUsageModel().eResource().getURI().toFileString());
 			
@@ -106,7 +106,7 @@ public class PerformanceTransformationFactory {
 		
 			newAlternative.setFullPathToAlternativeRepository(archInstanceInRightLocation.getRepositoryWithAlternatives().eResource().getURI().toFileString());
 			
-			architecturalResponse.get(scenario).put(newAlternative.getAbsolutePath(), (Double)pcmScenarioResult.getResult().getResponse());
+			architecturalResponse.get(scenario).put(newAlternative.getAbsolutePath()+"/"+newAlternative.getRepositoryFilename(), (Double)pcmScenarioResult.getResult().getResponse());
 			ret.add(newAlternative);
 		}
 		
