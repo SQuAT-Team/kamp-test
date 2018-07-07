@@ -47,21 +47,6 @@ public class ModifiabilityBot extends SillyBot {
 		return ((ModifiabilityProposal)proposal).getComplexity();
 	}
 
-	/**it removes the proposals that are not contained in the list
-	 * 
-	 * @param architecturalAlternatives
-	 */
-	public void removeNotContainedProposals(List<ArchitecturalVersion> architecturalAlternatives) {
-		List<Proposal> toBeKeeped=new ArrayList<>();
-		for (ArchitecturalVersion architecturalVersion : architecturalAlternatives) {
-			Proposal p=getProposalForArchitecture(architecturalVersion.getName());
-			if(p!=null)
-				toBeKeeped.add(p);
-		}
-		orderedProposals.clear();
-		for (Proposal proposal : toBeKeeped) {
-			this.insertInOrder(proposal);
-		}
-	}
+	
 	
 }

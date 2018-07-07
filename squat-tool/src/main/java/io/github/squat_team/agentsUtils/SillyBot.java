@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import edu.squat.transformations.ArchitecturalVersion;
 import io.github.squat_team.agentsUtils.concessionStrategies.ConcessionStrategy;
 import io.github.squat_team.agentsUtils.concessionStrategies.DesiresDistance;
 import io.github.squat_team.agentsUtils.concessionStrategies.EgocentricConcession;
@@ -148,5 +149,21 @@ public abstract class SillyBot {
 		}
 		System.out.println("]");
 		System.out.println("Different from zero: "+differentFromZero);
+	}
+	/**it removes the proposals that are not contained in the list
+	 * 
+	 * @param architecturalAlternatives
+	 */
+	public void removeNotContainedProposals(List<ArchitecturalVersion> architecturalAlternatives) {
+		List<Proposal> toBeKeeped=new ArrayList<>();
+		for (ArchitecturalVersion architecturalVersion : architecturalAlternatives) {
+			Proposal p=getProposalForArchitecture(architecturalVersion.getName());
+			if(p!=null)
+				toBeKeeped.add(p);
+		}
+		orderedProposals.clear();
+		for (Proposal proposal : toBeKeeped) {
+			this.insertInOrder(proposal);
+		}
 	}
 }

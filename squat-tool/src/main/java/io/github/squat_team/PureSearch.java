@@ -54,7 +54,7 @@ public class PureSearch {
 		}else{
 			System.out.println("Proposals for level");
 			
-			sillyBots=new LoadHelper().loadBotsForArchitecturalAlternatives(versionsUntilLevel,archTransFactory.getInitialArchitecture(),null);
+			sillyBots=new LoadHelper().loadBotsForArchitecturalAlternatives(versionsUntilLevel,archTransFactory.getInitialArchitecture());
 			System.out.println("Total proposals: "+sillyBots.get(0).getOrderedProposals().size());
 		}
 	}

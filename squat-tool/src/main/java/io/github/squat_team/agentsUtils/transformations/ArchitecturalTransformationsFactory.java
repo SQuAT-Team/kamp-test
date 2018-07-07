@@ -1,4 +1,6 @@
 package io.github.squat_team.agentsUtils.transformations;
+import java.io.File;
+import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Hashtable;
@@ -103,5 +105,45 @@ public class ArchitecturalTransformationsFactory {
 	}
 	public ModifiabilityTransformationsFactory getModifiabilityTrans() {
 		return modifiabilityTrans;
+	}
+
+	public void preLoadModelsFrom(String path, int level) {
+		List<ArchitecturalVersion> ret=new ArrayList<ArchitecturalVersion>();
+		List<String> fileNames=getFilesNames(path);
+		for (String fileName : fileNames) {
+			String lastModifiedBy;
+			if(fileName.startsWith("c"))
+				lastModifiedBy=ArchitecturalVersion.MODIFIABILITY;
+			else
+				lastModifiedBy=ArchitecturalVersion.PERFORMANCE;
+				
+			ArchitecturalVersion av=new ArchitecturalVersion(fileName, path , lastModifiedBy);
+			String alternativePath=path+"/";
+			if(lastModifiedBy==ArchitecturalVersion.MODIFIABILITY)
+				alternativePath=alternativePath+"alternative"+fileName+".repository";
+			else
+				alternativePath=alternativePath+fileName+"alternative.repository";
+			av.setFullPathToAlternativeRepository(alternativePath);
+			if(lastModifiedBy==ArchitecturalVersion.MODIFIABILITY)
+				ret.add(av);
+		}
+		architecturesByLevel.put(level, ret);
+	}
+
+	private List<String> getFilesNames(String path) {
+		File dir = new File(path);
+		File [] files = dir.listFiles(new FilenameFilter() {
+		    @Override
+		    public boolean accept(File dir, String name) {
+		        return name.endsWith(".allocation");
+		    }
+		});
+		List<String> names=new ArrayList<>();
+		for (File allocationFile : files) {
+		    names.add(allocationFile.getName().substring(0, allocationFile.getName().lastIndexOf(".")));
+		}
+		names.remove(initialArchitecture.getFileName());
+		
+		return names;
 	}
 }

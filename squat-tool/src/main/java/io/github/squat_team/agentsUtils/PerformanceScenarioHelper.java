@@ -19,6 +19,7 @@ import io.github.squat_team.performance.PerformanceMetric;
 import io.github.squat_team.performance.PerformancePCMCPUScenario;
 import io.github.squat_team.performance.PerformancePCMUsageScenario;
 import io.github.squat_team.performance.PerformancePCMWokloadScenario;
+import io.github.squat_team.performance.peropteryx.ConcurrentPerOpteryxPCMBot;
 import io.github.squat_team.performance.peropteryx.PerOpteryxPCMBot;
 import io.github.squat_team.performance.peropteryx.configuration.ConfigurationImprovedImproved;
 import io.github.squat_team.performance.peropteryx.configuration.DesigndecisionConfigImproved;
@@ -30,10 +31,10 @@ public class PerformanceScenarioHelper {
 	private AbstractPerformancePCMScenario cocomeS2;
 	private AbstractPerformancePCMScenario cocomeS3;
 	private AbstractPerformancePCMScenario cocomeS4;
-	private PerOpteryxPCMBot cocomeBotS1;
-	private PerOpteryxPCMBot cocomeBotS2;
-	private PerOpteryxPCMBot cocomeBotS3;
-	private PerOpteryxPCMBot cocomeBotS4;
+	private ConcurrentPerOpteryxPCMBot cocomeBotS1;
+	private ConcurrentPerOpteryxPCMBot cocomeBotS2;
+	private ConcurrentPerOpteryxPCMBot cocomeBotS3;
+	private ConcurrentPerOpteryxPCMBot cocomeBotS4;
 	
 	private static PerformanceScenarioHelper instance;
 	
@@ -159,7 +160,7 @@ public class PerformanceScenarioHelper {
 		designdecisionConfig.setLimits("_FM6FMK2VEeaxN4gXuIkS2A", 250, 800);
 	}
 
-	public PerOpteryxPCMBot createPCMBot(AbstractPerformancePCMScenario scenario) {
+	public ConcurrentPerOpteryxPCMBot createPCMBot(AbstractPerformancePCMScenario scenario) {
 		if(scenario==cocomeS1&&cocomeBotS1!=null)
 			return cocomeBotS1;
 		if(scenario==cocomeS2&&cocomeBotS2!=null)
@@ -183,7 +184,7 @@ public class PerformanceScenarioHelper {
 		configuration.getPcmModelsConfig().setPathmapFolder(TestConstants.PCM_MODEL_FILES);
 		
 		// init bot
-		PerOpteryxPCMBot bot = new PerOpteryxPCMBot(scenario, configuration,obtainName(scenario));
+		ConcurrentPerOpteryxPCMBot bot = new ConcurrentPerOpteryxPCMBot(scenario, configuration);
 		bot.setDebugMode(false);
 		// This is another analysis run that outputs detailed CPU utilization, we
 		// usually use it for debugging. This can be done later if
@@ -243,6 +244,8 @@ public class PerformanceScenarioHelper {
 	
 		return architecture;
 		}catch (Exception e) {
+			System.out.println(architecturalVersion.getName());
+			System.err.println(e);
 			return null;
 		}
 		

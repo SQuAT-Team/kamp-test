@@ -14,6 +14,7 @@ import io.github.squat_team.agentsUtils.PerformanceScenarioHelper;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMScenarioResult;
 import io.github.squat_team.performance.AbstractPerformancePCMScenario;
+import io.github.squat_team.performance.peropteryx.ConcurrentPerOpteryxPCMBot;
 import io.github.squat_team.performance.peropteryx.PerOpteryxPCMBot;
 import io.github.squat_team.util.PCMWorkingCopyCreator;
 import test.TestConstants;
@@ -47,6 +48,7 @@ public class PerformanceTransformationFactory {
 		ret.addAll(createAlternativesForScenario(architecturalVersion, workloadScenario));
 		AbstractPerformancePCMScenario cpuScenario = PerformanceScenarioHelper.createScenarioOfCPU();
 		ret.addAll(createAlternativesForScenario(architecturalVersion, cpuScenario))*/
+		System.out.println("Analyzing: "+architecturalVersion.getFileName());
 		PCMArchitectureInstance architecture=PerformanceScenarioHelper.createArchitecture(architecturalVersion,null);
 		
 		System.out.println("Loading performance scenario P1");
@@ -83,7 +85,7 @@ public class PerformanceTransformationFactory {
 		List<ArchitecturalVersion> ret=new ArrayList<ArchitecturalVersion>();
 		
 
-		PerOpteryxPCMBot bot=PerformanceScenarioHelper.getInstance().createPCMBot(scenario);
+		ConcurrentPerOpteryxPCMBot bot=PerformanceScenarioHelper.getInstance().createPCMBot(scenario);
 		//PCMArchitectureInstance architecture=PerformanceScenarioHelper.createArchitecture(architecturalVersion);
 		
 		
@@ -113,6 +115,10 @@ public class PerformanceTransformationFactory {
 		return ret;
 	}
 
-	
+	public static void main(String[] args) {
+		ArchitecturalVersion av=new ArchitecturalVersion("cocome-cloud-88-ICashDeskDAO", "/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithResourceDemands" , "modifiability");
+		av.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithResourceDemands/alternativecocome-cloud-88-ICashDeskDAO.repository");
+		PerformanceTransformationFactory.getInstance().generateArchitecturalVersionsUsingPerformanceTransformations(av);
+	}
 	
 }

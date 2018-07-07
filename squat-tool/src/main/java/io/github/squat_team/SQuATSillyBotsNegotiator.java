@@ -297,7 +297,7 @@ public class SQuATSillyBotsNegotiator {
 			System.out.println("Intial Proposals");
 			
 			//Each agent has to make a ranking with the alternatives and select the best for its scenario 
-			sillyBots=new LoadHelper().loadBotsForArchitecturalAlternatives(versionsUntilLevel,archTransFactory.getInitialArchitecture(),archTransFactory.getModifiabilityTrans());
+			sillyBots=new LoadHelper().loadBotsForArchitecturalAlternatives(versionsUntilLevel,archTransFactory.getInitialArchitecture());
 			System.out.println("Total proposals: "+sillyBots.get(0).getOrderedProposals().size());
 			for (Iterator<SillyBot> iterator = sillyBots.iterator(); iterator.hasNext();) {
 				SillyBot bot = (SillyBot) iterator.next();
@@ -347,14 +347,19 @@ public class SQuATSillyBotsNegotiator {
 		while(!agreement&&(currentLevelOfTransformations<=maxNumberOfLevels)&&!noMoreAlternatives){
 			agreement=negotiateBaseOnMultipleArchitectures();
 			if(filterBestAlternatives){
-				filerBestKAlternatives(2/*10*/);
+				filerBestKAlternatives(3/*10*/);
 			}
 			currentLevelOfTransformations++;
 		}
 		System.out.println("Finish");
 	}
+	public ArchitecturalTransformationsFactory getArchTransFactory() {
+		return archTransFactory;
+	}
 	public static void main(String[] args) {
-		new SQuATSillyBotsNegotiator().negotiatiateUntilAnAgreementIsReached();
+		SQuATSillyBotsNegotiator squat=new SQuATSillyBotsNegotiator();
+		//squat.getArchTransFactory().preLoadModelsFrom("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithResourceDemands",1);
+		squat.negotiatiateUntilAnAgreementIsReached();
 	}
 
 }
