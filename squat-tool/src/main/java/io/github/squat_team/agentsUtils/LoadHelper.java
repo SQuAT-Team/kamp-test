@@ -4213,5 +4213,15 @@ public class LoadHelper {
 		p2Bot.printUtilies();
 		return ret;
 	}
-
+	public static void main(String[] args) {
+		Float responseTimeP1 = 0.6f;// 30f;
+		ArchitecturalVersion initialArchitecture=new ArchitecturalVersion("cocome-cloud","models/cocomeWithResourceDemands","");
+		initialArchitecture.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithResourceDemands/alternativeRepository.repository");
+		PCMArchitectureInstance architecture = PerformanceScenarioHelper.createArchitecture(initialArchitecture,null);
+		AbstractPerformancePCMScenario scenarioP1=PerformanceScenarioHelper.getInstance().createScenario1Cocome();
+		PerformanceBot p1Bot = new PerformanceBot(
+				calculatePerformanceComplexityForScenario(
+						scenarioP1, architecture, initialArchitecture.getAbsolutePath()+"/"+initialArchitecture.getRepositoryFilename()),
+				"p1", responseTimeP1);
+	}
 }
