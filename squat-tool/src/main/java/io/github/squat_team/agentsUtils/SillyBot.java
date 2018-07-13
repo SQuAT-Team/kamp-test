@@ -102,6 +102,7 @@ public abstract class SillyBot {
 	public float getUtilityFor(Proposal proposal){
 		float scenarioResponse=getScenarioMeasureFor(proposal);
 		float expectedResponse=scenatioThreshold;
+		
 		//float n=1f;//indexInWhichUtilityBecomeZero();
 		//float utility=(-1/(n*expectedResponse))*scenarioResponse+1;
 		float utility=0;
@@ -110,6 +111,7 @@ public abstract class SillyBot {
 		else
 			utility= 2- 1.10f*scenarioResponse/expectedResponse;
 		
+		//System.out.println(name+" "+expectedResponse+" "+scenarioResponse+" "+utility);
 		if(utility >= 0 && utility<=1)
 			return utility;
 		else

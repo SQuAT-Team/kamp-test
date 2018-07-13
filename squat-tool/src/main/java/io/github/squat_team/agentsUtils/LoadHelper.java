@@ -54,13 +54,13 @@ public class LoadHelper {
 			ArchitecturalVersion initialArchitecture) {
 		List<SillyBot> ret = new ArrayList<>();
 		Float responseTimeM1 = 1200f;
-		Float responseTimeM2 = 5000f;
+		Float responseTimeM2 = 10000f;//5000f;
 		Float responseTimeM3 = 200f;
-		Float responseTimeM4 = 2000f;
-		Float responseTimeP1 = 0.6f;// 30f;
-		Float responseTimeP2 = 0.7f;// 40f;
-		Float responseTimeP3 = 0.5f;// 30f;
-		Float responseTimeP4 = 1.2f;// 40f;
+		Float responseTimeM4 = 10000f;//2000f;
+		Float responseTimeP1 = 1.4f;//0.6f;// 30f;
+		Float responseTimeP2 = 1.4f;//0.7f;// 40f;
+		Float responseTimeP3 = 1.0f;//0.5f;// 30f;
+		Float responseTimeP4 = 2.4f;//1.2f;// 40f;
 		PCMScenario m1Scenario = createModifiabilityNFC(ResponseMeasureType.DECIMAL, responseTimeM1);
 		PCMScenario m2Scenario = createModifiabilityVIP(ResponseMeasureType.DECIMAL, responseTimeM2);
 		PCMScenario m3Scenario = createModifiabilityWithdrawMoney(ResponseMeasureType.DECIMAL, responseTimeM3);
@@ -107,7 +107,7 @@ public class LoadHelper {
 			filterRandomAlternatives(architecturalAlternatives);
 			java.lang.System.out.println("After random filtering "+architecturalAlternatives.size());
 			Map<ArchitecturalVersion,PCMArchitectureInstance> instances=new HashMap<>();
-			ExecutorService executor2 = Executors.newFixedThreadPool(4);
+			//ExecutorService executor2 = Executors.newFixedThreadPool(4);
 			int i=1;
 			
 			for (Iterator<ArchitecturalVersion> iterator = architecturalAlternatives.iterator(); iterator.hasNext();) {
@@ -116,7 +116,7 @@ public class LoadHelper {
 				//model = this.loadSpecificModel(architecturalVersion);
 				
 				java.lang.System.out.println(architecturalVersion.getName());
-				architecture = PerformanceScenarioHelper.createArchitecture(architecturalVersion,executor2);
+				architecture = PerformanceScenarioHelper.createArchitecture(architecturalVersion,null/**executor2**/);
 				instances.put(architecturalVersion, architecture);
 				
 				
@@ -135,17 +135,23 @@ public class LoadHelper {
 						architecturalVersion.getName()));
 
 			}
+			
 			Set<ArchitecturalVersion> bestAlternatives = null;
 			if(architecturalAlternatives.size()>MAXIMUM_ALTERNATIVES){
 				java.lang.System.out.println("*****ORIGINAL NUMBER OF ALTERNATIVES: "+architecturalAlternatives.size());
-				
-				
 				
 				bestAlternatives = filterBestAlternatives(architecturalAlternatives,m1Bot);
 				bestAlternatives.addAll(filterBestAlternatives(architecturalAlternatives,m2Bot));
 				bestAlternatives.addAll(filterBestAlternatives(architecturalAlternatives,m3Bot));
 				bestAlternatives.addAll(filterBestAlternatives(architecturalAlternatives,m4Bot));
 				bestAlternatives.addAll(getPerformanceAlternatives(architecturalAlternatives));
+				
+				List<ArchitecturalVersion> alternativesToRemoveFromCache=new ArrayList<>(architecturalAlternatives);
+				alternativesToRemoveFromCache.removeAll(bestAlternatives);
+				for (ArchitecturalVersion toRemove : alternativesToRemoveFromCache) {
+					instances.remove(toRemove);
+				}
+				
 				filterList(architecturalAlternatives,bestAlternatives);
 				updateProposals(m1Bot,architecturalAlternatives);
 				updateProposals(m2Bot,architecturalAlternatives);
@@ -155,12 +161,12 @@ public class LoadHelper {
 			}
 			
 			
-			executor2.shutdown();
+			/*executor2.shutdown();
 			while (!executor2.awaitTermination(60, TimeUnit.SECONDS)){
 			    java.lang.System.err.println("Threads didn't finish in 60000 seconds!");
-			}
+			}*/
 			
-			 ExecutorService executor = Executors.newFixedThreadPool(1);
+			// ExecutorService executor = Executors.newFixedThreadPool(4);
 			
 			
 			i=1;
@@ -170,38 +176,42 @@ public class LoadHelper {
 				architecture=instances.get(architecturalVersion);
 				String absolutePathArchitecture=architecturalVersion.getAbsolutePath()+"/"+architecturalVersion.getRepositoryFilename();
 				String architecturalVersionName=architecturalVersion.getName();
-				executor.execute(new BotPerformanceCalculation(p1Bot, scenarioP1, architecture, absolutePathArchitecture, architecturalVersionName));
-				executor.execute(new BotPerformanceCalculation(p2Bot, scenarioP2, architecture, absolutePathArchitecture, architecturalVersionName));
-				executor.execute(new BotPerformanceCalculation(p3Bot, scenarioP3, architecture, absolutePathArchitecture, architecturalVersionName));
-				executor.execute(new BotPerformanceCalculation(p4Bot, scenarioP4, architecture, absolutePathArchitecture, architecturalVersionName));
+			//	executor.execute(new BotPerformanceCalculation(p1Bot, scenarioP1, architecture, absolutePathArchitecture, architecturalVersionName));
+				//executor.execute(new BotPerformanceCalculation(p2Bot, scenarioP2, architecture, absolutePathArchitecture, architecturalVersionName));
+				//executor.execute(new BotPerformanceCalculation(p3Bot, scenarioP3, architecture, absolutePathArchitecture, architecturalVersionName));
+				//executor.execute(new BotPerformanceCalculation(p4Bot, scenarioP4, architecture, absolutePathArchitecture, architecturalVersionName));
 				
-				/*p1Bot.insertInOrder(
+				p1Bot.insertInOrder(
 						new PerformanceProposal(
 								calculatePerformanceComplexityForScenario(
-										PerformanceScenarioHelper.getInstance().createScenario1Cocome(), architecture, absolutePathArchitecture),
+										scenarioP1, architecture, absolutePathArchitecture),
 								architecturalVersionName));
 				p2Bot.insertInOrder(
 						new PerformanceProposal(
 								calculatePerformanceComplexityForScenario(
-										PerformanceScenarioHelper.getInstance().createScenario2Cocome(), architecture, absolutePathArchitecture),
+										scenarioP2, architecture, absolutePathArchitecture),
 								architecturalVersionName));
 				p3Bot.insertInOrder(
 						new PerformanceProposal(
 								calculatePerformanceComplexityForScenario(
-										PerformanceScenarioHelper.getInstance().createScenario3Cocome(), architecture, absolutePathArchitecture),
+										scenarioP3, architecture, absolutePathArchitecture),
 								architecturalVersionName));
 				p4Bot.insertInOrder(
 						new PerformanceProposal(
 								calculatePerformanceComplexityForScenario(
-										PerformanceScenarioHelper.getInstance().createScenario4Cocome(), architecture,absolutePathArchitecture),
-								architecturalVersionName));*/
+										scenarioP4, architecture,absolutePathArchitecture),
+								architecturalVersionName));
+				
+				instances.remove(architecture);
 			}
 			
-			executor.shutdown();
+			/*executor.shutdown();
 			while (!executor.awaitTermination(60, TimeUnit.SECONDS)){
 			    java.lang.System.err.println("Threads didn't finish in 60000 seconds!");
 			    java.lang.System.out.println(p1Bot.getOrderedProposals().size());
-			}
+			}*/
+			
+			instances=null;
 			
 			//Remove corrupted alternatives
 			Set<ArchitecturalVersion> alternativesCorrupted=new HashSet<>();
@@ -213,7 +223,10 @@ public class LoadHelper {
 					alternativesCorrupted.add(architecturalVersion);
 				}
 			}
-			filterList(architecturalAlternatives,alternativesCorrupted);
+			List<ArchitecturalVersion> alternativesToKeep=new ArrayList<>();
+			alternativesToKeep.addAll(architecturalAlternatives);
+			alternativesToKeep.removeAll(alternativesCorrupted);
+			filterList(architecturalAlternatives,alternativesToKeep);
 			updateProposals(m1Bot,architecturalAlternatives);
 			updateProposals(m2Bot,architecturalAlternatives);
 			updateProposals(m3Bot,architecturalAlternatives);

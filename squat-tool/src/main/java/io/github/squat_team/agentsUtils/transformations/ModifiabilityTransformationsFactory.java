@@ -47,7 +47,7 @@ public class ModifiabilityTransformationsFactory {
 		
 		removeSpecialCase(splitAlternatives, "cocome-cloud-2-ProductBarcodeScannedEvent.repository");
 		removeSpecialCase(splitAlternatives,"cocome-cloud-3-CashBoxClosedEvent.repository");
-		
+	
 		ret.addAll(splitAlternatives);
 		
 		//ret=selectSubset(ret,20f);
@@ -126,6 +126,7 @@ public class ModifiabilityTransformationsFactory {
 		PCMArchitectureInstance loadedInitialArchitecture = PerformanceScenarioHelper.createArchitecture(currentInitialArchitecture,null);
 		repoModifier.separateRepository(PerformanceScenarioHelper.createArchitecture(currentInitialArchitecture,null));
 		currentInitialArchitecture.setFullPathToAlternativeRepository(loadedInitialArchitecture.getRepositoryWithAlternatives().eResource().getURI().toFileString());
+		repoModifier=null;
 	}
 	
 
