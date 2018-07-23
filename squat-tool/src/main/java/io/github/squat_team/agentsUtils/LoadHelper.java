@@ -54,10 +54,10 @@ public class LoadHelper {
 			ArchitecturalVersion initialArchitecture) {
 		List<SillyBot> ret = new ArrayList<>();
 		Float responseTimeM1 = 1200f;
-		Float responseTimeM2 = 10000f;//5000f;
+		Float responseTimeM2 = 25000f;//5000f;
 		Float responseTimeM3 = 200f;
-		Float responseTimeM4 = 10000f;//2000f;
-		Float responseTimeP1 = 1.4f;//0.6f;// 30f;
+		Float responseTimeM4 = 25000f;//2000f;
+		Float responseTimeP1 = 1.2f;//0.6f;// 30f;
 		Float responseTimeP2 = 1.4f;//0.7f;// 40f;
 		Float responseTimeP3 = 1.0f;//0.5f;// 30f;
 		Float responseTimeP4 = 2.4f;//1.2f;// 40f;
