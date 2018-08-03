@@ -3289,6 +3289,7 @@
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_MqE5MGSKEeaYxPjtCxykSQ" entityName="org.cocome.cloud.web.frontend.login">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_093yoZcMEei3rPhZHRc1bw" entityName="ILogin" providedInterface__OperationProvidedRole="_YxhRp5cMEei3rPhZHRc1bw"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_Oc9MFWSKEeaYxPjtCxykSQ" entityName="IAuthenticator" requiredInterface__OperationRequiredRole="_m8odoF_BEea_gvFl-mCXRQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_NPlklWSLEeaYxPjtCxykSQ" entityName="ICredential.web.data.login" requiredInterface__OperationRequiredRole="_m8sIAl_BEea_gvFl-mCXRQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_j6hqBWUQEead_5QKkcGuDg" entityName="ICredentialFactory" requiredInterface__OperationRequiredRole="_Nz3i8GR2EeaYxPjtCxykSQ"/>
@@ -5744,6 +5745,7 @@
       <parameters__OperationSignature dataType__Parameter="_Di7XXutQEeWsnI9iaMkITA" parameterName="SaleRegisteredEventDataType"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_YxhRp5cMEei3rPhZHRc1bw" entityName="ILogin"/>
   <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_m9E7bmUYEead_5QKkcGuDg" entityName="NavigationElement">
     <innerDeclaration_CompositeDataType entityName="NavOutcome">
       <datatype_InnerDeclaration xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>

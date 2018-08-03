@@ -2459,6 +2459,7 @@
       <parameters__OperationSignature dataType__Parameter="_Di7XXutQEeWsnI9iaMkITA" parameterName="SaleRegisteredEventDataType"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_YxhRp5cMEei3rPhZHRc1bw" entityName="ILogin"/>
   <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_m9E7bmUYEead_5QKkcGuDg" entityName="NavigationElement">
     <innerDeclaration_CompositeDataType entityName="NavOutcome">
       <datatype_InnerDeclaration xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>

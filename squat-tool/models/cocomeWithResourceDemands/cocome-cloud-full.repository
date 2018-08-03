@@ -3289,6 +3289,7 @@
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_MqE5MGSKEeaYxPjtCxykSQ" entityName="org.cocome.cloud.web.frontend.login">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_093yoZcMEei3rPhZHRc1bw" entityName="ILogin" providedInterface__OperationProvidedRole="_YxhRp5cMEei3rPhZHRc1bw"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_Oc9MFWSKEeaYxPjtCxykSQ" entityName="IAuthenticator" requiredInterface__OperationRequiredRole="_m8odoF_BEea_gvFl-mCXRQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_NPlklWSLEeaYxPjtCxykSQ" entityName="ICredential.web.data.login" requiredInterface__OperationRequiredRole="_m8sIAl_BEea_gvFl-mCXRQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_j6hqBWUQEead_5QKkcGuDg" entityName="ICredentialFactory" requiredInterface__OperationRequiredRole="_Nz3i8GR2EeaYxPjtCxykSQ"/>
@@ -3489,7 +3490,7 @@
       <steps_Behaviour xsi:type="seff:StopAction" id="_l7fekE-kEeeOMbxr3TEZOQ" predecessor_AbstractAction="_l7e3gE-kEeeOMbxr3TEZOQ"/>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
-    <components__Repository xsi:type="repository:BasicComponent" id="_cje7mewdEeW_LdalkgkVnQX" entityName="org.cocome.tradingsystem.cashdeskline.cashdesk.AlternativeUserDisplay">
+  <components__Repository xsi:type="repository:BasicComponent" id="_cje7mewdEeW_LdalkgkVnQX" entityName="org.cocome.tradingsystem.cashdeskline.cashdesk.AlternativeUserDisplay">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_ocslQewdEeW_LdalkgkVnQX" entityName="IUserDisplayModel" providedInterface__OperationProvidedRole="_j5rC0NYgEeWrM-HnT5f_ug"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_edOtwEiHEeepDoRoYh6rjAX" seffTypeID="_edOtwUiHEeepDoRoYh6rjA" describedService__SEFF="_j5rC0dYgEeWrM-HnT5f_ug">
       <steps_Behaviour xsi:type="seff:StartAction" id="_yAbgXkiKEeeAK9a9NwDLowX" successor_AbstractAction="_eQ0AvNtjEee4ToXBRRujSwX"/>
@@ -5948,6 +5949,7 @@
       <parameters__OperationSignature dataType__Parameter="_Di7XXutQEeWsnI9iaMkITA" parameterName="SaleRegisteredEventDataType"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_YxhRp5cMEei3rPhZHRc1bw" entityName="ILogin"/>
   <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_m9E7bmUYEead_5QKkcGuDg" entityName="NavigationElement">
     <innerDeclaration_CompositeDataType entityName="NavOutcome">
       <datatype_InnerDeclaration xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
