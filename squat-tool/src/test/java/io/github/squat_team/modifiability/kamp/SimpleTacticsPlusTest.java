@@ -73,7 +73,7 @@ public class SimpleTacticsPlusTest {
 		Vector<PCMArchitectureInstance> pcmInstances=new Vector<PCMArchitectureInstance>();
 		for (int i = 0; i < modelNames.length; i++) {
 			PCMArchitectureInstance model=loadSpecificModel(repositoryFile[i], repositoryFile[i], resourceEnvironmentFile[i], baseSystemFile[i], baseAllocationFile[i], baseUsageFile[i]);
-			PCMScenarioResult scenarioResult = bot.analyze(model);
+			PCMScenarioResult scenarioResult = bot.analyze(model,"");
 			String satisfaction_alt1 = scenarioResult.isSatisfied() >= 0 ? "SATISFIED" : "NOT SATISFIED";
 			java.lang.System.out.println("The scenario satisfaction with " + model.getName() + " is: " + satisfaction_alt1);
 			Comparable response_alt1 = scenarioResult.getResult().getResponse();

@@ -31,7 +31,7 @@ public class SQuATSillyBotsNegotiator {
 		agreementProposal=null;
 		currentLevelOfTransformations=1;
 		archTransFactory=new ArchitecturalTransformationsFactory();
-		maxNumberOfLevels=10;
+		maxNumberOfLevels=3;
 		noMoreAlternatives=false;
 		filterBestAlternatives=true;
 	}
@@ -287,6 +287,7 @@ public class SQuATSillyBotsNegotiator {
 	private HashMap<SillyBot, Proposal> collectInitialProposals() {
 		//REMOVE THIS FIRST LINE. IT ONLY PURPOSES IS TO AVOID THE MODIFIABILITY TACTICS THAT ARE NOT WORKING WITH THE COMPOSITE COMPONETS
 		//new LoadHelper().loadBotsForArchitecturalAlternatives(new ArrayList<ArchitecturalVersion>(),archTransFactory.getInitialArchitecture());
+		sillyBots=null;
 		HashMap<SillyBot, Proposal> ret= new HashMap<>();
 		System.out.println("Level of transformations: "+ currentLevelOfTransformations);
 		List<ArchitecturalVersion> versionsUntilLevel=archTransFactory.getArchitecturalTransformationsUntilLevel(currentLevelOfTransformations);
@@ -347,14 +348,19 @@ public class SQuATSillyBotsNegotiator {
 		while(!agreement&&(currentLevelOfTransformations<=maxNumberOfLevels)&&!noMoreAlternatives){
 			agreement=negotiateBaseOnMultipleArchitectures();
 			if(filterBestAlternatives){
-				filerBestKAlternatives(10);
+				filerBestKAlternatives(1/*10*/);
 			}
 			currentLevelOfTransformations++;
 		}
 		System.out.println("Finish");
 	}
+	public ArchitecturalTransformationsFactory getArchTransFactory() {
+		return archTransFactory;
+	}
 	public static void main(String[] args) {
-		new SQuATSillyBotsNegotiator().negotiatiateUntilAnAgreementIsReached();
+		SQuATSillyBotsNegotiator squat=new SQuATSillyBotsNegotiator();
+		//squat.getArchTransFactory().preLoadModelsFrom("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithResourceDemands",1);
+		squat.negotiatiateUntilAnAgreementIsReached();
 	}
 
 }

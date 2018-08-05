@@ -1,5 +1,10 @@
 package io.github.squat_team.agentsUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import edu.squat.transformations.ArchitecturalVersion;
+
 public class ModifiabilityBot extends SillyBot {
 	//private int originalAffectedComponents;
 	private float originalComplexity;
@@ -41,5 +46,7 @@ public class ModifiabilityBot extends SillyBot {
 	protected float getScenarioMeasureFor(Proposal proposal) {
 		return ((ModifiabilityProposal)proposal).getComplexity();
 	}
+
+	
 	
 }
