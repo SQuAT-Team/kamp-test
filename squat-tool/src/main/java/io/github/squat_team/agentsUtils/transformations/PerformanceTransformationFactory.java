@@ -53,16 +53,16 @@ public class PerformanceTransformationFactory {
 		
 		System.out.println("Loading performance scenario P1");
 		AbstractPerformancePCMScenario cocomeScenario1 = PerformanceScenarioHelper.getInstance().createScenario1Cocome();
-		ret.addAll(/*selectSubset(*/createAlternativesForScenario(architecture, cocomeScenario1)/*,20f)*/);
+		ret.addAll(createAlternativesForScenario(architecture, cocomeScenario1));
 		System.out.println("Loading performance scenario P2");
 		AbstractPerformancePCMScenario cocomeScenario2 = PerformanceScenarioHelper.getInstance().createScenario2Cocome();
-		ret.addAll(/*selectSubset(*/createAlternativesForScenario(architecture, cocomeScenario2)/*,20f)*/);
+		ret.addAll(createAlternativesForScenario(architecture, cocomeScenario2));
 		System.out.println("Loading performance scenario P3");
 		AbstractPerformancePCMScenario cocomeScenario3 = PerformanceScenarioHelper.getInstance().createScenario3Cocome();
-		ret.addAll(/*selectSubset(*/createAlternativesForScenario(architecture, cocomeScenario3)/*,20f)*/);
+		ret.addAll(createAlternativesForScenario(architecture, cocomeScenario3));
 		System.out.println("Loading performance scenario P4");
 		AbstractPerformancePCMScenario cocomeScenario4 = PerformanceScenarioHelper.getInstance().createScenario4Cocome();
-		ret.addAll(/*selectSubset(*/createAlternativesForScenario(architecture, cocomeScenario4)/*,20f)*/);
+		ret.addAll(createAlternativesForScenario(architecture, cocomeScenario4));
 		return ret;
 	}
 

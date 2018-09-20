@@ -144,7 +144,8 @@ public abstract class SillyBot {
 				System.out.println(proposal);
 			}*/
 			float utility=getUtilityFor(proposal);
-			System.out.print(utility+" ");
+			float scenarioResponse=getScenarioMeasureFor(proposal);
+			System.out.print("U: "+utility+"R: "+scenarioResponse+"M: "+proposal.getArchitectureName()+" ");
 			if(utility>0)
 				differentFromZero++;
 				
