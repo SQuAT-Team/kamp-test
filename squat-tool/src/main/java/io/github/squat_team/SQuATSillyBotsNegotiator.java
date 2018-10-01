@@ -265,7 +265,9 @@ public class SQuATSillyBotsNegotiator {
 	 * @return
 	 */
 	private boolean checkAgreement(HashMap<SillyBot, Proposal> proposals) {
-		for (Iterator<Proposal> iterator = proposals.values().iterator(); iterator.hasNext();) {
+		ArrayList<Proposal> proposalsShuffle=new ArrayList(proposals.values());
+		Collections.shuffle(proposalsShuffle);
+		for (Iterator<Proposal> iterator = proposalsShuffle.iterator(); iterator.hasNext();) {
 			Proposal proposal = (Proposal) iterator.next();
 			if(checkAgreementForAgents(proposal)){
 				agreementProposal=proposal;
@@ -348,7 +350,7 @@ public class SQuATSillyBotsNegotiator {
 		while(!agreement&&(currentLevelOfTransformations<=maxNumberOfLevels)&&!noMoreAlternatives){
 			agreement=negotiateBaseOnMultipleArchitectures();
 			if(filterBestAlternatives){
-				filerBestKAlternatives(2/*10*/);
+				filerBestKAlternatives(1/*10*/);
 			}
 			currentLevelOfTransformations++;
 		}
