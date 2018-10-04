@@ -44,7 +44,7 @@ public abstract class SillyBot {
 		
 		this.name=name;
 		this.scenatioThreshold=scenatioThreshold;
-		acceptableLoss=20;
+		acceptableLoss=0.30f;
 //		indexInWhichUtilityBecomeZero=null;
 	}
 	public Proposal getBestProposal() {

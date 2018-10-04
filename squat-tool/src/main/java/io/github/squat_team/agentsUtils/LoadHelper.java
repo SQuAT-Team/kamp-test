@@ -53,10 +53,10 @@ public class LoadHelper {
 	private List<SillyBot> getCocomeAlternatives(List<ArchitecturalVersion> architecturalAlternatives,
 			ArchitecturalVersion initialArchitecture) {
 		List<SillyBot> ret = new ArrayList<>();
-		Float responseTimeM1 = 1900f;
-		Float responseTimeM2 = 700f;//5000f;
+		Float responseTimeM1 = 2270f;
+		Float responseTimeM2 = 750f;//5000f;
 		Float responseTimeM3 = 170f;//200f;
-		Float responseTimeM4 = 2000f;//2000f;
+		Float responseTimeM4 = 2180f;//2000f;
 		Float responseTimeP1 = 1.2f;//0.6f;// 30f;
 		Float responseTimeP2 = 1.4f;//0.7f;// 40f;
 		Float responseTimeP3 = 1.0f;//0.5f;// 30f;

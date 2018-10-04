@@ -350,7 +350,7 @@ public class SQuATSillyBotsNegotiator {
 		while(!agreement&&(currentLevelOfTransformations<=maxNumberOfLevels)&&!noMoreAlternatives){
 			agreement=negotiateBaseOnMultipleArchitectures();
 			if(filterBestAlternatives){
-				filerBestKAlternatives(1/*10*/);
+				filerBestKAlternatives(2/*10*/);
 			}
 			currentLevelOfTransformations++;
 		}
