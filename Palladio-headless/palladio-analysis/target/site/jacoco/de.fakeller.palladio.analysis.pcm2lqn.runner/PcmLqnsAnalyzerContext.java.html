@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PcmLqnsAnalyzerContext.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Analysis</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.analysis.pcm2lqn.runner</a> &gt; <span class="el_source">PcmLqnsAnalyzerContext.java</span></div><h1>PcmLqnsAnalyzerContext.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.analysis.pcm2lqn.runner;
+
+import de.fakeller.palladio.analysis.pcm2lqn.results.Pcm2LqnResult;
+import de.fakeller.palladio.analysis.pcm2lqn.results.Pcm2LqnResultsParser;
+import de.fakeller.palladio.analysis.tracing.PcmModelTrace;
+import de.fakeller.performance.analysis.AnalysisContext;
+import de.fakeller.performance.analysis.result.PerformanceResult;
+import de.uka.ipd.sdq.workflow.launchconfig.AbstractWorkflowConfigurationBuilder;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.debug.core.ILaunchConfiguration;
+import org.palladiosimulator.analyzer.workflow.configurations.PCMWorkflowConfigurationBuilder;
+import org.palladiosimulator.pcm.core.entity.NamedElement;
+import org.palladiosimulator.solver.models.PCMInstance;
+import org.palladiosimulator.solver.runconfig.PCMSolverConfigurationBasedConfigBuilder;
+import org.palladiosimulator.solver.runconfig.PCMSolverWorkflowRunConfiguration;
+import org.palladiosimulator.solver.transformations.pcm2lqn.Pcm2LqnStrategy;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
+
+/**
+ * Actually performs the Pcm2Lqn analysis
+ */
+public class PcmLqnsAnalyzerContext implements AnalysisContext&lt;PCMInstance&gt; {
+
+<span class="fc" id="L31">    private static final Logger log = Logger.getLogger(PcmLqnsAnalyzerContext.class.getName());</span>
+
+    private final PCMInstance pcmInstance;
+    private final PcmLqnsAnalyzerConfig config;
+
+<span class="fc" id="L36">    public PcmLqnsAnalyzerContext(final PCMInstance pcmInstance, final PcmLqnsAnalyzerConfig config) {</span>
+<span class="fc" id="L37">        this.pcmInstance = pcmInstance;</span>
+<span class="fc" id="L38">        this.config = config;</span>
+<span class="fc" id="L39">    }</span>
+
+    public PerformanceResult&lt;NamedElement&gt; analyze() {
+        // setup trace
+<span class="nc" id="L43">        final PcmModelTrace trace = PcmModelTrace.trace(this.pcmInstance);</span>
+
+        // run
+<span class="nc" id="L46">        log.info(String.format(&quot;About to run PCM2LQN analysis. Results will be stored in %s&quot;, this.config.getOutputPath()));</span>
+<span class="nc" id="L47">        executePalladio();</span>
+
+        // determine results file
+        final List&lt;Path&gt; lqnsResultsFile;
+        try {
+<span class="nc" id="L52">            lqnsResultsFile = Files.list(new File(this.config.getOutputPath()).toPath())</span>
+<span class="nc" id="L53">                    .filter(path -&gt; path.toString().toLowerCase().endsWith(&quot;.out.lqxo&quot;))</span>
+<span class="nc" id="L54">                    .collect(Collectors.toList());</span>
+<span class="nc" id="L55">        } catch (final IOException e) {</span>
+<span class="nc" id="L56">            throw new RuntimeException(&quot;Could not read results directory: &quot; + this.config.getOutputPath(), e);</span>
+<span class="nc" id="L57">        }</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">        if (lqnsResultsFile.isEmpty()) {</span>
+<span class="nc" id="L59">            throw new RuntimeException(&quot;Analysis failed. No LQNS result files in directory: &quot; + this.config.getOutputPath());</span>
+        }
+
+        // extract result
+<span class="nc" id="L63">        final Pcm2LqnResult results = new Pcm2LqnResult(this.pcmInstance);</span>
+<span class="nc" id="L64">        Pcm2LqnResultsParser.parse(trace, results, lqnsResultsFile.get(lqnsResultsFile.size() - 1));</span>
+<span class="nc" id="L65">        log.info(String.format(&quot;PCM2LQN analysis completed for PCMInstance '%s'.&quot;, this.pcmInstance.toString()));</span>
+<span class="nc" id="L66">        return results;</span>
+    }
+
+    private void executePalladio() {
+<span class="nc" id="L70">        final PCMSolverWorkflowRunConfiguration config = buildConfigWithBuilder();</span>
+<span class="nc" id="L71">        log.info(&quot;Created workflow config&quot;);</span>
+
+<span class="nc" id="L73">        final Pcm2LqnStrategy strategy = new Pcm2LqnStrategy(config);</span>
+<span class="nc" id="L74">        log.info(&quot;Created PCM2LQN strategy&quot;);</span>
+
+<span class="nc" id="L76">        strategy.transform(this.pcmInstance);</span>
+<span class="nc" id="L77">        log.info(&quot;Transformed pcm instance&quot;);</span>
+
+<span class="nc" id="L79">        strategy.solve();</span>
+<span class="nc" id="L80">        log.info(&quot;Solved pcm instance&quot;);</span>
+
+<span class="nc" id="L82">        strategy.storeTransformedModel(&quot;sample.transformed&quot;);</span>
+<span class="nc" id="L83">        log.info(&quot;Solved transformed model&quot;);</span>
+<span class="nc" id="L84">    }</span>
+
+    private PCMSolverWorkflowRunConfiguration buildConfigWithBuilder() {
+<span class="nc" id="L87">        final PCMSolverWorkflowRunConfiguration solverConfiguration = new PCMSolverWorkflowRunConfiguration();</span>
+<span class="nc" id="L88">        final ILaunchConfiguration configuration = Pcm2LqnLaunchConfiguration.adjusted(this.config);</span>
+        try {
+            AbstractWorkflowConfigurationBuilder builder;
+<span class="nc" id="L91">            builder = new PCMWorkflowConfigurationBuilder(configuration, &quot;run&quot;);</span>
+<span class="nc" id="L92">            builder.fillConfiguration(solverConfiguration);</span>
+<span class="nc" id="L93">            builder = new PCMSolverConfigurationBasedConfigBuilder(configuration, &quot;run&quot;);</span>
+<span class="nc" id="L94">            builder.fillConfiguration(solverConfiguration);</span>
+<span class="nc" id="L95">        } catch (final CoreException e) {</span>
+<span class="nc" id="L96">            throw new RuntimeException(&quot;Could not build launch config.&quot;, e);</span>
+<span class="nc" id="L97">        }</span>
+
+<span class="nc" id="L99">        return solverConfiguration;</span>
+    }
+
+    /**
+     * For the {@link PcmLqnsAnalyzer} to work, the {@link PCMInstance} under analysis was modified by adding trace
+     * information. Call this method to undo those changes and restore the previous state.
+     */
+    public void untrace() {
+<span class="nc" id="L107">        PcmModelTrace.untrace(this.pcmInstance);</span>
+<span class="nc" id="L108">    }</span>
+
+    /**
+     * Returns the PCM instance under analysis.
+     */
+    public PCMInstance getPcmInstance() {
+<span class="nc" id="L114">        return this.pcmInstance;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

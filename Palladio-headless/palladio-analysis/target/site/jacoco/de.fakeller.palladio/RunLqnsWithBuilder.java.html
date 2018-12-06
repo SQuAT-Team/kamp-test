@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RunLqnsWithBuilder.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Analysis</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio</a> &gt; <span class="el_source">RunLqnsWithBuilder.java</span></div><h1>RunLqnsWithBuilder.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio;
+
+import de.fakeller.palladio.analysis.pcm2lqn.runner.PcmLqnsAnalyzer;
+import de.fakeller.palladio.analysis.pcm2lqn.runner.PcmLqnsAnalyzerContext;
+import de.fakeller.palladio.analysis.provider.SimpleTacticsProvider;
+import de.fakeller.palladio.builder.PcmBuilder;
+import de.fakeller.palladio.environment.PalladioEclipseEnvironment;
+import de.fakeller.performance.analysis.result.PerformanceResult;
+import de.fakeller.performance.analysis.result.Result;
+import org.palladiosimulator.pcm.core.entity.NamedElement;
+import org.palladiosimulator.solver.models.PCMInstance;
+
+import java.io.IOException;
+import java.util.logging.Logger;
+
+/**
+ * Tries to create a {@link PCMInstance} with the help of the {@link PcmBuilder}.
+ */
+<span class="nc" id="L19">public class RunLqnsWithBuilder {</span>
+
+<span class="nc" id="L21">    private static final Logger log = Logger.getLogger(RunLqnsWithBuilder.class.getName());</span>
+
+    public static void main(final String[] args) throws IOException {
+<span class="nc" id="L24">        new RunLqnsWithBuilder().run();</span>
+<span class="nc" id="L25">    }</span>
+
+    public void run() {
+<span class="nc" id="L28">        log.info(&quot;Launching LQNS headless&quot;);</span>
+<span class="nc" id="L29">        PalladioEclipseEnvironment.INSTANCE.setup();</span>
+
+<span class="nc" id="L31">        final PCMInstance instance = new SimpleTacticsProvider().provide();</span>
+
+<span class="nc" id="L33">        final PcmLqnsAnalyzer analyzer = new PcmLqnsAnalyzer();</span>
+<span class="nc" id="L34">        final PcmLqnsAnalyzerContext ctx = analyzer.setupAnalysis(instance);</span>
+<span class="nc" id="L35">        final PerformanceResult&lt;NamedElement&gt; result = ctx.analyze();</span>
+<span class="nc" id="L36">        ctx.untrace();</span>
+
+<span class="nc bnc" id="L38" title="All 2 branches missed.">        for (final Result&lt;NamedElement&gt; r : result.getResults()) {</span>
+<span class="nc" id="L39">            log.info(String.format(&quot;Result for '%s': %s&quot;, r.attachedTo().getEntityName(), r.value().toHumanReadable()));</span>
+<span class="nc" id="L40">        }</span>
+
+        // WARNING: saving the files actually removes them from the PCMResourceSetPartition! therefore the model can
+        // only be saved AFTER the analysis has been performed!
+        // instance.saveToFiles(&quot;palladio-headless&quot;);
+<span class="nc" id="L45">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

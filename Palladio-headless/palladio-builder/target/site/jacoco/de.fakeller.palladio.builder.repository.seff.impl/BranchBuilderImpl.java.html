@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BranchBuilderImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Builder</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.builder.repository.seff.impl</a> &gt; <span class="el_source">BranchBuilderImpl.java</span></div><h1>BranchBuilderImpl.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.builder.repository.seff.impl;
+
+import de.fakeller.palladio.builder.repository.seff.BranchBuilder;
+import de.fakeller.palladio.builder.repository.seff.ResourceDemandBuilder;
+import de.fakeller.palladio.builder.util.RandomVariableFactory;
+import org.palladiosimulator.pcm.seff.BranchAction;
+import org.palladiosimulator.pcm.seff.GuardedBranchTransition;
+import org.palladiosimulator.pcm.seff.SeffFactory;
+
+public class BranchBuilderImpl&lt;PARENT extends ResourceDemandBuilder&lt;?&gt;&gt; implements BranchBuilder&lt;PARENT&gt; {
+
+    private final PARENT belongsTo;
+    private final BranchAction eModel;
+
+<span class="fc" id="L15">    public BranchBuilderImpl(final PARENT belongsTo) {</span>
+<span class="fc" id="L16">        this.belongsTo = belongsTo;</span>
+<span class="fc" id="L17">        this.eModel = SeffFactory.eINSTANCE.createBranchAction();</span>
+<span class="fc" id="L18">    }</span>
+
+    @Override
+    public ResourceDemandBuilder&lt;BranchBuilder&lt;PARENT&gt;&gt; createBranch(final String name, final String branchConditionExpression) {
+        // create branch object for new branch
+<span class="fc" id="L23">        final GuardedBranchTransition curBranch = SeffFactory.eINSTANCE.createGuardedBranchTransition();</span>
+<span class="fc" id="L24">        curBranch.setEntityName(name);</span>
+<span class="fc" id="L25">        curBranch.setBranchCondition_GuardedBranchTransition(RandomVariableFactory.expression(branchConditionExpression));</span>
+        // link model
+<span class="fc" id="L27">        curBranch.setBranchAction_AbstractBranchTransition(this.eModel);</span>
+<span class="fc" id="L28">        this.eModel.getBranches_Branch().add(curBranch);</span>
+
+        // create nested resource demanding behavior
+<span class="fc" id="L31">        final ResourceDemandBuilder&lt;BranchBuilder&lt;PARENT&gt;&gt; nested = ResourceDemandBuilderImpl.nestedResourceDemand(this);</span>
+        // link nested model
+<span class="fc" id="L33">        curBranch.setBranchBehaviour_BranchTransition(nested.getReference());</span>
+<span class="fc" id="L34">        nested.getReference().setAbstractBranchTransition_ResourceDemandingBehaviour(curBranch);</span>
+
+<span class="fc" id="L36">        return nested;</span>
+    }
+
+    @Override
+    public PARENT end() {
+<span class="fc" id="L41">        return this.belongsTo;</span>
+    }
+
+    @Override
+    public BranchAction getReference() {
+<span class="fc" id="L46">        return this.eModel;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

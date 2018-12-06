@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Attach.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fastpan</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.performance.analysis.result</a> &gt; <span class="el_source">Attach.java</span></div><h1>Attach.java</h1><pre class="source lang-java linenums">package de.fakeller.performance.analysis.result;
+
+import de.fakeller.performance.analysis.result.metric.DirectMetric;
+import de.fakeller.performance.analysis.result.metric.PerformanceMetric;
+import de.fakeller.performance.analysis.result.metric.aggregate.*;
+import de.fakeller.performance.analysis.result.metric.probabilistic.NormalDistributionMetric;
+import de.fakeller.performance.analysis.result.quantity.PerformanceQuantity;
+import de.fakeller.performance.analysis.result.quantity.RelativeThroughput;
+import de.fakeller.performance.analysis.result.quantity.ServiceTime;
+import de.fakeller.performance.analysis.result.quantity.Utilization;
+import de.fakeller.performance.analysis.result.quantity.time.BusyTime;
+import de.fakeller.performance.analysis.result.quantity.time.IdleTime;
+import de.fakeller.performance.analysis.result.unit.ThroughputUnit;
+import de.fakeller.performance.analysis.result.valueobject.Duration;
+import de.fakeller.performance.analysis.result.valueobject.NormalPercentage;
+import de.fakeller.performance.analysis.result.valueobject.Percentage;
+import de.fakeller.performance.analysis.result.valueobject.statistics.StandardDeviation;
+import de.fakeller.performance.analysis.result.valueobject.statistics.Variance;
+
+/**
+ * This is a builder for {@link AttachedResult}s. The builder features a nice API for all out-of-the-box
+ * {@link PerformanceQuantity}s and {@link PerformanceMetric}s.
+ * &lt;p&gt;
+ * The API allows to concisely create results:
+ * &lt;p&gt;
+ * &lt;code&gt;
+ * Result res = Attach.to(element).serviceTime(Duration.of(240)).mean();
+ * &lt;/code&gt;
+ */
+<span class="pc bpc" id="L30" title="1 of 2 branches missed.">public class Attach&lt;T&gt; {</span>
+
+    private final T attachedTo;
+    private PerformanceQuantity&lt;?&gt; quantity;
+
+<span class="fc" id="L35">    private Attach(final T attachedTo) {</span>
+<span class="fc" id="L36">        this.attachedTo = attachedTo;</span>
+<span class="fc" id="L37">    }</span>
+
+    public static &lt;T&gt; Attach&lt;T&gt;.QuantityBuilder to(final T attachedTo) {
+<span class="pc bpc" id="L40" title="2 of 4 branches missed.">        assert null != attachedTo;</span>
+<span class="fc" id="L41">        return new Attach&lt;&gt;(attachedTo).new QuantityBuilder();</span>
+    }
+
+
+    public class QuantityBuilder {
+
+<span class="fc" id="L47">        private QuantityBuilder() {</span>
+<span class="fc" id="L48">        }</span>
+
+        public MetricBuilder serviceTime(final Duration time) {
+<span class="fc" id="L51">            Attach.this.quantity = new ServiceTime(time);</span>
+<span class="fc" id="L52">            return new MetricBuilder();</span>
+        }
+
+        public MetricBuilder busyTime(final Duration time) {
+<span class="fc" id="L56">            Attach.this.quantity = new BusyTime(time);</span>
+<span class="fc" id="L57">            return new MetricBuilder();</span>
+        }
+
+        public MetricBuilder idleTime(final Duration time) {
+<span class="fc" id="L61">            Attach.this.quantity = new IdleTime(time);</span>
+<span class="fc" id="L62">            return new MetricBuilder();</span>
+        }
+
+        public MetricBuilder relativeThroughput(final NormalPercentage relativeThroughput, final ThroughputUnit unit) {
+<span class="fc" id="L66">            Attach.this.quantity = new RelativeThroughput(relativeThroughput, unit);</span>
+<span class="fc" id="L67">            return new MetricBuilder();</span>
+        }
+
+        public MetricBuilder utilization(final Percentage utilization) {
+<span class="fc" id="L71">            Attach.this.quantity = new Utilization(utilization);</span>
+<span class="fc" id="L72">            return new MetricBuilder();</span>
+        }
+    }
+
+<span class="pc bpc" id="L76" title="1 of 2 branches missed.">    public class MetricBuilder {</span>
+
+<span class="fc" id="L78">        private MetricBuilder() {</span>
+<span class="pc bpc" id="L79" title="2 of 4 branches missed.">            assert null != Attach.this.quantity;</span>
+<span class="fc" id="L80">        }</span>
+
+        public Result&lt;T&gt; direct() {
+<span class="fc" id="L83">            return get(new DirectMetric&lt;&gt;(Attach.this.quantity));</span>
+        }
+
+        public Result&lt;T&gt; min() {
+<span class="fc" id="L87">            return get(new MinMetric&lt;&gt;(Attach.this.quantity));</span>
+        }
+
+        public Result&lt;T&gt; max() {
+<span class="fc" id="L91">            return get(new MaxMetric&lt;&gt;(Attach.this.quantity));</span>
+        }
+
+        public Result&lt;T&gt; mean() {
+<span class="fc" id="L95">            return get(new MeanMetric&lt;&gt;(Attach.this.quantity));</span>
+        }
+
+        public Result&lt;T&gt; median() {
+<span class="fc" id="L99">            return get(new MedianMetric&lt;&gt;(Attach.this.quantity));</span>
+        }
+
+        public Result&lt;T&gt; sum() {
+<span class="fc" id="L103">            return get(new SumMetric&lt;&gt;(Attach.this.quantity));</span>
+        }
+
+        public Result&lt;T&gt; normalDistribution(final Variance sigma) {
+<span class="fc" id="L107">            return get(new NormalDistributionMetric&lt;&gt;(Attach.this.quantity, sigma));</span>
+        }
+
+        public Result&lt;T&gt; normalDistribution(final StandardDeviation sigma) {
+<span class="fc" id="L111">            return get(new NormalDistributionMetric&lt;&gt;(Attach.this.quantity, sigma));</span>
+        }
+
+        private Result&lt;T&gt; get(final PerformanceMetric metric) {
+<span class="fc" id="L115">            return new AttachedResult&lt;T&gt;(Attach.this.attachedTo, metric);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

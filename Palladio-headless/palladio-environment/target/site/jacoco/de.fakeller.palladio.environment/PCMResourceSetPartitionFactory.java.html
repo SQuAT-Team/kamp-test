@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PCMResourceSetPartitionFactory.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Environment</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.environment</a> &gt; <span class="el_source">PCMResourceSetPartitionFactory.java</span></div><h1>PCMResourceSetPartitionFactory.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.environment;
+
+import org.eclipse.emf.common.util.URI;
+import org.palladiosimulator.analyzer.workflow.blackboard.PCMResourceSetPartition;
+import org.palladiosimulator.analyzer.workflow.configurations.AbstractPCMWorkflowRunConfiguration;
+
+/**
+ * Creates a {@link PCMResourceSetPartition} where Palladio default models are already loaded.
+ */
+public interface PCMResourceSetPartitionFactory {
+
+    /**
+     * Creates a {@link PCMResourceSetPartition} that can be used in headless mode.
+     */
+    PCMResourceSetPartition create();
+
+    /**
+     * {@link PCMResourceSetPartition}s do not by default hold references to the default models shipped with Palladio.
+     * They are somehow automagically registered when loading the model. However, we need to load them manually and
+     * this class shows how this can be done. While this is not nice and future proof, it works for the moment. This
+     * should be replaced by some proper loading in the near future.
+     */
+<span class="fc" id="L23">    class DefaultFactory implements PCMResourceSetPartitionFactory {</span>
+
+<span class="fc" id="L25">        private static final String[] toLoad = {</span>
+                &quot;pathmap://PCM_MODELS/Palladio.resourcetype#_o3sScH2AEdyH8uerKnHYug&quot;, // LAN
+                &quot;pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ&quot;, // PCU
+                &quot;pathmap://PCM_MODELS/Palladio.resourcetype#_BIjHoQ3KEdyouMqirZIhzQ&quot;, // HDD
+                &quot;pathmap://PCM_MODELS/Palladio.resourcetype#_nvHX4KkREdyEA_b89s7q9w&quot;, // DELAY
+        };
+
+        @Override
+        public PCMResourceSetPartition create() {
+<span class="fc" id="L34">            final PCMResourceSetPartition rsp = new PCMResourceSetPartition();</span>
+<span class="fc" id="L35">            rsp.getResourceSet().setURIConverter(PalladioEclipseEnvironment.INSTANCE.getUriConverter());</span>
+<span class="fc" id="L36">            rsp.initialiseResourceSetEPackages(AbstractPCMWorkflowRunConfiguration.PCM_EPACKAGES);</span>
+
+            // load default models
+<span class="fc bfc" id="L39" title="All 2 branches covered.">            for (final String model : toLoad) {</span>
+<span class="fc" id="L40">                rsp.loadModel(URI.createURI(model));</span>
+            }
+
+<span class="fc" id="L43">            rsp.resolveAllProxies();</span>
+<span class="fc" id="L44">            return rsp;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

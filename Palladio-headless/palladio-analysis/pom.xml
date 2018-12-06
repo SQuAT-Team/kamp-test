@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>de.fakeller.palladio-headless</groupId>
+        <artifactId>palladio-headless</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>palladio-analysis</artifactId>
+
+    <name>Palladio Headless Analysis</name>
+    <description>Runs performance predictions.</description>
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>de.fakeller.palladio-headless</groupId>
+            <artifactId>palladio-environment</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.fakeller.palladio-headless</groupId>
+            <artifactId>palladio-builder</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.fabiankeller.palladio-headless</groupId>
+            <artifactId>palladio-bridge</artifactId>
+        </dependency>
+
+        <!-- todo: as long as the fastpan project is not published, we use jitpack to serve the dependency -->
+        <dependency>
+            <groupId>com.github.DECLARE-Project</groupId>
+            <artifactId>fastpan</artifactId>
+            <version>v1.0.0</version>
+        </dependency>
+
+        <!-- test dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

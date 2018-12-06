@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NamedBuilder.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Builder</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.builder</a> &gt; <span class="el_source">NamedBuilder.java</span></div><h1>NamedBuilder.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.builder;
+
+import org.palladiosimulator.pcm.core.entity.NamedElement;
+
+/**
+ * Helps building {@link NamedElement}s.
+ *
+ * @param &lt;SELF&gt; the child interface extending this interface. This is used to provide a proper fluent interface.
+ * @param &lt;TYPE&gt; The Palladio {@link NamedElement} class that is built by this builder
+ */
+public interface NamedBuilder&lt;
+        SELF extends NamedBuilder&lt;SELF, TYPE&gt;,
+        TYPE extends NamedElement
+        &gt; extends BaseBuilder&lt;TYPE&gt; {
+
+    /**
+     * Sets the name of the entity.
+     */
+    default SELF withEntityName(final String name) {
+<span class="fc" id="L20">        this.getReference().setEntityName(name);</span>
+<span class="fc" id="L21">        return (SELF) this;</span>
+    }
+
+    /**
+     * Returns the name of the entity under construction.
+     */
+    default String getEntityName() {
+<span class="fc" id="L28">        return this.getReference().getEntityName();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

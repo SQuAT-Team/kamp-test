@@ -1,11 +1,17 @@
 package edu.squat.transformations.modifiability.insinter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.henshin.interpreter.EGraph;
 import org.eclipse.emf.henshin.interpreter.Engine;
+import org.eclipse.emf.henshin.interpreter.Match;
 import org.eclipse.emf.henshin.interpreter.RuleApplication;
 import org.eclipse.emf.henshin.interpreter.UnitApplication;
 import org.eclipse.emf.henshin.interpreter.impl.EngineImpl;
@@ -13,25 +19,58 @@ import org.eclipse.emf.henshin.interpreter.impl.RuleApplicationImpl;
 import org.eclipse.emf.henshin.interpreter.impl.UnitApplicationImpl;
 import org.eclipse.emf.henshin.model.LoopUnit;
 import org.eclipse.emf.henshin.model.Rule;
+import org.eclipse.emf.henshin.model.Unit;
 import org.eclipse.emf.henshin.model.impl.LoopUnitImpl;
 import org.eclipse.emf.henshin.trace.Trace;
+import org.eclipse.emf.henshin.trace.TraceFactory;
+import org.palladiosimulator.pcm.allocation.Allocation;
+import org.palladiosimulator.pcm.allocation.AllocationContext;
+import org.palladiosimulator.pcm.allocation.AllocationFactory;
+import org.palladiosimulator.pcm.core.composition.AssemblyConnector;
+import org.palladiosimulator.pcm.core.composition.AssemblyContext;
+import org.palladiosimulator.pcm.core.composition.CompositionFactory;
+import org.palladiosimulator.pcm.core.composition.Connector;
+import org.palladiosimulator.pcm.core.composition.ProvidedDelegationConnector;
 import org.palladiosimulator.pcm.core.entity.Entity;
 import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.repository.OperationInterface;
+import org.palladiosimulator.pcm.repository.OperationProvidedRole;
+import org.palladiosimulator.pcm.repository.OperationRequiredRole;
 import org.palladiosimulator.pcm.repository.OperationSignature;
 import org.palladiosimulator.pcm.repository.Parameter;
+import org.palladiosimulator.pcm.repository.ProvidedRole;
 import org.palladiosimulator.pcm.repository.Repository;
 import org.palladiosimulator.pcm.repository.RepositoryFactory;
+import org.palladiosimulator.pcm.repository.RequiredRole;
+import org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
+import org.palladiosimulator.pcm.seff.AbstractAction;
+import org.palladiosimulator.pcm.seff.AbstractBranchTransition;
+import org.palladiosimulator.pcm.seff.BranchAction;
+import org.palladiosimulator.pcm.seff.ExternalCallAction;
+import org.palladiosimulator.pcm.seff.LoopAction;
 import org.palladiosimulator.pcm.seff.ResourceDemandingSEFF;
 import org.palladiosimulator.pcm.seff.SeffFactory;
+import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
 import org.palladiosimulator.pcm.seff.StartAction;
 import org.palladiosimulator.pcm.seff.StopAction;
 
+import edu.squat.transformations.ArchitecturalVersion;
 import edu.squat.transformations.modifiability.PCMTransformerRunner;
 import edu.squat.transformations.modifiability.RunnerHelper;
 import edu.squat.transformations.modifiability.Tactic;
 
+@SuppressWarnings("unused")
 public class InsInterRunner extends PCMTransformerRunner {
+	private final static String TRACE_Left = "left";
+	private final static String TRACE_Right = "right";
+	private final static String TRACE_Match = "match";
+	private final static String TRACE_Rewire = "rewire";
+	private final static String TRACE_ReconnectionToIntermediate = "reconn-toint";
+	private final static String TRACE_ReconnectionFromIntermediate = "reconn-fromint";
+	private final static String TRACE_Intermediate = "intermediate";
+	private final static String TRACE_AssemblyContext = "assembly-cont";
+	private final static String TRACE_AssemblyConnector = "assembly-conn";
+	private final static String TRACE_AllocationContext = "allocation-cont";
 	//
 	private Engine engine;
 	//
@@ -39,6 +78,8 @@ public class InsInterRunner extends PCMTransformerRunner {
 	private Rule createIntermediaryComponent;
 	private Rule rewireComponents2Intermediary;
 	private Rule removeDuplicateRequiredRoles;
+	private Unit rewireComponents2IntermediaryLoop;
+	private Unit removeDuplicateRequiredRolesLoop;
 	
 	public InsInterRunner() {
 		super();
@@ -51,13 +92,17 @@ public class InsInterRunner extends PCMTransformerRunner {
 		//markComponents2Isolate.setCheckDangling(false);
 		createIntermediaryComponent = (Rule) module.getUnit("createIntermediaryComponent");
 		rewireComponents2Intermediary = (Rule) module.getUnit("rewireComponents2Intermediary");
+		//rewireComponents2Intermediary.setCheckDangling(false);
 		removeDuplicateRequiredRoles = (Rule) module.getUnit("removeDuplicateRequiredRoles");
+		rewireComponents2IntermediaryLoop = module.getUnit("rewireComponents2IntermediaryLoop");
+		removeDuplicateRequiredRolesLoop = module.getUnit("removeDuplicateRequiredRolesLoop");
 	}
 	
 	
-	@SuppressWarnings({"unused"})
 	@Override
-	public void run(boolean saveResult) {
+	public List<ArchitecturalVersion> run(boolean saveResult) {
+		List<ArchitecturalVersion> ret= new ArrayList<>();
+		
 		candidateTactics = new ArrayList<Tactic>();
 		//Create and configure an engine
 		engine = new EngineImpl();
@@ -105,25 +150,60 @@ public class InsInterRunner extends PCMTransformerRunner {
 					
 					//Configuring and executing the second rule
 					RuleApplication secondRule = this.runSecondRule(tempGraph, componentsName, interfacesName);
-					//Duplicating the interface for the intermediate
-					BasicComponent newComponent = (BasicComponent) secondRule.getResultParameterValue("newComp");
-					OperationInterface newInterface = (OperationInterface) secondRule.getResultParameterValue("newInt");		
-					this.duplicateInterface(interfaces, newInterface);		
-					//Creating a basic service effect specification for the intermediate
-					this.createSEFF(newComponent, newInterface);
-
-					//Configuring and executing the third rule
-					UnitApplication thirdRule = this.runThirdRule(tempGraph);
 					
+					//Duplicating the interface for the intermediate
+					BasicComponent intermediateComponent = (BasicComponent) secondRule.getResultParameterValue("newComp");
+					OperationInterface intermediateInterface = (OperationInterface) secondRule.getResultParameterValue("newInt");	
+					this.duplicateInterface(interfaces, intermediateInterface);
+					
+					//Rewire everything from and to the intermediate
+					this.rewireComponents2Intermediary(tempGraph);
+					
+					//Creating a basic service effect specification for the intermediate
+					this.createSEFF(components, interfaces, intermediateComponent, intermediateInterface);
+					
+					this.fixAffectedSEFF(components, interfaces, intermediateInterface);
+					//Configuring and executing the third rule
+					//UnitApplication thirdRule = this.runThirdRule(tempGraph);
 					//Configuring and executing the fourth rule
-					UnitApplication fourthRule = this.runFourthRule(tempGraph);
+					//UnitApplication fourthRule = this.runFourthRule(tempGraph);
+					if(this.arePerformanceModelsLoaded()) {
+						//Adjust the system and allocation models by executing a monolithic method (ugly but fast)
+						this.fixSystemAndAllocation(tempGraph, intermediateComponent, intermediateInterface, components, interfaces);
+						//Clean up and delete old assembly connectors
+						this.runLastRule(tempGraph);
+					}
 					
 					//Store the results
 					this.addTactic(null, tempGraph, null);
 					if (saveResult) {
-						String fileIdentifier = interfacesName;
-						String fileName = resultFilename.replace("#REPLACEMENT#", String.valueOf(counter) + "-" + fileIdentifier);
-						RunnerHelper.saveResult(resourceSet, tempGraph, fileName);
+						String nameOfTheModel=resultRepositoryFilename.replaceAll(".repository", "").replace("#REPLACEMENT#", String.valueOf(counter) + "-" + interfacesName);
+						ret.add(new ArchitecturalVersion(nameOfTheModel, dirPath,ArchitecturalVersion.MODIFIABILITY));
+						
+						RunnerHelper.saveRepositoryResult(
+								resourceSet, 
+								tempGraph, 
+								resultRepositoryFilename.replace("#REPLACEMENT#", String.valueOf(counter) + "-" + interfacesName));
+						if(this.arePerformanceModelsLoaded()) {
+							RunnerHelper.saveSystemResult(
+									resourceSet, 
+									tempGraph, 
+									resultSystemFilename.replace("#REPLACEMENT#", String.valueOf(counter) + "-" + interfacesName));
+							RunnerHelper.saveResourceEnvironmentResult(
+									resourceSet, 
+									tempGraph, 
+									resultResourceEnvironmentFilename.replace("#REPLACEMENT#", String.valueOf(counter) + "-" + interfacesName));
+							RunnerHelper.saveAllocationResult(
+									resourceSet, 
+									tempGraph, 
+									resultAllocationFilename.replace("#REPLACEMENT#", String.valueOf(counter) + "-" + interfacesName));
+						}
+						if(this.isUsageModelLoaded()) {
+							RunnerHelper.saveUsageResult(
+									resourceSet, 
+									tempGraph, 
+									resultUsageFilename.replace("#REPLACEMENT#", String.valueOf(counter) + "-" + interfacesName));
+						}
 					}
 				}
 				else {
@@ -136,15 +216,24 @@ public class InsInterRunner extends PCMTransformerRunner {
 		else {
 			System.out.println("Could not mark components and interfaces that could use an intermediate");
 		}
+		return ret;
 	}
 	
+	private boolean isDuplicated(AssemblyConnector assemblyConnectorI, AssemblyConnector assemblyConnectorJ) {
+		return 
+				assemblyConnectorI.getProvidingAssemblyContext_AssemblyConnector().equals(assemblyConnectorJ.getProvidingAssemblyContext_AssemblyConnector()) &&
+				assemblyConnectorI.getRequiringAssemblyContext_AssemblyConnector().equals(assemblyConnectorJ.getRequiringAssemblyContext_AssemblyConnector()) &&
+				assemblyConnectorI.getProvidedRole_AssemblyConnector().equals(assemblyConnectorJ.getProvidedRole_AssemblyConnector()) &&
+				assemblyConnectorI.getRequiredRole_AssemblyConnector().equals(assemblyConnectorJ.getRequiredRole_AssemblyConnector());
+	}
+
+
 	private RuleApplication runFirstRule(EGraph graph) {
 		RuleApplication app = new RuleApplicationImpl(engine);
 		app.setEGraph(graph);
 		app.setRule(markComponent2Isolate);
 		return app;
 	}
-
 
 	private RuleApplication runSecondRule(EGraph graph, String componentName, String interfaceName) {
 		RuleApplication app = new RuleApplicationImpl(engine);
@@ -161,10 +250,10 @@ public class InsInterRunner extends PCMTransformerRunner {
 	}
 
 
-	private void duplicateInterface(List<OperationInterface> oldInterfaces, OperationInterface newInterface) {
+	private void duplicateInterface(List<OperationInterface> affectedInterfaces, OperationInterface intermediateInterface) {
 		RepositoryFactory factory = RepositoryFactory.eINSTANCE;
-		for(OperationInterface oldInterface : oldInterfaces) {
-			for(OperationSignature signature : oldInterface.getSignatures__OperationInterface()) {
+		for(OperationInterface affectedInterface : affectedInterfaces) {
+			for(OperationSignature signature : affectedInterface.getSignatures__OperationInterface()) {
 				OperationSignature clonedSignature = factory.createOperationSignature();
 				clonedSignature.setEntityName(signature.getEntityName());
 				clonedSignature.setReturnType__OperationSignature(signature.getReturnType__OperationSignature());
@@ -175,61 +264,394 @@ public class InsInterRunner extends PCMTransformerRunner {
 					clonedParameter.setEventType__Parameter(parameter.getEventType__Parameter());
 					clonedSignature.getParameters__OperationSignature().add(clonedParameter);
 				}
-				newInterface.getSignatures__OperationInterface().add(clonedSignature);
+				intermediateInterface.getSignatures__OperationInterface().add(clonedSignature);
 			}
 		}
 		System.out.println("Successfully duplicated all the interfaces of the involved components to the intermediate one");
 	}
 
-
-	private void createSEFF(BasicComponent newComponent, OperationInterface newInterface) {
+	private void createSEFF(List<BasicComponent> affectedComponents, List<OperationInterface> affectedInterfaces, BasicComponent intermediateComponent, OperationInterface intermediateInterface) {
 		SeffFactory factory = SeffFactory.eINSTANCE;
-		for(OperationSignature signature : newInterface.getSignatures__OperationInterface()) {
+		for(OperationSignature signature : intermediateInterface.getSignatures__OperationInterface()) {
 			ResourceDemandingSEFF seff = factory.createResourceDemandingSEFF();
 			seff.setDescribedService__SEFF(signature);
 			StartAction start = factory.createStartAction();
-			StopAction stop = factory.createStopAction();
 			start.setEntityName("start");
+			StopAction stop = factory.createStopAction();
 			stop.setEntityName("stop");
-			start.setSuccessor_AbstractAction(stop);
-			stop.setPredecessor_AbstractAction(start);
+			//
+			ExternalCallAction externalCallAction = factory.createExternalCallAction();
+			OperationInterface originalInterface = this.findOriginalInterface(signature, affectedInterfaces);
+			OperationSignature originalSignature = this.findOriginalSignature(signature, originalInterface);
+			externalCallAction.setCalledService_ExternalService(originalSignature);
+			externalCallAction.setRole_ExternalService(this.findRequiredRole(intermediateComponent, originalInterface));
+			externalCallAction.setEntityName(RunnerHelper.getExternalCallActionName(intermediateInterface, signature));
+			//
+			start.setSuccessor_AbstractAction(externalCallAction);
+			externalCallAction.setPredecessor_AbstractAction(start);
+			externalCallAction.setSuccessor_AbstractAction(stop);
+			stop.setPredecessor_AbstractAction(externalCallAction);
+			//
 			seff.getSteps_Behaviour().add(start);
+			seff.getSteps_Behaviour().add(externalCallAction);
 			seff.getSteps_Behaviour().add(stop);
-			newComponent.getServiceEffectSpecifications__BasicComponent().add(seff);
+			//
+			intermediateComponent.getServiceEffectSpecifications__BasicComponent().add(seff);
 		}
-		System.out.println("Successfully created a simple SEFF for the intermediate component and interface");
+		System.out.println("Successfully created a SEFF for the intermediate component and interface");
+	}
+	
+	private OperationInterface findOriginalInterface(OperationSignature signature, List<OperationInterface> affectedInterfaces) {
+		OperationInterface originalInterface = null;
+		for(int i = 0; i < affectedInterfaces.size() && originalInterface == null; i++) {
+			OperationInterface operationInterface = affectedInterfaces.get(i);
+			if(this.findOriginalSignature(signature, operationInterface) != null)
+				originalInterface = operationInterface;
+		}
+		return originalInterface;
+	}
+	
+	private OperationSignature findOriginalSignature(OperationSignature signature, OperationInterface originalInterface) {
+		OperationSignature originalSignature = null;
+		Iterator<OperationSignature> signatures = originalInterface.getSignatures__OperationInterface().iterator();
+		while(signatures.hasNext() && originalSignature == null) {
+			OperationSignature operationSignature = signatures.next();
+			if(operationSignature.getEntityName().equals(signature.getEntityName()))
+				originalSignature = operationSignature;
+		}
+		return originalSignature;
+	}
+	
+	private void fixAffectedSEFF(List<BasicComponent> components, List<OperationInterface> interfaces, OperationInterface intermediateInterface) {
+		for(int i = 0; i < components.size(); i++) {
+			BasicComponent originalComponent = components.get(i);
+			for(int j = 0; j < interfaces.size(); j++) {
+				if(i != j) {
+					OperationInterface originalInterface = interfaces.get(j);
+					this.fixAffectedSEFF(originalComponent, originalInterface, intermediateInterface);
+				}
+			}
+		}
+	}
+	
+	private void fixAffectedSEFF(BasicComponent originalComponent, OperationInterface originalInterface, OperationInterface intermediateInterface) {
+		OperationRequiredRole oldRequiredRole = this.findRequiredRole(originalComponent, originalInterface);
+		OperationRequiredRole newRequiredRole = this.findRequiredRole(originalComponent, intermediateInterface);
+		Iterator<ServiceEffectSpecification> seffIterator = originalComponent.getServiceEffectSpecifications__BasicComponent().iterator();
+    	while(seffIterator.hasNext()) {
+    		ResourceDemandingSEFF seff = (ResourceDemandingSEFF) seffIterator.next();
+    		this.fixAffectedSEFF(seff.getSteps_Behaviour(), originalInterface, intermediateInterface, oldRequiredRole, newRequiredRole);
+		}
+	}
+	
+	private void fixAffectedSEFF(List<AbstractAction> actions, OperationInterface originalInterface, OperationInterface intermediateInterface, OperationRequiredRole oldRequiredRole, OperationRequiredRole newRequiredRole) {
+    	Iterator<AbstractAction> actionIterator = actions.iterator();
+    	while(actionIterator.hasNext()) {
+    		AbstractAction action = actionIterator.next();
+			if(action instanceof BranchAction) {
+		    	BranchAction branchAction = (BranchAction) action;
+		    	Iterator<AbstractBranchTransition> branchTransitions = branchAction.getBranches_Branch().iterator();
+		    	while(branchTransitions.hasNext()) {
+		    		AbstractBranchTransition branchTransition = branchTransitions.next();
+		    		this.fixAffectedSEFF(branchTransition.getBranchBehaviour_BranchTransition().getSteps_Behaviour(), originalInterface, intermediateInterface, oldRequiredRole, newRequiredRole);
+		    	}
+			}
+			if(action instanceof LoopAction) {
+				LoopAction loopAction = (LoopAction) action;
+				this.fixAffectedSEFF(loopAction.getBodyBehaviour_Loop().getSteps_Behaviour(), originalInterface, intermediateInterface, oldRequiredRole, newRequiredRole);
+			}
+			if(action instanceof ExternalCallAction) {
+				ExternalCallAction externalCallAction = (ExternalCallAction) action;
+				OperationRequiredRole requiredRole = externalCallAction.getRole_ExternalService();
+				OperationSignature requiredSignature = externalCallAction.getCalledService_ExternalService();
+				OperationInterface requiredInterface = requiredRole.getRequiredInterface__OperationRequiredRole();
+				if(requiredRole.equals(oldRequiredRole) && requiredInterface.equals(originalInterface)) {
+					externalCallAction.setRole_ExternalService(newRequiredRole);
+					externalCallAction.setCalledService_ExternalService(this.findSignature(requiredSignature, intermediateInterface));
+				}
+			}
+		}
+	}
+	
+	private OperationSignature findSignature(OperationSignature aSignature, OperationInterface anInterface) {
+		for(OperationSignature anotherSignature : anInterface.getSignatures__OperationInterface()) {
+			if(anotherSignature.getEntityName().equals(aSignature.getEntityName()))
+				return anotherSignature;
+		}
+		return null;
+	}
+	
+	private void rewireComponents2Intermediary(EGraph graph) {
+		Trace traceRoot = RunnerHelper.getTraceRoot(graph);
+		List<Trace> matchTraces = RunnerHelper.getTraces(traceRoot, TRACE_Match, false);
+		Trace intermediateTrace = RunnerHelper.getTraces(traceRoot, TRACE_Intermediate, false).get(0);
+		BasicComponent intermediateComponent = (BasicComponent) intermediateTrace.getSource().get(0);
+		OperationInterface intermediateInterface = (OperationInterface) intermediateTrace.getTarget().get(0);
+		for(Trace matchTrace : matchTraces) {
+			Trace leftTrace = (Trace) matchTrace.getSource().get(0);
+			Trace rightTrace = (Trace) matchTrace.getTarget().get(0);
+			BasicComponent leftComponent = (BasicComponent) leftTrace.getSource().get(0);
+			OperationInterface leftInterface = (OperationInterface) leftTrace.getTarget().get(0);
+			BasicComponent rightComponent = (BasicComponent) rightTrace.getSource().get(0);
+			OperationInterface rightInterface = (OperationInterface) rightTrace.getTarget().get(0);
+			//
+			//OperationRequiredRole leftRequiredRole = this.findRequiredRole(leftComponent, rightInterface);
+			//OperationRequiredRole rightRequiredRole = this.findRequiredRole(rightComponent, leftInterface);
+			this.rewireIntermediate(matchTrace, leftComponent, rightInterface, intermediateComponent, intermediateInterface);
+			this.rewireIntermediate(matchTrace, rightComponent, leftInterface, intermediateComponent, intermediateInterface);
+			//
+			matchTrace.setName(TRACE_Rewire);
+		}
+	}
+	
+	private void rewireIntermediate(Trace matchTrace, BasicComponent originalComponent, OperationInterface originalInterface, BasicComponent intermediateComponent, OperationInterface intermediateInterface) {
+		OperationRequiredRole originalRequiredRole = this.findRequiredRole(originalComponent, originalInterface);
+		if(this.findRequiredRole(originalComponent, intermediateInterface) == null) {
+			OperationRequiredRole newRequiredRole = RepositoryFactory.eINSTANCE.createOperationRequiredRole();
+			newRequiredRole.setRequiredInterface__OperationRequiredRole(intermediateInterface);
+			originalComponent.getRequiredRoles_InterfaceRequiringEntity().add(newRequiredRole);
+			Trace reconnectedTrace = TraceFactory.eINSTANCE.createTrace();
+			reconnectedTrace.setName(TRACE_ReconnectionToIntermediate);
+			reconnectedTrace.getSource().add((EObject) originalRequiredRole);
+			reconnectedTrace.getTarget().add((EObject) newRequiredRole);
+			matchTrace.getSubTraces().add(reconnectedTrace);
+		}
+		if(this.findRequiredRole(intermediateComponent, originalInterface) == null) {
+			OperationRequiredRole newRequiredRole = RepositoryFactory.eINSTANCE.createOperationRequiredRole();
+			newRequiredRole.setRequiredInterface__OperationRequiredRole(originalInterface);
+			intermediateComponent.getRequiredRoles_InterfaceRequiringEntity().add(newRequiredRole);
+			Trace reconnectedTrace = TraceFactory.eINSTANCE.createTrace();
+			reconnectedTrace.setName(TRACE_ReconnectionFromIntermediate);
+			reconnectedTrace.getSource().add((EObject) originalRequiredRole);
+			reconnectedTrace.getTarget().add((EObject) newRequiredRole);
+			matchTrace.getSubTraces().add(reconnectedTrace);
+		}
+	}
+	
+	private OperationProvidedRole findProvidedRole(BasicComponent component, OperationInterface operationInterface) {
+		OperationProvidedRole foundProvidedRole = null;
+		Iterator<ProvidedRole> providedRoles = component.getProvidedRoles_InterfaceProvidingEntity().iterator();
+		while(providedRoles.hasNext() && foundProvidedRole == null) {
+			OperationProvidedRole operationProvidedRole = (OperationProvidedRole) providedRoles.next();
+			if(operationProvidedRole.getProvidedInterface__OperationProvidedRole().equals(operationInterface))
+				foundProvidedRole = operationProvidedRole;
+		}
+		return foundProvidedRole;
+	}
+	
+	private OperationRequiredRole findRequiredRole(BasicComponent component, OperationInterface operationInterface) {
+		OperationRequiredRole foundRequiredRole = null;
+		Iterator<RequiredRole> requiredRoles = component.getRequiredRoles_InterfaceRequiringEntity().iterator();
+		while(requiredRoles.hasNext() && foundRequiredRole == null) {
+			OperationRequiredRole operationRequiredRole = (OperationRequiredRole) requiredRoles.next();
+			if(operationRequiredRole.getRequiredInterface__OperationRequiredRole().equals(operationInterface))
+				foundRequiredRole = operationRequiredRole;
+		}
+		return foundRequiredRole;
 	}
 
-
 	private UnitApplication runThirdRule(EGraph graph) {
-		UnitApplication appLoop = new UnitApplicationImpl(engine);
-		appLoop.setEGraph(graph);
-		LoopUnit loop = new LoopUnitImpl();
-		loop.setSubUnit(rewireComponents2Intermediary);
-		appLoop.setUnit(loop);
-		boolean success = appLoop.execute(monitor);
+		UnitApplication app = new UnitApplicationImpl(engine);
+		app.setEGraph(graph);
+		app.setUnit(rewireComponents2IntermediaryLoop);
+		boolean success = app.execute(monitor);
 		if(success)
 			System.out.println("Successfully reconnected existing components to the intermediate component and intermediate interface");
 		else
 			System.out.println("Could not reconnect existing components to the intermediate component and intermediate interface");
-		return appLoop;
+		return app;
 	}
-
-
+	
 	private UnitApplication runFourthRule(EGraph graph) {
-		UnitApplication appLoop = new UnitApplicationImpl(engine);
-		appLoop.setEGraph(graph);
-		LoopUnit loop = new LoopUnitImpl();
-		loop.setSubUnit(removeDuplicateRequiredRoles);
-		appLoop.setUnit(loop);
-		boolean success = appLoop.execute(monitor);
+		UnitApplication app = new UnitApplicationImpl(engine);
+		app.setEGraph(graph);
+		app.setUnit(removeDuplicateRequiredRolesLoop);
+		boolean success = app.execute(monitor);
 		if(success)
 			System.out.println("Successfully removed duplicate required roles");
 		else
 			System.out.println("Could not remove duplicate required roles");
-		return appLoop;
+		return app;
+	}
+	
+	private void fixSystemAndAllocation(EGraph graph, BasicComponent intermediateComponent, OperationInterface intermediateInterface, List<BasicComponent> components, List<OperationInterface> interfaces) {
+		Trace traceRoot = RunnerHelper.getTraceRoot(graph);
+		org.palladiosimulator.pcm.system.System systemRoot = RunnerHelper.getSystemRoot(graph);
+		
+		//Create the assembly context
+		AssemblyContext intermediateAssemblyContext = CompositionFactory.eINSTANCE.createAssemblyContext();
+		intermediateAssemblyContext.setEncapsulatedComponent__AssemblyContext(intermediateComponent);
+		intermediateAssemblyContext.setEntityName(RunnerHelper.getAssemblyContextName(intermediateComponent));
+		systemRoot.getAssemblyContexts__ComposedStructure().add(intermediateAssemblyContext);
+		Trace assemblyContextTrace = TraceFactory.eINSTANCE.createTrace();
+		assemblyContextTrace.setName(TRACE_AssemblyContext);
+		//assemblyContextTrace.getSource().add(null);
+		assemblyContextTrace.getTarget().add((EObject) intermediateAssemblyContext);
+		traceRoot.getSubTraces().add(assemblyContextTrace);
+		
+		//Reconnect the assembly connectors
+		List<Connector> connectorsToAdd = new ArrayList<Connector>();
+		Iterator<Connector> connectors = systemRoot.getConnectors__ComposedStructure().iterator();
+		while(connectors.hasNext()) {
+			Connector connector = connectors.next();
+			if(connector instanceof ProvidedDelegationConnector) {
+				//ProvidedDelegationConnector oldDelegationConnector = (ProvidedDelegationConnector) connector;
+				//DO NOTHING
+			}
+			if(connector instanceof AssemblyConnector) {
+				AssemblyConnector oldConnector = (AssemblyConnector) connector;
+				AssemblyContext providingAssemblyContext = oldConnector.getProvidingAssemblyContext_AssemblyConnector();
+				AssemblyContext requiringAssemblyContext = oldConnector.getRequiringAssemblyContext_AssemblyConnector();
+				BasicComponent providingComponent = (BasicComponent) providingAssemblyContext.getEncapsulatedComponent__AssemblyContext();
+				BasicComponent requiringComponent = (BasicComponent) requiringAssemblyContext.getEncapsulatedComponent__AssemblyContext();
+				OperationProvidedRole providedRole = oldConnector.getProvidedRole_AssemblyConnector();
+				//OperationRequiredRole requiredRole = oldConnector.getRequiredRole_AssemblyConnector();
+				
+				if(components.contains(providingComponent) && components.contains(requiringComponent)) {
+					if(
+							interfaces.contains(providedRole.getProvidedInterface__OperationProvidedRole()) 
+							//&& interfaces.contains(requiredRole.getRequiredInterface__OperationRequiredRole())
+							) {
+						AssemblyConnector intermediateConnector = CompositionFactory.eINSTANCE.createAssemblyConnector();
+						intermediateConnector.setEntityName(RunnerHelper.getAssemblyConnectorName(requiringAssemblyContext, intermediateAssemblyContext));
+						intermediateConnector.setProvidingAssemblyContext_AssemblyConnector(intermediateAssemblyContext);
+						intermediateConnector.setRequiringAssemblyContext_AssemblyConnector(requiringAssemblyContext);
+						OperationProvidedRole intermediateProvidedRole = RunnerHelper.findProvidedRole(intermediateComponent, intermediateInterface);
+						OperationRequiredRole intermediateRequiredRole = RunnerHelper.findRequiredRole(requiringComponent, intermediateInterface);
+						intermediateConnector.setProvidedRole_AssemblyConnector(intermediateProvidedRole);
+						intermediateConnector.setRequiredRole_AssemblyConnector(intermediateRequiredRole);
+						connectorsToAdd.add(intermediateConnector);
+						//
+						Trace connectorTrace = TraceFactory.eINSTANCE.createTrace();
+						connectorTrace.setName(TRACE_AssemblyConnector);
+						connectorTrace.getSource().add((EObject) oldConnector);
+						connectorTrace.getTarget().add((EObject) intermediateConnector);
+						traceRoot.getSubTraces().add(connectorTrace);
+					}
+				}
+			}
+		}
+		//Create new assembly connectors for required interfaces from the intermediate
+		for(RequiredRole requiredRole : intermediateComponent.getRequiredRoles_InterfaceRequiringEntity()) {
+			if(requiredRole instanceof OperationRequiredRole) {
+				OperationRequiredRole requiringRole = (OperationRequiredRole) requiredRole;
+				OperationInterface requiredInterface = requiringRole.getRequiredInterface__OperationRequiredRole();
+				BasicComponent providingComponent = null;
+				OperationProvidedRole providingRole = null;
+				Iterator<BasicComponent> componentIterator = components.iterator();
+				while(componentIterator.hasNext() && providingComponent == null && providingRole == null) {
+					BasicComponent component = componentIterator.next();
+					Iterator<ProvidedRole> providedRoleIterator = component.getProvidedRoles_InterfaceProvidingEntity().iterator();
+					while(providedRoleIterator.hasNext() && providingComponent == null && providingRole == null) {
+						ProvidedRole providedRole = providedRoleIterator.next();
+						if(providedRole instanceof OperationProvidedRole) {
+							OperationProvidedRole operationProvidedRole = (OperationProvidedRole) providedRole;
+							if(operationProvidedRole.getProvidedInterface__OperationProvidedRole().equals(requiredInterface)) {
+								providingComponent = component;
+								providingRole = operationProvidedRole;
+							}
+						}
+					}
+				}
+				List<AssemblyContext> providingAssemblyContexts = RunnerHelper.findAssemblyContexts(providingComponent, systemRoot);
+				for(AssemblyContext providingAssemblyContext : providingAssemblyContexts) {
+					AssemblyConnector newConnector = CompositionFactory.eINSTANCE.createAssemblyConnector();
+					newConnector.setEntityName(RunnerHelper.getAssemblyConnectorName(intermediateAssemblyContext, providingAssemblyContext));
+					newConnector.setProvidingAssemblyContext_AssemblyConnector(providingAssemblyContext);
+					newConnector.setRequiringAssemblyContext_AssemblyConnector(intermediateAssemblyContext);
+					newConnector.setProvidedRole_AssemblyConnector(providingRole);
+					newConnector.setRequiredRole_AssemblyConnector(requiringRole);
+					connectorsToAdd.add(newConnector);
+					//
+					Trace connectorTrace = TraceFactory.eINSTANCE.createTrace();
+					connectorTrace.setName(TRACE_AssemblyConnector);
+					//connectorTrace.getSource().add(null);
+					connectorTrace.getTarget().add((EObject) newConnector);
+					traceRoot.getSubTraces().add(connectorTrace);
+				}
+				
+			}
+		}
+		//Add all the connectors to the system model
+		systemRoot.getConnectors__ComposedStructure().addAll(connectorsToAdd);
+		//Filter duplicated connections
+		List<AssemblyConnector> duplicatedConnectors = new ArrayList<AssemblyConnector>();
+		for(int i = 0; i < systemRoot.getConnectors__ComposedStructure().size() - 1; i++) {
+			Connector connectorI = systemRoot.getConnectors__ComposedStructure().get(i);
+			if(connectorI instanceof AssemblyConnector) {
+				AssemblyConnector assemblyConnectorI = (AssemblyConnector) connectorI;
+				for(int j = i + 1; j < systemRoot.getConnectors__ComposedStructure().size() && !duplicatedConnectors.contains(assemblyConnectorI); j++) {
+					Connector connectorJ = systemRoot.getConnectors__ComposedStructure().get(j);
+					if(connectorJ instanceof AssemblyConnector) {
+						AssemblyConnector assemblyConnectorJ = (AssemblyConnector) connectorJ;
+						if(this.isDuplicated(assemblyConnectorI, assemblyConnectorJ)) {
+							duplicatedConnectors.add(assemblyConnectorJ);
+						}
+					}
+				}
+			}
+		}
+		systemRoot.getConnectors__ComposedStructure().removeAll(duplicatedConnectors);
+		//Find the first resource allocated to a assembly context
+		Allocation allocationRoot = RunnerHelper.getAllocationRoot(graph);
+		Map<ResourceContainer, Integer> counter = new HashMap<ResourceContainer, Integer>();
+		for(BasicComponent component : components) {
+			List<AssemblyContext> assemblyContexts = RunnerHelper.findAssemblyContexts(component, systemRoot);
+			for(AssemblyContext assemblyContext : assemblyContexts) {
+				ResourceContainer resourceContainer = RunnerHelper.findAllocationResourceContainer(assemblyContext, allocationRoot);
+				if(counter.containsKey(resourceContainer))
+					counter.put(resourceContainer, counter.get(resourceContainer) + 1);
+				else
+					counter.put(resourceContainer, 1);
+			}
+		}
+		//Allocate the assembly context to the resource with lower allocated resources
+		ResourceContainer bestContainer = null;
+		int minAllocation = Integer.MAX_VALUE;
+		for(ResourceContainer resourceContainer : counter.keySet()) {
+			if(bestContainer == null || counter.get(resourceContainer) < minAllocation) {
+				bestContainer = resourceContainer;
+				minAllocation = counter.get(resourceContainer);
+			}
+		}
+		AllocationContext intermediateAllocationContext = AllocationFactory.eINSTANCE.createAllocationContext();
+		intermediateAllocationContext.setEntityName(RunnerHelper.getAllocationContextName(intermediateAssemblyContext));
+		intermediateAllocationContext.setAssemblyContext_AllocationContext(intermediateAssemblyContext);
+		intermediateAllocationContext.setResourceContainer_AllocationContext(bestContainer);
+		allocationRoot.getAllocationContexts_Allocation().add(intermediateAllocationContext);
+		//
+		Trace allocationTrace = TraceFactory.eINSTANCE.createTrace();
+		allocationTrace.setName(TRACE_AllocationContext);
+		//allocationTrace.getSource().add(null);
+		allocationTrace.getTarget().add((EObject) intermediateAllocationContext);
+		traceRoot.getSubTraces().add(allocationTrace);
 	}
 
+
+	private void runLastRule(EGraph graph) {
+		//Removing all the traces
+		Trace root = RunnerHelper.getTraceRoot(graph);
+		List<Trace> rewireTraces = RunnerHelper.getTraces(root, TRACE_Rewire, false);
+		for(Trace rewireTrace : rewireTraces) {
+			List<Trace> reconnectedTraces = new ArrayList<Trace>();
+			reconnectedTraces.addAll(RunnerHelper.getTraces(rewireTrace, TRACE_ReconnectionToIntermediate, false));
+			//reconnectedTraces.addAll(RunnerHelper.getTraces(rewireTrace, TRACE_ReconnectionFromIntermediate, false));
+			for(Trace reconnectedTrace : reconnectedTraces) {
+				if(reconnectedTrace.getSource().size() > 0) {
+					EObject oldOperationRequiredRole = (EObject) reconnectedTrace.getSource().get(0);
+					EcoreUtil.delete((EObject) oldOperationRequiredRole, false);
+				}
+			}
+		}
+		List<Trace> assemblyConnectorTraces = RunnerHelper.getTraces(root, TRACE_AssemblyConnector, true);
+		for(Trace assemblyConnectorTrace : assemblyConnectorTraces) {
+			if(assemblyConnectorTrace.getSource().size() > 0) {
+				EObject oldAssemblyConnector = (EObject) assemblyConnectorTrace.getSource().get(0);
+				EcoreUtil.delete((EObject) oldAssemblyConnector, false);
+			}
+		}
+		//EcoreUtil.delete((EObject) root, true);
+	}
 
 	//This is a greedy implementation for the single maximal clique problem
 	//https://en.wikipedia.org/wiki/Clique_problem
@@ -304,9 +726,8 @@ public class InsInterRunner extends PCMTransformerRunner {
 		return traceMatches;
 	}
 
-
 	private List<Trace> collectMatchTraces(Trace root, OperationInterface op1, OperationInterface op2) {
-		List<Trace> allMatches = this.getTraceMatches(root);
+		List<Trace> allMatches = RunnerHelper.getTraces(root, "match", true);
 		List<Trace> interfaceMatches = new ArrayList<Trace>();
 		for(Trace trace : allMatches) {
 			OperationInterface leftInterface = (OperationInterface) ((Trace) trace.getSource().get(0)).getTarget().get(0);
@@ -323,7 +744,6 @@ public class InsInterRunner extends PCMTransformerRunner {
 		return interfaceMatches;
 	}
 
-
 	private List<Trace> collectLeftRightTraces(List<Trace> matches) {
 		List<Trace> leftRightTraces = new ArrayList<Trace>();
 		for(Trace match : matches) {
@@ -332,7 +752,6 @@ public class InsInterRunner extends PCMTransformerRunner {
 		}
 		return leftRightTraces;
 	}
-
 
 	private List<List<Integer>> transformToPointers(Trace root, Repository repository, List<List<OperationInterface>> chainInterfacesHolder) {
 		List<List<Integer>> chainHolderPointer = new ArrayList<List<Integer>>();
@@ -349,7 +768,6 @@ public class InsInterRunner extends PCMTransformerRunner {
 		return chainHolderPointer;
 	}
 
-
 	private List<OperationInterface> convertToInterfaces(Trace root, Repository repository, List<Integer> chainInterfacesPointer) {
 		List<OperationInterface> chainInterfacesHolder = new ArrayList<OperationInterface>();
 		for(int i = 0; i < chainInterfacesPointer.size(); i++) {
@@ -360,7 +778,6 @@ public class InsInterRunner extends PCMTransformerRunner {
 		return chainInterfacesHolder;
 	}
 
-
 	private String assemblyName(List<? extends Entity> entities) {
 		StringBuilder sb = new StringBuilder();
 		for(Entity e : entities)
@@ -370,10 +787,9 @@ public class InsInterRunner extends PCMTransformerRunner {
 		return text;
 	}
 
-
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void gatherEntities(Trace root, String type, List list) {
-		List<Trace> matches = this.getTraceMatches(root);
+		List<Trace> matches = RunnerHelper.getTraces(root, "match", true);
 		for(Trace t : matches) {
 			if(type.equals("component")) {
 				BasicComponent leftC = (BasicComponent)(((Trace)t.getSource().get(0)).getSource().get(0));
@@ -389,48 +805,70 @@ public class InsInterRunner extends PCMTransformerRunner {
 			}
 		}
 	}
-
-
-	private List<Trace> getTraceMatches(Trace root) {
-		List<Trace> tMatches = new ArrayList<Trace>();
-		for(Trace t : root.getSubTraces()) {
-			if(t.getName().startsWith("match"))
-				tMatches.add(t);
-		}
-		return tMatches;
-	}
 	
 	public static void main(String[] args) {
 		String dirPath = "src/edu/squat/transformations/modifiability/insinter";
 		String henshinFilename = "insinter-modular.henshin";
-		String modelFilename;
-		String resultFilename;
+		String repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, usageFilename;
+		String resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename, resultUsageFilename;
 
 		InsInterRunner runner = new InsInterRunner();
 
 		//Individual testing
-		modelFilename = "insert-test.repository";
-		resultFilename = "insert-test-" + "#REPLACEMENT#" + ".repository";
-		runner.run(dirPath, modelFilename, henshinFilename, resultFilename, true);
+		repositoryFilename = "insert-test.repository";
+		resultRepositoryFilename = "insert-test-" + "#REPLACEMENT#" + ".repository";
+		//runner.run(dirPath, repositoryFilename, henshinFilename, resultRepositoryFilename, true);
 		
 		//Multiple testing
-		modelFilename = "insert-mult.repository";
-		resultFilename = "insert-mult-" + "#REPLACEMENT#" + ".repository";
-		runner.run(dirPath, modelFilename, henshinFilename, resultFilename, true);
+		repositoryFilename = "insert-mult.repository";
+		resultRepositoryFilename = "insert-mult-" + "#REPLACEMENT#" + ".repository";
+		//runner.run(dirPath, repositoryFilename, henshinFilename, resultRepositoryFilename, true);
 		
 		//MediaStore3 testing
-		modelFilename = "ms.repository";
-		resultFilename = "ms-" + "#REPLACEMENT#" + ".repository";
-		//runner.run(dirPath, modelFilename, henshinFilename, resultFilename, true);
+		repositoryFilename = "ms.repository";
+		resultRepositoryFilename = "ms-" + "#REPLACEMENT#" + ".repository";
+		//runner.run(dirPath, repositoryFilename, henshinFilename, resultRepositoryFilename, true);
 		
 		//SimpleTactics testing
-		modelFilename = "st.repository";
-		resultFilename = "st-" + "#REPLACEMENT#" + ".repository";
-		//runner.run(dirPath, modelFilename, henshinFilename, resultFilename, true);
+		repositoryFilename = "st.repository";
+		resultRepositoryFilename = "st-" + "#REPLACEMENT#" + ".repository";
+		//runner.run(dirPath, repositoryFilename, henshinFilename, resultRepositoryFilename, true);
 		
 		//SimpleTactics+ testing
-		modelFilename = "stplus.repository";
-		resultFilename = "stplus-" + "#REPLACEMENT#" + ".repository";
-		//runner.run(dirPath, modelFilename, henshinFilename, resultFilename, true);
+		repositoryFilename = "stplus.repository";
+		resultRepositoryFilename = "stplus-" + "#REPLACEMENT#" + ".repository";
+		//runner.run(dirPath, repositoryFilename, henshinFilename, resultRepositoryFilename, true);
+		
+		//Complete Individual testing
+		repositoryFilename = "insert-test.repository";
+		systemFilename = "insert-test.system";
+		resourceEnvironmentFilename = "insert-test.resourceenvironment";
+		allocationFilename = "insert-test.allocation";
+		resultRepositoryFilename = "insert-test-" + "#REPLACEMENT#" + ".repository";
+		resultSystemFilename = "insert-test-" + "#REPLACEMENT#" + ".system";
+		resultResourceEnvironmentFilename = "insert-test-" + "#REPLACEMENT#" + ".resourceenvironment";
+		resultAllocationFilename = "insert-test-" + "#REPLACEMENT#" + ".allocation";
+		/*runner.run(dirPath, 
+				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename,
+				henshinFilename, 
+				resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename,
+				true);*/
+		
+		//CoCoME testing
+		repositoryFilename = "cocome.repository";
+		systemFilename = "cocome.system";
+		resourceEnvironmentFilename = "cocome.resourceenvironment";
+		allocationFilename = "cocome.allocation";
+		usageFilename = "cocome.usagemodel";
+		resultRepositoryFilename = "cocome-" + "#REPLACEMENT#" + ".repository";
+		resultSystemFilename = "cocome-" + "#REPLACEMENT#" + ".system";
+		resultResourceEnvironmentFilename = "cocome-" + "#REPLACEMENT#" + ".resourceenvironment";
+		resultAllocationFilename = "cocome-" + "#REPLACEMENT#" + ".allocation";
+		resultUsageFilename = "cocome-" + "#REPLACEMENT#" + ".usagemodel";
+		runner.run(dirPath, 
+				repositoryFilename, systemFilename, resourceEnvironmentFilename, allocationFilename, usageFilename,
+				henshinFilename, 
+				resultRepositoryFilename, resultSystemFilename, resultResourceEnvironmentFilename, resultAllocationFilename, resultUsageFilename,
+				true);
 	}
 }

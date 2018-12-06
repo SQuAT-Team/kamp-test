@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ContainerBuilderImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Builder</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.builder.resourceenvironment.impl</a> &gt; <span class="el_source">ContainerBuilderImpl.java</span></div><h1>ContainerBuilderImpl.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.builder.resourceenvironment.impl;
+
+import de.fakeller.palladio.builder.AbstractHierarchicalBuilder;
+import de.fakeller.palladio.builder.BuilderException;
+import de.fakeller.palladio.builder.resourceenvironment.ContainerBuilder;
+import de.fakeller.palladio.builder.resourceenvironment.ProcessingResourceBuilder;
+import de.fakeller.palladio.builder.resourceenvironment.ResourceEnvironmentBuilder;
+import de.fakeller.palladio.environment.util.PalladioResourceRepository;
+import org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
+import org.palladiosimulator.pcm.resourceenvironment.ResourceenvironmentFactory;
+import org.palladiosimulator.pcm.resourcetype.ProcessingResourceType;
+
+public class ContainerBuilderImpl extends AbstractHierarchicalBuilder&lt;ContainerBuilder, ResourceContainer, ResourceEnvironmentBuilder&gt; implements ContainerBuilder {
+
+    private final PalladioResourceRepository resources;
+
+    public ContainerBuilderImpl(final ResourceEnvironmentBuilder belongsTo, final PalladioResourceRepository resources) {
+<span class="nc" id="L18">        super(belongsTo);</span>
+<span class="nc" id="L19">        this.resources = resources;</span>
+<span class="nc" id="L20">    }</span>
+
+    @Override
+    protected ResourceContainer newEModel() {
+<span class="nc" id="L24">        return ResourceenvironmentFactory.eINSTANCE.createResourceContainer();</span>
+    }
+
+    @Override
+    protected void registerParent() {
+<span class="nc" id="L29">        this.belongsTo.getReference().getResourceContainer_ResourceEnvironment().add(this.eModel);</span>
+<span class="nc" id="L30">        this.eModel.setResourceEnvironment_ResourceContainer(this.belongsTo.getReference());</span>
+<span class="nc" id="L31">    }</span>
+
+
+    @Override
+    public ContainerBuilder setParentContainer(final ContainerBuilder parent) {
+<span class="nc bnc" id="L36" title="All 2 branches missed.">        if (null != this.eModel.getParentResourceContainer__ResourceContainer()) {</span>
+<span class="nc" id="L37">            throw new BuilderException(this, String.format(&quot;Cannot set the parent for the resource createContainer, as it already has a parent createContainer (%s)!&quot;,</span>
+<span class="nc" id="L38">                    this.eModel.getParentResourceContainer__ResourceContainer().getEntityName()));</span>
+        }
+
+        // bidirectional reference
+<span class="nc" id="L42">        this.eModel.setParentResourceContainer__ResourceContainer(parent.getReference());</span>
+<span class="nc" id="L43">        parent.getReference().getNestedResourceContainers__ResourceContainer().add(this.eModel);</span>
+
+<span class="nc" id="L45">        return this;</span>
+    }
+
+    @Override
+    public ProcessingResourceBuilder withCpu(final double processingRate) {
+<span class="nc" id="L50">        return procBuilder(this.resources.cpu()).withProcessingRate(processingRate);</span>
+    }
+
+    @Override
+    public ProcessingResourceBuilder withHdd() {
+<span class="nc" id="L55">        return procBuilder(this.resources.hdd());</span>
+    }
+
+    @Override
+    public ProcessingResourceBuilder withDelay() {
+<span class="nc" id="L60">        return procBuilder(this.resources.delay());</span>
+    }
+
+    private ProcessingResourceBuilder procBuilder(final ProcessingResourceType cpu) {
+<span class="nc" id="L64">        final ProcessingResourceBuilder builder = new ProcessingResourceBuilderImpl(this);</span>
+<span class="nc" id="L65">        builder.getReference().setActiveResourceType_ActiveResourceSpecification(cpu);</span>
+<span class="nc" id="L66">        return builder;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PerformanceQuantity.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fastpan</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.performance.analysis.result.quantity</a> &gt; <span class="el_source">PerformanceQuantity.java</span></div><h1>PerformanceQuantity.java</h1><pre class="source lang-java linenums">package de.fakeller.performance.analysis.result.quantity;
+
+import de.fakeller.performance.analysis.result.unit.Unit;
+import de.fakeller.performance.analysis.result.valueobject.ValueObject;
+
+/**
+ * Defines a quantity relevant to performance analyses.
+ */
+public interface PerformanceQuantity&lt;U extends Unit&gt; extends ValueObject {
+
+    /**
+     * Returns the value of this quantity as double.
+     * &lt;p&gt;
+     * Note: Make sure to check the unit of this quantity before doing any calculations!
+     */
+    double value();
+
+    /**
+     * The unit this performance quantity is stored in.
+     */
+    U unit();
+
+    /**
+     * Wraps a double value into a performance quantity object of the same type as this one, using the same unit.
+     */
+    default PerformanceQuantity wrap(final double value) {
+<span class="nc" id="L27">        return wrap(value, unit());</span>
+    }
+
+    /**
+     * Wraps a double value into a performance quantity object of the same type as this one, using the supplied unit.
+     */
+    PerformanceQuantity wrap(double value, U unit);
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

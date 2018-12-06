@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PcmModelTrace.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Analysis</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.analysis.tracing</a> &gt; <span class="el_source">PcmModelTrace.java</span></div><h1>PcmModelTrace.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.analysis.tracing;
+
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
+import org.palladiosimulator.pcm.core.entity.NamedElement;
+import org.palladiosimulator.solver.models.PCMInstance;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Consumer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * Helps to doTrace all {@link NamedElement}s of a PCM model by appending a random suffix (in fact, a {@link UUID}) to
+ * their name. You may then retrieve the elements by UUID.
+ */
+<span class="pc bpc" id="L20" title="1 of 2 branches missed.">public class PcmModelTrace {</span>
+
+    /**
+     * Used to generate a name containing the trace
+     */
+    static final String TRACE_FORMAT = &quot;%s__TRACE[%s]&quot;;
+
+    static final String UUID_REGEX = &quot;[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}&quot;;
+
+    /**
+     * Used to parse the trace from a name containing a trace
+     * &lt;p&gt;
+     * The first group captures the UUID.
+     */
+    private static final String TRACE_REGEX = &quot;__TRACE\\[(&quot; + UUID_REGEX + &quot;)\\]&quot;;
+
+<span class="fc" id="L36">    private static final Pattern traceRegex = Pattern.compile(TRACE_REGEX);</span>
+
+    private final PCMInstance pcm;
+
+<span class="fc" id="L40">    private final Map&lt;UUID, NamedElement&gt; traceMap = new HashMap&lt;&gt;();</span>
+
+
+<span class="fc" id="L43">    private PcmModelTrace(final PCMInstance pcm) {</span>
+<span class="fc" id="L44">        this.pcm = pcm;</span>
+<span class="fc" id="L45">    }</span>
+
+    /**
+     * Adds tracing {@link UUID} to all {@link NamedElement}s of the {@link PCMInstance}.
+     * &lt;p&gt;
+     * Can be undone with {@link PcmModelTrace::untrace}.
+     */
+    public static PcmModelTrace trace(final PCMInstance instance) {
+<span class="fc" id="L53">        final PcmModelTrace map = new PcmModelTrace(instance);</span>
+<span class="fc" id="L54">        doTrace(instance, el -&gt; {</span>
+            // add doTrace
+<span class="fc" id="L56">            final UUID trace = UUID.randomUUID();</span>
+<span class="pc bpc" id="L57" title="2 of 4 branches missed.">            assert !map.traceMap.containsKey(trace);</span>
+<span class="fc" id="L58">            el.setEntityName(String.format(TRACE_FORMAT, el.getEntityName(), trace.toString()));</span>
+<span class="fc" id="L59">            map.traceMap.put(trace, el);</span>
+<span class="fc" id="L60">        });</span>
+<span class="fc" id="L61">        return map;</span>
+    }
+
+    /**
+     * Reconstructs the {@link PcmModelTrace} object from an already traced {@link PCMInstance}.
+     * &lt;p&gt;
+     * This method is useful if you want to restore the trace mapping from a serialized {@link PCMInstance}.
+     * &lt;p&gt;
+     * Note: this method DOES NOT change the given {@link PCMInstance}! It merely reads available trace information.
+     */
+    public static PcmModelTrace load(final PCMInstance instance) {
+<span class="fc" id="L72">        final PcmModelTrace map = new PcmModelTrace(instance);</span>
+<span class="fc" id="L73">        doTrace(instance, el -&gt; {</span>
+<span class="fc" id="L74">            final Optional&lt;UUID&gt; trace = extractTrace(el.getEntityName());</span>
+<span class="pc bpc" id="L75" title="1 of 2 branches missed.">            if (!trace.isPresent()) {</span>
+<span class="nc" id="L76">                return;</span>
+            }
+<span class="pc bpc" id="L78" title="2 of 4 branches missed.">            assert !map.traceMap.containsKey(trace.get());</span>
+<span class="fc" id="L79">            map.traceMap.put(trace.get(), el);</span>
+<span class="fc" id="L80">        });</span>
+<span class="fc" id="L81">        return map;</span>
+    }
+
+    /**
+     * Removes the tracing suffix of all {@link NamedElement}s of the given {@link PCMInstance}.
+     * &lt;p&gt;
+     * This method reverts the actions done by {@link PcmModelTrace::trace}.
+     */
+    public static void untrace(final PCMInstance instance) {
+<span class="fc" id="L90">        doTrace(instance, el -&gt; {</span>
+<span class="fc" id="L91">            el.setEntityName(el.getEntityName().replaceAll(TRACE_REGEX, &quot;&quot;));</span>
+<span class="fc" id="L92">        });</span>
+<span class="fc" id="L93">    }</span>
+
+    /**
+     * Tries to match a trace UUID in the given string.
+     */
+    public static Optional&lt;UUID&gt; extractTrace(final String string) {
+<span class="fc" id="L99">        final Matcher matcher = traceRegex.matcher(string);</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">        if (!matcher.find()) {</span>
+<span class="fc" id="L101">            return Optional.empty();</span>
+        }
+        try {
+<span class="fc" id="L104">            return Optional.of(UUID.fromString(matcher.group(1)));</span>
+<span class="nc" id="L105">        } catch (final IllegalArgumentException e) {</span>
+            // in case the found UUID is invalid
+<span class="nc" id="L107">            return Optional.empty();</span>
+        }
+    }
+
+    /**
+     * Applies the given {@link Consumer} to all {@link NamedElement}s stored in the {@link PCMInstance}.
+     */
+    private static void doTrace(final PCMInstance pcm, final Consumer&lt;NamedElement&gt; callback) {
+<span class="fc" id="L115">        pcm.getRepositories().forEach((e) -&gt; doTrace(e.eAllContents(), callback));</span>
+<span class="fc" id="L116">        doTrace(pcm.getAllocation().eAllContents(), callback);</span>
+<span class="fc" id="L117">        doTrace(pcm.getResourceEnvironment().eAllContents(), callback);</span>
+<span class="fc" id="L118">        doTrace(pcm.getSystem().eAllContents(), callback);</span>
+<span class="fc" id="L119">        doTrace(pcm.getUsageModel().eAllContents(), callback);</span>
+<span class="fc" id="L120">    }</span>
+
+    private static void doTrace(final TreeIterator&lt;EObject&gt; iterator, final Consumer&lt;NamedElement&gt; callback) {
+<span class="fc bfc" id="L123" title="All 2 branches covered.">        while (iterator.hasNext()) {</span>
+<span class="fc" id="L124">            final EObject obj = iterator.next();</span>
+
+            // only apply to named elements
+<span class="pc bpc" id="L127" title="1 of 2 branches missed.">            if (!(obj instanceof NamedElement)) {</span>
+<span class="nc" id="L128">                continue;</span>
+            }
+<span class="fc" id="L130">            final NamedElement el = (NamedElement) obj;</span>
+<span class="fc" id="L131">            callback.accept(el);</span>
+<span class="fc" id="L132">        }</span>
+<span class="fc" id="L133">    }</span>
+
+
+    /**
+     * Retrieves the traced element.
+     */
+    public Optional&lt;NamedElement&gt; find(final UUID uuid) {
+<span class="fc bfc" id="L140" title="All 2 branches covered.">        if (!this.traceMap.containsKey(uuid)) {</span>
+<span class="fc" id="L141">            return Optional.empty();</span>
+        }
+<span class="fc" id="L143">        return Optional.of(this.traceMap.get(uuid));</span>
+    }
+
+    /**
+     * Tries to extract a trace UUID from the given string using {@link PcmModelTrace::extractTrace} and if found,
+     * returns the corresponding element, if present.
+     */
+    public Optional&lt;NamedElement&gt; findByString(final String string) {
+<span class="fc" id="L151">        return PcmModelTrace</span>
+<span class="fc" id="L152">                .extractTrace(string)</span>
+<span class="fc" id="L153">                .flatMap(this::find);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

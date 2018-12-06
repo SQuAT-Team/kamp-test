@@ -21,7 +21,7 @@ import io.github.squat_team.modifiability.ModifiabilityPCMScenario;
 import io.github.squat_team.util.SQuATHelper;
 
 public class MediaStoreTest {
-	private static String machinePath = "/Users/alejandrorago/Documents/Implementacion/Repositorios/kamp-test/squat-tool/src/test/resources/";
+	private static String machinePath = "/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/src/test/resources/";
 	private static String dirPath = machinePath + "io/github/squat_team/casestudies/mediastore/";
 	private static String repositoryFile = dirPath + "ms.repository";
 	private static String resourceEnvironmentFile = dirPath + "ms.resourceenvironment";
@@ -36,7 +36,7 @@ public class MediaStoreTest {
 		KAMPPCMBot bot = new KAMPPCMBot(scenario);
 		PCMArchitectureInstance mediaStore = loadMediaStore("MediaStore");
 		
-		PCMScenarioResult scenarioResult = bot.analyze(mediaStore);
+		PCMScenarioResult scenarioResult = bot.analyze(mediaStore,"");
 		Assert.assertTrue(scenarioResult.isSatisfied() < 0);
 		
 		int AFFECTED_COMPONENTS = 16;

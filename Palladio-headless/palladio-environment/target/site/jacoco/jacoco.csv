@@ -1,0 +1,9 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Palladio Headless Environment,de.fakeller.palladio.environment,PCMResourceSetPartitionFactory.DefaultFactory,0,60,0,2,0,9,0,4,0,3
+Palladio Headless Environment,de.fakeller.palladio.environment,PalladioEclipseEnvironment,31,334,7,11,3,62,9,11,2,9
+Palladio Headless Environment,de.fakeller.palladio.environment.uriconverter,URIConverterHandler,6,79,3,3,2,15,3,5,0,5
+Palladio Headless Environment,de.fakeller.palladio.environment.uriconverter,PrefixConverter,0,24,0,0,0,6,0,3,0,3
+Palladio Headless Environment,de.fakeller.palladio.config,PcmModelConfig,10,15,0,0,4,6,2,4,2,4
+Palladio Headless Environment,de.fakeller.palladio.config,AbstractPropertiesConfig,7,50,0,2,2,11,1,5,1,4
+Palladio Headless Environment,de.fakeller.palladio.environment.util,PalladioResourceRepository.INSTANCE,23,7,2,0,4,3,5,2,4,2
+Palladio Headless Environment,de.fakeller.palladio.environment.util,PalladioResourceRepositoryImpl,24,130,4,12,2,28,4,14,0,10

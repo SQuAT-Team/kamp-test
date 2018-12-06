@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ResourceEnvironmentBuilderImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Builder</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.builder.resourceenvironment.impl</a> &gt; <span class="el_source">ResourceEnvironmentBuilderImpl.java</span></div><h1>ResourceEnvironmentBuilderImpl.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.builder.resourceenvironment.impl;
+
+import de.fakeller.palladio.builder.resourceenvironment.ContainerBuilder;
+import de.fakeller.palladio.builder.resourceenvironment.LinkBuilder;
+import de.fakeller.palladio.builder.resourceenvironment.ResourceEnvironmentBuilder;
+import de.fakeller.palladio.environment.util.PalladioResourceRepository;
+import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
+import org.palladiosimulator.pcm.resourceenvironment.ResourceenvironmentFactory;
+
+public class ResourceEnvironmentBuilderImpl implements ResourceEnvironmentBuilder {
+    private final PalladioResourceRepository resources;
+    private final ResourceEnvironment env;
+
+<span class="nc" id="L14">    public ResourceEnvironmentBuilderImpl(final PalladioResourceRepository resources) {</span>
+<span class="nc" id="L15">        this.resources = resources;</span>
+<span class="nc" id="L16">        this.env = ResourceenvironmentFactory.eINSTANCE.createResourceEnvironment();</span>
+<span class="nc" id="L17">    }</span>
+
+    @Override
+    public ResourceEnvironment getReference() {
+<span class="nc" id="L21">        return this.env;</span>
+    }
+
+    @Override
+    public ContainerBuilder createContainer(final String name) {
+<span class="nc" id="L26">        return new ContainerBuilderImpl(this, this.resources).withEntityName(name);</span>
+    }
+
+    @Override
+    public LinkBuilder createLink(final String name) {
+<span class="nc" id="L31">        return new LinkBuilderImpl(this, this.resources).withEntityName(name);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

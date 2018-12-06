@@ -5,15 +5,16 @@
 	<classpathentry kind="lib" path="lib/org.eclipse.emf.ecore_2.10.2.v20150123-0348.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.emf.ecore.xmi_2.10.2.v20150123-0348.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.emf.common_2.10.1.v20150123-0348.jar"/>
-	<classpathentry kind="lib" path="lib/org.eclipse.viatra.query.runtime_1.4.1.201611031631.jar"/>
-	<classpathentry kind="lib" path="lib/org.eclipse.emf.henshin.examples_1.5.0.201612100503.jar"/>
-	<classpathentry kind="lib" path="lib/org.eclipse.emf.henshin.interpreter_1.5.0.201612100503.jar"/>
-	<classpathentry kind="lib" path="lib/org.eclipse.emf.henshin.model_1.5.0.201612100503.jar"/>
-	<classpathentry kind="lib" path="lib/org.eclipse.emf.henshin.trace_1.5.0.201612100503.jar"/>
-	<classpathentry kind="lib" path="lib/org.eclipse.emf.henshin.statespace_1.5.0.201612100503.jar"/>
-	<classpathentry kind="lib" path="lib/org.eclipse.emf.henshin.statespace.external_1.5.0.201612100503.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.emf.henshin.trace_1.5.0.201701170502.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.emf.henshin.examples_1.5.0.201701170502.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.emf.henshin.interpreter_1.5.0.201701170502.jar" sourcepath="/Users/alejandrorago/Documents/Implementacion/Repositorios/squat-resources/org.eclipse.emft.henshin-master.zip"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.emf.henshin.model_1.5.0.201701170502.jar" sourcepath="/Users/alejandrorago/Documents/Implementacion/Repositorios/squat-resources/org.eclipse.emft.henshin-master.zip"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.emf.henshin.statespace_1.5.0.201701170502.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.emf.henshin.statespace.external_1.5.0.201701170502.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.emf.cdo_4.4.1.v20151007-1653.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/org.palladiosimulator.pcm"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/de.uka.ipd.sdq.identifier"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/de.uka.ipd.sdq.stoex"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/de.uka.ipd.sdq.units"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

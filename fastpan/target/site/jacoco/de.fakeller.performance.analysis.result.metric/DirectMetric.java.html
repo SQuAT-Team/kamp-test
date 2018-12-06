@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DirectMetric.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fastpan</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.performance.analysis.result.metric</a> &gt; <span class="el_source">DirectMetric.java</span></div><h1>DirectMetric.java</h1><pre class="source lang-java linenums">package de.fakeller.performance.analysis.result.metric;
+
+import de.fakeller.performance.analysis.result.quantity.PerformanceQuantity;
+
+/**
+ * To be used for metrics that apply to a single point in time, such as the utilization of a certain resource at a
+ * certain point in time.
+ *
+ * @param &lt;Q&gt;
+ */
+public class DirectMetric&lt;Q extends PerformanceQuantity&gt; extends AbstractPerformanceMetric&lt;Q&gt; implements SingularMetric&lt;Q&gt; {
+
+    public final Q val;
+
+    public DirectMetric(final Q value) {
+<span class="fc" id="L16">        super((Class&lt;Q&gt;) value.getClass());</span>
+<span class="fc" id="L17">        this.val = value;</span>
+<span class="fc" id="L18">    }</span>
+
+    @Override
+    public Q getMetric() {
+<span class="fc" id="L22">        return this.val;</span>
+    }
+
+    @Override
+    public String toHumanReadable() {
+<span class="fc" id="L27">        return this.val.toHumanReadable();</span>
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+<span class="pc bpc" id="L32" title="1 of 2 branches missed.">        if (this == o) return true;</span>
+<span class="pc bpc" id="L33" title="2 of 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+
+<span class="fc" id="L35">        final DirectMetric&lt;?&gt; that = (DirectMetric&lt;?&gt;) o;</span>
+
+<span class="fc" id="L37">        return this.val.equals(that.val);</span>
+
+    }
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L43">        return this.val.hashCode();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

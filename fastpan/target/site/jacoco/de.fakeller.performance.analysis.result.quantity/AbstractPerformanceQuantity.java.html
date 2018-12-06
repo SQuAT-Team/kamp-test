@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractPerformanceQuantity.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fastpan</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.performance.analysis.result.quantity</a> &gt; <span class="el_source">AbstractPerformanceQuantity.java</span></div><h1>AbstractPerformanceQuantity.java</h1><pre class="source lang-java linenums">package de.fakeller.performance.analysis.result.quantity;
+
+import de.fakeller.performance.analysis.result.unit.Unit;
+import de.fakeller.performance.analysis.result.valueobject.AbstractValueObject;
+import de.fakeller.performance.analysis.result.valueobject.ValueObject;
+
+/**
+ * Used as base class for implementing {@link PerformanceQuantity}s.
+ */
+abstract public class AbstractPerformanceQuantity&lt;U extends Unit, T extends ValueObject&gt;
+        extends AbstractValueObject&lt;T&gt;
+        implements PerformanceQuantity&lt;U&gt; {
+
+    protected final U unit;
+
+    protected AbstractPerformanceQuantity(final T value, final U unit) {
+<span class="fc" id="L17">        super(value);</span>
+<span class="fc" id="L18">        this.unit = unit;</span>
+<span class="fc" id="L19">    }</span>
+
+    @Override
+    public U unit() {
+<span class="fc" id="L23">        return this.unit;</span>
+    }
+
+    @Override
+    public String toHumanReadable() {
+<span class="fc" id="L28">        return String.format(&quot;%s: %s&quot;, this.getHumanReadableDescription(), this.value.toHumanReadable());</span>
+    }
+
+    /**
+     * Returns the humand-readable name of this quantity. This is used to create the
+     * {@link PerformanceQuantity ::toHumanReadable} notation.
+     */
+    abstract protected String getHumanReadableDescription();
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

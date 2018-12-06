@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BuilderException.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Builder</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.builder</a> &gt; <span class="el_source">BuilderException.java</span></div><h1>BuilderException.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.builder;
+
+/**
+ * To be thrown if invalid models are trying to be built, builder methods are used incorrectly or assumptions do not hold.
+ */
+public class BuilderException extends RuntimeException {
+
+    public BuilderException(final BaseBuilder&lt;?&gt; builder, final String message) {
+<span class="fc" id="L9">        super(builderToExceptionMessage(builder, message));</span>
+<span class="fc" id="L10">    }</span>
+
+    public BuilderException(final BaseBuilder&lt;?&gt; builder, final String message, final Throwable cause) {
+<span class="nc" id="L13">        super(builderToExceptionMessage(builder, message), cause);</span>
+<span class="nc" id="L14">    }</span>
+
+    public BuilderException(final BaseBuilder&lt;?&gt; builder, final Throwable cause) {
+<span class="nc" id="L17">        super(builderToExceptionMessage(builder), cause);</span>
+<span class="nc" id="L18">    }</span>
+
+    public BuilderException(final BaseBuilder&lt;?&gt; builder, final String message, final Throwable cause, final boolean enableSuppression, final boolean writableStackTrace) {
+<span class="nc" id="L21">        super(builderToExceptionMessage(builder, message), cause, enableSuppression, writableStackTrace);</span>
+<span class="nc" id="L22">    }</span>
+
+
+    private static String builderToExceptionMessage(final BaseBuilder&lt;?&gt; builder, final String original) {
+<span class="fc" id="L26">        String nameInfo = &quot;&quot;;</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        if (builder instanceof NamedBuilder) {</span>
+<span class="fc" id="L28">            final NamedBuilder namedBuilder = (NamedBuilder) builder;</span>
+<span class="fc" id="L29">            nameInfo = String.format(&quot; with name '%s'&quot;, namedBuilder.getEntityName());</span>
+        }
+<span class="fc" id="L31">        String msg = String.format(&quot;There was an error building an instance of '%s'%s in builder '%s'&quot;,</span>
+<span class="fc" id="L32">                builder.getReference().getClass().getName(),</span>
+                nameInfo,
+<span class="fc" id="L34">                builder.getClass());</span>
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">        if (null != original) {</span>
+<span class="fc" id="L36">            msg += &quot;: &quot; + original;</span>
+        }
+<span class="fc" id="L38">        return msg;</span>
+    }
+
+
+    private static String builderToExceptionMessage(final BaseBuilder&lt;?&gt; builder) {
+<span class="nc" id="L43">        return builderToExceptionMessage(builder, null);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

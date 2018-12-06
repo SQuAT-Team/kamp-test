@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PalladioResourceRepositoryImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Environment</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.environment.util</a> &gt; <span class="el_source">PalladioResourceRepositoryImpl.java</span></div><h1>PalladioResourceRepositoryImpl.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.environment.util;
+
+import org.palladiosimulator.pcm.core.entity.Entity;
+import org.palladiosimulator.pcm.resourcetype.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class PalladioResourceRepositoryImpl implements PalladioResourceRepository {
+
+    private final ResourceRepository repository;
+
+    private static final String CPU = &quot;CPU&quot;;
+    private static final String LAN = &quot;LAN&quot;;
+    private static final String HDD = &quot;HDD&quot;;
+    private static final String DELAY = &quot;DELAY&quot;;
+
+    private static final String POLICY_DELAY = &quot;Delay&quot;;
+    private static final String POLICY_FCFS = &quot;First-Come-First-Serve&quot;;
+    private static final String POLICY_PROCESSOR_SHARING = &quot;Processor Sharing&quot;;
+
+<span class="fc" id="L22">    private final Map&lt;String, Entity&gt; resourceTypes = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L23">    private final Map&lt;String, SchedulingPolicy&gt; schedulingPolicies = new HashMap&lt;&gt;();</span>
+
+<span class="fc" id="L25">    public PalladioResourceRepositoryImpl(final ResourceRepository repository) {</span>
+<span class="fc" id="L26">        this.repository = repository;</span>
+<span class="fc" id="L27">    }</span>
+
+    @Override
+    public ProcessingResourceType cpu() {
+<span class="fc" id="L31">        return (ProcessingResourceType) getResourceTypeByName(CPU);</span>
+    }
+
+    @Override
+    public ProcessingResourceType hdd() {
+<span class="fc" id="L36">        return (ProcessingResourceType) getResourceTypeByName(HDD);</span>
+    }
+
+    @Override
+    public ProcessingResourceType delay() {
+<span class="fc" id="L41">        return (ProcessingResourceType) getResourceTypeByName(DELAY);</span>
+    }
+
+    @Override
+    public CommunicationLinkResourceType lan() {
+<span class="fc" id="L46">        return (CommunicationLinkResourceType) getResourceTypeByName(LAN);</span>
+    }
+
+    @Override
+    public SchedulingPolicy policyDelay() {
+<span class="fc" id="L51">        return getSchedulingPolicyByName(POLICY_DELAY);</span>
+    }
+
+    @Override
+    public SchedulingPolicy policyProcessorSharing() {
+<span class="fc" id="L56">        return getSchedulingPolicyByName(POLICY_PROCESSOR_SHARING);</span>
+    }
+
+    @Override
+    public SchedulingPolicy policyFCFS() {
+<span class="fc" id="L61">        return getSchedulingPolicyByName(POLICY_FCFS);</span>
+    }
+
+    private Entity getResourceTypeByName(final String entityName) {
+<span class="fc bfc" id="L65" title="All 2 branches covered.">        if (!this.resourceTypes.containsKey(entityName)) {</span>
+<span class="pc bpc" id="L66" title="1 of 2 branches missed.">            for (final ResourceType type : this.repository.getAvailableResourceTypes_ResourceRepository()) {</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">                if (type.getEntityName().equals(entityName)) {</span>
+<span class="fc" id="L68">                    this.resourceTypes.put(entityName, type);</span>
+<span class="fc" id="L69">                    break;</span>
+                }
+<span class="fc" id="L71">            }</span>
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">            if (!this.resourceTypes.containsKey(entityName)) {</span>
+<span class="nc" id="L73">                throw new RuntimeException(String.format(&quot;Could not find resource type '%s'&quot;, entityName));</span>
+            }
+        }
+<span class="fc" id="L76">        return this.resourceTypes.get(entityName);</span>
+    }
+
+    private SchedulingPolicy getSchedulingPolicyByName(final String policyName) {
+<span class="fc bfc" id="L80" title="All 2 branches covered.">        if (!this.schedulingPolicies.containsKey(policyName)) {</span>
+<span class="pc bpc" id="L81" title="1 of 2 branches missed.">            for (final SchedulingPolicy type : this.repository.getSchedulingPolicies__ResourceRepository()) {</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">                if (type.getEntityName().equals(policyName)) {</span>
+<span class="fc" id="L83">                    this.schedulingPolicies.put(policyName, type);</span>
+<span class="fc" id="L84">                    break;</span>
+                }
+<span class="fc" id="L86">            }</span>
+<span class="pc bpc" id="L87" title="1 of 2 branches missed.">            if (!this.schedulingPolicies.containsKey(policyName)) {</span>
+<span class="nc" id="L88">                throw new RuntimeException(String.format(&quot;Could not find scheduling policy '%s'&quot;, policyName));</span>
+            }
+        }
+<span class="fc" id="L91">        return this.schedulingPolicies.get(policyName);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" output="target/classes" path="src/main/java">
+	<classpathentry excluding="io/github/squat_team/model/PCMArchitectureInstance.java" kind="src" output="target/classes" path="src/main/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
@@ -17,7 +17,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
@@ -40,7 +40,7 @@
 	<classpathentry kind="lib" path="lib/org.eclipse.emf.cdo_4.3.0.v20140520-1823.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.emf.cdo.common_4.3.0.v20140309-0644.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.emf.common_2.10.1.v20150123-0348.jar"/>
-	<classpathentry kind="lib" path="lib/org.eclipse.emf.ecore_2.10.2.v20150123-0348.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.emf.ecore_2.10.2.v20150123-0348.jar" sourcepath="/Users/santiagovidal/Downloads/org.eclipse.emf.ecore.source_2.10.2.v20150123-0348.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.emf.ecore.xmi_2.10.2.v20150123-0348.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.ocl_3.4.2.v20140725-2242.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.ocl.ecore_3.3.100.v20140610-0641.jar"/>
@@ -50,5 +50,38 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/org.palladiosimulator.pcm.componentinternaldependencies"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/org.palladiosimulator.pcm.fieldofactivityannotations"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/org.palladiosimulator.pcm.internalmodificationmark"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/edu.squat.transformations"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/squat-tool-performance-bot"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Headless-PerOpteryx-src"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.cpa_1.4.0.201606151103.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.cpa_1.5.0.201612100503.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.cpa_1.5.0.201701170502.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.diagram_1.4.0.201606151103.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.diagram_1.5.0.201612100503.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.diagram_1.5.0.201701170502.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.examples_1.4.0.201606151103.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.examples_1.5.0.201612100503.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.examples_1.5.0.201701170502.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.giraph_1.4.0.201606151103.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.giraph_1.5.0.201612100503.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.giraph_1.5.0.201701170502.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.interpreter_1.4.0.201606151103.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.interpreter_1.5.0.201612100503.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.interpreter_1.5.0.201701170502.jar" sourcepath="/Users/alejandrorago/Documents/Implementacion/Repositorios/squat-resources/org.eclipse.emft.henshin-master.zip"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.model_1.4.0.201606151103.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.model_1.5.0.201612100503.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.model_1.5.0.201701170502.jar" sourcepath="/Users/alejandrorago/Documents/Implementacion/Repositorios/squat-resources/org.eclipse.emft.henshin-master.zip"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.statespace_1.4.0.201606151103.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.statespace_1.5.0.201612100503.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.statespace_1.5.0.201701170502.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.statespace.external_1.4.0.201606151103.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.statespace.external_1.5.0.201612100503.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.statespace.external_1.5.0.201701170502.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.trace_1.4.0.201606151103.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.trace_1.5.0.201612100503.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.trace_1.5.0.201701170502.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.wrap_1.4.0.201606151103.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.wrap_1.5.0.201612100503.jar"/>
+	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.wrap_1.5.0.201701170502.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

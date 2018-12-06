@@ -1,0 +1,11 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Palladio Headless Analysis,de.fakeller.palladio.analysis.pcm2lqn.runner,PcmLqnsAnalyzer,0,46,0,0,0,10,0,6,0,6
+Palladio Headless Analysis,de.fakeller.palladio.analysis.pcm2lqn.runner,Pcm2LqnLaunchConfiguration,609,0,2,0,116,0,39,0,38,0
+Palladio Headless Analysis,de.fakeller.palladio.analysis.pcm2lqn.runner,PcmLqnsAnalyzerConfig,11,34,0,0,4,12,1,4,1,4
+Palladio Headless Analysis,de.fakeller.palladio.analysis.pcm2lqn.runner,PcmLqnsAnalyzerContext,178,14,2,0,39,5,7,2,6,2
+Palladio Headless Analysis,de.fakeller.palladio.analysis.pcm2lqn.results,Pcm2LqnResultsParser,33,241,10,22,3,58,11,17,1,11
+Palladio Headless Analysis,de.fakeller.palladio.analysis.pcm2lqn.results,Pcm2LqnResult,3,6,0,0,1,3,1,1,1,1
+Palladio Headless Analysis,de.fakeller.palladio.analysis.tracing,PcmModelTrace,15,192,7,13,4,49,7,17,0,14
+Palladio Headless Analysis,de.fakeller.palladio,RunLqnsWithBuilder,68,0,2,0,15,0,5,0,4,0
+Palladio Headless Analysis,de.fakeller.palladio.analysis.provider,SimpleTacticsProvider,406,0,0,0,156,0,2,0,2,0
+Palladio Headless Analysis,de.fakeller.palladio.analysis.provider,FileSystemProvider,56,0,2,0,14,0,3,0,2,0

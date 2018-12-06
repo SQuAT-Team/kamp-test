@@ -6,7 +6,7 @@ import io.github.squat_team.model.PCMTactic;
 public class ArchitectureTransformer {
 	
 	public ArchitectureTransformer() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	public static PCMArchitectureInstance transform(PCMArchitectureInstance currentArchitecture, PCMArchitectureInstance initialArchitecture, PCMArchitectureInstance changedArchitecture) {

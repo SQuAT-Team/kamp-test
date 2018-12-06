@@ -1,6 +1,10 @@
 package io.github.squat_team;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMScenario;
@@ -13,9 +17,11 @@ public class SQuATNegotiator {
 	private PCMArchitectureInstance initialArchitecture;
 	private List<AbstractPCMBot> bots;
 	private List<PCMScenario> scenarios;
+	
 	//private Map<AbstractPCMBot, PCMScenario> bot2scenarioLinkage;
 	
-	
+
+
 	public SQuATNegotiator(PCMArchitectureInstance initialArchitecture) {
 		this.initialArchitecture = initialArchitecture;
 		this.bots = new ArrayList<AbstractPCMBot>();
@@ -39,7 +45,7 @@ public class SQuATNegotiator {
 		//Evaluate each scenario with their respective scenario
 		List<PCMScenarioResult> currentResults = new ArrayList<PCMScenarioResult>();
 		for(AbstractPCMBot bot : bots) {
-			PCMScenarioResult result = bot.analyze(currentArchitecture);
+			PCMScenarioResult result = bot.analyze(currentArchitecture,"");
 			currentResults.add(result);
 		}
 		
@@ -84,7 +90,7 @@ public class SQuATNegotiator {
 			List<PCMScenarioResult> nextResults = new ArrayList<PCMScenarioResult>();
 			for(AbstractPCMBot otherBot : alternativesPerBot.keySet()) {
 				if(bot != otherBot) {
-					PCMScenarioResult nextResult = otherBot.analyze(nextAchitecture);
+					PCMScenarioResult nextResult = otherBot.analyze(nextAchitecture,"");
 					nextResults.add(nextResult);
 				}
 			}

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BaseConfiguration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fastpan</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.performance.variability.configuration</a> &gt; <span class="el_source">BaseConfiguration.java</span></div><h1>BaseConfiguration.java</h1><pre class="source lang-java linenums">package de.fakeller.performance.variability.configuration;
+
+import de.fakeller.performance.variability.feature.FeatureModel;
+import de.fakeller.performance.variability.feature.UnknownFeatureException;
+
+import java.util.*;
+
+/**
+ * Implements a Java-based configuration.
+ *
+ * @param &lt;FEATURE&gt;
+ */
+public class BaseConfiguration&lt;FEATURE&gt; implements ModifiableConfiguration&lt;FEATURE&gt; {
+
+    private final FeatureModel&lt;FEATURE&gt; fm;
+
+<span class="fc" id="L17">    private final Map&lt;FEATURE, Boolean&gt; isEnabled = new LinkedHashMap&lt;&gt;();</span>
+
+<span class="fc" id="L19">    public BaseConfiguration(final FeatureModel&lt;FEATURE&gt; fm) {</span>
+<span class="fc" id="L20">        this.fm = fm;</span>
+<span class="fc" id="L21">        this.fm.getFeatures().forEach(f -&gt; this.isEnabled.put(f, false));</span>
+<span class="fc" id="L22">    }</span>
+
+
+    @Override
+    public BaseConfiguration&lt;FEATURE&gt; enable(final Collection&lt;FEATURE&gt; features) {
+<span class="fc" id="L27">        this.setConfiguration(features, true);</span>
+<span class="fc" id="L28">        return this;</span>
+    }
+
+    @Override
+    public BaseConfiguration&lt;FEATURE&gt; enableAll() {
+<span class="fc" id="L33">        return this.enable(this.isEnabled.keySet());</span>
+    }
+
+
+    @Override
+    public BaseConfiguration&lt;FEATURE&gt; disable(final Collection&lt;FEATURE&gt; features) {
+<span class="fc" id="L39">        this.setConfiguration(features, false);</span>
+<span class="fc" id="L40">        return this;</span>
+    }
+
+    @Override
+    public BaseConfiguration&lt;FEATURE&gt; disableAll() {
+<span class="fc" id="L45">        return this.disable(this.isEnabled.keySet());</span>
+    }
+
+
+    @Override
+    public boolean isEnabled(final FEATURE feature) {
+<span class="fc" id="L51">        this.assertContainsFeature(feature);</span>
+<span class="fc" id="L52">        return this.isEnabled.get(feature);</span>
+    }
+
+    @Override
+    public List&lt;Boolean&gt; getFeatureFlags() {
+<span class="fc" id="L57">        return new ArrayList&lt;&gt;(this.isEnabled.values());</span>
+    }
+
+    @Override
+    public FeatureModel&lt;FEATURE&gt; getFeatureModel() {
+<span class="fc" id="L62">        return this.fm;</span>
+    }
+
+
+    private void setConfiguration(final Collection&lt;FEATURE&gt; features, final boolean enabled) {
+<span class="fc" id="L67">        features.forEach(feature -&gt; {</span>
+<span class="fc" id="L68">            this.assertContainsFeature(feature);</span>
+<span class="fc" id="L69">            this.isEnabled.put(feature, enabled);</span>
+<span class="fc" id="L70">        });</span>
+<span class="fc" id="L71">    }</span>
+
+    private void assertContainsFeature(final FEATURE feature) {
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        if (!this.fm.hasFeature(feature)) {</span>
+<span class="fc" id="L75">            throw new UnknownFeatureException(String.format(&quot;The feature model %s does not have feature %s. You must specify all valid features when constructing the feature model!&quot;, this.fm, feature));</span>
+        }
+<span class="fc" id="L77">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

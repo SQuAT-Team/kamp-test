@@ -8,6 +8,8 @@ import java.util.Map;
 import org.palladiosimulator.pcm.repository.ProvidedRole;
 import org.palladiosimulator.pcm.repository.RepositoryComponent;
 import org.palladiosimulator.pcm.repository.Signature;
+import org.palladiosimulator.pcm.repository.impl.CompositeComponentImpl;
+
 import edu.kit.ipd.sdq.kamp.core.Activity;
 import edu.kit.ipd.sdq.kamp.core.ActivityElementType;
 import edu.kit.ipd.sdq.kamp.core.ActivityType;
@@ -39,7 +41,12 @@ public class InternalModificationDerivation {
 				if (repositoryComponent!=null) {
 					Activity componentActivity = component2activityMap.get(repositoryComponent);
 					if (componentActivity==null) {
-					   componentActivity = new Activity(ActivityType.INTERNALMODIFICATIONMARK, ActivityElementType.BASICCOMPONENT, modifyComponent.getComponent().getEntityName(), BasicActivity.MODIFY, 
+						ActivityElementType type=null;
+						if(repositoryComponent instanceof CompositeComponentImpl)
+							type=ActivityElementType.COMPOSITECOMPONENT;
+						else
+							type=ActivityElementType.BASICCOMPONENT;
+					   componentActivity = new Activity(ActivityType.INTERNALMODIFICATIONMARK,type, modifyComponent.getComponent().getEntityName(), BasicActivity.MODIFY, 
 							"Modifiziere Komponente "+repositoryComponent.getEntityName()+".", repositoryComponent);
 						activityList.add(componentActivity);
 						component2activityMap.put(repositoryComponent, componentActivity);

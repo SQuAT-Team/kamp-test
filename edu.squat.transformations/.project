@@ -3,6 +3,7 @@
 	<name>edu.squat.transformations</name>
 	<comment></comment>
 	<projects>
+		<project>squat-tool</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PalladioResourceRepository.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Environment</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.environment.util</a> &gt; <span class="el_source">PalladioResourceRepository.java</span></div><h1>PalladioResourceRepository.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.environment.util;
+
+import org.palladiosimulator.pcm.resourcetype.CommunicationLinkResourceType;
+import org.palladiosimulator.pcm.resourcetype.ProcessingResourceType;
+import org.palladiosimulator.pcm.resourcetype.ResourceRepository;
+import org.palladiosimulator.pcm.resourcetype.SchedulingPolicy;
+
+/**
+ * Convenient access to Palladio's {@link ResourceRepository}
+ */
+public interface PalladioResourceRepository {
+
+    ProcessingResourceType cpu();
+
+    ProcessingResourceType hdd();
+
+    ProcessingResourceType delay();
+
+    CommunicationLinkResourceType lan();
+
+    SchedulingPolicy policyProcessorSharing();
+
+    SchedulingPolicy policyFCFS();
+
+    SchedulingPolicy policyDelay();
+
+
+    /**
+     * Hello stranger,
+     * &lt;p&gt;
+     * until there is a proper DI framework built into this project, we'll need to rely on this singleton to not have
+     * to pass around the {@link PalladioResourceRepository} to all builders. Unfortunately, some deeply nested builders
+     * require the resource repository and bubbling up the dependency leads to more technical debt than this singleton.
+     * &lt;p&gt;
+     * Hit &lt;kbd&gt;Alt+F7&lt;/kbd&gt; to find the builders requiring the {@link PalladioResourceRepository}.
+     * &lt;p&gt;
+     * Have a nice day, anyways!
+     */
+<span class="pc" id="L39">    @Deprecated</span>
+<span class="nc" id="L40">    public enum INSTANCE {</span>
+        ;
+
+        private static PalladioResourceRepository resources;
+
+        /**
+         * Technical Debt - to be replaced by DI framework
+         */
+        @Deprecated
+        public static void initResources(final PalladioResourceRepository instance) {
+<span class="fc" id="L50">            resources = instance;</span>
+<span class="fc" id="L51">        }</span>
+
+        /**
+         * Technical Debt - to be replaced by DI framework
+         */
+        @Deprecated
+        public static PalladioResourceRepository resources() {
+<span class="nc bnc" id="L58" title="All 2 branches missed.">            if (resources == null) {</span>
+<span class="nc" id="L59">                throw new RuntimeException(&quot;Palladio resource repository singleton has not been initialized!&quot;);</span>
+            }
+<span class="nc" id="L61">            return resources;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

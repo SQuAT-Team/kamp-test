@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Pcm2LqnResultsParser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Analysis</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.analysis.pcm2lqn.results</a> &gt; <span class="el_source">Pcm2LqnResultsParser.java</span></div><h1>Pcm2LqnResultsParser.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.analysis.pcm2lqn.results;
+
+import de.fakeller.palladio.analysis.tracing.PcmModelTrace;
+import de.fakeller.performance.analysis.result.Attach;
+import de.fakeller.performance.analysis.result.PerformanceResultWriter;
+import de.fakeller.performance.analysis.result.exception.InvalidResultException;
+import de.fakeller.performance.analysis.result.valueobject.Duration;
+import de.fakeller.performance.analysis.result.valueobject.Percentage;
+import de.fakeller.performance.analysis.result.valueobject.statistics.Variance;
+import org.palladiosimulator.pcm.core.entity.NamedElement;
+import org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
+import org.palladiosimulator.pcm.seff.AbstractAction;
+import org.palladiosimulator.solver.lqn.*;
+import org.palladiosimulator.solver.transformations.pcm2lqn.LqnXmlHandler;
+
+import java.nio.file.Path;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.logging.Logger;
+
+/**
+ * Parses the output of the Palladio PCM2LQN Analysis tool and maps it to the PCM instance objects.
+ */
+<span class="pc bpc" id="L25" title="1 of 2 branches missed.">public class Pcm2LqnResultsParser {</span>
+
+<span class="fc" id="L27">    private static final Logger log = Logger.getLogger(Pcm2LqnResultsParser.class.getName());</span>
+
+    /**
+     * parsed results file
+     */
+    private final LqnModelType loadedModel;
+
+    /**
+     * Stores the traces that are referred to in the results file.
+     */
+    private final PcmModelTrace trace;
+
+    /**
+     * Write the actual results to.
+     */
+    private final PerformanceResultWriter&lt;NamedElement&gt; rw;
+
+<span class="fc" id="L44">    private Pcm2LqnResultsParser(final PcmModelTrace trace, final PerformanceResultWriter&lt;NamedElement&gt; resultWriter, final Path resultsFile) {</span>
+<span class="fc" id="L45">        this.trace = trace;</span>
+<span class="fc" id="L46">        this.rw = resultWriter;</span>
+
+<span class="fc" id="L48">        this.loadedModel = LqnXmlHandler.loadModelFromXMI(resultsFile.toString());</span>
+<span class="fc" id="L49">        this.extractSolverParams(this.loadedModel.getSolverParams());</span>
+<span class="fc" id="L50">        this.loadedModel.getProcessor().forEach(this::extractProcessor);</span>
+<span class="fc" id="L51">    }</span>
+
+    /**
+     * Parses the LQNS results file containing trace information with the help of the given {@link PcmModelTrace} and
+     * stores all performance prediction results in the {@link PerformanceResultWriter}.
+     */
+    public static void parse(final PcmModelTrace trace, final PerformanceResultWriter&lt;NamedElement&gt; resultWriter, final Path resultsFile) {
+<span class="fc" id="L58">        new Pcm2LqnResultsParser(trace, resultWriter, resultsFile);</span>
+<span class="fc" id="L59">    }</span>
+
+    /**
+     * Sanity checks for results file
+     */
+    private void extractSolverParams(final SolverParamsType solverParams) {
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">        if (null == solverParams.getResultGeneral()) {</span>
+<span class="nc" id="L66">            throw new InvalidResultException(&quot;Missing &lt;result-general/&gt; tag in results file.&quot;);</span>
+        }
+<span class="pc bpc" id="L68" title="1 of 2 branches missed.">        if (!solverParams.getResultGeneral().isSetValid()) {</span>
+<span class="nc" id="L69">            throw new InvalidResultException(&quot;Missing &lt;result-general valid='...'&gt; attribute in results file.&quot;);</span>
+        }
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">        if (solverParams.getResultGeneral().getValid() == ValidType.NO) {</span>
+<span class="nc" id="L72">            throw new InvalidResultException(&quot;Found &lt;result-general valid='NO'&gt; attribute in results file, result seems not to be valid!&quot;);</span>
+        }
+<span class="fc" id="L74">    }</span>
+
+    private void extractProcessor(final ProcessorType proc) {
+        // in case the processor is a {@link ResourceContainer}, we'll attach the utilization result
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">        if (proc.getResultProcessor().size() == 1) {</span>
+<span class="fc" id="L79">            this.&lt;ResourceContainer&gt;traceElement(proc.getName(), ResourceContainer.class).ifPresent(resourceContainer -&gt; {</span>
+<span class="fc" id="L80">                final OutputResultType result = proc.getResultProcessor().get(0);</span>
+<span class="fc" id="L81">                this.rw.attach(Attach.&lt;NamedElement&gt;to(resourceContainer).utilization(Percentage.of(result.getUtilization())).mean());</span>
+<span class="fc" id="L82">            });</span>
+        }
+
+        // extract tasks
+<span class="fc" id="L86">        proc.getTask().forEach(this::extractTask);</span>
+<span class="fc" id="L87">    }</span>
+
+    private void extractTask(final TaskType task) {
+<span class="fc" id="L90">        task.getEntry().forEach(this::extractEntry);</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">        if (null != task.getTaskActivities()) {</span>
+<span class="fc" id="L92">            task.getTaskActivities().getActivity().forEach(this::extractActivity);</span>
+        }
+<span class="fc" id="L94">    }</span>
+
+    private void extractEntry(final EntryType entry) {
+<span class="fc" id="L97">        final PhaseActivities phaseActivities = entry.getEntryPhaseActivities();</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">        if (null != phaseActivities) {</span>
+<span class="fc" id="L99">            phaseActivities.getActivity().forEach(this::extractActivity);</span>
+        }
+<span class="fc" id="L101">    }</span>
+
+    private void extractActivity(final ActivityDefBase activity) {
+<span class="pc bpc" id="L104" title="1 of 2 branches missed.">        if (activity.getResultActivity().size() == 1) {</span>
+            // currently we only know the semantics of a single &lt;result-activity&gt;
+<span class="fc" id="L106">            this.extractActivityResult(activity, activity.getResultActivity().get(0));</span>
+        }
+<span class="fc" id="L108">    }</span>
+
+    private void extractActivityResult(final ActivityDefBase activity, final OutputResultType result) {
+<span class="pc bpc" id="L111" title="2 of 4 branches missed.">        assert null != result;</span>
+
+        // get the action the result applies to
+<span class="fc" id="L114">        final Optional&lt;AbstractAction&gt; optionalAction = this.&lt;AbstractAction&gt;traceElement(activity.getName(), AbstractAction.class);</span>
+<span class="fc bfc" id="L115" title="All 2 branches covered.">        if (!optionalAction.isPresent()) {</span>
+<span class="fc" id="L116">            return;</span>
+        }
+<span class="fc" id="L118">        final AbstractAction action = optionalAction.get();</span>
+
+        // extract utilization
+<span class="pc bpc" id="L121" title="1 of 2 branches missed.">        if (result.isSetUtilization()) {</span>
+<span class="fc" id="L122">            this.rw.attach(Attach.&lt;NamedElement&gt;to(action).utilization(Percentage.of(result.getUtilization())).mean());</span>
+        }
+
+        // extract service time
+<span class="pc bpc" id="L126" title="1 of 2 branches missed.">        if (result.isSetServiceTime()) {</span>
+<span class="fc" id="L127">            final Duration serviceTime = Duration.ofMilliseconds(result.getServiceTime());</span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">            if (result.isSetServiceTimeVariance()) {</span>
+<span class="fc" id="L129">                final Variance serviceTimeVariance = new Variance(result.getServiceTimeVariance());</span>
+<span class="fc" id="L130">                this.rw.attach(Attach.&lt;NamedElement&gt;to(action).serviceTime(serviceTime).normalDistribution(serviceTimeVariance));</span>
+<span class="fc" id="L131">            } else {</span>
+<span class="fc" id="L132">                this.rw.attach(Attach.&lt;NamedElement&gt;to(action).serviceTime(serviceTime).mean());</span>
+            }
+        }
+
+        /*
+            TODO: extract the following result types:
+            - proc-waiting
+            - throughput
+            - throughput-bound
+            - proc-utilization
+            - proc-waiting
+         */
+<span class="fc" id="L144">    }</span>
+
+
+    /**
+     * Calls {@link PcmModelTrace::findByString} with the given name and tries to cast the found element to the given
+     * class.
+     * &lt;p&gt;
+     * Note: If the cast is not successful, an empty optional will be returned.
+     *
+     * @throws NoSuchElementException in case the trace does not contain an element identified by the given name
+     */
+    private &lt;T extends NamedElement&gt; Optional&lt;T&gt; traceElement(final String name, final Class&lt;T&gt; tClass) {
+        // check if trace info is present
+<span class="fc" id="L157">        final Optional&lt;UUID&gt; uuid = PcmModelTrace.extractTrace(name);</span>
+<span class="fc bfc" id="L158" title="All 2 branches covered.">        if (!uuid.isPresent()) {</span>
+<span class="fc" id="L159">            log.info(String.format(&quot;No trace information found in results file for name '%s'&quot;, name));</span>
+<span class="fc" id="L160">            return Optional.empty();</span>
+        }
+
+        // get traced element or fail
+<span class="fc" id="L164">        final NamedElement el = this.trace</span>
+<span class="fc" id="L165">                .find(uuid.get())</span>
+<span class="pc" id="L166">                .orElseThrow(() -&gt; new NoSuchElementException(String.format(&quot;Could not find '%s' in trace.&quot;, name)));</span>
+
+        // check if traced element is of expected type
+<span class="fc bfc" id="L169" title="All 2 branches covered.">        if (tClass.isInstance(el)) {</span>
+<span class="fc" id="L170">            return Optional.of((T) el);</span>
+        } else {
+            // found element is not of correct type
+<span class="fc" id="L173">            return Optional.empty();</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

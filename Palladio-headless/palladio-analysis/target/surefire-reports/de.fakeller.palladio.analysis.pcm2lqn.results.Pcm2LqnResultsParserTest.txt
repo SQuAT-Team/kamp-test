@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: de.fakeller.palladio.analysis.pcm2lqn.results.Pcm2LqnResultsParserTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.505 sec - in de.fakeller.palladio.analysis.pcm2lqn.results.Pcm2LqnResultsParserTest

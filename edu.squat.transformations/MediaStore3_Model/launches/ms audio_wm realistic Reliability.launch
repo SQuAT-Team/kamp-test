@@ -20,6 +20,7 @@
 <intAttribute key="numberOfExactDecimalPlaces" value="1"/>
 <booleanAttribute key="numberOfExactDecimalPlacesEnabled" value="false"/>
 <stringAttribute key="outpath" value="de.uka.ipd.sdq.temporary"/>
+<stringAttribute key="rmiRepositoryFile" value="pathmap://PCM_MODELS/Glassfish.repository"/>
 <stringAttribute key="saveFileDefault" value=""/>
 <booleanAttribute key="saveResultsToFileEnabled" value="false"/>
 <stringAttribute key="sensitivityLogFile" value=""/>

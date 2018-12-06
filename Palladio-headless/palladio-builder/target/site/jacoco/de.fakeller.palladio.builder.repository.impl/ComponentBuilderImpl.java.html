@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ComponentBuilderImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Palladio Headless Builder</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.palladio.builder.repository.impl</a> &gt; <span class="el_source">ComponentBuilderImpl.java</span></div><h1>ComponentBuilderImpl.java</h1><pre class="source lang-java linenums">package de.fakeller.palladio.builder.repository.impl;
+
+import de.fakeller.palladio.builder.AbstractHierarchicalBuilder;
+import de.fakeller.palladio.builder.repository.ComponentBuilder;
+import de.fakeller.palladio.builder.repository.InterfaceBuilder;
+import de.fakeller.palladio.builder.repository.RepositoryBuilder;
+import de.fakeller.palladio.builder.repository.SignatureBuilder;
+import de.fakeller.palladio.builder.repository.seff.ResourceDemandBuilder;
+import de.fakeller.palladio.builder.repository.seff.impl.ResourceDemandBuilderImpl;
+import org.palladiosimulator.pcm.repository.BasicComponent;
+import org.palladiosimulator.pcm.repository.OperationProvidedRole;
+import org.palladiosimulator.pcm.repository.OperationRequiredRole;
+import org.palladiosimulator.pcm.repository.RepositoryFactory;
+
+
+public class ComponentBuilderImpl extends AbstractHierarchicalBuilder&lt;ComponentBuilder, BasicComponent, RepositoryBuilder&gt; implements ComponentBuilder {
+
+
+    ComponentBuilderImpl(final RepositoryBuilder belongsTo) {
+<span class="fc" id="L20">        super(belongsTo);</span>
+<span class="fc" id="L21">    }</span>
+
+    @Override
+    protected BasicComponent newEModel() {
+<span class="fc" id="L25">        return RepositoryFactory.eINSTANCE.createBasicComponent();</span>
+    }
+
+    @Override
+    protected void registerParent() {
+<span class="fc" id="L30">        this.eModel.setRepository__RepositoryComponent(this.belongsTo.getReference());</span>
+<span class="fc" id="L31">    }</span>
+
+
+    @Override
+    public ComponentBuilder provides(final InterfaceBuilder iface) {
+        // create model
+<span class="fc" id="L37">        final OperationProvidedRole provided = RepositoryFactory.eINSTANCE.createOperationProvidedRole();</span>
+<span class="fc" id="L38">        provided.setEntityName(String.format(&quot;%s_provides_%s&quot;, this.eModel.getEntityName(), iface.getReference().getEntityName()));</span>
+<span class="fc" id="L39">        provided.setProvidedInterface__OperationProvidedRole(iface.getReference());</span>
+
+        // link model
+<span class="fc" id="L42">        provided.setProvidingEntity_ProvidedRole(this.eModel);</span>
+<span class="fc" id="L43">        this.eModel.getProvidedRoles_InterfaceProvidingEntity().add(provided);</span>
+
+<span class="fc" id="L45">        return this;</span>
+    }
+
+    @Override
+    public ComponentBuilder requires(final InterfaceBuilder iface) {
+        // create model
+<span class="fc" id="L51">        final OperationRequiredRole required = RepositoryFactory.eINSTANCE.createOperationRequiredRole();</span>
+<span class="fc" id="L52">        required.setEntityName(String.format(&quot;%s_requires_%s&quot;, this.eModel.getEntityName(), iface.getReference().getEntityName()));</span>
+<span class="fc" id="L53">        required.setRequiredInterface__OperationRequiredRole(iface.getReference());</span>
+
+        // link model
+<span class="fc" id="L56">        required.setRequiringEntity_RequiredRole(this.eModel);</span>
+<span class="fc" id="L57">        this.eModel.getRequiredRoles_InterfaceRequiringEntity().add(required);</span>
+
+<span class="fc" id="L59">        return this;</span>
+    }
+
+    @Override
+    public ResourceDemandBuilder&lt;ComponentBuilder&gt; withServiceEffectSpecification(final SignatureBuilder affectedOperation) {
+        // todo: assert that affected operation is provided by an interface of this component
+<span class="fc" id="L65">        return ResourceDemandBuilderImpl.rootResourceDemand(this, affectedOperation);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

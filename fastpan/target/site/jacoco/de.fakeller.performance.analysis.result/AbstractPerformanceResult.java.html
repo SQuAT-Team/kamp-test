@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractPerformanceResult.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fastpan</a> &gt; <a href="index.source.html" class="el_package">de.fakeller.performance.analysis.result</a> &gt; <span class="el_source">AbstractPerformanceResult.java</span></div><h1>AbstractPerformanceResult.java</h1><pre class="source lang-java linenums">package de.fakeller.performance.analysis.result;
+
+import de.fakeller.performance.analysis.result.metric.PerformanceMetric;
+import de.fakeller.performance.analysis.result.quantity.PerformanceQuantity;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+/**
+ * Provides a base class to implement the {@link PerformanceResult} and {@link PerformanceResultWriter} interfaces.
+ */
+<span class="pc bpc" id="L12" title="1 of 2 branches missed.">abstract public class AbstractPerformanceResult&lt;T&gt; implements PerformanceResult&lt;T&gt;, PerformanceResultWriter&lt;T&gt; {</span>
+
+    /**
+     * Stores the actual results.
+     */
+<span class="fc" id="L17">    private final Map&lt;T, List&lt;Result&lt;T&gt;&gt;&gt; results = new LinkedHashMap&lt;&gt;();</span>
+
+    @Override
+    public void attach(final Result&lt;T&gt; result) {
+<span class="fc" id="L21">        final T key = result.attachedTo();</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        if (!this.results.containsKey(key)) {</span>
+<span class="fc" id="L23">            this.results.put(key, new ArrayList&lt;&gt;());</span>
+        }
+<span class="fc" id="L25">        this.results.get(key).add(result);</span>
+<span class="fc" id="L26">    }</span>
+
+    @Override
+    public PerformanceResult&lt;T&gt; get() {
+<span class="fc" id="L30">        return this;</span>
+    }
+
+    @Override
+    public boolean hasResults() {
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        return this.results.size() &gt; 0;</span>
+    }
+
+    @Override
+    public Collection&lt;Result&lt;T&gt;&gt; getResults() {
+<span class="pc bpc" id="L40" title="2 of 4 branches missed.">        assert this.hasResults();</span>
+        // return a flat view on all results
+<span class="fc" id="L42">        return this.results</span>
+<span class="fc" id="L43">                .entrySet()</span>
+<span class="fc" id="L44">                .stream()</span>
+<span class="fc" id="L45">                .flatMap(entry -&gt; entry.getValue().stream())</span>
+<span class="fc" id="L46">                .collect(Collectors.toList());</span>
+    }
+
+    @Override
+    public Set&lt;T&gt; getElementsHavingResults() {
+<span class="pc bpc" id="L51" title="2 of 4 branches missed.">        assert this.hasResults();</span>
+<span class="fc" id="L52">        return this.results.keySet();</span>
+    }
+
+    @Override
+    public boolean hasResults(final T element) {
+<span class="pc bpc" id="L57" title="1 of 4 branches missed.">        return this.results.containsKey(element) &amp;&amp; this.results.get(element).size() &gt; 0;</span>
+    }
+
+    @Override
+    public Collection&lt;Result&lt;T&gt;&gt; getResults(final T element) {
+<span class="pc bpc" id="L62" title="2 of 4 branches missed.">        assert this.hasResults(element);</span>
+<span class="fc" id="L63">        return this.results.get(element);</span>
+    }
+
+    @Override
+    public &lt;M extends PerformanceQuantity&gt; Optional&lt;PerformanceMetric&lt;M&gt;&gt; getMetric(final T element, final Class&lt;M&gt; metricClazz) {
+<span class="fc bfc" id="L68" title="All 2 branches covered.">        if (!this.results.containsKey(element)) {</span>
+<span class="fc" id="L69">            return Optional.empty();</span>
+        }
+<span class="fc bfc" id="L71" title="All 2 branches covered.">        for (final Result res : this.results.get(element)) {</span>
+<span class="fc" id="L72">            final PerformanceMetric metric = res.value();</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">            if (metric.isOfType(metricClazz)) {</span>
+<span class="fc" id="L74">                return Optional.of((PerformanceMetric&lt;M&gt;) metric);</span>
+            }
+<span class="fc" id="L76">        }</span>
+<span class="fc" id="L77">        return Optional.empty();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
