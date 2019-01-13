@@ -14,7 +14,6 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.ArchitectureTransformer;
-import io.github.squat_team.SQuATNegotiator;
 import io.github.squat_team.algorithm.util.PCMBotMockBuilder;
 import io.github.squat_team.algorithm.util.PCMBotMockBuilderResult;
 import io.github.squat_team.algorithm.util.PCMBotMockLinker;
@@ -25,7 +24,7 @@ import io.github.squat_team.model.PCMArchitectureInstance;
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(ArchitectureTransformer.class)
-public abstract class AbstractNegotiatorTest {
+public abstract class AbstractSQuATTest {
 	protected PCMArchitectureInstance initialArchitecture;
 	protected List<AbstractPCMBot> bots = new ArrayList<AbstractPCMBot>();
 
@@ -107,11 +106,8 @@ public abstract class AbstractNegotiatorTest {
 	}
 
 	protected PCMArchitectureInstance executeNegotiation(List<AbstractPCMBot> bots) throws Exception {
-		SQuATNegotiator negotiator = new SQuATNegotiator(initialArchitecture);
-		for (AbstractPCMBot bot : bots) {
-			negotiator.addBot(bot);
-		}
-		return negotiator.negotiate();
+		// TODO
+		return null;
 	}
 
 }

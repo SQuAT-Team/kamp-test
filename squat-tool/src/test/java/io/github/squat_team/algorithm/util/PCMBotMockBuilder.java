@@ -65,6 +65,7 @@ public class PCMBotMockBuilder {
 	private AbstractPCMBot mockOptimizationFinal(AbstractPCMBot bot, PCMArchitectureInstance initialArchitecture) throws Exception {
 		for (PCMScenarioResult optimizationResponse : optimizationRespones) {
 			when(optimizationResponse.getOriginatingBot()).thenReturn(bot);
+			when(optimizationResponse.getResultingArchitecture()).thenReturn(mock(PCMArchitectureInstance.class));
 			int satisfaction = PCMScenarioSatisfaction.compute(optimizationResponse);
 			when(optimizationResponse.isSatisfied()).thenReturn(satisfaction);
 			allowReanalysis(bot, optimizationResponse);
