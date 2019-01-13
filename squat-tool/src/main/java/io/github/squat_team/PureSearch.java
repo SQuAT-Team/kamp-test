@@ -11,6 +11,7 @@ import io.github.squat_team.agentsUtils.LoadHelper;
 import io.github.squat_team.agentsUtils.Proposal;
 import io.github.squat_team.agentsUtils.SillyBot;
 import io.github.squat_team.agentsUtils.transformations.ArchitecturalTransformationsFactory;
+import io.github.squat_team.runner.SQuATConfiguration;
 
 public class PureSearch {
 	private List<SillyBot> sillyBots;
@@ -18,9 +19,11 @@ public class PureSearch {
 	private ArchitecturalTransformationsFactory archTransFactory;
 	private int maxNumberOfLevels;
 	private boolean noMoreAlternatives;
+	private SQuATConfiguration configuration;
 	
 	public PureSearch() {
-		archTransFactory=new ArchitecturalTransformationsFactory();
+		archTransFactory=new ArchitecturalTransformationsFactory(configuration);
+		configuration = SQuATConfiguration.generateDefault();
 		currentLevelOfTransformations=1;
 		noMoreAlternatives=false;
 	}
@@ -54,7 +57,7 @@ public class PureSearch {
 		}else{
 			System.out.println("Proposals for level");
 			
-			sillyBots=new LoadHelper().loadBotsForArchitecturalAlternatives(versionsUntilLevel,archTransFactory.getInitialArchitecture());
+			sillyBots=new LoadHelper(configuration).loadBotsForArchitecturalAlternatives(versionsUntilLevel,archTransFactory.getInitialArchitecture());
 			System.out.println("Total proposals: "+sillyBots.get(0).getOrderedProposals().size());
 		}
 	}

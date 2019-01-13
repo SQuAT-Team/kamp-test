@@ -34,10 +34,10 @@ public class PerformanceBot extends SillyBot {
 	@Override
 	public float getResponse(Proposal p) {
 		Proposal proposal=getProposalForArchitecture(p.getArchitectureName());
-		return ((PerformanceProposal)proposal).getResponseTime();
+		return proposal.getScenarioResponse();
 	}
 	@Override
 	protected float getScenarioMeasureFor(Proposal proposal) {
-		return ((PerformanceProposal)proposal).getResponseTime();
+		return proposal.getScenarioResponse();
 	}
 }

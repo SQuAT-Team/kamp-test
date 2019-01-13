@@ -40,13 +40,10 @@ public class ModifiabilityBot extends SillyBot {
 	@Override
 	public float getResponse(Proposal p) {
 		Proposal proposal=getProposalForArchitecture(p.getArchitectureName());
-		return ((ModifiabilityProposal)proposal).getComplexity();
+		return proposal.getScenarioResponse();
 	}
 	@Override
 	protected float getScenarioMeasureFor(Proposal proposal) {
-		return ((ModifiabilityProposal)proposal).getComplexity();
-	}
-
-	
-	
+		return proposal.getScenarioResponse();
+	}	
 }

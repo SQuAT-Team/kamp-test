@@ -7,9 +7,7 @@ public class PerformanceProposal extends Proposal {
 		super(pcmArchitecture,responseTime);
 		//this.responseTime=responseTime;
 	}
-	public float getResponseTime() {
-		return getScenarioResponse();
-	}
+
 	@Override
 	public String toString() {
 		return super.toString()+" "+scenarioResponse;

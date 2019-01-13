@@ -38,13 +38,19 @@ import io.github.squat_team.modifiability.kamp.KAMPPCMBot;
 import io.github.squat_team.performance.AbstractPerformancePCMScenario;
 import io.github.squat_team.performance.peropteryx.ConcurrentPerOpteryxPCMBot;
 import io.github.squat_team.performance.peropteryx.PerOpteryxPCMBot;
+import io.github.squat_team.runner.SQuATConfiguration;
 import io.github.squat_team.util.SQuATHelper;
 
 public class LoadHelper {
-	
 	private static int MAXIMUM_ALTERNATIVES=50;
 	private static int TOTAL_MAXIMUN=400;
-
+	private SQuATConfiguration configuration;
+	
+	public LoadHelper(SQuATConfiguration configuration) {
+		super();
+		this.configuration = configuration;
+	}
+	
 	public List<SillyBot> loadBotsForArchitecturalAlternatives(List<ArchitecturalVersion> architecturalAlternatives,
 			ArchitecturalVersion initialArchitecture) {
 		return getCocomeAlternatives(architecturalAlternatives, initialArchitecture);

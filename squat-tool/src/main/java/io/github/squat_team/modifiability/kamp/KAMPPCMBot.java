@@ -439,4 +439,9 @@ public class KAMPPCMBot extends AbstractPCMBot {
 	public List<PCMScenarioResult> searchForAlternatives(PCMArchitectureInstance currentArchitecture) {
 		return null;
 	}
+
+	@Override
+	public PCMScenarioResult analyze(PCMArchitectureInstance currentArchitecture) {
+		throw new UnsupportedOperationException("This bot does not implement the analzye method without a bot name");
+	}
 }

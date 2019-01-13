@@ -1,4 +1,4 @@
-package io.github.squat_team;
+package io.github.squat_team.negotiation;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.github.squat_team.AbstractPCMBot;
+import io.github.squat_team.ArchitectureTransformer;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.model.PCMScenarioResult;
@@ -13,6 +15,8 @@ import io.github.squat_team.model.PCMTactic;
 import io.github.squat_team.utility.NaiveUtilityFunction;
 import io.github.squat_team.utility.UtilityComparator;
 
+@Deprecated
+// see SillyBotNegotiator
 public class SQuATNegotiator {
 	private PCMArchitectureInstance initialArchitecture;
 	private List<AbstractPCMBot> bots;

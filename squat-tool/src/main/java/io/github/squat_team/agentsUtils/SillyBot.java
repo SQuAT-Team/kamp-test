@@ -40,7 +40,7 @@ public abstract class SillyBot {
 	
 	public SillyBot(String name,float scenatioThreshold) {
 		orderedProposals=new ArrayList<Proposal>();
-		concessionStrategy=new DesiresDistance(this);//new DesiresDistance(this);//NashConcession(this);//EgocentricConcession(this)
+		concessionStrategy=new EgocentricConcession(this);//new DesiresDistance(this);//NashConcession(this);//EgocentricConcession(this)
 		
 		this.name=name;
 		this.scenatioThreshold=scenatioThreshold;

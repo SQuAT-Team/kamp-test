@@ -11,6 +11,7 @@ import java.util.Set;
 import edu.squat.transformations.ArchitecturalVersion;
 import io.github.squat_team.agentsUtils.PerformanceScenarioHelper;
 import io.github.squat_team.agentsUtils.Proposal;
+import io.github.squat_team.runner.SQuATConfiguration;
 
 public class ArchitecturalTransformationsFactory {
 	
@@ -20,10 +21,10 @@ public class ArchitecturalTransformationsFactory {
 	//private ArchitecturalVersion initialArchitecture1;
 	private ArchitecturalVersion initialArchitecture;
 	
-	public ArchitecturalTransformationsFactory() {
+	public ArchitecturalTransformationsFactory(SQuATConfiguration configuration) {
 		modifiabilityTrans=new ModifiabilityTransformationsFactory();
-		initialArchitecture=new ArchitecturalVersion("cocome-cloud","models/cocomeWithResourceDemands","");
-		initialArchitecture.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithResourceDemands/alternativeRepository.repository");
+		initialArchitecture=new ArchitecturalVersion(configuration.getModelFileName(),configuration.getModelPath(),"");
+		initialArchitecture.setFullPathToAlternativeRepository(configuration.getAlternativeRepositoryFullPath());
 		//initialArchitecture=new ArchitecturalVersion("cocome-cloud","models/cocomeWithoutPickUpStoreAndServiceAdapter","");
 		//initialArchitecture.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithoutPickUpStoreAndServiceAdapter/alternativescocome-cloud.repository");
 		performanceTrans=PerformanceTransformationFactory.getInstance();

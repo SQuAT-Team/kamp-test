@@ -11,9 +11,6 @@ public class ModifiabilityProposal extends Proposal {
 	/*public int getAffectedComponents() {
 		return affectedComponents;
 	}*/
-	public float getComplexity() {
-		return getScenarioResponse();
-	}
 	@Override
 	public String toString() {
 		return super.toString()+" "+scenarioResponse;//+" - "+affectedComponents;
