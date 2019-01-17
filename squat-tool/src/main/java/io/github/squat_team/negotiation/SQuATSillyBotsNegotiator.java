@@ -3,7 +3,6 @@ package io.github.squat_team.negotiation;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 import io.github.squat_team.agentsUtils.Proposal;
@@ -120,8 +119,7 @@ public class SQuATSillyBotsNegotiator implements ISQuATNegotiator {
 	private boolean isDominatedByAtLeastOneProposal(Proposal proposal) {
 		List<Proposal> otherProposals = new ArrayList<>(sillyBots.get(0).getOrderedProposals());
 		otherProposals.remove(proposal);
-		for (Iterator<Proposal> iterator2 = otherProposals.iterator(); iterator2.hasNext();) {
-			Proposal proposal2 = (Proposal) iterator2.next();
+		for (Proposal proposal2 : otherProposals) {
 			if (isDominatedBy(proposal, proposal2)) {
 				return true;
 			}
@@ -132,8 +130,7 @@ public class SQuATSillyBotsNegotiator implements ISQuATNegotiator {
 	private boolean isDominatedBy(Proposal proposal, Proposal proposal2) {
 
 		boolean allEqual = true;
-		for (Iterator<SillyBot> iterator = sillyBots.iterator(); iterator.hasNext();) {
-			SillyBot bot = (SillyBot) iterator.next();
+		for (SillyBot bot : sillyBots) {
 			// Si le gano en al menos uno entonces no es dominado
 			if ((bot.getResponse(proposal) < bot.getResponse(proposal2)))
 				return false;
@@ -201,10 +198,10 @@ public class SQuATSillyBotsNegotiator implements ISQuATNegotiator {
 	private double selectMinUtilityProposal(SillyBot myAgent, List<SillyBot> otherAgents) {
 		double minUtility = Double.POSITIVE_INFINITY;
 
-		for (SillyBot ag : otherAgents) {
-			Proposal otherAgProp = ag.getCurrentProposal();
-			if (myAgent.getUtilityFor(otherAgProp.getArchitectureName()) < minUtility) {
-				minUtility = myAgent.getUtilityFor(otherAgProp.getArchitectureName());
+		for (SillyBot otherAgent : otherAgents) {
+			Proposal otherAgentProposal = otherAgent.getCurrentProposal();
+			if (myAgent.getUtilityFor(otherAgentProposal.getArchitectureName()) < minUtility) {
+				minUtility = myAgent.getUtilityFor(otherAgentProposal.getArchitectureName());
 			}
 		}
 
@@ -214,8 +211,7 @@ public class SQuATSillyBotsNegotiator implements ISQuATNegotiator {
 
 	private List<SillyBot> getAgentsThatCanConcede() {
 		List<SillyBot> ret = new ArrayList<>();
-		for (Iterator<SillyBot> iterator = sillyBots.iterator(); iterator.hasNext();) {
-			SillyBot bot = (SillyBot) iterator.next();
+		for (SillyBot bot : sillyBots) {
 			if (bot.canConcede())
 				ret.add(bot);
 		}
@@ -231,8 +227,7 @@ public class SQuATSillyBotsNegotiator implements ISQuATNegotiator {
 	private boolean checkAgreement(HashMap<SillyBot, Proposal> proposals) {
 		ArrayList<Proposal> proposalsShuffle = new ArrayList<Proposal>(proposals.values());
 		Collections.shuffle(proposalsShuffle);
-		for (Iterator<Proposal> iterator = proposalsShuffle.iterator(); iterator.hasNext();) {
-			Proposal proposal = (Proposal) iterator.next();
+		for (Proposal proposal : proposalsShuffle) {
 			if (checkAgreementForAgents(proposal)) {
 				agreementProposal = proposal;
 				exporter.handleIntermediateState(createSuccessfulResults());
@@ -243,8 +238,7 @@ public class SQuATSillyBotsNegotiator implements ISQuATNegotiator {
 	}
 
 	private boolean checkAgreementForAgents(Proposal proposal) {
-		for (Iterator<SillyBot> iterator = sillyBots.iterator(); iterator.hasNext();) {
-			SillyBot sillyBot = (SillyBot) iterator.next();
+		for (SillyBot sillyBot : sillyBots) {
 			if (!sillyBot.acceptableUtilityValue(proposal))
 				return false;
 		}
