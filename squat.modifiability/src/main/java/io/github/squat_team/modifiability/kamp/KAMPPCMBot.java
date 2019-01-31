@@ -6,6 +6,7 @@ import java.util.List;
 import edu.squat.transformations.ArchitecturalVersion;
 import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.model.PCMArchitectureInstance;
+import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.model.PCMScenarioResult;
 import io.github.squat_team.modifiability.ModifiabilityPCMScenario;
 import io.github.squat_team.util.PCMHelper;
@@ -22,7 +23,7 @@ import io.github.squat_team.util.PCMHelper;
 public class KAMPPCMBot extends AbstractPCMBot {
 	private EvaluationType evaluationType = EvaluationType.COMPLEXITY;
 
-	public KAMPPCMBot(ModifiabilityPCMScenario scenario) {
+	public KAMPPCMBot(PCMScenario scenario) {
 		super(scenario);
 	}
 

@@ -8,12 +8,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 import org.palladiosimulator.pcm.allocation.Allocation;
 import org.palladiosimulator.pcm.repository.Repository;
@@ -34,6 +29,7 @@ import io.github.squat_team.modifiability.ModifiabilityElement;
 import io.github.squat_team.modifiability.ModifiabilityInstruction;
 import io.github.squat_team.modifiability.ModifiabilityOperation;
 import io.github.squat_team.modifiability.ModifiabilityPCMScenario;
+import io.github.squat_team.modifiability.kamp.EvaluationType;
 import io.github.squat_team.modifiability.kamp.KAMPPCMBot;
 import io.github.squat_team.performance.AbstractPerformancePCMScenario;
 import io.github.squat_team.performance.peropteryx.ConcurrentPerOpteryxPCMBot;
@@ -77,21 +73,21 @@ public class LoadHelper {
 			//PCMArchitectureInstance model = this.loadSpecificModel(initialArchitecture);
 			PCMArchitectureInstance architecture = PerformanceScenarioHelper.createArchitecture(initialArchitecture,null);
 			ModifiabilityBot m1Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m1Scenario,
-					KAMPPCMBot.TYPE_COMPLEXITY, architecture), "m1", responseTimeM1);
+					EvaluationType.COMPLEXITY, architecture), "m1", responseTimeM1);
 			
 			ModifiabilityBot m2Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m2Scenario,
-					KAMPPCMBot.TYPE_COMPLEXITY, architecture), "m2", responseTimeM2);
+					EvaluationType.COMPLEXITY, architecture), "m2", responseTimeM2);
 			
 			java.lang.System.out.println("Complejidad m2 nuevo: "+calculateModifiabilityComplexity(m2Scenario,
-					KAMPPCMBot.TYPE_COMPLEXITY, architecture));
+					EvaluationType.COMPLEXITY, architecture));
 			
 			ModifiabilityBot m3Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m3Scenario,
-					KAMPPCMBot.TYPE_COMPLEXITY, architecture), "m3", responseTimeM3);
+					EvaluationType.COMPLEXITY, architecture), "m3", responseTimeM3);
 			ModifiabilityBot m4Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m4Scenario,
-					KAMPPCMBot.TYPE_COMPLEXITY, architecture), "m4", responseTimeM4);
+					EvaluationType.COMPLEXITY, architecture), "m4", responseTimeM4);
 			
 			java.lang.System.out.println("Complejidad m4 nuevo: "+calculateModifiabilityComplexity(m4Scenario,
-					KAMPPCMBot.TYPE_COMPLEXITY, architecture));
+					EvaluationType.COMPLEXITY, architecture));
 			
 			
 			AbstractPerformancePCMScenario scenarioP1=PerformanceScenarioHelper.getInstance().createScenario1Cocome();
@@ -135,16 +131,16 @@ public class LoadHelper {
 				
 			
 				m1Bot.insertInOrder(new ModifiabilityProposal(
-						calculateModifiabilityComplexity(m1Scenario, KAMPPCMBot.TYPE_COMPLEXITY, architecture),
+						calculateModifiabilityComplexity(m1Scenario, EvaluationType.COMPLEXITY, architecture),
 						architecturalVersion.getName()));
 				m2Bot.insertInOrder(new ModifiabilityProposal(
-						calculateModifiabilityComplexity(m2Scenario, KAMPPCMBot.TYPE_COMPLEXITY, architecture),
+						calculateModifiabilityComplexity(m2Scenario, EvaluationType.COMPLEXITY, architecture),
 						architecturalVersion.getName()));
 				m3Bot.insertInOrder(new ModifiabilityProposal(
-						calculateModifiabilityComplexity(m3Scenario, KAMPPCMBot.TYPE_COMPLEXITY, architecture),
+						calculateModifiabilityComplexity(m3Scenario, EvaluationType.COMPLEXITY, architecture),
 						architecturalVersion.getName()));
 				m4Bot.insertInOrder(new ModifiabilityProposal(
-						calculateModifiabilityComplexity(m4Scenario, KAMPPCMBot.TYPE_COMPLEXITY, architecture),
+						calculateModifiabilityComplexity(m4Scenario, EvaluationType.COMPLEXITY, architecture),
 						architecturalVersion.getName()));
 
 			}
@@ -415,7 +411,7 @@ public class LoadHelper {
 		}
 		return null;
 	}
-	private float calculateModifiabilityComplexity(PCMScenario scenario, String evaluationType,
+	private float calculateModifiabilityComplexity(PCMScenario scenario, EvaluationType evaluationType,
 			PCMArchitectureInstance model) throws Exception {
 		boolean debug = false;
 		@SuppressWarnings("unchecked")
@@ -1047,6 +1043,7 @@ public class LoadHelper {
 	 * return scenario; }
 	 */
 
+	@Deprecated //Can now be computed directly
 	public List<SillyBot> loadBotsWithInformation() {
 		ModifiabilityBot m1Bot = new ModifiabilityBot(/* 3, */ 115f, "m1", 120f);
 		ModifiabilityBot m2Bot = new ModifiabilityBot(/* 5, */ 190.5f, "m2", 300f);

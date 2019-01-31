@@ -24,6 +24,7 @@ import io.github.squat_team.modifiability.ModifiabilityElement;
 import io.github.squat_team.modifiability.ModifiabilityInstruction;
 import io.github.squat_team.modifiability.ModifiabilityOperation;
 import io.github.squat_team.modifiability.ModifiabilityPCMScenario;
+import io.github.squat_team.modifiability.kamp.EvaluationType;
 import io.github.squat_team.modifiability.kamp.KAMPPCMBot;
 import io.github.squat_team.util.SQuATHelper;
 
@@ -1357,16 +1358,16 @@ public class SimpleTacticsECSATest {
 	private void runTests() throws Exception {
 		this.results.clear(); 
 		this.resultsMap.clear();
-		String evaluationType; ResponseMeasureType type; Comparable response;
+		EvaluationType evaluationType; ResponseMeasureType type; Comparable response;
 		//Affected components
-		evaluationType = KAMPPCMBot.TYPE_ELEMENTS;
+		evaluationType = EvaluationType.ELEMENTS;
 		type = ResponseMeasureType.NUMERIC;
 		response = new Integer(5);
 		this.testModifiabilityScenario(this.createModifiabilityScenarioS1(type, response), "M1", evaluationType);
 		response = new Integer(7);
 		this.testModifiabilityScenario(this.createModifiabilityScenarioS2(type, response), "M2", evaluationType);
 		//Complexity 
-		evaluationType = KAMPPCMBot.TYPE_COMPLEXITY;
+		evaluationType = EvaluationType.COMPLEXITY;
 		type = ResponseMeasureType.DECIMAL;
 		response = new Float(120);
 		this.testModifiabilityScenario(this.createModifiabilityScenarioS1(type, response), "M1", evaluationType);
@@ -1377,7 +1378,7 @@ public class SimpleTacticsECSATest {
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public void testModifiabilityScenario(PCMScenario scenario, String scenarioName, String evaluationType) throws Exception {
+	public void testModifiabilityScenario(PCMScenario scenario, String scenarioName, EvaluationType evaluationType) throws Exception {
 		boolean debug = false;
 		Comparable expectedResponse = scenario.getExpectedResult().getResponse();
 		if(debug) java.lang.System.out.println("The goal of scenario " + scenarioName + ": " + expectedResponse.toString());
@@ -1557,8 +1558,8 @@ public class SimpleTacticsECSATest {
 				String variableName = r.scenario + "Bot";
 				String methodName = ".insertInOrder";
 				String classType = r.qa + "Proposal";
-				String components = r.measureValues.get(KAMPPCMBot.TYPE_ELEMENTS).toString();
-				String complexity = r.measureValues.get(KAMPPCMBot.TYPE_COMPLEXITY).toString() + "f";
+				String components = r.measureValues.get(EvaluationType.ELEMENTS).toString();
+				String complexity = r.measureValues.get(EvaluationType.COMPLEXITY).toString() + "f";
 				String parameters = "(" + components + ", " + complexity + ", \"" + r.model + "\")";
 				String codeLine = variableName + methodName + "(" + "new " + classType + parameters + ")" + ";";
 				java.lang.System.out.println(codeLine);
@@ -1575,10 +1576,10 @@ public class SimpleTacticsECSATest {
 		public String qa;
 		public String scenario;
 		public String model;
-		public Map<String, Comparable> measureValues;
+		public Map<EvaluationType, Comparable> measureValues;
 		
 		public AnalysisResult() {
-			measureValues = new HashMap<String, Comparable>();
+			measureValues = new HashMap<EvaluationType, Comparable>();
 		}
 		
 		@Override
