@@ -124,7 +124,7 @@ public class KAMPAnalyzer {
 				if (componentIsMappedInScenario(component))
 					complexityResponse = (float) (complexityResponse + Math.pow(componentComplexity, 2));
 				else
-					complexityResponse = (float) (complexityResponse + Math.pow(componentComplexity, 2) / 2);
+					complexityResponse = (float) (complexityResponse + (Math.pow(componentComplexity, 2) / 2));
 			} else {
 				// System.out.println(activity.getElementType().name());
 				// System.out.println("Implement this brach please");
@@ -341,7 +341,11 @@ public class KAMPAnalyzer {
 			interfaceName = instruction.parameters.get("iname");
 			operationInterface = (OperationInterface) ArchitectureModelLookup.lookUpInterfaceByName(changedAV,
 					interfaceName);
-			ArchitectureModelFactoryFacade.createRequiredRole(basicComponent, operationInterface);
+			try {
+				ArchitectureModelFactoryFacade.createRequiredRole(basicComponent, operationInterface);
+			}catch (Exception e) {
+				System.out.println("Error: " + e.getMessage()+" "+componentName + " " + basicComponent);
+			}
 			break;
 		case SIGNATURE:
 			break;

@@ -11,7 +11,7 @@ import io.github.squat_team.modifiability.ModifiabilityPCMScenario;
 import io.github.squat_team.util.PCMHelper;
 
 /**
- * A implementation of a modifiability bot. The analysis is based on KAMP and
+ * An implementation of a modifiability bot. The analysis is based on KAMP and
  * the search for alternatives is based on Henshin transformations.
  * <p>
  * Only a minimal result is returned. This means that the current implementation
