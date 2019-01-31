@@ -23,7 +23,6 @@ public class SQuATController {
 	private int currentLevelOfTransformations;
 	private ArchitecturalTransformationsFactory archTransFactory;
 	private boolean noMoreAlternatives;
-	private boolean filterBestAlternatives;
 
 	public SQuATController(SQuATConfiguration configuration) {
 		this.configuration = configuration;
@@ -31,7 +30,6 @@ public class SQuATController {
 		this.archTransFactory = new ArchitecturalTransformationsFactory(configuration);
 		this.currentLevelOfTransformations = 1;
 		this.noMoreAlternatives = false;
-		this.filterBestAlternatives = true;
 	}
 
 	public ArchitecturalTransformationsFactory getArchTransFactory() {
@@ -39,7 +37,7 @@ public class SQuATController {
 	}
 
 	public void negotiatiateUntilAnAgreementIsReached() {
-		ISQuATNegotiator negotiator = new SQuATSillyBotsNegotiator(exporter);
+		ISQuATNegotiator negotiator = configuration.getNegotiatorFactory().getNegotiator(exporter);
 
 		boolean agreement = false;
 		while (!agreement && (currentLevelOfTransformations <= configuration.getMaxNumberOfLevels())
@@ -55,8 +53,8 @@ public class SQuATController {
 			}
 
 			exporter.handleLevelTerminated(negotiatorResult);
-			if (filterBestAlternatives) {
-				filterBestKAlternatives(2/* 10 */);
+			if (configuration.shouldFilterBestAlternatives()) {
+				filterBestKAlternatives(configuration.getSeedSelectionSize());
 			}
 			currentLevelOfTransformations++;
 		}
