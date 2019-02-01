@@ -116,7 +116,7 @@ public class PCMArchitectureInstance {
 	}
 
 	/**
-	 * Saves the model.
+	 * Saves the whole model.
 	 */
 	public void saveModel() {
 		if (allocation != null && allocation.eResource() != null) {
@@ -146,7 +146,7 @@ public class PCMArchitectureInstance {
 	 *            the model
 	 * @return true if successful
 	 */
-	private boolean saveModel(Resource resource) {
+	public static boolean saveModel(Resource resource) {
 		try {
 			resource.save(Collections.EMPTY_MAP);
 			return true;

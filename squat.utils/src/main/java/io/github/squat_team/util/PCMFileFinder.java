@@ -37,7 +37,7 @@ public class PCMFileFinder {
 		if (pcmFileExtensionLength > 0) {
 			pcmFileExtension = "." + pcmFileExtension;
 		}
-		return pcmFileName.substring(0, pcmFileName.length() - pcmFileExtensionLength);
+		return pcmFileName.substring(0, pcmFileName.length() - pcmFileExtension.length());
 	}
 
 	public String getPath() {
