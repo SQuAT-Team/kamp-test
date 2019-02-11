@@ -17,7 +17,7 @@ import org.palladiosimulator.pcm.system.System;
 import org.palladiosimulator.pcm.usagemodel.UsageModel;
 
 import edu.squat.transformations.ArchitecturalVersion;
-import io.github.squat_team.agentsUtils.transformations.ModifiabilityTransformationsFactory;
+import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.agentsUtils.transformations.PerformanceTransformationFactory;
 import io.github.squat_team.model.OptimizationType;
 import io.github.squat_team.model.PCMArchitectureInstance;
@@ -35,113 +35,115 @@ import io.github.squat_team.performance.AbstractPerformancePCMScenario;
 import io.github.squat_team.performance.peropteryx.ConcurrentPerOpteryxPCMBot;
 import io.github.squat_team.performance.peropteryx.PerOpteryxPCMBot;
 import io.github.squat_team.runner.SQuATConfiguration;
+import io.github.squat_team.util.PCMHelper;
 import io.github.squat_team.util.SQuATHelper;
 
 public class LoadHelper {
-	private static int MAXIMUM_ALTERNATIVES=50;
-	private static int TOTAL_MAXIMUN=400;
+	private static int MAXIMUM_ALTERNATIVES = 50;
+	private static int TOTAL_MAXIMUN = 400;
 	private SQuATConfiguration configuration;
-	
+
 	public LoadHelper(SQuATConfiguration configuration) {
 		super();
 		this.configuration = configuration;
 	}
-	
+
 	public List<SillyBot> loadBotsForArchitecturalAlternatives(List<ArchitecturalVersion> architecturalAlternatives,
 			ArchitecturalVersion initialArchitecture) {
 		return getCocomeAlternatives(architecturalAlternatives, initialArchitecture);
-		//return getSTPlusAlternatives(architecturalAlternatives, initialArchitecture);
+		// return getSTPlusAlternatives(architecturalAlternatives, initialArchitecture);
 	}
+
 	private List<SillyBot> getCocomeAlternatives(List<ArchitecturalVersion> architecturalAlternatives,
 			ArchitecturalVersion initialArchitecture) {
 		List<SillyBot> ret = new ArrayList<>();
-		Float responseTimeM1 = 2270f;
-		Float responseTimeM2 = 750f;//5000f;
-		Float responseTimeM3 = 170f;//200f;
-		Float responseTimeM4 = 2180f;//2000f;
-		Float responseTimeP1 = 1.2f;//0.6f;// 30f;
-		Float responseTimeP2 = 1.4f;//0.7f;// 40f;
-		Float responseTimeP3 = 1.0f;//0.5f;// 30f;
-		Float responseTimeP4 = 2.4f;//1.2f;// 40f;
-		PCMScenario m1Scenario = createModifiabilityNFC(ResponseMeasureType.DECIMAL, responseTimeM1);
-		PCMScenario m2Scenario = createModifiabilityVIP(ResponseMeasureType.DECIMAL, responseTimeM2);
-		PCMScenario m3Scenario = createModifiabilityWithdrawMoney(ResponseMeasureType.DECIMAL, responseTimeM3);
-		PCMScenario m4Scenario = createModifiabilityServiceLog(ResponseMeasureType.DECIMAL, responseTimeM4);
+		
+		PCMScenario m1Scenario = ModifiabilityScenarioHelper.getInstance().createScenario1Cocome();
+		PCMScenario m2Scenario = ModifiabilityScenarioHelper.getInstance().createScenario2Cocome();
+		PCMScenario m3Scenario = ModifiabilityScenarioHelper.getInstance().createScenario3Cocome();
+		PCMScenario m4Scenario = ModifiabilityScenarioHelper.getInstance().createScenario4Cocome();
+		
+		Float responseTimeM1 = (Float) m1Scenario.getExpectedResult().getResponse();
+		Float responseTimeM2 = (Float) m2Scenario.getExpectedResult().getResponse();
+		Float responseTimeM3 = (Float) m3Scenario.getExpectedResult().getResponse();
+		Float responseTimeM4 = (Float) m4Scenario.getExpectedResult().getResponse();
+		
 		try {
-			
-			
-			//PCMArchitectureInstance model = this.loadSpecificModel(initialArchitecture);
-			PCMArchitectureInstance architecture = PerformanceScenarioHelper.createArchitecture(initialArchitecture,null);
-			ModifiabilityBot m1Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m1Scenario,
-					EvaluationType.COMPLEXITY, architecture), "m1", responseTimeM1);
-			
-			ModifiabilityBot m2Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m2Scenario,
-					EvaluationType.COMPLEXITY, architecture), "m2", responseTimeM2);
-			
-			java.lang.System.out.println("Complejidad m2 nuevo: "+calculateModifiabilityComplexity(m2Scenario,
-					EvaluationType.COMPLEXITY, architecture));
-			
-			ModifiabilityBot m3Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m3Scenario,
-					EvaluationType.COMPLEXITY, architecture), "m3", responseTimeM3);
-			ModifiabilityBot m4Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m4Scenario,
-					EvaluationType.COMPLEXITY, architecture), "m4", responseTimeM4);
-			
-			java.lang.System.out.println("Complejidad m4 nuevo: "+calculateModifiabilityComplexity(m4Scenario,
-					EvaluationType.COMPLEXITY, architecture));
-			
-			
-			AbstractPerformancePCMScenario scenarioP1=PerformanceScenarioHelper.getInstance().createScenario1Cocome();
-			AbstractPerformancePCMScenario scenarioP2=PerformanceScenarioHelper.getInstance().createScenario2Cocome();
-			AbstractPerformancePCMScenario scenarioP3=PerformanceScenarioHelper.getInstance().createScenario3Cocome();
-			AbstractPerformancePCMScenario scenarioP4=PerformanceScenarioHelper.getInstance().createScenario4Cocome();
+
+			// PCMArchitectureInstance model = this.loadSpecificModel(initialArchitecture);
+			PCMArchitectureInstance architecture = PCMHelper.createArchitecture(initialArchitecture);
+			ModifiabilityBot m1Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m1Scenario, architecture),
+					"m1", responseTimeM1);
+
+			ModifiabilityBot m2Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m2Scenario, architecture),
+					"m2", responseTimeM2);
+
+			java.lang.System.out
+					.println("Complejidad m2 nuevo: " + calculateModifiabilityComplexity(m2Scenario, architecture));
+
+			ModifiabilityBot m3Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m3Scenario, architecture),
+					"m3", responseTimeM3);
+			ModifiabilityBot m4Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m4Scenario, architecture),
+					"m4", responseTimeM4);
+
+			java.lang.System.out
+					.println("Complejidad m4 nuevo: " + calculateModifiabilityComplexity(m4Scenario, architecture));
+
+			AbstractPerformancePCMScenario p1Scenario = PerformanceScenarioHelper.getInstance().createScenario1Cocome();
+			AbstractPerformancePCMScenario p2Scenario = PerformanceScenarioHelper.getInstance().createScenario2Cocome();
+			AbstractPerformancePCMScenario p3Scenario = PerformanceScenarioHelper.getInstance().createScenario3Cocome();
+			AbstractPerformancePCMScenario p4Scenario = PerformanceScenarioHelper.getInstance().createScenario4Cocome();
+
+			Float responseTimeP1 = (Float) p1Scenario.getExpectedResult().getResponse();
+			Float responseTimeP2 = (Float) p2Scenario.getExpectedResult().getResponse();
+			Float responseTimeP3 = (Float) p3Scenario.getExpectedResult().getResponse();
+			Float responseTimeP4 = (Float) p4Scenario.getExpectedResult().getResponse();
 			
 			
 			PerformanceBot p1Bot = new PerformanceBot(
-					calculatePerformanceComplexityForScenario(
-							scenarioP1, architecture, initialArchitecture.getAbsolutePath()+"/"+initialArchitecture.getRepositoryFilename()),
+					calculatePerformanceComplexityForScenario(p1Scenario, architecture,
+							initialArchitecture.getAbsolutePath() + "/" + initialArchitecture.getRepositoryFilename()),
 					"p1", responseTimeP1);
 			PerformanceBot p2Bot = new PerformanceBot(
-					calculatePerformanceComplexityForScenario(
-							scenarioP2, architecture, initialArchitecture.getAbsolutePath()+"/"+initialArchitecture.getRepositoryFilename()),
+					calculatePerformanceComplexityForScenario(p2Scenario, architecture,
+							initialArchitecture.getAbsolutePath() + "/" + initialArchitecture.getRepositoryFilename()),
 					"p2", responseTimeP2);
 			PerformanceBot p3Bot = new PerformanceBot(
-					calculatePerformanceComplexityForScenario(
-							scenarioP3, architecture, initialArchitecture.getAbsolutePath()+"/"+initialArchitecture.getRepositoryFilename()),
+					calculatePerformanceComplexityForScenario(p3Scenario, architecture,
+							initialArchitecture.getAbsolutePath() + "/" + initialArchitecture.getRepositoryFilename()),
 					"p3", responseTimeP3);
 			PerformanceBot p4Bot = new PerformanceBot(
-					calculatePerformanceComplexityForScenario(
-							scenarioP4, architecture, initialArchitecture.getAbsolutePath()+"/"+initialArchitecture.getRepositoryFilename()),
+					calculatePerformanceComplexityForScenario(p4Scenario, architecture,
+							initialArchitecture.getAbsolutePath() + "/" + initialArchitecture.getRepositoryFilename()),
 					"p4", responseTimeP4);
-			
-			java.lang.System.out.println("INITIAL NUMBER OF architecturalAlternatives "+architecturalAlternatives.size());
+
+			java.lang.System.out
+					.println("INITIAL NUMBER OF architecturalAlternatives " + architecturalAlternatives.size());
 			filterRandomAlternatives(architecturalAlternatives);
-			java.lang.System.out.println("After random filtering "+architecturalAlternatives.size());
-			Map<ArchitecturalVersion,PCMArchitectureInstance> instances=new HashMap<>();
-			//ExecutorService executor2 = Executors.newFixedThreadPool(4);
-			int i=1;
-			
+			java.lang.System.out.println("After random filtering " + architecturalAlternatives.size());
+			Map<ArchitecturalVersion, PCMArchitectureInstance> instances = new HashMap<>();
+			// ExecutorService executor2 = Executors.newFixedThreadPool(4);
+			int i = 1;
+
 			for (Iterator<ArchitecturalVersion> iterator = architecturalAlternatives.iterator(); iterator.hasNext();) {
 				ArchitecturalVersion architecturalVersion = iterator.next();
-				java.lang.System.out.println("********MODIFIABILITY: LOADING "+i+" OF "+architecturalAlternatives.size()+" ARCHITECTURAL ALTERNATIVES INTO THE BOTS***********"); i++;
-				//model = this.loadSpecificModel(architecturalVersion);
-				
+				java.lang.System.out.println("********MODIFIABILITY: LOADING " + i + " OF "
+						+ architecturalAlternatives.size() + " ARCHITECTURAL ALTERNATIVES INTO THE BOTS***********");
+				i++;
+				// model = this.loadSpecificModel(architecturalVersion);
+
 				java.lang.System.out.println(architecturalVersion.getName());
-				architecture = PerformanceScenarioHelper.createArchitecture(architecturalVersion,null/**executor2**/);
+				architecture = PCMHelper.createArchitecture(initialArchitecture);
 				instances.put(architecturalVersion, architecture);
-				
-			
+
 				m1Bot.insertInOrder(new ModifiabilityProposal(
-						calculateModifiabilityComplexity(m1Scenario, EvaluationType.COMPLEXITY, architecture),
-						architecturalVersion.getName()));
+						calculateModifiabilityComplexity(m1Scenario, architecture), architecturalVersion.getName()));
 				m2Bot.insertInOrder(new ModifiabilityProposal(
-						calculateModifiabilityComplexity(m2Scenario, EvaluationType.COMPLEXITY, architecture),
-						architecturalVersion.getName()));
+						calculateModifiabilityComplexity(m2Scenario, architecture), architecturalVersion.getName()));
 				m3Bot.insertInOrder(new ModifiabilityProposal(
-						calculateModifiabilityComplexity(m3Scenario, EvaluationType.COMPLEXITY, architecture),
-						architecturalVersion.getName()));
+						calculateModifiabilityComplexity(m3Scenario, architecture), architecturalVersion.getName()));
 				m4Bot.insertInOrder(new ModifiabilityProposal(
-						calculateModifiabilityComplexity(m4Scenario, EvaluationType.COMPLEXITY, architecture),
-						architecturalVersion.getName()));
+						calculateModifiabilityComplexity(m4Scenario, architecture), architecturalVersion.getName()));
 
 			}
 			m1Bot.printUtilies();
@@ -149,106 +151,111 @@ public class LoadHelper {
 			m3Bot.printUtilies();
 			m4Bot.printUtilies();
 			Set<ArchitecturalVersion> bestAlternatives = null;
-			if(architecturalAlternatives.size()>MAXIMUM_ALTERNATIVES){
-				java.lang.System.out.println("*****ORIGINAL NUMBER OF ALTERNATIVES: "+architecturalAlternatives.size());
-				
-				bestAlternatives = filterBestAlternatives(architecturalAlternatives,m1Bot);
-				bestAlternatives.addAll(filterBestAlternatives(architecturalAlternatives,m2Bot));
-				bestAlternatives.addAll(filterBestAlternatives(architecturalAlternatives,m3Bot));
-				bestAlternatives.addAll(filterBestAlternatives(architecturalAlternatives,m4Bot));
+			if (architecturalAlternatives.size() > MAXIMUM_ALTERNATIVES) {
+				java.lang.System.out
+						.println("*****ORIGINAL NUMBER OF ALTERNATIVES: " + architecturalAlternatives.size());
+
+				bestAlternatives = filterBestAlternatives(architecturalAlternatives, m1Bot);
+				bestAlternatives.addAll(filterBestAlternatives(architecturalAlternatives, m2Bot));
+				bestAlternatives.addAll(filterBestAlternatives(architecturalAlternatives, m3Bot));
+				bestAlternatives.addAll(filterBestAlternatives(architecturalAlternatives, m4Bot));
 				bestAlternatives.addAll(getPerformanceAlternatives(architecturalAlternatives));
-				
-				List<ArchitecturalVersion> alternativesToRemoveFromCache=new ArrayList<>(architecturalAlternatives);
+
+				List<ArchitecturalVersion> alternativesToRemoveFromCache = new ArrayList<>(architecturalAlternatives);
 				alternativesToRemoveFromCache.removeAll(bestAlternatives);
 				for (ArchitecturalVersion toRemove : alternativesToRemoveFromCache) {
 					instances.remove(toRemove);
 				}
-				
-				filterList(architecturalAlternatives,bestAlternatives);
-				updateProposals(m1Bot,architecturalAlternatives);
-				updateProposals(m2Bot,architecturalAlternatives);
-				updateProposals(m3Bot,architecturalAlternatives);
-				updateProposals(m4Bot,architecturalAlternatives);
-				java.lang.System.out.println("*****FILTERED NUMBER OF ALTERNATIVES: "+architecturalAlternatives.size());
+
+				filterList(architecturalAlternatives, bestAlternatives);
+				updateProposals(m1Bot, architecturalAlternatives);
+				updateProposals(m2Bot, architecturalAlternatives);
+				updateProposals(m3Bot, architecturalAlternatives);
+				updateProposals(m4Bot, architecturalAlternatives);
+				java.lang.System.out
+						.println("*****FILTERED NUMBER OF ALTERNATIVES: " + architecturalAlternatives.size());
 			}
-			
-			
-			/*executor2.shutdown();
-			while (!executor2.awaitTermination(60, TimeUnit.SECONDS)){
-			    java.lang.System.err.println("Threads didn't finish in 60000 seconds!");
-			}*/
-			
+
+			/*
+			 * executor2.shutdown(); while (!executor2.awaitTermination(60,
+			 * TimeUnit.SECONDS)){
+			 * java.lang.System.err.println("Threads didn't finish in 60000 seconds!"); }
+			 */
+
 			// ExecutorService executor = Executors.newFixedThreadPool(4);
-			
-			
-			i=1;
+
+			i = 1;
 			for (ArchitecturalVersion architecturalVersion : architecturalAlternatives) {
-				java.lang.System.out.println("********PERFORMANCE: LOADING "+i+" OF "+architecturalAlternatives.size()+" ARCHITECTURAL ALTERNATIVES INTO THE BOTS***********"); i++;
-				//architecture = PerformanceScenarioHelper.createArchitecture(architecturalVersion);
-				architecture=instances.get(architecturalVersion);
-				String absolutePathArchitecture=architecturalVersion.getAbsolutePath()+"/"+architecturalVersion.getRepositoryFilename();
-				String architecturalVersionName=architecturalVersion.getName();
-			//	executor.execute(new BotPerformanceCalculation(p1Bot, scenarioP1, architecture, absolutePathArchitecture, architecturalVersionName));
-				//executor.execute(new BotPerformanceCalculation(p2Bot, scenarioP2, architecture, absolutePathArchitecture, architecturalVersionName));
-				//executor.execute(new BotPerformanceCalculation(p3Bot, scenarioP3, architecture, absolutePathArchitecture, architecturalVersionName));
-				//executor.execute(new BotPerformanceCalculation(p4Bot, scenarioP4, architecture, absolutePathArchitecture, architecturalVersionName));
-				
-				p1Bot.insertInOrder(
-						new PerformanceProposal(
-								calculatePerformanceComplexityForScenario(
-										scenarioP1, architecture, absolutePathArchitecture),
-								architecturalVersionName));
-				p2Bot.insertInOrder(
-						new PerformanceProposal(
-								calculatePerformanceComplexityForScenario(
-										scenarioP2, architecture, absolutePathArchitecture),
-								architecturalVersionName));
-				p3Bot.insertInOrder(
-						new PerformanceProposal(
-								calculatePerformanceComplexityForScenario(
-										scenarioP3, architecture, absolutePathArchitecture),
-								architecturalVersionName));
-				p4Bot.insertInOrder(
-						new PerformanceProposal(
-								calculatePerformanceComplexityForScenario(
-										scenarioP4, architecture,absolutePathArchitecture),
-								architecturalVersionName));
-				
+				java.lang.System.out.println("********PERFORMANCE: LOADING " + i + " OF "
+						+ architecturalAlternatives.size() + " ARCHITECTURAL ALTERNATIVES INTO THE BOTS***********");
+				i++;
+				// architecture =
+				// PerformanceScenarioHelper.createArchitecture(architecturalVersion);
+				architecture = instances.get(architecturalVersion);
+				String absolutePathArchitecture = architecturalVersion.getAbsolutePath() + "/"
+						+ architecturalVersion.getRepositoryFilename();
+				String architecturalVersionName = architecturalVersion.getName();
+				// executor.execute(new BotPerformanceCalculation(p1Bot, scenarioP1,
+				// architecture, absolutePathArchitecture, architecturalVersionName));
+				// executor.execute(new BotPerformanceCalculation(p2Bot, scenarioP2,
+				// architecture, absolutePathArchitecture, architecturalVersionName));
+				// executor.execute(new BotPerformanceCalculation(p3Bot, scenarioP3,
+				// architecture, absolutePathArchitecture, architecturalVersionName));
+				// executor.execute(new BotPerformanceCalculation(p4Bot, scenarioP4,
+				// architecture, absolutePathArchitecture, architecturalVersionName));
+
+				p1Bot.insertInOrder(new PerformanceProposal(
+						calculatePerformanceComplexityForScenario(p1Scenario, architecture, absolutePathArchitecture),
+						architecturalVersionName));
+				p2Bot.insertInOrder(new PerformanceProposal(
+						calculatePerformanceComplexityForScenario(p2Scenario, architecture, absolutePathArchitecture),
+						architecturalVersionName));
+				p3Bot.insertInOrder(new PerformanceProposal(
+						calculatePerformanceComplexityForScenario(p3Scenario, architecture, absolutePathArchitecture),
+						architecturalVersionName));
+				p4Bot.insertInOrder(new PerformanceProposal(
+						calculatePerformanceComplexityForScenario(p4Scenario, architecture, absolutePathArchitecture),
+						architecturalVersionName));
+
 				instances.remove(architecture);
 			}
-			
-			/*executor.shutdown();
-			while (!executor.awaitTermination(60, TimeUnit.SECONDS)){
-			    java.lang.System.err.println("Threads didn't finish in 60000 seconds!");
-			    java.lang.System.out.println(p1Bot.getOrderedProposals().size());
-			}*/
-			
-			instances=null;
-			
-			//Remove corrupted alternatives
-			Set<ArchitecturalVersion> alternativesCorrupted=new HashSet<>();
+
+			/*
+			 * executor.shutdown(); while (!executor.awaitTermination(60,
+			 * TimeUnit.SECONDS)){
+			 * java.lang.System.err.println("Threads didn't finish in 60000 seconds!");
+			 * java.lang.System.out.println(p1Bot.getOrderedProposals().size()); }
+			 */
+
+			instances = null;
+
+			// Remove corrupted alternatives
+			Set<ArchitecturalVersion> alternativesCorrupted = new HashSet<>();
 			for (ArchitecturalVersion architecturalVersion : architecturalAlternatives) {
-				if(p1Bot.getProposalForArchitecture(architecturalVersion.getName()).getScenarioResponse()==9999f &&
-						p2Bot.getProposalForArchitecture(architecturalVersion.getName()).getScenarioResponse()==9999f &&
-						p3Bot.getProposalForArchitecture(architecturalVersion.getName()).getScenarioResponse()==9999f &&
-						p4Bot.getProposalForArchitecture(architecturalVersion.getName()).getScenarioResponse()==9999f ){
+				if (p1Bot.getProposalForArchitecture(architecturalVersion.getName()).getScenarioResponse() == 9999f
+						&& p2Bot.getProposalForArchitecture(architecturalVersion.getName())
+								.getScenarioResponse() == 9999f
+						&& p3Bot.getProposalForArchitecture(architecturalVersion.getName())
+								.getScenarioResponse() == 9999f
+						&& p4Bot.getProposalForArchitecture(architecturalVersion.getName())
+								.getScenarioResponse() == 9999f) {
 					alternativesCorrupted.add(architecturalVersion);
-					java.lang.System.out.println("Corrupted: "+architecturalVersion.getName());
+					java.lang.System.out.println("Corrupted: " + architecturalVersion.getName());
 				}
 			}
-			List<ArchitecturalVersion> alternativesToKeep=new ArrayList<>();
+			List<ArchitecturalVersion> alternativesToKeep = new ArrayList<>();
 			alternativesToKeep.addAll(architecturalAlternatives);
 			alternativesToKeep.removeAll(alternativesCorrupted);
-			filterList(architecturalAlternatives,alternativesToKeep);
-			updateProposals(m1Bot,architecturalAlternatives);
-			updateProposals(m2Bot,architecturalAlternatives);
-			updateProposals(m3Bot,architecturalAlternatives);
-			updateProposals(m4Bot,architecturalAlternatives);
-			updateProposals(p1Bot,architecturalAlternatives);
-			updateProposals(p2Bot,architecturalAlternatives);
-			updateProposals(p3Bot,architecturalAlternatives);
-			updateProposals(p4Bot,architecturalAlternatives);
-			
+			filterList(architecturalAlternatives, alternativesToKeep);
+			updateProposals(m1Bot, architecturalAlternatives);
+			updateProposals(m2Bot, architecturalAlternatives);
+			updateProposals(m3Bot, architecturalAlternatives);
+			updateProposals(m4Bot, architecturalAlternatives);
+			updateProposals(p1Bot, architecturalAlternatives);
+			updateProposals(p2Bot, architecturalAlternatives);
+			updateProposals(p3Bot, architecturalAlternatives);
+			updateProposals(p4Bot, architecturalAlternatives);
+
 			ret.add(m1Bot);
 			ret.add(m2Bot);
 			ret.add(m3Bot);
@@ -266,114 +273,106 @@ public class LoadHelper {
 			p2Bot.printUtilies();
 			p3Bot.printUtilies();
 			p4Bot.printUtilies();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		return ret;
-	}
-	/*private List<SillyBot> getSTPlusAlternatives(List<ArchitecturalVersion> architecturalAlternatives,
-			ArchitecturalVersion initialArchitecture) {
-		List<SillyBot> ret = new ArrayList<>();
-		Float responseTimeScenario1 = 120f;// 120f;
-		Float responseTimeScenario2 = 300f;// 300f;
-		Float responseTimePScenario1 = 30f;// 30f;
-		Float responseTimePScenario2 = 40f;// 40f;
-		PCMScenario m1Scenario = createModifiabilityScenarioS1(ResponseMeasureType.DECIMAL, responseTimeScenario1);
-		PCMScenario m2Scenario = createModifiabilityScenarioS2(ResponseMeasureType.DECIMAL, responseTimeScenario2);
-		
-		try {
-			ModifiabilityBot m1Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m1Scenario,
-					KAMPPCMBot.TYPE_COMPLEXITY, initialArchitecture), "m1", responseTimeScenario1);
-			ModifiabilityBot m2Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m2Scenario,
-					KAMPPCMBot.TYPE_COMPLEXITY, initialArchitecture), "m2", responseTimeScenario2);
-			PerformanceBot p1Bot = new PerformanceBot(
-					calculatePerformanceComplexityForScenario(
-							PerformanceScenarioHelper.createScenarioOfWorkload(), initialArchitecture),
-					"p1", responseTimePScenario1);// Workload
-			PerformanceBot p2Bot = new PerformanceBot(
-					calculatePerformanceComplexityForScenario(
-							PerformanceScenarioHelper.createScenarioOfCPU(), initialArchitecture),
-					"p2", responseTimePScenario2);// CPU
-
-			for (Iterator<ArchitecturalVersion> iterator = architecturalAlternatives.iterator(); iterator.hasNext();) {
-				ArchitecturalVersion architecturalVersion = iterator.next();
-
-				m1Bot.insertInOrder(new ModifiabilityProposal(
-						calculateModifiabilityComplexity(m1Scenario, KAMPPCMBot.TYPE_COMPLEXITY, architecturalVersion),
-						architecturalVersion.getName()));
-				m2Bot.insertInOrder(new ModifiabilityProposal(
-						calculateModifiabilityComplexity(m2Scenario, KAMPPCMBot.TYPE_COMPLEXITY, architecturalVersion),
-						architecturalVersion.getName()));
-
-				p1Bot.insertInOrder(
-						new PerformanceProposal(
-								calculatePerformanceComplexityForScenario(
-										PerformanceScenarioHelper.createScenarioOfWorkload(), architecturalVersion),
-								architecturalVersion.getName()));
-				p2Bot.insertInOrder(
-						new PerformanceProposal(
-								calculatePerformanceComplexityForScenario(
-										PerformanceScenarioHelper.createScenarioOfCPU(), architecturalVersion),
-								architecturalVersion.getName()));
-			}
-
-			ret.add(m1Bot);
-			ret.add(m2Bot);
-			ret.add(p1Bot);
-			ret.add(p2Bot);
-
-			m1Bot.printUtilies();
-			m2Bot.printUtilies();
-			p1Bot.printUtilies();
-			p2Bot.printUtilies();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return ret;
-	}*/
+	}
+	/*
+	 * private List<SillyBot> getSTPlusAlternatives(List<ArchitecturalVersion>
+	 * architecturalAlternatives, ArchitecturalVersion initialArchitecture) {
+	 * List<SillyBot> ret = new ArrayList<>(); Float responseTimeScenario1 = 120f;//
+	 * 120f; Float responseTimeScenario2 = 300f;// 300f; Float
+	 * responseTimePScenario1 = 30f;// 30f; Float responseTimePScenario2 = 40f;//
+	 * 40f; PCMScenario m1Scenario =
+	 * createModifiabilityScenarioS1(ResponseMeasureType.DECIMAL,
+	 * responseTimeScenario1); PCMScenario m2Scenario =
+	 * createModifiabilityScenarioS2(ResponseMeasureType.DECIMAL,
+	 * responseTimeScenario2);
+	 * 
+	 * try { ModifiabilityBot m1Bot = new
+	 * ModifiabilityBot(calculateModifiabilityComplexity(m1Scenario,
+	 * KAMPPCMBot.TYPE_COMPLEXITY, initialArchitecture), "m1",
+	 * responseTimeScenario1); ModifiabilityBot m2Bot = new
+	 * ModifiabilityBot(calculateModifiabilityComplexity(m2Scenario,
+	 * KAMPPCMBot.TYPE_COMPLEXITY, initialArchitecture), "m2",
+	 * responseTimeScenario2); PerformanceBot p1Bot = new PerformanceBot(
+	 * calculatePerformanceComplexityForScenario(
+	 * PerformanceScenarioHelper.createScenarioOfWorkload(), initialArchitecture),
+	 * "p1", responseTimePScenario1);// Workload PerformanceBot p2Bot = new
+	 * PerformanceBot( calculatePerformanceComplexityForScenario(
+	 * PerformanceScenarioHelper.createScenarioOfCPU(), initialArchitecture), "p2",
+	 * responseTimePScenario2);// CPU
+	 * 
+	 * for (Iterator<ArchitecturalVersion> iterator =
+	 * architecturalAlternatives.iterator(); iterator.hasNext();) {
+	 * ArchitecturalVersion architecturalVersion = iterator.next();
+	 * 
+	 * m1Bot.insertInOrder(new ModifiabilityProposal(
+	 * calculateModifiabilityComplexity(m1Scenario, KAMPPCMBot.TYPE_COMPLEXITY,
+	 * architecturalVersion), architecturalVersion.getName()));
+	 * m2Bot.insertInOrder(new ModifiabilityProposal(
+	 * calculateModifiabilityComplexity(m2Scenario, KAMPPCMBot.TYPE_COMPLEXITY,
+	 * architecturalVersion), architecturalVersion.getName()));
+	 * 
+	 * p1Bot.insertInOrder( new PerformanceProposal(
+	 * calculatePerformanceComplexityForScenario(
+	 * PerformanceScenarioHelper.createScenarioOfWorkload(), architecturalVersion),
+	 * architecturalVersion.getName())); p2Bot.insertInOrder( new
+	 * PerformanceProposal( calculatePerformanceComplexityForScenario(
+	 * PerformanceScenarioHelper.createScenarioOfCPU(), architecturalVersion),
+	 * architecturalVersion.getName())); }
+	 * 
+	 * ret.add(m1Bot); ret.add(m2Bot); ret.add(p1Bot); ret.add(p2Bot);
+	 * 
+	 * m1Bot.printUtilies(); m2Bot.printUtilies(); p1Bot.printUtilies();
+	 * p2Bot.printUtilies(); } catch (Exception e) { e.printStackTrace(); } return
+	 * ret; }
+	 */
 
-	
 	private void filterRandomAlternatives(List<ArchitecturalVersion> architecturalAlternatives) {
-		if(architecturalAlternatives.size()>TOTAL_MAXIMUN){
-			List<ArchitecturalVersion> modifiabilityAlternatives=new ArrayList<>();
-			List<ArchitecturalVersion> performanceAlternatives=new ArrayList<>();
+		if (architecturalAlternatives.size() > TOTAL_MAXIMUN) {
+			List<ArchitecturalVersion> modifiabilityAlternatives = new ArrayList<>();
+			List<ArchitecturalVersion> performanceAlternatives = new ArrayList<>();
 			for (ArchitecturalVersion architecturalVersion : architecturalAlternatives) {
-				if(!architecturalVersion.lastModifiedByModifiability())
+				if (!architecturalVersion.lastModifiedByModifiability())
 					performanceAlternatives.add(architecturalVersion);
 				else
 					modifiabilityAlternatives.add(architecturalVersion);
 			}
-			int percentage=(int)(((double)(TOTAL_MAXIMUN*1.0d)/(modifiabilityAlternatives.size()+performanceAlternatives.size()))*100);
-			
-			List<ArchitecturalVersion> ret=new ArrayList<>();
-			
-			int itemsToSelectPerformance=(int)((percentage*performanceAlternatives.size())/100f);
+			int percentage = (int) (((double) (TOTAL_MAXIMUN * 1.0d)
+					/ (modifiabilityAlternatives.size() + performanceAlternatives.size())) * 100);
+
+			List<ArchitecturalVersion> ret = new ArrayList<>();
+
+			int itemsToSelectPerformance = (int) ((percentage * performanceAlternatives.size()) / 100f);
 			Collections.shuffle(performanceAlternatives);
 			ret.addAll(performanceAlternatives.subList(0, itemsToSelectPerformance));
-			
-			int itemsToSelectModifiability=(int)((percentage*modifiabilityAlternatives.size())/100f);
+
+			int itemsToSelectModifiability = (int) ((percentage * modifiabilityAlternatives.size()) / 100f);
 			Collections.shuffle(modifiabilityAlternatives);
 			ret.addAll(modifiabilityAlternatives.subList(0, itemsToSelectModifiability));
-			filterList(architecturalAlternatives,ret);
+			filterList(architecturalAlternatives, ret);
 		}
-		
+
 	}
-	private List<ArchitecturalVersion> getPerformanceAlternatives(List<ArchitecturalVersion> architecturalAlternatives){
-		List<ArchitecturalVersion> performanceAlternatives=new ArrayList<>();
+
+	private List<ArchitecturalVersion> getPerformanceAlternatives(
+			List<ArchitecturalVersion> architecturalAlternatives) {
+		List<ArchitecturalVersion> performanceAlternatives = new ArrayList<>();
 		for (ArchitecturalVersion architecturalVersion : architecturalAlternatives) {
-			if(!architecturalVersion.lastModifiedByModifiability())
+			if (!architecturalVersion.lastModifiedByModifiability())
 				performanceAlternatives.add(architecturalVersion);
 		}
 		return performanceAlternatives;
 	}
+
 	private void updateProposals(SillyBot m1Bot, List<ArchitecturalVersion> architecturalAlternatives) {
 		m1Bot.removeNotContainedProposals(architecturalAlternatives);
 	}
-	
-	
-	
-	
-	/**It removes from the list the alternatives that are not contained in the Set
+
+	/**
+	 * It removes from the list the alternatives that are not contained in the Set
 	 * 
 	 * @param architecturalAlternatives
 	 * @param bestAlternatives
@@ -383,80 +382,86 @@ public class LoadHelper {
 		architecturalAlternatives.clear();
 		architecturalAlternatives.addAll(bestAlternatives);
 	}
+
 	private Set<ArchitecturalVersion> filterBestAlternatives(List<ArchitecturalVersion> architecturalAlternatives,
 			ModifiabilityBot m1Bot) {
-		
-		List<Proposal> proposalsForBot=m1Bot.getOrderedProposals();
-		
-		if(m1Bot.getUtilityFor(proposalsForBot.get(proposalsForBot.size()-1))>0){
+
+		List<Proposal> proposalsForBot = m1Bot.getOrderedProposals();
+
+		if (m1Bot.getUtilityFor(proposalsForBot.get(proposalsForBot.size() - 1)) > 0) {
 			return new HashSet<>(architecturalAlternatives.subList(0, MAXIMUM_ALTERNATIVES));
 		}
-		Set<ArchitecturalVersion> ret=new HashSet<>();
+		Set<ArchitecturalVersion> ret = new HashSet<>();
 		for (int i = 0; i < proposalsForBot.size(); i++) {
-			if(m1Bot.getUtilityFor(proposalsForBot.get(i))>0){
-				ret.add(getArchitecturalVersionByName(proposalsForBot.get(i).getArchitectureName(),architecturalAlternatives));
-			}else{
+			if (m1Bot.getUtilityFor(proposalsForBot.get(i)) > 0) {
+				ret.add(getArchitecturalVersionByName(proposalsForBot.get(i).getArchitectureName(),
+						architecturalAlternatives));
+			} else {
 				return ret;
 			}
-				
+
 		}
 		return ret;
 	}
-	
+
 	private ArchitecturalVersion getArchitecturalVersionByName(String architectureName,
 			List<ArchitecturalVersion> architecturalAlternatives) {
 		for (ArchitecturalVersion architecturalVersion : architecturalAlternatives) {
-			if(architecturalVersion.getName().equals(architectureName))
+			if (architecturalVersion.getName().equals(architectureName))
 				return architecturalVersion;
 		}
 		return null;
 	}
-	private float calculateModifiabilityComplexity(PCMScenario scenario, EvaluationType evaluationType,
-			PCMArchitectureInstance model) throws Exception {
+
+	private float calculateModifiabilityComplexity(PCMScenario scenario, PCMArchitectureInstance model)
+			throws Exception {
 		boolean debug = false;
 		@SuppressWarnings("unchecked")
 		Comparable<Float> expectedResponse = scenario.getExpectedResult().getResponse();
 		if (debug)
 			java.lang.System.out.println("The goal of scenario: " + expectedResponse.toString());
-		KAMPPCMBot bot = new KAMPPCMBot(scenario);
-		bot.setEvaluationType(evaluationType);
-		if (debug)
-			java.lang.System.out.println("The evaluation type is: " + evaluationType);
+		AbstractPCMBot bot = ModifiabilityScenarioHelper.getInstance().createPCMBot(scenario);
 		//
-		try{
-			//PCMArchitectureInstance model = this.loadSpecificModel(architecturalVersion);
-			PCMScenarioResult scenarioResult = bot.analyze(model,"");
-			String satisfaction_alt1 = scenarioResult.isSatisfied() >= 0 ? "SATISFIED" : "NOT SATISFIED";
-			if (debug)
+		try {
+			// PCMArchitectureInstance model = this.loadSpecificModel(architecturalVersion);
+			PCMScenarioResult scenarioResult = bot.analyze(model, "");
+			if (debug) {
+				String satisfaction_alt1 = scenarioResult.isSatisfied() >= 0 ? "SATISFIED" : "NOT SATISFIED";
 				java.lang.System.out
 						.println("The scenario satisfaction with " + model.getName() + " is: " + satisfaction_alt1);
+			}
 			@SuppressWarnings("unchecked")
 			Comparable<Float> response_alt1 = scenarioResult.getResult().getResponse();
 			return ((Float) response_alt1).floatValue();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return Float.MAX_VALUE;
 		}
-		
+
 	}
 
 	public static float calculatePerformanceComplexityForScenario(AbstractPerformancePCMScenario scenario,
 			PCMArchitectureInstance architecture, String absolutePathArchitecture) {
-		Double complexity=PerformanceTransformationFactory.getInstance().getComplexityForArchitecture(scenario, absolutePathArchitecture);
-		if(complexity!=null){
-			//java.lang.System.out.println("Funciono la cache");
+		Double complexity = PerformanceTransformationFactory.getInstance().getComplexityForArchitecture(scenario,
+				absolutePathArchitecture);
+		if (complexity != null) {
+			// java.lang.System.out.println("Funciono la cache");
 			return new Float(complexity.toString());
-		}else{
-			//java.lang.System.out.println("NOOO funciono la cache");
-			ConcurrentPerOpteryxPCMBot bot = PerformanceScenarioHelper.getInstance().createPCMBot(scenario);
-			
-			PCMScenarioResult result = bot.analyze(architecture,PerformanceScenarioHelper.getInstance().obtainName(scenario)); 
+		} else {
+			// java.lang.System.out.println("NOOO funciono la cache");
+			AbstractPCMBot bot = PerformanceScenarioHelper.getInstance().createPCMBot(scenario);
+
+			PCMScenarioResult result = bot.analyze(architecture,
+					PerformanceScenarioHelper.getInstance().obtainName(scenario));
+			java.lang.System.out.println("PERFORMANCE: " + result + " " + bot + " " + architecture);
+			java.lang.System.out.println(
+					PerformanceScenarioHelper.getInstance().obtainName(scenario));
 			if (result == null)// is unsolvable
 				return 9999f;
 			else
 				return new Float(result.getResult().getResponse().toString()).floatValue();
 		}
-		
+
 	}
 
 	private PCMArchitectureInstance loadSpecificModel(ArchitecturalVersion architecturalVersion) {
@@ -475,481 +480,80 @@ public class LoadHelper {
 		return instance;
 	}
 
-	private PCMScenario createModifiabilityNFC(ResponseMeasureType type, Comparable response) {
-		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
-		PCMResult expectedResult = new PCMResult(type);
-		expectedResult.setResponse(response);
-		scenario.setExpectedResponse(expectedResult);
-		//
-		ModifiabilityInstruction nfcInterface = new ModifiabilityInstruction();
-		nfcInterface.operation = ModifiabilityOperation.CREATE;
-		nfcInterface.element = ModifiabilityElement.INTERFACE;
-		nfcInterface.parameters.put("name", "INFCPayment");
-		scenario.addChange(nfcInterface);
-		//
-		ModifiabilityInstruction nfcScanOp = new ModifiabilityInstruction();
-		nfcScanOp.operation = ModifiabilityOperation.CREATE;
-		nfcScanOp.element = ModifiabilityElement.OPERATION;
-		nfcScanOp.parameters.put("iname", "INFCPayment");
-		nfcScanOp.parameters.put("oname", "NFCDeviceScannedEvent");
-		scenario.addChange(nfcScanOp);
-		//
-		ModifiabilityInstruction nfcAproveOp = new ModifiabilityInstruction();
-		nfcAproveOp.operation = ModifiabilityOperation.CREATE;
-		nfcAproveOp.element = ModifiabilityElement.OPERATION;
-		nfcAproveOp.parameters.put("iname", "INFCPayment");
-		nfcAproveOp.parameters.put("oname", "NFCAproveTransaction");
-		scenario.addChange(nfcAproveOp);
-		//
-		ModifiabilityInstruction applePayComp = new ModifiabilityInstruction();
-		applePayComp.operation = ModifiabilityOperation.CREATE;
-		applePayComp.element = ModifiabilityElement.COMPONENT;
-		applePayComp.parameters.put("name", "org.cocome.tradingsystem.cashdeskline.cashdesk.ApplePayPayment");
-		scenario.addChange(applePayComp);
-		//
-		ModifiabilityInstruction googleComp = new ModifiabilityInstruction();
-		googleComp.operation = ModifiabilityOperation.CREATE;
-		googleComp.element = ModifiabilityElement.COMPONENT;
-		googleComp.parameters.put("name", "org.cocome.tradingsystem.cashdeskline.cashdesk.GoogleWalletPayment");
-		scenario.addChange(googleComp);
-		//
-		ModifiabilityInstruction applePayProvRole = new ModifiabilityInstruction();
-		applePayProvRole.operation = ModifiabilityOperation.CREATE;
-		applePayProvRole.element = ModifiabilityElement.PROVIDEDROLE;
-		applePayProvRole.parameters.put("cname", "org.cocome.tradingsystem.cashdeskline.cashdesk.ApplePayPayment");
-		applePayProvRole.parameters.put("iname", "INFCPayment");
-		scenario.addChange(applePayProvRole);
-		//
-		ModifiabilityInstruction googleProvRole = new ModifiabilityInstruction();
-		googleProvRole.operation = ModifiabilityOperation.CREATE;
-		googleProvRole.element = ModifiabilityElement.PROVIDEDROLE;
-		googleProvRole.parameters.put("cname", "org.cocome.tradingsystem.cashdeskline.cashdesk.GoogleWalletPayment");
-		googleProvRole.parameters.put("iname", "INFCPayment");
-		scenario.addChange(googleProvRole);
-		//
-		/*ModifiabilityInstruction connectorLink = new ModifiabilityInstruction();
-		connectorLink.operation = ModifiabilityOperation.CREATE;
-		connectorLink.element = ModifiabilityElement.REQUIREDROLE;
-		connectorLink.parameters.put("cname", "org.cocome.cloud.web.connector.cashdeskconnector");
-		connectorLink.parameters.put("iname", "INFCPayment");
-		scenario.addChange(connectorLink);*/
-		//
-		/*ModifiabilityInstruction cashDeskNewOps = new ModifiabilityInstruction();
-		cashDeskNewOps.operation = ModifiabilityOperation.MODIFY;
-		cashDeskNewOps.element = ModifiabilityElement.INTERFACE;
-		cashDeskNewOps.parameters.put("name", "ICashDeskQuery");
-		scenario.addChange(cashDeskNewOps);*/
-		
-		
-		//
-		
-		//Additionals
-		ModifiabilityInstruction connectorLink = new ModifiabilityInstruction();
-		connectorLink.operation = ModifiabilityOperation.CREATE;
-		connectorLink.element = ModifiabilityElement.REQUIREDROLE;
-		connectorLink.parameters.put("cname", "org.cocome.tradingsystem.cashdeskline.cashdesk.CashDeskEventHandler");
-		connectorLink.parameters.put("iname", "INFCPayment");
-		scenario.addChange(connectorLink);
-		
-		ModifiabilityInstruction connectorLink2 = new ModifiabilityInstruction();
-		connectorLink2.operation = ModifiabilityOperation.CREATE;
-		connectorLink2.element = ModifiabilityElement.REQUIREDROLE;
-		connectorLink2.parameters.put("cname", "org.cocome.tradingsystem.cashdeskline.cashdesk.CashBoxEventHandler");
-		connectorLink2.parameters.put("iname", "INFCPayment");
-		scenario.addChange(connectorLink2);
-		
-		ModifiabilityInstruction cashDeskNewOps = new ModifiabilityInstruction();
-		cashDeskNewOps.operation = ModifiabilityOperation.MODIFY;
-		cashDeskNewOps.element = ModifiabilityElement.INTERFACE;
-		cashDeskNewOps.parameters.put("name", "IBankLocal");
-		scenario.addChange(cashDeskNewOps);
-		
-		ModifiabilityInstruction modifyInterface2 = new ModifiabilityInstruction();
-		modifyInterface2.operation = ModifiabilityOperation.MODIFY;
-		modifyInterface2.element = ModifiabilityElement.INTERFACE;
-		modifyInterface2.parameters.put("name", "CreditCardScannedEvent");
-		scenario.addChange(modifyInterface2);
-		
-		ModifiabilityInstruction modifyInterface3 = new ModifiabilityInstruction();
-		modifyInterface3.operation = ModifiabilityOperation.MODIFY;
-		modifyInterface3.element = ModifiabilityElement.INTERFACE;
-		modifyInterface3.parameters.put("name", "CashBoxClosedEvent");
-		scenario.addChange(modifyInterface3);
-		
-		return scenario;
-	}
-
-	private PCMScenario createModifiabilityVIP(ResponseMeasureType type, Comparable response) {
-		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
-		PCMResult expectedResult = new PCMResult(type);
-		expectedResult.setResponse(response);
-		scenario.setExpectedResponse(expectedResult);
-		//
-		ModifiabilityInstruction barLightInt = new ModifiabilityInstruction();
-		barLightInt.operation = ModifiabilityOperation.MODIFY;
-		barLightInt.element = ModifiabilityElement.INTERFACE;
-		barLightInt.parameters.put("name", "IExpressLight");
-		scenario.addChange(barLightInt);
-		ModifiabilityInstruction vipOnOp = new ModifiabilityInstruction();
-		vipOnOp.operation = ModifiabilityOperation.CREATE;
-		vipOnOp.element = ModifiabilityElement.OPERATION;
-		vipOnOp.parameters.put("iname", "IExpressLight");
-		vipOnOp.parameters.put("oname", "turnVIPModeOn");
-		scenario.addChange(vipOnOp);
-		ModifiabilityInstruction vipOffOp = new ModifiabilityInstruction();
-		vipOffOp.operation = ModifiabilityOperation.CREATE;
-		vipOffOp.element = ModifiabilityElement.OPERATION;
-		vipOffOp.parameters.put("iname", "IExpressLight");
-		vipOffOp.parameters.put("oname", "turnVIPModeOff");
-		scenario.addChange(vipOffOp);
-		ModifiabilityInstruction setColorOp = new ModifiabilityInstruction();
-		setColorOp.operation = ModifiabilityOperation.CREATE;
-		setColorOp.element = ModifiabilityElement.OPERATION;
-		setColorOp.parameters.put("iname", "IExpressLight");
-		setColorOp.parameters.put("oname", "setColor");
-		scenario.addChange(setColorOp);
-		//
-		ModifiabilityInstruction VIPIdentifierInt = new ModifiabilityInstruction();
-		VIPIdentifierInt.operation = ModifiabilityOperation.CREATE;
-		VIPIdentifierInt.element = ModifiabilityElement.INTERFACE;
-		VIPIdentifierInt.parameters.put("name", "IVIPIdentifier");
-		scenario.addChange(VIPIdentifierInt);
-		ModifiabilityInstruction isVIPOp = new ModifiabilityInstruction();
-		isVIPOp.operation = ModifiabilityOperation.CREATE;
-		isVIPOp.element = ModifiabilityElement.OPERATION;
-		isVIPOp.parameters.put("iname", "IVIPIdentifier");
-		isVIPOp.parameters.put("oname", "isVIP");
-		scenario.addChange(isVIPOp);
-		ModifiabilityInstruction VIPIdentifierComp = new ModifiabilityInstruction();
-		VIPIdentifierComp.operation = ModifiabilityOperation.CREATE;
-		VIPIdentifierComp.element = ModifiabilityElement.COMPONENT;
-		VIPIdentifierComp.parameters.put("name", "org.cocome.tradingsystem.cashdeskline.cashdesk.VIPIdentifier");
-		scenario.addChange(VIPIdentifierComp);
-		ModifiabilityInstruction vipIdentifierProvRole = new ModifiabilityInstruction();
-		vipIdentifierProvRole.operation = ModifiabilityOperation.CREATE;
-		vipIdentifierProvRole.element = ModifiabilityElement.PROVIDEDROLE;
-		vipIdentifierProvRole.parameters.put("cname", "org.cocome.tradingsystem.cashdeskline.cashdesk.VIPIdentifier");
-		vipIdentifierProvRole.parameters.put("iname", "IVIPIdentifier");
-		scenario.addChange(vipIdentifierProvRole);
-		//
-		/*ModifiabilityInstruction cashDeskInterface = new ModifiabilityInstruction();
-		cashDeskInterface.operation = ModifiabilityOperation.MODIFY;
-		cashDeskInterface.element = ModifiabilityElement.INTERFACE;
-		cashDeskInterface.parameters.put("name", "org.cocome.cloud.web.data.cashdeskdata.ICashDesk");
-		scenario.addChange(cashDeskInterface);*/
-		//
-		/**Additionals*/
-		
-		
-		ModifiabilityInstruction connectorLink3 = new ModifiabilityInstruction();
-		connectorLink3.operation = ModifiabilityOperation.CREATE;
-		connectorLink3.element = ModifiabilityElement.REQUIREDROLE;
-		connectorLink3.parameters.put("cname", "org.cocome.tradingsystem.inventory.data.UserManager");
-		connectorLink3.parameters.put("iname", "IVIPIdentifier");
-		scenario.addChange(connectorLink3);
-		
-		ModifiabilityInstruction authenticatorInterface = new ModifiabilityInstruction();
-		authenticatorInterface.operation = ModifiabilityOperation.MODIFY;
-		authenticatorInterface.element = ModifiabilityElement.INTERFACE;
-		authenticatorInterface.parameters.put("name", "IAuthenticator");
-		scenario.addChange(authenticatorInterface);
-		
-		ModifiabilityInstruction otherInterface = new ModifiabilityInstruction();
-		otherInterface.operation = ModifiabilityOperation.MODIFY;
-		otherInterface.element = ModifiabilityElement.INTERFACE;
-		otherInterface.parameters.put("name", "ICashBoxModel");
-		scenario.addChange(otherInterface);
-		
-		ModifiabilityInstruction authenticatorInterface2 = new ModifiabilityInstruction();
-		authenticatorInterface2.operation = ModifiabilityOperation.MODIFY;
-		authenticatorInterface2.element = ModifiabilityElement.INTERFACE;
-		authenticatorInterface2.parameters.put("name", "LoginEvent");
-		scenario.addChange(authenticatorInterface2);
-		
-		ModifiabilityInstruction displayInt = new ModifiabilityInstruction();
-		displayInt.operation = ModifiabilityOperation.MODIFY;
-		displayInt.element = ModifiabilityElement.INTERFACE;
-		displayInt.parameters.put("name", "IUserDisplayModel");
-		scenario.addChange(displayInt);
-		return scenario;
-	}
-
-	private PCMScenario createModifiabilityWithdrawMoney(ResponseMeasureType type, Comparable response) {
-		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
-		PCMResult expectedResult = new PCMResult(type);
-		expectedResult.setResponse(response);
-		scenario.setExpectedResponse(expectedResult);
-		//
-		ModifiabilityInstruction withdrawInt = new ModifiabilityInstruction();
-		withdrawInt.operation = ModifiabilityOperation.CREATE;
-		withdrawInt.element = ModifiabilityElement.INTERFACE;
-		withdrawInt.parameters.put("name", "IWithdrawMoney");
-		scenario.addChange(withdrawInt);
-		ModifiabilityInstruction withdrawOp = new ModifiabilityInstruction();
-		withdrawOp.operation = ModifiabilityOperation.CREATE;
-		withdrawOp.element = ModifiabilityElement.OPERATION;
-		withdrawOp.parameters.put("iname", "IWithdrawMoney");
-		withdrawOp.parameters.put("oname", "authorizeExtraction");
-		scenario.addChange(withdrawOp);
-		//
-		ModifiabilityInstruction signatureInt = new ModifiabilityInstruction();
-		signatureInt.operation = ModifiabilityOperation.CREATE;
-		signatureInt.element = ModifiabilityElement.INTERFACE;
-		signatureInt.parameters.put("name", "IDigitalSignature");
-		scenario.addChange(signatureInt);
-		ModifiabilityInstruction validateSignatureOp = new ModifiabilityInstruction();
-		validateSignatureOp.operation = ModifiabilityOperation.CREATE;
-		validateSignatureOp.element = ModifiabilityElement.OPERATION;
-		validateSignatureOp.parameters.put("iname", "IDigitalSignature");
-		validateSignatureOp.parameters.put("oname", "validateSignature");
-		scenario.addChange(validateSignatureOp);
-		ModifiabilityInstruction saveSignatureOp = new ModifiabilityInstruction();
-		saveSignatureOp.operation = ModifiabilityOperation.CREATE;
-		saveSignatureOp.element = ModifiabilityElement.OPERATION;
-		saveSignatureOp.parameters.put("iname", "IDigitalSignature");
-		saveSignatureOp.parameters.put("oname", "saveSignature");
-		scenario.addChange(saveSignatureOp);
-		ModifiabilityInstruction getSignatureOp = new ModifiabilityInstruction();
-		getSignatureOp.operation = ModifiabilityOperation.CREATE;
-		getSignatureOp.element = ModifiabilityElement.OPERATION;
-		getSignatureOp.parameters.put("iname", "IDigitalSignature");
-		getSignatureOp.parameters.put("oname", "getSignature");
-		scenario.addChange(getSignatureOp);
-		//
-		ModifiabilityInstruction banelcoWithdrawComp = new ModifiabilityInstruction();
-		banelcoWithdrawComp.operation = ModifiabilityOperation.CREATE;
-		banelcoWithdrawComp.element = ModifiabilityElement.COMPONENT;
-		banelcoWithdrawComp.parameters.put("name", "org.cocome.tradingsystem.cashdeskline.cashdesk.BanelcoWithdrawal");
-		scenario.addChange(banelcoWithdrawComp);
-		ModifiabilityInstruction linkWithdrawComp = new ModifiabilityInstruction();
-		linkWithdrawComp.operation = ModifiabilityOperation.CREATE;
-		linkWithdrawComp.element = ModifiabilityElement.COMPONENT;
-		linkWithdrawComp.parameters.put("name", "org.cocome.tradingsystem.cashdeskline.cashdesk.LinkWithdrawal");
-		scenario.addChange(linkWithdrawComp);
-		ModifiabilityInstruction visaWithdrawComp = new ModifiabilityInstruction();
-		visaWithdrawComp.operation = ModifiabilityOperation.CREATE;
-		visaWithdrawComp.element = ModifiabilityElement.COMPONENT;
-		visaWithdrawComp.parameters.put("name", "org.cocome.tradingsystem.cashdeskline.cashdesk.VisaWithdrawal");
-		scenario.addChange(visaWithdrawComp);
-		//
-		ModifiabilityInstruction banelcoProvRole = new ModifiabilityInstruction();
-		banelcoProvRole.operation = ModifiabilityOperation.CREATE;
-		banelcoProvRole.element = ModifiabilityElement.PROVIDEDROLE;
-		banelcoProvRole.parameters.put("cname", "org.cocome.tradingsystem.cashdeskline.cashdesk.BanelcoWithdrawal");
-		banelcoProvRole.parameters.put("iname", "IWithdrawMoney");
-		scenario.addChange(banelcoProvRole);
-		ModifiabilityInstruction linkProvRole = new ModifiabilityInstruction();
-		linkProvRole.operation = ModifiabilityOperation.CREATE;
-		linkProvRole.element = ModifiabilityElement.PROVIDEDROLE;
-		linkProvRole.parameters.put("cname", "org.cocome.tradingsystem.cashdeskline.cashdesk.LinkWithdrawal");
-		linkProvRole.parameters.put("iname", "IWithdrawMoney");
-		scenario.addChange(linkProvRole);
-		ModifiabilityInstruction visaProvRole = new ModifiabilityInstruction();
-		visaProvRole.operation = ModifiabilityOperation.CREATE;
-		visaProvRole.element = ModifiabilityElement.PROVIDEDROLE;
-		visaProvRole.parameters.put("cname", "org.cocome.tradingsystem.cashdeskline.cashdesk.VisaWithdrawal");
-		visaProvRole.parameters.put("iname", "IWithdrawMoney");
-		scenario.addChange(visaProvRole);
-		//
-		ModifiabilityInstruction signatureComp = new ModifiabilityInstruction();
-		signatureComp.operation = ModifiabilityOperation.CREATE;
-		signatureComp.element = ModifiabilityElement.COMPONENT;
-		signatureComp.parameters.put("name", "org.cocome.tradingsystem.cashdeskline.cashdesk.DigitalSignature");
-		scenario.addChange(signatureComp);
-		ModifiabilityInstruction signatureProvRole = new ModifiabilityInstruction();
-		signatureProvRole.operation = ModifiabilityOperation.CREATE;
-		signatureProvRole.element = ModifiabilityElement.PROVIDEDROLE;
-		signatureProvRole.parameters.put("cname", "org.cocome.tradingsystem.cashdeskline.cashdesk.DigitalSignature");
-		signatureProvRole.parameters.put("iname", "IDigitalSignature");
-		scenario.addChange(signatureProvRole);
-		//
-		ModifiabilityInstruction cardReaderWithdrawReqRole = new ModifiabilityInstruction();
-		cardReaderWithdrawReqRole.operation = ModifiabilityOperation.CREATE;
-		cardReaderWithdrawReqRole.element = ModifiabilityElement.REQUIREDROLE;
-		cardReaderWithdrawReqRole.parameters.put("cname", "org.cocome.tradingsystem.cashdeskline.cashdesk.CardReader");
-		cardReaderWithdrawReqRole.parameters.put("iname", "IWithdrawMoney");
-		scenario.addChange(cardReaderWithdrawReqRole);
-		ModifiabilityInstruction cardReaderSignatureReqRole = new ModifiabilityInstruction();
-		cardReaderSignatureReqRole.operation = ModifiabilityOperation.CREATE;
-		cardReaderSignatureReqRole.element = ModifiabilityElement.REQUIREDROLE;
-		cardReaderSignatureReqRole.parameters.put("cname", "org.cocome.tradingsystem.cashdeskline.cashdesk.CardReader");
-		cardReaderSignatureReqRole.parameters.put("iname", "IDigitalSignature");
-		scenario.addChange(cardReaderSignatureReqRole);
-		ModifiabilityInstruction cardReaderInt = new ModifiabilityInstruction();
-		cardReaderInt.operation = ModifiabilityOperation.MODIFY;
-		cardReaderInt.element = ModifiabilityElement.INTERFACE;
-		cardReaderInt.parameters.put("name", "ICardReaderModel");
-		scenario.addChange(cardReaderInt);
-		//
-		ModifiabilityInstruction printerInt = new ModifiabilityInstruction();
-		printerInt.operation = ModifiabilityOperation.MODIFY;
-		printerInt.element = ModifiabilityElement.INTERFACE;
-		printerInt.parameters.put("name", "IPrinterModel");
-		scenario.addChange(printerInt);
-		ModifiabilityInstruction displayInt = new ModifiabilityInstruction();
-		displayInt.operation = ModifiabilityOperation.MODIFY;
-		displayInt.element = ModifiabilityElement.INTERFACE;
-		displayInt.parameters.put("name", "IUserDisplayModel");
-		scenario.addChange(displayInt);
-		//
-		return scenario;
-	}
-
-	private PCMScenario createModifiabilityServiceLog(ResponseMeasureType type, Comparable response) {
-		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
-		PCMResult expectedResult = new PCMResult(type);
-		expectedResult.setResponse(response);
-		scenario.setExpectedResponse(expectedResult);
-		//
-		ModifiabilityInstruction logStorageInt = new ModifiabilityInstruction();
-		logStorageInt.operation = ModifiabilityOperation.CREATE;
-		logStorageInt.element = ModifiabilityElement.INTERFACE;
-		logStorageInt.parameters.put("name", "ILogStorage");
-		scenario.addChange(logStorageInt);
-		ModifiabilityInstruction storeEventOp = new ModifiabilityInstruction();
-		storeEventOp.operation = ModifiabilityOperation.CREATE;
-		storeEventOp.element = ModifiabilityElement.OPERATION;
-		storeEventOp.parameters.put("iname", "ILogStorage");
-		storeEventOp.parameters.put("oname", "storeEvent");
-		scenario.addChange(storeEventOp);
-		ModifiabilityInstruction logStorageComp = new ModifiabilityInstruction();
-		logStorageComp.operation = ModifiabilityOperation.CREATE;
-		logStorageComp.element = ModifiabilityElement.COMPONENT;
-		logStorageComp.parameters.put("name", "org.cocome.tradingsystem.LogStorage");
-		scenario.addChange(logStorageComp);
-		ModifiabilityInstruction logProvRole = new ModifiabilityInstruction();
-		logProvRole.operation = ModifiabilityOperation.CREATE;
-		logProvRole.element = ModifiabilityElement.PROVIDEDROLE;
-		logProvRole.parameters.put("cname", "org.cocome.tradingsystem.LogStorage");
-		logProvRole.parameters.put("iname", "ILogStorage");
-		scenario.addChange(logProvRole);
-		//
-		/*ModifiabilityInstruction cashDeskDAOInterface = new ModifiabilityInstruction();
-		cashDeskDAOInterface.operation = ModifiabilityOperation.MODIFY;
-		cashDeskDAOInterface.element = ModifiabilityElement.INTERFACE;
-		cashDeskDAOInterface.parameters.put("name", "ICashDeskDAO");
-		scenario.addChange(cashDeskDAOInterface);*/
-		//
-		
-		
-		/**Additionals*/
-		
-		ModifiabilityInstruction cardReaderWithdrawReqRole = new ModifiabilityInstruction();
-		cardReaderWithdrawReqRole.operation = ModifiabilityOperation.CREATE;
-		cardReaderWithdrawReqRole.element = ModifiabilityElement.REQUIREDROLE;
-		cardReaderWithdrawReqRole.parameters.put("cname", "org.cocome.tradingsystem.inventory.data.Persistence");
-		cardReaderWithdrawReqRole.parameters.put("iname", "ILogStorage");
-		scenario.addChange(cardReaderWithdrawReqRole);
-		
-		ModifiabilityInstruction loginDataReqRole = new ModifiabilityInstruction();
-		loginDataReqRole.operation = ModifiabilityOperation.CREATE;
-		loginDataReqRole.element = ModifiabilityElement.REQUIREDROLE;
-		loginDataReqRole.parameters.put("cname", "org.cocome.cloud.web.data.logindata");
-		loginDataReqRole.parameters.put("iname", "ILogStorage");
-		scenario.addChange(loginDataReqRole);
-		
-		ModifiabilityInstruction accountInterface = new ModifiabilityInstruction();
-		accountInterface.operation = ModifiabilityOperation.MODIFY;
-		accountInterface.element = ModifiabilityElement.INTERFACE;
-		accountInterface.parameters.put("name", "AccountSaleEvent");
-		scenario.addChange(accountInterface);
-		
-		ModifiabilityInstruction modifyInterface3 = new ModifiabilityInstruction();
-		modifyInterface3.operation = ModifiabilityOperation.MODIFY;
-		modifyInterface3.element = ModifiabilityElement.INTERFACE;
-		modifyInterface3.parameters.put("name", "CashBoxClosedEvent");
-		scenario.addChange(modifyInterface3);
-		
-		return scenario;
-	}
 	/*
-	 * private PCMScenario createModifiabilityScenarioS1(ResponseMeasureType
-	 * type, Comparable<Float> response) { //Adding a pickupshop
-	 * ModifiabilityPCMScenario scenario = new
-	 * ModifiabilityPCMScenario(OptimizationType.MINIMIZATION); PCMResult
-	 * expectedResult = new PCMResult(type);
+	 * private PCMScenario createModifiabilityScenarioS1(ResponseMeasureType type,
+	 * Comparable<Float> response) { //Adding a pickupshop ModifiabilityPCMScenario
+	 * scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
+	 * PCMResult expectedResult = new PCMResult(type);
 	 * expectedResult.setResponse(response);
-	 * scenario.setExpectedResponse(expectedResult); // ModifiabilityInstruction
-	 * i1 = new ModifiabilityInstruction(); i1.operation =
-	 * ModifiabilityOperation.CREATE; i1.element =
-	 * ModifiabilityElement.COMPONENT; i1.parameters.put("name",
-	 * "org.cocome.pickupshop.UserManager"); scenario.addChange(i1);
-	 * ModifiabilityInstruction i2 = new ModifiabilityInstruction();
-	 * i2.operation = ModifiabilityOperation.CREATE; i2.element =
-	 * ModifiabilityElement.REQUIREDROLE; i2.parameters.put("cname",
+	 * scenario.setExpectedResponse(expectedResult); // ModifiabilityInstruction i1
+	 * = new ModifiabilityInstruction(); i1.operation =
+	 * ModifiabilityOperation.CREATE; i1.element = ModifiabilityElement.COMPONENT;
+	 * i1.parameters.put("name", "org.cocome.pickupshop.UserManager");
+	 * scenario.addChange(i1); ModifiabilityInstruction i2 = new
+	 * ModifiabilityInstruction(); i2.operation = ModifiabilityOperation.CREATE;
+	 * i2.element = ModifiabilityElement.REQUIREDROLE; i2.parameters.put("cname",
 	 * "org.cocome.pickupshop.UserManager"); i2.parameters.put("iname",
-	 * "ILoginManager"); scenario.addChange(i2); ModifiabilityInstruction i3 =
-	 * new ModifiabilityInstruction(); i3.operation =
-	 * ModifiabilityOperation.CREATE; i3.element =
-	 * ModifiabilityElement.INTERFACE; i3.parameters.put("name",
-	 * "IUserManager"); scenario.addChange(i3); ModifiabilityInstruction i4 =
-	 * new ModifiabilityInstruction(); i4.operation =
-	 * ModifiabilityOperation.CREATE; i4.element =
-	 * ModifiabilityElement.PROVIDEDROLE; i4.parameters.put("cname",
+	 * "ILoginManager"); scenario.addChange(i2); ModifiabilityInstruction i3 = new
+	 * ModifiabilityInstruction(); i3.operation = ModifiabilityOperation.CREATE;
+	 * i3.element = ModifiabilityElement.INTERFACE; i3.parameters.put("name",
+	 * "IUserManager"); scenario.addChange(i3); ModifiabilityInstruction i4 = new
+	 * ModifiabilityInstruction(); i4.operation = ModifiabilityOperation.CREATE;
+	 * i4.element = ModifiabilityElement.PROVIDEDROLE; i4.parameters.put("cname",
 	 * "org.cocome.pickupshop.UserManager"); i4.parameters.put("iname",
-	 * "IUserManager"); scenario.addChange(i4); ModifiabilityInstruction i5 =
-	 * new ModifiabilityInstruction(); i5.operation =
-	 * ModifiabilityOperation.CREATE; i5.element =
-	 * ModifiabilityElement.COMPONENT; i5.parameters.put("name",
+	 * "IUserManager"); scenario.addChange(i4); ModifiabilityInstruction i5 = new
+	 * ModifiabilityInstruction(); i5.operation = ModifiabilityOperation.CREATE;
+	 * i5.element = ModifiabilityElement.COMPONENT; i5.parameters.put("name",
 	 * "org.cocome.pickupshop.Inventory"); scenario.addChange(i5);
-	 * ModifiabilityInstruction i6 = new ModifiabilityInstruction();
-	 * i6.operation = ModifiabilityOperation.CREATE; i6.element =
+	 * ModifiabilityInstruction i6 = new ModifiabilityInstruction(); i6.operation =
+	 * ModifiabilityOperation.CREATE; i6.element =
 	 * ModifiabilityElement.REQUIREDROLE; i6.parameters.put("cname",
 	 * "org.cocome.pickupshop.Inventory"); i6.parameters.put("iname",
-	 * "IEnterpriseManager"); scenario.addChange(i6); ModifiabilityInstruction
-	 * i7 = new ModifiabilityInstruction(); i7.operation =
-	 * ModifiabilityOperation.CREATE; i7.element =
-	 * ModifiabilityElement.REQUIREDROLE; i7.parameters.put("cname",
+	 * "IEnterpriseManager"); scenario.addChange(i6); ModifiabilityInstruction i7 =
+	 * new ModifiabilityInstruction(); i7.operation = ModifiabilityOperation.CREATE;
+	 * i7.element = ModifiabilityElement.REQUIREDROLE; i7.parameters.put("cname",
 	 * "org.cocome.pickupshop.Inventory"); i7.parameters.put("iname",
-	 * "IStoreManager"); scenario.addChange(i7); ModifiabilityInstruction i8 =
-	 * new ModifiabilityInstruction(); i8.operation =
-	 * ModifiabilityOperation.CREATE; i8.element =
-	 * ModifiabilityElement.INTERFACE; i8.parameters.put("name", "IInventory");
-	 * scenario.addChange(i8); ModifiabilityInstruction i9 = new
+	 * "IStoreManager"); scenario.addChange(i7); ModifiabilityInstruction i8 = new
+	 * ModifiabilityInstruction(); i8.operation = ModifiabilityOperation.CREATE;
+	 * i8.element = ModifiabilityElement.INTERFACE; i8.parameters.put("name",
+	 * "IInventory"); scenario.addChange(i8); ModifiabilityInstruction i9 = new
 	 * ModifiabilityInstruction(); i9.operation = ModifiabilityOperation.CREATE;
-	 * i9.element = ModifiabilityElement.PROVIDEDROLE;
-	 * i9.parameters.put("cname", "org.cocome.pickupshop.Inventory");
-	 * i9.parameters.put("iname", "IInventory"); scenario.addChange(i9);
-	 * ModifiabilityInstruction i10 = new ModifiabilityInstruction();
-	 * i10.operation = ModifiabilityOperation.CREATE; i10.element =
-	 * ModifiabilityElement.COMPONENT; i10.parameters.put("name",
+	 * i9.element = ModifiabilityElement.PROVIDEDROLE; i9.parameters.put("cname",
+	 * "org.cocome.pickupshop.Inventory"); i9.parameters.put("iname", "IInventory");
+	 * scenario.addChange(i9); ModifiabilityInstruction i10 = new
+	 * ModifiabilityInstruction(); i10.operation = ModifiabilityOperation.CREATE;
+	 * i10.element = ModifiabilityElement.COMPONENT; i10.parameters.put("name",
 	 * "org.cocome.pickupshop.CheckOut"); scenario.addChange(i10);
-	 * ModifiabilityInstruction i11 = new ModifiabilityInstruction();
-	 * i11.operation = ModifiabilityOperation.CREATE; i11.element =
+	 * ModifiabilityInstruction i11 = new ModifiabilityInstruction(); i11.operation
+	 * = ModifiabilityOperation.CREATE; i11.element =
 	 * ModifiabilityElement.REQUIREDROLE; i11.parameters.put("cname",
-	 * "org.cocome.pickupshop.CheckOut"); i11.parameters.put("iname",
-	 * "IBankLocal"); scenario.addChange(i11); ModifiabilityInstruction i12 =
-	 * new ModifiabilityInstruction(); i12.operation =
-	 * ModifiabilityOperation.CREATE; i12.element =
-	 * ModifiabilityElement.REQUIREDROLE; i12.parameters.put("cname",
-	 * "org.cocome.pickupshop.CheckOut"); i12.parameters.put("iname",
-	 * "IInventory"); scenario.addChange(i12); ModifiabilityInstruction i13 =
-	 * new ModifiabilityInstruction(); i13.operation =
-	 * ModifiabilityOperation.CREATE; i13.element =
-	 * ModifiabilityElement.INTERFACE; i13.parameters.put("name", "ICheckOut");
-	 * scenario.addChange(i13); ModifiabilityInstruction i14 = new
-	 * ModifiabilityInstruction(); i14.operation =
-	 * ModifiabilityOperation.CREATE; i14.element =
-	 * ModifiabilityElement.PROVIDEDROLE; i14.parameters.put("cname",
-	 * "org.cocome.pickupshop.CheckOut"); i14.parameters.put("iname",
-	 * "ICheckOut"); scenario.addChange(i14); ModifiabilityInstruction i15 = new
-	 * ModifiabilityInstruction(); i15.operation =
-	 * ModifiabilityOperation.CREATE; i15.element =
-	 * ModifiabilityElement.COMPONENT; i15.parameters.put("name",
+	 * "org.cocome.pickupshop.CheckOut"); i11.parameters.put("iname", "IBankLocal");
+	 * scenario.addChange(i11); ModifiabilityInstruction i12 = new
+	 * ModifiabilityInstruction(); i12.operation = ModifiabilityOperation.CREATE;
+	 * i12.element = ModifiabilityElement.REQUIREDROLE; i12.parameters.put("cname",
+	 * "org.cocome.pickupshop.CheckOut"); i12.parameters.put("iname", "IInventory");
+	 * scenario.addChange(i12); ModifiabilityInstruction i13 = new
+	 * ModifiabilityInstruction(); i13.operation = ModifiabilityOperation.CREATE;
+	 * i13.element = ModifiabilityElement.INTERFACE; i13.parameters.put("name",
+	 * "ICheckOut"); scenario.addChange(i13); ModifiabilityInstruction i14 = new
+	 * ModifiabilityInstruction(); i14.operation = ModifiabilityOperation.CREATE;
+	 * i14.element = ModifiabilityElement.PROVIDEDROLE; i14.parameters.put("cname",
+	 * "org.cocome.pickupshop.CheckOut"); i14.parameters.put("iname", "ICheckOut");
+	 * scenario.addChange(i14); ModifiabilityInstruction i15 = new
+	 * ModifiabilityInstruction(); i15.operation = ModifiabilityOperation.CREATE;
+	 * i15.element = ModifiabilityElement.COMPONENT; i15.parameters.put("name",
 	 * "org.cocome.pickupshop.ShoppingCart"); scenario.addChange(i15);
-	 * ModifiabilityInstruction i16 = new ModifiabilityInstruction();
-	 * i16.operation = ModifiabilityOperation.CREATE; i16.element =
+	 * ModifiabilityInstruction i16 = new ModifiabilityInstruction(); i16.operation
+	 * = ModifiabilityOperation.CREATE; i16.element =
 	 * ModifiabilityElement.REQUIREDROLE; i16.parameters.put("cname",
 	 * "org.cocome.pickupshop.ShoppingCart"); i16.parameters.put("iname",
-	 * "IInventory"); scenario.addChange(i16); ModifiabilityInstruction i17 =
-	 * new ModifiabilityInstruction(); i17.operation =
-	 * ModifiabilityOperation.CREATE; i17.element =
-	 * ModifiabilityElement.REQUIREDROLE; i17.parameters.put("cname",
+	 * "IInventory"); scenario.addChange(i16); ModifiabilityInstruction i17 = new
+	 * ModifiabilityInstruction(); i17.operation = ModifiabilityOperation.CREATE;
+	 * i17.element = ModifiabilityElement.REQUIREDROLE; i17.parameters.put("cname",
 	 * "org.cocome.pickupshop.ShoppingCart"); i17.parameters.put("iname",
 	 * "ICheckOut"); scenario.addChange(i17); ModifiabilityInstruction i18 = new
-	 * ModifiabilityInstruction(); i18.operation =
-	 * ModifiabilityOperation.CREATE; i18.element =
-	 * ModifiabilityElement.REQUIREDROLE; i18.parameters.put("cname",
+	 * ModifiabilityInstruction(); i18.operation = ModifiabilityOperation.CREATE;
+	 * i18.element = ModifiabilityElement.REQUIREDROLE; i18.parameters.put("cname",
 	 * "org.cocome.pickupshop.ShoppingCart"); i18.parameters.put("iname",
 	 * "IUserManager"); scenario.addChange(i18);
 	 * 
@@ -957,93 +561,85 @@ public class LoadHelper {
 	 * createModifiabilityScenarioS2(ResponseMeasureType type, Comparable<Float>
 	 * response) { ModifiabilityPCMScenario scenario = new
 	 * ModifiabilityPCMScenario(OptimizationType.MINIMIZATION); PCMResult
-	 * expectedResult = new PCMResult(type);
-	 * expectedResult.setResponse(response);
-	 * scenario.setExpectedResponse(expectedResult); // ModifiabilityInstruction
-	 * i1 = new ModifiabilityInstruction(); i1.operation =
-	 * ModifiabilityOperation.CREATE; i1.element =
-	 * ModifiabilityElement.COMPONENT; i1.parameters.put("name",
+	 * expectedResult = new PCMResult(type); expectedResult.setResponse(response);
+	 * scenario.setExpectedResponse(expectedResult); // ModifiabilityInstruction i1
+	 * = new ModifiabilityInstruction(); i1.operation =
+	 * ModifiabilityOperation.CREATE; i1.element = ModifiabilityElement.COMPONENT;
+	 * i1.parameters.put("name",
 	 * "org.cocome.tradingsystem.inventory.data.persistence.ServiceAdapter");
 	 * scenario.addChange(i1); ModifiabilityInstruction i2 = new
 	 * ModifiabilityInstruction(); i2.operation = ModifiabilityOperation.CREATE;
 	 * i2.element = ModifiabilityElement.INTERFACE; i2.parameters.put("name",
-	 * "ServiceAdapter"); scenario.addChange(i2); ModifiabilityInstruction i3 =
-	 * new ModifiabilityInstruction(); i3.operation =
-	 * ModifiabilityOperation.CREATE; i3.element =
-	 * ModifiabilityElement.PROVIDEDROLE; i3.parameters.put("cname",
+	 * "ServiceAdapter"); scenario.addChange(i2); ModifiabilityInstruction i3 = new
+	 * ModifiabilityInstruction(); i3.operation = ModifiabilityOperation.CREATE;
+	 * i3.element = ModifiabilityElement.PROVIDEDROLE; i3.parameters.put("cname",
 	 * "org.cocome.tradingsystem.inventory.data.persistence.ServiceAdapter");
 	 * i3.parameters.put("iname", "ServiceAdapter"); scenario.addChange(i3);
-	 * ModifiabilityInstruction i4 = new ModifiabilityInstruction();
-	 * i4.operation = ModifiabilityOperation.CREATE; i4.element =
+	 * ModifiabilityInstruction i4 = new ModifiabilityInstruction(); i4.operation =
+	 * ModifiabilityOperation.CREATE; i4.element =
 	 * ModifiabilityElement.REQUIREDROLE; i4.parameters.put("cname",
-	 * "org.cocome.tradingsystem.inventory.data.Store");
-	 * i4.parameters.put("iname", "ServiceAdapter"); scenario.addChange(i4);
-	 * ModifiabilityInstruction i5 = new ModifiabilityInstruction();
-	 * i5.operation = ModifiabilityOperation.CREATE; i5.element =
-	 * ModifiabilityElement.REQUIREDROLE; i5.parameters.put("cname",
+	 * "org.cocome.tradingsystem.inventory.data.Store"); i4.parameters.put("iname",
+	 * "ServiceAdapter"); scenario.addChange(i4); ModifiabilityInstruction i5 = new
+	 * ModifiabilityInstruction(); i5.operation = ModifiabilityOperation.CREATE;
+	 * i5.element = ModifiabilityElement.REQUIREDROLE; i5.parameters.put("cname",
 	 * "org.cocome.tradingsystem.inventory.data.Enterprise");
 	 * i5.parameters.put("iname", "ServiceAdapter"); scenario.addChange(i5);
-	 * ModifiabilityInstruction i6 = new ModifiabilityInstruction();
-	 * i6.operation = ModifiabilityOperation.CREATE; i6.element =
+	 * ModifiabilityInstruction i6 = new ModifiabilityInstruction(); i6.operation =
+	 * ModifiabilityOperation.CREATE; i6.element =
 	 * ModifiabilityElement.REQUIREDROLE; i6.parameters.put("cname",
 	 * "org.cocome.tradingsystem.inventory.data.Persistence");
 	 * i6.parameters.put("iname", "ServiceAdapter"); scenario.addChange(i6);
-	 * ModifiabilityInstruction i7 = new ModifiabilityInstruction();
-	 * i7.operation = ModifiabilityOperation.CREATE; i7.element =
+	 * ModifiabilityInstruction i7 = new ModifiabilityInstruction(); i7.operation =
+	 * ModifiabilityOperation.CREATE; i7.element =
 	 * ModifiabilityElement.REQUIREDROLE; i7.parameters.put("cname",
 	 * "org.cocome.tradingsystem.inventory.data.UserManager");
-	 * i7.parameters.put("iname", "ServiceAdapter"); scenario.addChange(i7);
-	 * return scenario; }
+	 * i7.parameters.put("iname", "ServiceAdapter"); scenario.addChange(i7); return
+	 * scenario; }
 	 */
 	/*
 	 * SCENARIOS OF STPLUS+ private PCMScenario
 	 * createModifiabilityScenarioS1(ResponseMeasureType type, Comparable<Float>
 	 * response) { ModifiabilityPCMScenario scenario = new
 	 * ModifiabilityPCMScenario(OptimizationType.MINIMIZATION); PCMResult
-	 * expectedResult = new PCMResult(type);
-	 * expectedResult.setResponse(response);
-	 * scenario.setExpectedResponse(expectedResult); // ModifiabilityInstruction
-	 * i1 = new ModifiabilityInstruction(); i1.operation =
-	 * ModifiabilityOperation.MODIFY; i1.element =
-	 * ModifiabilityElement.INTERFACE; i1.parameters.put("name",
-	 * "IExternalPayment"); scenario.addChange(i1); ModifiabilityInstruction i2
-	 * = new ModifiabilityInstruction(); i2.operation =
-	 * ModifiabilityOperation.MODIFY; i2.element =
-	 * ModifiabilityElement.COMPONENT; i2.parameters.put("name",
-	 * "BusinessTripMgmt"); scenario.addChange(i2); // return scenario; }
-	 * private PCMScenario createModifiabilityScenarioS2(ResponseMeasureType
-	 * type, Comparable<Float> response) { ModifiabilityPCMScenario scenario =
-	 * new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION); PCMResult
-	 * expectedResult = new PCMResult(type);
-	 * expectedResult.setResponse(response);
-	 * scenario.setExpectedResponse(expectedResult); // ModifiabilityInstruction
-	 * i1 = new ModifiabilityInstruction(); i1.operation =
-	 * ModifiabilityOperation.MODIFY; i1.element =
-	 * ModifiabilityElement.INTERFACE; i1.parameters.put("name", "ITripDB");
-	 * scenario.addChange(i1); ModifiabilityInstruction i2 = new
-	 * ModifiabilityInstruction(); i2.operation = ModifiabilityOperation.CREATE;
-	 * i2.element = ModifiabilityElement.INTERFACE; i2.parameters.put("name",
-	 * "Analytics"); scenario.addChange(i2); ModifiabilityInstruction i3 = new
-	 * ModifiabilityInstruction(); i3.operation = ModifiabilityOperation.CREATE;
-	 * i3.element = ModifiabilityElement.OPERATION; i3.parameters.put("iname",
-	 * "Analytics"); i3.parameters.put("oname", "getLastTrips");
-	 * scenario.addChange(i3); ModifiabilityInstruction i4 = new
+	 * expectedResult = new PCMResult(type); expectedResult.setResponse(response);
+	 * scenario.setExpectedResponse(expectedResult); // ModifiabilityInstruction i1
+	 * = new ModifiabilityInstruction(); i1.operation =
+	 * ModifiabilityOperation.MODIFY; i1.element = ModifiabilityElement.INTERFACE;
+	 * i1.parameters.put("name", "IExternalPayment"); scenario.addChange(i1);
+	 * ModifiabilityInstruction i2 = new ModifiabilityInstruction(); i2.operation =
+	 * ModifiabilityOperation.MODIFY; i2.element = ModifiabilityElement.COMPONENT;
+	 * i2.parameters.put("name", "BusinessTripMgmt"); scenario.addChange(i2); //
+	 * return scenario; } private PCMScenario
+	 * createModifiabilityScenarioS2(ResponseMeasureType type, Comparable<Float>
+	 * response) { ModifiabilityPCMScenario scenario = new
+	 * ModifiabilityPCMScenario(OptimizationType.MINIMIZATION); PCMResult
+	 * expectedResult = new PCMResult(type); expectedResult.setResponse(response);
+	 * scenario.setExpectedResponse(expectedResult); // ModifiabilityInstruction i1
+	 * = new ModifiabilityInstruction(); i1.operation =
+	 * ModifiabilityOperation.MODIFY; i1.element = ModifiabilityElement.INTERFACE;
+	 * i1.parameters.put("name", "ITripDB"); scenario.addChange(i1);
+	 * ModifiabilityInstruction i2 = new ModifiabilityInstruction(); i2.operation =
+	 * ModifiabilityOperation.CREATE; i2.element = ModifiabilityElement.INTERFACE;
+	 * i2.parameters.put("name", "Analytics"); scenario.addChange(i2);
+	 * ModifiabilityInstruction i3 = new ModifiabilityInstruction(); i3.operation =
+	 * ModifiabilityOperation.CREATE; i3.element = ModifiabilityElement.OPERATION;
+	 * i3.parameters.put("iname", "Analytics"); i3.parameters.put("oname",
+	 * "getLastTrips"); scenario.addChange(i3); ModifiabilityInstruction i4 = new
 	 * ModifiabilityInstruction(); i4.operation = ModifiabilityOperation.CREATE;
 	 * i4.element = ModifiabilityElement.COMPONENT; i4.parameters.put("name",
 	 * "Insights"); scenario.addChange(i4); ModifiabilityInstruction i5 = new
 	 * ModifiabilityInstruction(); i5.operation = ModifiabilityOperation.CREATE;
-	 * i5.element = ModifiabilityElement.PROVIDEDROLE;
-	 * i5.parameters.put("cname", "Insights"); i5.parameters.put("iname",
-	 * "Analytics"); scenario.addChange(i5); ModifiabilityInstruction i6 = new
-	 * ModifiabilityInstruction(); i6.operation = ModifiabilityOperation.CREATE;
-	 * i6.element = ModifiabilityElement.REQUIREDROLE;
-	 * i6.parameters.put("cname", "Insights"); i6.parameters.put("iname",
-	 * "ITripDB"); scenario.addChange(i6);
+	 * i5.element = ModifiabilityElement.PROVIDEDROLE; i5.parameters.put("cname",
+	 * "Insights"); i5.parameters.put("iname", "Analytics"); scenario.addChange(i5);
+	 * ModifiabilityInstruction i6 = new ModifiabilityInstruction(); i6.operation =
+	 * ModifiabilityOperation.CREATE; i6.element =
+	 * ModifiabilityElement.REQUIREDROLE; i6.parameters.put("cname", "Insights");
+	 * i6.parameters.put("iname", "ITripDB"); scenario.addChange(i6);
 	 * 
 	 * return scenario; }
 	 */
 
-	@Deprecated //Can now be computed directly
+	@Deprecated // Can now be computed directly
 	public List<SillyBot> loadBotsWithInformation() {
 		ModifiabilityBot m1Bot = new ModifiabilityBot(/* 3, */ 115f, "m1", 120f);
 		ModifiabilityBot m2Bot = new ModifiabilityBot(/* 5, */ 190.5f, "m2", 300f);
@@ -4339,15 +3935,18 @@ public class LoadHelper {
 		p2Bot.printUtilies();
 		return ret;
 	}
+
 	public static void main(String[] args) {
 		Float responseTimeP1 = 0.6f;// 30f;
-		ArchitecturalVersion initialArchitecture=new ArchitecturalVersion("cocome-cloud","models/cocomeWithResourceDemands","");
-		initialArchitecture.setFullPathToAlternativeRepository("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithResourceDemands/alternativeRepository.repository");
-		PCMArchitectureInstance architecture = PerformanceScenarioHelper.createArchitecture(initialArchitecture,null);
-		AbstractPerformancePCMScenario scenarioP1=PerformanceScenarioHelper.getInstance().createScenario1Cocome();
+		ArchitecturalVersion initialArchitecture = new ArchitecturalVersion("cocome-cloud",
+				"models/cocomeWithResourceDemands", "");
+		initialArchitecture.setFullPathToAlternativeRepository(
+				"/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithResourceDemands/alternativeRepository.repository");
+		PCMArchitectureInstance architecture = PCMHelper.createArchitecture(initialArchitecture);
+		AbstractPerformancePCMScenario scenarioP1 = PerformanceScenarioHelper.getInstance().createScenario1Cocome();
 		PerformanceBot p1Bot = new PerformanceBot(
-				calculatePerformanceComplexityForScenario(
-						scenarioP1, architecture, initialArchitecture.getAbsolutePath()+"/"+initialArchitecture.getRepositoryFilename()),
+				calculatePerformanceComplexityForScenario(scenarioP1, architecture,
+						initialArchitecture.getAbsolutePath() + "/" + initialArchitecture.getRepositoryFilename()),
 				"p1", responseTimeP1);
 	}
 }

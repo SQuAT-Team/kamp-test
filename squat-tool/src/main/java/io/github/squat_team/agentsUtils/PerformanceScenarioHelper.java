@@ -1,17 +1,9 @@
 package io.github.squat_team.agentsUtils;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.concurrent.Executor;
 
-import org.palladiosimulator.pcm.allocation.Allocation;
-import org.palladiosimulator.pcm.repository.Repository;
-import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
-import org.palladiosimulator.pcm.usagemodel.UsageModel;
-
-import edu.squat.transformations.ArchitecturalVersion;
+import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.model.OptimizationType;
-import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMResult;
 import io.github.squat_team.model.ResponseMeasureType;
 import io.github.squat_team.performance.AbstractPerformancePCMScenario;
@@ -20,10 +12,8 @@ import io.github.squat_team.performance.PerformancePCMCPUScenario;
 import io.github.squat_team.performance.PerformancePCMUsageScenario;
 import io.github.squat_team.performance.PerformancePCMWokloadScenario;
 import io.github.squat_team.performance.peropteryx.ConcurrentPerOpteryxPCMBot;
-import io.github.squat_team.performance.peropteryx.PerOpteryxPCMBot;
 import io.github.squat_team.performance.peropteryx.configuration.ConfigurationImprovedImproved;
 import io.github.squat_team.performance.peropteryx.configuration.DesigndecisionConfigImproved;
-import io.github.squat_team.util.SQuATHelper;
 import test.TestConstants;
 
 public class PerformanceScenarioHelper {
@@ -35,6 +25,11 @@ public class PerformanceScenarioHelper {
 	private ConcurrentPerOpteryxPCMBot cocomeBotS2;
 	private ConcurrentPerOpteryxPCMBot cocomeBotS3;
 	private ConcurrentPerOpteryxPCMBot cocomeBotS4;
+	
+	private Float responseTimeP1 = 1.2f;// 0.6f;// 30f;
+	private Float responseTimeP2 = 1.4f;// 0.7f;// 40f;
+	private Float responseTimeP3 = 1.0f;// 0.5f;// 30f;
+	private Float responseTimeP4 = 2.4f;// 1.2f;// 40f;
 	
 	private static PerformanceScenarioHelper instance;
 	
@@ -61,6 +56,7 @@ public class PerformanceScenarioHelper {
 		cocomeBotS4=null;
 	}
 	
+	@Deprecated // never used
 	public static AbstractPerformancePCMScenario createScenarioOfWorkload() {
 		ArrayList<String> workloadIDs = new ArrayList<String>();
 		workloadIDs.add(TestConstants.WORKLOAD_ID);
@@ -73,6 +69,7 @@ public class PerformanceScenarioHelper {
 		return scenario;
 	}
 
+	@Deprecated // never used
 	public static AbstractPerformancePCMScenario createScenarioOfCPU() {
 		ArrayList<String> cpuIDs = new ArrayList<String>();
 		cpuIDs.add(TestConstants.CPU_ID);
@@ -94,7 +91,7 @@ public class PerformanceScenarioHelper {
 			AbstractPerformancePCMScenario scenario = new PerformancePCMWokloadScenario(OptimizationType.MINIMIZATION,
 					workloadIDs, 1.1);
 			PCMResult expectedResponse = new PCMResult(ResponseMeasureType.DECIMAL);
-			expectedResponse.setResponse(6.0);
+			expectedResponse.setResponse(responseTimeP1);
 			scenario.setExpectedResponse(expectedResponse);
 			scenario.setMetric(PerformanceMetric.RESPONSE_TIME);
 			cocomeS1=scenario;
@@ -110,7 +107,7 @@ public class PerformanceScenarioHelper {
 			AbstractPerformancePCMScenario scenario = new PerformancePCMWokloadScenario(OptimizationType.MINIMIZATION,
 					workloadIDs, 1.5);
 			PCMResult expectedResponse = new PCMResult(ResponseMeasureType.DECIMAL);
-			expectedResponse.setResponse(6.0);
+			expectedResponse.setResponse(responseTimeP2);
 			scenario.setExpectedResponse(expectedResponse);
 			scenario.setMetric(PerformanceMetric.RESPONSE_TIME);
 			cocomeS2=scenario;
@@ -125,7 +122,7 @@ public class PerformanceScenarioHelper {
 			AbstractPerformancePCMScenario scenario = new PerformancePCMCPUScenario(OptimizationType.MINIMIZATION,
 					cpuIDs, 0.5);
 			PCMResult expectedResponse = new PCMResult(ResponseMeasureType.DECIMAL);
-			expectedResponse.setResponse(6.0);
+			expectedResponse.setResponse(responseTimeP3);
 			scenario.setExpectedResponse(expectedResponse);
 			scenario.setMetric(PerformanceMetric.RESPONSE_TIME);
 			cocomeS3=scenario;
@@ -142,7 +139,7 @@ public class PerformanceScenarioHelper {
 			AbstractPerformancePCMScenario scenario = new PerformancePCMUsageScenario(OptimizationType.MINIMIZATION,
 					loopIDs, loopIterations);
 			PCMResult expectedResponse = new PCMResult(ResponseMeasureType.DECIMAL);
-			expectedResponse.setResponse(6.0);
+			expectedResponse.setResponse(responseTimeP4);
 			scenario.setExpectedResponse(expectedResponse);
 			scenario.setMetric(PerformanceMetric.RESPONSE_TIME);
 			cocomeS4=scenario;
@@ -160,7 +157,7 @@ public class PerformanceScenarioHelper {
 		designdecisionConfig.setLimits("_FM6FMK2VEeaxN4gXuIkS2A", 250, 800);
 	}
 
-	public ConcurrentPerOpteryxPCMBot createPCMBot(AbstractPerformancePCMScenario scenario) {
+	public AbstractPCMBot createPCMBot(AbstractPerformancePCMScenario scenario) {
 		if(scenario==cocomeS1&&cocomeBotS1!=null)
 			return cocomeBotS1;
 		if(scenario==cocomeS2&&cocomeBotS2!=null)
@@ -213,41 +210,5 @@ public class PerformanceScenarioHelper {
 		if(scenario==cocomeS4)
 			return "perfomanceBot4";
 		return null;
-	}
-	public static PCMArchitectureInstance createArchitecture(ArchitecturalVersion architecturalVersion, Executor executor) {
-		// create Instance
-		try{
-				Allocation allocation = SQuATHelper.loadAllocationModel("file:/" + architecturalVersion.getAbsolutePath()
-				+ File.separator + architecturalVersion.getAllocationFilename());
-		org.palladiosimulator.pcm.system.System system = SQuATHelper.loadSystemModel("file:/"
-				+ architecturalVersion.getAbsolutePath() + File.separator + architecturalVersion.getSystemFilename());
-		ResourceEnvironment resourceenvironment = SQuATHelper
-				.loadResourceEnvironmentModel("file:/" + architecturalVersion.getAbsolutePath() + File.separator
-						+ architecturalVersion.getResourceEnvironmentFilename());
-		Repository repository = SQuATHelper.loadRepositoryModel("file:/" + architecturalVersion.getAbsolutePath()
-				+ File.separator + architecturalVersion.getRepositoryFilename());
-		UsageModel usageModel = SQuATHelper.loadUsageModel("file:/" + architecturalVersion.getAbsolutePath()
-				+ File.separator + architecturalVersion.getUsageFilename());
-	
-		PCMArchitectureInstance architecture = new PCMArchitectureInstance(architecturalVersion.getFileName(),
-				repository, system, allocation, resourceenvironment, usageModel);
-		if (architecturalVersion.getFullPathToAlternativeRepository() != null) {
-			if(executor==null){
-				Repository repositoryAlternatives = SQuATHelper
-					.loadRepositoryModel("file:/" + architecturalVersion.getFullPathToAlternativeRepository());
-				architecture.setRepositoryWithAlternatives(repositoryAlternatives);
-			}else{
-				executor.execute(new BotModelLoading(architecturalVersion.getFullPathToAlternativeRepository(), architecture));
-			}
-			
-		}
-	
-		return architecture;
-		}catch (Exception e) {
-			System.out.println(architecturalVersion.getName());
-			System.err.println(e);
-			return null;
-		}
-		
 	}
 }

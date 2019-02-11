@@ -4,11 +4,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.powermock.api.mockito.PowerMockito;
+
+import edu.squat.transformations.ArchitecturalVersion;
 import io.github.squat_team.AbstractPCMBot;
+import io.github.squat_team.agentsUtils.ArchitecturalCopyCreator;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMResult;
 import io.github.squat_team.model.PCMScenarioResult;
 import io.github.squat_team.model.PCMTactic;
+import io.github.squat_team.util.PCMHelper;
 
 import static org.mockito.Mockito.*;
 
@@ -27,6 +32,30 @@ public class PCMBotMockLinker {
 	public PCMBotMockLinker(PCMBotMockBuilderResult originalBot, PCMArchitectureInstance initialArchitecture) {
 		this.originatingBot = originalBot;
 		this.originatingBotResponses = originalBot.getBot().searchForAlternatives(initialArchitecture);
+	}
+
+	private static ArchitecturalCopyCreator COPY_CREATOR_INSTANCE = null;
+	private static ArchitecturalCopyCreator getCopyCrator() {
+		if(COPY_CREATOR_INSTANCE == null) {
+			PowerMockito.mockStatic(ArchitecturalCopyCreator.class);
+			COPY_CREATOR_INSTANCE = mock(ArchitecturalCopyCreator.class);
+			when(ArchitecturalCopyCreator.getInstance()).thenReturn(COPY_CREATOR_INSTANCE);
+		}
+		return COPY_CREATOR_INSTANCE;
+	}
+	
+	public static ArchitecturalVersion generateArchitecturalVersion(PCMArchitectureInstance architecture,
+			String lastModifiedBy) {
+		ArchitecturalVersion architecturalVersion = new ArchitecturalVersion(architecture.getName(), "aPath", "");
+		link(architecture, architecturalVersion);
+		return architecturalVersion;
+	}
+
+	private static void link(PCMArchitectureInstance pcmArchitecture, ArchitecturalVersion architectureAsVersion) {
+		when(PCMHelper.createArchitecture(architectureAsVersion)).thenReturn(pcmArchitecture);
+		when(PCMHelper.createArchitecture(pcmArchitecture)).thenReturn(architectureAsVersion);
+		ArchitecturalCopyCreator copyCreator = getCopyCrator();
+		when(copyCreator.copy(eq(pcmArchitecture), any())).thenReturn(architectureAsVersion);
 	}
 
 	public void setResponses(Map<PCMBotMockBuilderResult, List<Comparable>> responses) {
@@ -71,12 +100,9 @@ public class PCMBotMockLinker {
 		PCMArchitectureInstance architecture = null;
 		if (bot.getProperties().isReturnArchitectures()) {
 			if (originalBotArchitecture == null) {
-				architecture = mock(PCMArchitectureInstance.class);
-				when(architecture.getName())
-						.thenReturn(originatingBot.getProperties().getName() + "At" + bot.getProperties().getName());
-			} else {
-				architecture = originalBotArchitecture;
+				throw new RuntimeException("No original bot response available");
 			}
+			architecture = originalBotArchitecture;
 		}
 		return architecture;
 	}
@@ -86,6 +112,8 @@ public class PCMBotMockLinker {
 		when(scenarioResult.getResultingArchitecture()).thenReturn(architecture);
 		when(scenarioResult.getOriginatingBot()).thenReturn(bot.getBot());
 		when(bot.getBot().analyze(originalBotArchitecture)).thenReturn(scenarioResult);
+		when(bot.getBot().analyze(originalBotArchitecture, null)).thenReturn(scenarioResult);
+		when(bot.getBot().analyze(eq(originalBotArchitecture), anyString())).thenReturn(scenarioResult);
 	}
 
 	private void linkBotWithTactics(PCMBotMockBuilderResult bot) {

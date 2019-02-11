@@ -12,10 +12,14 @@ import io.github.squat_team.algorithm.util.PCMBotMockBuilder;
 import io.github.squat_team.algorithm.util.PCMBotMockBuilderResult;
 import io.github.squat_team.algorithm.util.PCMBotMockLinker;
 import io.github.squat_team.algorithm.util.PCMBotMockProperties;
-import io.github.squat_team.model.PCMArchitectureInstance;
-import io.github.squat_team.model.PCMTactic;
+import io.github.squat_team.algorithm.util.ScenarioHelperMockBuilder;
+import io.github.squat_team.model.PCMResult;
+import io.github.squat_team.model.PCMScenario;
+import io.github.squat_team.negotiation.NegotiatorResult;
+import io.github.squat_team.performance.AbstractPerformancePCMScenario;
 
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 /**
  * Tests if the SQuAT algorithm is able to identify a candidate, which is
@@ -25,110 +29,177 @@ public class SimpleSQuATTest extends AbstractSQuATTest {
 
 	@Override
 	protected List<PCMBotMockBuilder> mockBots() {
-		PCMBotMockBuilder performanceBot = new PCMBotMockBuilder(PCMBotMockProperties.getDefaultPerformanceBot(20));
-		PCMBotMockBuilder modifiabilityBot = new PCMBotMockBuilder(PCMBotMockProperties.getDefaultModifiabilityBot(50));
-		return Arrays.asList(performanceBot, modifiabilityBot);
+		// PERFORMANCE
+		PCMBotMockProperties properties1 = PCMBotMockProperties.getDefaultPerformanceBot(20);
+		properties1.setName(PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_0");
+		PCMBotMockBuilder performanceBot1 = new PCMBotMockBuilder(properties1);
+
+		PCMBotMockProperties properties2 = PCMBotMockProperties.getDefaultPerformanceBot(20);
+		properties2.setName(PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_1");
+		PCMBotMockBuilder performanceBot2 = new PCMBotMockBuilder(properties2);
+
+		PCMBotMockProperties properties3 = PCMBotMockProperties.getDefaultPerformanceBot(20);
+		properties3.setName(PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_2");
+		PCMBotMockBuilder performanceBot3 = new PCMBotMockBuilder(properties3);
+
+		PCMBotMockProperties properties4 = PCMBotMockProperties.getDefaultPerformanceBot(20);
+		properties4.setName(PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_3");
+		PCMBotMockBuilder performanceBot4 = new PCMBotMockBuilder(properties4);
+
+		// MODIFIABILITY
+		PCMBotMockProperties properties5 = PCMBotMockProperties.getDefaultModifiabilityBot(50);
+		properties5.setName(PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_0");
+		PCMBotMockBuilder modifiabilityBot1 = new PCMBotMockBuilder(properties5);
+
+		PCMBotMockProperties properties6 = PCMBotMockProperties.getDefaultModifiabilityBot(50);
+		properties6.setName(PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_1");
+		PCMBotMockBuilder modifiabilityBot2 = new PCMBotMockBuilder(properties6);
+
+		PCMBotMockProperties properties7 = PCMBotMockProperties.getDefaultModifiabilityBot(50);
+		properties7.setName(PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_2");
+		PCMBotMockBuilder modifiabilityBot3 = new PCMBotMockBuilder(properties7);
+
+		PCMBotMockProperties properties8 = PCMBotMockProperties.getDefaultModifiabilityBot(50);
+		properties8.setName(PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_3");
+		PCMBotMockBuilder modifiabilityBot4 = new PCMBotMockBuilder(properties8);
+
+		return Arrays.asList(performanceBot1, performanceBot2, performanceBot3, performanceBot4, modifiabilityBot1,
+				modifiabilityBot2, modifiabilityBot3, modifiabilityBot4);
 	}
 
 	@Override
 	protected void mockAnalysisResponses(List<PCMBotMockBuilder> botBuilders) {
-		PCMBotMockBuilder performanceBot = botBuilders.get(0);
-		PCMBotMockBuilder modifiabilityBot = botBuilders.get(1);
-		
-		performanceBot.setAnalysisResponse(100);
-		modifiabilityBot.setAnalysisResponse(120);
+		PCMBotMockBuilder performanceBot1 = botBuilders.get(0);
+		PCMBotMockBuilder performanceBot2 = botBuilders.get(1);
+		PCMBotMockBuilder performanceBot3 = botBuilders.get(2);
+		PCMBotMockBuilder performanceBot4 = botBuilders.get(3);
+
+		PCMBotMockBuilder modifiabilityBot1 = botBuilders.get(4);
+		PCMBotMockBuilder modifiabilityBot2 = botBuilders.get(5);
+		PCMBotMockBuilder modifiabilityBot3 = botBuilders.get(6);
+		PCMBotMockBuilder modifiabilityBot4 = botBuilders.get(7);
+
+		performanceBot1.setAnalysisResponse(100f);
+		performanceBot2.setAnalysisResponse(101f);
+		performanceBot3.setAnalysisResponse(102f);
+		performanceBot4.setAnalysisResponse(103f);
+
+		modifiabilityBot1.setAnalysisResponse(120f);
+		modifiabilityBot2.setAnalysisResponse(121f);
+		modifiabilityBot3.setAnalysisResponse(122f);
+		modifiabilityBot4.setAnalysisResponse(123f);
 	}
 
 	@Override
 	protected void mockOptimizationResponses(List<PCMBotMockBuilder> botBuilders) {
-		PCMBotMockBuilder performanceBot = botBuilders.get(0);
-		PCMBotMockBuilder modifiabilityBot = botBuilders.get(1);
-		
-		performanceBot.addOptimizationResponse(25);
-		performanceBot.addOptimizationResponse(24);
-		performanceBot.addOptimizationResponse(23);
-		performanceBot.addOptimizationResponse(22);
-		performanceBot.addOptimizationResponse(21);
-		performanceBot.addOptimizationResponse(20);
-		performanceBot.addOptimizationResponse(18);
-		performanceBot.addOptimizationResponse(19);
-		performanceBot.addOptimizationResponse(26);
-		performanceBot.addOptimizationResponse(22);
+		PCMBotMockBuilder performanceBot1 = botBuilders.get(0);
+		PCMBotMockBuilder performanceBot2 = botBuilders.get(1);
+		PCMBotMockBuilder performanceBot3 = botBuilders.get(2);
+		PCMBotMockBuilder performanceBot4 = botBuilders.get(3);
 
-		modifiabilityBot.addOptimizationResponse(40, mock(PCMTactic.class));
-		modifiabilityBot.addOptimizationResponse(44, mock(PCMTactic.class));
-		modifiabilityBot.addOptimizationResponse(43, mock(PCMTactic.class));
-		modifiabilityBot.addOptimizationResponse(47, mock(PCMTactic.class));
-		modifiabilityBot.addOptimizationResponse(49, mock(PCMTactic.class));
-		modifiabilityBot.addOptimizationResponse(55, mock(PCMTactic.class));
-		modifiabilityBot.addOptimizationResponse(53, mock(PCMTactic.class));
-		modifiabilityBot.addOptimizationResponse(38, mock(PCMTactic.class));
-		modifiabilityBot.addOptimizationResponse(47, mock(PCMTactic.class));
-		modifiabilityBot.addOptimizationResponse(55, mock(PCMTactic.class));
+		PCMBotMockBuilder modifiabilityBot1 = botBuilders.get(4);
+		PCMBotMockBuilder modifiabilityBot2 = botBuilders.get(5);
+		PCMBotMockBuilder modifiabilityBot3 = botBuilders.get(6);
+		PCMBotMockBuilder modifiabilityBot4 = botBuilders.get(7);
+
+		performanceBot1.addOptimizationResponse(25f);
+		performanceBot1.addOptimizationResponse(24f);
+
+		performanceBot2.addOptimizationResponse(26f);
+		performanceBot2.addOptimizationResponse(27f);
+
+		performanceBot3.addOptimizationResponse(28f);
+		performanceBot3.addOptimizationResponse(29f);
+
+		performanceBot4.addOptimizationResponse(31f);
+		performanceBot4.addOptimizationResponse(30f);
+
+		modifiabilityBot1.addOptimizationResponse(42f);
+		modifiabilityBot1.addOptimizationResponse(41f);
+
+		modifiabilityBot2.addOptimizationResponse(40f);
+		modifiabilityBot2.addOptimizationResponse(44f);
+
+		modifiabilityBot3.addOptimizationResponse(43f);
+		modifiabilityBot3.addOptimizationResponse(45f);
+
+		modifiabilityBot4.addOptimizationResponse(47f);
+		modifiabilityBot4.addOptimizationResponse(46f);
 	}
 
 	@Override
 	protected void mockLinks(List<PCMBotMockBuilderResult> botResults) {
-		PCMBotMockLinker linker1 = new PCMBotMockLinker(botResults.get(0), initialArchitecture);
-		
-		// for results of performance bot
-		List<Comparable> modResponses = new ArrayList<Comparable>();
-		modResponses.add(48);
-		modResponses.add(70);
-		modResponses.add(53);
-		modResponses.add(47);
-		modResponses.add(50);
-		modResponses.add(37);
-		modResponses.add(31);
-		modResponses.add(45);
-		modResponses.add(44);
-		modResponses.add(49);
-		
-		HashMap<PCMBotMockBuilderResult, List<Comparable>> modResponsesMap = new HashMap<PCMBotMockBuilderResult, List<Comparable>>();
-		modResponsesMap.put(botResults.get(1), modResponses);
-		linker1.setResponses(modResponsesMap);
-		
-		List<PCMTactic> modTactics = new ArrayList<PCMTactic>();
-		modTactics.add(mock(PCMTactic.class));
-		modTactics.add(mock(PCMTactic.class));
-		modTactics.add(mock(PCMTactic.class));
-		modTactics.add(mock(PCMTactic.class));
-		modTactics.add(mock(PCMTactic.class));
-		modTactics.add(mock(PCMTactic.class));
-		modTactics.add(mock(PCMTactic.class));
-		modTactics.add(mock(PCMTactic.class));
-		modTactics.add(mock(PCMTactic.class));
-		modTactics.add(mock(PCMTactic.class));
-		
-		HashMap<PCMBotMockBuilderResult, List<PCMTactic>> modTacticsMap = new HashMap<PCMBotMockBuilderResult, List<PCMTactic>>();
-		modTacticsMap.put(botResults.get(1), modTactics);
-		linker1.setTactics(modTacticsMap);
-		
-		// for results of modifiability bot
-		PCMBotMockLinker linker2 = new PCMBotMockLinker(botResults.get(1), initialArchitecture);
-		
-		List<Comparable> perfResponses = new ArrayList<Comparable>();
-		perfResponses.add(28);
-		perfResponses.add(30);
-		perfResponses.add(34);
-		perfResponses.add(47);
-		perfResponses.add(24);
-		perfResponses.add(26);
-		perfResponses.add(31);
-		perfResponses.add(24);
-		perfResponses.add(22);
-		perfResponses.add(27);
-		
-		HashMap<PCMBotMockBuilderResult, List<Comparable>> perfResponsesMap = new HashMap<PCMBotMockBuilderResult, List<Comparable>>();
-		perfResponsesMap.put(botResults.get(0), perfResponses);
-		linker2.setResponses(perfResponsesMap);
+		// Simplified but general responses
+		for (PCMBotMockBuilderResult botResult : botResults) {
+			PCMBotMockLinker linkerBot1 = new PCMBotMockLinker(botResults.get(0), initialArchitecture);
+
+			HashMap<PCMBotMockBuilderResult, List<Comparable>> modResponsesMap = new HashMap<PCMBotMockBuilderResult, List<Comparable>>();
+			for (PCMBotMockBuilderResult otherBotResult : botResults) {
+				if (!otherBotResult.equals(botResult)) {
+					List<Comparable> responsesFromOtherBot = new ArrayList<Comparable>();
+					responsesFromOtherBot.add(11f);
+					responsesFromOtherBot.add(12f);
+					modResponsesMap.put(otherBotResult, responsesFromOtherBot);
+				}
+			}
+
+			linkerBot1.setResponses(modResponsesMap);
+			linkerBot1.link();
+		}
 	}
 
 	@Override
-	protected void validateResults(List<AbstractPCMBot> bots, PCMArchitectureInstance bestCandidate) {
-		// best result is result of the performance bot (index: 6; performance: 18; modifiability: 31)
-		assertEquals(18, bots.get(0).analyze(bestCandidate));
-		assertEquals(31, bots.get(1).analyze(bestCandidate));
+	protected void mockScenarios(List<AbstractPCMBot> bots) {
+		ScenarioHelperMockBuilder builder = new ScenarioHelperMockBuilder();
+
+		builder.setPerformanceBots(bots.subList(0, 4));
+		builder.setPerformanceScenarios(createMockedPerformanceScenarios());
+		builder.mockPerformanceScenarioHelper();
+
+		builder.setModifiabiliyBots(bots.subList(4, 8));
+		builder.setModifiabiliyScenarios(createMockedModifiabilityScenarios());
+		builder.mockModifiabilityScenarioHelper();
+	}
+
+	private List<AbstractPerformancePCMScenario> createMockedPerformanceScenarios() {
+		Float[] expectedResponses = {1.2f, 1.4f, 1.0f, 2.4f};
+		
+		List<AbstractPerformancePCMScenario> performanceScenarios = new ArrayList<>();
+		for (int i = 0; i < 4; i++) {
+			AbstractPerformancePCMScenario scenario = mock(AbstractPerformancePCMScenario.class);
+			PCMResult scenarioResult = mock(PCMResult.class);
+			when(scenarioResult.getResponse()).thenReturn(expectedResponses[i]);
+			when(scenario.getExpectedResult()).thenReturn(scenarioResult);
+			performanceScenarios.add(scenario);
+		}
+		return performanceScenarios;
+	}
+
+	private List<PCMScenario> createMockedModifiabilityScenarios() {
+		Float[] expectedResponses = {2270f,750f, 170f, 2180f};
+		
+		List<PCMScenario> modifiabilityScenarios = new ArrayList<>();
+		for (int i = 0; i < 4; i++) {
+			PCMScenario scenario = mock(PCMScenario.class);
+			PCMResult scenarioResult = mock(PCMResult.class);
+			when(scenarioResult.getResponse()).thenReturn(expectedResponses[i]); 
+			when(scenario.getExpectedResult()).thenReturn(scenarioResult);
+			modifiabilityScenarios.add(scenario);
+		}
+		return modifiabilityScenarios;
+	}
+
+	@Override
+	protected void validateResults(List<AbstractPCMBot> bots, NegotiatorResult result) {
+		// TODO: REMOVE
+		// best result is result of the performance bot (index: 6; performance: 18;
+		// modifiability: 31)
+
+		// assertEquals(18, bots.get(0).analyze(bestCandidate));
+		// assertEquals(31, bots.get(1).analyze(bestCandidate));
+
+		// TODO: NEW VALIDATION
+
 	}
 
 }

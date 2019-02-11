@@ -28,12 +28,39 @@ public class ModifiabilityTransformationsFactory {
 		List<ArchitecturalVersion> ret=new ArrayList<>();
 		this.currentInitialArchitecture=initialArchitecture;
 		resourceSet = HenshinResourceSetManager.getInstance().getHenshinResourceSet(currentInitialArchitecture.getAbsolutePath());
-		mergeRepository();
 		
-		ret.addAll(runWrapper());
+		
+		mergeRepository();
+		try{
+			ret.addAll(runWrapper());
+		} catch (Exception e) {
+			System.err.println("Error in Wrapper");
+		}
+		
+		removeSpecialCase(ret, "cocome-cloud-2-ProductBarcodeScannedEvent.repository");
+		removeSpecialCase(ret,"cocome-cloud-3-CashBoxClosedEvent.repository");
+		
 		List<ArchitecturalVersion> splitAlternatives=runSplitResp();
 		
+		removeSpecialCase(splitAlternatives, "cocome-cloud-2-ProductBarcodeScannedEvent.repository");
+		removeSpecialCase(splitAlternatives,"cocome-cloud-3-CashBoxClosedEvent.repository");
+	
 		ret.addAll(splitAlternatives);
+		
+		//ret=selectSubset(ret,20f);
+		if(ret.size()<=1)//For some reason, when we have only one result, this alternative is null
+			ret.clear();
+		else
+			splitRepository(ret);
+		
+		/*List<ArchitecturalVersion> splitAlternatives=runSplitResp();
+		
+		removeSpecialCase(splitAlternatives, "cocome-cloud-2-ProductBarcodeScannedEvent.repository");
+		removeSpecialCase(splitAlternatives,"cocome-cloud-3-CashBoxClosedEvent.repository");
+		
+		ret.addAll(splitAlternatives);
+		
+		
 		
 		splitRepository(ret);
 		
@@ -42,26 +69,59 @@ public class ModifiabilityTransformationsFactory {
 			resourceSet = HenshinResourceSetManager.getInstance().getHenshinResourceSet(currentInitialArchitecture.getAbsolutePath());
 			currentInitialArchitecture=architecturalVersion;
 			mergeRepository();
-			List<ArchitecturalVersion> ret2=runWrapper();
+			List<ArchitecturalVersion> ret2;
+			try{
+				ret2=runWrapper();
+			}catch (Exception e) {
+				ret2=new ArrayList<ArchitecturalVersion>();
+			}
 			ret.addAll(ret2);
 			splitRepository(ret2);
-		}
+		}*/
 		return ret;
+	}
+	
+	/**Select the first N architectures according to @param percentage
+	 * 
+	 * @param splitAlternatives
+	 * @param percentage
+	 * @return
+	 */
+	private List<ArchitecturalVersion> selectSubset(List<ArchitecturalVersion> splitAlternatives,
+			float percentage) {
+		int n=(int) ((percentage*splitAlternatives.size())/100f);
+		
+		return splitAlternatives.subList(0, n);
+	}
+
+	private void removeSpecialCase(List<ArchitecturalVersion> ret, String repositoryName) {
+		for (Iterator<ArchitecturalVersion> iterator = ret.iterator(); iterator.hasNext();) {
+			ArchitecturalVersion architecturalVersion = (ArchitecturalVersion) iterator.next();
+			if(architecturalVersion.getRepositoryFilename().equals(repositoryName)){
+				ret.remove(architecturalVersion);
+				return;
+			}
+		}
 	}
 
 	private void splitRepository(List<ArchitecturalVersion> ret) {
 		// remove alternative components
+		int i=0;
 		for (Iterator<ArchitecturalVersion> iterator = ret.iterator(); iterator.hasNext();) {
+			System.out.println("******************************************"+i+"/"+ret.size()+"*********************************************");i++;
 			ArchitecturalVersion architecturalVersion = (ArchitecturalVersion) iterator.next();
 			PCMArchitectureInstance loadedArchitecture = PCMHelper.createArchitecture(architecturalVersion);
 			
 			repoModifier.separateRepository(loadedArchitecture);
 			architecturalVersion.setFullPathToAlternativeRepository(loadedArchitecture.getRepositoryWithAlternatives().eResource().getURI().toFileString());
+			
 		}
 		PCMArchitectureInstance loadedInitialArchitecture = PCMHelper.createArchitecture(currentInitialArchitecture);
 		repoModifier.separateRepository(PCMHelper.createArchitecture(currentInitialArchitecture));
 		currentInitialArchitecture.setFullPathToAlternativeRepository(loadedInitialArchitecture.getRepositoryWithAlternatives().eResource().getURI().toFileString());
+		repoModifier=null;
 	}
+	
 
 	private void mergeRepository() {
 		repoModifier=new PCMRepositoryModifier(PCMHelper.createArchitecture(currentInitialArchitecture));

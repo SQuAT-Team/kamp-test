@@ -12,8 +12,8 @@ import static org.mockito.Mockito.*;
  * provides default settings for different bots.
  */
 public class PCMBotMockProperties {
-	protected final static String PERFORMANCE_BOT_DEFAULT_NAME = "PerformanceBot";
-	protected final static String MODIFIABILITY_BOT_DEFAULT_NAME = "ModifiabilityBot";
+	public final static String PERFORMANCE_BOT_DEFAULT_NAME = "PB";
+	public final static String MODIFIABILITY_BOT_DEFAULT_NAME = "MB";
 	
 	private String name;
 	private ResponseMeasureType responseMeasureType;
@@ -39,11 +39,10 @@ public class PCMBotMockProperties {
 		PCMBotMockProperties modifiabilityBotProperties = new PCMBotMockProperties();
 		modifiabilityBotProperties.setName(MODIFIABILITY_BOT_DEFAULT_NAME);
 		modifiabilityBotProperties.setExpectedResponse(expectedResponse);
-
-		// TODO: set values
+		modifiabilityBotProperties.setExpectedResponse(expectedResponse);
 		modifiabilityBotProperties.setOptimizationType(OptimizationType.MINIMIZATION);
 		modifiabilityBotProperties.setResponseMeasureType(ResponseMeasureType.DECIMAL);
-		modifiabilityBotProperties.setReturnArchitectures(false);
+		modifiabilityBotProperties.setReturnArchitectures(true);
 		return modifiabilityBotProperties;
 	}
 

@@ -28,7 +28,6 @@ import io.github.squat_team.model.ResponseMeasureType;
  * This class tests the creation and linking of mocked bots.
  */
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(ArchitectureTransformer.class)
 public class MockBuilderTests {
 	private static PCMArchitectureInstance initialArchitecture;
 	private static List<PCMTactic> bot2Tactics = generateTactics(6);
@@ -165,19 +164,19 @@ public class MockBuilderTests {
 
 		assertEquals(22.0, optimizationResults.get(0).getResult().getResponse());
 		assertEquals(null, optimizationResults.get(0).getAppliedTactic());
-		assertEquals(PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_0",
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_0",
 				optimizationResults.get(0).getResultingArchitecture().getName());
 		assertEquals(15.5, optimizationResults.get(1).getResult().getResponse());
 		assertEquals(null, optimizationResults.get(1).getAppliedTactic());
-		assertEquals(PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_1",
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_1",
 				optimizationResults.get(1).getResultingArchitecture().getName());
 		assertEquals(17.0, optimizationResults.get(2).getResult().getResponse());
 		assertEquals(null, optimizationResults.get(2).getAppliedTactic());
-		assertEquals(PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_2",
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_2",
 				optimizationResults.get(2).getResultingArchitecture().getName());
 		assertEquals(20.0, optimizationResults.get(3).getResult().getResponse());
 		assertEquals(null, optimizationResults.get(3).getAppliedTactic());
-		assertEquals(PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_3",
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_3",
 				optimizationResults.get(3).getResultingArchitecture().getName());
 
 		PCMScenarioResult optimizationResult = optimizationResults.get(3);
@@ -193,27 +192,27 @@ public class MockBuilderTests {
 
 		assertEquals(13.0, optimizationResults.get(0).getResult().getResponse());
 		assertEquals(bot2Tactics.get(0), optimizationResults.get(0).getAppliedTactic());
-		assertEquals(PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_0",
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_0",
 				optimizationResults.get(0).getResultingArchitecture().getName());
 		assertEquals(19.0, optimizationResults.get(1).getResult().getResponse());
 		assertEquals(bot2Tactics.get(1), optimizationResults.get(1).getAppliedTactic());
-		assertEquals(PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_1",
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_1",
 				optimizationResults.get(1).getResultingArchitecture().getName());
 		assertEquals(23.4, optimizationResults.get(2).getResult().getResponse());
 		assertEquals(bot2Tactics.get(2), optimizationResults.get(2).getAppliedTactic());
-		assertEquals(PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_2",
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_2",
 				optimizationResults.get(2).getResultingArchitecture().getName());
 		assertEquals(44.0, optimizationResults.get(3).getResult().getResponse());
 		assertEquals(bot2Tactics.get(3), optimizationResults.get(3).getAppliedTactic());
-		assertEquals(PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_3",
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_3",
 				optimizationResults.get(3).getResultingArchitecture().getName());
 		assertEquals(11.0, optimizationResults.get(4).getResult().getResponse());
 		assertEquals(bot2Tactics.get(4), optimizationResults.get(4).getAppliedTactic());
-		assertEquals(PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_4",
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_4",
 				optimizationResults.get(4).getResultingArchitecture().getName());
 		assertEquals(34.0, optimizationResults.get(5).getResult().getResponse());
 		assertEquals(bot2Tactics.get(5), optimizationResults.get(5).getAppliedTactic());
-		assertEquals(PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_5",
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_5",
 				optimizationResults.get(5).getResultingArchitecture().getName());
 
 		PCMScenarioResult optimizationResult = optimizationResults.get(5);
@@ -231,25 +230,25 @@ public class MockBuilderTests {
 				bot2.analyze(optimizationResults.get(0).getResultingArchitecture()).getResult().getResponse());
 		assertEquals(bot2LinkedTactics.get(0),
 				bot2.analyze(optimizationResults.get(0).getResultingArchitecture()).getAppliedTactic());
-		assertEquals(PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_0", bot2
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_0", bot2
 				.analyze(optimizationResults.get(0).getResultingArchitecture()).getResultingArchitecture().getName());
 		assertEquals(13.2,
 				bot2.analyze(optimizationResults.get(1).getResultingArchitecture()).getResult().getResponse());
 		assertEquals(bot2LinkedTactics.get(1),
 				bot2.analyze(optimizationResults.get(1).getResultingArchitecture()).getAppliedTactic());
-		assertEquals(PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_1", bot2
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_1", bot2
 				.analyze(optimizationResults.get(1).getResultingArchitecture()).getResultingArchitecture().getName());
 		assertEquals(14.2,
 				bot2.analyze(optimizationResults.get(2).getResultingArchitecture()).getResult().getResponse());
 		assertEquals(bot2LinkedTactics.get(2),
 				bot2.analyze(optimizationResults.get(2).getResultingArchitecture()).getAppliedTactic());
-		assertEquals(PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_2", bot2
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_2", bot2
 				.analyze(optimizationResults.get(2).getResultingArchitecture()).getResultingArchitecture().getName());
 		assertEquals(15.2,
 				bot2.analyze(optimizationResults.get(3).getResultingArchitecture()).getResult().getResponse());
 		assertEquals(bot2LinkedTactics.get(3),
 				bot2.analyze(optimizationResults.get(3).getResultingArchitecture()).getAppliedTactic());
-		assertEquals(PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_3", bot2
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_3", bot2
 				.analyze(optimizationResults.get(3).getResultingArchitecture()).getResultingArchitecture().getName());
 	}
 

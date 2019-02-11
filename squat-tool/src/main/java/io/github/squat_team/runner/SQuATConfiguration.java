@@ -3,6 +3,7 @@ package io.github.squat_team.runner;
 import java.util.HashSet;
 import java.util.Set;
 
+import edu.squat.transformations.ArchitecturalVersion;
 import io.github.squat_team.export.ExporterType;
 import io.github.squat_team.negotiation.SQuATSillyBotsNegotiatorFactory;
 
@@ -111,5 +112,12 @@ public class SQuATConfiguration {
 	public void setFilterBestAlternatives(boolean filterBestAlternatives) {
 		this.filterBestAlternatives = filterBestAlternatives;
 	};
+	
 
+	public ArchitecturalVersion createInitialArchitecture() {
+		ArchitecturalVersion initialArchitecture = new ArchitecturalVersion(this.getModelFileName(),
+				this.getModelPath(), "");
+		initialArchitecture.setFullPathToAlternativeRepository(this.getAlternativeRepositoryFullPath());
+		return initialArchitecture;
+	}
 }

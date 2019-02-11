@@ -84,5 +84,6 @@
 	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.wrap_1.5.0.201612100503.jar"/>
 	<classpathentry kind="lib" path="/edu.squat.transformations/lib/org.eclipse.emf.henshin.wrap_1.5.0.201701170502.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/squat.modifiability"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/squat.utils"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

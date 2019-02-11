@@ -13,7 +13,6 @@ import io.github.squat_team.agentsUtils.transformations.ArchitecturalTransformat
 import io.github.squat_team.export.ExportController;
 import io.github.squat_team.negotiation.ISQuATNegotiator;
 import io.github.squat_team.negotiation.NegotiatorResult;
-import io.github.squat_team.negotiation.SQuATSillyBotsNegotiator;
 
 public class SQuATController {
 
@@ -27,7 +26,8 @@ public class SQuATController {
 	public SQuATController(SQuATConfiguration configuration) {
 		this.configuration = configuration;
 		this.exporter.register(configuration.getExporters());
-		this.archTransFactory = new ArchitecturalTransformationsFactory(configuration);
+		this.archTransFactory = new ArchitecturalTransformationsFactory(configuration,
+				configuration.createInitialArchitecture());
 		this.currentLevelOfTransformations = 1;
 		this.noMoreAlternatives = false;
 	}
@@ -36,15 +36,16 @@ public class SQuATController {
 		return archTransFactory;
 	}
 
-	public void negotiatiateUntilAnAgreementIsReached() {
+	public NegotiatorResult negotiatiateUntilAnAgreementIsReached() {
 		ISQuATNegotiator negotiator = configuration.getNegotiatorFactory().getNegotiator(exporter);
+		NegotiatorResult negotiatorResult = null;
 
 		boolean agreement = false;
 		while (!agreement && (currentLevelOfTransformations <= configuration.getMaxNumberOfLevels())
 				&& !noMoreAlternatives) {
 			sillyBots = collectInitialProposals();
 			negotiator.initialize(sillyBots);
-			NegotiatorResult negotiatorResult = negotiator.negotiate();
+			negotiatorResult = negotiator.negotiate();
 
 			boolean redoRequest = true;
 			while (redoRequest && negotiatorResult.isSuccessful()) {
@@ -59,6 +60,7 @@ public class SQuATController {
 			currentLevelOfTransformations++;
 		}
 		System.out.println("Finish");
+		return agreement ? negotiatorResult : null;
 	}
 
 	private boolean askUserForRedo(NegotiatorResult result) {
@@ -120,7 +122,7 @@ public class SQuATController {
 	private void printTopAlternativesForBot(int topX, List<SillyBot> sillyBots) {
 		for (SillyBot sillyBot : sillyBots) {
 			List<Proposal> proposals = sillyBot.getOrderedProposals();
-			for (int i = 0; i < topX; i++) {
+			for (int i = 0; i < Math.min(topX, proposals.size()); i++) {
 				Proposal p = proposals.get(i);
 				System.out.print(p.getArchitectureName() + "\t" + p.getScenarioResponse() + "\t"
 						+ sillyBot.getUtilityFor(p) + "\t" + (i + 1) + "\t");
