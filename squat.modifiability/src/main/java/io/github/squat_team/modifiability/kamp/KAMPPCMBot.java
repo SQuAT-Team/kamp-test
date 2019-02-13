@@ -78,4 +78,10 @@ public class KAMPPCMBot extends AbstractPCMBot {
 		return results;
 	}
 
+	@Override
+	public PCMScenarioResult analyze(PCMArchitectureInstance currentArchitecture, String botName) {
+		PCMScenarioResult result = analyze(currentArchitecture);
+		return result;
+	}
+
 }

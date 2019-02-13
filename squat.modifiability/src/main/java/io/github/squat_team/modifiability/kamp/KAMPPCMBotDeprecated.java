@@ -457,4 +457,9 @@ public class KAMPPCMBotDeprecated extends AbstractPCMBot {
 	public List<PCMScenarioResult> searchForAlternatives(PCMArchitectureInstance currentArchitecture) {
 		return null;
 	}
+
+	@Override
+	public PCMScenarioResult analyze(PCMArchitectureInstance currentArchitecture, String botName) {
+		return analyze(currentArchitecture);
+	}
 }
