@@ -17,12 +17,8 @@ public class PCMScenarioResult {
 	}
 
 	//We should use a tri-state return type, instead a binary/integer return type
-	public int isSatisfied() throws Exception {
-		if(result == null || resultingArchitecture == null)
-			throw new Exception("Results haven't been calculated yet");
-		else {
-			return PCMScenarioSatisfaction.compute(this);
-		}
+	public int isSatisfied() {
+		return PCMScenarioSatisfaction.compute(this);
 	}
 
 	public AbstractPCMBot getOriginatingBot() {

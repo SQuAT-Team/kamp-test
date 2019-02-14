@@ -10,12 +10,12 @@ import io.github.squat_team.model.ResponseMeasureType;
 public class PCMScenarioSatisfaction {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static int compute(PCMScenarioResult scenarioResult) throws Exception {
+	public static int compute(PCMScenarioResult scenarioResult){
 		AbstractPCMBot originatingBot = scenarioResult.getOriginatingBot();
 		PCMResult result = scenarioResult.getResult();
 
 		if(result == null || scenarioResult.getResultingArchitecture() == null)
-			throw new Exception("Results haven't been calculated yet");
+			throw new RuntimeException("Results haven't been calculated yet");
 		
 		PCMScenario scenario = originatingBot.getScenario();
 		PCMResult expectedResult = scenario.getExpectedResult();
@@ -26,13 +26,16 @@ public class PCMScenarioSatisfaction {
 		if(scenarioResponseMeasureType.equals(resultResponseMeasureType)) {
 			Comparable expectedResponse = expectedResult.getResponse();
 			Comparable response = result.getResponse();
-			if(scenario.getType().equals(OptimizationType.MINIMIZATION))
+			if(scenario.getType().equals(OptimizationType.MINIMIZATION)) {
+				System.out.println(expectedResponse);
+				System.out.println(response);
 				return expectedResponse.compareTo(response);
+			}
 			else 
 			//if(scenario.getType().equals(OptimizationType.MAXIMIZATION)) {
 				return response.compareTo(expectedResponse);
 		}
 		else
-			throw new Exception("Incompatible response measure types");
+			throw new RuntimeException("Incompatible response measure types");
 	}
 }
