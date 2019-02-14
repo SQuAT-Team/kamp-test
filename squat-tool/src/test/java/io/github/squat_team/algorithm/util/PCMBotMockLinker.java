@@ -1,6 +1,5 @@
 package io.github.squat_team.algorithm.util;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,15 +26,20 @@ public class PCMBotMockLinker {
 	private PCMBotMockBuilderResult originatingBot;
 	private List<PCMScenarioResult> originatingBotResponses;
 	private Map<PCMBotMockBuilderResult, List<Comparable>> responses;
-	private Map<PCMBotMockBuilderResult, List<PCMTactic>> tactics = new HashMap<PCMBotMockBuilderResult, List<PCMTactic>>();
 
+	/**
+	 * Should be used for first level
+	 * 
+	 * @param originalBot
+	 * @param initialArchitecture
+	 */
 	public PCMBotMockLinker(PCMBotMockBuilderResult originalBot, PCMArchitectureInstance initialArchitecture) {
 		this.originatingBot = originalBot;
 		this.originatingBotResponses = originalBot.getBot().searchForAlternatives(initialArchitecture);
 	}
 
 	private static ArchitecturalCopyCreator COPY_CREATOR_INSTANCE = null;
-	private static ArchitecturalCopyCreator getCopyCrator() {
+	private static ArchitecturalCopyCreator getCopyCreator() {
 		if(COPY_CREATOR_INSTANCE == null) {
 			PowerMockito.mockStatic(ArchitecturalCopyCreator.class);
 			COPY_CREATOR_INSTANCE = mock(ArchitecturalCopyCreator.class);
@@ -46,7 +50,7 @@ public class PCMBotMockLinker {
 	
 	public static ArchitecturalVersion generateArchitecturalVersion(PCMArchitectureInstance architecture,
 			String lastModifiedBy) {
-		ArchitecturalVersion architecturalVersion = new ArchitecturalVersion(architecture.getName(), "aPath", "");
+		ArchitecturalVersion architecturalVersion = new ArchitecturalVersion(architecture.getName(), "aPath", lastModifiedBy);
 		link(architecture, architecturalVersion);
 		return architecturalVersion;
 	}
@@ -54,16 +58,12 @@ public class PCMBotMockLinker {
 	private static void link(PCMArchitectureInstance pcmArchitecture, ArchitecturalVersion architectureAsVersion) {
 		when(PCMHelper.createArchitecture(architectureAsVersion)).thenReturn(pcmArchitecture);
 		when(PCMHelper.createArchitecture(pcmArchitecture)).thenReturn(architectureAsVersion);
-		ArchitecturalCopyCreator copyCreator = getCopyCrator();
+		ArchitecturalCopyCreator copyCreator = getCopyCreator();
 		when(copyCreator.copy(eq(pcmArchitecture), any())).thenReturn(architectureAsVersion);
 	}
 
 	public void setResponses(Map<PCMBotMockBuilderResult, List<Comparable>> responses) {
 		this.responses = responses;
-	}
-
-	public void setTactics(Map<PCMBotMockBuilderResult, List<PCMTactic>> tactics) {
-		this.tactics = tactics;
 	}
 
 	public void link() {
@@ -73,11 +73,7 @@ public class PCMBotMockLinker {
 
 	private void linkBots() {
 		for (PCMBotMockBuilderResult bot : responses.keySet()) {
-			if (tactics.containsKey(bot)) {
-				linkBotWithTactics(bot);
-			} else {
 				linkBotWithoutTactics(bot);
-			}
 		}
 	}
 
@@ -116,19 +112,6 @@ public class PCMBotMockLinker {
 		when(bot.getBot().analyze(eq(originalBotArchitecture), anyString())).thenReturn(scenarioResult);
 	}
 
-	private void linkBotWithTactics(PCMBotMockBuilderResult bot) {
-		for (int i = 0; i < originatingBotResponses.size(); i++) {
-			PCMResult result = mockResult(bot, responses.get(bot).get(i));
-			PCMTactic tactic = tactics.get(bot).get(i);
-			PCMScenarioResult scenarioResult = mockScenarioResult(result, tactic);
-
-			PCMArchitectureInstance originalBotArchitecture = originatingBotResponses.get(i).getResultingArchitecture();
-			PCMArchitectureInstance architecture = mockArchitecture(bot, originalBotArchitecture);
-
-			mockBotResults(bot, scenarioResult, architecture, originalBotArchitecture);
-		}
-	}
-
 	private void linkBotWithoutTactics(PCMBotMockBuilderResult bot) {
 		for (int i = 0; i < originatingBotResponses.size(); i++) {
 			PCMResult result = mockResult(bot, responses.get(bot).get(i));
@@ -146,25 +129,10 @@ public class PCMBotMockLinker {
 		if (!responsesValid()) {
 			throw new IllegalArgumentException("Failed: wrong responses size or not set");
 		}
-		if (!tacticsValid()) {
-			throw new IllegalArgumentException("Failed: wrong tactics size or not set");
-		}
 	}
 
 	private boolean responsesValid() {
 		if (responses == null) {
-			return false;
-		}
-		for (PCMBotMockBuilderResult bot : responses.keySet()) {
-			if (responses.get(bot).size() != originatingBotResponses.size()) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-	private boolean tacticsValid() {
-		if (tactics == null) {
 			return false;
 		}
 		for (PCMBotMockBuilderResult bot : responses.keySet()) {

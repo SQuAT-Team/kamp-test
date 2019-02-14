@@ -79,15 +79,15 @@ public class SimpleSQuATTest extends AbstractSQuATTest {
 		PCMBotMockBuilder modifiabilityBot3 = botBuilders.get(6);
 		PCMBotMockBuilder modifiabilityBot4 = botBuilders.get(7);
 
-		performanceBot1.setAnalysisResponse(100f);
-		performanceBot2.setAnalysisResponse(101f);
-		performanceBot3.setAnalysisResponse(102f);
-		performanceBot4.setAnalysisResponse(103f);
+		performanceBot1.setAnalysisResponse(initialArchitecture, 100f);
+		performanceBot2.setAnalysisResponse(initialArchitecture, 101f);
+		performanceBot3.setAnalysisResponse(initialArchitecture, 102f);
+		performanceBot4.setAnalysisResponse(initialArchitecture, 103f);
 
-		modifiabilityBot1.setAnalysisResponse(120f);
-		modifiabilityBot2.setAnalysisResponse(121f);
-		modifiabilityBot3.setAnalysisResponse(122f);
-		modifiabilityBot4.setAnalysisResponse(123f);
+		modifiabilityBot1.setAnalysisResponse(initialArchitecture, 120f);
+		modifiabilityBot2.setAnalysisResponse(initialArchitecture, 121f);
+		modifiabilityBot3.setAnalysisResponse(initialArchitecture, 122f);
+		modifiabilityBot4.setAnalysisResponse(initialArchitecture, 123f);
 	}
 
 	@Override
@@ -102,29 +102,29 @@ public class SimpleSQuATTest extends AbstractSQuATTest {
 		PCMBotMockBuilder modifiabilityBot3 = botBuilders.get(6);
 		PCMBotMockBuilder modifiabilityBot4 = botBuilders.get(7);
 
-		performanceBot1.addOptimizationResponse(25f);
-		performanceBot1.addOptimizationResponse(24f);
+		performanceBot1.addOptimizationResponse(initialArchitecture, 25f);
+		performanceBot1.addOptimizationResponse(initialArchitecture, 24f);
 
-		performanceBot2.addOptimizationResponse(26f);
-		performanceBot2.addOptimizationResponse(27f);
+		performanceBot2.addOptimizationResponse(initialArchitecture, 26f);
+		performanceBot2.addOptimizationResponse(initialArchitecture, 27f);
 
-		performanceBot3.addOptimizationResponse(28f);
-		performanceBot3.addOptimizationResponse(29f);
+		performanceBot3.addOptimizationResponse(initialArchitecture, 28f);
+		performanceBot3.addOptimizationResponse(initialArchitecture, 29f);
 
-		performanceBot4.addOptimizationResponse(31f);
-		performanceBot4.addOptimizationResponse(30f);
+		performanceBot4.addOptimizationResponse(initialArchitecture, 31f);
+		performanceBot4.addOptimizationResponse(initialArchitecture, 30f);
 
-		modifiabilityBot1.addOptimizationResponse(42f);
-		modifiabilityBot1.addOptimizationResponse(41f);
+		modifiabilityBot1.addOptimizationResponse(initialArchitecture, 42f);
+		modifiabilityBot1.addOptimizationResponse(initialArchitecture, 41f);
 
-		modifiabilityBot2.addOptimizationResponse(40f);
-		modifiabilityBot2.addOptimizationResponse(44f);
+		modifiabilityBot2.addOptimizationResponse(initialArchitecture, 40f);
+		modifiabilityBot2.addOptimizationResponse(initialArchitecture, 44f);
 
-		modifiabilityBot3.addOptimizationResponse(43f);
-		modifiabilityBot3.addOptimizationResponse(45f);
+		modifiabilityBot3.addOptimizationResponse(initialArchitecture, 43f);
+		modifiabilityBot3.addOptimizationResponse(initialArchitecture, 45f);
 
-		modifiabilityBot4.addOptimizationResponse(47f);
-		modifiabilityBot4.addOptimizationResponse(46f);
+		modifiabilityBot4.addOptimizationResponse(initialArchitecture, 47f);
+		modifiabilityBot4.addOptimizationResponse(initialArchitecture, 46f);
 	}
 
 	@Override

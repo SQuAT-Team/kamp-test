@@ -21,13 +21,9 @@ import io.github.squat_team.agentsUtils.PerformanceScenarioHelper;
 import io.github.squat_team.algorithm.util.PCMBotMockBuilder;
 import io.github.squat_team.algorithm.util.PCMBotMockBuilderResult;
 import io.github.squat_team.algorithm.util.PCMBotMockLinker;
-import io.github.squat_team.algorithm.util.ScenarioHelperMockBuilder;
-import io.github.squat_team.export.ExporterType;
 import io.github.squat_team.model.PCMArchitectureInstance;
-import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.negotiation.NegotiatorResult;
 import io.github.squat_team.negotiation.SQuATSillyBotsNegotiatorFactory;
-import io.github.squat_team.performance.AbstractPerformancePCMScenario;
 import io.github.squat_team.runner.SQuATConfiguration;
 import io.github.squat_team.runner.SQuATController;
 import io.github.squat_team.util.PCMHelper;
@@ -117,7 +113,7 @@ public abstract class AbstractSQuATTest {
 	protected List<PCMBotMockBuilderResult> buildBots(List<PCMBotMockBuilder> botBuilder) throws Exception {
 		List<PCMBotMockBuilderResult> botResults = new ArrayList<PCMBotMockBuilderResult>();
 		for (PCMBotMockBuilder builder : botBuilder) {
-			botResults.add(builder.build(initialArchitecture));
+			botResults.add(builder.build());
 		}
 		return botResults;
 	}

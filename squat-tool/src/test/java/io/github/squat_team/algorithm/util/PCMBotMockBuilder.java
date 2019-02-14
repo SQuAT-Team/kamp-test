@@ -1,17 +1,14 @@
 package io.github.squat_team.algorithm.util;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMResult;
 import io.github.squat_team.model.PCMScenarioResult;
-import io.github.squat_team.model.PCMTactic;
-import io.github.squat_team.modifiability.kamp.KAMPPCMBot;
-import io.github.squat_team.performance.AbstractPerformancePCMScenario;
-import io.github.squat_team.performance.peropteryx.AbstractPerOpteryxPCMBot;
-import io.github.squat_team.utility.PCMScenarioSatisfaction;
 
 import static org.mockito.Mockito.*;
 
@@ -21,8 +18,8 @@ import static org.mockito.Mockito.*;
  */
 public class PCMBotMockBuilder {
 	private PCMBotMockProperties properties;
-	private PCMScenarioResult analysisResponse = mock(PCMScenarioResult.class);
-	private List<PCMScenarioResult> optimizationResponses = new ArrayList<PCMScenarioResult>();
+	private Map<PCMArchitectureInstance, PCMScenarioResult> analysisResponse = new HashMap<>();
+	private Map<PCMArchitectureInstance, List<PCMScenarioResult>> optimizationResponses = new HashMap<>();
 
 	/**
 	 * Initializes the builder.
@@ -40,12 +37,16 @@ public class PCMBotMockBuilder {
 	 * 
 	 * @param initialArchitecture
 	 * @return the bot and the used properties to create it.
-	 * @throws Exception 
+	 * @throws Exception
 	 */
-	public PCMBotMockBuilderResult build(PCMArchitectureInstance initialArchitecture) throws Exception {
+	public PCMBotMockBuilderResult build() throws Exception {
 		AbstractPCMBot bot = mockBot();
-		mockAnalysisFinal(bot, initialArchitecture);
-		mockOptimizationFinal(bot, initialArchitecture);
+		for (PCMArchitectureInstance architecture : analysisResponse.keySet()) {
+			mockAnalysisFinal(bot, architecture);
+		}
+		for (PCMArchitectureInstance architecture : optimizationResponses.keySet()) {
+			mockOptimizationFinal(bot, architecture);
+		}
 		return new PCMBotMockBuilderResult(properties, bot);
 	}
 
@@ -55,46 +56,49 @@ public class PCMBotMockBuilder {
 		return bot;
 	}
 
-	private AbstractPCMBot mockAnalysisFinal(AbstractPCMBot bot, PCMArchitectureInstance initialArchitecture) throws Exception {
-		when(analysisResponse.getOriginatingBot()).thenReturn(bot);
-		when(analysisResponse.getResultingArchitecture()).thenReturn(initialArchitecture);
-		when(analysisResponse.getAppliedTactic()).thenReturn(null);
-		
+	private AbstractPCMBot mockAnalysisFinal(AbstractPCMBot bot, PCMArchitectureInstance architecture)
+			throws Exception {
+		PCMScenarioResult scenarioResult = analysisResponse.get(architecture);
+
+		when(scenarioResult.getOriginatingBot()).thenReturn(bot);
+		when(scenarioResult.getResultingArchitecture()).thenReturn(architecture);
+		when(scenarioResult.getAppliedTactic()).thenReturn(null);
+
 		// Currently this response is not used!
-		//int satisfaction = PCMScenarioSatisfaction.compute(analysisResponse);
-		//when(analysisResponse.isSatisfied()).thenReturn(satisfaction);
-		when(bot.analyze(initialArchitecture)).thenReturn(analysisResponse);
-		when(bot.analyze(initialArchitecture, null)).thenReturn(analysisResponse);
-		when(bot.analyze(eq(initialArchitecture), anyString())).thenReturn(analysisResponse);
+		// int satisfaction = PCMScenarioSatisfaction.compute(analysisResponse);
+		// when(analysisResponse.isSatisfied()).thenReturn(satisfaction);
+		when(bot.analyze(architecture)).thenReturn(scenarioResult);
+		when(bot.analyze(architecture, null)).thenReturn(scenarioResult);
+		when(bot.analyze(eq(architecture), anyString())).thenReturn(scenarioResult);
 		return bot;
 	}
 
-	private AbstractPCMBot mockOptimizationFinal(AbstractPCMBot bot, PCMArchitectureInstance initialArchitecture) throws Exception {
-		for (PCMScenarioResult optimizationResponse : optimizationResponses) {
+	private AbstractPCMBot mockOptimizationFinal(AbstractPCMBot bot, PCMArchitectureInstance architecture)
+			throws Exception {
+		for (PCMScenarioResult optimizationResponse : optimizationResponses.get(architecture)) {
 			when(optimizationResponse.getOriginatingBot()).thenReturn(bot);
-			
+
 			// TODO: move to method
 			PCMArchitectureInstance resultingArchitecture = mock(PCMArchitectureInstance.class);
-			String architectureName = initialArchitecture.getName() +"_"+properties.getName()+"_"+optimizationResponses.indexOf(optimizationResponse);
+			String architectureName = architecture.getName() + "_" + properties.getName() + "_"
+					+ optimizationResponses.get(architecture).indexOf(optimizationResponse);
 			when(resultingArchitecture.getName()).thenReturn(architectureName);
 			when(optimizationResponse.getResultingArchitecture()).thenReturn(resultingArchitecture);
-			
+
 			PCMBotMockLinker.generateArchitecturalVersion(resultingArchitecture, properties.getName());
-			
-			// Currently this response is not used!
-			// int satisfaction = PCMScenarioSatisfaction.compute(optimizationResponse);
-			// when(optimizationResponse.isSatisfied()).thenReturn(satisfaction);
 			allowReanalysis(bot, optimizationResponse);
 		}
-		when(bot.searchForAlternatives(initialArchitecture)).thenReturn(optimizationResponses);
+		when(bot.searchForAlternatives(architecture)).thenReturn(optimizationResponses.get(architecture));
 		return bot;
 	}
 
 	/**
 	 * The bot should be able to analyze the architecture found by itself again.
-	 * @throws Exception 
+	 * 
+	 * @throws Exception
 	 */
-	private AbstractPCMBot allowReanalysis(AbstractPCMBot bot, PCMScenarioResult optimizationResponse) throws Exception {
+	private AbstractPCMBot allowReanalysis(AbstractPCMBot bot, PCMScenarioResult optimizationResponse)
+			throws Exception {
 		if (optimizationResponse.getResultingArchitecture() != null) {
 			PCMScenarioResultMockCloner cloner = new PCMScenarioResultMockCloner();
 			// reanalysis will not return the same object, so create a new one
@@ -104,17 +108,15 @@ public class PCMBotMockBuilder {
 		return bot;
 	}
 
-	public void setAnalysisResponse(Comparable response) {
-		PCMResult initialResult = mock(PCMResult.class);
-		when(initialResult.getResponse()).thenReturn(response);
-		when(initialResult.getResponseMeasureType()).thenReturn(properties.getResponseMeasureType());
-		when(analysisResponse.getResult()).thenReturn(initialResult);
+	public void setAnalysisResponse(PCMArchitectureInstance architecture, Comparable response) {
+		analysisResponse.put(architecture, mockScenarioResult(response));
 	}
 
-	public void addOptimizationResponse(Comparable response, PCMTactic appliedTactic) {
-		PCMScenarioResult scenarioResult = mockScenarioResult(mockResult(response), appliedTactic);
-		//mockResultingArchitecture(scenarioResult);
-		optimizationResponses.add(scenarioResult);
+	private PCMScenarioResult mockScenarioResult(Comparable response) {
+		PCMScenarioResult scenarioResult = mock(PCMScenarioResult.class);
+		PCMResult result = mockResult(response);
+		when(scenarioResult.getResult()).thenReturn(result);
+		return scenarioResult;
 	}
 
 	private PCMResult mockResult(Comparable response) {
@@ -124,46 +126,28 @@ public class PCMBotMockBuilder {
 		return result;
 	}
 
-	private PCMScenarioResult mockScenarioResult(PCMResult result, PCMTactic appliedTactic) {
-		PCMScenarioResult scenarioResult = mock(PCMScenarioResult.class);
-		when(scenarioResult.getResult()).thenReturn(result);
-		when(scenarioResult.getAppliedTactic()).thenReturn(appliedTactic);
-		return scenarioResult;
+	public void addOptimizationResponse(PCMArchitectureInstance architecture, Comparable response) {
+		PCMScenarioResult scenarioResult = mockScenarioResult(response);
+		List<PCMScenarioResult> results = getResponsesFor(architecture);
+		results.add(scenarioResult);
 	}
 
-	private PCMArchitectureInstance mockResultingArchitecture(PCMScenarioResult scenarioResult) {
-		PCMArchitectureInstance architecture = null;
-		if (properties.isReturnArchitectures()) {
-			architecture = mock(PCMArchitectureInstance.class);
-			when(architecture.getName()).thenReturn(properties.getName() + "_" + optimizationResponses.size());
-		} // TODO: Else case: Tactic must build this architecture
-		when(scenarioResult.getResultingArchitecture()).thenReturn(architecture);
-		return architecture;
-	}
-
-	public void addOptimizationResponse(Comparable response) {
-		addOptimizationResponse(response, null);
-	}
-
-	public void addOptimizationResponses(List<Comparable> responses, List<PCMTactic> appliedTactics) {
-		checkEqualListSize(responses, appliedTactics);
-
-		for (int i = 0; i < responses.size(); i++) {
-			addOptimizationResponse(responses.get(i), appliedTactics.get(i));
+	public void addOptimizationResponses(PCMArchitectureInstance architecture, List<Comparable> responses) {
+		List<PCMScenarioResult> results = getResponsesFor(architecture);
+		List<PCMScenarioResult> resultsToAppend = new ArrayList<>();
+		for(Comparable response : responses) {
+			resultsToAppend.add(mockScenarioResult(response));
 		}
+		results.addAll(resultsToAppend);
 	}
-
-	public void addOptimizationResponses(List<Comparable> responses) {
-		for (int i = 0; i < responses.size(); i++) {
-			addOptimizationResponse(responses.get(i));
+	
+	private List<PCMScenarioResult> getResponsesFor(PCMArchitectureInstance architecture) {
+		List<PCMScenarioResult> results = optimizationResponses.get(architecture);
+		if (results == null) {
+			results = new ArrayList<>();
+			optimizationResponses.put(architecture, results);
 		}
-	}
-
-	private void checkEqualListSize(List<Comparable> responses, List<PCMTactic> appliedTactics) {
-		if (responses.size() != appliedTactics.size()) {
-			throw new IllegalArgumentException("Both lists must have the same length, but length was "
-					+ responses.size() + " and " + appliedTactics.size());
-		}
+		return results;
 	}
 
 }

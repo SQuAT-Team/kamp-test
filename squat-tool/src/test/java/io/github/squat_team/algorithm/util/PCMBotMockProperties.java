@@ -7,13 +7,15 @@ import io.github.squat_team.model.ResponseMeasureType;
 
 import static org.mockito.Mockito.*;
 
+import edu.squat.transformations.ArchitecturalVersion;
+
 /**
  * Contains all required values for the construction of a mocked Bot. Also
  * provides default settings for different bots.
  */
 public class PCMBotMockProperties {
-	public final static String PERFORMANCE_BOT_DEFAULT_NAME = "PB";
-	public final static String MODIFIABILITY_BOT_DEFAULT_NAME = "MB";
+	public final static String PERFORMANCE_BOT_DEFAULT_NAME = ArchitecturalVersion.PERFORMANCE;
+	public final static String MODIFIABILITY_BOT_DEFAULT_NAME = ArchitecturalVersion.MODIFIABILITY;
 	
 	private String name;
 	private ResponseMeasureType responseMeasureType;
