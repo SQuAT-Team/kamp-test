@@ -25,7 +25,6 @@ public class PCMScenarioResultMockCloner {
 		AbstractPCMBot bot = optimizationResponse.getOriginatingBot();
 		PCMTactic tactic = optimizationResponse.getAppliedTactic();
 		PCMArchitectureInstance architecture = optimizationResponse.getResultingArchitecture();
-		int satisfaction = optimizationResponse.isSatisfied();
 
 		when(clonedResult.getResponse()).thenReturn(response);
 		when(clonedResult.getResponseMeasureType()).thenReturn(responseMeasureType);
@@ -34,7 +33,7 @@ public class PCMScenarioResultMockCloner {
 		when(clonedScenarioResult.getOriginatingBot()).thenReturn(bot);
 		when(clonedScenarioResult.getAppliedTactic()).thenReturn(tactic);
 		when(clonedScenarioResult.getResultingArchitecture()).thenReturn(architecture);
-		when(clonedScenarioResult.isSatisfied()).thenReturn(satisfaction);
+		when(clonedScenarioResult.isSatisfied()).thenCallRealMethod();
 
 		mockArchitecturalVersion(architecture);
 
