@@ -6,10 +6,6 @@ public class SQuATRunner {
 		SQuATConfiguration configuration = SQuATConfiguration.generateDefault();
 		SQuATController controller = new SQuATController(configuration);
 		controller.negotiatiateUntilAnAgreementIsReached();
-		
-		//SQuATSillyBotsNegotiator squat=new SQuATSillyBotsNegotiator();
-		////squat.getArchTransFactory().preLoadModelsFrom("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithResourceDemands",1);
-		//squat.negotiatiateUntilAnAgreementIsReached();
 	}
 
 }

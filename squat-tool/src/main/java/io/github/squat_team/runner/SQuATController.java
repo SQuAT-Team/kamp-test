@@ -1,5 +1,6 @@
 package io.github.squat_team.runner;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
@@ -36,8 +37,9 @@ public class SQuATController {
 		return archTransFactory;
 	}
 
-	public NegotiatorResult negotiatiateUntilAnAgreementIsReached() {
+	public List<NegotiatorResult> negotiatiateUntilAnAgreementIsReached() {
 		ISQuATNegotiator negotiator = configuration.getNegotiatorFactory().getNegotiator(exporter);
+		List<NegotiatorResult> negotiatorResultsForLevels = new ArrayList<>();
 		NegotiatorResult negotiatorResult = null;
 
 		boolean agreement = false;
@@ -57,10 +59,13 @@ public class SQuATController {
 			if (configuration.shouldFilterBestAlternatives()) {
 				filterBestKAlternatives(configuration.getSeedSelectionSize());
 			}
+			if(agreement) {
+				negotiatorResultsForLevels.add(negotiatorResult);	
+			}
 			currentLevelOfTransformations++;
 		}
 		System.out.println("Finish");
-		return agreement ? negotiatorResult : null;
+		return negotiatorResultsForLevels;
 	}
 
 	private boolean askUserForRedo(NegotiatorResult result) {

@@ -54,7 +54,7 @@ public abstract class AbstractSQuATTest {
 
 	@Test
 	public void test() throws Exception {
-		NegotiatorResult result = executeNegotiation(bots);
+		List<NegotiatorResult> result = executeNegotiation(bots);
 		validateResults(bots, result);
 	}
 
@@ -98,7 +98,7 @@ public abstract class AbstractSQuATTest {
 	 * @param result
 	 *            contains all results found by the negotiation.
 	 */
-	protected abstract void validateResults(List<AbstractPCMBot> bots, NegotiatorResult result);
+	protected abstract void validateResults(List<AbstractPCMBot> bots, List<NegotiatorResult> result);
 
 	//TODO
 	protected abstract void mockScenarios(List<AbstractPCMBot> bots);
@@ -126,7 +126,7 @@ public abstract class AbstractSQuATTest {
 		return bots;
 	}
 
-	protected NegotiatorResult executeNegotiation(List<AbstractPCMBot> bots) throws Exception {
+	protected List<NegotiatorResult> executeNegotiation(List<AbstractPCMBot> bots) throws Exception {
 		SQuATConfiguration configuration = mock(SQuATConfiguration.class);
 		when(configuration.createInitialArchitecture()).thenReturn(initialArchitectureAsVersion);
 

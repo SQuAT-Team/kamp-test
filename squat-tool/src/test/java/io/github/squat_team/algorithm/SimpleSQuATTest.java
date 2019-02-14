@@ -190,7 +190,7 @@ public class SimpleSQuATTest extends AbstractSQuATTest {
 	}
 
 	@Override
-	protected void validateResults(List<AbstractPCMBot> bots, NegotiatorResult result) {
+	protected void validateResults(List<AbstractPCMBot> bots, List<NegotiatorResult> results) {
 		// TODO: REMOVE
 		// best result is result of the performance bot (index: 6; performance: 18;
 		// modifiability: 31)
