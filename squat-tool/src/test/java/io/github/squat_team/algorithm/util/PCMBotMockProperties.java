@@ -18,14 +18,12 @@ public class PCMBotMockProperties {
 	public final static String MODIFIABILITY_BOT_DEFAULT_NAME = ArchitecturalVersion.MODIFIABILITY;
 	
 	private String name;
-	private ResponseMeasureType responseMeasureType;
-	private Comparable expectedResponse;
 	private OptimizationType optimizationType;
 
 	private boolean returnArchitectures;
 
 	private PCMScenario scenario = mock(PCMScenario.class);
-	private PCMResult result = mock(PCMResult.class);
+	private PCMResult result = new PCMResult(ResponseMeasureType.DECIMAL);
 
 	public static PCMBotMockProperties getDefaultPerformanceBot(Comparable expectedResponse) {
 		PCMBotMockProperties performanceBotProperties = new PCMBotMockProperties();
@@ -62,21 +60,19 @@ public class PCMBotMockProperties {
 	}
 
 	public ResponseMeasureType getResponseMeasureType() {
-		return responseMeasureType;
+		return result.getResponseMeasureType();
 	}
 
 	public void setResponseMeasureType(ResponseMeasureType responseMeasureType) {
-		this.responseMeasureType = responseMeasureType;
-		when(result.getResponseMeasureType()).thenReturn(this.responseMeasureType);
+		result.setResponseMeasureType(responseMeasureType);
 	}
 
 	public Comparable getExpectedResponse() {
-		return expectedResponse;
+		return result.getResponse();
 	}
 
 	public void setExpectedResponse(Comparable expectedResponse) {
-		this.expectedResponse = expectedResponse;
-		when(result.getResponse()).thenReturn(this.expectedResponse);
+		result.setResponse(expectedResponse);
 	}
 
 	public OptimizationType getOptimizationType() {

@@ -9,6 +9,7 @@ import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMResult;
 import io.github.squat_team.model.PCMScenarioResult;
+import io.github.squat_team.utility.PCMScenarioSatisfaction;
 
 import static org.mockito.Mockito.*;
 
@@ -116,13 +117,13 @@ public class PCMBotMockBuilder {
 		PCMScenarioResult scenarioResult = mock(PCMScenarioResult.class);
 		PCMResult result = mockResult(response);
 		when(scenarioResult.getResult()).thenReturn(result);
+		when(scenarioResult.isSatisfied()).thenCallRealMethod();
 		return scenarioResult;
 	}
 
 	private PCMResult mockResult(Comparable response) {
-		PCMResult result = mock(PCMResult.class);
-		when(result.getResponse()).thenReturn(response);
-		when(result.getResponseMeasureType()).thenReturn(properties.getResponseMeasureType());
+		PCMResult result = new PCMResult(properties.getResponseMeasureType());
+		result.setResponse(response);
 		return result;
 	}
 
