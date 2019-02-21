@@ -55,7 +55,7 @@ public class LoadHelper {
 	}
 
 	private List<SillyBot> getCocomeAlternatives(List<ArchitecturalVersion> architecturalAlternatives,
-			ArchitecturalVersion initialArchitecture) {
+			ArchitecturalVersion initialArchitecture) {		
 		List<SillyBot> ret = new ArrayList<>();
 		
 		PCMScenario m1Scenario = ModifiabilityScenarioHelper.getInstance().createScenario1Cocome();
@@ -125,15 +125,15 @@ public class LoadHelper {
 			// ExecutorService executor2 = Executors.newFixedThreadPool(4);
 			int i = 1;
 
-			for (Iterator<ArchitecturalVersion> iterator = architecturalAlternatives.iterator(); iterator.hasNext();) {
-				ArchitecturalVersion architecturalVersion = iterator.next();
+			for (ArchitecturalVersion architecturalVersion : architecturalAlternatives) {
 				java.lang.System.out.println("********MODIFIABILITY: LOADING " + i + " OF "
 						+ architecturalAlternatives.size() + " ARCHITECTURAL ALTERNATIVES INTO THE BOTS***********");
 				i++;
 				// model = this.loadSpecificModel(architecturalVersion);
 
-				java.lang.System.out.println(architecturalVersion.getName());
-				architecture = PCMHelper.createArchitecture(initialArchitecture);
+				architecture = PCMHelper.createArchitecture(architecturalVersion);
+				
+				java.lang.System.err.println(architecture);
 				instances.put(architecturalVersion, architecture);
 
 				m1Bot.insertInOrder(new ModifiabilityProposal(
