@@ -27,8 +27,6 @@ public class PCMScenarioSatisfaction {
 			Comparable expectedResponse = expectedResult.getResponse();
 			Comparable response = result.getResponse();
 			if(scenario.getType().equals(OptimizationType.MINIMIZATION)) {
-				System.out.println(expectedResponse);
-				System.out.println(response);
 				return expectedResponse.compareTo(response);
 			}
 			else 
