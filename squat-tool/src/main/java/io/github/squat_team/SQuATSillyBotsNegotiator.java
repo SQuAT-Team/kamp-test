@@ -31,7 +31,7 @@ public class SQuATSillyBotsNegotiator {
 		agreementProposal=null;
 		currentLevelOfTransformations=1;
 		archTransFactory=new ArchitecturalTransformationsFactory();
-		maxNumberOfLevels=3;
+		maxNumberOfLevels=5;
 		noMoreAlternatives=false;
 		filterBestAlternatives=true;
 	}
@@ -353,6 +353,9 @@ public class SQuATSillyBotsNegotiator {
 				filerBestKAlternatives(2/*10*/);
 			}
 			currentLevelOfTransformations++;
+			System.out.println("Next level (Y/N): ");
+			Scanner scan = new Scanner(System.in);
+			String answer = scan.next();
 		}
 		System.out.println("Finish");
 	}

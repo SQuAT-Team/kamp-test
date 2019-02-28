@@ -103,24 +103,21 @@ public abstract class SillyBot {
 		float scenarioResponse=getScenarioMeasureFor(proposal);
 		float expectedResponse=scenatioThreshold;
 		
-		//float n=1f;//indexInWhichUtilityBecomeZero();
-		//float utility=(-1/(n*expectedResponse))*scenarioResponse+1;
+		//Special cases for broken models of cocome
+		if((name.equals("m1")&&scenarioResponse<500)||(name.equals("m2")&&scenarioResponse<300)||(name.equals("m3")&&scenarioResponse<110)||(name.equals("m4")&&scenarioResponse<500))
+			return 0;
+		
 		float utility=0;
 		if(scenarioResponse<=expectedResponse)
-			utility= 2- expectedResponse/scenarioResponse;
+			//utility= 2- expectedResponse/scenarioResponse;
+			utility=1;
 		else
 			utility= 2- 1.10f*scenarioResponse/expectedResponse;
 		
-		//System.out.println(name+" "+expectedResponse+" "+scenarioResponse+" "+utility);
 		if(utility >= 0 && utility<=1)
 			return utility;
 		else
 			return 0;
-		/*float p=1;
-		float t=1.2f;
-		float utility=(float) (1- Math.pow((scenarioResponse/(n*expectedResponse)), p/t));*/
-	
-		//return utility;
 	}
 	/*private int indexInWhichUtilityBecomeZero() {
 		if(indexInWhichUtilityBecomeZero==null){

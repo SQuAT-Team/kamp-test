@@ -48,6 +48,8 @@ public class ArchitecturalTransformationsFactory {
 			 //Applied transformations to initial architecture and save it on the hashtable
 			 transformationForLevel.addAll(generateArchitecturalVersionsUsingModifiabilityTransformations(initialArchitecture));
 			 transformationForLevel.addAll(generateArchitecturalVersionsUsingPerformanceTransformations(initialArchitecture));
+			
+			 
 		 }else{
 			 List<ArchitecturalVersion> architecturesPreviousLevel=architecturesByLevel.get(level-1);
 			 PerformanceScenarioHelper.getInstance().resetBots();

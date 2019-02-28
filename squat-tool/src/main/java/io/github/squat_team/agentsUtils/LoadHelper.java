@@ -57,10 +57,10 @@ public class LoadHelper {
 		Float responseTimeM2 = 750f;//5000f;
 		Float responseTimeM3 = 170f;//200f;
 		Float responseTimeM4 = 2180f;//2000f;
-		Float responseTimeP1 = 1.2f;//0.6f;// 30f;
-		Float responseTimeP2 = 1.4f;//0.7f;// 40f;
-		Float responseTimeP3 = 1.0f;//0.5f;// 30f;
-		Float responseTimeP4 = 2.4f;//1.2f;// 40f;
+		Float responseTimeP1 = 1.4f;//0.6f;// 30f;
+		Float responseTimeP2 = 1.6f;//0.7f;// 40f;
+		Float responseTimeP3 = 1.3f;//0.5f;// 30f;
+		Float responseTimeP4 = 2.8f;//1.2f;// 40f;
 		PCMScenario m1Scenario = createModifiabilityNFC(ResponseMeasureType.DECIMAL, responseTimeM1);
 		PCMScenario m2Scenario = createModifiabilityVIP(ResponseMeasureType.DECIMAL, responseTimeM2);
 		PCMScenario m3Scenario = createModifiabilityWithdrawMoney(ResponseMeasureType.DECIMAL, responseTimeM3);
