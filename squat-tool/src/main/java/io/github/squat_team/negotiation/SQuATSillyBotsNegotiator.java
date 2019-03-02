@@ -41,11 +41,10 @@ public class SQuATSillyBotsNegotiator implements ISQuATNegotiator {
 	}
 
 	@Override
-	public NegotiatorResult negotiate() {
+	public NegotiatorResult negotiate(boolean redoRequest) {
 		// architectureAlternatives=loadArchitecturalAlternatives(); This should be done
 		// for real. Now I'm hardcoding the results
 		// Step 1: Collect initial proposals -> done by controller now
-		boolean redoRequest = true;
 		// Step 2: Loop until you reach an Agreement or a Conflict
 		while ((!checkAgreement(proposals)) || redoRequest) {
 			redoRequest = false;
@@ -65,7 +64,7 @@ public class SQuATSillyBotsNegotiator implements ISQuATNegotiator {
 
 					newProposal = concedingAg.makeConcession(this.sillyBots);// I have to implement this method
 					if (newProposal != null) {
-						System.out.println("Step 3.c: New Proposal made by the agent => " + newProposal.toString());
+						System.out.println("Step 3.c: New Proposal made by agent "+concedingAg +" => " + newProposal.toString());
 						// Update proposals map
 						proposals.put(concedingAg, newProposal);
 						atLeastOneNewProposal = true;

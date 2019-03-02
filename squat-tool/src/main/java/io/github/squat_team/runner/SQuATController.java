@@ -47,20 +47,22 @@ public class SQuATController {
 				&& !noMoreAlternatives) {
 			sillyBots = collectInitialProposals();
 			negotiator.initialize(sillyBots);
-			negotiatorResult = negotiator.negotiate();
+			negotiatorResult = negotiator.negotiate(false);
+			agreement = negotiatorResult.isSuccessful();
 
-			boolean redoRequest = true;
-			while (redoRequest && negotiatorResult.isSuccessful()) {
-				redoRequest = askUserForRedo(negotiatorResult);
-				negotiatorResult = negotiator.negotiate();
-			}
+			if (agreement) {
+				boolean redoRequest = askUserForRedo(negotiatorResult);
+				while (redoRequest && agreement) {
+					negotiatorResult = negotiator.negotiate(true);
+					agreement = negotiatorResult.isSuccessful();
+					redoRequest = askUserForRedo(negotiatorResult);
+				}
 
-			exporter.handleLevelTerminated(negotiatorResult);
-			if (configuration.shouldFilterBestAlternatives()) {
-				filterBestKAlternatives(configuration.getSeedSelectionSize());
-			}
-			if(agreement) {
-				negotiatorResultsForLevels.add(negotiatorResult);	
+				exporter.handleLevelTerminated(negotiatorResult);
+				if (configuration.shouldFilterBestAlternatives()) {
+					filterBestKAlternatives(configuration.getSeedSelectionSize());
+				}
+				negotiatorResultsForLevels.add(negotiatorResult);
 			}
 			currentLevelOfTransformations++;
 		}
@@ -74,7 +76,6 @@ public class SQuATController {
 		System.out.println("REDO? (Y/N): ");
 		Scanner scan = new Scanner(System.in);
 		String answer = scan.next();
-		scan.close();
 		return answer.trim().toUpperCase().equals("Y");
 		// scan.close();
 	}
