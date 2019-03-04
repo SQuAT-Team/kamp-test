@@ -3,11 +3,14 @@ package io.github.squat_team.negotiation;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Random;
 
 import io.github.squat_team.agentsUtils.Proposal;
 import io.github.squat_team.agentsUtils.SillyBot;
 import io.github.squat_team.export.ExportController;
+import io.github.squat_team.util.RandomGenerator;
 
 public class SQuATSillyBotsNegotiator implements ISQuATNegotiator {
 
@@ -33,11 +36,12 @@ public class SQuATSillyBotsNegotiator implements ISQuATNegotiator {
 	 * Sets the best proposals of each bot as its current proposal
 	 */
 	private void initializeProposals() {
-		proposals = new HashMap<>();
+		proposals = new LinkedHashMap<>();
 		for (SillyBot bot : sillyBots) {
 			proposals.put(bot, bot.getBestProposal());
 			System.out.println(bot + " " + bot.getBestProposal());
 		}
+		System.out.println(proposals);
 	}
 
 	@Override
@@ -225,8 +229,10 @@ public class SQuATSillyBotsNegotiator implements ISQuATNegotiator {
 	 */
 	private boolean checkAgreement(HashMap<SillyBot, Proposal> proposals) {
 		ArrayList<Proposal> proposalsShuffle = new ArrayList<Proposal>(proposals.values());
-		Collections.shuffle(proposalsShuffle);
+		Random random = RandomGenerator.getInstance().generate();
+		Collections.shuffle(proposalsShuffle, random);
 		for (Proposal proposal : proposalsShuffle) {
+			System.out.println("SHUFFLED: "+proposal.getArchitectureName());
 			if (checkAgreementForAgents(proposal)) {
 				agreementProposal = proposal;
 				exporter.handleIntermediateState(createSuccessfulResults());
