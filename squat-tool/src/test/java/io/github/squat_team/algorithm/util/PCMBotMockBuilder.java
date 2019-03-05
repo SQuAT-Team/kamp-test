@@ -1,26 +1,25 @@
 package io.github.squat_team.algorithm.util;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMResult;
 import io.github.squat_team.model.PCMScenarioResult;
-import io.github.squat_team.utility.PCMScenarioSatisfaction;
 
 import static org.mockito.Mockito.*;
 
 /**
  * Builds a mocked bot with defined responses for a specific initial
- * architecture.
+ * architecture and optimization responses.
  */
+@SuppressWarnings("rawtypes")
 public class PCMBotMockBuilder {
 	private PCMBotMockProperties properties;
-	private Map<PCMArchitectureInstance, PCMScenarioResult> analysisResponse = new HashMap<>();
-	private Map<PCMArchitectureInstance, List<PCMScenarioResult>> optimizationResponses = new HashMap<>();
+	private AbstractPCMBot mockedBot;
+	private ArchitectureBuilder architectureBuilder;
 
 	/**
 	 * Initializes the builder.
@@ -30,6 +29,52 @@ public class PCMBotMockBuilder {
 	 */
 	public PCMBotMockBuilder(PCMBotMockProperties properties) {
 		this.properties = properties;
+		this.mockedBot = mockBot();
+		this.architectureBuilder = new ArchitectureBuilder(properties);
+	}
+
+	private static List<PCMBotMockBuilder> allBots;
+
+	public static List<PCMBotMockBuilder> getAllBots() {
+		return allBots;
+	}
+
+	public static void setAllBots(PCMBotMockBuilder[] allBots) {
+		PCMBotMockBuilder.allBots = Arrays.asList(allBots);
+	}
+
+	public static List<PCMArchitectureInstance> mockOtherOptimizationResponses(PCMArchitectureInstance architecture,
+			PCMBotMockBuilder originatingBot, Comparable[][] botResponses) throws Exception {
+		if (allBots == null || !allBots.contains(originatingBot)) {
+			throw new RuntimeException("The builder needs to know all bots first.");
+		}
+		int numberOfCandidates = botResponses.length;
+		int originatingBotIndex = allBots.indexOf(originatingBot);
+
+		Comparable[] optimizationResponsesForOriginatingBot = new Comparable[numberOfCandidates];
+		for (int i = 0; i < numberOfCandidates; i++) {
+			optimizationResponsesForOriginatingBot[i] = botResponses[i][originatingBotIndex];
+		}
+
+		List<PCMArchitectureInstance> optimizationArchitectures = originatingBot.addOptimizationResponses(architecture,
+				optimizationResponsesForOriginatingBot);
+
+		for (int candidateIndex = 0; candidateIndex < numberOfCandidates; candidateIndex++) {
+			if (allBots.size() != botResponses[candidateIndex].length) {
+				throw new RuntimeException("There must be exactly one set of responses for each bot.");
+			}
+			PCMArchitectureInstance candidateArchitecture = optimizationArchitectures.get(candidateIndex);
+			Comparable[] candidateResponses = botResponses[candidateIndex];
+			for (int botIndex = 0; botIndex < allBots.size(); botIndex++) {
+				if (botIndex != originatingBotIndex) {
+					PCMBotMockBuilder bot = allBots.get(botIndex);
+					Comparable botResponse = candidateResponses[botIndex];
+					bot.setAnalysisResponse(candidateArchitecture, botResponse);
+				}
+			}
+		}
+
+		return optimizationArchitectures;
 	}
 
 	/**
@@ -38,17 +83,9 @@ public class PCMBotMockBuilder {
 	 * 
 	 * @param initialArchitecture
 	 * @return the bot and the used properties to create it.
-	 * @throws Exception
 	 */
-	public PCMBotMockBuilderResult build() throws Exception {
-		AbstractPCMBot bot = mockBot();
-		for (PCMArchitectureInstance architecture : analysisResponse.keySet()) {
-			mockAnalysisFinal(bot, architecture);
-		}
-		for (PCMArchitectureInstance architecture : optimizationResponses.keySet()) {
-			mockOptimizationFinal(bot, architecture);
-		}
-		return new PCMBotMockBuilderResult(properties, bot);
+	public PCMBotMockBuilderResult build() {
+		return new PCMBotMockBuilderResult(properties, mockedBot);
 	}
 
 	private AbstractPCMBot mockBot() {
@@ -57,40 +94,18 @@ public class PCMBotMockBuilder {
 		return bot;
 	}
 
-	private AbstractPCMBot mockAnalysisFinal(AbstractPCMBot bot, PCMArchitectureInstance architecture)
+	private AbstractPCMBot mockAnalysisFinal(PCMArchitectureInstance architecture, PCMScenarioResult scenarioResult)
 			throws Exception {
-		PCMScenarioResult scenarioResult = analysisResponse.get(architecture);
-
-		when(scenarioResult.getOriginatingBot()).thenReturn(bot);
-		when(scenarioResult.getResultingArchitecture()).thenReturn(architecture);
-		when(scenarioResult.getAppliedTactic()).thenReturn(null);
-
-		// Currently this response is not used!
-		// int satisfaction = PCMScenarioSatisfaction.compute(analysisResponse);
-		// when(analysisResponse.isSatisfied()).thenReturn(satisfaction);
-		when(bot.analyze(architecture)).thenReturn(scenarioResult);
-		when(bot.analyze(architecture, null)).thenReturn(scenarioResult);
-		when(bot.analyze(eq(architecture), anyString())).thenReturn(scenarioResult);
-		return bot;
+		when(mockedBot.analyze(architecture)).thenReturn(scenarioResult);
+		when(mockedBot.analyze(architecture, null)).thenReturn(scenarioResult);
+		when(mockedBot.analyze(eq(architecture), anyString())).thenReturn(scenarioResult);
+		return mockedBot;
 	}
 
-	private AbstractPCMBot mockOptimizationFinal(AbstractPCMBot bot, PCMArchitectureInstance architecture)
-			throws Exception {
-		for (PCMScenarioResult optimizationResponse : optimizationResponses.get(architecture)) {
-			when(optimizationResponse.getOriginatingBot()).thenReturn(bot);
-
-			// TODO: move to method
-			PCMArchitectureInstance resultingArchitecture = mock(PCMArchitectureInstance.class);
-			String architectureName = architecture.getName() + "_" + properties.getName() + "_"
-					+ optimizationResponses.get(architecture).indexOf(optimizationResponse);
-			when(resultingArchitecture.getName()).thenReturn(architectureName);
-			when(optimizationResponse.getResultingArchitecture()).thenReturn(resultingArchitecture);
-
-			PCMBotMockLinker.generateArchitecturalVersion(resultingArchitecture, properties.getName());
-			allowReanalysis(bot, optimizationResponse);
-		}
-		when(bot.searchForAlternatives(architecture)).thenReturn(optimizationResponses.get(architecture));
-		return bot;
+	private AbstractPCMBot mockOptimizationFinal(PCMArchitectureInstance architecture,
+			List<PCMScenarioResult> responses) throws Exception {
+		when(mockedBot.searchForAlternatives(architecture)).thenReturn(responses);
+		return mockedBot;
 	}
 
 	/**
@@ -98,26 +113,28 @@ public class PCMBotMockBuilder {
 	 * 
 	 * @throws Exception
 	 */
-	private AbstractPCMBot allowReanalysis(AbstractPCMBot bot, PCMScenarioResult optimizationResponse)
-			throws Exception {
-		if (optimizationResponse.getResultingArchitecture() != null) {
+	private AbstractPCMBot allowReanalysis(PCMScenarioResult optimizationResponse) throws Exception {
+		PCMArchitectureInstance architecture = optimizationResponse.getResultingArchitecture();
+		if (architecture != null) {
 			PCMScenarioResultMockCloner cloner = new PCMScenarioResultMockCloner();
 			// reanalysis will not return the same object, so create a new one
 			PCMScenarioResult clonedOptimizationResponse = cloner.clone(optimizationResponse);
-			when(bot.analyze(optimizationResponse.getResultingArchitecture())).thenReturn(clonedOptimizationResponse);
+			mockAnalysisFinal(architecture, clonedOptimizationResponse);
 		}
-		return bot;
+		return mockedBot;
 	}
 
-	public void setAnalysisResponse(PCMArchitectureInstance architecture, Comparable response) {
-		analysisResponse.put(architecture, mockScenarioResult(response));
+	public void setAnalysisResponse(PCMArchitectureInstance architecture, Comparable response) throws Exception {
+		mockAnalysisFinal(architecture, mockScenarioResult(response, architecture));
 	}
 
-	private PCMScenarioResult mockScenarioResult(Comparable response) {
+	private PCMScenarioResult mockScenarioResult(Comparable response, PCMArchitectureInstance architecture) {
 		PCMScenarioResult scenarioResult = mock(PCMScenarioResult.class);
 		PCMResult result = mockResult(response);
 		when(scenarioResult.getResult()).thenReturn(result);
 		when(scenarioResult.isSatisfied()).thenCallRealMethod();
+		when(scenarioResult.getOriginatingBot()).thenReturn(mockedBot);
+		when(scenarioResult.getResultingArchitecture()).thenReturn(architecture);
 		return scenarioResult;
 	}
 
@@ -127,28 +144,38 @@ public class PCMBotMockBuilder {
 		return result;
 	}
 
-	public void addOptimizationResponse(PCMArchitectureInstance architecture, Comparable response) {
-		PCMScenarioResult scenarioResult = mockScenarioResult(response);
-		List<PCMScenarioResult> results = getResponsesFor(architecture);
-		results.add(scenarioResult);
+	public List<PCMArchitectureInstance> addOptimizationResponses(PCMArchitectureInstance originatingArchitecture,
+			List<Comparable> responses) throws Exception {
+		List<PCMScenarioResult> results = new ArrayList<>();
+		List<PCMArchitectureInstance> architectures = new ArrayList<>();
+		for (Comparable response : responses) {
+			PCMArchitectureInstance resultingArchitecture = architectureBuilder.buildFrom(originatingArchitecture);
+			PCMScenarioResult scenarioResult = mockScenarioResult(response, resultingArchitecture);
+			allowReanalysis(scenarioResult);
+			architectures.add(resultingArchitecture);
+			results.add(scenarioResult);
+		}
+		mockOptimizationFinal(originatingArchitecture, results);
+		return architectures;
 	}
 
-	public void addOptimizationResponses(PCMArchitectureInstance architecture, List<Comparable> responses) {
-		List<PCMScenarioResult> results = getResponsesFor(architecture);
-		List<PCMScenarioResult> resultsToAppend = new ArrayList<>();
-		for(Comparable response : responses) {
-			resultsToAppend.add(mockScenarioResult(response));
-		}
-		results.addAll(resultsToAppend);
+	public List<PCMArchitectureInstance> addOptimizationResponses(PCMArchitectureInstance originatingArchitecture,
+			Comparable[] responses) throws Exception {
+		return addOptimizationResponses(originatingArchitecture, Arrays.asList(responses));
 	}
-	
-	private List<PCMScenarioResult> getResponsesFor(PCMArchitectureInstance architecture) {
-		List<PCMScenarioResult> results = optimizationResponses.get(architecture);
-		if (results == null) {
-			results = new ArrayList<>();
-			optimizationResponses.put(architecture, results);
+
+	public void setAnalysisResponses(List<PCMArchitectureInstance> results, List<Comparable> responses)
+			throws Exception {
+		if (results.size() != responses.size()) {
+			throw new IllegalArgumentException("There must be exactly one response for every result.");
 		}
-		return results;
+		for (int i = 0; i < results.size(); i++) {
+			setAnalysisResponse(results.get(i), responses.get(i));
+		}
+	}
+
+	public void setAnalysisResponses(List<PCMArchitectureInstance> results, Comparable[] responses) throws Exception {
+		setAnalysisResponses(results, Arrays.asList(responses));
 	}
 
 }

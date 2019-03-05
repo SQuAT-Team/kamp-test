@@ -5,16 +5,13 @@ import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-import static org.mockito.Mockito.*;
+import edu.squat.transformations.ArchitecturalVersion;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.agentsUtils.ArchitecturalCopyCreator;
@@ -24,7 +21,6 @@ import io.github.squat_team.model.OptimizationType;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.model.PCMScenarioResult;
-import io.github.squat_team.model.PCMTactic;
 import io.github.squat_team.model.ResponseMeasureType;
 import io.github.squat_team.util.PCMHelper;
 
@@ -32,85 +28,81 @@ import io.github.squat_team.util.PCMHelper;
  * This class tests the creation and linking of mocked bots.
  */
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({PerformanceScenarioHelper.class, ModifiabilityScenarioHelper.class, PCMHelper.class, ArchitecturalCopyCreator.class})
+@PrepareForTest({ PerformanceScenarioHelper.class, ModifiabilityScenarioHelper.class, PCMHelper.class,
+		ArchitecturalCopyCreator.class })
+@SuppressWarnings("rawtypes")
 public class MockBuilderTests {
 	private static PCMArchitectureInstance initialArchitecture;
+	private static AbstractPCMBot[] bots;
 	private static AbstractPCMBot bot1;
 	private static AbstractPCMBot bot2;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		PowerMockito.mockStatic(PCMHelper.class);
-		// mock initial architecture
-		initialArchitecture = mock(PCMArchitectureInstance.class);
-		when(initialArchitecture.getName()).thenReturn("initialArchitecture");
+		initialArchitecture = initializeInitialArchitecture();
+		PCMBotMockBuilder bot1Builder = initializeBot1();
+		PCMBotMockBuilder bot2Builder = initializeBot2();
+		PCMBotMockBuilder[] allBots = { bot1Builder, bot2Builder };
+		PCMBotMockBuilder.setAllBots(allBots);
 
+		setBot1Responses(bot1Builder);
+		setBot2Responses(bot2Builder);
+
+		bots = buildBots(allBots);
+		bot1 = bots[0];
+		bot2 = bots[1];
+	}
+
+	private static AbstractPCMBot[] buildBots(PCMBotMockBuilder[] botBuilders) throws Exception {
+		AbstractPCMBot[] bots = new AbstractPCMBot[botBuilders.length];
+		for (int i = 0; i < botBuilders.length; i++) {
+			PCMBotMockBuilder botBuilder = botBuilders[i];
+			PCMBotMockBuilderResult result = botBuilder.build();
+			bots[i] = result.getBot();
+		}
+		return bots;
+	}
+
+	private static PCMArchitectureInstance initializeInitialArchitecture() {
+		ArchitectureBuilder architectureBuilder = new ArchitectureBuilder();
+		return architectureBuilder.buildNewArchitecture();
+	}
+
+	private static PCMBotMockBuilder initializeBot1() {
 		// mock performance bot
 		PCMBotMockProperties performanceProperties = PCMBotMockProperties.getDefaultPerformanceBot(20.0);
-		PCMBotMockBuilder performanceBuilder = new PCMBotMockBuilder(performanceProperties);
+		return new PCMBotMockBuilder(performanceProperties);
+	}
 
-		// mock other bot
-		PCMBotMockProperties otherBotProperties = new PCMBotMockProperties();
-		otherBotProperties.setName(PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME);
-		otherBotProperties.setExpectedResponse(24.0);
-		otherBotProperties.setOptimizationType(OptimizationType.MAXIMIZATION);
-		;
-		otherBotProperties.setResponseMeasureType(ResponseMeasureType.PERCENTAGE);
-		otherBotProperties.setReturnArchitectures(true);
-		PCMBotMockBuilder otherBotBuilder = new PCMBotMockBuilder(otherBotProperties);
+	private static PCMBotMockBuilder initializeBot2() {
+		// mock custom modifiability bot
+		PCMBotMockProperties bot2Properties = new PCMBotMockProperties(ArchitecturalVersion.MODIFIABILITY);
+		bot2Properties.setName(PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME);
+		bot2Properties.setExpectedResponse(24.0);
+		bot2Properties.setOptimizationType(OptimizationType.MAXIMIZATION);
+		bot2Properties.setResponseMeasureType(ResponseMeasureType.PERCENTAGE);
+		bot2Properties.setReturnArchitectures(true);
+		return new PCMBotMockBuilder(bot2Properties);
+	}
 
-		// bot 1 responses
-		performanceBuilder.setAnalysisResponse(initialArchitecture, 126.5873);
-		List<Comparable> bot1Responses = new ArrayList<Comparable>();
-		bot1Responses.add(22.0);
-		bot1Responses.add(15.5);
-		bot1Responses.add(17.0);
-		bot1Responses.add(20.0);
-		performanceBuilder.addOptimizationResponses(initialArchitecture, bot1Responses);
+	private static void setBot1Responses(PCMBotMockBuilder bot1Builder) throws Exception {
+		// analysis
+		bot1Builder.setAnalysisResponse(initialArchitecture, 126.5873);
+		// optimization
+		Comparable[][] botResponsesForBot1Optimization = { { 22.0, 12.2 }, { 15.5, 13.2 }, { 17.0, 14.2 },
+				{ 20.0, 15.2 } };
+		PCMBotMockBuilder.mockOtherOptimizationResponses(initialArchitecture, bot1Builder,
+				botResponsesForBot1Optimization);
+	}
 
-		// bot 2 responses (with list)
-		otherBotBuilder.setAnalysisResponse(initialArchitecture, 211.5873);
-		List<Comparable> bot2Responses = new ArrayList<Comparable>();
-		bot2Responses.add(13.0);
-		bot2Responses.add(19.0);
-		bot2Responses.add(23.4);
-		bot2Responses.add(44.0);
-		bot2Responses.add(11.0);
-		bot2Responses.add(34.0);
-		otherBotBuilder.addOptimizationResponses(initialArchitecture, bot2Responses);
-
-		// build bots
-		PCMBotMockBuilderResult performanceBuilderResult = performanceBuilder.build();
-		PCMBotMockBuilderResult performanceBuilderResult2 = otherBotBuilder.build();
-
-		// link results from bot 1 to bot 2
-		PCMBotMockLinker linker = new PCMBotMockLinker(performanceBuilderResult, initialArchitecture);
-		Map<PCMBotMockBuilderResult, List<Comparable>> linkResponses = new HashMap<PCMBotMockBuilderResult, List<Comparable>>();
-		List<Comparable> responseList = new ArrayList<Comparable>();
-		responseList.add(12.2);
-		responseList.add(13.2);
-		responseList.add(14.2);
-		responseList.add(15.2);
-		linkResponses.put(performanceBuilderResult2, responseList);
-		linker.setResponses(linkResponses);
-		linker.link();
-
-		// link results and tactics from bot 2 to bot 1
-		PCMBotMockLinker linker2 = new PCMBotMockLinker(performanceBuilderResult2, initialArchitecture);
-		Map<PCMBotMockBuilderResult, List<Comparable>> linkResponses2 = new HashMap<PCMBotMockBuilderResult, List<Comparable>>();
-		List<Comparable> responseList2 = new ArrayList<Comparable>();
-		responseList2.add(12.7);
-		responseList2.add(13.7);
-		responseList2.add(14.7);
-		responseList2.add(15.7);
-		responseList2.add(16.7);
-		responseList2.add(17.7);
-		linkResponses2.put(performanceBuilderResult, responseList2);
-		linker2.setResponses(linkResponses2);
-		linker2.link();
-
-		bot1 = performanceBuilderResult.getBot();
-		bot2 = performanceBuilderResult2.getBot();
+	private static void setBot2Responses(PCMBotMockBuilder bot2Builder) throws Exception {
+		// analysis
+		bot2Builder.setAnalysisResponse(initialArchitecture, 211.5873);
+		// optimization
+		Comparable[][] botResponsesForBot2Optimization = { { 12.7, 13.0 }, { 13.7, 19.0 }, { 14.7, 23.4 },
+				{ 15.7, 44.0 }, { 16.7, 11.0 }, { 17.7, 34.0 } };
+		PCMBotMockBuilder.mockOtherOptimizationResponses(initialArchitecture, bot2Builder,
+				botResponsesForBot2Optimization);
 	}
 
 	@Test
@@ -215,27 +207,60 @@ public class MockBuilderTests {
 
 		assertEquals(12.2,
 				bot2.analyze(optimizationResults.get(0).getResultingArchitecture()).getResult().getResponse());
-		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_0", bot2
-				.analyze(optimizationResults.get(0).getResultingArchitecture()).getResultingArchitecture().getName());
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_0",
+				bot2.analyze(optimizationResults.get(0).getResultingArchitecture()).getResultingArchitecture()
+						.getName());
 		assertEquals(13.2,
 				bot2.analyze(optimizationResults.get(1).getResultingArchitecture()).getResult().getResponse());
-		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_1", bot2
-				.analyze(optimizationResults.get(1).getResultingArchitecture()).getResultingArchitecture().getName());
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_1",
+				bot2.analyze(optimizationResults.get(1).getResultingArchitecture()).getResultingArchitecture()
+						.getName());
 		assertEquals(14.2,
 				bot2.analyze(optimizationResults.get(2).getResultingArchitecture()).getResult().getResponse());
-		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_2", bot2
-				.analyze(optimizationResults.get(2).getResultingArchitecture()).getResultingArchitecture().getName());
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_2",
+				bot2.analyze(optimizationResults.get(2).getResultingArchitecture()).getResultingArchitecture()
+						.getName());
 		assertEquals(15.2,
 				bot2.analyze(optimizationResults.get(3).getResultingArchitecture()).getResult().getResponse());
-		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_3", bot2
-				.analyze(optimizationResults.get(3).getResultingArchitecture()).getResultingArchitecture().getName());
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_3",
+				bot2.analyze(optimizationResults.get(3).getResultingArchitecture()).getResultingArchitecture()
+						.getName());
 	}
 
 	@Test
 	public void bot2LinkTest() {
-		// TODO: Has to be written as soon as there is a way to transform
-		// architectures through application of tactics
-		fail("to be done");
+		List<PCMScenarioResult> optimizationResults = bot2.searchForAlternatives(initialArchitecture);
+
+		assertEquals(12.7,
+				bot1.analyze(optimizationResults.get(0).getResultingArchitecture()).getResult().getResponse());
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_0",
+				bot1.analyze(optimizationResults.get(0).getResultingArchitecture()).getResultingArchitecture()
+						.getName());
+		assertEquals(13.7,
+				bot1.analyze(optimizationResults.get(1).getResultingArchitecture()).getResult().getResponse());
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_1",
+				bot1.analyze(optimizationResults.get(1).getResultingArchitecture()).getResultingArchitecture()
+						.getName());
+		assertEquals(14.7,
+				bot1.analyze(optimizationResults.get(2).getResultingArchitecture()).getResult().getResponse());
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_2",
+				bot1.analyze(optimizationResults.get(2).getResultingArchitecture()).getResultingArchitecture()
+						.getName());
+		assertEquals(15.7,
+				bot1.analyze(optimizationResults.get(3).getResultingArchitecture()).getResult().getResponse());
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_3",
+				bot1.analyze(optimizationResults.get(3).getResultingArchitecture()).getResultingArchitecture()
+						.getName());
+		assertEquals(16.7,
+				bot1.analyze(optimizationResults.get(4).getResultingArchitecture()).getResult().getResponse());
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_4",
+				bot1.analyze(optimizationResults.get(4).getResultingArchitecture()).getResultingArchitecture()
+						.getName());
+		assertEquals(17.7,
+				bot1.analyze(optimizationResults.get(5).getResultingArchitecture()).getResult().getResponse());
+		assertEquals(initialArchitecture.getName() + "_" + PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_5",
+				bot1.analyze(optimizationResults.get(5).getResultingArchitecture()).getResultingArchitecture()
+						.getName());
 	}
 
 	@Test
@@ -254,6 +279,12 @@ public class MockBuilderTests {
 		assertTrue(bot1.analyze(optimizationResults.get(1).getResultingArchitecture()).isSatisfied() > 0);
 		assertTrue(bot1.analyze(optimizationResults.get(2).getResultingArchitecture()).isSatisfied() > 0);
 		assertEquals(0, bot1.analyze(optimizationResults.get(3).getResultingArchitecture()).isSatisfied());
+	}
+
+	@Test
+	public void ValidatorTest() {
+		MockValidator validator = new MockValidator(Arrays.asList(bots), initialArchitecture);
+		validator.validate(1, 4, 6);
 	}
 
 }

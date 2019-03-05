@@ -6,16 +6,16 @@ import io.github.squat_team.model.PCMResult;
 import io.github.squat_team.model.PCMScenarioResult;
 import io.github.squat_team.model.PCMTactic;
 import io.github.squat_team.model.ResponseMeasureType;
-import io.github.squat_team.util.PCMHelper;
 
 import static org.mockito.Mockito.*;
-
-import edu.squat.transformations.ArchitecturalVersion;
 
 /**
  * Clones a mocked PCMScenarioResult.
  */
+@SuppressWarnings("rawtypes")
 public class PCMScenarioResultMockCloner {
+	ArchitectureBuilder builder = new ArchitectureBuilder();
+	
 	public PCMScenarioResult clone(PCMScenarioResult optimizationResponse) throws Exception {
 		PCMScenarioResult clonedScenarioResult = mock(PCMScenarioResult.class);
 		PCMResult clonedResult = mock(PCMResult.class);
@@ -35,18 +35,7 @@ public class PCMScenarioResultMockCloner {
 		when(clonedScenarioResult.getResultingArchitecture()).thenReturn(architecture);
 		when(clonedScenarioResult.isSatisfied()).thenCallRealMethod();
 
-		mockArchitecturalVersion(architecture);
-
 		return clonedScenarioResult;
 	}
 
-	private void mockArchitecturalVersion(PCMArchitectureInstance architecture) {
-		String botType;
-		if (PCMHelper.createArchitecture(architecture).lastModifiedByModifiability()) {
-			botType = ArchitecturalVersion.MODIFIABILITY;
-		} else {
-			botType = ArchitecturalVersion.PERFORMANCE;
-		}
-		PCMBotMockLinker.generateArchitecturalVersion(architecture, botType);
-	}
 }

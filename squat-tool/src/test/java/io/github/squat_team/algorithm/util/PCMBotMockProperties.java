@@ -13,11 +13,14 @@ import edu.squat.transformations.ArchitecturalVersion;
  * Contains all required values for the construction of a mocked Bot. Also
  * provides default settings for different bots.
  */
+@SuppressWarnings("rawtypes")
 public class PCMBotMockProperties {
 	public final static String PERFORMANCE_BOT_DEFAULT_NAME = ArchitecturalVersion.PERFORMANCE;
 	public final static String MODIFIABILITY_BOT_DEFAULT_NAME = ArchitecturalVersion.MODIFIABILITY;
 	
 	private String name;
+	private String botType;
+
 	private OptimizationType optimizationType;
 
 	private boolean returnArchitectures;
@@ -26,7 +29,7 @@ public class PCMBotMockProperties {
 	private PCMResult result = new PCMResult(ResponseMeasureType.DECIMAL);
 
 	public static PCMBotMockProperties getDefaultPerformanceBot(Comparable expectedResponse) {
-		PCMBotMockProperties performanceBotProperties = new PCMBotMockProperties();
+		PCMBotMockProperties performanceBotProperties = new PCMBotMockProperties(ArchitecturalVersion.PERFORMANCE);
 		performanceBotProperties.setName(PERFORMANCE_BOT_DEFAULT_NAME);
 		performanceBotProperties.setExpectedResponse(expectedResponse);
 		performanceBotProperties.setOptimizationType(OptimizationType.MINIMIZATION);
@@ -36,7 +39,7 @@ public class PCMBotMockProperties {
 	}
 
 	public static PCMBotMockProperties getDefaultModifiabilityBot(Comparable expectedResponse) {
-		PCMBotMockProperties modifiabilityBotProperties = new PCMBotMockProperties();
+		PCMBotMockProperties modifiabilityBotProperties = new PCMBotMockProperties(ArchitecturalVersion.MODIFIABILITY);
 		modifiabilityBotProperties.setName(MODIFIABILITY_BOT_DEFAULT_NAME);
 		modifiabilityBotProperties.setExpectedResponse(expectedResponse);
 		modifiabilityBotProperties.setExpectedResponse(expectedResponse);
@@ -46,7 +49,8 @@ public class PCMBotMockProperties {
 		return modifiabilityBotProperties;
 	}
 
-	public PCMBotMockProperties() {
+	public PCMBotMockProperties(String botType) {
+		this.botType = botType;
 		when(scenario.getType()).thenReturn(optimizationType);
 		when(scenario.getExpectedResult()).thenReturn(result);
 	}
@@ -94,5 +98,9 @@ public class PCMBotMockProperties {
 
 	public void setReturnArchitectures(boolean returnArchitectures) {
 		this.returnArchitectures = returnArchitectures;
+	}
+	
+	public String getBotType() {
+		return botType;
 	}
 }

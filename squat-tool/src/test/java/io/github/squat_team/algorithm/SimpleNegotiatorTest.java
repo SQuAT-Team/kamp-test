@@ -14,6 +14,8 @@ import org.junit.Test;
 
 import io.github.squat_team.agentsUtils.Proposal;
 import io.github.squat_team.agentsUtils.SillyBot;
+import io.github.squat_team.agentsUtils.concessionStrategies.DesiredDistanceFactory;
+import io.github.squat_team.agentsUtils.concessionStrategies.IConcessionStrategyFactory;
 import io.github.squat_team.export.ExportController;
 import io.github.squat_team.negotiation.NegotiatorResult;
 import io.github.squat_team.negotiation.SQuATSillyBotsNegotiator;
@@ -286,7 +288,7 @@ public class SimpleNegotiatorTest {
 	private void executeNegotiation() {
 		SQuATSillyBotsNegotiator negotiator = new SQuATSillyBotsNegotiator(new ExportController());
 		negotiator.initialize(bots);
-		result = negotiator.negotiate();
+		result = negotiator.negotiate(false);
 	}
 
 	private void initializeTwoBots() {
@@ -295,7 +297,7 @@ public class SimpleNegotiatorTest {
 	}
 
 	private void initializeBot(String name, float scenarioThreshold) {
-		SillyBot bot = new SillyBotImplementation(name, scenarioThreshold);
+		SillyBot bot = new SillyBotImplementation(name, scenarioThreshold, new DesiredDistanceFactory());
 		bots.add(bot);
 	}
 
@@ -315,8 +317,8 @@ public class SimpleNegotiatorTest {
 	 */
 	public class SillyBotImplementation extends SillyBot {
 
-		public SillyBotImplementation(String name, float scenarioThreshold) {
-			super(name, scenarioThreshold);
+		public SillyBotImplementation(String name, float scenarioThreshold, IConcessionStrategyFactory concessionStrategyFactory) {
+			super(name, scenarioThreshold, concessionStrategyFactory);
 		}
 
 		@Override

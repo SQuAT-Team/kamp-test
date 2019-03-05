@@ -1,5 +1,7 @@
 package io.github.squat_team.algorithm;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -9,7 +11,6 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
@@ -18,38 +19,50 @@ import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.agentsUtils.ArchitecturalCopyCreator;
 import io.github.squat_team.agentsUtils.ModifiabilityScenarioHelper;
 import io.github.squat_team.agentsUtils.PerformanceScenarioHelper;
+import io.github.squat_team.agentsUtils.Proposal;
+import io.github.squat_team.agentsUtils.SillyBot;
 import io.github.squat_team.algorithm.util.PCMBotMockBuilder;
 import io.github.squat_team.algorithm.util.PCMBotMockBuilderResult;
-import io.github.squat_team.algorithm.util.PCMBotMockLinker;
+import io.github.squat_team.algorithm.util.ArchitectureBuilder;
 import io.github.squat_team.model.PCMArchitectureInstance;
+import io.github.squat_team.model.PCMResult;
+import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.negotiation.NegotiatorResult;
-import io.github.squat_team.negotiation.SQuATSillyBotsNegotiatorFactory;
+import io.github.squat_team.performance.AbstractPerformancePCMScenario;
 import io.github.squat_team.runner.SQuATConfiguration;
 import io.github.squat_team.runner.SQuATController;
 import io.github.squat_team.util.PCMHelper;
+import io.github.squat_team.util.RandomGenerator;
 
 /**
- * This class simplifies the setup of tests for the SQuAT algorithm. Methods can
- * be overridden if necessary.
+ * This class simplifies the setup of tests for the SQuAT algorithm. Runs a
+ * single test for the provided setup. It also runs the negotiation in a
+ * deterministic way in order to make it testable. Methods can be overridden if
+ * necessary.
  */
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({ PerformanceScenarioHelper.class, ModifiabilityScenarioHelper.class, PCMHelper.class, ArchitecturalCopyCreator.class})
+@PrepareForTest({ PerformanceScenarioHelper.class, ModifiabilityScenarioHelper.class, PCMHelper.class,
+		ArchitecturalCopyCreator.class })
 public abstract class AbstractSQuATTest {
+	private static final Float ACCEPTED_DEVIATION = 0.0001f;
+	private static final long seed = 1234;
+
+	private SQuATConfiguration configuration;
 	protected ArchitecturalVersion initialArchitectureAsVersion;
 	protected PCMArchitectureInstance initialArchitecture;
 	protected List<AbstractPCMBot> bots = new ArrayList<AbstractPCMBot>();
 
 	@Before
 	public void setUp() throws Exception {
-		PowerMockito.mockStatic(PCMHelper.class);
+		disableRandomness();
 		generateInitialArchitecture();
 		List<PCMBotMockBuilder> botBuilder = mockBots();
-		mockAnalysisResponses(botBuilder);
+		mockInitialAnalysisResponses(botBuilder);
 		mockOptimizationResponses(botBuilder);
 		List<PCMBotMockBuilderResult> botBuilderResults = buildBots(botBuilder);
-		mockLinks(botBuilderResults);
 		bots = extractBots(botBuilderResults);
 		mockScenarios(bots);
+		configuration = getConfiguration();
 	}
 
 	@Test
@@ -57,6 +70,20 @@ public abstract class AbstractSQuATTest {
 		List<NegotiatorResult> result = executeNegotiation(bots);
 		validateResults(bots, result);
 	}
+
+	/**
+	 * Specify the configuration that should be used to run SQuAT.
+	 * 
+	 * @return the configuration
+	 */
+	protected abstract SQuATConfiguration getConfiguration();
+
+	/**
+	 * Specifiy the scenarios for each bot that should be used to run SQuAT.
+	 * 
+	 * @param bots
+	 */
+	protected abstract void mockScenarios(List<AbstractPCMBot> bots);
 
 	/**
 	 * Initializes all bots necessary for this test.
@@ -70,25 +97,19 @@ public abstract class AbstractSQuATTest {
 	 * 
 	 * @param botBuilders
 	 *            the initialized bot builders.
+	 * @throws Exception
 	 */
-	protected abstract void mockAnalysisResponses(List<PCMBotMockBuilder> botBuilders);
+	protected abstract void mockInitialAnalysisResponses(List<PCMBotMockBuilder> botBuilders) throws Exception;
 
 	/**
-	 * Sets the results for the optimization of the initial candidate.
+	 * Sets the results for the optimization of the initial candidate and next level
+	 * candidates.
 	 * 
 	 * @param botBuilders
 	 *            the initialized bot builders.
+	 * @throws Exception
 	 */
-	protected abstract void mockOptimizationResponses(List<PCMBotMockBuilder> botBuilders);
-
-	/**
-	 * Sets the analysis results of the other bots for the optimization results of
-	 * another bot. The {@link PCMBotMockLinker} can do most of the work.
-	 * 
-	 * @param botResults
-	 *            the results of the bot builders.
-	 */
-	protected abstract void mockLinks(List<PCMBotMockBuilderResult> botResults);
+	protected abstract void mockOptimizationResponses(List<PCMBotMockBuilder> botBuilders) throws Exception;
 
 	/**
 	 * In the end of the test the results have to be compared to the desired values.
@@ -96,21 +117,32 @@ public abstract class AbstractSQuATTest {
 	 * @param bots
 	 *            all the bots used in this test.
 	 * @param result
-	 *            contains all results found by the negotiation.
+	 *            contains all results found by the negotiation. The results are
+	 *            ordered (ascending) by the level of search.
 	 */
 	protected abstract void validateResults(List<AbstractPCMBot> bots, List<NegotiatorResult> result);
 
-	//TODO
-	protected abstract void mockScenarios(List<AbstractPCMBot> bots);
-
-	protected void generateInitialArchitecture() {
-		String name = "initialArchitecture";
-		initialArchitecture = mock(PCMArchitectureInstance.class);
-		when(initialArchitecture.getName()).thenReturn(name);
-		initialArchitectureAsVersion = PCMBotMockLinker.generateArchitecturalVersion(initialArchitecture, "");
+	/**
+	 * Makes the SQuAT algorithm behave in a deterministic way.
+	 */
+	private void disableRandomness() {
+		RandomGenerator.getInstance().setSeed(seed);
 	}
 
-	protected List<PCMBotMockBuilderResult> buildBots(List<PCMBotMockBuilder> botBuilder) throws Exception {
+	protected void generateInitialArchitecture() {
+		ArchitectureBuilder architectureBuilder = new ArchitectureBuilder();
+		initialArchitecture = architectureBuilder.buildNewArchitecture();
+		initialArchitectureAsVersion = PCMHelper.createArchitecture(initialArchitecture);
+	}
+
+	/**
+	 * Builds the bots. The bot builders should be finished at this time.
+	 * 
+	 * @param botBuilder
+	 *            the builders
+	 * @return the results in the same order as the builders
+	 */
+	protected List<PCMBotMockBuilderResult> buildBots(List<PCMBotMockBuilder> botBuilder) {
 		List<PCMBotMockBuilderResult> botResults = new ArrayList<PCMBotMockBuilderResult>();
 		for (PCMBotMockBuilder builder : botBuilder) {
 			botResults.add(builder.build());
@@ -118,26 +150,113 @@ public abstract class AbstractSQuATTest {
 		return botResults;
 	}
 
-	protected List<AbstractPCMBot> extractBots(List<PCMBotMockBuilderResult> botBuilders) {
+	/**
+	 * Extracts the bots out of the bot builder results.
+	 * 
+	 * @param botBuildersResults
+	 *            results contain the already mocked bots
+	 * @return the bots in the same order as the results.
+	 */
+	protected List<AbstractPCMBot> extractBots(List<PCMBotMockBuilderResult> botBuildersResults) {
 		List<AbstractPCMBot> bots = new ArrayList<AbstractPCMBot>();
-		for (PCMBotMockBuilderResult botResult : botBuilders) {
+		for (PCMBotMockBuilderResult botResult : botBuildersResults) {
 			bots.add(botResult.getBot());
 		}
 		return bots;
 	}
 
-	protected List<NegotiatorResult> executeNegotiation(List<AbstractPCMBot> bots) throws Exception {
-		SQuATConfiguration configuration = mock(SQuATConfiguration.class);
-		when(configuration.createInitialArchitecture()).thenReturn(initialArchitectureAsVersion);
-
-		// TODO: Move to test
-		when(configuration.shouldFilterBestAlternatives()).thenReturn(true);
-		when(configuration.getSeedSelectionSize()).thenReturn(2);
-		when(configuration.getMaxNumberOfLevels()).thenReturn(1);
-		when(configuration.getNegotiatorFactory()).thenReturn(new SQuATSillyBotsNegotiatorFactory());
-
+	/**
+	 * Executes SQuAT and returns its results.
+	 * 
+	 * @param bots
+	 *            the bots that are used in the SQuAT run.
+	 * @return the results of the execution.
+	 */
+	protected List<NegotiatorResult> executeNegotiation(List<AbstractPCMBot> bots) {
 		SQuATController controller = new SQuATController(configuration);
 		return controller.negotiatiateUntilAnAgreementIsReached();
+	}
+
+	/**
+	 * Searches for the (first) proposal with the suffix in the architectures name.
+	 * The test will fail if none is found.
+	 * 
+	 * @param proposals
+	 *            all proposals that should be considered in the search.
+	 * @param expectedSuffix
+	 *            the name suffix of the architecture.
+	 * @return the proposal that has the expected suffix in the name of the
+	 *         architecture
+	 */
+	protected Proposal searchProposal(List<Proposal> proposals, String expectedSuffix) {
+		Proposal foundProposal = null;
+		for (Proposal proposal : proposals) {
+			if (proposal.getArchitectureName().endsWith(expectedSuffix)) {
+				foundProposal = proposal;
+				break;
+			}
+		}
+		assertNotNull(foundProposal);
+		return foundProposal;
+	}
+
+	/**
+	 * Assures that all bots deliver the expected response for the proposal. The
+	 * test will fail if this is not the case.
+	 * 
+	 * @param proposal
+	 *            the proposal to check
+	 * @param expectedResults
+	 *            the expected results in same order as the bots
+	 * @param orderedBots
+	 *            the bots in same order as the expected results
+	 */
+	protected void validateProposal(Proposal proposal, Float[] expectedResults, List<SillyBot> orderedBots) {
+		for (int i = 0; i < orderedBots.size(); i++) {
+			SillyBot bot = orderedBots.get(i);
+			Float botResponse = bot.getResponse(proposal);
+			Float expectedResponse = expectedResults[i];
+			assertEquals(expectedResponse, botResponse, ACCEPTED_DEVIATION);
+		}
+
+	}
+
+	/**
+	 * Creates 4 performance scenarios with the specified responses.
+	 * 
+	 * @param expectedResponses
+	 *            4 responses
+	 * @return the scenarios in the same order as the responses
+	 */
+	protected List<AbstractPerformancePCMScenario> createMockedPerformanceScenarios(Float[] expectedResponses) {
+		List<AbstractPerformancePCMScenario> performanceScenarios = new ArrayList<>();
+		for (int i = 0; i < 4; i++) {
+			AbstractPerformancePCMScenario scenario = mock(AbstractPerformancePCMScenario.class);
+			PCMResult scenarioResult = mock(PCMResult.class);
+			when(scenarioResult.getResponse()).thenReturn(expectedResponses[i]);
+			when(scenario.getExpectedResult()).thenReturn(scenarioResult);
+			performanceScenarios.add(scenario);
+		}
+		return performanceScenarios;
+	}
+
+	/**
+	 * Creates 4 modifiability scenarios with the specified responses.
+	 * 
+	 * @param expectedResponses
+	 *            4 responses
+	 * @return the scenarios in the same order as the responses
+	 */
+	protected List<PCMScenario> createMockedModifiabilityScenarios(Float[] expectedResponses) {
+		List<PCMScenario> modifiabilityScenarios = new ArrayList<>();
+		for (int i = 0; i < 4; i++) {
+			PCMScenario scenario = mock(PCMScenario.class);
+			PCMResult scenarioResult = mock(PCMResult.class);
+			when(scenarioResult.getResponse()).thenReturn(expectedResponses[i]);
+			when(scenario.getExpectedResult()).thenReturn(scenarioResult);
+			modifiabilityScenarios.add(scenario);
+		}
+		return modifiabilityScenarios;
 	}
 
 }
