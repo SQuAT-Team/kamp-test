@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import edu.squat.transformations.ArchitecturalVersion;
+import io.github.squat_team.agentsUtils.concessionStrategies.DesiredDistanceFactory;
+import io.github.squat_team.agentsUtils.concessionStrategies.IConcessionStrategyFactory;
 import io.github.squat_team.export.ExporterType;
 import io.github.squat_team.negotiation.SQuATSillyBotsNegotiatorFactory;
 
@@ -20,15 +22,22 @@ public class SQuATConfiguration {
 
 	private SQuATSillyBotsNegotiatorFactory negotiatorFactory;
 
+	private boolean searchAllLevels;
+	private boolean shouldAskUserForRedo;
 	private boolean filterBestAlternatives;
 	private int seedSelectionSize;
 
 	private String modelFileName;
 	private String modelPath;
 	private String alternativeRepositoryFullPath;
+	
+	private IConcessionStrategyFactory concessionStrategyFactory;
 
 	public static SQuATConfiguration generateDefault() {
 		SQuATConfiguration configuration = new SQuATConfiguration();
+		
+		configuration.setAskUserForRedo(true);
+		configuration.setSearchAllLevels(false);
 
 		configuration.setModelFileName(DEFAULT_MODEL_FILE_NAME);
 		configuration.setModelPath(DEFAULT_MODEL_PATH);
@@ -41,6 +50,7 @@ public class SQuATConfiguration {
 		configuration.getExporters().add(ExporterType.EXCEL);
 
 		configuration.setNegotiatorFactory(new SQuATSillyBotsNegotiatorFactory());
+		configuration.setConcessionStrategyFactory(new DesiredDistanceFactory());
 
 		return configuration;
 	}
@@ -119,5 +129,29 @@ public class SQuATConfiguration {
 				this.getModelPath(), "");
 		initialArchitecture.setFullPathToAlternativeRepository(this.getAlternativeRepositoryFullPath());
 		return initialArchitecture;
+	}
+
+	public boolean shouldAskUserForRedo() {
+		return shouldAskUserForRedo;
+	}
+
+	public void setAskUserForRedo(boolean shouldAskUserForRedo) {
+		this.shouldAskUserForRedo = shouldAskUserForRedo;
+	}
+
+	public boolean shouldSearchAllLevels() {
+		return searchAllLevels;
+	}
+
+	public void setSearchAllLevels(boolean searchAllLevels) {
+		this.searchAllLevels = searchAllLevels;
+	}
+
+	public IConcessionStrategyFactory getConcessionStrategyFactory() {
+		return concessionStrategyFactory;
+	}
+
+	public void setConcessionStrategyFactory(IConcessionStrategyFactory concessionStrategyFactory) {
+		this.concessionStrategyFactory = concessionStrategyFactory;
 	}
 }

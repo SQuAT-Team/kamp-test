@@ -1,15 +1,12 @@
 package io.github.squat_team.agentsUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import edu.squat.transformations.ArchitecturalVersion;
+import io.github.squat_team.agentsUtils.concessionStrategies.IConcessionStrategyFactory;
 
 public class ModifiabilityBot extends SillyBot {
 	//private int originalAffectedComponents;
 	private float originalComplexity;
-	public ModifiabilityBot(/*int originalAffectedComponents,*/ float originalComplexity, String name,float scenatioThreshold) {
-		super(name,scenatioThreshold);
+	public ModifiabilityBot(/*int originalAffectedComponents,*/ float originalComplexity, String name,float scenatioThreshold, IConcessionStrategyFactory concessionStrategyFactory) {
+		super(name,scenatioThreshold, concessionStrategyFactory);
 		//this.originalAffectedComponents = originalAffectedComponents;
 		this.originalComplexity = originalComplexity;
 	}

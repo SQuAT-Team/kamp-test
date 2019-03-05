@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -18,22 +17,13 @@ import org.palladiosimulator.pcm.usagemodel.UsageModel;
 
 import edu.squat.transformations.ArchitecturalVersion;
 import io.github.squat_team.AbstractPCMBot;
+import io.github.squat_team.agentsUtils.concessionStrategies.DesiredDistanceFactory;
+import io.github.squat_team.agentsUtils.concessionStrategies.IConcessionStrategyFactory;
 import io.github.squat_team.agentsUtils.transformations.PerformanceTransformationFactory;
-import io.github.squat_team.model.OptimizationType;
 import io.github.squat_team.model.PCMArchitectureInstance;
-import io.github.squat_team.model.PCMResult;
 import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.model.PCMScenarioResult;
-import io.github.squat_team.model.ResponseMeasureType;
-import io.github.squat_team.modifiability.ModifiabilityElement;
-import io.github.squat_team.modifiability.ModifiabilityInstruction;
-import io.github.squat_team.modifiability.ModifiabilityOperation;
-import io.github.squat_team.modifiability.ModifiabilityPCMScenario;
-import io.github.squat_team.modifiability.kamp.EvaluationType;
-import io.github.squat_team.modifiability.kamp.KAMPPCMBot;
 import io.github.squat_team.performance.AbstractPerformancePCMScenario;
-import io.github.squat_team.performance.peropteryx.ConcurrentPerOpteryxPCMBot;
-import io.github.squat_team.performance.peropteryx.PerOpteryxPCMBot;
 import io.github.squat_team.runner.SQuATConfiguration;
 import io.github.squat_team.util.PCMHelper;
 import io.github.squat_team.util.SQuATHelper;
@@ -71,20 +61,21 @@ public class LoadHelper {
 		try {
 
 			// PCMArchitectureInstance model = this.loadSpecificModel(initialArchitecture);
+			IConcessionStrategyFactory concessionStrategyFactory = configuration.getConcessionStrategyFactory();
 			PCMArchitectureInstance architecture = PCMHelper.createArchitecture(initialArchitecture);
 			ModifiabilityBot m1Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m1Scenario, architecture),
-					"m1", responseTimeM1);
+					"m1", responseTimeM1,concessionStrategyFactory);
 
 			ModifiabilityBot m2Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m2Scenario, architecture),
-					"m2", responseTimeM2);
+					"m2", responseTimeM2, concessionStrategyFactory);
 
 			java.lang.System.out
 					.println("Complejidad m2 nuevo: " + calculateModifiabilityComplexity(m2Scenario, architecture));
 
 			ModifiabilityBot m3Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m3Scenario, architecture),
-					"m3", responseTimeM3);
+					"m3", responseTimeM3, concessionStrategyFactory);
 			ModifiabilityBot m4Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m4Scenario, architecture),
-					"m4", responseTimeM4);
+					"m4", responseTimeM4, concessionStrategyFactory);
 
 			java.lang.System.out
 					.println("Complejidad m4 nuevo: " + calculateModifiabilityComplexity(m4Scenario, architecture));
@@ -103,19 +94,19 @@ public class LoadHelper {
 			PerformanceBot p1Bot = new PerformanceBot(
 					calculatePerformanceComplexityForScenario(p1Scenario, architecture,
 							initialArchitecture.getAbsolutePath() + "/" + initialArchitecture.getRepositoryFilename()),
-					"p1", responseTimeP1);
+					"p1", responseTimeP1, concessionStrategyFactory);
 			PerformanceBot p2Bot = new PerformanceBot(
 					calculatePerformanceComplexityForScenario(p2Scenario, architecture,
 							initialArchitecture.getAbsolutePath() + "/" + initialArchitecture.getRepositoryFilename()),
-					"p2", responseTimeP2);
+					"p2", responseTimeP2, concessionStrategyFactory);
 			PerformanceBot p3Bot = new PerformanceBot(
 					calculatePerformanceComplexityForScenario(p3Scenario, architecture,
 							initialArchitecture.getAbsolutePath() + "/" + initialArchitecture.getRepositoryFilename()),
-					"p3", responseTimeP3);
+					"p3", responseTimeP3, concessionStrategyFactory);
 			PerformanceBot p4Bot = new PerformanceBot(
 					calculatePerformanceComplexityForScenario(p4Scenario, architecture,
 							initialArchitecture.getAbsolutePath() + "/" + initialArchitecture.getRepositoryFilename()),
-					"p4", responseTimeP4);
+					"p4", responseTimeP4, concessionStrategyFactory);
 
 			java.lang.System.out
 					.println("INITIAL NUMBER OF architecturalAlternatives " + architecturalAlternatives.size());
@@ -132,8 +123,6 @@ public class LoadHelper {
 				// model = this.loadSpecificModel(architecturalVersion);
 
 				architecture = PCMHelper.createArchitecture(architecturalVersion);
-				
-				java.lang.System.err.println(architecture);
 				instances.put(architecturalVersion, architecture);
 
 				m1Bot.insertInOrder(new ModifiabilityProposal(
@@ -641,10 +630,11 @@ public class LoadHelper {
 
 	@Deprecated // Can now be computed directly
 	public List<SillyBot> loadBotsWithInformation() {
-		ModifiabilityBot m1Bot = new ModifiabilityBot(/* 3, */ 115f, "m1", 120f);
-		ModifiabilityBot m2Bot = new ModifiabilityBot(/* 5, */ 190.5f, "m2", 300f);
-		PerformanceBot p1Bot = new PerformanceBot(111.7639f, "p1", 30f);
-		PerformanceBot p2Bot = new PerformanceBot(74.0173f, "p2", 40f);
+		IConcessionStrategyFactory concessionStrategyFactoy = configuration.getConcessionStrategyFactory();
+		ModifiabilityBot m1Bot = new ModifiabilityBot(/* 3, */ 115f, "m1", 120f, concessionStrategyFactoy);
+		ModifiabilityBot m2Bot = new ModifiabilityBot(/* 5, */ 190.5f, "m2", 300f, concessionStrategyFactoy);
+		PerformanceBot p1Bot = new PerformanceBot(111.7639f, "p1", 30f, concessionStrategyFactoy);
+		PerformanceBot p2Bot = new PerformanceBot(74.0173f, "p2", 40f, concessionStrategyFactoy);
 
 		// First level - Modifiability tactics
 		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-mod-split(PaymentSystem)"));
@@ -3947,6 +3937,6 @@ public class LoadHelper {
 		PerformanceBot p1Bot = new PerformanceBot(
 				calculatePerformanceComplexityForScenario(scenarioP1, architecture,
 						initialArchitecture.getAbsolutePath() + "/" + initialArchitecture.getRepositoryFilename()),
-				"p1", responseTimeP1);
+				"p1", responseTimeP1, new DesiredDistanceFactory());
 	}
 }
