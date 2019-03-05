@@ -43,34 +43,44 @@ public class SQuATController {
 		NegotiatorResult negotiatorResult = null;
 
 		boolean agreement = false;
-		while (!agreement && (currentLevelOfTransformations <= configuration.getMaxNumberOfLevels())
-				&& !noMoreAlternatives) {
+		while (shouldRepeat(agreement)) {
 			sillyBots = collectInitialProposals();
 			negotiator.initialize(sillyBots);
 			negotiatorResult = negotiator.negotiate(false);
 			agreement = negotiatorResult.isSuccessful();
-
-			if (agreement) {
-				boolean redoRequest = askUserForRedo(negotiatorResult);
-				while (redoRequest && agreement) {
-					negotiatorResult = negotiator.negotiate(true);
-					agreement = negotiatorResult.isSuccessful();
-					redoRequest = askUserForRedo(negotiatorResult);
-				}
-
-				exporter.handleLevelTerminated(negotiatorResult);
-				if (configuration.shouldFilterBestAlternatives()) {
-					filterBestKAlternatives(configuration.getSeedSelectionSize());
-				}
-				negotiatorResultsForLevels.add(negotiatorResult);
+			
+			boolean redoRequest = askUserForRedo(negotiatorResult);
+			while (redoRequest && agreement) {
+				negotiatorResult = negotiator.negotiate(true);
+				agreement = negotiatorResult.isSuccessful();
+				redoRequest = askUserForRedo(negotiatorResult);
 			}
+
+			negotiatorResultsForLevels.add(negotiatorResult);
+
+			exporter.handleLevelTerminated(negotiatorResult);
+			if (configuration.shouldFilterBestAlternatives()) {
+				filterBestKAlternatives(configuration.getSeedSelectionSize());
+			}
+
 			currentLevelOfTransformations++;
 		}
 		System.out.println("Finish");
 		return negotiatorResultsForLevels;
 	}
 
+	private boolean shouldRepeat(boolean agreement) {
+		boolean agreementCheck = !agreement || configuration.shouldSearchAllLevels();
+		boolean levelCheck = currentLevelOfTransformations <= configuration.getMaxNumberOfLevels();
+		boolean newResultsCheck = !noMoreAlternatives;
+
+		return agreementCheck && levelCheck && newResultsCheck;
+	}
+
 	private boolean askUserForRedo(NegotiatorResult result) {
+		if (!configuration.shouldAskUserForRedo()) {
+			return false;
+		}
 		System.out.println("Agreement: " + result.getAgreementProposal());
 		exporter.handleIntermediateResult(result);
 		System.out.println("REDO? (Y/N): ");
