@@ -26,7 +26,7 @@ public interface ISQuATNegotiator {
 	 * called before, if a new level of search starts or the negotiation is used for
 	 * the first time. Otherwise the call is interpreted as a redo request.
 	 * 
-	 * @return the result of the negotiation. Never null.s
+	 * @return the result of the negotiation. Never null.
 	 */
-	public NegotiatorResult negotiate();
+	public NegotiatorResult negotiate(boolean redo);
 }

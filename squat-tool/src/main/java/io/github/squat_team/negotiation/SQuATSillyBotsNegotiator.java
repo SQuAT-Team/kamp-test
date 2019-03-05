@@ -13,22 +13,21 @@ import io.github.squat_team.export.ExportController;
 import io.github.squat_team.util.RandomGenerator;
 
 public class SQuATSillyBotsNegotiator implements ISQuATNegotiator {
-
-	// private List<PCMArchitectureInstance> architectureAlternatives;
 	private ExportController exporter;
 	private List<SillyBot> sillyBots;
 	private HashMap<SillyBot, Proposal> proposals;
 	private Proposal agreementProposal;
-	private List<Proposal> nonDominatedAlternatives = new ArrayList<>();
+	private ProposalAnalyzer analyzer = null;
 
 	public SQuATSillyBotsNegotiator(ExportController exporter) {
-		agreementProposal = null;
+		this.agreementProposal = null;
 		this.exporter = exporter;
 	}
 
 	@Override
 	public void initialize(List<SillyBot> sillyBots) {
 		this.sillyBots = sillyBots;
+		this.analyzer = new ProposalAnalyzer(sillyBots);
 		initializeProposals();
 	}
 
@@ -68,7 +67,8 @@ public class SQuATSillyBotsNegotiator implements ISQuATNegotiator {
 
 					newProposal = concedingAg.makeConcession(this.sillyBots);// I have to implement this method
 					if (newProposal != null) {
-						System.out.println("Step 3.c: New Proposal made by agent "+concedingAg +" => " + newProposal.toString());
+						System.out.println("Step 3.c: New Proposal made by agent " + concedingAg + " => "
+								+ newProposal.toString());
 						// Update proposals map
 						proposals.put(concedingAg, newProposal);
 						atLeastOneNewProposal = true;
@@ -82,14 +82,13 @@ public class SQuATSillyBotsNegotiator implements ISQuATNegotiator {
 			}
 		}
 		// At this point an agreement should have been found => return it
-		nonDominatedAlternatives = findNonDominatedAlternatives();
 		return createSuccessfulResults();
 	}
 
 	private NegotiatorResult createSuccessfulResults() {
 		NegotiatorResult result = new NegotiatorResult(true);
 		result.setAgreementProposal(agreementProposal);
-		result.setNonDominatedAlternatives(nonDominatedAlternatives);
+		result.setNonDominatedAlternatives(analyzer.getParetoOptimalSolutions());
 		result.setSillyBots(sillyBots);
 		result.setProposals(proposals);
 		return result;
@@ -102,46 +101,6 @@ public class SQuATSillyBotsNegotiator implements ISQuATNegotiator {
 		result.setSillyBots(sillyBots);
 		result.setProposals(proposals);
 		return result;
-	}
-
-	/**
-	 * Searches for the non-dominated (Pareto optimal) solutions within all
-	 * proposals.
-	 */
-	private List<Proposal> findNonDominatedAlternatives() {
-		List<Proposal> nonDominatedAlternatives = new ArrayList<>();
-		List<Proposal> proposals = sillyBots.get(0).getOrderedProposals();
-		for (Proposal proposal : proposals) {
-			if (!isDominatedByAtLeastOneProposal(proposal)) {
-				nonDominatedAlternatives.add(proposal);
-			}
-		}
-		return nonDominatedAlternatives;
-	}
-
-	private boolean isDominatedByAtLeastOneProposal(Proposal proposal) {
-		List<Proposal> otherProposals = new ArrayList<>(sillyBots.get(0).getOrderedProposals());
-		otherProposals.remove(proposal);
-		for (Proposal proposal2 : otherProposals) {
-			if (isDominatedBy(proposal, proposal2)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	private boolean isDominatedBy(Proposal proposal, Proposal proposal2) {
-
-		boolean allEqual = true;
-		for (SillyBot bot : sillyBots) {
-			// Si le gano en al menos uno entonces no es dominado
-			if ((bot.getResponse(proposal) < bot.getResponse(proposal2)))
-				return false;
-			if ((bot.getResponse(proposal) != bot.getResponse(proposal2)))
-				allEqual = false;
-		}
-
-		return !allEqual;
 	}
 
 	private List<SillyBot> selectWhoHasToConcede() {
@@ -232,7 +191,6 @@ public class SQuATSillyBotsNegotiator implements ISQuATNegotiator {
 		Random random = RandomGenerator.getInstance().generate();
 		Collections.shuffle(proposalsShuffle, random);
 		for (Proposal proposal : proposalsShuffle) {
-			System.out.println("SHUFFLED: "+proposal.getArchitectureName());
 			if (checkAgreementForAgents(proposal)) {
 				agreementProposal = proposal;
 				exporter.handleIntermediateState(createSuccessfulResults());
