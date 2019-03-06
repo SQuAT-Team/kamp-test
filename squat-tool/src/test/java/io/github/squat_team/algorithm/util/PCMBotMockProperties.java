@@ -17,7 +17,7 @@ import edu.squat.transformations.ArchitecturalVersion;
 public class PCMBotMockProperties {
 	public final static String PERFORMANCE_BOT_DEFAULT_NAME = ArchitecturalVersion.PERFORMANCE;
 	public final static String MODIFIABILITY_BOT_DEFAULT_NAME = ArchitecturalVersion.MODIFIABILITY;
-	
+
 	private String name;
 	private String botType;
 
@@ -99,7 +99,7 @@ public class PCMBotMockProperties {
 	public void setReturnArchitectures(boolean returnArchitectures) {
 		this.returnArchitectures = returnArchitectures;
 	}
-	
+
 	public String getBotType() {
 		return botType;
 	}

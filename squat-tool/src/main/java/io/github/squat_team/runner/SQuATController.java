@@ -48,7 +48,7 @@ public class SQuATController {
 			negotiator.initialize(sillyBots);
 			negotiatorResult = negotiator.negotiate(false);
 			agreement = negotiatorResult.isSuccessful();
-			
+
 			boolean redoRequest = askUserForRedo(negotiatorResult);
 			while (redoRequest && agreement) {
 				negotiatorResult = negotiator.negotiate(true);
@@ -111,8 +111,6 @@ public class SQuATController {
 	private List<SillyBot> collectInitialProposals() {
 		// REMOVE THIS FIRST LINE. IT ONLY PURPOSES IS TO AVOID THE MODIFIABILITY
 		// TACTICS THAT ARE NOT WORKING WITH THE COMPOSITE COMPONETS
-		// new LoadHelper().loadBotsForArchitecturalAlternatives(new
-		// ArrayList<ArchitecturalVersion>(),archTransFactory.getInitialArchitecture());
 		List<SillyBot> sillyBots = null;
 		System.out.println("Level of transformations: " + currentLevelOfTransformations);
 		List<ArchitecturalVersion> versionsUntilLevel = archTransFactory

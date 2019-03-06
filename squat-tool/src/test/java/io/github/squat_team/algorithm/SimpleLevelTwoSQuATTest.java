@@ -469,19 +469,19 @@ public class SimpleLevelTwoSQuATTest extends AbstractSQuATTest {
 
 		Proposal proposalP2_1_M0_0 = searchProposal(nonDominatedProposals, "performance_2_1_modifiability_0_0");
 		validateProposal(proposalP2_1_M0_0, BEST_RESULT_LVL2, orderedBots);
-		
+
 		Proposal proposalP3_0_M0_0 = searchProposal(nonDominatedProposals, "performance_3_0_modifiability_0_0");
 		validateProposal(proposalP3_0_M0_0, NON_DOMINATED_RESULTS_LVL2[1], orderedBots);
-		
+
 		Proposal proposalM0_0_P3_1 = searchProposal(nonDominatedProposals, "modifiability_0_0_performance_3_1");
 		validateProposal(proposalM0_0_P3_1, NON_DOMINATED_RESULTS_LVL2[2], orderedBots);
-		
+
 		Proposal proposalM0_1_P0_0 = searchProposal(nonDominatedProposals, "modifiability_0_1_performance_0_0");
 		validateProposal(proposalM0_1_P0_0, NON_DOMINATED_RESULTS_LVL2[3], orderedBots);
-		
+
 		Proposal proposalM0_1_P0_1 = searchProposal(nonDominatedProposals, "modifiability_0_1_performance_0_1");
 		validateProposal(proposalM0_1_P0_1, NON_DOMINATED_RESULTS_LVL2[4], orderedBots);
-		
+
 		// propagated results from level 1
 		Proposal proposalP0_2 = searchProposal(nonDominatedProposals, "initialArchitecture_performance_0_2");
 		validateProposal(proposalP0_2, BEST_RESULT_LVL1, orderedBots);

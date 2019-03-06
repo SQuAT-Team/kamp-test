@@ -13,32 +13,31 @@ public class DesiresDistance extends ConcessionStrategy {
 
 	@Override
 	public Proposal makeConcession(List<SillyBot> sillyBots) {
-		Proposal currentProposalOfThisBot=bot.getCurrentProposal();
-		float currentDD=calculateDesireDistance(currentProposalOfThisBot, sillyBots);
-		for(int i=currentConcessionIndex+1; i<bot.getOrderedProposals().size();i++){
-			float newDD=calculateDesireDistance(bot.getOrderedProposals().get(i),sillyBots);
-			if(newDD<=currentDD){
-				//Cambiar el indice al proposal actual
-				currentConcessionIndex=i;
+		Proposal currentProposalOfThisBot = bot.getCurrentProposal();
+		float currentDD = calculateDesireDistance(currentProposalOfThisBot, sillyBots);
+		for (int i = currentConcessionIndex + 1; i < bot.getOrderedProposals().size(); i++) {
+			float newDD = calculateDesireDistance(bot.getOrderedProposals().get(i), sillyBots);
+			if (newDD <= currentDD) {
+				// Change the index to the current proposal
+				currentConcessionIndex = i;
 				return bot.getOrderedProposals().get(i);
 			}
 		}
 		return null;
 	}
 
-	private float calculateDesireDistance(Proposal p, List<SillyBot> sillyBots){
-		float ret=0;
+	private float calculateDesireDistance(Proposal p, List<SillyBot> sillyBots) {
+		float ret = 0;
 		for (SillyBot sillyBot : sillyBots) {
-			if(!sillyBot.equals(bot)){
-				float currentUtility=sillyBot.getUtilityFor(sillyBot.getCurrentProposal());
-				float proposedUtility=sillyBot.getUtilityFor(p.getArchitectureName());
-				if((proposedUtility-currentUtility)>0){
-					ret=ret+0;//it doesnt take into account this bot
+			if (!sillyBot.equals(bot)) {
+				float currentUtility = sillyBot.getUtilityFor(sillyBot.getCurrentProposal());
+				float proposedUtility = sillyBot.getUtilityFor(p.getArchitectureName());
+				if ((proposedUtility - currentUtility) > 0) {
+					// it doesnt take into account this bot
+					ret = ret + 0;
+				} else {
+					ret = ret + Math.abs(proposedUtility - currentUtility);
 				}
-				else{
-					ret=ret+Math.abs(proposedUtility-currentUtility);
-				}
-				
 			}
 		}
 		return ret;

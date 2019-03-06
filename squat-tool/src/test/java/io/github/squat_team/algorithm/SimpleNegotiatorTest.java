@@ -309,7 +309,6 @@ public class SimpleNegotiatorTest {
 			Proposal proposal = new ProposalImplementation(name, responses[i]);
 			bots.get(i).insertInOrder(proposal);
 		}
-
 	}
 
 	/**
@@ -317,7 +316,8 @@ public class SimpleNegotiatorTest {
 	 */
 	public class SillyBotImplementation extends SillyBot {
 
-		public SillyBotImplementation(String name, float scenarioThreshold, IConcessionStrategyFactory concessionStrategyFactory) {
+		public SillyBotImplementation(String name, float scenarioThreshold,
+				IConcessionStrategyFactory concessionStrategyFactory) {
 			super(name, scenarioThreshold, concessionStrategyFactory, false);
 		}
 

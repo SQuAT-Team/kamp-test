@@ -13,10 +13,10 @@ public class NashConcession extends ConcessionStrategy {
 
 	@Override
 	public Proposal makeConcession(List<SillyBot> sillyBots) {
-		while(canConcede()){
+		while (canConcede()) {
 			currentConcessionIndex++;
-			Proposal p=bot.getCurrentProposal();
-			if(increaseUtilitiesOfOtherBots(sillyBots,p))
+			Proposal p = bot.getCurrentProposal();
+			if (increaseUtilitiesOfOtherBots(sillyBots, p))
 				return p;
 		}
 		return null;
@@ -24,10 +24,10 @@ public class NashConcession extends ConcessionStrategy {
 
 	private boolean increaseUtilitiesOfOtherBots(List<SillyBot> sillyBots, Proposal newProposal) {
 		for (SillyBot sillyBot : sillyBots) {
-			if(!sillyBot.equals(bot)){
-				float currentUtility=sillyBot.getUtilityFor(sillyBot.getCurrentProposal());
-				float newUtility=sillyBot.getUtilityFor(newProposal);
-				if(currentUtility>newUtility)
+			if (!sillyBot.equals(bot)) {
+				float currentUtility = sillyBot.getUtilityFor(sillyBot.getCurrentProposal());
+				float newUtility = sillyBot.getUtilityFor(newProposal);
+				if (currentUtility > newUtility)
 					return false;
 			}
 		}

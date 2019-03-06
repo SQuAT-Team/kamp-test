@@ -33,7 +33,7 @@ public class ScenarioHelperMockBuilder {
 		when(performanceScenarioHelper.obtainName(performanceScenarios.get(1))).thenReturn("pb2");
 		when(performanceScenarioHelper.obtainName(performanceScenarios.get(2))).thenReturn("pb3");
 		when(performanceScenarioHelper.obtainName(performanceScenarios.get(3))).thenReturn("pb4");
-		
+
 		for (int i = 0; i < performanceScenarios.size(); i++) {
 			when(performanceScenarioHelper.createPCMBot(performanceScenarios.get(i)))
 					.thenReturn(performanceBots.get(i));

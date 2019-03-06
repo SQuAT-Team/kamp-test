@@ -20,25 +20,26 @@ public class ArchitecturalTransformationsFactory {
 
 	/** List of scenarios */
 	private Hashtable<Integer, List<ArchitecturalVersion>> architecturesByLevel;
-	
+
 	// TODO Remove
 	private ModifiabilityTransformationsFactory modifiabilityTrans;
 	private PerformanceTransformationFactory performanceTrans;
 
-	public ArchitecturalTransformationsFactory(SQuATConfiguration configuration, ArchitecturalVersion initialArchitecture) {
+	public ArchitecturalTransformationsFactory(SQuATConfiguration configuration,
+			ArchitecturalVersion initialArchitecture) {
 		this.initialArchitecture = initialArchitecture;
 		this.architecturesByLevel = new Hashtable<>();
-		
+
 		// TODO Remove
 		this.modifiabilityTrans = ModifiabilityTransformationsFactory.getInstance();
 		this.performanceTrans = PerformanceTransformationFactory.getInstance();
 	}
 
-	public List<ArchitecturalVersion> getArchitecturalTransformationsUntilLevel(int level) {		
+	public List<ArchitecturalVersion> getArchitecturalTransformationsUntilLevel(int level) {
 		if (architecturesByLevel.get(level) == null) {
 			createArchitecturalTransformationsForLevel(level);
 		}
-			
+
 		// The results is the architectures created for this level plus the
 		// architectures created for previous levels
 		List<ArchitecturalVersion> ret = new ArrayList<ArchitecturalVersion>();
@@ -53,12 +54,13 @@ public class ArchitecturalTransformationsFactory {
 		if (this.architecturesByLevel.containsKey(level)) {
 			return;
 		}
-		
+
 		// Create the list and add to map
 		final List<ArchitecturalVersion> results = new ArrayList<>();
 		this.architecturesByLevel.put(level, results);
-		
-		// If we need to create the first level, we have to start with the initial architecture		
+
+		// If we need to create the first level, we have to start with the initial
+		// architecture
 		List<ArchitecturalVersion> transformationForLevel = new ArrayList<ArchitecturalVersion>();
 		architecturesByLevel.put(level, transformationForLevel);
 		if (level == 1) {

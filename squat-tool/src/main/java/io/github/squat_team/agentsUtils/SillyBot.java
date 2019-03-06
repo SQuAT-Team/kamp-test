@@ -16,6 +16,16 @@ public abstract class SillyBot {
 	private float scenarioThreshold;
 	private boolean filterSpecialCases;
 
+	public SillyBot(String name, float scenarioThreshold, IConcessionStrategyFactory concessionStrategyFactory,
+			boolean filterSpecialCases) {
+		this.orderedProposals = new ArrayList<Proposal>();
+		this.concessionStrategy = concessionStrategyFactory.getConcessionStrategy(this);
+		this.name = name;
+		this.scenarioThreshold = scenarioThreshold;
+		this.acceptableLoss = 0.30f;
+		this.filterSpecialCases = filterSpecialCases;
+	}
+
 	public synchronized void insertInOrder(Proposal p) {
 		float utilityProposal = getUtilityFor(p);
 		if (orderedProposals.size() == 0) {
@@ -33,29 +43,13 @@ public abstract class SillyBot {
 		}
 	}
 
-	// private Integer indexInWhichUtilityBecomeZero;
 	public Proposal makeConcession(List<SillyBot> sillyBots) {
 		return concessionStrategy.makeConcession(sillyBots);
 	}
 
-	public SillyBot(String name, float scenarioThreshold, IConcessionStrategyFactory concessionStrategyFactory,
-			boolean filterSpecialCases) {
-		this.orderedProposals = new ArrayList<Proposal>();
-		this.concessionStrategy = concessionStrategyFactory.getConcessionStrategy(this);
-		this.name = name;
-		this.scenarioThreshold = scenarioThreshold;
-		this.acceptableLoss = 0.30f;
-		this.filterSpecialCases = filterSpecialCases;
-		// indexInWhichUtilityBecomeZero=null;
-	}
-
 	public Proposal getBestProposal() {
-		// if(makeImprovementRegardingOriginal(orderedProposals.get(currentConcessionIndex)))
 		return orderedProposals.get(concessionStrategy.getCurrentConcessionIndex());
-		// return null;
 	}
-	// protected abstract boolean makeImprovementRegardingOriginal(Proposal
-	// proposal);
 
 	public boolean acceptableUtilityValue(Proposal proposal) {
 		float currentUtilty = getUtilityFor(orderedProposals.get(concessionStrategy.getCurrentConcessionIndex()));
@@ -85,7 +79,6 @@ public abstract class SillyBot {
 		return concessionStrategy.canConcede();
 	}
 
-	// public abstract float getUtilityFor(Proposal proposal);
 	public Proposal getCurrentProposal() {
 		return orderedProposals.get(concessionStrategy.getCurrentConcessionIndex());
 	}
@@ -135,17 +128,6 @@ public abstract class SillyBot {
 			return 0;
 	}
 
-	/*
-	 * private int indexInWhichUtilityBecomeZero() {
-	 * if(indexInWhichUtilityBecomeZero==null){
-	 * if(getScenarioMeasureFor(orderedProposals.get(0))==getScenarioMeasureFor(
-	 * orderedProposals.get(orderedProposals.size()-1))){
-	 * indexInWhichUtilityBecomeZero=orderedProposals.size()-1;//if all the
-	 * proposals have the same response, then n is the last index }else{ //I return
-	 * the third quartile indexInWhichUtilityBecomeZero=(int)
-	 * Math.round(orderedProposals.size() * 75 / 100); } } return
-	 * indexInWhichUtilityBecomeZero; }
-	 */
 	protected abstract float getScenarioMeasureFor(Proposal proposal);
 
 	public void printUtilies() {
@@ -153,11 +135,7 @@ public abstract class SillyBot {
 		System.out.print("Utilities for " + name + " [");
 		for (Iterator<Proposal> iterator = orderedProposals.iterator(); iterator.hasNext();) {
 			Proposal proposal = (Proposal) iterator.next();
-			/*
-			 * if(proposal.getArchitectureName().equals(
-			 * "stplus-ps2-476-mod-split(PaymentSystem)-wrapper(IExporter)")){
-			 * System.out.println("Esta->"); System.out.println(proposal); }
-			 */
+
 			float utility = getUtilityFor(proposal);
 			float scenarioResponse = getScenarioMeasureFor(proposal);
 			System.out.print("U: " + utility + "R: " + scenarioResponse + "M: " + proposal.getArchitectureName() + " ");

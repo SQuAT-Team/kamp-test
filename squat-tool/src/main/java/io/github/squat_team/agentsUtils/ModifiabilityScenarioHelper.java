@@ -12,6 +12,7 @@ import io.github.squat_team.modifiability.ModifiabilityPCMScenario;
 import io.github.squat_team.modifiability.kamp.EvaluationType;
 import io.github.squat_team.modifiability.kamp.KAMPPCMBot;
 
+@SuppressWarnings("rawtypes")
 public class ModifiabilityScenarioHelper {
 	private PCMScenario cocomeS1;
 	private PCMScenario cocomeS2;
@@ -21,94 +22,92 @@ public class ModifiabilityScenarioHelper {
 	private KAMPPCMBot cocomeBotS2;
 	private KAMPPCMBot cocomeBotS3;
 	private KAMPPCMBot cocomeBotS4;
-	
+
 	// TODO Replace
 	private Float responseTimeM1 = 2270f;
-	private Float responseTimeM2 = 750f;//5000f;
-	private Float responseTimeM3 = 170f;//200f;
-	private Float responseTimeM4 = 2180f;//2000f;
-	
-	public ModifiabilityScenarioHelper(){
-		cocomeS1=null;
-		cocomeS2=null;
-		cocomeS3=null;
-		cocomeS4=null;
-		cocomeBotS1=null;
-		cocomeBotS2=null;
-		cocomeBotS3=null;
-		cocomeBotS4=null;
+	private Float responseTimeM2 = 750f;
+	private Float responseTimeM3 = 170f;
+	private Float responseTimeM4 = 2180f;
+
+	public ModifiabilityScenarioHelper() {
+		cocomeS1 = null;
+		cocomeS2 = null;
+		cocomeS3 = null;
+		cocomeS4 = null;
+		cocomeBotS1 = null;
+		cocomeBotS2 = null;
+		cocomeBotS3 = null;
+		cocomeBotS4 = null;
 	}
-	
+
 	private static ModifiabilityScenarioHelper instance;
-	
-	public static ModifiabilityScenarioHelper getInstance(){
-		if(instance==null)
-			instance=new ModifiabilityScenarioHelper();
+
+	public static ModifiabilityScenarioHelper getInstance() {
+		if (instance == null)
+			instance = new ModifiabilityScenarioHelper();
 		return instance;
 	}
-	
-	public void resetBots(){
-		cocomeBotS1=null;
-		cocomeBotS2=null;
-		cocomeBotS3=null;
-		cocomeBotS4=null;
+
+	public void resetBots() {
+		cocomeBotS1 = null;
+		cocomeBotS2 = null;
+		cocomeBotS3 = null;
+		cocomeBotS4 = null;
 	}
-	
+
 	public PCMScenario createScenario1Cocome() {
-		if(cocomeS1==null){
+		if (cocomeS1 == null) {
 			cocomeS1 = createModifiabilityNFC(ResponseMeasureType.DECIMAL, responseTimeM1);
 		}
 		return cocomeS1;
 	}
-	
+
 	public PCMScenario createScenario2Cocome() {
-		if(cocomeS2==null){
+		if (cocomeS2 == null) {
 			cocomeS2 = createModifiabilityVIP(ResponseMeasureType.DECIMAL, responseTimeM2);
 		}
 		return cocomeS2;
 	}
-	
+
 	public PCMScenario createScenario3Cocome() {
-		if(cocomeS3==null){
+		if (cocomeS3 == null) {
 			cocomeS3 = createModifiabilityWithdrawMoney(ResponseMeasureType.DECIMAL, responseTimeM3);
 		}
 		return cocomeS3;
 	}
-	
+
 	public PCMScenario createScenario4Cocome() {
-		if(cocomeS4==null){
+		if (cocomeS4 == null) {
 			cocomeS4 = createModifiabilityServiceLog(ResponseMeasureType.DECIMAL, responseTimeM4);
 		}
 		return cocomeS4;
 	}
-	
 
 	public AbstractPCMBot createPCMBot(PCMScenario scenario) {
-		if(scenario==cocomeS1&&cocomeBotS1!=null)
+		if (scenario == cocomeS1 && cocomeBotS1 != null)
 			return cocomeBotS1;
-		if(scenario==cocomeS2&&cocomeBotS2!=null)
+		if (scenario == cocomeS2 && cocomeBotS2 != null)
 			return cocomeBotS2;
-		if(scenario==cocomeS3&&cocomeBotS3!=null)
+		if (scenario == cocomeS3 && cocomeBotS3 != null)
 			return cocomeBotS3;
-		if(scenario==cocomeS4&&cocomeBotS4!=null)
+		if (scenario == cocomeS4 && cocomeBotS4 != null)
 			return cocomeBotS4;
-		
+
 		// init bot
 		KAMPPCMBot bot = new KAMPPCMBot(scenario);
 		bot.setEvaluationType(EvaluationType.COMPLEXITY);
-		
-		if(scenario==cocomeS1)
-			cocomeBotS1=bot;
-		if(scenario==cocomeS2)
-			cocomeBotS2=bot;
-		if(scenario==cocomeS3)
-			cocomeBotS3=bot;
-		if(scenario==cocomeS4)
-			cocomeBotS4=bot;
-		
+
+		if (scenario == cocomeS1)
+			cocomeBotS1 = bot;
+		if (scenario == cocomeS2)
+			cocomeBotS2 = bot;
+		if (scenario == cocomeS3)
+			cocomeBotS3 = bot;
+		if (scenario == cocomeS4)
+			cocomeBotS4 = bot;
+
 		return bot;
 	}
-	
 
 	private PCMScenario createModifiabilityNFC(ResponseMeasureType type, Comparable response) {
 		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
@@ -162,55 +161,59 @@ public class ModifiabilityScenarioHelper {
 		googleProvRole.parameters.put("iname", "INFCPayment");
 		scenario.addChange(googleProvRole);
 		//
-		/*ModifiabilityInstruction connectorLink = new ModifiabilityInstruction();
-		connectorLink.operation = ModifiabilityOperation.CREATE;
-		connectorLink.element = ModifiabilityElement.REQUIREDROLE;
-		connectorLink.parameters.put("cname", "org.cocome.cloud.web.connector.cashdeskconnector");
-		connectorLink.parameters.put("iname", "INFCPayment");
-		scenario.addChange(connectorLink);*/
+		/*
+		 * ModifiabilityInstruction connectorLink = new ModifiabilityInstruction();
+		 * connectorLink.operation = ModifiabilityOperation.CREATE;
+		 * connectorLink.element = ModifiabilityElement.REQUIREDROLE;
+		 * connectorLink.parameters.put("cname",
+		 * "org.cocome.cloud.web.connector.cashdeskconnector");
+		 * connectorLink.parameters.put("iname", "INFCPayment");
+		 * scenario.addChange(connectorLink);
+		 */
 		//
-		/*ModifiabilityInstruction cashDeskNewOps = new ModifiabilityInstruction();
-		cashDeskNewOps.operation = ModifiabilityOperation.MODIFY;
-		cashDeskNewOps.element = ModifiabilityElement.INTERFACE;
-		cashDeskNewOps.parameters.put("name", "ICashDeskQuery");
-		scenario.addChange(cashDeskNewOps);*/
-		
-		
+		/*
+		 * ModifiabilityInstruction cashDeskNewOps = new ModifiabilityInstruction();
+		 * cashDeskNewOps.operation = ModifiabilityOperation.MODIFY;
+		 * cashDeskNewOps.element = ModifiabilityElement.INTERFACE;
+		 * cashDeskNewOps.parameters.put("name", "ICashDeskQuery");
+		 * scenario.addChange(cashDeskNewOps);
+		 */
+
 		//
-		
-		//Additionals
+
+		// Additionals
 		ModifiabilityInstruction connectorLink = new ModifiabilityInstruction();
 		connectorLink.operation = ModifiabilityOperation.CREATE;
 		connectorLink.element = ModifiabilityElement.REQUIREDROLE;
 		connectorLink.parameters.put("cname", "org.cocome.tradingsystem.cashdeskline.cashdesk.CashDeskEventHandler");
 		connectorLink.parameters.put("iname", "INFCPayment");
 		scenario.addChange(connectorLink);
-		
+
 		ModifiabilityInstruction connectorLink2 = new ModifiabilityInstruction();
 		connectorLink2.operation = ModifiabilityOperation.CREATE;
 		connectorLink2.element = ModifiabilityElement.REQUIREDROLE;
 		connectorLink2.parameters.put("cname", "org.cocome.tradingsystem.cashdeskline.cashdesk.CashBoxEventHandler");
 		connectorLink2.parameters.put("iname", "INFCPayment");
 		scenario.addChange(connectorLink2);
-		
+
 		ModifiabilityInstruction cashDeskNewOps = new ModifiabilityInstruction();
 		cashDeskNewOps.operation = ModifiabilityOperation.MODIFY;
 		cashDeskNewOps.element = ModifiabilityElement.INTERFACE;
 		cashDeskNewOps.parameters.put("name", "IBankLocal");
 		scenario.addChange(cashDeskNewOps);
-		
+
 		ModifiabilityInstruction modifyInterface2 = new ModifiabilityInstruction();
 		modifyInterface2.operation = ModifiabilityOperation.MODIFY;
 		modifyInterface2.element = ModifiabilityElement.INTERFACE;
 		modifyInterface2.parameters.put("name", "CreditCardScannedEvent");
 		scenario.addChange(modifyInterface2);
-		
+
 		ModifiabilityInstruction modifyInterface3 = new ModifiabilityInstruction();
 		modifyInterface3.operation = ModifiabilityOperation.MODIFY;
 		modifyInterface3.element = ModifiabilityElement.INTERFACE;
 		modifyInterface3.parameters.put("name", "CashBoxClosedEvent");
 		scenario.addChange(modifyInterface3);
-		
+
 		return scenario;
 	}
 
@@ -267,40 +270,42 @@ public class ModifiabilityScenarioHelper {
 		vipIdentifierProvRole.parameters.put("iname", "IVIPIdentifier");
 		scenario.addChange(vipIdentifierProvRole);
 		//
-		/*ModifiabilityInstruction cashDeskInterface = new ModifiabilityInstruction();
-		cashDeskInterface.operation = ModifiabilityOperation.MODIFY;
-		cashDeskInterface.element = ModifiabilityElement.INTERFACE;
-		cashDeskInterface.parameters.put("name", "org.cocome.cloud.web.data.cashdeskdata.ICashDesk");
-		scenario.addChange(cashDeskInterface);*/
+		/*
+		 * ModifiabilityInstruction cashDeskInterface = new ModifiabilityInstruction();
+		 * cashDeskInterface.operation = ModifiabilityOperation.MODIFY;
+		 * cashDeskInterface.element = ModifiabilityElement.INTERFACE;
+		 * cashDeskInterface.parameters.put("name",
+		 * "org.cocome.cloud.web.data.cashdeskdata.ICashDesk");
+		 * scenario.addChange(cashDeskInterface);
+		 */
 		//
-		/**Additionals*/
-		
-		
+		/** Additionals */
+
 		ModifiabilityInstruction connectorLink3 = new ModifiabilityInstruction();
 		connectorLink3.operation = ModifiabilityOperation.CREATE;
 		connectorLink3.element = ModifiabilityElement.REQUIREDROLE;
 		connectorLink3.parameters.put("cname", "org.cocome.tradingsystem.inventory.data.UserManager");
 		connectorLink3.parameters.put("iname", "IVIPIdentifier");
 		scenario.addChange(connectorLink3);
-		
+
 		ModifiabilityInstruction authenticatorInterface = new ModifiabilityInstruction();
 		authenticatorInterface.operation = ModifiabilityOperation.MODIFY;
 		authenticatorInterface.element = ModifiabilityElement.INTERFACE;
 		authenticatorInterface.parameters.put("name", "IAuthenticator");
 		scenario.addChange(authenticatorInterface);
-		
+
 		ModifiabilityInstruction otherInterface = new ModifiabilityInstruction();
 		otherInterface.operation = ModifiabilityOperation.MODIFY;
 		otherInterface.element = ModifiabilityElement.INTERFACE;
 		otherInterface.parameters.put("name", "ICashBoxModel");
 		scenario.addChange(otherInterface);
-		
+
 		ModifiabilityInstruction authenticatorInterface2 = new ModifiabilityInstruction();
 		authenticatorInterface2.operation = ModifiabilityOperation.MODIFY;
 		authenticatorInterface2.element = ModifiabilityElement.INTERFACE;
 		authenticatorInterface2.parameters.put("name", "LoginEvent");
 		scenario.addChange(authenticatorInterface2);
-		
+
 		ModifiabilityInstruction displayInt = new ModifiabilityInstruction();
 		displayInt.operation = ModifiabilityOperation.MODIFY;
 		displayInt.element = ModifiabilityElement.INTERFACE;
@@ -459,53 +464,54 @@ public class ModifiabilityScenarioHelper {
 		logProvRole.parameters.put("iname", "ILogStorage");
 		scenario.addChange(logProvRole);
 		//
-		/*ModifiabilityInstruction cashDeskDAOInterface = new ModifiabilityInstruction();
-		cashDeskDAOInterface.operation = ModifiabilityOperation.MODIFY;
-		cashDeskDAOInterface.element = ModifiabilityElement.INTERFACE;
-		cashDeskDAOInterface.parameters.put("name", "ICashDeskDAO");
-		scenario.addChange(cashDeskDAOInterface);*/
+		/*
+		 * ModifiabilityInstruction cashDeskDAOInterface = new
+		 * ModifiabilityInstruction(); cashDeskDAOInterface.operation =
+		 * ModifiabilityOperation.MODIFY; cashDeskDAOInterface.element =
+		 * ModifiabilityElement.INTERFACE; cashDeskDAOInterface.parameters.put("name",
+		 * "ICashDeskDAO"); scenario.addChange(cashDeskDAOInterface);
+		 */
 		//
-		
-		
-		/**Additionals*/
-		
+
+		/** Additionals */
+
 		ModifiabilityInstruction cardReaderWithdrawReqRole = new ModifiabilityInstruction();
 		cardReaderWithdrawReqRole.operation = ModifiabilityOperation.CREATE;
 		cardReaderWithdrawReqRole.element = ModifiabilityElement.REQUIREDROLE;
 		cardReaderWithdrawReqRole.parameters.put("cname", "org.cocome.tradingsystem.inventory.data.Persistence");
 		cardReaderWithdrawReqRole.parameters.put("iname", "ILogStorage");
 		scenario.addChange(cardReaderWithdrawReqRole);
-		
+
 		ModifiabilityInstruction loginDataReqRole = new ModifiabilityInstruction();
 		loginDataReqRole.operation = ModifiabilityOperation.CREATE;
 		loginDataReqRole.element = ModifiabilityElement.REQUIREDROLE;
 		loginDataReqRole.parameters.put("cname", "org.cocome.cloud.web.data.logindata");
 		loginDataReqRole.parameters.put("iname", "ILogStorage");
 		scenario.addChange(loginDataReqRole);
-		
+
 		ModifiabilityInstruction accountInterface = new ModifiabilityInstruction();
 		accountInterface.operation = ModifiabilityOperation.MODIFY;
 		accountInterface.element = ModifiabilityElement.INTERFACE;
 		accountInterface.parameters.put("name", "AccountSaleEvent");
 		scenario.addChange(accountInterface);
-		
+
 		ModifiabilityInstruction modifyInterface3 = new ModifiabilityInstruction();
 		modifyInterface3.operation = ModifiabilityOperation.MODIFY;
 		modifyInterface3.element = ModifiabilityElement.INTERFACE;
 		modifyInterface3.parameters.put("name", "CashBoxClosedEvent");
 		scenario.addChange(modifyInterface3);
-		
+
 		return scenario;
 	}
-	
+
 	public String obtainName(PCMScenario scenario) {
-		if(scenario==cocomeS1)
+		if (scenario == cocomeS1)
 			return "modifiabilityBot1";
-		if(scenario==cocomeS2)
+		if (scenario == cocomeS2)
 			return "modifiabilityBot1";
-		if(scenario==cocomeS3)
+		if (scenario == cocomeS3)
 			return "modifiabilityBot1";
-		if(scenario==cocomeS4)
+		if (scenario == cocomeS4)
 			return "modifiabilityBot1";
 		return null;
 	}

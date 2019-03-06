@@ -28,29 +28,29 @@ public class MediaStoreTest {
 	private static String baseSystemFile = dirPath + "ms_base.system";
 	private static String baseAllocationFile = dirPath + "ms_base.allocation";
 	private static String baseUsageFile = dirPath + "ms_base_usage_all.usagemodel";
-	
+
 	@SuppressWarnings("rawtypes")
 	@Test
 	public void testAnalysis() throws Exception {
 		PCMScenario scenario = this.createModifiabilityScenario();
 		KAMPPCMBot bot = new KAMPPCMBot(scenario);
 		PCMArchitectureInstance mediaStore = loadMediaStore("MediaStore");
-		
-		PCMScenarioResult scenarioResult = bot.analyze(mediaStore,"");
+
+		PCMScenarioResult scenarioResult = bot.analyze(mediaStore, "");
 		Assert.assertTrue(scenarioResult.isSatisfied() < 0);
-		
+
 		int AFFECTED_COMPONENTS = 16;
 		Comparable response = scenarioResult.getResult().getResponse();
-		Assert.assertEquals(((Integer)response).intValue(), AFFECTED_COMPONENTS);
+		Assert.assertEquals(((Integer) response).intValue(), AFFECTED_COMPONENTS);
 	}
-	
-	//@Test
+
+	// @Test
 	public void testAlternatives() {
 		PCMScenario scenario = this.createModifiabilityScenario();
 		KAMPPCMBot bot = new KAMPPCMBot(scenario);
 		PCMArchitectureInstance mediaStore = loadMediaStore("MediaStore");
 	}
-	
+
 	private PCMScenario createModifiabilityScenario() {
 		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
 		PCMResult expectedResult = new PCMResult(ResponseMeasureType.NUMERIC);
@@ -68,15 +68,16 @@ public class MediaStoreTest {
 		scenario.addChange(i2);
 		return scenario;
 	}
-	
+
 	private PCMArchitectureInstance loadMediaStore(String name) {
 		Repository repository = SQuATHelper.loadRepositoryModel(repositoryFile);
 		ResourceEnvironment resourceEnvironment = SQuATHelper.loadResourceEnvironmentModel(resourceEnvironmentFile);
 		System system = SQuATHelper.loadSystemModel(baseSystemFile);
 		Allocation allocation = SQuATHelper.loadAllocationModel(baseAllocationFile);
 		UsageModel usageModel = SQuATHelper.loadUsageModel(baseUsageFile);
-		PCMArchitectureInstance instance = new PCMArchitectureInstance(name, repository, system, allocation, resourceEnvironment, usageModel);
+		PCMArchitectureInstance instance = new PCMArchitectureInstance(name, repository, system, allocation,
+				resourceEnvironment, usageModel);
 		return instance;
 	}
-	
+
 }

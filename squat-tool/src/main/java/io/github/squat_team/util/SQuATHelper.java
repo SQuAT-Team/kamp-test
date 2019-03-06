@@ -22,8 +22,8 @@ import org.palladiosimulator.pcm.usagemodel.UsagemodelPackage;
 import io.github.squat_team.model.PCMArchitectureInstance;
 
 public class SQuATHelper {
-	
-	//Just in case the registry is empty
+
+	// Just in case the registry is empty
 	static {
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("*", new XMIResourceFactoryImpl());
 		EPackage.Registry.INSTANCE.put(RepositoryPackage.eNS_URI, RepositoryPackage.eINSTANCE);
@@ -32,7 +32,7 @@ public class SQuATHelper {
 		EPackage.Registry.INSTANCE.put(ResourceenvironmentPackage.eNS_URI, ResourceenvironmentPackage.eINSTANCE);
 		EPackage.Registry.INSTANCE.put(UsagemodelPackage.eNS_URI, UsagemodelPackage.eINSTANCE);
 	}
-	
+
 	private static EObject load(String inputString) {
 		URI resourceURI = URI.createURI(inputString);
 		ResourceSet resourceSet = new ResourceSetImpl();
@@ -40,17 +40,18 @@ public class SQuATHelper {
 		EObject content = resource.getContents().get(0);
 		return content;
 	}
-	
+
 	public static Repository loadRepositoryModel(String repositoryFile) {
 		Repository repository = (Repository) SQuATHelper.load(repositoryFile);
 		return repository;
 	}
-	
+
 	public static org.palladiosimulator.pcm.system.System loadSystemModel(String systemFile) {
-		org.palladiosimulator.pcm.system.System baseSystem = (org.palladiosimulator.pcm.system.System) SQuATHelper.load(systemFile);
+		org.palladiosimulator.pcm.system.System baseSystem = (org.palladiosimulator.pcm.system.System) SQuATHelper
+				.load(systemFile);
 		return baseSystem;
 	}
-	
+
 	public static Allocation loadAllocationModel(String allocationFile) {
 		Allocation allocation = (Allocation) SQuATHelper.load(allocationFile);
 		return allocation;
@@ -65,18 +66,20 @@ public class SQuATHelper {
 		UsageModel usageModel = (UsageModel) SQuATHelper.load(usageModelFile);
 		return usageModel;
 	}
+
 	/**
 	 * Deletes the architecture from the HDD.
 	 * 
-	 * @param architecture the architecture to delete.
+	 * @param architecture
+	 *            the architecture to delete.
 	 */
-	public static void delete(PCMArchitectureInstance architecture){
+	public static void delete(PCMArchitectureInstance architecture) {
 		Allocation allocation = architecture.getAllocation();
 		Repository repository = architecture.getRepository();
 		ResourceEnvironment resourceEnvironment = architecture.getResourceEnvironment();
 		org.palladiosimulator.pcm.system.System system = architecture.getSystem();
 		UsageModel usageModel = architecture.getUsageModel();
-		
+
 		if (allocation != null && allocation.eResource() != null) {
 			delete(allocation.eResource());
 		}
@@ -93,8 +96,8 @@ public class SQuATHelper {
 			delete(usageModel.eResource());
 		}
 	}
-	
-	private static void delete(Resource resource){
+
+	private static void delete(Resource resource) {
 		File file = new File(resource.getURI().toFileString());
 		file.delete();
 	}

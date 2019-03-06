@@ -45,26 +45,26 @@ public class LoadHelper {
 	}
 
 	private List<SillyBot> getCocomeAlternatives(List<ArchitecturalVersion> architecturalAlternatives,
-			ArchitecturalVersion initialArchitecture) {		
+			ArchitecturalVersion initialArchitecture) {
 		List<SillyBot> ret = new ArrayList<>();
-		
+
 		PCMScenario m1Scenario = ModifiabilityScenarioHelper.getInstance().createScenario1Cocome();
 		PCMScenario m2Scenario = ModifiabilityScenarioHelper.getInstance().createScenario2Cocome();
 		PCMScenario m3Scenario = ModifiabilityScenarioHelper.getInstance().createScenario3Cocome();
 		PCMScenario m4Scenario = ModifiabilityScenarioHelper.getInstance().createScenario4Cocome();
-		
+
 		Float responseTimeM1 = (Float) m1Scenario.getExpectedResult().getResponse();
 		Float responseTimeM2 = (Float) m2Scenario.getExpectedResult().getResponse();
 		Float responseTimeM3 = (Float) m3Scenario.getExpectedResult().getResponse();
 		Float responseTimeM4 = (Float) m4Scenario.getExpectedResult().getResponse();
-		
+
 		try {
 
 			// PCMArchitectureInstance model = this.loadSpecificModel(initialArchitecture);
 			IConcessionStrategyFactory concessionStrategyFactory = configuration.getConcessionStrategyFactory();
 			PCMArchitectureInstance architecture = PCMHelper.createArchitecture(initialArchitecture);
 			ModifiabilityBot m1Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m1Scenario, architecture),
-					"m1", responseTimeM1,concessionStrategyFactory, configuration.shouldFilterSpecialCases());
+					"m1", responseTimeM1, concessionStrategyFactory, configuration.shouldFilterSpecialCases());
 
 			ModifiabilityBot m2Bot = new ModifiabilityBot(calculateModifiabilityComplexity(m2Scenario, architecture),
 					"m2", responseTimeM2, concessionStrategyFactory, configuration.shouldFilterSpecialCases());
@@ -89,8 +89,7 @@ public class LoadHelper {
 			Float responseTimeP2 = (Float) p2Scenario.getExpectedResult().getResponse();
 			Float responseTimeP3 = (Float) p3Scenario.getExpectedResult().getResponse();
 			Float responseTimeP4 = (Float) p4Scenario.getExpectedResult().getResponse();
-			
-			
+
 			PerformanceBot p1Bot = new PerformanceBot(
 					calculatePerformanceComplexityForScenario(p1Scenario, architecture,
 							initialArchitecture.getAbsolutePath() + "/" + initialArchitecture.getRepositoryFilename()),
@@ -443,8 +442,7 @@ public class LoadHelper {
 			PCMScenarioResult result = bot.analyze(architecture,
 					PerformanceScenarioHelper.getInstance().obtainName(scenario));
 			java.lang.System.out.println("PERFORMANCE: " + result + " " + bot + " " + architecture);
-			java.lang.System.out.println(
-					PerformanceScenarioHelper.getInstance().obtainName(scenario));
+			java.lang.System.out.println(PerformanceScenarioHelper.getInstance().obtainName(scenario));
 			if (result == null)// is unsolvable
 				return 9999f;
 			else
@@ -631,10 +629,14 @@ public class LoadHelper {
 	@Deprecated // Can now be computed directly
 	public List<SillyBot> loadBotsWithInformation() {
 		IConcessionStrategyFactory concessionStrategyFactory = configuration.getConcessionStrategyFactory();
-		ModifiabilityBot m1Bot = new ModifiabilityBot(/* 3, */ 115f, "m1", 120f, concessionStrategyFactory, configuration.shouldFilterSpecialCases());
-		ModifiabilityBot m2Bot = new ModifiabilityBot(/* 5, */ 190.5f, "m2", 300f, concessionStrategyFactory, configuration.shouldFilterSpecialCases());
-		PerformanceBot p1Bot = new PerformanceBot(111.7639f, "p1", 30f, concessionStrategyFactory, configuration.shouldFilterSpecialCases());
-		PerformanceBot p2Bot = new PerformanceBot(74.0173f, "p2", 40f, concessionStrategyFactory, configuration.shouldFilterSpecialCases());
+		ModifiabilityBot m1Bot = new ModifiabilityBot(/* 3, */ 115f, "m1", 120f, concessionStrategyFactory,
+				configuration.shouldFilterSpecialCases());
+		ModifiabilityBot m2Bot = new ModifiabilityBot(/* 5, */ 190.5f, "m2", 300f, concessionStrategyFactory,
+				configuration.shouldFilterSpecialCases());
+		PerformanceBot p1Bot = new PerformanceBot(111.7639f, "p1", 30f, concessionStrategyFactory,
+				configuration.shouldFilterSpecialCases());
+		PerformanceBot p2Bot = new PerformanceBot(74.0173f, "p2", 40f, concessionStrategyFactory,
+				configuration.shouldFilterSpecialCases());
 
 		// First level - Modifiability tactics
 		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-mod-split(PaymentSystem)"));
@@ -3937,6 +3939,6 @@ public class LoadHelper {
 		PerformanceBot p1Bot = new PerformanceBot(
 				calculatePerformanceComplexityForScenario(scenarioP1, architecture,
 						initialArchitecture.getAbsolutePath() + "/" + initialArchitecture.getRepositoryFilename()),
-				"p1", responseTimeP1, new DesiredDistanceFactory(),true);
+				"p1", responseTimeP1, new DesiredDistanceFactory(), true);
 	}
 }

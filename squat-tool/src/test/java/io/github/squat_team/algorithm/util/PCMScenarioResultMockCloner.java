@@ -15,7 +15,7 @@ import static org.mockito.Mockito.*;
 @SuppressWarnings("rawtypes")
 public class PCMScenarioResultMockCloner {
 	ArchitectureBuilder builder = new ArchitectureBuilder();
-	
+
 	public PCMScenarioResult clone(PCMScenarioResult optimizationResponse) throws Exception {
 		PCMScenarioResult clonedScenarioResult = mock(PCMScenarioResult.class);
 		PCMResult clonedResult = mock(PCMResult.class);

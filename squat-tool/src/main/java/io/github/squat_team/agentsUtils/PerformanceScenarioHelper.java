@@ -25,37 +25,38 @@ public class PerformanceScenarioHelper {
 	private ConcurrentPerOpteryxPCMBot cocomeBotS2;
 	private ConcurrentPerOpteryxPCMBot cocomeBotS3;
 	private ConcurrentPerOpteryxPCMBot cocomeBotS4;
-	
-	private Float responseTimeP1 = 1.4f;// 0.6f;// 30f;
-	private Float responseTimeP2 = 1.6f;// 0.7f;// 40f;
-	private Float responseTimeP3 = 1.3f;// 0.5f;// 30f;
-	private Float responseTimeP4 = 2.8f;// 1.2f;// 40f;
-	
+
+	private Float responseTimeP1 = 1.4f;
+	private Float responseTimeP2 = 1.6f;
+	private Float responseTimeP3 = 1.3f;
+	private Float responseTimeP4 = 2.8f;
+
 	private static PerformanceScenarioHelper instance;
-	
-	public static PerformanceScenarioHelper getInstance(){
-		if(instance==null)
-			instance=new PerformanceScenarioHelper();
+
+	public static PerformanceScenarioHelper getInstance() {
+		if (instance == null)
+			instance = new PerformanceScenarioHelper();
 		return instance;
 	}
+
 	private PerformanceScenarioHelper() {
-		cocomeS1=null;
-		cocomeS2=null;
-		cocomeS3=null;
-		cocomeS4=null;
-		cocomeBotS1=null;
-		cocomeBotS2=null;
-		cocomeBotS3=null;
-		cocomeBotS4=null;
+		cocomeS1 = null;
+		cocomeS2 = null;
+		cocomeS3 = null;
+		cocomeS4 = null;
+		cocomeBotS1 = null;
+		cocomeBotS2 = null;
+		cocomeBotS3 = null;
+		cocomeBotS4 = null;
 	}
-	
-	public void resetBots(){
-		cocomeBotS1=null;
-		cocomeBotS2=null;
-		cocomeBotS3=null;
-		cocomeBotS4=null;
+
+	public void resetBots() {
+		cocomeBotS1 = null;
+		cocomeBotS2 = null;
+		cocomeBotS3 = null;
+		cocomeBotS4 = null;
 	}
-	
+
 	@Deprecated // never used
 	public static AbstractPerformancePCMScenario createScenarioOfWorkload() {
 		ArrayList<String> workloadIDs = new ArrayList<String>();
@@ -73,19 +74,19 @@ public class PerformanceScenarioHelper {
 	public static AbstractPerformancePCMScenario createScenarioOfCPU() {
 		ArrayList<String> cpuIDs = new ArrayList<String>();
 		cpuIDs.add(TestConstants.CPU_ID);
-		AbstractPerformancePCMScenario scenario = new PerformancePCMCPUScenario(OptimizationType.MINIMIZATION,
-				cpuIDs, 0.5);
+		AbstractPerformancePCMScenario scenario = new PerformancePCMCPUScenario(OptimizationType.MINIMIZATION, cpuIDs,
+				0.5);
 		PCMResult expectedResponse = new PCMResult(ResponseMeasureType.DECIMAL);
 		expectedResponse.setResponse(6.0);
 		scenario.setExpectedResponse(expectedResponse);
 		scenario.setMetric(PerformanceMetric.RESPONSE_TIME);
 		return scenario;
 	}
-	
+
 	// COCOME
-	
+
 	public AbstractPerformancePCMScenario createScenario1Cocome() {
-		if(cocomeS1==null){
+		if (cocomeS1 == null) {
 			ArrayList<String> workloadIDs = new ArrayList<String>();
 			workloadIDs.add("_VgwxwHr3Eeek77WF10mCCg");
 			AbstractPerformancePCMScenario scenario = new PerformancePCMWokloadScenario(OptimizationType.MINIMIZATION,
@@ -94,14 +95,14 @@ public class PerformanceScenarioHelper {
 			expectedResponse.setResponse(responseTimeP1);
 			scenario.setExpectedResponse(expectedResponse);
 			scenario.setMetric(PerformanceMetric.RESPONSE_TIME);
-			cocomeS1=scenario;
+			cocomeS1 = scenario;
 		}
-		
+
 		return cocomeS1;
 	}
-	
+
 	public AbstractPerformancePCMScenario createScenario2Cocome() {
-		if(cocomeS2==null){
+		if (cocomeS2 == null) {
 			ArrayList<String> workloadIDs = new ArrayList<String>();
 			workloadIDs.add("_VgwxwHr3Eeek77WF10mCCg");
 			AbstractPerformancePCMScenario scenario = new PerformancePCMWokloadScenario(OptimizationType.MINIMIZATION,
@@ -110,13 +111,13 @@ public class PerformanceScenarioHelper {
 			expectedResponse.setResponse(responseTimeP2);
 			scenario.setExpectedResponse(expectedResponse);
 			scenario.setMetric(PerformanceMetric.RESPONSE_TIME);
-			cocomeS2=scenario;
+			cocomeS2 = scenario;
 		}
 		return cocomeS2;
 	}
-	
+
 	public AbstractPerformancePCMScenario createScenario3Cocome() {
-		if(cocomeS3==null){
+		if (cocomeS3 == null) {
 			ArrayList<String> cpuIDs = new ArrayList<String>();
 			cpuIDs.add("_WV4YUK2VEeaxN4gXuIkS2A");
 			AbstractPerformancePCMScenario scenario = new PerformancePCMCPUScenario(OptimizationType.MINIMIZATION,
@@ -125,15 +126,16 @@ public class PerformanceScenarioHelper {
 			expectedResponse.setResponse(responseTimeP3);
 			scenario.setExpectedResponse(expectedResponse);
 			scenario.setMetric(PerformanceMetric.RESPONSE_TIME);
-			cocomeS3=scenario;
+			cocomeS3 = scenario;
 		}
 		return cocomeS3;
 	}
-	
+
 	public AbstractPerformancePCMScenario createScenario4Cocome() {
-		if(cocomeS4==null){
-			String loopIterations =  "IntPMF[(1; 0.01)(2; 0.01)(3; 0.02)(4; 0.02)(5; 0.03)(6; 0.03)(7; 0.04)(8; 0.04)(9; 0.05)(10; 0.06)"
-					+ "(11; 0.06)(12; 0.06)(13; 0.08)(14; 0.09)(15; 0.10)(16; 0.09)(17; 0.07)(18; 0.06)(19; 0.05)(20; 0.03)]";;
+		if (cocomeS4 == null) {
+			String loopIterations = "IntPMF[(1; 0.01)(2; 0.01)(3; 0.02)(4; 0.02)(5; 0.03)(6; 0.03)(7; 0.04)(8; 0.04)(9; 0.05)(10; 0.06)"
+					+ "(11; 0.06)(12; 0.06)(13; 0.08)(14; 0.09)(15; 0.10)(16; 0.09)(17; 0.07)(18; 0.06)(19; 0.05)(20; 0.03)]";
+			;
 			ArrayList<String> loopIDs = new ArrayList<String>();
 			loopIDs.add("_fsG44tqFEee4ToXBRRujSw");
 			AbstractPerformancePCMScenario scenario = new PerformancePCMUsageScenario(OptimizationType.MINIMIZATION,
@@ -142,14 +144,14 @@ public class PerformanceScenarioHelper {
 			expectedResponse.setResponse(responseTimeP4);
 			scenario.setExpectedResponse(expectedResponse);
 			scenario.setMetric(PerformanceMetric.RESPONSE_TIME);
-			cocomeS4=scenario;
+			cocomeS4 = scenario;
 		}
 		return cocomeS4;
 	}
-	
+
 	private static void configureCpuClockRate(ConfigurationImprovedImproved configuration) {
 		DesigndecisionConfigImproved designdecisionConfig = configuration.getDesignDecisionConfig();
-		
+
 		// Set the boundary values for the IDs of the servers
 		designdecisionConfig.setLimits("_78qo4K2UEeaxN4gXuIkS2A", 200, 600);
 		designdecisionConfig.setLimits("_-5Q84K2UEeaxN4gXuIkS2A", 600, 1600);
@@ -158,13 +160,13 @@ public class PerformanceScenarioHelper {
 	}
 
 	public AbstractPCMBot createPCMBot(AbstractPerformancePCMScenario scenario) {
-		if(scenario==cocomeS1&&cocomeBotS1!=null)
+		if (scenario == cocomeS1 && cocomeBotS1 != null)
 			return cocomeBotS1;
-		if(scenario==cocomeS2&&cocomeBotS2!=null)
+		if (scenario == cocomeS2 && cocomeBotS2 != null)
 			return cocomeBotS2;
-		if(scenario==cocomeS3&&cocomeBotS3!=null)
+		if (scenario == cocomeS3 && cocomeBotS3 != null)
 			return cocomeBotS3;
-		if(scenario==cocomeS4&&cocomeBotS4!=null)
+		if (scenario == cocomeS4 && cocomeBotS4 != null)
 			return cocomeBotS4;
 		// create configuration
 		ConfigurationImprovedImproved configuration = new ConfigurationImprovedImproved();
@@ -175,11 +177,11 @@ public class PerformanceScenarioHelper {
 		configuration.getPerOpteryxConfig().setMaxIterations(7);
 
 		configureCpuClockRate(configuration);
-		
+
 		configuration.getLqnsConfig().setLqnsOutputDir(TestConstants.LQN_OUTPUT);
 		configuration.getExporterConfig().setPcmOutputFolder(TestConstants.PCM_STORAGE_PATH);
 		configuration.getPcmModelsConfig().setPathmapFolder(TestConstants.PCM_MODEL_FILES);
-		
+
 		// init bot
 		ConcurrentPerOpteryxPCMBot bot = new ConcurrentPerOpteryxPCMBot(scenario, configuration);
 		bot.setDebugMode(false);
@@ -187,27 +189,27 @@ public class PerformanceScenarioHelper {
 		// usually use it for debugging. This can be done later if
 		// necessary, so we do not need it.
 		bot.setDetailedAnalysis(false);
-		
-		if(scenario==cocomeS1)
-			cocomeBotS1=bot;
-		if(scenario==cocomeS2)
-			cocomeBotS2=bot;
-		if(scenario==cocomeS3)
-			cocomeBotS3=bot;
-		if(scenario==cocomeS4)
-			cocomeBotS4=bot;
-		
+
+		if (scenario == cocomeS1)
+			cocomeBotS1 = bot;
+		if (scenario == cocomeS2)
+			cocomeBotS2 = bot;
+		if (scenario == cocomeS3)
+			cocomeBotS3 = bot;
+		if (scenario == cocomeS4)
+			cocomeBotS4 = bot;
+
 		return bot;
 	}
 
 	public String obtainName(AbstractPerformancePCMScenario scenario) {
-		if(scenario==cocomeS1)
+		if (scenario == cocomeS1)
 			return "perfomanceBot1";
-		if(scenario==cocomeS2)
+		if (scenario == cocomeS2)
 			return "perfomanceBot2";
-		if(scenario==cocomeS3)
+		if (scenario == cocomeS3)
 			return "perfomanceBot3";
-		if(scenario==cocomeS4)
+		if (scenario == cocomeS4)
 			return "perfomanceBot4";
 		return null;
 	}

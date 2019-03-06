@@ -6,21 +6,24 @@ public class HenshinResourceSetManager {
 	private static HenshinResourceSetManager instance;
 	private HenshinResourceSet resourceSet;
 	private String currentAbsolutePath;
+
 	private HenshinResourceSetManager() {
-		resourceSet=null;
+		resourceSet = null;
 	}
-	public static HenshinResourceSetManager getInstance(){
-		if(instance==null)
-			instance=new HenshinResourceSetManager();
-		
+
+	public static HenshinResourceSetManager getInstance() {
+		if (instance == null)
+			instance = new HenshinResourceSetManager();
+
 		return instance;
 	}
-	public HenshinResourceSet getHenshinResourceSet(String absolutePath){
-		if(resourceSet==null || (!currentAbsolutePath.equals(absolutePath))){
+
+	public HenshinResourceSet getHenshinResourceSet(String absolutePath) {
+		if (resourceSet == null || (!currentAbsolutePath.equals(absolutePath))) {
 			resourceSet = new HenshinResourceSet(absolutePath);
-			currentAbsolutePath=absolutePath;
+			currentAbsolutePath = absolutePath;
 		}
-		
+
 		return resourceSet;
 	}
 }
