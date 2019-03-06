@@ -519,4 +519,9 @@ public class SimpleLevelTwoSQuATTest extends AbstractSQuATTest {
 		when(configuration.shouldSearchAllLevels()).thenReturn(true);
 		return configuration;
 	}
+
+	@Override
+	protected long getSeed() {
+		return 123456;
+	}
 }

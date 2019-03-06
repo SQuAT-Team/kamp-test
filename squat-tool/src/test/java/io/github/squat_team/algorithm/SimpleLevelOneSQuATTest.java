@@ -156,7 +156,7 @@ public class SimpleLevelOneSQuATTest extends AbstractSQuATTest {
 		assertEquals(1, results.size());
 		NegotiatorResult result = results.get(0);
 
-		// Assure that the mocked bots behave as expected
+		// Assure that the seedmocked bots behave as expected
 		MockValidator validator = new MockValidator(bots, initialArchitecture);
 		validator.validate(1, 2, 2);
 
@@ -210,6 +210,11 @@ public class SimpleLevelOneSQuATTest extends AbstractSQuATTest {
 		when(configuration.shouldAskUserForRedo()).thenReturn(false);
 		when(configuration.shouldSearchAllLevels()).thenReturn(true);
 		return configuration;
+	}
+
+	@Override
+	protected long getSeed() {
+		return 123;
 	}
 
 }

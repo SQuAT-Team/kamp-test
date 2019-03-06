@@ -45,7 +45,6 @@ import io.github.squat_team.util.RandomGenerator;
 		ArchitecturalCopyCreator.class })
 public abstract class AbstractSQuATTest {
 	private static final Float ACCEPTED_DEVIATION = 0.0001f;
-	private static final long seed = 123;
 
 	private SQuATConfiguration configuration;
 	protected ArchitecturalVersion initialArchitectureAsVersion;
@@ -123,10 +122,17 @@ public abstract class AbstractSQuATTest {
 	protected abstract void validateResults(List<AbstractPCMBot> bots, List<NegotiatorResult> result);
 
 	/**
+	 * Set a test-specific seed for the randomness in SQuAT.
+	 * 
+	 * @return the seed.
+	 */
+	protected abstract long getSeed();
+
+	/**
 	 * Makes the SQuAT algorithm behave in a deterministic way.
 	 */
 	private void disableRandomness() {
-		RandomGenerator.getInstance().setSeed(seed);
+		RandomGenerator.getInstance().setSeed(getSeed());
 	}
 
 	protected void generateInitialArchitecture() {
