@@ -6,8 +6,8 @@ public class PerformanceBot extends SillyBot {
 	private float originalResponseTime;
 
 	public PerformanceBot(float originalResponseTime, String name, float scenatioThreshold,
-			IConcessionStrategyFactory concessionStrategyFactory) {
-		super(name, scenatioThreshold, concessionStrategyFactory);
+			IConcessionStrategyFactory concessionStrategyFactory, boolean filterSpecialCases) {
+		super(name, scenatioThreshold, concessionStrategyFactory, filterSpecialCases);
 		this.originalResponseTime = originalResponseTime;
 	}
 

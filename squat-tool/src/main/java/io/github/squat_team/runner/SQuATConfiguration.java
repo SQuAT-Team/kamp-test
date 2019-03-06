@@ -25,6 +25,7 @@ public class SQuATConfiguration {
 	private boolean searchAllLevels;
 	private boolean shouldAskUserForRedo;
 	private boolean filterBestAlternatives;
+	private boolean filterSpecialCases;
 	private int seedSelectionSize;
 
 	private String modelFileName;
@@ -38,6 +39,7 @@ public class SQuATConfiguration {
 		
 		configuration.setAskUserForRedo(true);
 		configuration.setSearchAllLevels(false);
+		configuration.setFilterSpecialCases(true);
 
 		configuration.setModelFileName(DEFAULT_MODEL_FILE_NAME);
 		configuration.setModelPath(DEFAULT_MODEL_PATH);
@@ -45,7 +47,7 @@ public class SQuATConfiguration {
 
 		configuration.setFilterBestAlternatives(true);
 		configuration.setSeedSelectionSize(2);
-		configuration.setMaxNumberOfLevels(3);
+		configuration.setMaxNumberOfLevels(5);
 		configuration.getExporters().add(ExporterType.CONSOLE);
 		configuration.getExporters().add(ExporterType.EXCEL);
 
@@ -153,5 +155,13 @@ public class SQuATConfiguration {
 
 	public void setConcessionStrategyFactory(IConcessionStrategyFactory concessionStrategyFactory) {
 		this.concessionStrategyFactory = concessionStrategyFactory;
+	}
+
+	public boolean shouldFilterSpecialCases() {
+		return filterSpecialCases;
+	}
+
+	public void setFilterSpecialCases(boolean filterSpecialCases) {
+		this.filterSpecialCases = filterSpecialCases;
 	}
 }

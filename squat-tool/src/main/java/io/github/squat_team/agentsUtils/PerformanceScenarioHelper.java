@@ -26,10 +26,10 @@ public class PerformanceScenarioHelper {
 	private ConcurrentPerOpteryxPCMBot cocomeBotS3;
 	private ConcurrentPerOpteryxPCMBot cocomeBotS4;
 	
-	private Float responseTimeP1 = 1.2f;// 0.6f;// 30f;
-	private Float responseTimeP2 = 1.4f;// 0.7f;// 40f;
-	private Float responseTimeP3 = 1.0f;// 0.5f;// 30f;
-	private Float responseTimeP4 = 2.4f;// 1.2f;// 40f;
+	private Float responseTimeP1 = 1.4f;// 0.6f;// 30f;
+	private Float responseTimeP2 = 1.6f;// 0.7f;// 40f;
+	private Float responseTimeP3 = 1.3f;// 0.5f;// 30f;
+	private Float responseTimeP4 = 2.8f;// 1.2f;// 40f;
 	
 	private static PerformanceScenarioHelper instance;
 	

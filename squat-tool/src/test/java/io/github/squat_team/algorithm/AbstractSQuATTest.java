@@ -45,7 +45,7 @@ import io.github.squat_team.util.RandomGenerator;
 		ArchitecturalCopyCreator.class })
 public abstract class AbstractSQuATTest {
 	private static final Float ACCEPTED_DEVIATION = 0.0001f;
-	private static final long seed = 1234;
+	private static final long seed = 123;
 
 	private SQuATConfiguration configuration;
 	protected ArchitecturalVersion initialArchitectureAsVersion;

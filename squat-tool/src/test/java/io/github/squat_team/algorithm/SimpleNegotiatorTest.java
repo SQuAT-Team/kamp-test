@@ -318,7 +318,7 @@ public class SimpleNegotiatorTest {
 	public class SillyBotImplementation extends SillyBot {
 
 		public SillyBotImplementation(String name, float scenarioThreshold, IConcessionStrategyFactory concessionStrategyFactory) {
-			super(name, scenarioThreshold, concessionStrategyFactory);
+			super(name, scenarioThreshold, concessionStrategyFactory, false);
 		}
 
 		@Override

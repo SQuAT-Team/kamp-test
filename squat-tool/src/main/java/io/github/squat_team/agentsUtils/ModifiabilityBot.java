@@ -5,8 +5,8 @@ import io.github.squat_team.agentsUtils.concessionStrategies.IConcessionStrategy
 public class ModifiabilityBot extends SillyBot {
 	//private int originalAffectedComponents;
 	private float originalComplexity;
-	public ModifiabilityBot(/*int originalAffectedComponents,*/ float originalComplexity, String name,float scenatioThreshold, IConcessionStrategyFactory concessionStrategyFactory) {
-		super(name,scenatioThreshold, concessionStrategyFactory);
+	public ModifiabilityBot(/*int originalAffectedComponents,*/ float originalComplexity, String name,float scenatioThreshold, IConcessionStrategyFactory concessionStrategyFactory, boolean filterSpecialCases) {
+		super(name,scenatioThreshold, concessionStrategyFactory, filterSpecialCases);
 		//this.originalAffectedComponents = originalAffectedComponents;
 		this.originalComplexity = originalComplexity;
 	}

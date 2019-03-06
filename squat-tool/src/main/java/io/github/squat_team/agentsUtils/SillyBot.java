@@ -14,9 +14,10 @@ public abstract class SillyBot {
 	private ConcessionStrategy concessionStrategy;
 	private float acceptableLoss;
 	private float scenarioThreshold;
+	private boolean filterSpecialCases;
 
-	public synchronized void insertInOrder(Proposal p){
-		float utilityProposal=getUtilityFor(p);
+	public synchronized void insertInOrder(Proposal p) {
+		float utilityProposal = getUtilityFor(p);
 		if (orderedProposals.size() == 0) {
 			orderedProposals.add(p);
 		} else if (getUtilityFor(orderedProposals.get(0)) < utilityProposal) {
@@ -24,7 +25,7 @@ public abstract class SillyBot {
 		} else if (getUtilityFor(orderedProposals.get(orderedProposals.size() - 1)) > utilityProposal) {
 			orderedProposals.add(p);
 		} else {
-			int i = 0; 
+			int i = 0;
 			while (getUtilityFor(orderedProposals.get(i)) > utilityProposal) {
 				i++;
 			}
@@ -37,12 +38,14 @@ public abstract class SillyBot {
 		return concessionStrategy.makeConcession(sillyBots);
 	}
 
-	public SillyBot(String name, float scenarioThreshold, IConcessionStrategyFactory concessionStrategyFactory) {
-		orderedProposals = new ArrayList<Proposal>();
+	public SillyBot(String name, float scenarioThreshold, IConcessionStrategyFactory concessionStrategyFactory,
+			boolean filterSpecialCases) {
+		this.orderedProposals = new ArrayList<Proposal>();
 		this.concessionStrategy = concessionStrategyFactory.getConcessionStrategy(this);
 		this.name = name;
 		this.scenarioThreshold = scenarioThreshold;
-		acceptableLoss = 0.30f;
+		this.acceptableLoss = 0.30f;
+		this.filterSpecialCases = filterSpecialCases;
 		// indexInWhichUtilityBecomeZero=null;
 	}
 
@@ -111,26 +114,25 @@ public abstract class SillyBot {
 		float scenarioResponse = getScenarioMeasureFor(proposal);
 		float expectedResponse = scenarioThreshold;
 
-		// float n=1f;//indexInWhichUtilityBecomeZero();
-		// float utility=(-1/(n*expectedResponse))*scenarioResponse+1;
-		float utility=0;
-		if(scenarioResponse<=expectedResponse)
-			utility= 2- expectedResponse/scenarioResponse;
-		else
-			utility= 2- 1.10f*scenarioResponse/expectedResponse;
-		
-		// System.out.println(name+" "+expectedResponse+" "+scenarioResponse+"
-		// "+utility);
+		// Special cases for broken models of cocome
+		if (filterSpecialCases) {
+			if ((name.equals("m1") && scenarioResponse < 500) || (name.equals("m2") && scenarioResponse < 300)
+					|| (name.equals("m3") && scenarioResponse < 110) || (name.equals("m4") && scenarioResponse < 500))
+				return 0;
+		}
+
+		float utility = 0;
+		if (scenarioResponse <= expectedResponse) {
+			// utility= 2- expectedResponse/scenarioResponse;
+			utility = 1;
+		} else {
+			utility = 2 - 1.10f * scenarioResponse / expectedResponse;
+		}
+
 		if (utility >= 0 && utility <= 1)
 			return utility;
 		else
 			return 0;
-		/*
-		 * float p=1; float t=1.2f; float utility=(float) (1-
-		 * Math.pow((scenarioResponse/(n*expectedResponse)), p/t));
-		 */
-
-		// return utility;
 	}
 
 	/*
