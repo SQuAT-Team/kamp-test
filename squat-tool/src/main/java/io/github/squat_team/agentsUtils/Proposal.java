@@ -1,6 +1,6 @@
 package io.github.squat_team.agentsUtils;
 
-public abstract class Proposal {
+public class Proposal {
 	protected String architectureName;
 	protected float scenarioResponse;
 
@@ -8,6 +8,10 @@ public abstract class Proposal {
 		super();
 		this.architectureName = pcmArchitecture;
 		this.scenarioResponse = scenarioResponse;
+	}
+
+	public Proposal(float scenarioResponse, String pcmArchitecture) {
+		this(pcmArchitecture, scenarioResponse);
 	}
 
 	public String getArchitectureName() {
@@ -20,6 +24,6 @@ public abstract class Proposal {
 
 	@Override
 	public String toString() {
-		return architectureName;
+		return architectureName + " " + scenarioResponse;
 	}
 }
