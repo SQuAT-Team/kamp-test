@@ -8,7 +8,7 @@ import edu.squat.transformations.ArchitecturalVersion;
 import io.github.squat_team.agentsUtils.concessionStrategies.ConcessionStrategy;
 import io.github.squat_team.agentsUtils.concessionStrategies.IConcessionStrategyFactory;
 
-public abstract class SillyBot {
+public class SillyBot {
 	private String name;
 	protected List<Proposal> orderedProposals;
 	private ConcessionStrategy concessionStrategy;
@@ -96,7 +96,10 @@ public abstract class SillyBot {
 		return orderedProposals;
 	}
 
-	public abstract float getResponse(Proposal p);
+	public float getResponse(Proposal p) {
+		Proposal proposal = getProposalForArchitecture(p.getArchitectureName());
+		return proposal.getScenarioResponse();
+	}
 
 	public float getUtilityFor(String pcmArchitecture) {
 		Proposal proposal = getProposalForArchitecture(pcmArchitecture);
@@ -128,7 +131,9 @@ public abstract class SillyBot {
 			return 0;
 	}
 
-	protected abstract float getScenarioMeasureFor(Proposal proposal);
+	protected float getScenarioMeasureFor(Proposal proposal) {
+		return proposal.getScenarioResponse();
+	}
 
 	public void printUtilies() {
 		int differentFromZero = 0;
