@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.model.OptimizationType;
 import io.github.squat_team.model.PCMResult;
+import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.model.ResponseMeasureType;
 import io.github.squat_team.performance.AbstractPerformancePCMScenario;
 import io.github.squat_team.performance.PerformanceMetric;
@@ -17,10 +18,10 @@ import io.github.squat_team.performance.peropteryx.configuration.DesigndecisionC
 import test.TestConstants;
 
 public class PerformanceScenarioHelper {
-	private AbstractPerformancePCMScenario cocomeS1;
-	private AbstractPerformancePCMScenario cocomeS2;
-	private AbstractPerformancePCMScenario cocomeS3;
-	private AbstractPerformancePCMScenario cocomeS4;
+	private PCMScenario cocomeS1;
+	private PCMScenario cocomeS2;
+	private PCMScenario cocomeS3;
+	private PCMScenario cocomeS4;
 	private ConcurrentPerOpteryxPCMBot cocomeBotS1;
 	private ConcurrentPerOpteryxPCMBot cocomeBotS2;
 	private ConcurrentPerOpteryxPCMBot cocomeBotS3;
@@ -85,7 +86,7 @@ public class PerformanceScenarioHelper {
 
 	// COCOME
 
-	public AbstractPerformancePCMScenario createScenario1Cocome() {
+	public PCMScenario createScenario1Cocome() {
 		if (cocomeS1 == null) {
 			ArrayList<String> workloadIDs = new ArrayList<String>();
 			workloadIDs.add("_VgwxwHr3Eeek77WF10mCCg");
@@ -101,7 +102,7 @@ public class PerformanceScenarioHelper {
 		return cocomeS1;
 	}
 
-	public AbstractPerformancePCMScenario createScenario2Cocome() {
+	public PCMScenario createScenario2Cocome() {
 		if (cocomeS2 == null) {
 			ArrayList<String> workloadIDs = new ArrayList<String>();
 			workloadIDs.add("_VgwxwHr3Eeek77WF10mCCg");
@@ -116,7 +117,7 @@ public class PerformanceScenarioHelper {
 		return cocomeS2;
 	}
 
-	public AbstractPerformancePCMScenario createScenario3Cocome() {
+	public PCMScenario createScenario3Cocome() {
 		if (cocomeS3 == null) {
 			ArrayList<String> cpuIDs = new ArrayList<String>();
 			cpuIDs.add("_WV4YUK2VEeaxN4gXuIkS2A");
@@ -131,7 +132,7 @@ public class PerformanceScenarioHelper {
 		return cocomeS3;
 	}
 
-	public AbstractPerformancePCMScenario createScenario4Cocome() {
+	public PCMScenario createScenario4Cocome() {
 		if (cocomeS4 == null) {
 			String loopIterations = "IntPMF[(1; 0.01)(2; 0.01)(3; 0.02)(4; 0.02)(5; 0.03)(6; 0.03)(7; 0.04)(8; 0.04)(9; 0.05)(10; 0.06)"
 					+ "(11; 0.06)(12; 0.06)(13; 0.08)(14; 0.09)(15; 0.10)(16; 0.09)(17; 0.07)(18; 0.06)(19; 0.05)(20; 0.03)]";
@@ -159,7 +160,7 @@ public class PerformanceScenarioHelper {
 		designdecisionConfig.setLimits("_FM6FMK2VEeaxN4gXuIkS2A", 250, 800);
 	}
 
-	public AbstractPCMBot createPCMBot(AbstractPerformancePCMScenario scenario) {
+	public AbstractPCMBot createPCMBot(PCMScenario scenario) {
 		if (scenario == cocomeS1 && cocomeBotS1 != null)
 			return cocomeBotS1;
 		if (scenario == cocomeS2 && cocomeBotS2 != null)
@@ -202,7 +203,7 @@ public class PerformanceScenarioHelper {
 		return bot;
 	}
 
-	public String obtainName(AbstractPerformancePCMScenario scenario) {
+	public String obtainName(PCMScenario scenario) {
 		if (scenario == cocomeS1)
 			return "perfomanceBot1";
 		if (scenario == cocomeS2)

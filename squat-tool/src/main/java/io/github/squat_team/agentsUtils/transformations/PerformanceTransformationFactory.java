@@ -10,14 +10,14 @@ import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.agentsUtils.ArchitecturalCopyCreator;
 import io.github.squat_team.agentsUtils.PerformanceScenarioHelper;
 import io.github.squat_team.model.PCMArchitectureInstance;
+import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.model.PCMScenarioResult;
-import io.github.squat_team.performance.AbstractPerformancePCMScenario;
 import io.github.squat_team.util.PCMHelper;
 
 @SuppressWarnings("rawtypes")
 public class PerformanceTransformationFactory {
 	private static volatile PerformanceTransformationFactory instance;
-	private volatile Map<AbstractPerformancePCMScenario, Map<String, Double>> architecturalResponse;
+	private volatile Map<PCMScenario, Map<String, Double>> architecturalResponse;
 
 	public static PerformanceTransformationFactory getInstance() {
 		if (instance == null) {
@@ -38,8 +38,7 @@ public class PerformanceTransformationFactory {
 				new HashMap<String, Double>());
 	}
 
-	public synchronized Double getComplexityForArchitecture(AbstractPerformancePCMScenario scenario,
-			String architectureAbsolutePath) {
+	public synchronized Double getComplexityForArchitecture(PCMScenario scenario, String architectureAbsolutePath) {
 		return architecturalResponse.get(scenario).get(architectureAbsolutePath);
 	}
 
@@ -58,20 +57,16 @@ public class PerformanceTransformationFactory {
 		PCMArchitectureInstance architecture = PCMHelper.createArchitecture(architecturalVersion);
 
 		System.out.println("Loading performance scenario P1");
-		AbstractPerformancePCMScenario cocomeScenario1 = PerformanceScenarioHelper.getInstance()
-				.createScenario1Cocome();
+		PCMScenario cocomeScenario1 = PerformanceScenarioHelper.getInstance().createScenario1Cocome();
 		ret.addAll(createAlternativesForScenario(architecture, cocomeScenario1));
 		System.out.println("Loading performance scenario P2");
-		AbstractPerformancePCMScenario cocomeScenario2 = PerformanceScenarioHelper.getInstance()
-				.createScenario2Cocome();
+		PCMScenario cocomeScenario2 = PerformanceScenarioHelper.getInstance().createScenario2Cocome();
 		ret.addAll(createAlternativesForScenario(architecture, cocomeScenario2));
 		System.out.println("Loading performance scenario P3");
-		AbstractPerformancePCMScenario cocomeScenario3 = PerformanceScenarioHelper.getInstance()
-				.createScenario3Cocome();
+		PCMScenario cocomeScenario3 = PerformanceScenarioHelper.getInstance().createScenario3Cocome();
 		ret.addAll(createAlternativesForScenario(architecture, cocomeScenario3));
 		System.out.println("Loading performance scenario P4");
-		AbstractPerformancePCMScenario cocomeScenario4 = PerformanceScenarioHelper.getInstance()
-				.createScenario4Cocome();
+		PCMScenario cocomeScenario4 = PerformanceScenarioHelper.getInstance().createScenario4Cocome();
 		ret.addAll(createAlternativesForScenario(architecture, cocomeScenario4));
 		return ret;
 	}
@@ -90,7 +85,7 @@ public class PerformanceTransformationFactory {
 	}
 
 	private List<ArchitecturalVersion> createAlternativesForScenario(PCMArchitectureInstance architecture,
-			AbstractPerformancePCMScenario scenario) {
+			PCMScenario scenario) {
 
 		List<ArchitecturalVersion> ret = new ArrayList<ArchitecturalVersion>();
 

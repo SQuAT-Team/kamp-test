@@ -6,7 +6,7 @@ import org.eclipse.emf.common.util.URI;
 
 import edu.squat.transformations.ArchitecturalVersion;
 import io.github.squat_team.model.PCMArchitectureInstance;
-import io.github.squat_team.performance.AbstractPerformancePCMScenario;
+import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.util.PCMWorkingCopyCreator;
 import test.TestConstants;
 
@@ -25,7 +25,7 @@ public class ArchitecturalCopyCreator {
 		// SINGLETON
 	}
 
-	public ArchitecturalVersion copy(PCMArchitectureInstance archInstance, AbstractPerformancePCMScenario scenario) {
+	public ArchitecturalVersion copy(PCMArchitectureInstance archInstance, PCMScenario scenario) {
 		URI uri = archInstance.getUsageModel().eResource().getURI();
 		File modelFile = new File(uri.toFileString());
 		String newModelName = modelFile.getParentFile().getParentFile().getName() + "-"

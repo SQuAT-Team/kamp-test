@@ -23,7 +23,6 @@ import io.github.squat_team.agentsUtils.transformations.PerformanceTransformatio
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.model.PCMScenarioResult;
-import io.github.squat_team.performance.AbstractPerformancePCMScenario;
 import io.github.squat_team.runner.SQuATConfiguration;
 import io.github.squat_team.util.PCMHelper;
 import io.github.squat_team.util.SQuATHelper;
@@ -80,10 +79,10 @@ public class LoadHelper {
 			java.lang.System.out
 					.println("Complejidad m4 nuevo: " + calculateModifiabilityComplexity(m4Scenario, architecture));
 
-			AbstractPerformancePCMScenario p1Scenario = PerformanceScenarioHelper.getInstance().createScenario1Cocome();
-			AbstractPerformancePCMScenario p2Scenario = PerformanceScenarioHelper.getInstance().createScenario2Cocome();
-			AbstractPerformancePCMScenario p3Scenario = PerformanceScenarioHelper.getInstance().createScenario3Cocome();
-			AbstractPerformancePCMScenario p4Scenario = PerformanceScenarioHelper.getInstance().createScenario4Cocome();
+			PCMScenario p1Scenario = PerformanceScenarioHelper.getInstance().createScenario1Cocome();
+			PCMScenario p2Scenario = PerformanceScenarioHelper.getInstance().createScenario2Cocome();
+			PCMScenario p3Scenario = PerformanceScenarioHelper.getInstance().createScenario3Cocome();
+			PCMScenario p4Scenario = PerformanceScenarioHelper.getInstance().createScenario4Cocome();
 
 			Float responseTimeP1 = (Float) p1Scenario.getExpectedResult().getResponse();
 			Float responseTimeP2 = (Float) p2Scenario.getExpectedResult().getResponse();
@@ -419,7 +418,7 @@ public class LoadHelper {
 
 	}
 
-	public static float calculatePerformanceComplexityForScenario(AbstractPerformancePCMScenario scenario,
+	public static float calculatePerformanceComplexityForScenario(PCMScenario scenario,
 			PCMArchitectureInstance architecture, String absolutePathArchitecture) {
 		Double complexity = PerformanceTransformationFactory.getInstance().getComplexityForArchitecture(scenario,
 				absolutePathArchitecture);
@@ -3444,7 +3443,7 @@ public class LoadHelper {
 		initialArchitecture.setFullPathToAlternativeRepository(
 				"/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithResourceDemands/alternativeRepository.repository");
 		PCMArchitectureInstance architecture = PCMHelper.createArchitecture(initialArchitecture);
-		AbstractPerformancePCMScenario scenarioP1 = PerformanceScenarioHelper.getInstance().createScenario1Cocome();
+		PCMScenario scenarioP1 = PerformanceScenarioHelper.getInstance().createScenario1Cocome();
 		SillyBot p1Bot = new SillyBot("p1", responseTimeP1, new DesiredDistanceFactory(), true);
 	}
 }
