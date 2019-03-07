@@ -66,7 +66,7 @@ public class KAMPPCMBotDeprecated extends AbstractPCMBot {
 	private String evaluationType = TYPE_COMPLEXITY;
 
 	public KAMPPCMBotDeprecated(PCMScenario scenario) {
-		super(scenario);
+		super(scenario, KAMPPCMBot.QA_MODIFIABILITY);
 	}
 
 	public String getEvaluationType() {
@@ -372,9 +372,10 @@ public class KAMPPCMBotDeprecated extends AbstractPCMBot {
 					interfaceName);
 			try {
 				ArchitectureModelFactoryFacade.createRequiredRole(basicComponent, operationInterface);
-			}catch (Exception e) {
-				System.out.println("Error: " + e.getMessage()+" "+componentName + " " + basicComponent);
-			}			break;
+			} catch (Exception e) {
+				System.out.println("Error: " + e.getMessage() + " " + componentName + " " + basicComponent);
+			}
+			break;
 		case SIGNATURE:
 			break;
 		default:
