@@ -65,8 +65,8 @@ public class KAMPPCMBotDeprecated extends AbstractPCMBot {
 	//
 	private String evaluationType = TYPE_COMPLEXITY;
 
-	public KAMPPCMBotDeprecated(PCMScenario scenario) {
-		super(scenario, KAMPPCMBot.QA_MODIFIABILITY);
+	public KAMPPCMBotDeprecated(String name, PCMScenario scenario) {
+		super(name, scenario, KAMPPCMBot.QA_MODIFIABILITY);
 	}
 
 	public String getEvaluationType() {
@@ -459,8 +459,4 @@ public class KAMPPCMBotDeprecated extends AbstractPCMBot {
 		return null;
 	}
 
-	@Override
-	public PCMScenarioResult analyze(PCMArchitectureInstance currentArchitecture, String botName) {
-		return analyze(currentArchitecture);
-	}
 }

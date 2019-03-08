@@ -91,14 +91,13 @@ public class PCMBotMockBuilder {
 	private AbstractPCMBot mockBot() {
 		AbstractPCMBot bot = mock(AbstractPCMBot.class);
 		when(bot.getScenario()).thenReturn(properties.getScenario());
+		when(bot.getName()).thenReturn(properties.getName());
 		return bot;
 	}
 
 	private AbstractPCMBot mockAnalysisFinal(PCMArchitectureInstance architecture, PCMScenarioResult scenarioResult)
 			throws Exception {
 		when(mockedBot.analyze(architecture)).thenReturn(scenarioResult);
-		when(mockedBot.analyze(architecture, null)).thenReturn(scenarioResult);
-		when(mockedBot.analyze(eq(architecture), anyString())).thenReturn(scenarioResult);
 		return mockedBot;
 	}
 

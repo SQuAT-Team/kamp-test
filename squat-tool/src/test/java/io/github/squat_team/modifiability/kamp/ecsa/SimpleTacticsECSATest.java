@@ -2,11 +2,8 @@ package io.github.squat_team.modifiability.kamp.ecsa;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.palladiosimulator.pcm.allocation.Allocation;
 import org.palladiosimulator.pcm.repository.Repository;
@@ -30,6 +27,8 @@ import io.github.squat_team.util.SQuATHelper;
 
 @SuppressWarnings("rawtypes")
 public class SimpleTacticsECSATest {
+	private static final String BOT_NAME = "Bot";
+
 	private String machinePath;
 	private String dirPath;
 	private String[] modelNames;
@@ -1382,13 +1381,13 @@ public class SimpleTacticsECSATest {
 		boolean debug = false;
 		Comparable expectedResponse = scenario.getExpectedResult().getResponse();
 		if(debug) java.lang.System.out.println("The goal of scenario " + scenarioName + ": " + expectedResponse.toString());
-		KAMPPCMBot bot = new KAMPPCMBot(scenario);
+		KAMPPCMBot bot = new KAMPPCMBot(BOT_NAME, scenario);
 		bot.setEvaluationType(evaluationType);
 		if(debug) java.lang.System.out.println("The evaluation type is: " + evaluationType);
 		//
 		for (int i = 0; i < modelNames.length; i++) {
 			PCMArchitectureInstance model = this.loadSpecificModel(modelNames[i], repositoryFile[i], resourceEnvironmentFile[i], baseSystemFile[i], baseAllocationFile[i], baseUsageFile[i]);
-			PCMScenarioResult scenarioResult = bot.analyze(model,"");
+			PCMScenarioResult scenarioResult = bot.analyze(model);
 			String satisfaction_alt1 = scenarioResult.isSatisfied() >= 0 ? "SATISFIED" : "NOT SATISFIED";
 			if(debug) java.lang.System.out.println("The scenario satisfaction with " + model.getName() + " is: " + satisfaction_alt1);
 			Comparable response_alt1 = scenarioResult.getResult().getResponse();

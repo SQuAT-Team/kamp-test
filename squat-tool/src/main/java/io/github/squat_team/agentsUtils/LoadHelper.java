@@ -402,7 +402,7 @@ public class LoadHelper {
 		//
 		try {
 			// PCMArchitectureInstance model = this.loadSpecificModel(architecturalVersion);
-			PCMScenarioResult scenarioResult = bot.analyze(model, "");
+			PCMScenarioResult scenarioResult = bot.analyze(model);
 			if (debug) {
 				String satisfaction_alt1 = scenarioResult.isSatisfied() >= 0 ? "SATISFIED" : "NOT SATISFIED";
 				java.lang.System.out
@@ -429,10 +429,9 @@ public class LoadHelper {
 			// java.lang.System.out.println("NOOO funciono la cache");
 			AbstractPCMBot bot = PerformanceScenarioHelper.getInstance().createPCMBot(scenario);
 
-			PCMScenarioResult result = bot.analyze(architecture,
-					PerformanceScenarioHelper.getInstance().obtainName(scenario));
+			PCMScenarioResult result = bot.analyze(architecture);
 			java.lang.System.out.println("PERFORMANCE: " + result + " " + bot + " " + architecture);
-			java.lang.System.out.println(PerformanceScenarioHelper.getInstance().obtainName(scenario));
+			java.lang.System.out.println(bot.getName());
 			if (result == null)// is unsolvable
 				return 9999f;
 			else

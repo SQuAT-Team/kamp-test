@@ -44,6 +44,8 @@ import io.github.squat_team.modifiability.kamp.EvaluationType;
 import io.github.squat_team.util.SQuATHelper;
 
 public class NoSpringServer {
+	private static final String BOT_NAME = "MB1";
+
 	/** The port to use */
 	private final int port;
 
@@ -194,7 +196,7 @@ public class NoSpringServer {
 					.getScenarioFromObject(jsonBody.getJSONObject("scenario"));
 
 			// Create the bot and context
-			KAMPPCMBot bot = new KAMPPCMBot(scenario);
+			KAMPPCMBot bot = new KAMPPCMBot(BOT_NAME, scenario);
 			bot.setEvaluationType(EvaluationType.COMPLEXITY);
 			ExecutionContext context = new ExecutionContext(bot, architectureInstance, restArchitecture);
 

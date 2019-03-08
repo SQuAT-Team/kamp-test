@@ -2,11 +2,8 @@ package io.github.squat_team.modifiability.kamp.ecsa;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.palladiosimulator.pcm.allocation.Allocation;
 import org.palladiosimulator.pcm.repository.Repository;
@@ -29,6 +26,8 @@ import io.github.squat_team.util.SQuATHelper;
 
 @SuppressWarnings("rawtypes")
 public class SimpleTacticsECSATest {
+	private static final String BOT_NAME = "MB1";
+
 	private String machinePath;
 	private String dirPath;
 	private String[] modelNames;
@@ -40,12 +39,13 @@ public class SimpleTacticsECSATest {
 	//
 	private List<AnalysisResult> results;
 	private Map<AnalysisResult, AnalysisResult> resultsMap;
+
 	//
 	public SimpleTacticsECSATest() {
 		this.results = new ArrayList<AnalysisResult>();
 		this.resultsMap = new HashMap<AnalysisResult, AnalysisResult>();
 	}
-	
+
 	private void setModifiabilityPCMModel() {
 		machinePath = "/Users/alejandrorago/Documents/Implementacion/Repositorios/kamp-test/";
 		dirPath = machinePath + "squat-tool/src/test/resources/io/github/squat_team/ecsa/modifiability/";
@@ -55,34 +55,27 @@ public class SimpleTacticsECSATest {
 				// split resp tactic
 				"stplus-0-Payment System",
 				// wrapper tactic
-				"stplus-0-IExporter", "stplus-1-ITripDB", 
-				"stplus-2-IExternalPayment", "stplus-3-IEmployeePayment",
+				"stplus-0-IExporter", "stplus-1-ITripDB", "stplus-2-IExternalPayment", "stplus-3-IEmployeePayment",
 				"stplus-4-IBooking", "stplus-5-IBusiness Trip",
 				// split resp + wrapper tactic
-				"stplus-0-Payment System-0-IExporter", 
-				"stplus-0-Payment System-1-ITripDB", 
-				"stplus-0-Payment System-2-IExternalPayment",
-				"stplus-0-Payment System-3-IEmployeePayment", 
-				"stplus-0-Payment System-4-IBooking", 
-				"stplus-0-Payment System-5-IBusiness Trip" };
+				"stplus-0-Payment System-0-IExporter", "stplus-0-Payment System-1-ITripDB",
+				"stplus-0-Payment System-2-IExternalPayment", "stplus-0-Payment System-3-IEmployeePayment",
+				"stplus-0-Payment System-4-IBooking", "stplus-0-Payment System-5-IBusiness Trip" };
 		modelNames = new String[] {
 				// initial architecture
 				"stplus-initial",
 				// split resp tactic
 				"stplus-mod-split(PaymentSystem)",
 				// wrapper tactic
-				"stplus-mod-wrapper(IExporter)", 
-				"stplus-mod-wrapper(ITripDB)", 
-				"stplus-mod-wrapper(IExternalPayment)", 
-				"stplus-mod-wrapper(IEmployeePayment)",
-				"stplus-mod-wrapper(IBooking)", 
+				"stplus-mod-wrapper(IExporter)", "stplus-mod-wrapper(ITripDB)", "stplus-mod-wrapper(IExternalPayment)",
+				"stplus-mod-wrapper(IEmployeePayment)", "stplus-mod-wrapper(IBooking)",
 				"stplus-mod-wrapper(IBusinessTrip)",
 				// split resp + wrapper tactic
-				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)", 
-				"stplus-mod-split(PaymentSystem)-wrapper(ITripDB)", 
+				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
-				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)", 
-				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)", 
+				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
+				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)",
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)" };
 		repositoryFile = new String[modelNames.length];
 		resourceEnvironmentFile = new String[modelNames.length];
@@ -97,15 +90,15 @@ public class SimpleTacticsECSATest {
 			baseUsageFile[i] = dirPath + localPath[i] + ".usagemodel";
 		}
 	}
-	
+
 	private void setPerformancePCMModel() {
 		machinePath = "/Users/alejandrorago/Documents/Implementacion/Repositorios/kamp-test/";
 		dirPath = machinePath + "squat-tool/src/test/resources/io/github/squat_team/ecsa/performance/";
 		String[] localPath = new String[] {
 				// initial architecture
-				//"opt-models/stplus_min/stplus",
+				// "opt-models/stplus_min/stplus",
 				// performance scenario 1
-				//"opt-models-scenario1/stplus_min/stplus",
+				// "opt-models-scenario1/stplus_min/stplus",
 				"opt-models-scenario1/candidate258_minPlus/default",
 				"opt-models-scenario1/candidate281_minPlus/default",
 				"opt-models-scenario1/candidate338_minPlus/default",
@@ -114,12 +107,10 @@ public class SimpleTacticsECSATest {
 				"opt-models-scenario1/candidate404_minPlus/default",
 				"opt-models-scenario1/candidate436_minPlus/default",
 				"opt-models-scenario1/candidate444_minPlus/default",
-				"opt-models-scenario1/candidate494_minPlus/default",
-				"opt-models-scenario1/candidate64_minPlus/default",
+				"opt-models-scenario1/candidate494_minPlus/default", "opt-models-scenario1/candidate64_minPlus/default",
 				// performance scenario 2
-				//"opt-models-scenario2/stplus_min/stplus",
-				"opt-models-scenario2/candidate209_minPlus/default",
-				"opt-models-scenario2/candidate22_minPlus/default",
+				// "opt-models-scenario2/stplus_min/stplus",
+				"opt-models-scenario2/candidate209_minPlus/default", "opt-models-scenario2/candidate22_minPlus/default",
 				"opt-models-scenario2/candidate325_minPlus/default",
 				"opt-models-scenario2/candidate330_minPlus/default",
 				"opt-models-scenario2/candidate358_minPlus/default",
@@ -127,36 +118,18 @@ public class SimpleTacticsECSATest {
 				"opt-models-scenario2/candidate416_minPlus/default",
 				"opt-models-scenario2/candidate476_minPlus/default",
 				"opt-models-scenario2/candidate479_minPlus/default",
-				"opt-models-scenario2/candidate480_minPlus/default"
-		};
+				"opt-models-scenario2/candidate480_minPlus/default" };
 		modelNames = new String[] {
 				// initial architecture
-				//"stplus",
+				// "stplus",
 				// performance scenario 1
-				//"stplus-ps1",
-				"stplus-ps1-258",
-				"stplus-ps1-281",
-				"stplus-ps1-338",
-				"stplus-ps1-340",
-				"stplus-ps1-397",
-				"stplus-ps1-404",
-				"stplus-ps1-436",
-				"stplus-ps1-444",
-				"stplus-ps1-494",
-				"stplus-ps1-64",
+				// "stplus-ps1",
+				"stplus-ps1-258", "stplus-ps1-281", "stplus-ps1-338", "stplus-ps1-340", "stplus-ps1-397",
+				"stplus-ps1-404", "stplus-ps1-436", "stplus-ps1-444", "stplus-ps1-494", "stplus-ps1-64",
 				// performance scenario 2
-				//"stplus-ps2",
-				"stplus-ps2-209",
-				"stplus-ps2-22",
-				"stplus-ps2-325",
-				"stplus-ps2-330",
-				"stplus-ps2-358",
-				"stplus-ps2-366",
-				"stplus-ps2-416",
-				"stplus-ps2-476",
-				"stplus-ps2-479",
-				"stplus-ps2-480"
-		};
+				// "stplus-ps2",
+				"stplus-ps2-209", "stplus-ps2-22", "stplus-ps2-325", "stplus-ps2-330", "stplus-ps2-358",
+				"stplus-ps2-366", "stplus-ps2-416", "stplus-ps2-476", "stplus-ps2-479", "stplus-ps2-480" };
 		repositoryFile = new String[modelNames.length];
 		resourceEnvironmentFile = new String[modelNames.length];
 		baseSystemFile = new String[modelNames.length];
@@ -170,18 +143,16 @@ public class SimpleTacticsECSATest {
 			baseUsageFile[i] = dirPath + localPath[i] + ".usagemodel";
 		}
 	}
-	
+
 	private void setPerformanceModifiabilityPCMModel() {
 		machinePath = "/Users/alejandrorago/Documents/Implementacion/Repositorios/kamp-test/";
 		dirPath = machinePath + "squat-tool/src/test/resources/io/github/squat_team/ecsa/performance-modifiability/";
 		String[] localPath = new String[] {
 				// performance scenario 1
 				// candidate 258
-				"ps1/candidate258_minPlus/default-0-IExporter",
-				"ps1/candidate258_minPlus/default-1-ITripDB",
+				"ps1/candidate258_minPlus/default-0-IExporter", "ps1/candidate258_minPlus/default-1-ITripDB",
 				"ps1/candidate258_minPlus/default-2-IExternalPayment",
-				"ps1/candidate258_minPlus/default-3-IEmployeePayment",
-				"ps1/candidate258_minPlus/default-4-IBooking",
+				"ps1/candidate258_minPlus/default-3-IEmployeePayment", "ps1/candidate258_minPlus/default-4-IBooking",
 				"ps1/candidate258_minPlus/default-5-IBusiness Trip",
 				"ps1/candidate258_minPlus/default-0-Payment System",
 				"ps1/candidate258_minPlus/default-0-Payment System-0-IExporter",
@@ -191,11 +162,9 @@ public class SimpleTacticsECSATest {
 				"ps1/candidate258_minPlus/default-0-Payment System-4-IBooking",
 				"ps1/candidate258_minPlus/default-0-Payment System-5-IBusiness Trip",
 				// candidate 281
-				"ps1/candidate281_minPlus/default-0-IExporter",
-				"ps1/candidate281_minPlus/default-1-ITripDB",
+				"ps1/candidate281_minPlus/default-0-IExporter", "ps1/candidate281_minPlus/default-1-ITripDB",
 				"ps1/candidate281_minPlus/default-2-IExternalPayment",
-				"ps1/candidate281_minPlus/default-3-IEmployeePayment",
-				"ps1/candidate281_minPlus/default-4-IBooking",
+				"ps1/candidate281_minPlus/default-3-IEmployeePayment", "ps1/candidate281_minPlus/default-4-IBooking",
 				"ps1/candidate281_minPlus/default-5-IBusiness Trip",
 				"ps1/candidate281_minPlus/default-0-Payment System",
 				"ps1/candidate281_minPlus/default-0-Payment System-0-IExporter",
@@ -205,11 +174,9 @@ public class SimpleTacticsECSATest {
 				"ps1/candidate281_minPlus/default-0-Payment System-4-IBooking",
 				"ps1/candidate281_minPlus/default-0-Payment System-5-IBusiness Trip",
 				// candidate 338
-				"ps1/candidate338_minPlus/default-0-IExporter",
-				"ps1/candidate338_minPlus/default-1-ITripDB",
+				"ps1/candidate338_minPlus/default-0-IExporter", "ps1/candidate338_minPlus/default-1-ITripDB",
 				"ps1/candidate338_minPlus/default-2-IExternalPayment",
-				"ps1/candidate338_minPlus/default-3-IEmployeePayment",
-				"ps1/candidate338_minPlus/default-4-IBooking",
+				"ps1/candidate338_minPlus/default-3-IEmployeePayment", "ps1/candidate338_minPlus/default-4-IBooking",
 				"ps1/candidate338_minPlus/default-5-IBusiness Trip",
 				"ps1/candidate338_minPlus/default-0-Payment System",
 				"ps1/candidate338_minPlus/default-0-Payment System-0-IExporter",
@@ -219,11 +186,9 @@ public class SimpleTacticsECSATest {
 				"ps1/candidate338_minPlus/default-0-Payment System-4-IBooking",
 				"ps1/candidate338_minPlus/default-0-Payment System-5-IBusiness Trip",
 				// candidate 340
-				"ps1/candidate340_minPlus/default-0-IExporter",
-				"ps1/candidate340_minPlus/default-1-ITripDB",
+				"ps1/candidate340_minPlus/default-0-IExporter", "ps1/candidate340_minPlus/default-1-ITripDB",
 				"ps1/candidate340_minPlus/default-2-IExternalPayment",
-				"ps1/candidate340_minPlus/default-3-IEmployeePayment",
-				"ps1/candidate340_minPlus/default-4-IBooking",
+				"ps1/candidate340_minPlus/default-3-IEmployeePayment", "ps1/candidate340_minPlus/default-4-IBooking",
 				"ps1/candidate340_minPlus/default-5-IBusiness Trip",
 				"ps1/candidate340_minPlus/default-0-Payment System",
 				"ps1/candidate340_minPlus/default-0-Payment System-0-IExporter",
@@ -233,11 +198,9 @@ public class SimpleTacticsECSATest {
 				"ps1/candidate340_minPlus/default-0-Payment System-4-IBooking",
 				"ps1/candidate340_minPlus/default-0-Payment System-5-IBusiness Trip",
 				// candidate 397
-				"ps1/candidate397_minPlus/default-0-IExporter",
-				"ps1/candidate397_minPlus/default-1-ITripDB",
+				"ps1/candidate397_minPlus/default-0-IExporter", "ps1/candidate397_minPlus/default-1-ITripDB",
 				"ps1/candidate397_minPlus/default-2-IExternalPayment",
-				"ps1/candidate397_minPlus/default-3-IEmployeePayment",
-				"ps1/candidate397_minPlus/default-4-IBooking",
+				"ps1/candidate397_minPlus/default-3-IEmployeePayment", "ps1/candidate397_minPlus/default-4-IBooking",
 				"ps1/candidate397_minPlus/default-5-IBusiness Trip",
 				"ps1/candidate397_minPlus/default-0-Payment System",
 				"ps1/candidate397_minPlus/default-0-Payment System-0-IExporter",
@@ -247,11 +210,9 @@ public class SimpleTacticsECSATest {
 				"ps1/candidate397_minPlus/default-0-Payment System-4-IBooking",
 				"ps1/candidate397_minPlus/default-0-Payment System-5-IBusiness Trip",
 				// candidate 404
-				"ps1/candidate404_minPlus/default-0-IExporter",
-				"ps1/candidate404_minPlus/default-1-ITripDB",
+				"ps1/candidate404_minPlus/default-0-IExporter", "ps1/candidate404_minPlus/default-1-ITripDB",
 				"ps1/candidate404_minPlus/default-2-IExternalPayment",
-				"ps1/candidate404_minPlus/default-3-IEmployeePayment",
-				"ps1/candidate404_minPlus/default-4-IBooking",
+				"ps1/candidate404_minPlus/default-3-IEmployeePayment", "ps1/candidate404_minPlus/default-4-IBooking",
 				"ps1/candidate404_minPlus/default-5-IBusiness Trip",
 				"ps1/candidate404_minPlus/default-0-Payment System",
 				"ps1/candidate404_minPlus/default-0-Payment System-0-IExporter",
@@ -261,11 +222,9 @@ public class SimpleTacticsECSATest {
 				"ps1/candidate404_minPlus/default-0-Payment System-4-IBooking",
 				"ps1/candidate404_minPlus/default-0-Payment System-5-IBusiness Trip",
 				// candidate 436
-				"ps1/candidate436_minPlus/default-0-IExporter",
-				"ps1/candidate436_minPlus/default-1-ITripDB",
+				"ps1/candidate436_minPlus/default-0-IExporter", "ps1/candidate436_minPlus/default-1-ITripDB",
 				"ps1/candidate436_minPlus/default-2-IExternalPayment",
-				"ps1/candidate436_minPlus/default-3-IEmployeePayment",
-				"ps1/candidate436_minPlus/default-4-IBooking",
+				"ps1/candidate436_minPlus/default-3-IEmployeePayment", "ps1/candidate436_minPlus/default-4-IBooking",
 				"ps1/candidate436_minPlus/default-5-IBusiness Trip",
 				"ps1/candidate436_minPlus/default-0-Payment System",
 				"ps1/candidate436_minPlus/default-0-Payment System-0-IExporter",
@@ -275,11 +234,9 @@ public class SimpleTacticsECSATest {
 				"ps1/candidate436_minPlus/default-0-Payment System-4-IBooking",
 				"ps1/candidate436_minPlus/default-0-Payment System-5-IBusiness Trip",
 				// candidate 444
-				"ps1/candidate444_minPlus/default-0-IExporter",
-				"ps1/candidate444_minPlus/default-1-ITripDB",
+				"ps1/candidate444_minPlus/default-0-IExporter", "ps1/candidate444_minPlus/default-1-ITripDB",
 				"ps1/candidate444_minPlus/default-2-IExternalPayment",
-				"ps1/candidate444_minPlus/default-3-IEmployeePayment",
-				"ps1/candidate444_minPlus/default-4-IBooking",
+				"ps1/candidate444_minPlus/default-3-IEmployeePayment", "ps1/candidate444_minPlus/default-4-IBooking",
 				"ps1/candidate444_minPlus/default-5-IBusiness Trip",
 				"ps1/candidate444_minPlus/default-0-Payment System",
 				"ps1/candidate444_minPlus/default-0-Payment System-0-IExporter",
@@ -289,11 +246,9 @@ public class SimpleTacticsECSATest {
 				"ps1/candidate444_minPlus/default-0-Payment System-4-IBooking",
 				"ps1/candidate444_minPlus/default-0-Payment System-5-IBusiness Trip",
 				// candidate 494
-				"ps1/candidate494_minPlus/default-0-IExporter",
-				"ps1/candidate494_minPlus/default-1-ITripDB",
+				"ps1/candidate494_minPlus/default-0-IExporter", "ps1/candidate494_minPlus/default-1-ITripDB",
 				"ps1/candidate494_minPlus/default-2-IExternalPayment",
-				"ps1/candidate494_minPlus/default-3-IEmployeePayment",
-				"ps1/candidate494_minPlus/default-4-IBooking",
+				"ps1/candidate494_minPlus/default-3-IEmployeePayment", "ps1/candidate494_minPlus/default-4-IBooking",
 				"ps1/candidate494_minPlus/default-5-IBusiness Trip",
 				"ps1/candidate494_minPlus/default-0-Payment System",
 				"ps1/candidate494_minPlus/default-0-Payment System-0-IExporter",
@@ -303,13 +258,10 @@ public class SimpleTacticsECSATest {
 				"ps1/candidate494_minPlus/default-0-Payment System-4-IBooking",
 				"ps1/candidate494_minPlus/default-0-Payment System-5-IBusiness Trip",
 				// candidate 64
-				"ps1/candidate64_minPlus/default-0-IExporter",
-				"ps1/candidate64_minPlus/default-1-ITripDB",
+				"ps1/candidate64_minPlus/default-0-IExporter", "ps1/candidate64_minPlus/default-1-ITripDB",
 				"ps1/candidate64_minPlus/default-2-IExternalPayment",
-				"ps1/candidate64_minPlus/default-3-IEmployeePayment",
-				"ps1/candidate64_minPlus/default-4-IBooking",
-				"ps1/candidate64_minPlus/default-5-IBusiness Trip",
-				"ps1/candidate64_minPlus/default-0-Payment System",
+				"ps1/candidate64_minPlus/default-3-IEmployeePayment", "ps1/candidate64_minPlus/default-4-IBooking",
+				"ps1/candidate64_minPlus/default-5-IBusiness Trip", "ps1/candidate64_minPlus/default-0-Payment System",
 				"ps1/candidate64_minPlus/default-0-Payment System-0-IExporter",
 				"ps1/candidate64_minPlus/default-0-Payment System-1-ITripDB",
 				"ps1/candidate64_minPlus/default-0-Payment System-2-IExternalPayment",
@@ -318,11 +270,9 @@ public class SimpleTacticsECSATest {
 				"ps1/candidate64_minPlus/default-0-Payment System-5-IBusiness Trip",
 				// performance scenario 2
 				// candidate 209
-				"ps2/candidate209_minPlus/default-0-IExporter",
-				"ps2/candidate209_minPlus/default-1-ITripDB",
+				"ps2/candidate209_minPlus/default-0-IExporter", "ps2/candidate209_minPlus/default-1-ITripDB",
 				"ps2/candidate209_minPlus/default-2-IExternalPayment",
-				"ps2/candidate209_minPlus/default-3-IEmployeePayment",
-				"ps2/candidate209_minPlus/default-4-IBooking",
+				"ps2/candidate209_minPlus/default-3-IEmployeePayment", "ps2/candidate209_minPlus/default-4-IBooking",
 				"ps2/candidate209_minPlus/default-5-IBusiness Trip",
 				"ps2/candidate209_minPlus/default-0-Payment System",
 				"ps2/candidate209_minPlus/default-0-Payment System-0-IExporter",
@@ -332,13 +282,10 @@ public class SimpleTacticsECSATest {
 				"ps2/candidate209_minPlus/default-0-Payment System-4-IBooking",
 				"ps2/candidate209_minPlus/default-0-Payment System-5-IBusiness Trip",
 				// candidate 22
-				"ps2/candidate22_minPlus/default-0-IExporter",
-				"ps2/candidate22_minPlus/default-1-ITripDB",
+				"ps2/candidate22_minPlus/default-0-IExporter", "ps2/candidate22_minPlus/default-1-ITripDB",
 				"ps2/candidate22_minPlus/default-2-IExternalPayment",
-				"ps2/candidate22_minPlus/default-3-IEmployeePayment",
-				"ps2/candidate22_minPlus/default-4-IBooking",
-				"ps2/candidate22_minPlus/default-5-IBusiness Trip",
-				"ps2/candidate22_minPlus/default-0-Payment System",
+				"ps2/candidate22_minPlus/default-3-IEmployeePayment", "ps2/candidate22_minPlus/default-4-IBooking",
+				"ps2/candidate22_minPlus/default-5-IBusiness Trip", "ps2/candidate22_minPlus/default-0-Payment System",
 				"ps2/candidate22_minPlus/default-0-Payment System-0-IExporter",
 				"ps2/candidate22_minPlus/default-0-Payment System-1-ITripDB",
 				"ps2/candidate22_minPlus/default-0-Payment System-2-IExternalPayment",
@@ -346,11 +293,9 @@ public class SimpleTacticsECSATest {
 				"ps2/candidate22_minPlus/default-0-Payment System-4-IBooking",
 				"ps2/candidate22_minPlus/default-0-Payment System-5-IBusiness Trip",
 				// candidate 325
-				"ps2/candidate325_minPlus/default-0-IExporter",
-				"ps2/candidate325_minPlus/default-1-ITripDB",
+				"ps2/candidate325_minPlus/default-0-IExporter", "ps2/candidate325_minPlus/default-1-ITripDB",
 				"ps2/candidate325_minPlus/default-2-IExternalPayment",
-				"ps2/candidate325_minPlus/default-3-IEmployeePayment",
-				"ps2/candidate325_minPlus/default-4-IBooking",
+				"ps2/candidate325_minPlus/default-3-IEmployeePayment", "ps2/candidate325_minPlus/default-4-IBooking",
 				"ps2/candidate325_minPlus/default-5-IBusiness Trip",
 				"ps2/candidate325_minPlus/default-0-Payment System",
 				"ps2/candidate325_minPlus/default-0-Payment System-0-IExporter",
@@ -360,11 +305,9 @@ public class SimpleTacticsECSATest {
 				"ps2/candidate325_minPlus/default-0-Payment System-4-IBooking",
 				"ps2/candidate325_minPlus/default-0-Payment System-5-IBusiness Trip",
 				// candidate 330
-				"ps2/candidate330_minPlus/default-0-IExporter",
-				"ps2/candidate330_minPlus/default-1-ITripDB",
+				"ps2/candidate330_minPlus/default-0-IExporter", "ps2/candidate330_minPlus/default-1-ITripDB",
 				"ps2/candidate330_minPlus/default-2-IExternalPayment",
-				"ps2/candidate330_minPlus/default-3-IEmployeePayment",
-				"ps2/candidate330_minPlus/default-4-IBooking",
+				"ps2/candidate330_minPlus/default-3-IEmployeePayment", "ps2/candidate330_minPlus/default-4-IBooking",
 				"ps2/candidate330_minPlus/default-5-IBusiness Trip",
 				"ps2/candidate330_minPlus/default-0-Payment System",
 				"ps2/candidate330_minPlus/default-0-Payment System-0-IExporter",
@@ -374,11 +317,9 @@ public class SimpleTacticsECSATest {
 				"ps2/candidate330_minPlus/default-0-Payment System-4-IBooking",
 				"ps2/candidate330_minPlus/default-0-Payment System-5-IBusiness Trip",
 				// candidate 358
-				"ps2/candidate358_minPlus/default-0-IExporter",
-				"ps2/candidate358_minPlus/default-1-ITripDB",
+				"ps2/candidate358_minPlus/default-0-IExporter", "ps2/candidate358_minPlus/default-1-ITripDB",
 				"ps2/candidate358_minPlus/default-2-IExternalPayment",
-				"ps2/candidate358_minPlus/default-3-IEmployeePayment",
-				"ps2/candidate358_minPlus/default-4-IBooking",
+				"ps2/candidate358_minPlus/default-3-IEmployeePayment", "ps2/candidate358_minPlus/default-4-IBooking",
 				"ps2/candidate358_minPlus/default-5-IBusiness Trip",
 				"ps2/candidate358_minPlus/default-0-Payment System",
 				"ps2/candidate358_minPlus/default-0-Payment System-0-IExporter",
@@ -388,11 +329,9 @@ public class SimpleTacticsECSATest {
 				"ps2/candidate358_minPlus/default-0-Payment System-4-IBooking",
 				"ps2/candidate358_minPlus/default-0-Payment System-5-IBusiness Trip",
 				// candidate 366
-				"ps2/candidate366_minPlus/default-0-IExporter",
-				"ps2/candidate366_minPlus/default-1-ITripDB",
+				"ps2/candidate366_minPlus/default-0-IExporter", "ps2/candidate366_minPlus/default-1-ITripDB",
 				"ps2/candidate366_minPlus/default-2-IExternalPayment",
-				"ps2/candidate366_minPlus/default-3-IEmployeePayment",
-				"ps2/candidate366_minPlus/default-4-IBooking",
+				"ps2/candidate366_minPlus/default-3-IEmployeePayment", "ps2/candidate366_minPlus/default-4-IBooking",
 				"ps2/candidate366_minPlus/default-5-IBusiness Trip",
 				"ps2/candidate366_minPlus/default-0-Payment System",
 				"ps2/candidate366_minPlus/default-0-Payment System-0-IExporter",
@@ -402,11 +341,9 @@ public class SimpleTacticsECSATest {
 				"ps2/candidate366_minPlus/default-0-Payment System-4-IBooking",
 				"ps2/candidate366_minPlus/default-0-Payment System-5-IBusiness Trip",
 				// candidate 416
-				"ps2/candidate416_minPlus/default-0-IExporter",
-				"ps2/candidate416_minPlus/default-1-ITripDB",
+				"ps2/candidate416_minPlus/default-0-IExporter", "ps2/candidate416_minPlus/default-1-ITripDB",
 				"ps2/candidate416_minPlus/default-2-IExternalPayment",
-				"ps2/candidate416_minPlus/default-3-IEmployeePayment",
-				"ps2/candidate416_minPlus/default-4-IBooking",
+				"ps2/candidate416_minPlus/default-3-IEmployeePayment", "ps2/candidate416_minPlus/default-4-IBooking",
 				"ps2/candidate416_minPlus/default-5-IBusiness Trip",
 				"ps2/candidate416_minPlus/default-0-Payment System",
 				"ps2/candidate416_minPlus/default-0-Payment System-0-IExporter",
@@ -416,11 +353,9 @@ public class SimpleTacticsECSATest {
 				"ps2/candidate416_minPlus/default-0-Payment System-4-IBooking",
 				"ps2/candidate416_minPlus/default-0-Payment System-5-IBusiness Trip",
 				// candidate 476
-				"ps2/candidate476_minPlus/default-0-IExporter",
-				"ps2/candidate476_minPlus/default-1-ITripDB",
+				"ps2/candidate476_minPlus/default-0-IExporter", "ps2/candidate476_minPlus/default-1-ITripDB",
 				"ps2/candidate476_minPlus/default-2-IExternalPayment",
-				"ps2/candidate476_minPlus/default-3-IEmployeePayment",
-				"ps2/candidate476_minPlus/default-4-IBooking",
+				"ps2/candidate476_minPlus/default-3-IEmployeePayment", "ps2/candidate476_minPlus/default-4-IBooking",
 				"ps2/candidate476_minPlus/default-5-IBusiness Trip",
 				"ps2/candidate476_minPlus/default-0-Payment System",
 				"ps2/candidate476_minPlus/default-0-Payment System-0-IExporter",
@@ -430,11 +365,9 @@ public class SimpleTacticsECSATest {
 				"ps2/candidate476_minPlus/default-0-Payment System-4-IBooking",
 				"ps2/candidate476_minPlus/default-0-Payment System-5-IBusiness Trip",
 				// candidate 479
-				"ps2/candidate479_minPlus/default-0-IExporter",
-				"ps2/candidate479_minPlus/default-1-ITripDB",
+				"ps2/candidate479_minPlus/default-0-IExporter", "ps2/candidate479_minPlus/default-1-ITripDB",
 				"ps2/candidate479_minPlus/default-2-IExternalPayment",
-				"ps2/candidate479_minPlus/default-3-IEmployeePayment",
-				"ps2/candidate479_minPlus/default-4-IBooking",
+				"ps2/candidate479_minPlus/default-3-IEmployeePayment", "ps2/candidate479_minPlus/default-4-IBooking",
 				"ps2/candidate479_minPlus/default-5-IBusiness Trip",
 				"ps2/candidate479_minPlus/default-0-Payment System",
 				"ps2/candidate479_minPlus/default-0-Payment System-0-IExporter",
@@ -444,11 +377,9 @@ public class SimpleTacticsECSATest {
 				"ps2/candidate479_minPlus/default-0-Payment System-4-IBooking",
 				"ps2/candidate479_minPlus/default-0-Payment System-5-IBusiness Trip",
 				// candidate 480
-				"ps2/candidate480_minPlus/default-0-IExporter",
-				"ps2/candidate480_minPlus/default-1-ITripDB",
+				"ps2/candidate480_minPlus/default-0-IExporter", "ps2/candidate480_minPlus/default-1-ITripDB",
 				"ps2/candidate480_minPlus/default-2-IExternalPayment",
-				"ps2/candidate480_minPlus/default-3-IEmployeePayment",
-				"ps2/candidate480_minPlus/default-4-IBooking",
+				"ps2/candidate480_minPlus/default-3-IEmployeePayment", "ps2/candidate480_minPlus/default-4-IBooking",
 				"ps2/candidate480_minPlus/default-5-IBusiness Trip",
 				"ps2/candidate480_minPlus/default-0-Payment System",
 				"ps2/candidate480_minPlus/default-0-Payment System-0-IExporter",
@@ -456,9 +387,7 @@ public class SimpleTacticsECSATest {
 				"ps2/candidate480_minPlus/default-0-Payment System-2-IExternalPayment",
 				"ps2/candidate480_minPlus/default-0-Payment System-3-IEmployeePayment",
 				"ps2/candidate480_minPlus/default-0-Payment System-4-IBooking",
-				"ps2/candidate480_minPlus/default-0-Payment System-5-IBusiness Trip",
-		};
-		
+				"ps2/candidate480_minPlus/default-0-Payment System-5-IBusiness Trip", };
 
 		modelNames = new String[] {
 				// initial architecture
@@ -466,159 +395,116 @@ public class SimpleTacticsECSATest {
 				// split resp tactic
 				"stplus-mod-split(PaymentSystem)",
 				// wrapper tactic
-				"stplus-mod-wrapper(IExporter)", 
-				"stplus-mod-wrapper(ITripDB)", 
-				"stplus-mod-wrapper(IExternalPayment)", 
-				"stplus-mod-wrapper(IEmployeePayment)",
-				"stplus-mod-wrapper(IBooking)", 
+				"stplus-mod-wrapper(IExporter)", "stplus-mod-wrapper(ITripDB)", "stplus-mod-wrapper(IExternalPayment)",
+				"stplus-mod-wrapper(IEmployeePayment)", "stplus-mod-wrapper(IBooking)",
 				"stplus-mod-wrapper(IBusinessTrip)",
 				// split resp + wrapper tactic
-				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)", 
-				"stplus-mod-split(PaymentSystem)-wrapper(ITripDB)", 
+				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
-				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)", 
-				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)", 
+				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
+				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)",
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)" };
-		
+
 		modelNames = new String[] {
 				// initial architecture
-				//"stplus",
+				// "stplus",
 				// performance scenario
 				// candidate 258
-				"stplus-ps1-258-mod-wrapper(IExporter)",
-				"stplus-ps1-258-mod-wrapper(ITripDB)",
-				"stplus-ps1-258-mod-wrapper(IExternalPayment)",
-				"stplus-ps1-258-mod-wrapper(IEmployeePayment)",
-				"stplus-ps1-258-mod-wrapper(IBooking)",
-				"stplus-ps1-258-mod-wrapper(IBusinessTrip)",
-				"stplus-ps1-258-mod-split(PaymentSystem)",
-				"stplus-ps1-258-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-ps1-258-mod-wrapper(IExporter)", "stplus-ps1-258-mod-wrapper(ITripDB)",
+				"stplus-ps1-258-mod-wrapper(IExternalPayment)", "stplus-ps1-258-mod-wrapper(IEmployeePayment)",
+				"stplus-ps1-258-mod-wrapper(IBooking)", "stplus-ps1-258-mod-wrapper(IBusinessTrip)",
+				"stplus-ps1-258-mod-split(PaymentSystem)", "stplus-ps1-258-mod-split(PaymentSystem)-wrapper(IExporter)",
 				"stplus-ps1-258-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-ps1-258-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
 				"stplus-ps1-258-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
 				"stplus-ps1-258-mod-split(PaymentSystem)-wrapper(IBooking)",
 				"stplus-ps1-258-mod-split(PaymentSystem)-wrapper(IBusinessTrip)",
 				// candidate 281
-				"stplus-ps1-281-mod-wrapper(IExporter)",
-				"stplus-ps1-281-mod-wrapper(ITripDB)",
-				"stplus-ps1-281-mod-wrapper(IExternalPayment)",
-				"stplus-ps1-281-mod-wrapper(IEmployeePayment)",
-				"stplus-ps1-281-mod-wrapper(IBooking)",
-				"stplus-ps1-281-mod-wrapper(IBusinessTrip)",
-				"stplus-ps1-281-mod-split(PaymentSystem)",
-				"stplus-ps1-281-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-ps1-281-mod-wrapper(IExporter)", "stplus-ps1-281-mod-wrapper(ITripDB)",
+				"stplus-ps1-281-mod-wrapper(IExternalPayment)", "stplus-ps1-281-mod-wrapper(IEmployeePayment)",
+				"stplus-ps1-281-mod-wrapper(IBooking)", "stplus-ps1-281-mod-wrapper(IBusinessTrip)",
+				"stplus-ps1-281-mod-split(PaymentSystem)", "stplus-ps1-281-mod-split(PaymentSystem)-wrapper(IExporter)",
 				"stplus-ps1-281-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-ps1-281-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
 				"stplus-ps1-281-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
 				"stplus-ps1-281-mod-split(PaymentSystem)-wrapper(IBooking)",
 				"stplus-ps1-281-mod-split(PaymentSystem)-wrapper(IBusinessTrip)",
 				// candidate 338
-				"stplus-ps1-338-mod-wrapper(IExporter)",
-				"stplus-ps1-338-mod-wrapper(ITripDB)",
-				"stplus-ps1-338-mod-wrapper(IExternalPayment)",
-				"stplus-ps1-338-mod-wrapper(IEmployeePayment)",
-				"stplus-ps1-338-mod-wrapper(IBooking)",
-				"stplus-ps1-338-mod-wrapper(IBusinessTrip)",
-				"stplus-ps1-338-mod-split(PaymentSystem)",
-				"stplus-ps1-338-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-ps1-338-mod-wrapper(IExporter)", "stplus-ps1-338-mod-wrapper(ITripDB)",
+				"stplus-ps1-338-mod-wrapper(IExternalPayment)", "stplus-ps1-338-mod-wrapper(IEmployeePayment)",
+				"stplus-ps1-338-mod-wrapper(IBooking)", "stplus-ps1-338-mod-wrapper(IBusinessTrip)",
+				"stplus-ps1-338-mod-split(PaymentSystem)", "stplus-ps1-338-mod-split(PaymentSystem)-wrapper(IExporter)",
 				"stplus-ps1-338-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-ps1-338-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
 				"stplus-ps1-338-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
 				"stplus-ps1-338-mod-split(PaymentSystem)-wrapper(IBooking)",
 				"stplus-ps1-338-mod-split(PaymentSystem)-wrapper(IBusinessTrip)",
 				// candidate 340
-				"stplus-ps1-340-mod-wrapper(IExporter)",
-				"stplus-ps1-340-mod-wrapper(ITripDB)",
-				"stplus-ps1-340-mod-wrapper(IExternalPayment)",
-				"stplus-ps1-340-mod-wrapper(IEmployeePayment)",
-				"stplus-ps1-340-mod-wrapper(IBooking)",
-				"stplus-ps1-340-mod-wrapper(IBusinessTrip)",
-				"stplus-ps1-340-mod-split(PaymentSystem)",
-				"stplus-ps1-340-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-ps1-340-mod-wrapper(IExporter)", "stplus-ps1-340-mod-wrapper(ITripDB)",
+				"stplus-ps1-340-mod-wrapper(IExternalPayment)", "stplus-ps1-340-mod-wrapper(IEmployeePayment)",
+				"stplus-ps1-340-mod-wrapper(IBooking)", "stplus-ps1-340-mod-wrapper(IBusinessTrip)",
+				"stplus-ps1-340-mod-split(PaymentSystem)", "stplus-ps1-340-mod-split(PaymentSystem)-wrapper(IExporter)",
 				"stplus-ps1-340-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-ps1-340-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
 				"stplus-ps1-340-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
 				"stplus-ps1-340-mod-split(PaymentSystem)-wrapper(IBooking)",
 				"stplus-ps1-340-mod-split(PaymentSystem)-wrapper(IBusinessTrip)",
 				// candidate 397
-				"stplus-ps1-397-mod-wrapper(IExporter)",
-				"stplus-ps1-397-mod-wrapper(ITripDB)",
-				"stplus-ps1-397-mod-wrapper(IExternalPayment)",
-				"stplus-ps1-397-mod-wrapper(IEmployeePayment)",
-				"stplus-ps1-397-mod-wrapper(IBooking)",
-				"stplus-ps1-397-mod-wrapper(IBusinessTrip)",
-				"stplus-ps1-397-mod-split(PaymentSystem)",
-				"stplus-ps1-397-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-ps1-397-mod-wrapper(IExporter)", "stplus-ps1-397-mod-wrapper(ITripDB)",
+				"stplus-ps1-397-mod-wrapper(IExternalPayment)", "stplus-ps1-397-mod-wrapper(IEmployeePayment)",
+				"stplus-ps1-397-mod-wrapper(IBooking)", "stplus-ps1-397-mod-wrapper(IBusinessTrip)",
+				"stplus-ps1-397-mod-split(PaymentSystem)", "stplus-ps1-397-mod-split(PaymentSystem)-wrapper(IExporter)",
 				"stplus-ps1-397-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-ps1-397-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
 				"stplus-ps1-397-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
 				"stplus-ps1-397-mod-split(PaymentSystem)-wrapper(IBooking)",
 				"stplus-ps1-397-mod-split(PaymentSystem)-wrapper(IBusinessTrip)",
 				// candidate 404
-				"stplus-ps1-404-mod-wrapper(IExporter)",
-				"stplus-ps1-404-mod-wrapper(ITripDB)",
-				"stplus-ps1-404-mod-wrapper(IExternalPayment)",
-				"stplus-ps1-404-mod-wrapper(IEmployeePayment)",
-				"stplus-ps1-404-mod-wrapper(IBooking)",
-				"stplus-ps1-404-mod-wrapper(IBusinessTrip)",
-				"stplus-ps1-404-mod-split(PaymentSystem)",
-				"stplus-ps1-404-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-ps1-404-mod-wrapper(IExporter)", "stplus-ps1-404-mod-wrapper(ITripDB)",
+				"stplus-ps1-404-mod-wrapper(IExternalPayment)", "stplus-ps1-404-mod-wrapper(IEmployeePayment)",
+				"stplus-ps1-404-mod-wrapper(IBooking)", "stplus-ps1-404-mod-wrapper(IBusinessTrip)",
+				"stplus-ps1-404-mod-split(PaymentSystem)", "stplus-ps1-404-mod-split(PaymentSystem)-wrapper(IExporter)",
 				"stplus-ps1-404-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-ps1-404-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
 				"stplus-ps1-404-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
 				"stplus-ps1-404-mod-split(PaymentSystem)-wrapper(IBooking)",
 				"stplus-ps1-404-mod-split(PaymentSystem)-wrapper(IBusinessTrip)",
 				// candidate 436
-				"stplus-ps1-436-mod-wrapper(IExporter)",
-				"stplus-ps1-436-mod-wrapper(ITripDB)",
-				"stplus-ps1-436-mod-wrapper(IExternalPayment)",
-				"stplus-ps1-436-mod-wrapper(IEmployeePayment)",
-				"stplus-ps1-436-mod-wrapper(IBooking)",
-				"stplus-ps1-436-mod-wrapper(IBusinessTrip)",
-				"stplus-ps1-436-mod-split(PaymentSystem)",
-				"stplus-ps1-436-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-ps1-436-mod-wrapper(IExporter)", "stplus-ps1-436-mod-wrapper(ITripDB)",
+				"stplus-ps1-436-mod-wrapper(IExternalPayment)", "stplus-ps1-436-mod-wrapper(IEmployeePayment)",
+				"stplus-ps1-436-mod-wrapper(IBooking)", "stplus-ps1-436-mod-wrapper(IBusinessTrip)",
+				"stplus-ps1-436-mod-split(PaymentSystem)", "stplus-ps1-436-mod-split(PaymentSystem)-wrapper(IExporter)",
 				"stplus-ps1-436-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-ps1-436-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
 				"stplus-ps1-436-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
 				"stplus-ps1-436-mod-split(PaymentSystem)-wrapper(IBooking)",
 				"stplus-ps1-436-mod-split(PaymentSystem)-wrapper(IBusinessTrip)",
 				// candidate 444
-				"stplus-ps1-444-mod-wrapper(IExporter)",
-				"stplus-ps1-444-mod-wrapper(ITripDB)",
-				"stplus-ps1-444-mod-wrapper(IExternalPayment)",
-				"stplus-ps1-444-mod-wrapper(IEmployeePayment)",
-				"stplus-ps1-444-mod-wrapper(IBooking)",
-				"stplus-ps1-444-mod-wrapper(IBusinessTrip)",
-				"stplus-ps1-444-mod-split(PaymentSystem)",
-				"stplus-ps1-444-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-ps1-444-mod-wrapper(IExporter)", "stplus-ps1-444-mod-wrapper(ITripDB)",
+				"stplus-ps1-444-mod-wrapper(IExternalPayment)", "stplus-ps1-444-mod-wrapper(IEmployeePayment)",
+				"stplus-ps1-444-mod-wrapper(IBooking)", "stplus-ps1-444-mod-wrapper(IBusinessTrip)",
+				"stplus-ps1-444-mod-split(PaymentSystem)", "stplus-ps1-444-mod-split(PaymentSystem)-wrapper(IExporter)",
 				"stplus-ps1-444-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-ps1-444-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
 				"stplus-ps1-444-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
 				"stplus-ps1-444-mod-split(PaymentSystem)-wrapper(IBooking)",
 				"stplus-ps1-444-mod-split(PaymentSystem)-wrapper(IBusinessTrip)",
 				// candidate 494
-				"stplus-ps1-494-mod-wrapper(IExporter)",
-				"stplus-ps1-494-mod-wrapper(ITripDB)",
-				"stplus-ps1-494-mod-wrapper(IExternalPayment)",
-				"stplus-ps1-494-mod-wrapper(IEmployeePayment)",
-				"stplus-ps1-494-mod-wrapper(IBooking)",
-				"stplus-ps1-494-mod-wrapper(IBusinessTrip)",
-				"stplus-ps1-494-mod-split(PaymentSystem)",
-				"stplus-ps1-494-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-ps1-494-mod-wrapper(IExporter)", "stplus-ps1-494-mod-wrapper(ITripDB)",
+				"stplus-ps1-494-mod-wrapper(IExternalPayment)", "stplus-ps1-494-mod-wrapper(IEmployeePayment)",
+				"stplus-ps1-494-mod-wrapper(IBooking)", "stplus-ps1-494-mod-wrapper(IBusinessTrip)",
+				"stplus-ps1-494-mod-split(PaymentSystem)", "stplus-ps1-494-mod-split(PaymentSystem)-wrapper(IExporter)",
 				"stplus-ps1-494-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-ps1-494-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
 				"stplus-ps1-494-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
 				"stplus-ps1-494-mod-split(PaymentSystem)-wrapper(IBooking)",
 				"stplus-ps1-494-mod-split(PaymentSystem)-wrapper(IBusinessTrip)",
 				// candidate 64
-				"stplus-ps1-64-mod-wrapper(IExporter)",
-				"stplus-ps1-64-mod-wrapper(ITripDB)",
-				"stplus-ps1-64-mod-wrapper(IExternalPayment)",
-				"stplus-ps1-64-mod-wrapper(IEmployeePayment)",
-				"stplus-ps1-64-mod-wrapper(IBooking)",
-				"stplus-ps1-64-mod-wrapper(IBusinessTrip)",
-				"stplus-ps1-64-mod-split(PaymentSystem)",
-				"stplus-ps1-64-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-ps1-64-mod-wrapper(IExporter)", "stplus-ps1-64-mod-wrapper(ITripDB)",
+				"stplus-ps1-64-mod-wrapper(IExternalPayment)", "stplus-ps1-64-mod-wrapper(IEmployeePayment)",
+				"stplus-ps1-64-mod-wrapper(IBooking)", "stplus-ps1-64-mod-wrapper(IBusinessTrip)",
+				"stplus-ps1-64-mod-split(PaymentSystem)", "stplus-ps1-64-mod-split(PaymentSystem)-wrapper(IExporter)",
 				"stplus-ps1-64-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-ps1-64-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
 				"stplus-ps1-64-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
@@ -626,146 +512,105 @@ public class SimpleTacticsECSATest {
 				"stplus-ps1-64-mod-split(PaymentSystem)-wrapper(IBusinessTrip)",
 				// performance scenario 2
 				// candidate 209
-				"stplus-ps2-209-mod-wrapper(IExporter)",
-				"stplus-ps2-209-mod-wrapper(ITripDB)",
-				"stplus-ps2-209-mod-wrapper(IExternalPayment)",
-				"stplus-ps2-209-mod-wrapper(IEmployeePayment)",
-				"stplus-ps2-209-mod-wrapper(IBooking)",
-				"stplus-ps2-209-mod-wrapper(IBusinessTrip)",
-				"stplus-ps2-209-mod-split(PaymentSystem)",
-				"stplus-ps2-209-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-ps2-209-mod-wrapper(IExporter)", "stplus-ps2-209-mod-wrapper(ITripDB)",
+				"stplus-ps2-209-mod-wrapper(IExternalPayment)", "stplus-ps2-209-mod-wrapper(IEmployeePayment)",
+				"stplus-ps2-209-mod-wrapper(IBooking)", "stplus-ps2-209-mod-wrapper(IBusinessTrip)",
+				"stplus-ps2-209-mod-split(PaymentSystem)", "stplus-ps2-209-mod-split(PaymentSystem)-wrapper(IExporter)",
 				"stplus-ps2-209-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-ps2-209-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
 				"stplus-ps2-209-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
 				"stplus-ps2-209-mod-split(PaymentSystem)-wrapper(IBooking)",
 				"stplus-ps2-209-mod-split(PaymentSystem)-wrapper(IBusinessTrip)",
 				// candidate 22
-				"stplus-ps2-22-mod-wrapper(IExporter)",
-				"stplus-ps2-22-mod-wrapper(ITripDB)",
-				"stplus-ps2-22-mod-wrapper(IExternalPayment)",
-				"stplus-ps2-22-mod-wrapper(IEmployeePayment)",
-				"stplus-ps2-22-mod-wrapper(IBooking)",
-				"stplus-ps2-22-mod-wrapper(IBusinessTrip)",
-				"stplus-ps2-22-mod-split(PaymentSystem)",
-				"stplus-ps2-22-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-ps2-22-mod-wrapper(IExporter)", "stplus-ps2-22-mod-wrapper(ITripDB)",
+				"stplus-ps2-22-mod-wrapper(IExternalPayment)", "stplus-ps2-22-mod-wrapper(IEmployeePayment)",
+				"stplus-ps2-22-mod-wrapper(IBooking)", "stplus-ps2-22-mod-wrapper(IBusinessTrip)",
+				"stplus-ps2-22-mod-split(PaymentSystem)", "stplus-ps2-22-mod-split(PaymentSystem)-wrapper(IExporter)",
 				"stplus-ps2-22-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-ps2-22-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
 				"stplus-ps2-22-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
 				"stplus-ps2-22-mod-split(PaymentSystem)-wrapper(IBooking)",
 				"stplus-ps2-22-mod-split(PaymentSystem)-wrapper(IBusinessTrip)",
 				// candidate 325
-				"stplus-ps2-325-mod-wrapper(IExporter)",
-				"stplus-ps2-325-mod-wrapper(ITripDB)",
-				"stplus-ps2-325-mod-wrapper(IExternalPayment)",
-				"stplus-ps2-325-mod-wrapper(IEmployeePayment)",
-				"stplus-ps2-325-mod-wrapper(IBooking)",
-				"stplus-ps2-325-mod-wrapper(IBusinessTrip)",
-				"stplus-ps2-325-mod-split(PaymentSystem)",
-				"stplus-ps2-325-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-ps2-325-mod-wrapper(IExporter)", "stplus-ps2-325-mod-wrapper(ITripDB)",
+				"stplus-ps2-325-mod-wrapper(IExternalPayment)", "stplus-ps2-325-mod-wrapper(IEmployeePayment)",
+				"stplus-ps2-325-mod-wrapper(IBooking)", "stplus-ps2-325-mod-wrapper(IBusinessTrip)",
+				"stplus-ps2-325-mod-split(PaymentSystem)", "stplus-ps2-325-mod-split(PaymentSystem)-wrapper(IExporter)",
 				"stplus-ps2-325-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-ps2-325-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
 				"stplus-ps2-325-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
 				"stplus-ps2-325-mod-split(PaymentSystem)-wrapper(IBooking)",
 				"stplus-ps2-325-mod-split(PaymentSystem)-wrapper(IBusinessTrip)",
 				// candidate 330
-				"stplus-ps2-330-mod-wrapper(IExporter)",
-				"stplus-ps2-330-mod-wrapper(ITripDB)",
-				"stplus-ps2-330-mod-wrapper(IExternalPayment)",
-				"stplus-ps2-330-mod-wrapper(IEmployeePayment)",
-				"stplus-ps2-330-mod-wrapper(IBooking)",
-				"stplus-ps2-330-mod-wrapper(IBusinessTrip)",
-				"stplus-ps2-330-mod-split(PaymentSystem)",
-				"stplus-ps2-330-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-ps2-330-mod-wrapper(IExporter)", "stplus-ps2-330-mod-wrapper(ITripDB)",
+				"stplus-ps2-330-mod-wrapper(IExternalPayment)", "stplus-ps2-330-mod-wrapper(IEmployeePayment)",
+				"stplus-ps2-330-mod-wrapper(IBooking)", "stplus-ps2-330-mod-wrapper(IBusinessTrip)",
+				"stplus-ps2-330-mod-split(PaymentSystem)", "stplus-ps2-330-mod-split(PaymentSystem)-wrapper(IExporter)",
 				"stplus-ps2-330-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-ps2-330-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
 				"stplus-ps2-330-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
 				"stplus-ps2-330-mod-split(PaymentSystem)-wrapper(IBooking)",
 				"stplus-ps2-330-mod-split(PaymentSystem)-wrapper(IBusinessTrip)",
 				// candidate 358
-				"stplus-ps2-358-mod-wrapper(IExporter)",
-				"stplus-ps2-358-mod-wrapper(ITripDB)",
-				"stplus-ps2-358-mod-wrapper(IExternalPayment)",
-				"stplus-ps2-358-mod-wrapper(IEmployeePayment)",
-				"stplus-ps2-358-mod-wrapper(IBooking)",
-				"stplus-ps2-358-mod-wrapper(IBusinessTrip)",
-				"stplus-ps2-358-mod-split(PaymentSystem)",
-				"stplus-ps2-358-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-ps2-358-mod-wrapper(IExporter)", "stplus-ps2-358-mod-wrapper(ITripDB)",
+				"stplus-ps2-358-mod-wrapper(IExternalPayment)", "stplus-ps2-358-mod-wrapper(IEmployeePayment)",
+				"stplus-ps2-358-mod-wrapper(IBooking)", "stplus-ps2-358-mod-wrapper(IBusinessTrip)",
+				"stplus-ps2-358-mod-split(PaymentSystem)", "stplus-ps2-358-mod-split(PaymentSystem)-wrapper(IExporter)",
 				"stplus-ps2-358-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-ps2-358-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
 				"stplus-ps2-358-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
 				"stplus-ps2-358-mod-split(PaymentSystem)-wrapper(IBooking)",
 				"stplus-ps2-358-mod-split(PaymentSystem)-wrapper(IBusinessTrip)",
 				// candidate 366
-				"stplus-ps2-366-mod-wrapper(IExporter)",
-				"stplus-ps2-366-mod-wrapper(ITripDB)",
-				"stplus-ps2-366-mod-wrapper(IExternalPayment)",
-				"stplus-ps2-366-mod-wrapper(IEmployeePayment)",
-				"stplus-ps2-366-mod-wrapper(IBooking)",
-				"stplus-ps2-366-mod-wrapper(IBusinessTrip)",
-				"stplus-ps2-366-mod-split(PaymentSystem)",
-				"stplus-ps2-366-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-ps2-366-mod-wrapper(IExporter)", "stplus-ps2-366-mod-wrapper(ITripDB)",
+				"stplus-ps2-366-mod-wrapper(IExternalPayment)", "stplus-ps2-366-mod-wrapper(IEmployeePayment)",
+				"stplus-ps2-366-mod-wrapper(IBooking)", "stplus-ps2-366-mod-wrapper(IBusinessTrip)",
+				"stplus-ps2-366-mod-split(PaymentSystem)", "stplus-ps2-366-mod-split(PaymentSystem)-wrapper(IExporter)",
 				"stplus-ps2-366-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-ps2-366-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
 				"stplus-ps2-366-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
 				"stplus-ps2-366-mod-split(PaymentSystem)-wrapper(IBooking)",
 				"stplus-ps2-366-mod-split(PaymentSystem)-wrapper(IBusinessTrip)",
 				// candidate 416
-				"stplus-ps2-416-mod-wrapper(IExporter)",
-				"stplus-ps2-416-mod-wrapper(ITripDB)",
-				"stplus-ps2-416-mod-wrapper(IExternalPayment)",
-				"stplus-ps2-416-mod-wrapper(IEmployeePayment)",
-				"stplus-ps2-416-mod-wrapper(IBooking)",
-				"stplus-ps2-416-mod-wrapper(IBusinessTrip)",
-				"stplus-ps2-416-mod-split(PaymentSystem)",
-				"stplus-ps2-416-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-ps2-416-mod-wrapper(IExporter)", "stplus-ps2-416-mod-wrapper(ITripDB)",
+				"stplus-ps2-416-mod-wrapper(IExternalPayment)", "stplus-ps2-416-mod-wrapper(IEmployeePayment)",
+				"stplus-ps2-416-mod-wrapper(IBooking)", "stplus-ps2-416-mod-wrapper(IBusinessTrip)",
+				"stplus-ps2-416-mod-split(PaymentSystem)", "stplus-ps2-416-mod-split(PaymentSystem)-wrapper(IExporter)",
 				"stplus-ps2-416-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-ps2-416-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
 				"stplus-ps2-416-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
 				"stplus-ps2-416-mod-split(PaymentSystem)-wrapper(IBooking)",
 				"stplus-ps2-416-mod-split(PaymentSystem)-wrapper(IBusinessTrip)",
 				// candidate 476
-				"stplus-ps2-476-mod-wrapper(IExporter)",
-				"stplus-ps2-476-mod-wrapper(ITripDB)",
-				"stplus-ps2-476-mod-wrapper(IExternalPayment)",
-				"stplus-ps2-476-mod-wrapper(IEmployeePayment)",
-				"stplus-ps2-476-mod-wrapper(IBooking)",
-				"stplus-ps2-476-mod-wrapper(IBusinessTrip)",
-				"stplus-ps2-476-mod-split(PaymentSystem)",
-				"stplus-ps2-476-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-ps2-476-mod-wrapper(IExporter)", "stplus-ps2-476-mod-wrapper(ITripDB)",
+				"stplus-ps2-476-mod-wrapper(IExternalPayment)", "stplus-ps2-476-mod-wrapper(IEmployeePayment)",
+				"stplus-ps2-476-mod-wrapper(IBooking)", "stplus-ps2-476-mod-wrapper(IBusinessTrip)",
+				"stplus-ps2-476-mod-split(PaymentSystem)", "stplus-ps2-476-mod-split(PaymentSystem)-wrapper(IExporter)",
 				"stplus-ps2-476-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-ps2-476-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
 				"stplus-ps2-476-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
 				"stplus-ps2-476-mod-split(PaymentSystem)-wrapper(IBooking)",
 				"stplus-ps2-476-mod-split(PaymentSystem)-wrapper(IBusinessTrip)",
 				// candidate 479
-				"stplus-ps2-479-mod-wrapper(IExporter)",
-				"stplus-ps2-479-mod-wrapper(ITripDB)",
-				"stplus-ps2-479-mod-wrapper(IExternalPayment)",
-				"stplus-ps2-479-mod-wrapper(IEmployeePayment)",
-				"stplus-ps2-479-mod-wrapper(IBooking)",
-				"stplus-ps2-479-mod-wrapper(IBusinessTrip)",
-				"stplus-ps2-479-mod-split(PaymentSystem)",
-				"stplus-ps2-479-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-ps2-479-mod-wrapper(IExporter)", "stplus-ps2-479-mod-wrapper(ITripDB)",
+				"stplus-ps2-479-mod-wrapper(IExternalPayment)", "stplus-ps2-479-mod-wrapper(IEmployeePayment)",
+				"stplus-ps2-479-mod-wrapper(IBooking)", "stplus-ps2-479-mod-wrapper(IBusinessTrip)",
+				"stplus-ps2-479-mod-split(PaymentSystem)", "stplus-ps2-479-mod-split(PaymentSystem)-wrapper(IExporter)",
 				"stplus-ps2-479-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-ps2-479-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
 				"stplus-ps2-479-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
 				"stplus-ps2-479-mod-split(PaymentSystem)-wrapper(IBooking)",
 				"stplus-ps2-479-mod-split(PaymentSystem)-wrapper(IBusinessTrip)",
 				// candidate 480
-				"stplus-ps2-480-mod-wrapper(IExporter)",
-				"stplus-ps2-480-mod-wrapper(ITripDB)",
-				"stplus-ps2-480-mod-wrapper(IExternalPayment)",
-				"stplus-ps2-480-mod-wrapper(IEmployeePayment)",
-				"stplus-ps2-480-mod-wrapper(IBooking)",
-				"stplus-ps2-480-mod-wrapper(IBusinessTrip)",
-				"stplus-ps2-480-mod-split(PaymentSystem)",
-				"stplus-ps2-480-mod-split(PaymentSystem)-wrapper(IExporter)",
+				"stplus-ps2-480-mod-wrapper(IExporter)", "stplus-ps2-480-mod-wrapper(ITripDB)",
+				"stplus-ps2-480-mod-wrapper(IExternalPayment)", "stplus-ps2-480-mod-wrapper(IEmployeePayment)",
+				"stplus-ps2-480-mod-wrapper(IBooking)", "stplus-ps2-480-mod-wrapper(IBusinessTrip)",
+				"stplus-ps2-480-mod-split(PaymentSystem)", "stplus-ps2-480-mod-split(PaymentSystem)-wrapper(IExporter)",
 				"stplus-ps2-480-mod-split(PaymentSystem)-wrapper(ITripDB)",
 				"stplus-ps2-480-mod-split(PaymentSystem)-wrapper(IExternalPayment)",
 				"stplus-ps2-480-mod-split(PaymentSystem)-wrapper(IEmployeePayment)",
 				"stplus-ps2-480-mod-split(PaymentSystem)-wrapper(IBooking)",
-				"stplus-ps2-480-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"
-		};
+				"stplus-ps2-480-mod-split(PaymentSystem)-wrapper(IBusinessTrip)" };
 		repositoryFile = new String[modelNames.length];
 		resourceEnvironmentFile = new String[modelNames.length];
 		baseSystemFile = new String[modelNames.length];
@@ -779,7 +624,7 @@ public class SimpleTacticsECSATest {
 			baseUsageFile[i] = dirPath + localPath[i] + ".usagemodel";
 		}
 	}
-	
+
 	private void setModifiabilityPerformancePCMModel() {
 		machinePath = "/Users/alejandrorago/Documents/Implementacion/Repositorios/kamp-test/";
 		dirPath = machinePath + "squat-tool/src/test/resources/io/github/squat_team/ecsa/modifiability-performance/";
@@ -1045,81 +890,45 @@ public class SimpleTacticsECSATest {
 				"final-scenario2-scenario1/stplus-split-5-IBusiness Trip/stplus-split-5-IBusiness Trip/20170415-231122/candidate408/default",
 				"final-scenario2-scenario1/stplus-split-5-IBusiness Trip/stplus-split-5-IBusiness Trip/20170415-231122/candidate439/default",
 				"final-scenario2-scenario1/stplus-split-5-IBusiness Trip/stplus-split-5-IBusiness Trip/20170415-231122/candidate447/default",
-				"final-scenario2-scenario1/stplus-split-5-IBusiness Trip/stplus-split-5-IBusiness Trip/20170415-231122/candidate482/default"
-		};
+				"final-scenario2-scenario1/stplus-split-5-IBusiness Trip/stplus-split-5-IBusiness Trip/20170415-231122/candidate482/default" };
 
 		modelNames = new String[] {
 				// performance scenario 1
-				"stplus-mod-split(PaymentSystem)-ps1-136",
-				"stplus-mod-split(PaymentSystem)-ps1-162",
-				"stplus-mod-split(PaymentSystem)-ps1-208",
-				"stplus-mod-split(PaymentSystem)-ps1-232",
-				"stplus-mod-split(PaymentSystem)-ps1-239",
-				"stplus-mod-split(PaymentSystem)-ps1-316",
-				"stplus-mod-split(PaymentSystem)-ps1-321",
-				"stplus-mod-split(PaymentSystem)-ps1-355",
-				"stplus-mod-split(PaymentSystem)-ps1-367",
-				"stplus-mod-split(PaymentSystem)-ps1-419",				
-				"stplus-mod-wrapper(IExporter)-ps1-66",
-				"stplus-mod-wrapper(IExporter)-ps1-141",
-				"stplus-mod-wrapper(IExporter)-ps1-227",
-				"stplus-mod-wrapper(IExporter)-ps1-238",
-				"stplus-mod-wrapper(IExporter)-ps1-275",
-				"stplus-mod-wrapper(IExporter)-ps1-329",
-				"stplus-mod-wrapper(IExporter)-ps1-450",
-				"stplus-mod-wrapper(IExporter)-ps1-459",
-				"stplus-mod-wrapper(IExporter)-ps1-494",
-				"stplus-mod-wrapper(IExporter)-ps1-500",				
-				"stplus-mod-wrapper(ITripDB)-ps1-161",
-				"stplus-mod-wrapper(ITripDB)-ps1-167",
-				"stplus-mod-wrapper(ITripDB)-ps1-228",
-				"stplus-mod-wrapper(ITripDB)-ps1-233",
-				"stplus-mod-wrapper(ITripDB)-ps1-353",
-				"stplus-mod-wrapper(ITripDB)-ps1-354",
-				"stplus-mod-wrapper(ITripDB)-ps1-357",
-				"stplus-mod-wrapper(ITripDB)-ps1-358",
-				"stplus-mod-wrapper(ITripDB)-ps1-432",
-				"stplus-mod-wrapper(ITripDB)-ps1-476",				
-				"stplus-mod-wrapper(IExternalPayment)-ps1-195",
-				"stplus-mod-wrapper(IExternalPayment)-ps1-247",
-				"stplus-mod-wrapper(IExternalPayment)-ps1-263",
-				"stplus-mod-wrapper(IExternalPayment)-ps1-333",
-				"stplus-mod-wrapper(IExternalPayment)-ps1-350",
-				"stplus-mod-wrapper(IExternalPayment)-ps1-396",
-				"stplus-mod-wrapper(IExternalPayment)-ps1-405",
-				"stplus-mod-wrapper(IExternalPayment)-ps1-425",
-				"stplus-mod-wrapper(IExternalPayment)-ps1-426",
-				"stplus-mod-wrapper(IExternalPayment)-ps1-464",				
-				"stplus-mod-wrapper(IEmployeePayment)-ps1-109",
-				"stplus-mod-wrapper(IEmployeePayment)-ps1-133",
-				"stplus-mod-wrapper(IEmployeePayment)-ps1-138",
-				"stplus-mod-wrapper(IEmployeePayment)-ps1-311",
-				"stplus-mod-wrapper(IEmployeePayment)-ps1-330",
-				"stplus-mod-wrapper(IEmployeePayment)-ps1-41",
-				"stplus-mod-wrapper(IEmployeePayment)-ps1-416",
-				"stplus-mod-wrapper(IEmployeePayment)-ps1-417",
-				"stplus-mod-wrapper(IEmployeePayment)-ps1-447",
-				"stplus-mod-wrapper(IEmployeePayment)-ps1-497",				
-				"stplus-mod-wrapper(IBooking)-ps1-154",
-				"stplus-mod-wrapper(IBooking)-ps1-229",
-				"stplus-mod-wrapper(IBooking)-ps1-237",
-				"stplus-mod-wrapper(IBooking)-ps1-269",
-				"stplus-mod-wrapper(IBooking)-ps1-277",
-				"stplus-mod-wrapper(IBooking)-ps1-282",
-				"stplus-mod-wrapper(IBooking)-ps1-316",
-				"stplus-mod-wrapper(IBooking)-ps1-364",
-				"stplus-mod-wrapper(IBooking)-ps1-404",
-				"stplus-mod-wrapper(IBooking)-ps1-450",				
-				"stplus-mod-wrapper(IBusinessTrip)-ps1-110",
-				"stplus-mod-wrapper(IBusinessTrip)-ps1-142",
-				"stplus-mod-wrapper(IBusinessTrip)-ps1-216",
-				"stplus-mod-wrapper(IBusinessTrip)-ps1-232",
-				"stplus-mod-wrapper(IBusinessTrip)-ps1-295",
-				"stplus-mod-wrapper(IBusinessTrip)-ps1-296",
-				"stplus-mod-wrapper(IBusinessTrip)-ps1-442",
-				"stplus-mod-wrapper(IBusinessTrip)-ps1-472",
-				"stplus-mod-wrapper(IBusinessTrip)-ps1-474",
-				"stplus-mod-wrapper(IBusinessTrip)-ps1-478",				
+				"stplus-mod-split(PaymentSystem)-ps1-136", "stplus-mod-split(PaymentSystem)-ps1-162",
+				"stplus-mod-split(PaymentSystem)-ps1-208", "stplus-mod-split(PaymentSystem)-ps1-232",
+				"stplus-mod-split(PaymentSystem)-ps1-239", "stplus-mod-split(PaymentSystem)-ps1-316",
+				"stplus-mod-split(PaymentSystem)-ps1-321", "stplus-mod-split(PaymentSystem)-ps1-355",
+				"stplus-mod-split(PaymentSystem)-ps1-367", "stplus-mod-split(PaymentSystem)-ps1-419",
+				"stplus-mod-wrapper(IExporter)-ps1-66", "stplus-mod-wrapper(IExporter)-ps1-141",
+				"stplus-mod-wrapper(IExporter)-ps1-227", "stplus-mod-wrapper(IExporter)-ps1-238",
+				"stplus-mod-wrapper(IExporter)-ps1-275", "stplus-mod-wrapper(IExporter)-ps1-329",
+				"stplus-mod-wrapper(IExporter)-ps1-450", "stplus-mod-wrapper(IExporter)-ps1-459",
+				"stplus-mod-wrapper(IExporter)-ps1-494", "stplus-mod-wrapper(IExporter)-ps1-500",
+				"stplus-mod-wrapper(ITripDB)-ps1-161", "stplus-mod-wrapper(ITripDB)-ps1-167",
+				"stplus-mod-wrapper(ITripDB)-ps1-228", "stplus-mod-wrapper(ITripDB)-ps1-233",
+				"stplus-mod-wrapper(ITripDB)-ps1-353", "stplus-mod-wrapper(ITripDB)-ps1-354",
+				"stplus-mod-wrapper(ITripDB)-ps1-357", "stplus-mod-wrapper(ITripDB)-ps1-358",
+				"stplus-mod-wrapper(ITripDB)-ps1-432", "stplus-mod-wrapper(ITripDB)-ps1-476",
+				"stplus-mod-wrapper(IExternalPayment)-ps1-195", "stplus-mod-wrapper(IExternalPayment)-ps1-247",
+				"stplus-mod-wrapper(IExternalPayment)-ps1-263", "stplus-mod-wrapper(IExternalPayment)-ps1-333",
+				"stplus-mod-wrapper(IExternalPayment)-ps1-350", "stplus-mod-wrapper(IExternalPayment)-ps1-396",
+				"stplus-mod-wrapper(IExternalPayment)-ps1-405", "stplus-mod-wrapper(IExternalPayment)-ps1-425",
+				"stplus-mod-wrapper(IExternalPayment)-ps1-426", "stplus-mod-wrapper(IExternalPayment)-ps1-464",
+				"stplus-mod-wrapper(IEmployeePayment)-ps1-109", "stplus-mod-wrapper(IEmployeePayment)-ps1-133",
+				"stplus-mod-wrapper(IEmployeePayment)-ps1-138", "stplus-mod-wrapper(IEmployeePayment)-ps1-311",
+				"stplus-mod-wrapper(IEmployeePayment)-ps1-330", "stplus-mod-wrapper(IEmployeePayment)-ps1-41",
+				"stplus-mod-wrapper(IEmployeePayment)-ps1-416", "stplus-mod-wrapper(IEmployeePayment)-ps1-417",
+				"stplus-mod-wrapper(IEmployeePayment)-ps1-447", "stplus-mod-wrapper(IEmployeePayment)-ps1-497",
+				"stplus-mod-wrapper(IBooking)-ps1-154", "stplus-mod-wrapper(IBooking)-ps1-229",
+				"stplus-mod-wrapper(IBooking)-ps1-237", "stplus-mod-wrapper(IBooking)-ps1-269",
+				"stplus-mod-wrapper(IBooking)-ps1-277", "stplus-mod-wrapper(IBooking)-ps1-282",
+				"stplus-mod-wrapper(IBooking)-ps1-316", "stplus-mod-wrapper(IBooking)-ps1-364",
+				"stplus-mod-wrapper(IBooking)-ps1-404", "stplus-mod-wrapper(IBooking)-ps1-450",
+				"stplus-mod-wrapper(IBusinessTrip)-ps1-110", "stplus-mod-wrapper(IBusinessTrip)-ps1-142",
+				"stplus-mod-wrapper(IBusinessTrip)-ps1-216", "stplus-mod-wrapper(IBusinessTrip)-ps1-232",
+				"stplus-mod-wrapper(IBusinessTrip)-ps1-295", "stplus-mod-wrapper(IBusinessTrip)-ps1-296",
+				"stplus-mod-wrapper(IBusinessTrip)-ps1-442", "stplus-mod-wrapper(IBusinessTrip)-ps1-472",
+				"stplus-mod-wrapper(IBusinessTrip)-ps1-474", "stplus-mod-wrapper(IBusinessTrip)-ps1-478",
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-118",
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-275",
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-351",
@@ -1129,7 +938,7 @@ public class SimpleTacticsECSATest {
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-390",
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-406",
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-425",
-				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-428",				
+				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-428",
 				"stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-220",
 				"stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-290",
 				"stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-327",
@@ -1139,7 +948,7 @@ public class SimpleTacticsECSATest {
 				"stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-439",
 				"stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-446",
 				"stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-447",
-				"stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-454",				
+				"stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-454",
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-197",
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-232",
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-233",
@@ -1149,7 +958,7 @@ public class SimpleTacticsECSATest {
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-33",
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-355",
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-362",
-				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-368",				
+				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-368",
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-12",
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-13",
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-176",
@@ -1159,7 +968,7 @@ public class SimpleTacticsECSATest {
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-356",
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-402",
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-438",
-				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-483",				
+				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-483",
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-100",
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-145",
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-232",
@@ -1169,7 +978,7 @@ public class SimpleTacticsECSATest {
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-400",
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-474",
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-488",
-				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-86",				
+				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-86",
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-319",
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-321",
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-323",
@@ -1181,76 +990,41 @@ public class SimpleTacticsECSATest {
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-433",
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-62",
 				// performance scenario 2
-				"stplus-mod-split(PaymentSystem)-ps2-119",
-				"stplus-mod-split(PaymentSystem)-ps2-179",
-				"stplus-mod-split(PaymentSystem)-ps2-191",
-				"stplus-mod-split(PaymentSystem)-ps2-222",
-				"stplus-mod-split(PaymentSystem)-ps2-239",
-				"stplus-mod-split(PaymentSystem)-ps2-402",
-				"stplus-mod-split(PaymentSystem)-ps2-43",
-				"stplus-mod-split(PaymentSystem)-ps2-432",
-				"stplus-mod-split(PaymentSystem)-ps2-470",
-				"stplus-mod-split(PaymentSystem)-ps2-69",
-				"stplus-mod-wrapper(IExporter)-ps2-146",
-				"stplus-mod-wrapper(IExporter)-ps2-148",
-				"stplus-mod-wrapper(IExporter)-ps2-162",
-				"stplus-mod-wrapper(IExporter)-ps2-243",
-				"stplus-mod-wrapper(IExporter)-ps2-270",
-				"stplus-mod-wrapper(IExporter)-ps2-281",
-				"stplus-mod-wrapper(IExporter)-ps2-318",
-				"stplus-mod-wrapper(IExporter)-ps2-324",
-				"stplus-mod-wrapper(IExporter)-ps2-52",
-				"stplus-mod-wrapper(IExporter)-ps2-90",
-				"stplus-mod-wrapper(ITripDB)-ps2-143",
-				"stplus-mod-wrapper(ITripDB)-ps2-189",
-				"stplus-mod-wrapper(ITripDB)-ps2-192",
-				"stplus-mod-wrapper(ITripDB)-ps2-231",
-				"stplus-mod-wrapper(ITripDB)-ps2-309",
-				"stplus-mod-wrapper(ITripDB)-ps2-314",
-				"stplus-mod-wrapper(ITripDB)-ps2-33",
-				"stplus-mod-wrapper(ITripDB)-ps2-347",
-				"stplus-mod-wrapper(ITripDB)-ps2-354",
-				"stplus-mod-wrapper(ITripDB)-ps2-86",
-				"stplus-mod-wrapper(IExternalPayment)-ps2-145",
-				"stplus-mod-wrapper(IExternalPayment)-ps2-147",
-				"stplus-mod-wrapper(IExternalPayment)-ps2-270",
-				"stplus-mod-wrapper(IExternalPayment)-ps2-275",
-				"stplus-mod-wrapper(IExternalPayment)-ps2-324",
-				"stplus-mod-wrapper(IExternalPayment)-ps2-354",
-				"stplus-mod-wrapper(IExternalPayment)-ps2-369",
-				"stplus-mod-wrapper(IExternalPayment)-ps2-445",
-				"stplus-mod-wrapper(IExternalPayment)-ps2-449",
-				"stplus-mod-wrapper(IExternalPayment)-ps2-453",
-				"stplus-mod-wrapper(IEmployeePayment)-ps2-130",
-				"stplus-mod-wrapper(IEmployeePayment)-ps2-237",
-				"stplus-mod-wrapper(IEmployeePayment)-ps2-257",
-				"stplus-mod-wrapper(IEmployeePayment)-ps2-310",
-				"stplus-mod-wrapper(IEmployeePayment)-ps2-358",
-				"stplus-mod-wrapper(IEmployeePayment)-ps2-361",
-				"stplus-mod-wrapper(IEmployeePayment)-ps2-437",
-				"stplus-mod-wrapper(IEmployeePayment)-ps2-441",
-				"stplus-mod-wrapper(IEmployeePayment)-ps2-489",
-				"stplus-mod-wrapper(IEmployeePayment)-ps2-496",
-				"stplus-mod-wrapper(IBooking)-ps2-117",
-				"stplus-mod-wrapper(IBooking)-ps2-143",
-				"stplus-mod-wrapper(IBooking)-ps2-237",
-				"stplus-mod-wrapper(IBooking)-ps2-286",
-				"stplus-mod-wrapper(IBooking)-ps2-299",
-				"stplus-mod-wrapper(IBooking)-ps2-330",
-				"stplus-mod-wrapper(IBooking)-ps2-375",
-				"stplus-mod-wrapper(IBooking)-ps2-376",
-				"stplus-mod-wrapper(IBooking)-ps2-384",
-				"stplus-mod-wrapper(IBooking)-ps2-401",
-				"stplus-mod-wrapper(IBusinessTrip)-ps2-107",
-				"stplus-mod-wrapper(IBusinessTrip)-ps2-130",
-				"stplus-mod-wrapper(IBusinessTrip)-ps2-156",
-				"stplus-mod-wrapper(IBusinessTrip)-ps2-238",
-				"stplus-mod-wrapper(IBusinessTrip)-ps2-276",
-				"stplus-mod-wrapper(IBusinessTrip)-ps2-282",
-				"stplus-mod-wrapper(IBusinessTrip)-ps2-440",
-				"stplus-mod-wrapper(IBusinessTrip)-ps2-442",
-				"stplus-mod-wrapper(IBusinessTrip)-ps2-90",
-				"stplus-mod-wrapper(IBusinessTrip)-ps2-98",
+				"stplus-mod-split(PaymentSystem)-ps2-119", "stplus-mod-split(PaymentSystem)-ps2-179",
+				"stplus-mod-split(PaymentSystem)-ps2-191", "stplus-mod-split(PaymentSystem)-ps2-222",
+				"stplus-mod-split(PaymentSystem)-ps2-239", "stplus-mod-split(PaymentSystem)-ps2-402",
+				"stplus-mod-split(PaymentSystem)-ps2-43", "stplus-mod-split(PaymentSystem)-ps2-432",
+				"stplus-mod-split(PaymentSystem)-ps2-470", "stplus-mod-split(PaymentSystem)-ps2-69",
+				"stplus-mod-wrapper(IExporter)-ps2-146", "stplus-mod-wrapper(IExporter)-ps2-148",
+				"stplus-mod-wrapper(IExporter)-ps2-162", "stplus-mod-wrapper(IExporter)-ps2-243",
+				"stplus-mod-wrapper(IExporter)-ps2-270", "stplus-mod-wrapper(IExporter)-ps2-281",
+				"stplus-mod-wrapper(IExporter)-ps2-318", "stplus-mod-wrapper(IExporter)-ps2-324",
+				"stplus-mod-wrapper(IExporter)-ps2-52", "stplus-mod-wrapper(IExporter)-ps2-90",
+				"stplus-mod-wrapper(ITripDB)-ps2-143", "stplus-mod-wrapper(ITripDB)-ps2-189",
+				"stplus-mod-wrapper(ITripDB)-ps2-192", "stplus-mod-wrapper(ITripDB)-ps2-231",
+				"stplus-mod-wrapper(ITripDB)-ps2-309", "stplus-mod-wrapper(ITripDB)-ps2-314",
+				"stplus-mod-wrapper(ITripDB)-ps2-33", "stplus-mod-wrapper(ITripDB)-ps2-347",
+				"stplus-mod-wrapper(ITripDB)-ps2-354", "stplus-mod-wrapper(ITripDB)-ps2-86",
+				"stplus-mod-wrapper(IExternalPayment)-ps2-145", "stplus-mod-wrapper(IExternalPayment)-ps2-147",
+				"stplus-mod-wrapper(IExternalPayment)-ps2-270", "stplus-mod-wrapper(IExternalPayment)-ps2-275",
+				"stplus-mod-wrapper(IExternalPayment)-ps2-324", "stplus-mod-wrapper(IExternalPayment)-ps2-354",
+				"stplus-mod-wrapper(IExternalPayment)-ps2-369", "stplus-mod-wrapper(IExternalPayment)-ps2-445",
+				"stplus-mod-wrapper(IExternalPayment)-ps2-449", "stplus-mod-wrapper(IExternalPayment)-ps2-453",
+				"stplus-mod-wrapper(IEmployeePayment)-ps2-130", "stplus-mod-wrapper(IEmployeePayment)-ps2-237",
+				"stplus-mod-wrapper(IEmployeePayment)-ps2-257", "stplus-mod-wrapper(IEmployeePayment)-ps2-310",
+				"stplus-mod-wrapper(IEmployeePayment)-ps2-358", "stplus-mod-wrapper(IEmployeePayment)-ps2-361",
+				"stplus-mod-wrapper(IEmployeePayment)-ps2-437", "stplus-mod-wrapper(IEmployeePayment)-ps2-441",
+				"stplus-mod-wrapper(IEmployeePayment)-ps2-489", "stplus-mod-wrapper(IEmployeePayment)-ps2-496",
+				"stplus-mod-wrapper(IBooking)-ps2-117", "stplus-mod-wrapper(IBooking)-ps2-143",
+				"stplus-mod-wrapper(IBooking)-ps2-237", "stplus-mod-wrapper(IBooking)-ps2-286",
+				"stplus-mod-wrapper(IBooking)-ps2-299", "stplus-mod-wrapper(IBooking)-ps2-330",
+				"stplus-mod-wrapper(IBooking)-ps2-375", "stplus-mod-wrapper(IBooking)-ps2-376",
+				"stplus-mod-wrapper(IBooking)-ps2-384", "stplus-mod-wrapper(IBooking)-ps2-401",
+				"stplus-mod-wrapper(IBusinessTrip)-ps2-107", "stplus-mod-wrapper(IBusinessTrip)-ps2-130",
+				"stplus-mod-wrapper(IBusinessTrip)-ps2-156", "stplus-mod-wrapper(IBusinessTrip)-ps2-238",
+				"stplus-mod-wrapper(IBusinessTrip)-ps2-276", "stplus-mod-wrapper(IBusinessTrip)-ps2-282",
+				"stplus-mod-wrapper(IBusinessTrip)-ps2-440", "stplus-mod-wrapper(IBusinessTrip)-ps2-442",
+				"stplus-mod-wrapper(IBusinessTrip)-ps2-90", "stplus-mod-wrapper(IBusinessTrip)-ps2-98",
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-143",
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-191",
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-268",
@@ -1310,9 +1084,8 @@ public class SimpleTacticsECSATest {
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-408",
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-439",
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-447",
-				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-482"
-		};
-		
+				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-482" };
+
 		repositoryFile = new String[modelNames.length];
 		resourceEnvironmentFile = new String[modelNames.length];
 		baseSystemFile = new String[modelNames.length];
@@ -1326,7 +1099,7 @@ public class SimpleTacticsECSATest {
 			baseUsageFile[i] = dirPath + localPath[i] + ".usagemodel";
 		}
 	}
-	
+
 	private PCMArchitectureInstance loadSpecificModel(String name, String repositoryFile, String enviromentFile,
 			String systemFile, String sllocationFile, String usageFile) {
 		Repository repository = SQuATHelper.loadRepositoryModel(repositoryFile);
@@ -1340,77 +1113,88 @@ public class SimpleTacticsECSATest {
 	}
 
 	public void runAllTests() throws Exception {
-		//Modifiability
+		// Modifiability
 		this.setModifiabilityPCMModel();
 		this.runTests();
-		//Performance
+		// Performance
 		this.setPerformancePCMModel();
 		this.runTests();
-		//Performance-Modifiability
+		// Performance-Modifiability
 		this.setPerformanceModifiabilityPCMModel();
 		this.runTests();
-		//Modifiability-Performance
+		// Modifiability-Performance
 		this.setModifiabilityPerformancePCMModel();
 		this.runTests();
 	}
-	
+
 	private void runTests() throws Exception {
-		this.results.clear(); 
+		this.results.clear();
 		this.resultsMap.clear();
-		String evaluationType; ResponseMeasureType type; Comparable response;
-		//Affected components
+		String evaluationType;
+		ResponseMeasureType type;
+		Comparable response;
+		// Affected components
 		evaluationType = KAMPPCMBotDeprecated.TYPE_ELEMENTS;
 		type = ResponseMeasureType.NUMERIC;
 		response = new Integer(5);
 		this.testModifiabilityScenario(this.createModifiabilityScenarioS1(type, response), "M1", evaluationType);
 		response = new Integer(7);
 		this.testModifiabilityScenario(this.createModifiabilityScenarioS2(type, response), "M2", evaluationType);
-		//Complexity 
+		// Complexity
 		evaluationType = KAMPPCMBotDeprecated.TYPE_COMPLEXITY;
 		type = ResponseMeasureType.DECIMAL;
 		response = new Float(120);
 		this.testModifiabilityScenario(this.createModifiabilityScenarioS1(type, response), "M1", evaluationType);
 		response = new Float(300);
 		this.testModifiabilityScenario(this.createModifiabilityScenarioS2(type, response), "M2", evaluationType);
-		//Print code
+		// Print code
 		this.printCode();
 	}
-	
+
 	@SuppressWarnings("rawtypes")
-	public void testModifiabilityScenario(PCMScenario scenario, String scenarioName, String evaluationType) throws Exception {
+	public void testModifiabilityScenario(PCMScenario scenario, String scenarioName, String evaluationType)
+			throws Exception {
 		boolean debug = false;
 		Comparable expectedResponse = scenario.getExpectedResult().getResponse();
-		if(debug) java.lang.System.out.println("The goal of scenario " + scenarioName + ": " + expectedResponse.toString());
-		KAMPPCMBotDeprecated bot = new KAMPPCMBotDeprecated(scenario);
+		if (debug)
+			java.lang.System.out.println("The goal of scenario " + scenarioName + ": " + expectedResponse.toString());
+		KAMPPCMBotDeprecated bot = new KAMPPCMBotDeprecated(BOT_NAME, scenario);
 		bot.setEvaluationType(evaluationType);
-		if(debug) java.lang.System.out.println("The evaluation type is: " + evaluationType);
+		if (debug)
+			java.lang.System.out.println("The evaluation type is: " + evaluationType);
 		//
 		for (int i = 0; i < modelNames.length; i++) {
-			PCMArchitectureInstance model = this.loadSpecificModel(modelNames[i], repositoryFile[i], resourceEnvironmentFile[i], baseSystemFile[i], baseAllocationFile[i], baseUsageFile[i]);
+			PCMArchitectureInstance model = this.loadSpecificModel(modelNames[i], repositoryFile[i],
+					resourceEnvironmentFile[i], baseSystemFile[i], baseAllocationFile[i], baseUsageFile[i]);
 			PCMScenarioResult scenarioResult = bot.analyze(model);
 			String satisfaction_alt1 = scenarioResult.isSatisfied() >= 0 ? "SATISFIED" : "NOT SATISFIED";
-			if(debug) java.lang.System.out.println("The scenario satisfaction with " + model.getName() + " is: " + satisfaction_alt1);
+			if (debug)
+				java.lang.System.out
+						.println("The scenario satisfaction with " + model.getName() + " is: " + satisfaction_alt1);
 			Comparable response_alt1 = scenarioResult.getResult().getResponse();
-			if(response_alt1 instanceof Integer)
-				if(debug) java.lang.System.out.println("The response measure of the scenario is: " + ((Integer) response_alt1).intValue());
-			if(response_alt1 instanceof Float)
-				if(debug) java.lang.System.out.println("The response measure of the scenario is: " + ((Float) response_alt1).floatValue());
+			if (response_alt1 instanceof Integer)
+				if (debug)
+					java.lang.System.out.println(
+							"The response measure of the scenario is: " + ((Integer) response_alt1).intValue());
+			if (response_alt1 instanceof Float)
+				if (debug)
+					java.lang.System.out.println(
+							"The response measure of the scenario is: " + ((Float) response_alt1).floatValue());
 			//
 			AnalysisResult analysisResult = new AnalysisResult();
 			analysisResult.qa = "Modifiability";
 			analysisResult.scenario = scenarioName.toLowerCase();
 			analysisResult.model = model.getName();
-			if(resultsMap.keySet().contains(analysisResult)) {
+			if (resultsMap.keySet().contains(analysisResult)) {
 				analysisResult = resultsMap.get(analysisResult);
-			}
-			else {
+			} else {
 				results.add(analysisResult);
 				resultsMap.put(analysisResult, analysisResult);
 			}
 			analysisResult.measureValues.put(evaluationType, response_alt1);
 		}
 	}
-	
+
 	private PCMScenario createModifiabilityScenarioS1(ResponseMeasureType type, Comparable response) {
 		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
 		PCMResult expectedResult = new PCMResult(type);
@@ -1431,36 +1215,30 @@ public class SimpleTacticsECSATest {
 		return scenario;
 	}
 
-	/** This is the right way of implementing scenario S1. However, it does not work because KAMP
-	 * doesn't propagate changes to components when an operation is added to an interface.
+	/**
+	 * This is the right way of implementing scenario S1. However, it does not work
+	 * because KAMP doesn't propagate changes to components when an operation is
+	 * added to an interface.
 	 **/
-	/*private PCMScenario createModifiabilityScenarioS1(ResponseMeasureType type, Comparable response) {
-		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
-		PCMResult expectedResult = new PCMResult(type);
-		expectedResult.setResponse(response);
-		scenario.setExpectedResponse(expectedResult);
-		//
-		ModifiabilityInstruction i1 = new ModifiabilityInstruction();
-		i1.operation = ModifiabilityOperation.MODIFY;
-		i1.element = ModifiabilityElement.INTERFACE;
-		i1.parameters.put("name", "IExternalPayment");
-		scenario.addChange(i1);
-		ModifiabilityInstruction i2 = new ModifiabilityInstruction();
-		i2.operation = ModifiabilityOperation.CREATE;
-		i2.element = ModifiabilityElement.OPERATION;
-		i2.parameters.put("iname", "IExternalPayment");
-		i2.parameters.put("oname", "specialPay");
-		scenario.addChange(i2);
-		ModifiabilityInstruction i3 = new ModifiabilityInstruction();
-		i3.operation = ModifiabilityOperation.MODIFY;
-		i3.element = ModifiabilityElement.COMPONENT;
-		i3.parameters.put("name", "BusinessTripMgmt");
-		scenario.addChange(i3);
-		//
-		return scenario;
-	}*/
-	
-	private PCMScenario createModifiabilityScenarioS2(ResponseMeasureType type, Comparable response) {	
+	/*
+	 * private PCMScenario createModifiabilityScenarioS1(ResponseMeasureType type,
+	 * Comparable response) { ModifiabilityPCMScenario scenario = new
+	 * ModifiabilityPCMScenario(OptimizationType.MINIMIZATION); PCMResult
+	 * expectedResult = new PCMResult(type); expectedResult.setResponse(response);
+	 * scenario.setExpectedResponse(expectedResult); // ModifiabilityInstruction i1
+	 * = new ModifiabilityInstruction(); i1.operation =
+	 * ModifiabilityOperation.MODIFY; i1.element = ModifiabilityElement.INTERFACE;
+	 * i1.parameters.put("name", "IExternalPayment"); scenario.addChange(i1);
+	 * ModifiabilityInstruction i2 = new ModifiabilityInstruction(); i2.operation =
+	 * ModifiabilityOperation.CREATE; i2.element = ModifiabilityElement.OPERATION;
+	 * i2.parameters.put("iname", "IExternalPayment"); i2.parameters.put("oname",
+	 * "specialPay"); scenario.addChange(i2); ModifiabilityInstruction i3 = new
+	 * ModifiabilityInstruction(); i3.operation = ModifiabilityOperation.MODIFY;
+	 * i3.element = ModifiabilityElement.COMPONENT; i3.parameters.put("name",
+	 * "BusinessTripMgmt"); scenario.addChange(i3); // return scenario; }
+	 */
+
+	private PCMScenario createModifiabilityScenarioS2(ResponseMeasureType type, Comparable response) {
 		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
 		PCMResult expectedResult = new PCMResult(type);
 		expectedResult.setResponse(response);
@@ -1503,57 +1281,46 @@ public class SimpleTacticsECSATest {
 		return scenario;
 	}
 
-	/** This is the right way of implementing scenario S2. However, it does not work because KAMP
-	 * doesn't propagate changes to components when an operation is added to an interface.
-	 * @throws Exception 
+	/**
+	 * This is the right way of implementing scenario S2. However, it does not work
+	 * because KAMP doesn't propagate changes to components when an operation is
+	 * added to an interface.
+	 * 
+	 * @throws Exception
 	 **/
-	/*private PCMScenario createModifiabilityScenarioS2(ResponseMeasureType type) {
-		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
-		PCMResult expectedResult = new PCMResult(type);
-		expectedResult.setResponse(response);
-		scenario.setExpectedResponse(expectedResult);
-		//
-		ModifiabilityInstruction i1 = new ModifiabilityInstruction();
-		i1.operation = ModifiabilityOperation.CREATE;
-		i1.element = ModifiabilityElement.OPERATION;
-		i1.parameters.put("iname", "ITripDB");
-		i1.parameters.put("oname", "executeReport");
-		scenario.addChange(i1);
-		ModifiabilityInstruction i2 = new ModifiabilityInstruction();
-		i2.operation = ModifiabilityOperation.CREATE;
-		i2.element = ModifiabilityElement.INTERFACE;
-		i2.parameters.put("name", "Analytics");
-		scenario.addChange(i2);			
-		ModifiabilityInstruction i3 = new ModifiabilityInstruction();
-		i3.operation = ModifiabilityOperation.CREATE;
-		i3.element = ModifiabilityElement.OPERATION;
-		i3.parameters.put("iname", "Analytics");
-		i3.parameters.put("oname", "getLastTrips");
-		scenario.addChange(i3);		
-		ModifiabilityInstruction i4 = new ModifiabilityInstruction();
-		i4.operation = ModifiabilityOperation.CREATE;
-		i4.element = ModifiabilityElement.COMPONENT;
-		i4.parameters.put("name", "Insights");
-		scenario.addChange(i4);			
-		ModifiabilityInstruction i5 = new ModifiabilityInstruction();
-		i5.operation = ModifiabilityOperation.CREATE;
-		i5.element = ModifiabilityElement.PROVIDEDROLE;
-		i5.parameters.put("cname", "Insights");
-		i5.parameters.put("iname", "Analytics");
-		scenario.addChange(i5);			
-		ModifiabilityInstruction i6 = new ModifiabilityInstruction();
-		i6.operation = ModifiabilityOperation.CREATE;
-		i6.element = ModifiabilityElement.REQUIREDROLE;
-		i6.parameters.put("cname", "Insights");
-		i6.parameters.put("iname", "ITripDB");
-		scenario.addChange(i6);
-		//
-		return scenario;
-	}*/
-	
+	/*
+	 * private PCMScenario createModifiabilityScenarioS2(ResponseMeasureType type) {
+	 * ModifiabilityPCMScenario scenario = new
+	 * ModifiabilityPCMScenario(OptimizationType.MINIMIZATION); PCMResult
+	 * expectedResult = new PCMResult(type); expectedResult.setResponse(response);
+	 * scenario.setExpectedResponse(expectedResult); // ModifiabilityInstruction i1
+	 * = new ModifiabilityInstruction(); i1.operation =
+	 * ModifiabilityOperation.CREATE; i1.element = ModifiabilityElement.OPERATION;
+	 * i1.parameters.put("iname", "ITripDB"); i1.parameters.put("oname",
+	 * "executeReport"); scenario.addChange(i1); ModifiabilityInstruction i2 = new
+	 * ModifiabilityInstruction(); i2.operation = ModifiabilityOperation.CREATE;
+	 * i2.element = ModifiabilityElement.INTERFACE; i2.parameters.put("name",
+	 * "Analytics"); scenario.addChange(i2); ModifiabilityInstruction i3 = new
+	 * ModifiabilityInstruction(); i3.operation = ModifiabilityOperation.CREATE;
+	 * i3.element = ModifiabilityElement.OPERATION; i3.parameters.put("iname",
+	 * "Analytics"); i3.parameters.put("oname", "getLastTrips");
+	 * scenario.addChange(i3); ModifiabilityInstruction i4 = new
+	 * ModifiabilityInstruction(); i4.operation = ModifiabilityOperation.CREATE;
+	 * i4.element = ModifiabilityElement.COMPONENT; i4.parameters.put("name",
+	 * "Insights"); scenario.addChange(i4); ModifiabilityInstruction i5 = new
+	 * ModifiabilityInstruction(); i5.operation = ModifiabilityOperation.CREATE;
+	 * i5.element = ModifiabilityElement.PROVIDEDROLE; i5.parameters.put("cname",
+	 * "Insights"); i5.parameters.put("iname", "Analytics"); scenario.addChange(i5);
+	 * ModifiabilityInstruction i6 = new ModifiabilityInstruction(); i6.operation =
+	 * ModifiabilityOperation.CREATE; i6.element =
+	 * ModifiabilityElement.REQUIREDROLE; i6.parameters.put("cname", "Insights");
+	 * i6.parameters.put("iname", "ITripDB"); scenario.addChange(i6); // return
+	 * scenario; }
+	 */
+
 	public void printCode() {
-		for(AnalysisResult r : results) {
-			if(r.qa.equals("Modifiability")) {
+		for (AnalysisResult r : results) {
+			if (r.qa.equals("Modifiability")) {
 				String variableName = r.scenario + "Bot";
 				String methodName = ".insertInOrder";
 				String classType = r.qa + "Proposal";
@@ -1565,22 +1332,22 @@ public class SimpleTacticsECSATest {
 			}
 		}
 	}
-	
+
 	public static void main(String[] args) throws Exception {
 		SimpleTacticsECSATest test = new SimpleTacticsECSATest();
 		test.runAllTests();
 	}
-	
+
 	class AnalysisResult {
 		public String qa;
 		public String scenario;
 		public String model;
 		public Map<String, Comparable> measureValues;
-		
+
 		public AnalysisResult() {
 			measureValues = new HashMap<String, Comparable>();
 		}
-		
+
 		@Override
 		public int hashCode() {
 			final int prime = 31;
@@ -1590,7 +1357,7 @@ public class SimpleTacticsECSATest {
 			result = prime * result + ((scenario == null) ? 0 : scenario.hashCode());
 			return result;
 		}
-		
+
 		@Override
 		public boolean equals(Object obj) {
 			if (this == obj)

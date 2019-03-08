@@ -195,8 +195,6 @@ public class MockValidator {
 		boolean valid = true;
 		for (AbstractPCMBot bot : bots) {
 			valid = valid && checkValid(bot.analyze(architecture));
-			valid = valid && checkValid(bot.analyze(architecture, null));
-			valid = valid && checkValid(bot.analyze(architecture, ""));
 			if (!valid) {
 				throw new RuntimeException("Bot " + bot + " can not analyze architecture " + architecture);
 			}

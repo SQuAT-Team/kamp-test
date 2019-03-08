@@ -16,12 +16,14 @@ public abstract class AbstractPCMBot {
 	public static final String QA_SECURITY = "security";
 	private static Set<String> allQualityAttributes = new HashSet<>();
 
+	protected String name;
 	protected PCMScenario scenario;
 	protected String qualityAttribute;
 
 	/**
 	 * Initializes a new bot.
 	 * 
+	 * @param name
 	 * @param scenario
 	 *            the scenario is usually strongly related to the quality attribute.
 	 * @param qualityAttribute
@@ -29,20 +31,23 @@ public abstract class AbstractPCMBot {
 	 *            predefined, e.g., {@link #QA_PERFORMANCE}, but any other String
 	 *            can be used as long as the bots use them consistently.
 	 */
-	public AbstractPCMBot(PCMScenario scenario, String qualityAttribute) {
+	public AbstractPCMBot(String name, PCMScenario scenario, String qualityAttribute) {
 		super();
+		this.name = name;
 		this.scenario = scenario;
 		this.qualityAttribute = qualityAttribute;
 		allQualityAttributes.add(qualityAttribute);
 	}
 
+	public String getName() {
+		return name;
+	}
+
 	public static Set<String> getAllQualityAttributes() {
 		return allQualityAttributes;
 	}
-	
-	public abstract PCMScenarioResult analyze(PCMArchitectureInstance currentArchitecture);
 
-	public abstract PCMScenarioResult analyze(PCMArchitectureInstance currentArchitecture, String botName);
+	public abstract PCMScenarioResult analyze(PCMArchitectureInstance currentArchitecture);
 
 	public abstract List<PCMScenarioResult> searchForAlternatives(PCMArchitectureInstance currentArchitecture);
 

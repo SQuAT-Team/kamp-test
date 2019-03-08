@@ -98,7 +98,7 @@ public class PerformanceTransformationFactory {
 		ArchitecturalCopyCreator copyCreator = ArchitecturalCopyCreator.getInstance();
 		for (PCMScenarioResult result : results) {
 			PCMArchitectureInstance archInstance = result.getResultingArchitecture();
-			ArchitecturalVersion newAlternative = copyCreator.copy(archInstance, scenario);
+			ArchitecturalVersion newAlternative = copyCreator.copy(archInstance, bot);
 
 			Comparable response = result.getResult().getResponse();
 			Double doubleResponse;

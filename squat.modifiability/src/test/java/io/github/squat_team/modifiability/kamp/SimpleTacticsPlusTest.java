@@ -2,12 +2,8 @@ package io.github.squat_team.modifiability.kamp;
 
 import java.util.Vector;
 
-import org.junit.Assert;
-import org.junit.Test;
 import org.palladiosimulator.pcm.allocation.Allocation;
-import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.repository.Repository;
-import org.palladiosimulator.pcm.repository.RepositoryComponent;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
 import org.palladiosimulator.pcm.system.System;
 import org.palladiosimulator.pcm.usagemodel.UsageModel;
@@ -25,6 +21,8 @@ import io.github.squat_team.modifiability.ModifiabilityPCMScenario;
 import io.github.squat_team.util.SQuATHelper;
 
 public class SimpleTacticsPlusTest {
+	private static final String BOT_NAME = "MB1";
+
 	private String machinePath;
 	private String dirPath;
 	private String[] modelNames;
@@ -67,7 +65,7 @@ public class SimpleTacticsPlusTest {
 		PCMScenario scenario = this.createModifiabilityScenario();
 		Comparable response_expected = scenario.getExpectedResult().getResponse();
 		java.lang.System.out.println("The goal of the scenario is: " + ((Float)response_expected).floatValue());
-		KAMPPCMBotDeprecated bot = new KAMPPCMBotDeprecated(scenario);
+		KAMPPCMBotDeprecated bot = new KAMPPCMBotDeprecated(BOT_NAME, scenario);
 		//
 		loadPCMModel();
 		Vector<PCMArchitectureInstance> pcmInstances=new Vector<PCMArchitectureInstance>();
@@ -116,7 +114,7 @@ public class SimpleTacticsPlusTest {
 	//@Test
 	public void testAlternatives() {
 		PCMScenario scenario = this.createModifiabilityScenario();
-		KAMPPCMBotDeprecated bot = new KAMPPCMBotDeprecated(scenario);
+		KAMPPCMBotDeprecated bot = new KAMPPCMBotDeprecated(BOT_NAME, scenario);
 	//	PCMArchitectureInstance stplus = loadSimpleTacticsPlus("SimpleTactics+");
 	}
 	

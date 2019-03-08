@@ -21,6 +21,7 @@ import io.github.squat_team.util.PCMHelper;
  * includes analysis and search for alternatives.
  */
 public class ModifiabilityBotTest {
+	private static final String BOT_NAME = "MB1";
 	public static final String MODEL_NAME = "default"; // cocome-cloud
 	public static final String MODEL_PATH = "/home/rss/git/SQuAT-docker/squat.modifiability/model"; // models/cocomeWithoutPickUpStoreAndServiceAdapter
 	public static final String ALTERNATIVE_REPOSITORY_PATH = "/home/rss/git/SQuAT-docker/squat.modifiability/model/alternativeRepository.repository"; // /Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithoutPickUpStoreAndServiceAdapter/alternativescocome-cloud.repository
@@ -33,7 +34,7 @@ public class ModifiabilityBotTest {
 		System.out.println("Initialize Scenario");
 		ModifiabilityPCMScenario scenario = initializeScenario();
 
-		KAMPPCMBot bot = new KAMPPCMBot(scenario);
+		KAMPPCMBot bot = new KAMPPCMBot(BOT_NAME, scenario);
 		bot.setEvaluationType(EvaluationType.COMPLEXITY);
 		System.out.println("Run initial analysis");
 		float initialValue = (Float) bot.analyze(initialArchitecture).getResult().getResponse();

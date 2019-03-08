@@ -83,6 +83,18 @@ public class ModifiabilityScenarioHelper {
 		return cocomeS4;
 	}
 
+	private String obtainName(PCMScenario scenario) {
+		if (scenario == cocomeS1)
+			return "modifiabilityBot1";
+		if (scenario == cocomeS2)
+			return "modifiabilityBot2";
+		if (scenario == cocomeS3)
+			return "modifiabilityBot3";
+		if (scenario == cocomeS4)
+			return "modifiabilityBot4";
+		return null;
+	}
+	
 	public AbstractPCMBot createPCMBot(PCMScenario scenario) {
 		if (scenario == cocomeS1 && cocomeBotS1 != null)
 			return cocomeBotS1;
@@ -94,7 +106,7 @@ public class ModifiabilityScenarioHelper {
 			return cocomeBotS4;
 
 		// init bot
-		KAMPPCMBot bot = new KAMPPCMBot(scenario);
+		KAMPPCMBot bot = new KAMPPCMBot(obtainName(scenario), scenario);
 		bot.setEvaluationType(EvaluationType.COMPLEXITY);
 
 		if (scenario == cocomeS1)
@@ -502,17 +514,5 @@ public class ModifiabilityScenarioHelper {
 		scenario.addChange(modifyInterface3);
 
 		return scenario;
-	}
-
-	public String obtainName(PCMScenario scenario) {
-		if (scenario == cocomeS1)
-			return "modifiabilityBot1";
-		if (scenario == cocomeS2)
-			return "modifiabilityBot1";
-		if (scenario == cocomeS3)
-			return "modifiabilityBot1";
-		if (scenario == cocomeS4)
-			return "modifiabilityBot1";
-		return null;
 	}
 }

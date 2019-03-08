@@ -18,6 +18,8 @@ import io.github.squat_team.modifiability.kamp.KAMPPCMBot;
 import io.github.squat_team.util.SQuATHelper;
 
 public class JournalTest {
+	private static final String BOT_NAME = "Bot";
+	
 	private String machinePath;
 	private String dirPath;
 	private String[] modelNames;
@@ -140,13 +142,13 @@ public class JournalTest {
 		boolean debug = true;
 		Comparable expectedResponse = scenario.getExpectedResult().getResponse();
 		if(debug) java.lang.System.out.println("The goal of scenario " + scenarioName + ": " + expectedResponse.toString());
-		KAMPPCMBot bot = new KAMPPCMBot(scenario);
+		KAMPPCMBot bot = new KAMPPCMBot(BOT_NAME, scenario);
 		bot.setEvaluationType(evaluationType);
 		if(debug) java.lang.System.out.println("The evaluation type is: " + evaluationType);
 		//
 		for (int i = 0; i < modelNames.length; i++) {
 			PCMArchitectureInstance model = this.loadSpecificModel(modelNames[i], repositoryFile[i], resourceEnvironmentFile[i], baseSystemFile[i], baseAllocationFile[i], baseUsageFile[i]);
-			PCMScenarioResult scenarioResult = bot.analyze(model,"");
+			PCMScenarioResult scenarioResult = bot.analyze(model);
 			String satisfaction_alt1 = scenarioResult.isSatisfied() >= 0 ? "SATISFIED" : "NOT SATISFIED";
 			if(debug) java.lang.System.out.println("The scenario satisfaction with " + model.getName() + " is: " + satisfaction_alt1);
 			Comparable response_alt1 = scenarioResult.getResult().getResponse();

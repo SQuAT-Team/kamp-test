@@ -184,7 +184,7 @@ public class PerformanceScenarioHelper {
 		configuration.getPcmModelsConfig().setPathmapFolder(TestConstants.PCM_MODEL_FILES);
 
 		// init bot
-		ConcurrentPerOpteryxPCMBot bot = new ConcurrentPerOpteryxPCMBot(scenario, configuration);
+		ConcurrentPerOpteryxPCMBot bot = new ConcurrentPerOpteryxPCMBot(obtainName(scenario), scenario, configuration);
 		bot.setDebugMode(false);
 		// This is another analysis run that outputs detailed CPU utilization, we
 		// usually use it for debugging. This can be done later if
@@ -203,7 +203,7 @@ public class PerformanceScenarioHelper {
 		return bot;
 	}
 
-	public String obtainName(PCMScenario scenario) {
+	private String obtainName(PCMScenario scenario) {
 		if (scenario == cocomeS1)
 			return "perfomanceBot1";
 		if (scenario == cocomeS2)

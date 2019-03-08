@@ -21,6 +21,7 @@ import io.github.squat_team.modifiability.ModifiabilityPCMScenario;
 import io.github.squat_team.util.SQuATHelper;
 
 public class MediaStoreTest {
+	private static final String BOT_NAME = "MB1";
 	private static String machinePath = "/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/src/test/resources/";
 	private static String dirPath = machinePath + "io/github/squat_team/casestudies/mediastore/";
 	private static String repositoryFile = dirPath + "ms.repository";
@@ -33,7 +34,7 @@ public class MediaStoreTest {
 	// Deactivated for Docker: @Test
 	public void testAnalysis() throws Exception {
 		PCMScenario scenario = this.createModifiabilityScenario();
-		KAMPPCMBotDeprecated bot = new KAMPPCMBotDeprecated(scenario);
+		KAMPPCMBotDeprecated bot = new KAMPPCMBotDeprecated(BOT_NAME, scenario);
 		PCMArchitectureInstance mediaStore = loadMediaStore("MediaStore");
 		
 		PCMScenarioResult scenarioResult = bot.analyze(mediaStore);
@@ -47,7 +48,7 @@ public class MediaStoreTest {
 	//@Test
 	public void testAlternatives() {
 		PCMScenario scenario = this.createModifiabilityScenario();
-		KAMPPCMBotDeprecated bot = new KAMPPCMBotDeprecated(scenario);
+		KAMPPCMBotDeprecated bot = new KAMPPCMBotDeprecated(BOT_NAME, scenario);
 		PCMArchitectureInstance mediaStore = loadMediaStore("MediaStore");
 	}
 	

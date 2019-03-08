@@ -23,8 +23,8 @@ import io.github.squat_team.util.PCMHelper;
 public class KAMPPCMBot extends AbstractPCMBot {
 	private EvaluationType evaluationType = EvaluationType.COMPLEXITY;
 
-	public KAMPPCMBot(PCMScenario scenario) {
-		super(scenario, KAMPPCMBot.QA_MODIFIABILITY);
+	public KAMPPCMBot(String name, PCMScenario scenario) {
+		super(name, scenario, KAMPPCMBot.QA_MODIFIABILITY);
 	}
 
 	public EvaluationType getEvaluationType() {
@@ -76,12 +76,6 @@ public class KAMPPCMBot extends AbstractPCMBot {
 			results.add(analyze(PCMHelper.createArchitecture(transformationResult)));
 		}
 		return results;
-	}
-
-	@Override
-	public PCMScenarioResult analyze(PCMArchitectureInstance currentArchitecture, String botName) {
-		PCMScenarioResult result = analyze(currentArchitecture);
-		return result;
 	}
 
 }

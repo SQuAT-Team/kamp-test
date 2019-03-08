@@ -29,11 +29,6 @@ public class ScenarioHelperMockBuilder {
 		when(performanceScenarioHelper.createScenario3Cocome()).thenReturn(performanceScenarios.get(2));
 		when(performanceScenarioHelper.createScenario4Cocome()).thenReturn(performanceScenarios.get(3));
 
-		when(performanceScenarioHelper.obtainName(performanceScenarios.get(0))).thenReturn("pb1");
-		when(performanceScenarioHelper.obtainName(performanceScenarios.get(1))).thenReturn("pb2");
-		when(performanceScenarioHelper.obtainName(performanceScenarios.get(2))).thenReturn("pb3");
-		when(performanceScenarioHelper.obtainName(performanceScenarios.get(3))).thenReturn("pb4");
-
 		for (int i = 0; i < performanceScenarios.size(); i++) {
 			when(performanceScenarioHelper.createPCMBot(performanceScenarios.get(i)))
 					.thenReturn(performanceBots.get(i));

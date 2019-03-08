@@ -2,8 +2,6 @@ package test;
 
 import java.util.List;
 
-import org.junit.Test;
-
 import edu.squat.transformations.ArchitecturalVersion;
 import io.github.squat_team.model.OptimizationType;
 import io.github.squat_team.model.PCMArchitectureInstance;
@@ -19,6 +17,7 @@ import io.github.squat_team.modifiability.kamp.KAMPPCMBot;
 import io.github.squat_team.util.PCMHelper;
 
 public class ModifiabilityBotTest {
+	private static final String BOT_NAME = "MB1";
 
 	public static void main(String[] args) throws Exception {
 		runStplusTest();
@@ -32,7 +31,7 @@ public class ModifiabilityBotTest {
 		System.out.println("Initialize Scenario");
 		ModifiabilityPCMScenario scenario = initializeScenario();
 
-		KAMPPCMBot bot = new KAMPPCMBot(scenario);
+		KAMPPCMBot bot = new KAMPPCMBot(BOT_NAME, scenario);
 		bot.setEvaluationType(EvaluationType.COMPLEXITY);
 		System.out.println("Run initial analysis");
 		float initialValue = (float) bot.analyze(initialArchitecture).getResult().getResponse();

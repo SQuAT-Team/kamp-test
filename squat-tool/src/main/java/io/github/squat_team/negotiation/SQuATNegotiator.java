@@ -47,7 +47,7 @@ public class SQuATNegotiator {
 		// Evaluate each scenario with their respective scenario
 		List<PCMScenarioResult> currentResults = new ArrayList<PCMScenarioResult>();
 		for (AbstractPCMBot bot : bots) {
-			PCMScenarioResult result = bot.analyze(currentArchitecture, "");
+			PCMScenarioResult result = bot.analyze(currentArchitecture);
 			currentResults.add(result);
 		}
 
@@ -99,7 +99,7 @@ public class SQuATNegotiator {
 			List<PCMScenarioResult> nextResults = new ArrayList<PCMScenarioResult>();
 			for (AbstractPCMBot otherBot : alternativesPerBot.keySet()) {
 				if (bot != otherBot) {
-					PCMScenarioResult nextResult = otherBot.analyze(nextAchitecture, "");
+					PCMScenarioResult nextResult = otherBot.analyze(nextAchitecture);
 					nextResults.add(nextResult);
 				}
 			}
