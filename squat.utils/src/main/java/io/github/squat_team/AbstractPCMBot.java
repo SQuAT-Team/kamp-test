@@ -19,6 +19,7 @@ public abstract class AbstractPCMBot {
 	protected String name;
 	protected PCMScenario scenario;
 	protected String qualityAttribute;
+	protected boolean uniqueTactics;
 
 	/**
 	 * Initializes a new bot.
@@ -30,12 +31,17 @@ public abstract class AbstractPCMBot {
 	 *            an unique identifier for the quality attribute. Some are
 	 *            predefined, e.g., {@link #QA_PERFORMANCE}, but any other String
 	 *            can be used as long as the bots use them consistently.
+	 * @param uniqueTactics
+	 *            specifies whether this bot has unique tactics or uses the same as
+	 *            all other bots with the same quality atribute. If false, it is
+	 *            sufficient to ask one bot for all new candidates.
 	 */
-	public AbstractPCMBot(String name, PCMScenario scenario, String qualityAttribute) {
+	public AbstractPCMBot(String name, PCMScenario scenario, String qualityAttribute, boolean uniqueTactics) {
 		super();
 		this.name = name;
 		this.scenario = scenario;
 		this.qualityAttribute = qualityAttribute;
+		this.uniqueTactics = uniqueTactics;
 		allQualityAttributes.add(qualityAttribute);
 	}
 

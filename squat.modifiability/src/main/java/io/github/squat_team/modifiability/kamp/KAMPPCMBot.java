@@ -24,7 +24,7 @@ public class KAMPPCMBot extends AbstractPCMBot {
 	private EvaluationType evaluationType = EvaluationType.COMPLEXITY;
 
 	public KAMPPCMBot(String name, PCMScenario scenario) {
-		super(name, scenario, KAMPPCMBot.QA_MODIFIABILITY);
+		super(name, scenario, KAMPPCMBot.QA_MODIFIABILITY, false);
 	}
 
 	public EvaluationType getEvaluationType() {
