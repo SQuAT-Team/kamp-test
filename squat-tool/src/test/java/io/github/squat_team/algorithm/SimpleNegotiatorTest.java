@@ -12,6 +12,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.agentsUtils.Proposal;
 import io.github.squat_team.agentsUtils.SillyBot;
 import io.github.squat_team.agentsUtils.concessionStrategies.DesiredDistanceFactory;
@@ -292,12 +293,12 @@ public class SimpleNegotiatorTest {
 	}
 
 	private void initializeTwoBots() {
-		initializeBot("performance1", BOT1_SCENARIO_THRESHOLD);
-		initializeBot("modifiability1", BOT2_SCENARIO_THRESHOLD);
+		initializeBot("performance1", AbstractPCMBot.QA_PERFORMANCE, BOT1_SCENARIO_THRESHOLD);
+		initializeBot("modifiability1", AbstractPCMBot.QA_MODIFIABILITY, BOT2_SCENARIO_THRESHOLD);
 	}
 
-	private void initializeBot(String name, float scenarioThreshold) {
-		SillyBot bot = new SillyBotImplementation(name, scenarioThreshold, new DesiredDistanceFactory());
+	private void initializeBot(String name, String qualityAttribute, float scenarioThreshold) {
+		SillyBot bot = new SillyBotImplementation(name, qualityAttribute, scenarioThreshold, new DesiredDistanceFactory());
 		bots.add(bot);
 	}
 
@@ -316,9 +317,9 @@ public class SimpleNegotiatorTest {
 	 */
 	public class SillyBotImplementation extends SillyBot {
 
-		public SillyBotImplementation(String name, float scenarioThreshold,
+		public SillyBotImplementation(String name, String qualityAttribute, float scenarioThreshold,
 				IConcessionStrategyFactory concessionStrategyFactory) {
-			super(name, scenarioThreshold, concessionStrategyFactory, false);
+			super(name, qualityAttribute, scenarioThreshold, concessionStrategyFactory, false);
 		}
 
 		@Override

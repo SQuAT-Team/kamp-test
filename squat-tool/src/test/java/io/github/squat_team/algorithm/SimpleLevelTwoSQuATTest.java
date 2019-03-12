@@ -7,7 +7,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import io.github.squat_team.AbstractPCMBot;
@@ -17,7 +16,6 @@ import io.github.squat_team.agentsUtils.concessionStrategies.DesiredDistanceFact
 import io.github.squat_team.algorithm.util.MockValidator;
 import io.github.squat_team.algorithm.util.PCMBotMockBuilder;
 import io.github.squat_team.algorithm.util.PCMBotMockProperties;
-import io.github.squat_team.algorithm.util.ScenarioHelperMockBuilder;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.negotiation.NegotiatorResult;
 import io.github.squat_team.negotiation.SQuATSillyBotsNegotiatorFactory;
@@ -68,56 +66,29 @@ public class SimpleLevelTwoSQuATTest extends AbstractSQuATTest {
 			{ VERY_GOOD, GOOD, GOOD, VERY_GOOD, GOOD, VERY_GOOD, EXPECTED, BAD } };
 
 	@Override
-	protected void mockScenarios(List<AbstractPCMBot> bots) {
-		ScenarioHelperMockBuilder builder = new ScenarioHelperMockBuilder();
-
-		builder.setPerformanceBots(bots.subList(0, 4));
-		builder.setPerformanceScenarios(createMockedPerformanceScenarios(EXPECTED_PERFORMANCE_RESPONSES));
-		builder.mockPerformanceScenarioHelper();
-
-		builder.setModifiabiliyBots(bots.subList(4, 8));
-		builder.setModifiabiliyScenarios(createMockedModifiabilityScenarios(EXPECTED_MODIFIABILITY_RESPONSES));
-		builder.mockModifiabilityScenarioHelper();
-	}
-
-	@Override
 	protected List<PCMBotMockBuilder> mockBots() {
+		// 4 Performance and 4 Modifiability Bots are needed.
+		List<PCMBotMockBuilder> bots = new ArrayList<>();
+
 		// PERFORMANCE
-		PCMBotMockProperties properties1 = PCMBotMockProperties.getDefaultPerformanceBot(20);
-		properties1.setName(PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_0");
-		PCMBotMockBuilder performanceBot1 = new PCMBotMockBuilder(properties1);
-
-		PCMBotMockProperties properties2 = PCMBotMockProperties.getDefaultPerformanceBot(20);
-		properties2.setName(PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_1");
-		PCMBotMockBuilder performanceBot2 = new PCMBotMockBuilder(properties2);
-
-		PCMBotMockProperties properties3 = PCMBotMockProperties.getDefaultPerformanceBot(20);
-		properties3.setName(PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_2");
-		PCMBotMockBuilder performanceBot3 = new PCMBotMockBuilder(properties3);
-
-		PCMBotMockProperties properties4 = PCMBotMockProperties.getDefaultPerformanceBot(20);
-		properties4.setName(PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_3");
-		PCMBotMockBuilder performanceBot4 = new PCMBotMockBuilder(properties4);
+		for (int i = 0; i < 4; i++) {
+			PCMBotMockProperties properties1 = PCMBotMockProperties
+					.getDefaultPerformanceBot(EXPECTED_PERFORMANCE_RESPONSES[i]);
+			properties1.setName(PCMBotMockProperties.PERFORMANCE_BOT_DEFAULT_NAME + "_" + i);
+			PCMBotMockBuilder performanceBot1 = new PCMBotMockBuilder(properties1);
+			bots.add(performanceBot1);
+		}
 
 		// MODIFIABILITY
-		PCMBotMockProperties properties5 = PCMBotMockProperties.getDefaultModifiabilityBot(50);
-		properties5.setName(PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_0");
-		PCMBotMockBuilder modifiabilityBot1 = new PCMBotMockBuilder(properties5);
+		for (int i = 0; i < 4; i++) {
+			PCMBotMockProperties properties5 = PCMBotMockProperties
+					.getDefaultModifiabilityBot(EXPECTED_MODIFIABILITY_RESPONSES[i]);
+			properties5.setName(PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_" + i);
+			PCMBotMockBuilder modifiabilityBot1 = new PCMBotMockBuilder(properties5);
+			bots.add(modifiabilityBot1);
+		}
 
-		PCMBotMockProperties properties6 = PCMBotMockProperties.getDefaultModifiabilityBot(50);
-		properties6.setName(PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_1");
-		PCMBotMockBuilder modifiabilityBot2 = new PCMBotMockBuilder(properties6);
-
-		PCMBotMockProperties properties7 = PCMBotMockProperties.getDefaultModifiabilityBot(50);
-		properties7.setName(PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_2");
-		PCMBotMockBuilder modifiabilityBot3 = new PCMBotMockBuilder(properties7);
-
-		PCMBotMockProperties properties8 = PCMBotMockProperties.getDefaultModifiabilityBot(50);
-		properties8.setName(PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME + "_3");
-		PCMBotMockBuilder modifiabilityBot4 = new PCMBotMockBuilder(properties8);
-
-		return Arrays.asList(performanceBot1, performanceBot2, performanceBot3, performanceBot4, modifiabilityBot1,
-				modifiabilityBot2, modifiabilityBot3, modifiabilityBot4);
+		return bots;
 	}
 
 	@Override
@@ -406,7 +377,7 @@ public class SimpleLevelTwoSQuATTest extends AbstractSQuATTest {
 
 	@Override
 	protected void validateResults(List<AbstractPCMBot> bots, List<NegotiatorResult> results) {
-		MockValidator validator = new MockValidator(bots.subList(0, 5), initialArchitecture);
+		MockValidator validator = new MockValidator(bots.subList(4, 8), initialArchitecture);
 		validator.validate(2, 2, 3);
 
 		assertEquals(2, results.size());
@@ -523,5 +494,13 @@ public class SimpleLevelTwoSQuATTest extends AbstractSQuATTest {
 	@Override
 	protected long getSeed() {
 		return 123456;
+	}
+	
+	@Override
+	protected List<AbstractPCMBot> reorder(List<AbstractPCMBot> bots) {
+		List<AbstractPCMBot> orderedBots = new ArrayList<>();
+		orderedBots.addAll(bots.subList(4, 8));
+		orderedBots.addAll(bots.subList(0, 4));
+		return orderedBots;
 	}
 }

@@ -10,17 +10,20 @@ import io.github.squat_team.agentsUtils.concessionStrategies.IConcessionStrategy
 
 public class SillyBot {
 	private String name;
+	private String qualityAttribute;
+
 	protected List<Proposal> orderedProposals;
 	private ConcessionStrategy concessionStrategy;
 	private float acceptableLoss;
 	private float scenarioThreshold;
 	private boolean filterSpecialCases;
 
-	public SillyBot(String name, float scenarioThreshold, IConcessionStrategyFactory concessionStrategyFactory,
+	public SillyBot(String name, String qualityAttribute, float scenarioThreshold, IConcessionStrategyFactory concessionStrategyFactory,
 			boolean filterSpecialCases) {
 		this.orderedProposals = new ArrayList<Proposal>();
 		this.concessionStrategy = concessionStrategyFactory.getConcessionStrategy(this);
 		this.name = name;
+		this.qualityAttribute = qualityAttribute;
 		this.scenarioThreshold = scenarioThreshold;
 		this.acceptableLoss = 0.30f;
 		this.filterSpecialCases = filterSpecialCases;
@@ -168,5 +171,9 @@ public class SillyBot {
 		for (Proposal proposal : toBeKeeped) {
 			this.insertInOrder(proposal);
 		}
+	}
+	
+	public String getQualityAttribute() {
+		return qualityAttribute;
 	}
 }

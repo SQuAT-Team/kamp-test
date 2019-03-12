@@ -6,6 +6,8 @@ import java.util.Set;
 import edu.squat.transformations.ArchitecturalVersion;
 import io.github.squat_team.agentsUtils.concessionStrategies.DesiredDistanceFactory;
 import io.github.squat_team.agentsUtils.concessionStrategies.IConcessionStrategyFactory;
+import io.github.squat_team.experiments.CocomeExperiment;
+import io.github.squat_team.experiments.IExperiment;
 import io.github.squat_team.export.ExporterType;
 import io.github.squat_team.negotiation.SQuATSillyBotsNegotiatorFactory;
 
@@ -17,6 +19,7 @@ public class SQuATConfiguration {
 	private static final String DEFAULT_ALTERNATIVE_REPOSITORY_FULL_PATH = "/home/rss/git/kamp-test/squat-tool/models/cocomeWithResourceDemands/alternativeRepository.repository";
 
 	private int maxNumberOfLevels;
+	private IExperiment experiment;
 
 	private Set<ExporterType> exporters = new HashSet<>();
 
@@ -31,12 +34,14 @@ public class SQuATConfiguration {
 	private String modelFileName;
 	private String modelPath;
 	private String alternativeRepositoryFullPath;
-	
+
 	private IConcessionStrategyFactory concessionStrategyFactory;
 
 	public static SQuATConfiguration generateDefault() {
 		SQuATConfiguration configuration = new SQuATConfiguration();
 		
+		configuration.setExperiment(new CocomeExperiment());
+
 		configuration.setAskUserForRedo(true);
 		configuration.setSearchAllLevels(false);
 		configuration.setFilterSpecialCases(true);
@@ -124,7 +129,6 @@ public class SQuATConfiguration {
 	public void setFilterBestAlternatives(boolean filterBestAlternatives) {
 		this.filterBestAlternatives = filterBestAlternatives;
 	};
-	
 
 	public ArchitecturalVersion createInitialArchitecture() {
 		ArchitecturalVersion initialArchitecture = new ArchitecturalVersion(this.getModelFileName(),
@@ -164,4 +168,14 @@ public class SQuATConfiguration {
 	public void setFilterSpecialCases(boolean filterSpecialCases) {
 		this.filterSpecialCases = filterSpecialCases;
 	}
+	
+
+	public IExperiment getExperiment() {
+		return experiment;
+	}
+
+	public void setExperiment(IExperiment experiment) {
+		this.experiment = experiment;
+	}
+	
 }

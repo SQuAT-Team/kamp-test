@@ -17,12 +17,12 @@ import org.powermock.modules.junit4.PowerMockRunner;
 import edu.squat.transformations.ArchitecturalVersion;
 import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.agentsUtils.ArchitecturalCopyCreator;
-import io.github.squat_team.agentsUtils.ModifiabilityScenarioHelper;
-import io.github.squat_team.agentsUtils.PerformanceScenarioHelper;
 import io.github.squat_team.agentsUtils.Proposal;
 import io.github.squat_team.agentsUtils.SillyBot;
 import io.github.squat_team.algorithm.util.PCMBotMockBuilder;
 import io.github.squat_team.algorithm.util.PCMBotMockBuilderResult;
+import io.github.squat_team.experiments.AbstractExperiment;
+import io.github.squat_team.experiments.IExperiment;
 import io.github.squat_team.algorithm.util.ArchitectureBuilder;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMResult;
@@ -41,8 +41,7 @@ import io.github.squat_team.util.RandomGenerator;
  * necessary.
  */
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({ PerformanceScenarioHelper.class, ModifiabilityScenarioHelper.class, PCMHelper.class,
-		ArchitecturalCopyCreator.class })
+@PrepareForTest({ PCMHelper.class, ArchitecturalCopyCreator.class })
 public abstract class AbstractSQuATTest {
 	private static final Float ACCEPTED_DEVIATION = 0.0001f;
 
@@ -60,8 +59,9 @@ public abstract class AbstractSQuATTest {
 		mockOptimizationResponses(botBuilder);
 		List<PCMBotMockBuilderResult> botBuilderResults = buildBots(botBuilder);
 		bots = extractBots(botBuilderResults);
-		mockScenarios(bots);
 		configuration = getConfiguration();
+		bots = reorder(bots);
+		mockExperiment();
 	}
 
 	@Test
@@ -76,13 +76,6 @@ public abstract class AbstractSQuATTest {
 	 * @return the configuration
 	 */
 	protected abstract SQuATConfiguration getConfiguration();
-
-	/**
-	 * Specifiy the scenarios for each bot that should be used to run SQuAT.
-	 * 
-	 * @param bots
-	 */
-	protected abstract void mockScenarios(List<AbstractPCMBot> bots);
 
 	/**
 	 * Initializes all bots necessary for this test.
@@ -127,6 +120,16 @@ public abstract class AbstractSQuATTest {
 	 * @return the seed.
 	 */
 	protected abstract long getSeed();
+
+	/**
+	 * This method should order the bots in the way they should be handed to the
+	 * SQuAT algorithm.
+	 * 
+	 * @param bots
+	 *            previous ordering
+	 * @return the desired ordering
+	 */
+	protected abstract List<AbstractPCMBot> reorder(List<AbstractPCMBot> bots);
 
 	/**
 	 * Makes the SQuAT algorithm behave in a deterministic way.
@@ -263,6 +266,12 @@ public abstract class AbstractSQuATTest {
 			modifiabilityScenarios.add(scenario);
 		}
 		return modifiabilityScenarios;
+	}
+
+	protected void mockExperiment() {
+		IExperiment experiment = mock(AbstractExperiment.class);
+		when(experiment.getBots()).thenReturn(bots);
+		when(configuration.getExperiment()).thenReturn(experiment);
 	}
 
 }

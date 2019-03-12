@@ -96,7 +96,7 @@ public class ArchitectureBuilder {
 		}
 		String architectureName = generateArchitectureName(originatingArchitecture);
 		PCMArchitectureInstance architecture = mockArchitecture(architectureName);
-		generateArchitecturalVersion(architecture, botProperties.getBotType());
+		generateArchitecturalVersion(architecture, botProperties.getQualityAttribute());
 		return architecture;
 	}
 

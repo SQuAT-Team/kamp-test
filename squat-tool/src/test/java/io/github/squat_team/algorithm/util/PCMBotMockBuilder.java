@@ -92,6 +92,7 @@ public class PCMBotMockBuilder {
 		AbstractPCMBot bot = mock(AbstractPCMBot.class);
 		when(bot.getScenario()).thenReturn(properties.getScenario());
 		when(bot.getName()).thenReturn(properties.getName());
+		when(bot.getQualityAttribute()).thenReturn(properties.getQualityAttribute());
 		return bot;
 	}
 

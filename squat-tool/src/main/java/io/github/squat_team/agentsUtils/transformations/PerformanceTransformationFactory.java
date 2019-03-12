@@ -8,66 +8,51 @@ import java.util.Map;
 import edu.squat.transformations.ArchitecturalVersion;
 import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.agentsUtils.ArchitecturalCopyCreator;
-import io.github.squat_team.agentsUtils.PerformanceScenarioHelper;
 import io.github.squat_team.model.PCMArchitectureInstance;
-import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.model.PCMScenarioResult;
+import io.github.squat_team.runner.SQuATConfiguration;
 import io.github.squat_team.util.PCMHelper;
 
 @SuppressWarnings("rawtypes")
 public class PerformanceTransformationFactory {
 	private static volatile PerformanceTransformationFactory instance;
-	private volatile Map<PCMScenario, Map<String, Double>> architecturalResponse;
+	private volatile Map<AbstractPCMBot, Map<String, Double>> architecturalResponse;
+	private SQuATConfiguration configuration;
 
-	public static PerformanceTransformationFactory getInstance() {
+	public static PerformanceTransformationFactory getInstance(SQuATConfiguration configuration) {
 		if (instance == null) {
-			instance = new PerformanceTransformationFactory();
+			instance = new PerformanceTransformationFactory(configuration);
 		}
 		return instance;
 	}
 
-	private PerformanceTransformationFactory() {
+	private PerformanceTransformationFactory(SQuATConfiguration configuration) {
+		this.configuration = configuration;
+
 		architecturalResponse = new HashMap<>();
-		architecturalResponse.put(PerformanceScenarioHelper.getInstance().createScenario1Cocome(),
-				new HashMap<String, Double>());
-		architecturalResponse.put(PerformanceScenarioHelper.getInstance().createScenario2Cocome(),
-				new HashMap<String, Double>());
-		architecturalResponse.put(PerformanceScenarioHelper.getInstance().createScenario3Cocome(),
-				new HashMap<String, Double>());
-		architecturalResponse.put(PerformanceScenarioHelper.getInstance().createScenario4Cocome(),
-				new HashMap<String, Double>());
+		for (AbstractPCMBot bot : configuration.getExperiment().getBots()) {
+			if (bot.getQualityAttribute().equals(AbstractPCMBot.QA_PERFORMANCE)) {
+				architecturalResponse.put(bot, new HashMap<String, Double>());
+			}
+		}
 	}
 
-	public synchronized Double getComplexityForArchitecture(PCMScenario scenario, String architectureAbsolutePath) {
-		return architecturalResponse.get(scenario).get(architectureAbsolutePath);
+	public synchronized Double getComplexityForArchitecture(AbstractPCMBot bot, String architectureAbsolutePath) {
+		return architecturalResponse.get(bot).get(architectureAbsolutePath);
 	}
 
 	public List<ArchitecturalVersion> generateArchitecturalVersionsUsingPerformanceTransformations(
 			ArchitecturalVersion architecturalVersion) {
 		List<ArchitecturalVersion> ret = new ArrayList<ArchitecturalVersion>();
-		/*
-		 * AbstractPerformancePCMScenario workloadScenario =
-		 * PerformanceScenarioHelper.createScenarioOfWorkload();
-		 * ret.addAll(createAlternativesForScenario(architecturalVersion,
-		 * workloadScenario)); AbstractPerformancePCMScenario cpuScenario =
-		 * PerformanceScenarioHelper.createScenarioOfCPU();
-		 * ret.addAll(createAlternativesForScenario(architecturalVersion, cpuScenario))
-		 */
 		System.out.println("Analyzing: " + architecturalVersion.getFileName());
 		PCMArchitectureInstance architecture = PCMHelper.createArchitecture(architecturalVersion);
 
-		System.out.println("Loading performance scenario P1");
-		PCMScenario cocomeScenario1 = PerformanceScenarioHelper.getInstance().createScenario1Cocome();
-		ret.addAll(createAlternativesForScenario(architecture, cocomeScenario1));
-		System.out.println("Loading performance scenario P2");
-		PCMScenario cocomeScenario2 = PerformanceScenarioHelper.getInstance().createScenario2Cocome();
-		ret.addAll(createAlternativesForScenario(architecture, cocomeScenario2));
-		System.out.println("Loading performance scenario P3");
-		PCMScenario cocomeScenario3 = PerformanceScenarioHelper.getInstance().createScenario3Cocome();
-		ret.addAll(createAlternativesForScenario(architecture, cocomeScenario3));
-		System.out.println("Loading performance scenario P4");
-		PCMScenario cocomeScenario4 = PerformanceScenarioHelper.getInstance().createScenario4Cocome();
-		ret.addAll(createAlternativesForScenario(architecture, cocomeScenario4));
+		for(AbstractPCMBot bot : configuration.getExperiment().getBots()) {
+			if(bot.getQualityAttribute().equals(AbstractPCMBot.QA_PERFORMANCE)) {
+				System.out.println("Loading performance scenario for bot " + bot.getName());
+				ret.addAll(createAlternativesForScenario(architecture, bot));
+			}
+		}
 		return ret;
 	}
 
@@ -85,13 +70,8 @@ public class PerformanceTransformationFactory {
 	}
 
 	private List<ArchitecturalVersion> createAlternativesForScenario(PCMArchitectureInstance architecture,
-			PCMScenario scenario) {
-
+			AbstractPCMBot bot) {
 		List<ArchitecturalVersion> ret = new ArrayList<ArchitecturalVersion>();
-
-		AbstractPCMBot bot = PerformanceScenarioHelper.getInstance().createPCMBot(scenario);
-		// PCMArchitectureInstance
-		// architecture=PerformanceScenarioHelper.createArchitecture(architecturalVersion);
 
 		List<PCMScenarioResult> results = bot.searchForAlternatives(architecture);
 
@@ -110,7 +90,7 @@ public class PerformanceTransformationFactory {
 				throw new RuntimeException("");
 			}
 
-			architecturalResponse.get(scenario).put(
+			architecturalResponse.get(bot).put(
 					newAlternative.getAbsolutePath() + "/" + newAlternative.getRepositoryFilename(), doubleResponse);
 			ret.add(newAlternative);
 		}
@@ -124,7 +104,7 @@ public class PerformanceTransformationFactory {
 				"modifiability");
 		av.setFullPathToAlternativeRepository(
 				"/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithResourceDemands/alternativecocome-cloud-88-ICashDeskDAO.repository");
-		PerformanceTransformationFactory.getInstance().generateArchitecturalVersionsUsingPerformanceTransformations(av);
+		PerformanceTransformationFactory.getInstance(SQuATConfiguration.generateDefault()).generateArchitecturalVersionsUsingPerformanceTransformations(av);
 	}
 
 }

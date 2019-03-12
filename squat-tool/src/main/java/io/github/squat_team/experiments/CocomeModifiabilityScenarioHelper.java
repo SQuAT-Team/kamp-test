@@ -1,6 +1,5 @@
-package io.github.squat_team.agentsUtils;
+package io.github.squat_team.experiments;
 
-import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.model.OptimizationType;
 import io.github.squat_team.model.PCMResult;
 import io.github.squat_team.model.PCMScenario;
@@ -9,119 +8,11 @@ import io.github.squat_team.modifiability.ModifiabilityElement;
 import io.github.squat_team.modifiability.ModifiabilityInstruction;
 import io.github.squat_team.modifiability.ModifiabilityOperation;
 import io.github.squat_team.modifiability.ModifiabilityPCMScenario;
-import io.github.squat_team.modifiability.kamp.EvaluationType;
-import io.github.squat_team.modifiability.kamp.KAMPPCMBot;
 
 @SuppressWarnings("rawtypes")
-public class ModifiabilityScenarioHelper {
-	private PCMScenario cocomeS1;
-	private PCMScenario cocomeS2;
-	private PCMScenario cocomeS3;
-	private PCMScenario cocomeS4;
-	private KAMPPCMBot cocomeBotS1;
-	private KAMPPCMBot cocomeBotS2;
-	private KAMPPCMBot cocomeBotS3;
-	private KAMPPCMBot cocomeBotS4;
+public class CocomeModifiabilityScenarioHelper {
 
-	// TODO Replace
-	private Float responseTimeM1 = 2270f;
-	private Float responseTimeM2 = 750f;
-	private Float responseTimeM3 = 170f;
-	private Float responseTimeM4 = 2180f;
-
-	public ModifiabilityScenarioHelper() {
-		cocomeS1 = null;
-		cocomeS2 = null;
-		cocomeS3 = null;
-		cocomeS4 = null;
-		cocomeBotS1 = null;
-		cocomeBotS2 = null;
-		cocomeBotS3 = null;
-		cocomeBotS4 = null;
-	}
-
-	private static ModifiabilityScenarioHelper instance;
-
-	public static ModifiabilityScenarioHelper getInstance() {
-		if (instance == null)
-			instance = new ModifiabilityScenarioHelper();
-		return instance;
-	}
-
-	public void resetBots() {
-		cocomeBotS1 = null;
-		cocomeBotS2 = null;
-		cocomeBotS3 = null;
-		cocomeBotS4 = null;
-	}
-
-	public PCMScenario createScenario1Cocome() {
-		if (cocomeS1 == null) {
-			cocomeS1 = createModifiabilityNFC(ResponseMeasureType.DECIMAL, responseTimeM1);
-		}
-		return cocomeS1;
-	}
-
-	public PCMScenario createScenario2Cocome() {
-		if (cocomeS2 == null) {
-			cocomeS2 = createModifiabilityVIP(ResponseMeasureType.DECIMAL, responseTimeM2);
-		}
-		return cocomeS2;
-	}
-
-	public PCMScenario createScenario3Cocome() {
-		if (cocomeS3 == null) {
-			cocomeS3 = createModifiabilityWithdrawMoney(ResponseMeasureType.DECIMAL, responseTimeM3);
-		}
-		return cocomeS3;
-	}
-
-	public PCMScenario createScenario4Cocome() {
-		if (cocomeS4 == null) {
-			cocomeS4 = createModifiabilityServiceLog(ResponseMeasureType.DECIMAL, responseTimeM4);
-		}
-		return cocomeS4;
-	}
-
-	private String obtainName(PCMScenario scenario) {
-		if (scenario == cocomeS1)
-			return "modifiabilityBot1";
-		if (scenario == cocomeS2)
-			return "modifiabilityBot2";
-		if (scenario == cocomeS3)
-			return "modifiabilityBot3";
-		if (scenario == cocomeS4)
-			return "modifiabilityBot4";
-		return null;
-	}
-	
-	public AbstractPCMBot createPCMBot(PCMScenario scenario) {
-		if (scenario == cocomeS1 && cocomeBotS1 != null)
-			return cocomeBotS1;
-		if (scenario == cocomeS2 && cocomeBotS2 != null)
-			return cocomeBotS2;
-		if (scenario == cocomeS3 && cocomeBotS3 != null)
-			return cocomeBotS3;
-		if (scenario == cocomeS4 && cocomeBotS4 != null)
-			return cocomeBotS4;
-
-		// init bot
-		KAMPPCMBot bot = new KAMPPCMBot(obtainName(scenario), scenario);
-		bot.setEvaluationType(EvaluationType.COMPLEXITY);
-
-		if (scenario == cocomeS1)
-			cocomeBotS1 = bot;
-		if (scenario == cocomeS2)
-			cocomeBotS2 = bot;
-		if (scenario == cocomeS3)
-			cocomeBotS3 = bot;
-		if (scenario == cocomeS4)
-			cocomeBotS4 = bot;
-
-		return bot;
-	}
-
-	private PCMScenario createModifiabilityNFC(ResponseMeasureType type, Comparable response) {
+	public PCMScenario createModifiabilityNFC(ResponseMeasureType type, Comparable response) {
 		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
 		PCMResult expectedResult = new PCMResult(type);
 		expectedResult.setResponse(response);
@@ -229,7 +120,7 @@ public class ModifiabilityScenarioHelper {
 		return scenario;
 	}
 
-	private PCMScenario createModifiabilityVIP(ResponseMeasureType type, Comparable response) {
+	public PCMScenario createModifiabilityVIP(ResponseMeasureType type, Comparable response) {
 		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
 		PCMResult expectedResult = new PCMResult(type);
 		expectedResult.setResponse(response);
@@ -326,7 +217,7 @@ public class ModifiabilityScenarioHelper {
 		return scenario;
 	}
 
-	private PCMScenario createModifiabilityWithdrawMoney(ResponseMeasureType type, Comparable response) {
+	public PCMScenario createModifiabilityWithdrawMoney(ResponseMeasureType type, Comparable response) {
 		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
 		PCMResult expectedResult = new PCMResult(type);
 		expectedResult.setResponse(response);
@@ -447,7 +338,7 @@ public class ModifiabilityScenarioHelper {
 		return scenario;
 	}
 
-	private PCMScenario createModifiabilityServiceLog(ResponseMeasureType type, Comparable response) {
+	public PCMScenario createModifiabilityServiceLog(ResponseMeasureType type, Comparable response) {
 		ModifiabilityPCMScenario scenario = new ModifiabilityPCMScenario(OptimizationType.MINIMIZATION);
 		PCMResult expectedResult = new PCMResult(type);
 		expectedResult.setResponse(response);

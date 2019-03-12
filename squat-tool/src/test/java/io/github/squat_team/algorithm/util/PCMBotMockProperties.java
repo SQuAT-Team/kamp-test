@@ -1,5 +1,6 @@
 package io.github.squat_team.algorithm.util;
 
+import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.model.OptimizationType;
 import io.github.squat_team.model.PCMResult;
 import io.github.squat_team.model.PCMScenario;
@@ -15,11 +16,11 @@ import edu.squat.transformations.ArchitecturalVersion;
  */
 @SuppressWarnings("rawtypes")
 public class PCMBotMockProperties {
-	public final static String PERFORMANCE_BOT_DEFAULT_NAME = ArchitecturalVersion.PERFORMANCE;
-	public final static String MODIFIABILITY_BOT_DEFAULT_NAME = ArchitecturalVersion.MODIFIABILITY;
+	public final static String PERFORMANCE_BOT_DEFAULT_NAME = AbstractPCMBot.QA_PERFORMANCE;
+	public final static String MODIFIABILITY_BOT_DEFAULT_NAME = AbstractPCMBot.QA_MODIFIABILITY;
 
 	private String name;
-	private String botType;
+	private String qualityAttribute;
 
 	private OptimizationType optimizationType;
 
@@ -49,8 +50,8 @@ public class PCMBotMockProperties {
 		return modifiabilityBotProperties;
 	}
 
-	public PCMBotMockProperties(String botType) {
-		this.botType = botType;
+	public PCMBotMockProperties(String qualityAttribute) {
+		this.qualityAttribute = qualityAttribute;
 		when(scenario.getType()).thenReturn(optimizationType);
 		when(scenario.getExpectedResult()).thenReturn(result);
 	}
@@ -100,7 +101,7 @@ public class PCMBotMockProperties {
 		this.returnArchitectures = returnArchitectures;
 	}
 
-	public String getBotType() {
-		return botType;
+	public String getQualityAttribute() {
+		return qualityAttribute;
 	}
 }

@@ -15,8 +15,6 @@ import java.util.List;
 
 import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.agentsUtils.ArchitecturalCopyCreator;
-import io.github.squat_team.agentsUtils.ModifiabilityScenarioHelper;
-import io.github.squat_team.agentsUtils.PerformanceScenarioHelper;
 import io.github.squat_team.model.OptimizationType;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMScenario;
@@ -28,8 +26,7 @@ import io.github.squat_team.util.PCMHelper;
  * This class tests the creation and linking of mocked bots.
  */
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({ PerformanceScenarioHelper.class, ModifiabilityScenarioHelper.class, PCMHelper.class,
-		ArchitecturalCopyCreator.class })
+@PrepareForTest({ PCMHelper.class, ArchitecturalCopyCreator.class })
 @SuppressWarnings("rawtypes")
 public class MockBuilderTests {
 	private static PCMArchitectureInstance initialArchitecture;
