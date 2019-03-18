@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 import edu.squat.transformations.ArchitecturalVersion;
+import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.agentsUtils.Proposal;
 import io.github.squat_team.runner.SQuATConfiguration;
 
@@ -77,7 +78,7 @@ public class ArchitecturalTransformationsFactory {
 				i++;
 				// if the architecture was modified last time by performance now is going to be
 				// modified for modifiability.
-				if (architecturalVersion.lastModifiedByModifiability()) {
+				if (architecturalVersion.wasLastModifiedBy(AbstractPCMBot.QA_MODIFIABILITY)) {
 					transformationForLevel
 							.addAll(generateArchitecturalVersionsUsingPerformanceTransformations(architecturalVersion));
 				} else {
@@ -137,18 +138,18 @@ public class ArchitecturalTransformationsFactory {
 		for (String fileName : fileNames) {
 			String lastModifiedBy;
 			if (fileName.startsWith("c"))
-				lastModifiedBy = ArchitecturalVersion.MODIFIABILITY;
+				lastModifiedBy = AbstractPCMBot.QA_MODIFIABILITY;
 			else
-				lastModifiedBy = ArchitecturalVersion.PERFORMANCE;
+				lastModifiedBy = AbstractPCMBot.QA_PERFORMANCE;
 
 			ArchitecturalVersion av = new ArchitecturalVersion(fileName, path, lastModifiedBy);
 			String alternativePath = path + "/";
-			if (lastModifiedBy == ArchitecturalVersion.MODIFIABILITY)
+			if (lastModifiedBy.equals(AbstractPCMBot.QA_MODIFIABILITY))
 				alternativePath = alternativePath + "alternative" + fileName + ".repository";
 			else
 				alternativePath = alternativePath + fileName + "alternative.repository";
 			av.setFullPathToAlternativeRepository(alternativePath);
-			if (lastModifiedBy == ArchitecturalVersion.MODIFIABILITY)
+			if (lastModifiedBy.equals(AbstractPCMBot.QA_MODIFIABILITY))
 				ret.add(av);
 		}
 		architecturesByLevel.put(level, ret);

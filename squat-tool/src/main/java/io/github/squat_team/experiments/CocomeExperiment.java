@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.github.squat_team.AbstractPCMBot;
+import io.github.squat_team.experiments.filters.IFilter;
+import io.github.squat_team.experiments.filters.RandomFilter;
 import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.model.ResponseMeasureType;
 import io.github.squat_team.modifiability.kamp.EvaluationType;
@@ -35,6 +37,8 @@ public class CocomeExperiment extends AbstractExperiment {
 	private String botNameP3 = "perfomanceBot3";
 	private String botNameP4 = "perfomanceBot4";
 
+	private int randomFilterTotalMaximum = 400;
+	
 	@Override
 	public List<AbstractPCMBot> getBots() {
 		List<AbstractPCMBot> bots = new ArrayList<>();
@@ -114,5 +118,12 @@ public class CocomeExperiment extends AbstractExperiment {
 		designdecisionConfig.setLimits("_-5Q84K2UEeaxN4gXuIkS2A", 600, 1600);
 		designdecisionConfig.setLimits("_BgmykK2VEeaxN4gXuIkS2A", 350, 1000);
 		designdecisionConfig.setLimits("_FM6FMK2VEeaxN4gXuIkS2A", 250, 800);
+	}
+
+	@Override
+	public List<IFilter> getPreEvaluationFilters() {
+		List<IFilter> filters = new ArrayList<>();
+		filters.add(new RandomFilter(randomFilterTotalMaximum));
+		return filters;
 	}
 }

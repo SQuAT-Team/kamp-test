@@ -13,9 +13,6 @@ public class ArchitecturalVersion {
 	private String fullPathToAlternativeRepository; // the model that has the
 													// alternatives components
 
-	public static String MODIFIABILITY = "modifiability";
-	public static String PERFORMANCE = "performance";
-
 	public ArchitecturalVersion(String fileName, String path, String lastModifiedBy) {
 		this.fileName = fileName;
 		this.path = path;
@@ -89,8 +86,12 @@ public class ArchitecturalVersion {
 		this.usageFilename = usageFilename;
 	}
 
-	public boolean lastModifiedByModifiability() {
-		return lastModifiedBy.equals(MODIFIABILITY);
+	public String getLastModifiedBy() {
+		return lastModifiedBy;
+	}
+	
+	public boolean wasLastModifiedBy(String qualityAttribute) {
+		return lastModifiedBy.equals(qualityAttribute);
 	}
 
 	public String getAbsolutePath() {

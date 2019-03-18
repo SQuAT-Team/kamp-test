@@ -58,6 +58,7 @@ import edu.squat.transformations.ArchitecturalVersion;
 import edu.squat.transformations.modifiability.PCMTransformerRunner;
 import edu.squat.transformations.modifiability.RunnerHelper;
 import edu.squat.transformations.modifiability.Tactic;
+import io.github.squat_team.AbstractPCMBot;
 
 @SuppressWarnings("unused")
 public class InsInterRunner extends PCMTransformerRunner {
@@ -178,7 +179,7 @@ public class InsInterRunner extends PCMTransformerRunner {
 					this.addTactic(null, tempGraph, null);
 					if (saveResult) {
 						String nameOfTheModel=resultRepositoryFilename.replaceAll(".repository", "").replace("#REPLACEMENT#", String.valueOf(counter) + "-" + interfacesName);
-						ret.add(new ArchitecturalVersion(nameOfTheModel, dirPath,ArchitecturalVersion.MODIFIABILITY));
+						ret.add(new ArchitecturalVersion(nameOfTheModel, dirPath,AbstractPCMBot.QA_MODIFIABILITY));
 						
 						RunnerHelper.saveRepositoryResult(
 								resourceSet, 

@@ -8,8 +8,6 @@ import io.github.squat_team.model.ResponseMeasureType;
 
 import static org.mockito.Mockito.*;
 
-import edu.squat.transformations.ArchitecturalVersion;
-
 /**
  * Contains all required values for the construction of a mocked Bot. Also
  * provides default settings for different bots.
@@ -30,7 +28,7 @@ public class PCMBotMockProperties {
 	private PCMResult result = new PCMResult(ResponseMeasureType.DECIMAL);
 
 	public static PCMBotMockProperties getDefaultPerformanceBot(Comparable expectedResponse) {
-		PCMBotMockProperties performanceBotProperties = new PCMBotMockProperties(ArchitecturalVersion.PERFORMANCE);
+		PCMBotMockProperties performanceBotProperties = new PCMBotMockProperties(AbstractPCMBot.QA_PERFORMANCE);
 		performanceBotProperties.setName(PERFORMANCE_BOT_DEFAULT_NAME);
 		performanceBotProperties.setExpectedResponse(expectedResponse);
 		performanceBotProperties.setOptimizationType(OptimizationType.MINIMIZATION);
@@ -40,7 +38,7 @@ public class PCMBotMockProperties {
 	}
 
 	public static PCMBotMockProperties getDefaultModifiabilityBot(Comparable expectedResponse) {
-		PCMBotMockProperties modifiabilityBotProperties = new PCMBotMockProperties(ArchitecturalVersion.MODIFIABILITY);
+		PCMBotMockProperties modifiabilityBotProperties = new PCMBotMockProperties(AbstractPCMBot.QA_MODIFIABILITY);
 		modifiabilityBotProperties.setName(MODIFIABILITY_BOT_DEFAULT_NAME);
 		modifiabilityBotProperties.setExpectedResponse(expectedResponse);
 		modifiabilityBotProperties.setExpectedResponse(expectedResponse);

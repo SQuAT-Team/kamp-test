@@ -85,6 +85,7 @@ import edu.squat.transformations.ArchitecturalVersion;
 import edu.squat.transformations.modifiability.PCMTransformerRunner;
 import edu.squat.transformations.modifiability.RunnerHelper;
 import edu.squat.transformations.modifiability.Tactic;
+import io.github.squat_team.AbstractPCMBot;
 
 public class WrapperRunner extends PCMTransformerRunner {
 	private final static String TRACE_Wrapped = "wrap";
@@ -193,7 +194,7 @@ public class WrapperRunner extends PCMTransformerRunner {
 				if (saveResult) {
 					String nameOfTheModel=resultRepositoryFilename.replaceAll(".repository", "").replace("#REPLACEMENT#", String.valueOf(counter) + "-" + fileName);
 					
-					ret.add(new ArchitecturalVersion(nameOfTheModel, dirPath,ArchitecturalVersion.MODIFIABILITY));
+					ret.add(new ArchitecturalVersion(nameOfTheModel, dirPath,AbstractPCMBot.QA_MODIFIABILITY));
 					RunnerHelper.saveRepositoryResult(
 							resourceSet, 
 							tempGraph, 

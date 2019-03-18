@@ -2,7 +2,6 @@ package io.github.squat_team.agentsUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -16,6 +15,7 @@ import io.github.squat_team.agentsUtils.concessionStrategies.DesiredDistanceFact
 import io.github.squat_team.agentsUtils.concessionStrategies.IConcessionStrategyFactory;
 import io.github.squat_team.agentsUtils.transformations.PerformanceTransformationFactory;
 import io.github.squat_team.experiments.CocomePerformanceScenarioHelper;
+import io.github.squat_team.experiments.filters.IFilter;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.model.PCMScenarioResult;
@@ -24,7 +24,6 @@ import io.github.squat_team.util.PCMHelper;
 
 public class LoadHelper {
 	private static int MAXIMUM_ALTERNATIVES = 50;
-	private static int TOTAL_MAXIMUN = 400;
 	private SQuATConfiguration configuration;
 
 	public LoadHelper(SQuATConfiguration configuration) {
@@ -65,11 +64,9 @@ public class LoadHelper {
 				}
 			}
 
-			// RANDOM CANDIDATE FILTERING
-			java.lang.System.out
-					.println("INITIAL NUMBER OF architecturalAlternatives " + architecturalAlternatives.size());
-			filterRandomAlternatives(architecturalAlternatives);
-			java.lang.System.out.println("After random filtering " + architecturalAlternatives.size());
+			// PRE EVALUATION CANDIDATE FILTERING
+			applyPreEvaluationFilters(architecturalAlternatives);
+
 			Map<ArchitecturalVersion, PCMArchitectureInstance> instances = new HashMap<>();
 			PCMArchitectureInstance architecture;// = PCMHelper.createArchitecture(initialArchitecture);
 
@@ -175,38 +172,27 @@ public class LoadHelper {
 		return sillyBots;
 	}
 
-	private void filterRandomAlternatives(List<ArchitecturalVersion> architecturalAlternatives) {
-		if (architecturalAlternatives.size() > TOTAL_MAXIMUN) {
-			List<ArchitecturalVersion> modifiabilityAlternatives = new ArrayList<>();
-			List<ArchitecturalVersion> performanceAlternatives = new ArrayList<>();
-			for (ArchitecturalVersion architecturalVersion : architecturalAlternatives) {
-				if (!architecturalVersion.lastModifiedByModifiability())
-					performanceAlternatives.add(architecturalVersion);
-				else
-					modifiabilityAlternatives.add(architecturalVersion);
+	/**
+	 * Applies the filters before the full evaluation of all alternatives begins.
+	 * 
+	 * @param architecturalAlternatives
+	 *            all alternatives. This list will be modified.
+	 */
+	private void applyPreEvaluationFilters(List<ArchitecturalVersion> architecturalAlternatives) {
+		java.lang.System.out.println("INITIAL NUMBER OF ALTERNATIVES: " + architecturalAlternatives.size());
+		for (IFilter filter : configuration.getExperiment().getPreEvaluationFilters()) {
+			if (filter.checkPrecondition(architecturalAlternatives)) {
+				architecturalAlternatives = filter.filter(architecturalAlternatives);
 			}
-			int percentage = (int) (((double) (TOTAL_MAXIMUN * 1.0d)
-					/ (modifiabilityAlternatives.size() + performanceAlternatives.size())) * 100);
-
-			List<ArchitecturalVersion> ret = new ArrayList<>();
-
-			int itemsToSelectPerformance = (int) ((percentage * performanceAlternatives.size()) / 100f);
-			Collections.shuffle(performanceAlternatives);
-			ret.addAll(performanceAlternatives.subList(0, itemsToSelectPerformance));
-
-			int itemsToSelectModifiability = (int) ((percentage * modifiabilityAlternatives.size()) / 100f);
-			Collections.shuffle(modifiabilityAlternatives);
-			ret.addAll(modifiabilityAlternatives.subList(0, itemsToSelectModifiability));
-			filterList(architecturalAlternatives, ret);
 		}
-
+		java.lang.System.out.println("After pre evaluation filtering " + architecturalAlternatives.size());
 	}
 
 	private List<ArchitecturalVersion> getPerformanceAlternatives(
 			List<ArchitecturalVersion> architecturalAlternatives) {
 		List<ArchitecturalVersion> performanceAlternatives = new ArrayList<>();
 		for (ArchitecturalVersion architecturalVersion : architecturalAlternatives) {
-			if (!architecturalVersion.lastModifiedByModifiability())
+			if (!architecturalVersion.wasLastModifiedBy(AbstractPCMBot.QA_MODIFIABILITY))
 				performanceAlternatives.add(architecturalVersion);
 		}
 		return performanceAlternatives;
@@ -283,8 +269,8 @@ public class LoadHelper {
 
 	}
 
-	public float calculatePerformanceComplexityForScenario(AbstractPCMBot bot,
-			PCMArchitectureInstance architecture, String absolutePathArchitecture) {
+	public float calculatePerformanceComplexityForScenario(AbstractPCMBot bot, PCMArchitectureInstance architecture,
+			String absolutePathArchitecture) {
 		Double complexity = PerformanceTransformationFactory.getInstance(configuration)
 				.getComplexityForArchitecture(bot, absolutePathArchitecture);
 		if (complexity != null) {
@@ -310,6 +296,7 @@ public class LoadHelper {
 				"/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithResourceDemands/alternativeRepository.repository");
 		PCMArchitectureInstance architecture = PCMHelper.createArchitecture(initialArchitecture);
 		PCMScenario scenarioP1 = (new CocomePerformanceScenarioHelper()).createScenario1Cocome(1f);
-		SillyBot p1Bot = new SillyBot("p1", AbstractPCMBot.QA_PERFORMANCE, responseTimeP1, new DesiredDistanceFactory(), true);
+		SillyBot p1Bot = new SillyBot("p1", AbstractPCMBot.QA_PERFORMANCE, responseTimeP1, new DesiredDistanceFactory(),
+				true);
 	}
 }

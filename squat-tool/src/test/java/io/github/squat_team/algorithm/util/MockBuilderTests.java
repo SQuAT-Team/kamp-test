@@ -8,8 +8,6 @@ import org.junit.runner.RunWith;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-import edu.squat.transformations.ArchitecturalVersion;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -73,7 +71,7 @@ public class MockBuilderTests {
 
 	private static PCMBotMockBuilder initializeBot2() {
 		// mock custom modifiability bot
-		PCMBotMockProperties bot2Properties = new PCMBotMockProperties(ArchitecturalVersion.MODIFIABILITY);
+		PCMBotMockProperties bot2Properties = new PCMBotMockProperties(AbstractPCMBot.QA_MODIFIABILITY);
 		bot2Properties.setName(PCMBotMockProperties.MODIFIABILITY_BOT_DEFAULT_NAME);
 		bot2Properties.setExpectedResponse(24.0);
 		bot2Properties.setOptimizationType(OptimizationType.MAXIMIZATION);

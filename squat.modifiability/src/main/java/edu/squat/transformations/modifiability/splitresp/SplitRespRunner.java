@@ -55,6 +55,7 @@ import edu.squat.transformations.ArchitecturalVersion;
 import edu.squat.transformations.modifiability.PCMTransformerRunner;
 import edu.squat.transformations.modifiability.RunnerHelper;
 import edu.squat.transformations.modifiability.Tactic;
+import io.github.squat_team.AbstractPCMBot;
 
 @SuppressWarnings("unused")
 public class SplitRespRunner extends PCMTransformerRunner {
@@ -158,7 +159,7 @@ public class SplitRespRunner extends PCMTransformerRunner {
 				this.addTactic(seed, tempGraph, match);
 				if (saveResult) {
 					String nameOfTheModel=resultRepositoryFilename.replaceAll(".repository", "").replace("#REPLACEMENT#", String.valueOf(match) + "-" + seed.getEntityName());
-					ret.add(new ArchitecturalVersion(nameOfTheModel, dirPath,ArchitecturalVersion.MODIFIABILITY));
+					ret.add(new ArchitecturalVersion(nameOfTheModel, dirPath, AbstractPCMBot.QA_MODIFIABILITY));
 					RunnerHelper.saveRepositoryResult(
 							resourceSet, 
 							tempGraph, 

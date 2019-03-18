@@ -38,8 +38,7 @@ public class ArchitecturalCopyCreator {
 
 		ArchitecturalVersion newAlternative = new ArchitecturalVersion(
 				modelFileRightLocation.getName().substring(0, modelFileRightLocation.getName().lastIndexOf('.')),
-				modelFileRightLocation.getParentFile().getAbsolutePath/* getName */(),
-				ArchitecturalVersion.PERFORMANCE);
+				modelFileRightLocation.getParentFile().getAbsolutePath(), AbstractPCMBot.QA_PERFORMANCE);
 		newAlternative.setFullPathToAlternativeRepository(
 				archInstanceInRightLocation.getRepositoryWithAlternatives().eResource().getURI().toFileString());
 		return newAlternative;
