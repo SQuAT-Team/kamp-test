@@ -89,4 +89,7 @@ public class ArchitecturalVersion {
 	public String getFullPathToAlternativeRepository() {
 		return fullPathToAlternativeRepository;
 	}
+	public String getLastModifiedBy() {
+		return lastModifiedBy;
+	}
 }

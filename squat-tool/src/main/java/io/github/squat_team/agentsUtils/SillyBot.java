@@ -166,4 +166,9 @@ public abstract class SillyBot {
 			this.insertInOrder(proposal);
 		}
 	}
+	public String getName() {
+		return name;
+	}
+	public abstract String getKind();
+	public abstract String getResponseType();
 }

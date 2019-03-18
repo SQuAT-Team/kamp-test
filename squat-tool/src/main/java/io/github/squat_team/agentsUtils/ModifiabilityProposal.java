@@ -3,8 +3,8 @@ package io.github.squat_team.agentsUtils;
 public class ModifiabilityProposal extends Proposal {
 //	private int affectedComponents;
 	//private float complexity;
-	public ModifiabilityProposal(/*int affectedComponents,*/ float complexity, String architecture) {
-		super(architecture,complexity);
+	public ModifiabilityProposal(/*int affectedComponents,*/ float complexity, String architecture, int level,String lastModifiedBy) {
+		super(architecture,complexity, level,lastModifiedBy);
 		//this.affectedComponents = affectedComponents;
 		//this.complexity = complexity;
 	}

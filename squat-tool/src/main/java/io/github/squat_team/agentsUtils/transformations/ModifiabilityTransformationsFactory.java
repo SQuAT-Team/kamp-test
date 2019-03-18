@@ -18,6 +18,7 @@ import io.github.squat_team.HenshinResourceSetManager;
 import io.github.squat_team.agentsUtils.PerformanceScenarioHelper;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.util.PCMRepositoryModifier;
+import io.github.squat_team.util.TimeMeasurement;
 
 public class ModifiabilityTransformationsFactory {
 	private final static String wrapperHenshinFilename = "wrapper-modular.henshin";
@@ -28,6 +29,7 @@ public class ModifiabilityTransformationsFactory {
 	private PCMRepositoryModifier repoModifier;
 	
 	public List<ArchitecturalVersion> runModifiabilityTransformationsInAModel(ArchitecturalVersion initialArchitecture){
+		TimeMeasurement.getInstace().printStart("generation of modifiability architectural alternatives");
 		List<ArchitecturalVersion> ret=new ArrayList<>();
 		this.currentInitialArchitecture=initialArchitecture;
 		resourceSet = HenshinResourceSetManager.getInstance().getHenshinResourceSet(currentInitialArchitecture.getAbsolutePath());
@@ -84,7 +86,7 @@ public class ModifiabilityTransformationsFactory {
 		
 	
 
-		
+		TimeMeasurement.getInstace().printFinish("generation of modifiability architectural alternatives");
 	
 		return ret;
 	}

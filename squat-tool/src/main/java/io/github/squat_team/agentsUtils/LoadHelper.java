@@ -39,6 +39,7 @@ import io.github.squat_team.performance.AbstractPerformancePCMScenario;
 import io.github.squat_team.performance.peropteryx.ConcurrentPerOpteryxPCMBot;
 import io.github.squat_team.performance.peropteryx.PerOpteryxPCMBot;
 import io.github.squat_team.util.SQuATHelper;
+import io.github.squat_team.util.TimeMeasurement;
 
 public class LoadHelper {
 	
@@ -46,12 +47,12 @@ public class LoadHelper {
 	private static int TOTAL_MAXIMUN=400;
 
 	public List<SillyBot> loadBotsForArchitecturalAlternatives(List<ArchitecturalVersion> architecturalAlternatives,
-			ArchitecturalVersion initialArchitecture) {
-		return getCocomeAlternatives(architecturalAlternatives, initialArchitecture);
+			ArchitecturalVersion initialArchitecture, int level) {
+		return getCocomeAlternatives(architecturalAlternatives, initialArchitecture, level);
 		//return getSTPlusAlternatives(architecturalAlternatives, initialArchitecture);
 	}
 	private List<SillyBot> getCocomeAlternatives(List<ArchitecturalVersion> architecturalAlternatives,
-			ArchitecturalVersion initialArchitecture) {
+			ArchitecturalVersion initialArchitecture, int level) {
 		List<SillyBot> ret = new ArrayList<>();
 		Float responseTimeM1 = 2270f;
 		Float responseTimeM2 = 750f;//5000f;
@@ -61,6 +62,9 @@ public class LoadHelper {
 		Float responseTimeP2 = 1.6f;//0.7f;// 40f;
 		Float responseTimeP3 = 1.3f;//0.5f;// 30f;
 		Float responseTimeP4 = 2.8f;//1.2f;// 40f;
+		
+		TimeMeasurement.getInstace().printStart("creation of modifiability bots");
+		
 		PCMScenario m1Scenario = createModifiabilityNFC(ResponseMeasureType.DECIMAL, responseTimeM1);
 		PCMScenario m2Scenario = createModifiabilityVIP(ResponseMeasureType.DECIMAL, responseTimeM2);
 		PCMScenario m3Scenario = createModifiabilityWithdrawMoney(ResponseMeasureType.DECIMAL, responseTimeM3);
@@ -87,6 +91,8 @@ public class LoadHelper {
 			java.lang.System.out.println("Complejidad m4 nuevo: "+calculateModifiabilityComplexity(m4Scenario,
 					KAMPPCMBot.TYPE_COMPLEXITY, architecture));
 			
+			TimeMeasurement.getInstace().printFinish("creation of modifiability bots");
+			TimeMeasurement.getInstace().printStart("creation of performance bots");
 			
 			AbstractPerformancePCMScenario scenarioP1=PerformanceScenarioHelper.getInstance().createScenario1Cocome();
 			AbstractPerformancePCMScenario scenarioP2=PerformanceScenarioHelper.getInstance().createScenario2Cocome();
@@ -111,9 +117,17 @@ public class LoadHelper {
 							scenarioP4, architecture, initialArchitecture.getAbsolutePath()+"/"+initialArchitecture.getRepositoryFilename()),
 					"p4", responseTimeP4);
 			
+			TimeMeasurement.getInstace().printFinish("creation of performance bots");
+			
+			TimeMeasurement.getInstace().printStart("random filtering");
 			java.lang.System.out.println("INITIAL NUMBER OF architecturalAlternatives "+architecturalAlternatives.size());
 			filterRandomAlternatives(architecturalAlternatives);
 			java.lang.System.out.println("After random filtering "+architecturalAlternatives.size());
+			
+			TimeMeasurement.getInstace().printFinish("random filtering");
+			
+			
+			TimeMeasurement.getInstace().printStart("calculating complexity of alternatives for modifiability bots");
 			Map<ArchitecturalVersion,PCMArchitectureInstance> instances=new HashMap<>();
 			//ExecutorService executor2 = Executors.newFixedThreadPool(4);
 			int i=1;
@@ -130,22 +144,28 @@ public class LoadHelper {
 			
 				m1Bot.insertInOrder(new ModifiabilityProposal(
 						calculateModifiabilityComplexity(m1Scenario, KAMPPCMBot.TYPE_COMPLEXITY, architecture),
-						architecturalVersion.getName()));
+						architecturalVersion.getName(), level,architecturalVersion.getLastModifiedBy()));
 				m2Bot.insertInOrder(new ModifiabilityProposal(
 						calculateModifiabilityComplexity(m2Scenario, KAMPPCMBot.TYPE_COMPLEXITY, architecture),
-						architecturalVersion.getName()));
+						architecturalVersion.getName(), level,architecturalVersion.getLastModifiedBy()));
 				m3Bot.insertInOrder(new ModifiabilityProposal(
 						calculateModifiabilityComplexity(m3Scenario, KAMPPCMBot.TYPE_COMPLEXITY, architecture),
-						architecturalVersion.getName()));
+						architecturalVersion.getName(), level,architecturalVersion.getLastModifiedBy()));
 				m4Bot.insertInOrder(new ModifiabilityProposal(
 						calculateModifiabilityComplexity(m4Scenario, KAMPPCMBot.TYPE_COMPLEXITY, architecture),
-						architecturalVersion.getName()));
+						architecturalVersion.getName(), level,architecturalVersion.getLastModifiedBy()));
 
 			}
 			m1Bot.printUtilies();
 			m2Bot.printUtilies();
 			m3Bot.printUtilies();
 			m4Bot.printUtilies();
+			
+			TimeMeasurement.getInstace().printFinish("calculating complexity of alternatives for modifiability bots");
+			
+			TimeMeasurement.getInstace().printStart("filtering best alternatives for modifiability bots");
+
+			
 			Set<ArchitecturalVersion> bestAlternatives = null;
 			if(architecturalAlternatives.size()>MAXIMUM_ALTERNATIVES){
 				java.lang.System.out.println("*****ORIGINAL NUMBER OF ALTERNATIVES: "+architecturalAlternatives.size());
@@ -170,6 +190,7 @@ public class LoadHelper {
 				java.lang.System.out.println("*****FILTERED NUMBER OF ALTERNATIVES: "+architecturalAlternatives.size());
 			}
 			
+			TimeMeasurement.getInstace().printFinish("filtering best alternatives for modifiability bots");
 			
 			/*executor2.shutdown();
 			while (!executor2.awaitTermination(60, TimeUnit.SECONDS)){
@@ -178,7 +199,7 @@ public class LoadHelper {
 			
 			// ExecutorService executor = Executors.newFixedThreadPool(4);
 			
-			
+			TimeMeasurement.getInstace().printStart("calculating complexity of alternatives for performance bots");
 			i=1;
 			for (ArchitecturalVersion architecturalVersion : architecturalAlternatives) {
 				java.lang.System.out.println("********PERFORMANCE: LOADING "+i+" OF "+architecturalAlternatives.size()+" ARCHITECTURAL ALTERNATIVES INTO THE BOTS***********"); i++;
@@ -186,6 +207,7 @@ public class LoadHelper {
 				architecture=instances.get(architecturalVersion);
 				String absolutePathArchitecture=architecturalVersion.getAbsolutePath()+"/"+architecturalVersion.getRepositoryFilename();
 				String architecturalVersionName=architecturalVersion.getName();
+				String architecturalVersionLastModifiedBy=architecturalVersion.getLastModifiedBy();
 			//	executor.execute(new BotPerformanceCalculation(p1Bot, scenarioP1, architecture, absolutePathArchitecture, architecturalVersionName));
 				//executor.execute(new BotPerformanceCalculation(p2Bot, scenarioP2, architecture, absolutePathArchitecture, architecturalVersionName));
 				//executor.execute(new BotPerformanceCalculation(p3Bot, scenarioP3, architecture, absolutePathArchitecture, architecturalVersionName));
@@ -195,25 +217,27 @@ public class LoadHelper {
 						new PerformanceProposal(
 								calculatePerformanceComplexityForScenario(
 										scenarioP1, architecture, absolutePathArchitecture),
-								architecturalVersionName));
+								architecturalVersionName, level,architecturalVersionLastModifiedBy));
 				p2Bot.insertInOrder(
 						new PerformanceProposal(
 								calculatePerformanceComplexityForScenario(
 										scenarioP2, architecture, absolutePathArchitecture),
-								architecturalVersionName));
+								architecturalVersionName, level,architecturalVersionLastModifiedBy));
 				p3Bot.insertInOrder(
 						new PerformanceProposal(
 								calculatePerformanceComplexityForScenario(
 										scenarioP3, architecture, absolutePathArchitecture),
-								architecturalVersionName));
+								architecturalVersionName, level,architecturalVersionLastModifiedBy));
 				p4Bot.insertInOrder(
 						new PerformanceProposal(
 								calculatePerformanceComplexityForScenario(
 										scenarioP4, architecture,absolutePathArchitecture),
-								architecturalVersionName));
+								architecturalVersionName, level,architecturalVersionLastModifiedBy));
 				
 				instances.remove(architecture);
 			}
+			
+			TimeMeasurement.getInstace().printFinish("calculating complexity of alternatives for performance bots");
 			
 			/*executor.shutdown();
 			while (!executor.awaitTermination(60, TimeUnit.SECONDS)){
@@ -1041,1628 +1065,1628 @@ public class LoadHelper {
 	 * return scenario; }
 	 */
 
-	public List<SillyBot> loadBotsWithInformation() {
-		ModifiabilityBot m1Bot = new ModifiabilityBot(/* 3, */ 115f, "m1", 120f);
-		ModifiabilityBot m2Bot = new ModifiabilityBot(/* 5, */ 190.5f, "m2", 300f);
+	/*public List<SillyBot> loadBotsWithInformation() {
+		ModifiabilityBot m1Bot = new ModifiabilityBot( 115f, "m1", 120f);
+		ModifiabilityBot m2Bot = new ModifiabilityBot(190.5f, "m2", 300f);
 		PerformanceBot p1Bot = new PerformanceBot(111.7639f, "p1", 30f);
 		PerformanceBot p2Bot = new PerformanceBot(74.0173f, "p2", 40f);
 
 		// First level - Modifiability tactics
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-mod-split(PaymentSystem)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExporter)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IBusinessTrip)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f, "stplus-mod-split(PaymentSystem)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExporter)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExternalPayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IEmployeePayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal(115.0f, "stplus-mod-wrapper(IBusinessTrip)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-mod-split(PaymentSystem)-wrapper(IExporter)"));
+				new ModifiabilityProposal( 111.0f, "stplus-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal( 111.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-mod-split(PaymentSystem)-wrapper(IBooking)"));
+				new ModifiabilityProposal( 111.0f, "stplus-mod-split(PaymentSystem)-wrapper(IBooking)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
+				new ModifiabilityProposal(111.0f, "stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
 
 		// First level - Performance tactics
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-258"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-281"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-338"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-340"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-397"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-404"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-436"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-444"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-494"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-64"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-209"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-22"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-325"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-330"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-358"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-366"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-416"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-476"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-479"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-480"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-258"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-281"));
+		m1Bot.insertInOrder(new ModifiabilityProposal(115.0f, "stplus-ps1-338"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-340"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-397"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps1-404"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-436"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-444"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-494"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-64"));
+		m1Bot.insertInOrder(new ModifiabilityProposal(123.0f, "stplus-ps2-209"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-22"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-325"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-330"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-358"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-366"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-416"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-476"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-479"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-480"));
 
 		// Second level - Modifiability tactics applied over Performance
 		// candidates
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-258-mod-wrapper(IExporter)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-258-mod-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-258-mod-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-258-mod-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-258-mod-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-258-mod-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps1-258-mod-split(PaymentSystem)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-258-mod-wrapper(IExporter)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-258-mod-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps1-258-mod-wrapper(IExternalPayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-258-mod-wrapper(IEmployeePayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-258-mod-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-258-mod-wrapper(IBusinessTrip)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-ps1-258-mod-split(PaymentSystem)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-258-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps1-258-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal(119.0f, "stplus-ps1-258-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-ps1-258-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-258-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-258-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-258-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-281-mod-wrapper(IExporter)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-281-mod-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-281-mod-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-281-mod-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-281-mod-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-281-mod-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps1-281-mod-split(PaymentSystem)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-281-mod-wrapper(IExporter)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-281-mod-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps1-281-mod-wrapper(IExternalPayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-281-mod-wrapper(IEmployeePayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-281-mod-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-281-mod-wrapper(IBusinessTrip)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-ps1-281-mod-split(PaymentSystem)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-281-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps1-281-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal( 119.0f, "stplus-ps1-281-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-ps1-281-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-281-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-281-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-281-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-338-mod-wrapper(IExporter)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-338-mod-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-338-mod-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-338-mod-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-338-mod-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-338-mod-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-ps1-338-mod-split(PaymentSystem)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps1-338-mod-wrapper(IExporter)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps1-338-mod-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps1-338-mod-wrapper(IExternalPayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps1-338-mod-wrapper(IEmployeePayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal 115.0f, "stplus-ps1-338-mod-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps1-338-mod-wrapper(IBusinessTrip)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f, "stplus-ps1-338-mod-split(PaymentSystem)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps1-338-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-ps1-338-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal( 111.0f, "stplus-ps1-338-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-ps1-338-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps1-338-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps1-338-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps1-338-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-340-mod-wrapper(IExporter)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-340-mod-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-340-mod-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-340-mod-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-340-mod-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-340-mod-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps1-340-mod-split(PaymentSystem)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-340-mod-wrapper(IExporter)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-340-mod-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps1-340-mod-wrapper(IExternalPayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-340-mod-wrapper(IEmployeePayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-340-mod-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-340-mod-wrapper(IBusinessTrip)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-ps1-340-mod-split(PaymentSystem)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-340-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps1-340-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal( 119.0f, "stplus-ps1-340-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-ps1-340-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-340-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-340-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-340-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-397-mod-wrapper(IExporter)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-397-mod-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-397-mod-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-397-mod-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-397-mod-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-397-mod-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps1-397-mod-split(PaymentSystem)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-397-mod-wrapper(IExporter)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-397-mod-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps1-397-mod-wrapper(IExternalPayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-397-mod-wrapper(IEmployeePayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-397-mod-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-397-mod-wrapper(IBusinessTrip)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-ps1-397-mod-split(PaymentSystem)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-397-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps1-397-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal( 119.0f, "stplus-ps1-397-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-ps1-397-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-397-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-397-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-397-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-404-mod-wrapper(IExporter)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-404-mod-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-404-mod-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-404-mod-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-404-mod-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-404-mod-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-ps1-404-mod-split(PaymentSystem)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps1-404-mod-wrapper(IExporter)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps1-404-mod-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps1-404-mod-wrapper(IExternalPayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps1-404-mod-wrapper(IEmployeePayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps1-404-mod-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal(115.0f, "stplus-ps1-404-mod-wrapper(IBusinessTrip)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f, "stplus-ps1-404-mod-split(PaymentSystem)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps1-404-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-ps1-404-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal(111.0f, "stplus-ps1-404-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-ps1-404-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps1-404-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps1-404-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps1-404-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-436-mod-wrapper(IExporter)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-436-mod-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-436-mod-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-436-mod-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-436-mod-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-436-mod-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps1-436-mod-split(PaymentSystem)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-436-mod-wrapper(IExporter)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-436-mod-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps1-436-mod-wrapper(IExternalPayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-436-mod-wrapper(IEmployeePayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-436-mod-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-436-mod-wrapper(IBusinessTrip)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-ps1-436-mod-split(PaymentSystem)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-436-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps1-436-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal( 119.0f, "stplus-ps1-436-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-ps1-436-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-436-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-436-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-436-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-444-mod-wrapper(IExporter)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-444-mod-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-444-mod-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-444-mod-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-444-mod-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-444-mod-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps1-444-mod-split(PaymentSystem)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-444-mod-wrapper(IExporter)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-444-mod-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps1-444-mod-wrapper(IExternalPayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-444-mod-wrapper(IEmployeePayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-444-mod-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-444-mod-wrapper(IBusinessTrip)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-ps1-444-mod-split(PaymentSystem)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-444-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps1-444-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal( 119.0f, "stplus-ps1-444-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-ps1-444-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-444-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-444-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-444-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-494-mod-wrapper(IExporter)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-494-mod-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-494-mod-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-494-mod-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-494-mod-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-494-mod-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps1-494-mod-split(PaymentSystem)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-494-mod-wrapper(IExporter)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-494-mod-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps1-494-mod-wrapper(IExternalPayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-494-mod-wrapper(IEmployeePayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-494-mod-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-494-mod-wrapper(IBusinessTrip)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-ps1-494-mod-split(PaymentSystem)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-494-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps1-494-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal( 119.0f, "stplus-ps1-494-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-ps1-494-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-494-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-494-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-494-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-64-mod-wrapper(IExporter)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-64-mod-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps1-64-mod-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-64-mod-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-64-mod-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps1-64-mod-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps1-64-mod-split(PaymentSystem)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-64-mod-wrapper(IExporter)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-64-mod-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps1-64-mod-wrapper(IExternalPayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-64-mod-wrapper(IEmployeePayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-64-mod-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps1-64-mod-wrapper(IBusinessTrip)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-ps1-64-mod-split(PaymentSystem)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-64-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps1-64-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal( 119.0f, "stplus-ps1-64-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-ps1-64-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-64-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps1-64-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+				new ModifiabilityProposal( 119.0f, "stplus-ps1-64-mod-split(PaymentSystem)-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps1-64-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-209-mod-wrapper(IExporter)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-209-mod-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-209-mod-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-209-mod-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-209-mod-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-209-mod-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps2-209-mod-split(PaymentSystem)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-209-mod-wrapper(IExporter)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-209-mod-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-209-mod-wrapper(IExternalPayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-209-mod-wrapper(IEmployeePayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-209-mod-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-209-mod-wrapper(IBusinessTrip)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-ps2-209-mod-split(PaymentSystem)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps2-209-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps2-209-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal( 119.0f, "stplus-ps2-209-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-ps2-209-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps2-209-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps2-209-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps2-209-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-22-mod-wrapper(IExporter)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-22-mod-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-22-mod-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-22-mod-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-22-mod-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-22-mod-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-ps2-22-mod-split(PaymentSystem)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-22-mod-wrapper(IExporter)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-22-mod-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-22-mod-wrapper(IExternalPayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-22-mod-wrapper(IEmployeePayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-22-mod-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-22-mod-wrapper(IBusinessTrip)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f, "stplus-ps2-22-mod-split(PaymentSystem)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-22-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-ps2-22-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal( 111.0f, "stplus-ps2-22-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-ps2-22-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-22-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-ps2-22-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+				new ModifiabilityProposal( 111.0f, "stplus-ps2-22-mod-split(PaymentSystem)-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-22-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-325-mod-wrapper(IExporter)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-325-mod-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-325-mod-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-325-mod-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-325-mod-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-325-mod-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-ps2-325-mod-split(PaymentSystem)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-325-mod-wrapper(IExporter)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-325-mod-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-325-mod-wrapper(IExternalPayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-325-mod-wrapper(IEmployeePayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-325-mod-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-325-mod-wrapper(IBusinessTrip)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f, "stplus-ps2-325-mod-split(PaymentSystem)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-325-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-ps2-325-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal( 111.0f, "stplus-ps2-325-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-ps2-325-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-325-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-325-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-325-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-330-mod-wrapper(IExporter)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-330-mod-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-330-mod-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-330-mod-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-330-mod-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-330-mod-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps2-330-mod-split(PaymentSystem)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-330-mod-wrapper(IExporter)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-330-mod-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-330-mod-wrapper(IExternalPayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-330-mod-wrapper(IEmployeePayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-330-mod-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-330-mod-wrapper(IBusinessTrip)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-ps2-330-mod-split(PaymentSystem)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps2-330-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps2-330-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal( 119.0f, "stplus-ps2-330-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-ps2-330-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps2-330-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps2-330-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps2-330-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-358-mod-wrapper(IExporter)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-358-mod-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-358-mod-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-358-mod-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-358-mod-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-358-mod-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-ps2-358-mod-split(PaymentSystem)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-358-mod-wrapper(IExporter)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-358-mod-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-358-mod-wrapper(IExternalPayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-358-mod-wrapper(IEmployeePayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-358-mod-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-358-mod-wrapper(IBusinessTrip)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f, "stplus-ps2-358-mod-split(PaymentSystem)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-358-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-ps2-358-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal( 111.0f, "stplus-ps2-358-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-ps2-358-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-358-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-358-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-358-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-366-mod-wrapper(IExporter)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-366-mod-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-366-mod-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-366-mod-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-366-mod-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-366-mod-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-ps2-366-mod-split(PaymentSystem)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-366-mod-wrapper(IExporter)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-366-mod-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-366-mod-wrapper(IExternalPayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-366-mod-wrapper(IEmployeePayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-366-mod-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-366-mod-wrapper(IBusinessTrip)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f, "stplus-ps2-366-mod-split(PaymentSystem)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-366-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-ps2-366-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal( 111.0f, "stplus-ps2-366-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-ps2-366-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-366-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-366-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-366-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-416-mod-wrapper(IExporter)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-416-mod-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-416-mod-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-416-mod-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-416-mod-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-416-mod-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-ps2-416-mod-split(PaymentSystem)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-416-mod-wrapper(IExporter)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-416-mod-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-416-mod-wrapper(IExternalPayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-416-mod-wrapper(IEmployeePayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-416-mod-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-416-mod-wrapper(IBusinessTrip)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f, "stplus-ps2-416-mod-split(PaymentSystem)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-416-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-ps2-416-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal( 111.0f, "stplus-ps2-416-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-ps2-416-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-416-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-416-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-416-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-476-mod-wrapper(IExporter)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-476-mod-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-476-mod-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-476-mod-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-476-mod-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-476-mod-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps2-476-mod-split(PaymentSystem)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-476-mod-wrapper(IExporter)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-476-mod-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-476-mod-wrapper(IExternalPayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-476-mod-wrapper(IEmployeePayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-476-mod-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-476-mod-wrapper(IBusinessTrip)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-ps2-476-mod-split(PaymentSystem)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps2-476-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps2-476-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal( 119.0f, "stplus-ps2-476-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-ps2-476-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps2-476-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps2-476-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps2-476-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-479-mod-wrapper(IExporter)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-479-mod-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-479-mod-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-479-mod-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-479-mod-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-ps2-479-mod-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps2-479-mod-split(PaymentSystem)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-479-mod-wrapper(IExporter)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-479-mod-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-479-mod-wrapper(IExternalPayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-479-mod-wrapper(IEmployeePayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-479-mod-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-ps2-479-mod-wrapper(IBusinessTrip)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-ps2-479-mod-split(PaymentSystem)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps2-479-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-ps2-479-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal( 119.0f, "stplus-ps2-479-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-ps2-479-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps2-479-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps2-479-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-ps2-479-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-480-mod-wrapper(IExporter)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-480-mod-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-480-mod-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-480-mod-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-480-mod-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-ps2-480-mod-wrapper(IBusinessTrip)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-ps2-480-mod-split(PaymentSystem)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-480-mod-wrapper(IExporter)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-480-mod-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-480-mod-wrapper(IExternalPayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-480-mod-wrapper(IEmployeePayment)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-480-mod-wrapper(IBooking)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-ps2-480-mod-wrapper(IBusinessTrip)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f, "stplus-ps2-480-mod-split(PaymentSystem)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-480-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 111.0f, "stplus-ps2-480-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal( 111.0f, "stplus-ps2-480-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-ps2-480-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-480-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-480-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 111.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 111.0f,
 				"stplus-ps2-480-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
 
 		// Second level - Performance tactics applied over Modifiability
 		// candidates
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-ps1-136"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-ps1-162"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-ps1-208"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-ps1-232"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-ps1-239"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-ps1-316"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-ps1-321"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-ps1-355"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-ps1-367"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-ps1-419"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IExporter)-ps1-66"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IExporter)-ps1-141"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IExporter)-ps1-227"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IExporter)-ps1-238"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IExporter)-ps1-275"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IExporter)-ps1-329"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IExporter)-ps1-450"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IExporter)-ps1-459"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IExporter)-ps1-494"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IExporter)-ps1-500"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(ITripDB)-ps1-161"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(ITripDB)-ps1-167"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(ITripDB)-ps1-228"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(ITripDB)-ps1-233"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(ITripDB)-ps1-353"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(ITripDB)-ps1-354"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(ITripDB)-ps1-357"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(ITripDB)-ps1-358"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(ITripDB)-ps1-432"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(ITripDB)-ps1-476"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-195"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-247"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-263"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-333"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-350"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-396"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-405"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-425"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-426"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-464"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-109"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-133"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-138"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-311"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-330"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-41"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-416"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-417"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-447"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-497"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBooking)-ps1-154"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBooking)-ps1-229"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBooking)-ps1-237"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBooking)-ps1-269"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBooking)-ps1-277"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBooking)-ps1-282"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBooking)-ps1-316"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBooking)-ps1-364"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBooking)-ps1-404"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBooking)-ps1-450"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-110"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-142"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-216"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-232"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-295"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-296"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-442"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-472"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-474"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-478"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-ps1-136"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-ps1-162"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-ps1-208"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-ps1-232"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-ps1-239"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-ps1-316"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-ps1-321"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-ps1-355"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-ps1-367"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-ps1-419"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IExporter)-ps1-66"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IExporter)-ps1-141"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IExporter)-ps1-227"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IExporter)-ps1-238"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IExporter)-ps1-275"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IExporter)-ps1-329"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IExporter)-ps1-450"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IExporter)-ps1-459"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IExporter)-ps1-494"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IExporter)-ps1-500"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(ITripDB)-ps1-161"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(ITripDB)-ps1-167"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(ITripDB)-ps1-228"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(ITripDB)-ps1-233"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(ITripDB)-ps1-353"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(ITripDB)-ps1-354"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(ITripDB)-ps1-357"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(ITripDB)-ps1-358"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(ITripDB)-ps1-432"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(ITripDB)-ps1-476"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-195"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-247"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-263"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-333"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-350"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-396"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-405"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-425"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-426"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-464"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-109"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-133"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-138"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-311"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-330"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-41"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-416"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-417"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-447"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-497"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBooking)-ps1-154"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBooking)-ps1-229"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBooking)-ps1-237"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBooking)-ps1-269"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBooking)-ps1-277"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBooking)-ps1-282"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBooking)-ps1-316"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBooking)-ps1-364"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBooking)-ps1-404"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBooking)-ps1-450"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-110"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-142"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-216"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-232"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-295"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-296"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-442"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-472"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-474"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-478"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-118"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-275"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-351"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-355"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-382"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-389"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-390"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-406"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-425"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-428"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-220"));
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-220"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-290"));
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-290"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-327"));
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-327"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-377"));
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-377"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-406"));
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-406"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-423"));
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-423"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-439"));
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-439"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-446"));
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-446"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-447"));
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-447"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-454"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-454"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-197"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-232"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-233"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-235"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-276"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-277"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-33"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-355"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-362"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-368"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-12"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-13"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-176"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-224"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-281"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-318"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-356"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-402"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-438"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-483"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-100"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-145"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-232"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-300"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-326"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-353"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-400"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-474"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-488"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-86"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-86"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-319"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-321"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-323"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-356"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-392"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-397"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-426"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-427"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-433"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-62"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-ps2-119"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-ps2-179"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-ps2-191"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-ps2-222"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-ps2-239"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-ps2-402"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-ps2-43"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-ps2-432"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-ps2-470"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-ps2-69"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IExporter)-ps2-146"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IExporter)-ps2-148"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IExporter)-ps2-162"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IExporter)-ps2-243"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IExporter)-ps2-270"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IExporter)-ps2-281"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IExporter)-ps2-318"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IExporter)-ps2-324"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IExporter)-ps2-52"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IExporter)-ps2-90"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(ITripDB)-ps2-143"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(ITripDB)-ps2-189"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(ITripDB)-ps2-192"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(ITripDB)-ps2-231"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(ITripDB)-ps2-309"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(ITripDB)-ps2-314"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(ITripDB)-ps2-33"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(ITripDB)-ps2-347"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(ITripDB)-ps2-354"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(ITripDB)-ps2-86"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-145"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-147"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-270"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-275"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-324"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-354"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-369"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-445"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-449"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-453"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-130"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-237"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-257"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-310"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-358"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-361"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-437"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-441"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-489"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-496"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBooking)-ps2-117"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBooking)-ps2-143"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBooking)-ps2-237"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBooking)-ps2-286"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBooking)-ps2-299"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBooking)-ps2-330"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBooking)-ps2-375"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBooking)-ps2-376"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBooking)-ps2-384"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBooking)-ps2-401"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-107"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-130"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-156"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-238"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-276"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-282"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-440"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-442"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-90"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-98"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-ps2-119"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-ps2-179"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-ps2-191"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-ps2-222"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-ps2-239"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-ps2-402"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-ps2-43"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-ps2-432"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-ps2-470"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-ps2-69"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IExporter)-ps2-146"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IExporter)-ps2-148"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IExporter)-ps2-162"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IExporter)-ps2-243"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IExporter)-ps2-270"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IExporter)-ps2-281"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IExporter)-ps2-318"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IExporter)-ps2-324"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IExporter)-ps2-52"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IExporter)-ps2-90"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(ITripDB)-ps2-143"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(ITripDB)-ps2-189"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(ITripDB)-ps2-192"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(ITripDB)-ps2-231"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(ITripDB)-ps2-309"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(ITripDB)-ps2-314"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(ITripDB)-ps2-33"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(ITripDB)-ps2-347"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(ITripDB)-ps2-354"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(ITripDB)-ps2-86"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-145"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-147"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-270"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-275"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-324"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-354"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-369"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-445"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-449"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 115.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-453"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-130"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-237"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-257"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-310"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-358"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-361"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-437"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-441"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-489"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-496"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBooking)-ps2-117"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBooking)-ps2-143"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBooking)-ps2-237"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBooking)-ps2-286"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBooking)-ps2-299"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBooking)-ps2-330"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBooking)-ps2-375"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBooking)-ps2-376"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBooking)-ps2-384"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBooking)-ps2-401"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-107"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-130"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-156"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-238"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-276"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-282"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-440"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-442"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-90"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 123.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-98"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-143"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-191"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-268"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-307"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-314"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-352"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-354"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-355"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-55"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-7"));
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-7"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-137"));
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-137"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-142"));
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-142"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-171"));
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-171"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-189"));
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-189"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-209"));
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-209"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-238"));
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-238"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-275"));
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-275"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-281"));
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-281"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-285"));
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-285"));
 		m1Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-414"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+				new ModifiabilityProposal( 119.0f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-414"));
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps2-192"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps2-203"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps2-275"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps2-279"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps2-360"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps2-364"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps2-403"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps2-439"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps2-450"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 3, */ 110.5f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 110.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps2-492"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps2-250"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps2-321"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps2-33"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps2-359"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps2-360"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps2-369"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps2-370"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps2-456"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps2-499"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps2-501"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps2-226"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps2-325"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps2-401"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps2-415"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps2-452"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps2-456"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps2-462"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps2-505"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps2-506"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps2-508"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-119"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-242"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-278"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-344"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-373"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-407"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-408"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-439"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-447"));
-		m1Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 119.0f,
+		m1Bot.insertInOrder(new ModifiabilityProposal( 119.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-482"));
 
 		// First level - Modifiability tactics
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-mod-split(PaymentSystem)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-mod-wrapper(IExporter)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-mod-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-mod-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-mod-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-mod-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-mod-wrapper(IBusinessTrip)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-mod-split(PaymentSystem)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-mod-wrapper(IExporter)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 110.5f, "stplus-mod-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-mod-wrapper(IExternalPayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-mod-wrapper(IEmployeePayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-mod-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-mod-wrapper(IBusinessTrip)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-mod-split(PaymentSystem)-wrapper(IExporter)"));
+				new ModifiabilityProposal( 190.5f, "stplus-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+				new ModifiabilityProposal( 110.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-mod-split(PaymentSystem)-wrapper(IBooking)"));
+				new ModifiabilityProposal( 190.5f, "stplus-mod-split(PaymentSystem)-wrapper(IBooking)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
+				new ModifiabilityProposal( 190.5f, "stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
 
 		// First level - Performance tactics
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps1-258"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-281"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-338"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-340"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-397"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-404"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-436"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-444"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps1-494"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-64"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f, "stplus-ps2-209"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-22"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-325"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps2-330"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f, "stplus-ps2-358"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-366"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps2-416"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps2-476"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 7, */ 291.5f, "stplus-ps2-479"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-480"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps1-258"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-281"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-338"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-340"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-397"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-404"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-436"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-444"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps1-494"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-64"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f, "stplus-ps2-209"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-22"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-325"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps2-330"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f, "stplus-ps2-358"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-366"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps2-416"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps2-476"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 291.5f, "stplus-ps2-479"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-480"));
 
 		// Second level - Modifiability tactics applied over Performance
 		// candidates
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps1-258-mod-wrapper(IExporter)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 171.0f, "stplus-ps1-258-mod-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps1-258-mod-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps1-258-mod-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps1-258-mod-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps1-258-mod-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps1-258-mod-split(PaymentSystem)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps1-258-mod-wrapper(IExporter)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 171.0f, "stplus-ps1-258-mod-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps1-258-mod-wrapper(IExternalPayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps1-258-mod-wrapper(IEmployeePayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps1-258-mod-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps1-258-mod-wrapper(IBusinessTrip)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps1-258-mod-split(PaymentSystem)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps1-258-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 171.0f, "stplus-ps1-258-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+				new ModifiabilityProposal( 171.0f, "stplus-ps1-258-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps1-258-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps1-258-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps1-258-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps1-258-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-281-mod-wrapper(IExporter)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps1-281-mod-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-281-mod-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-281-mod-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-281-mod-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-281-mod-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-281-mod-split(PaymentSystem)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-281-mod-wrapper(IExporter)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 110.5f, "stplus-ps1-281-mod-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-281-mod-wrapper(IExternalPayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-281-mod-wrapper(IEmployeePayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-281-mod-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-281-mod-wrapper(IBusinessTrip)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-281-mod-split(PaymentSystem)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-281-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps1-281-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+				new ModifiabilityProposal( 110.5f, "stplus-ps1-281-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-281-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-281-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-281-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-281-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-338-mod-wrapper(IExporter)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps1-338-mod-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-338-mod-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-338-mod-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-338-mod-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-338-mod-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-338-mod-split(PaymentSystem)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-338-mod-wrapper(IExporter)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 110.5f, "stplus-ps1-338-mod-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-338-mod-wrapper(IExternalPayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-338-mod-wrapper(IEmployeePayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-338-mod-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-338-mod-wrapper(IBusinessTrip)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-338-mod-split(PaymentSystem)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-338-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps1-338-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+				new ModifiabilityProposal( 110.5f, "stplus-ps1-338-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-338-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-338-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-338-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-338-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-340-mod-wrapper(IExporter)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps1-340-mod-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-340-mod-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-340-mod-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-340-mod-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-340-mod-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-340-mod-split(PaymentSystem)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-340-mod-wrapper(IExporter)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 110.5f, "stplus-ps1-340-mod-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-340-mod-wrapper(IExternalPayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-340-mod-wrapper(IEmployeePayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-340-mod-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-340-mod-wrapper(IBusinessTrip)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-340-mod-split(PaymentSystem)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-340-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps1-340-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+				new ModifiabilityProposal( 110.5f, "stplus-ps1-340-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-340-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-340-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-340-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-340-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-397-mod-wrapper(IExporter)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps1-397-mod-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-397-mod-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-397-mod-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-397-mod-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-397-mod-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-397-mod-split(PaymentSystem)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-397-mod-wrapper(IExporter)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 110.5f, "stplus-ps1-397-mod-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-397-mod-wrapper(IExternalPayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-397-mod-wrapper(IEmployeePayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-397-mod-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-397-mod-wrapper(IBusinessTrip)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-397-mod-split(PaymentSystem)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-397-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps1-397-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+				new ModifiabilityProposal( 110.5f, "stplus-ps1-397-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-397-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-397-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-397-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-397-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-404-mod-wrapper(IExporter)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps1-404-mod-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-404-mod-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-404-mod-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-404-mod-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-404-mod-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-404-mod-split(PaymentSystem)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-404-mod-wrapper(IExporter)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 110.5f, "stplus-ps1-404-mod-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-404-mod-wrapper(IExternalPayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-404-mod-wrapper(IEmployeePayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-404-mod-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-404-mod-wrapper(IBusinessTrip)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-404-mod-split(PaymentSystem)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-404-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps1-404-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+				new ModifiabilityProposal( 110.5f, "stplus-ps1-404-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-404-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-404-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-404-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-404-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-436-mod-wrapper(IExporter)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps1-436-mod-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-436-mod-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-436-mod-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-436-mod-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-436-mod-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-436-mod-split(PaymentSystem)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-436-mod-wrapper(IExporter)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 110.5f, "stplus-ps1-436-mod-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-436-mod-wrapper(IExternalPayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-436-mod-wrapper(IEmployeePayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-436-mod-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-436-mod-wrapper(IBusinessTrip)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-436-mod-split(PaymentSystem)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-436-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps1-436-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+				new ModifiabilityProposal( 110.5f, "stplus-ps1-436-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-436-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-436-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-436-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-436-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-444-mod-wrapper(IExporter)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps1-444-mod-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-444-mod-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-444-mod-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-444-mod-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-444-mod-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-444-mod-split(PaymentSystem)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-444-mod-wrapper(IExporter)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 110.5f, "stplus-ps1-444-mod-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-444-mod-wrapper(IExternalPayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-444-mod-wrapper(IEmployeePayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-444-mod-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-444-mod-wrapper(IBusinessTrip)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-444-mod-split(PaymentSystem)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-444-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps1-444-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+				new ModifiabilityProposal( 110.5f, "stplus-ps1-444-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-444-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-444-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-444-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-444-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps1-494-mod-wrapper(IExporter)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 171.0f, "stplus-ps1-494-mod-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps1-494-mod-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps1-494-mod-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps1-494-mod-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps1-494-mod-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps1-494-mod-split(PaymentSystem)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps1-494-mod-wrapper(IExporter)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 171.0f, "stplus-ps1-494-mod-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps1-494-mod-wrapper(IExternalPayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps1-494-mod-wrapper(IEmployeePayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps1-494-mod-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps1-494-mod-wrapper(IBusinessTrip)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps1-494-mod-split(PaymentSystem)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps1-494-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 171.0f, "stplus-ps1-494-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+				new ModifiabilityProposal( 171.0f, "stplus-ps1-494-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps1-494-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps1-494-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps1-494-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps1-494-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-64-mod-wrapper(IExporter)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps1-64-mod-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-64-mod-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-64-mod-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-64-mod-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-64-mod-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-64-mod-split(PaymentSystem)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-64-mod-wrapper(IExporter)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 110.5f, "stplus-ps1-64-mod-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-64-mod-wrapper(IExternalPayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-64-mod-wrapper(IEmployeePayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-64-mod-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-64-mod-wrapper(IBusinessTrip)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps1-64-mod-split(PaymentSystem)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-64-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps1-64-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+				new ModifiabilityProposal( 110.5f, "stplus-ps1-64-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-64-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-64-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps1-64-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+				new ModifiabilityProposal( 190.5f, "stplus-ps1-64-mod-split(PaymentSystem)-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps1-64-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f, "stplus-ps2-209-mod-wrapper(IExporter)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps2-209-mod-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f, "stplus-ps2-209-mod-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f, "stplus-ps2-209-mod-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f, "stplus-ps2-209-mod-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f, "stplus-ps2-209-mod-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f, "stplus-ps2-209-mod-split(PaymentSystem)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f, "stplus-ps2-209-mod-wrapper(IExporter)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 110.5f, "stplus-ps2-209-mod-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f, "stplus-ps2-209-mod-wrapper(IExternalPayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f, "stplus-ps2-209-mod-wrapper(IEmployeePayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f, "stplus-ps2-209-mod-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f, "stplus-ps2-209-mod-wrapper(IBusinessTrip)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f, "stplus-ps2-209-mod-split(PaymentSystem)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f,
 				"stplus-ps2-209-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps2-209-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f,
+				new ModifiabilityProposal( 110.5f, "stplus-ps2-209-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f,
 				"stplus-ps2-209-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f,
 				"stplus-ps2-209-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f,
 				"stplus-ps2-209-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f,
 				"stplus-ps2-209-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-22-mod-wrapper(IExporter)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps2-22-mod-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-22-mod-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-22-mod-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-22-mod-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-22-mod-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-22-mod-split(PaymentSystem)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-22-mod-wrapper(IExporter)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 110.5f, "stplus-ps2-22-mod-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-22-mod-wrapper(IExternalPayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-22-mod-wrapper(IEmployeePayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-22-mod-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-22-mod-wrapper(IBusinessTrip)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-22-mod-split(PaymentSystem)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps2-22-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps2-22-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+				new ModifiabilityProposal( 110.5f, "stplus-ps2-22-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps2-22-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps2-22-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-22-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+				new ModifiabilityProposal( 190.5f, "stplus-ps2-22-mod-split(PaymentSystem)-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps2-22-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-325-mod-wrapper(IExporter)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps2-325-mod-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-325-mod-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-325-mod-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-325-mod-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-325-mod-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-325-mod-split(PaymentSystem)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-325-mod-wrapper(IExporter)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 110.5f, "stplus-ps2-325-mod-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-325-mod-wrapper(IExternalPayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-325-mod-wrapper(IEmployeePayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-325-mod-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-325-mod-wrapper(IBusinessTrip)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-325-mod-split(PaymentSystem)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps2-325-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps2-325-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+				new ModifiabilityProposal( 110.5f, "stplus-ps2-325-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps2-325-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps2-325-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps2-325-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps2-325-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps2-330-mod-wrapper(IExporter)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 171.0f, "stplus-ps2-330-mod-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps2-330-mod-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps2-330-mod-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps2-330-mod-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps2-330-mod-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps2-330-mod-split(PaymentSystem)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps2-330-mod-wrapper(IExporter)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 171.0f, "stplus-ps2-330-mod-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps2-330-mod-wrapper(IExternalPayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps2-330-mod-wrapper(IEmployeePayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps2-330-mod-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps2-330-mod-wrapper(IBusinessTrip)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps2-330-mod-split(PaymentSystem)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps2-330-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 171.0f, "stplus-ps2-330-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+				new ModifiabilityProposal( 171.0f, "stplus-ps2-330-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps2-330-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps2-330-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps2-330-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps2-330-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f, "stplus-ps2-358-mod-wrapper(IExporter)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps2-358-mod-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f, "stplus-ps2-358-mod-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f, "stplus-ps2-358-mod-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f, "stplus-ps2-358-mod-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f, "stplus-ps2-358-mod-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f, "stplus-ps2-358-mod-split(PaymentSystem)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f, "stplus-ps2-358-mod-wrapper(IExporter)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 110.5f, "stplus-ps2-358-mod-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f, "stplus-ps2-358-mod-wrapper(IExternalPayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f, "stplus-ps2-358-mod-wrapper(IEmployeePayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f, "stplus-ps2-358-mod-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f, "stplus-ps2-358-mod-wrapper(IBusinessTrip)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f, "stplus-ps2-358-mod-split(PaymentSystem)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f,
 				"stplus-ps2-358-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps2-358-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f,
+				new ModifiabilityProposal( 110.5f, "stplus-ps2-358-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f,
 				"stplus-ps2-358-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f,
 				"stplus-ps2-358-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f,
 				"stplus-ps2-358-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.0f,
 				"stplus-ps2-358-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-366-mod-wrapper(IExporter)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps2-366-mod-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-366-mod-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-366-mod-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-366-mod-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-366-mod-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-366-mod-split(PaymentSystem)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-366-mod-wrapper(IExporter)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 110.5f, "stplus-ps2-366-mod-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-366-mod-wrapper(IExternalPayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-366-mod-wrapper(IEmployeePayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-366-mod-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-366-mod-wrapper(IBusinessTrip)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-366-mod-split(PaymentSystem)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps2-366-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps2-366-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+				new ModifiabilityProposal( 110.5f, "stplus-ps2-366-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps2-366-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps2-366-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps2-366-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps2-366-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps2-416-mod-wrapper(IExporter)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 171.0f, "stplus-ps2-416-mod-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps2-416-mod-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps2-416-mod-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps2-416-mod-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps2-416-mod-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps2-416-mod-split(PaymentSystem)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps2-416-mod-wrapper(IExporter)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 171.0f, "stplus-ps2-416-mod-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps2-416-mod-wrapper(IExternalPayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps2-416-mod-wrapper(IEmployeePayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps2-416-mod-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps2-416-mod-wrapper(IBusinessTrip)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps2-416-mod-split(PaymentSystem)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps2-416-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 171.0f, "stplus-ps2-416-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+				new ModifiabilityProposal( 171.0f, "stplus-ps2-416-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps2-416-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps2-416-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps2-416-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps2-416-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps2-476-mod-wrapper(IExporter)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 171.0f, "stplus-ps2-476-mod-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps2-476-mod-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps2-476-mod-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps2-476-mod-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps2-476-mod-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f, "stplus-ps2-476-mod-split(PaymentSystem)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps2-476-mod-wrapper(IExporter)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 171.0f, "stplus-ps2-476-mod-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps2-476-mod-wrapper(IExternalPayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps2-476-mod-wrapper(IEmployeePayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps2-476-mod-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps2-476-mod-wrapper(IBusinessTrip)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f, "stplus-ps2-476-mod-split(PaymentSystem)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps2-476-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 171.0f, "stplus-ps2-476-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+				new ModifiabilityProposal( 171.0f, "stplus-ps2-476-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps2-476-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps2-476-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps2-476-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 251.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 251.0f,
 				"stplus-ps2-476-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 7, */ 291.5f, "stplus-ps2-479-mod-wrapper(IExporter)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 171.0f, "stplus-ps2-479-mod-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 7, */ 291.5f, "stplus-ps2-479-mod-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 7, */ 291.5f, "stplus-ps2-479-mod-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 7, */ 291.5f, "stplus-ps2-479-mod-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 7, */ 291.5f, "stplus-ps2-479-mod-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 7, */ 291.5f, "stplus-ps2-479-mod-split(PaymentSystem)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 7, */ 291.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 291.5f, "stplus-ps2-479-mod-wrapper(IExporter)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 171.0f, "stplus-ps2-479-mod-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 291.5f, "stplus-ps2-479-mod-wrapper(IExternalPayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 291.5f, "stplus-ps2-479-mod-wrapper(IEmployeePayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 291.5f, "stplus-ps2-479-mod-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 291.5f, "stplus-ps2-479-mod-wrapper(IBusinessTrip)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 291.5f, "stplus-ps2-479-mod-split(PaymentSystem)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 291.5f,
 				"stplus-ps2-479-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 5, */ 171.0f, "stplus-ps2-479-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 7, */ 291.5f,
+				new ModifiabilityProposal( 171.0f, "stplus-ps2-479-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 291.5f,
 				"stplus-ps2-479-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 7, */ 291.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 291.5f,
 				"stplus-ps2-479-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 7, */ 291.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 291.5f,
 				"stplus-ps2-479-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 7, */ 291.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 291.5f,
 				"stplus-ps2-479-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-480-mod-wrapper(IExporter)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps2-480-mod-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-480-mod-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-480-mod-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-480-mod-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-480-mod-wrapper(IBusinessTrip)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f, "stplus-ps2-480-mod-split(PaymentSystem)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-480-mod-wrapper(IExporter)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 110.5f, "stplus-ps2-480-mod-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-480-mod-wrapper(IExternalPayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-480-mod-wrapper(IEmployeePayment)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-480-mod-wrapper(IBooking)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-480-mod-wrapper(IBusinessTrip)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f, "stplus-ps2-480-mod-split(PaymentSystem)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps2-480-mod-split(PaymentSystem)-wrapper(IExporter)"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 4, */ 110.5f, "stplus-ps2-480-mod-split(PaymentSystem)-wrapper(ITripDB)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+				new ModifiabilityProposal( 110.5f, "stplus-ps2-480-mod-split(PaymentSystem)-wrapper(ITripDB)"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps2-480-mod-split(PaymentSystem)-wrapper(IExternalPayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps2-480-mod-split(PaymentSystem)-wrapper(IEmployeePayment)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps2-480-mod-split(PaymentSystem)-wrapper(IBooking)"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 5, */ 190.5f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 190.5f,
 				"stplus-ps2-480-mod-split(PaymentSystem)-wrapper(IBusinessTrip)"));
 
 		// Second level - Performance tactics applied over Modifiability
 		// candidates
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-ps1-136"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-ps1-162"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-ps1-208"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-ps1-232"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-ps1-239"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-ps1-316"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-ps1-321"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-ps1-355"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-ps1-367"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-ps1-419"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExporter)-ps1-66"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExporter)-ps1-141"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExporter)-ps1-227"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExporter)-ps1-238"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExporter)-ps1-275"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExporter)-ps1-329"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExporter)-ps1-450"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExporter)-ps1-459"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExporter)-ps1-494"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExporter)-ps1-500"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-wrapper(ITripDB)-ps1-161"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-wrapper(ITripDB)-ps1-167"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-wrapper(ITripDB)-ps1-228"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-wrapper(ITripDB)-ps1-233"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-wrapper(ITripDB)-ps1-353"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-wrapper(ITripDB)-ps1-354"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-wrapper(ITripDB)-ps1-357"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-wrapper(ITripDB)-ps1-358"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-wrapper(ITripDB)-ps1-432"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-wrapper(ITripDB)-ps1-476"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-195"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-247"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-263"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-333"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-350"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-396"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-405"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-425"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-426"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-464"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-109"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-133"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-138"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-311"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-330"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-41"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-416"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-417"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-447"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-497"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBooking)-ps1-154"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBooking)-ps1-229"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBooking)-ps1-237"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBooking)-ps1-269"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBooking)-ps1-277"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBooking)-ps1-282"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBooking)-ps1-316"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBooking)-ps1-364"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBooking)-ps1-404"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBooking)-ps1-450"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-110"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-142"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-216"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-232"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-295"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-296"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-442"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-472"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-474"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-478"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-ps1-136"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-ps1-162"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-ps1-208"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-ps1-232"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-ps1-239"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-ps1-316"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-ps1-321"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-ps1-355"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-ps1-367"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-ps1-419"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExporter)-ps1-66"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExporter)-ps1-141"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExporter)-ps1-227"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExporter)-ps1-238"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExporter)-ps1-275"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExporter)-ps1-329"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExporter)-ps1-450"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExporter)-ps1-459"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExporter)-ps1-494"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExporter)-ps1-500"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.5f, "stplus-mod-wrapper(ITripDB)-ps1-161"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.5f, "stplus-mod-wrapper(ITripDB)-ps1-167"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.5f, "stplus-mod-wrapper(ITripDB)-ps1-228"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.5f, "stplus-mod-wrapper(ITripDB)-ps1-233"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.5f, "stplus-mod-wrapper(ITripDB)-ps1-353"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.5f, "stplus-mod-wrapper(ITripDB)-ps1-354"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.5f, "stplus-mod-wrapper(ITripDB)-ps1-357"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.5f, "stplus-mod-wrapper(ITripDB)-ps1-358"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.5f, "stplus-mod-wrapper(ITripDB)-ps1-432"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.5f, "stplus-mod-wrapper(ITripDB)-ps1-476"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-195"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-247"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-263"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-333"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-350"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-396"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-405"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-425"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-426"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps1-464"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-109"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-133"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-138"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-311"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-330"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-41"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-416"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-417"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-447"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps1-497"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBooking)-ps1-154"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBooking)-ps1-229"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBooking)-ps1-237"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBooking)-ps1-269"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBooking)-ps1-277"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBooking)-ps1-282"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBooking)-ps1-316"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBooking)-ps1-364"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBooking)-ps1-404"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBooking)-ps1-450"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-110"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-142"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-216"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-232"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-295"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-296"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-442"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-472"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-474"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps1-478"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-118"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-275"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-351"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-355"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-382"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-389"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-390"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-406"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-425"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-428"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-220"));
+				new ModifiabilityProposal( 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-220"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-290"));
+				new ModifiabilityProposal( 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-290"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-327"));
+				new ModifiabilityProposal( 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-327"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-377"));
+				new ModifiabilityProposal( 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-377"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-406"));
+				new ModifiabilityProposal( 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-406"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-423"));
+				new ModifiabilityProposal( 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-423"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-439"));
+				new ModifiabilityProposal( 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-439"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-446"));
+				new ModifiabilityProposal( 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-446"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-447"));
+				new ModifiabilityProposal( 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-447"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-454"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+				new ModifiabilityProposal( 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps1-454"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-197"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-232"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-233"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-235"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-276"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-277"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-33"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-355"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-362"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps1-368"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-12"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-13"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-176"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-224"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-281"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-318"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-356"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-402"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-438"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps1-483"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-100"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-145"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-232"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-300"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-326"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-353"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-400"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-474"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-488"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-86"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+				new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps1-86"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-319"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-321"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-323"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-356"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-392"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-397"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-426"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-427"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-433"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps1-62"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-ps2-119"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-ps2-179"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-ps2-191"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-ps2-222"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-ps2-239"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-ps2-402"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-ps2-43"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-ps2-432"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-ps2-470"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-ps2-69"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExporter)-ps2-146"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExporter)-ps2-148"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExporter)-ps2-162"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExporter)-ps2-243"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExporter)-ps2-270"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExporter)-ps2-281"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExporter)-ps2-318"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExporter)-ps2-324"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExporter)-ps2-52"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExporter)-ps2-90"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-wrapper(ITripDB)-ps2-143"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-wrapper(ITripDB)-ps2-189"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-wrapper(ITripDB)-ps2-192"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-wrapper(ITripDB)-ps2-231"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-wrapper(ITripDB)-ps2-309"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-wrapper(ITripDB)-ps2-314"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-wrapper(ITripDB)-ps2-33"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-wrapper(ITripDB)-ps2-347"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-wrapper(ITripDB)-ps2-354"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-wrapper(ITripDB)-ps2-86"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-145"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-147"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-270"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-275"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-324"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-354"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-369"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-445"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-449"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-453"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-130"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-237"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-257"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-310"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-358"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-361"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-437"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-441"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-489"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-496"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBooking)-ps2-117"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBooking)-ps2-143"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBooking)-ps2-237"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBooking)-ps2-286"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBooking)-ps2-299"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBooking)-ps2-330"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBooking)-ps2-375"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBooking)-ps2-376"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBooking)-ps2-384"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBooking)-ps2-401"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-107"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-130"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-156"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-238"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-276"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-282"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-440"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-442"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-90"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-98"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-ps2-119"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-ps2-179"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-ps2-191"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-ps2-222"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-ps2-239"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-ps2-402"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-ps2-43"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-ps2-432"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-ps2-470"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-ps2-69"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExporter)-ps2-146"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExporter)-ps2-148"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExporter)-ps2-162"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExporter)-ps2-243"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExporter)-ps2-270"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExporter)-ps2-281"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExporter)-ps2-318"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExporter)-ps2-324"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExporter)-ps2-52"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExporter)-ps2-90"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.5f, "stplus-mod-wrapper(ITripDB)-ps2-143"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.5f, "stplus-mod-wrapper(ITripDB)-ps2-189"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.5f, "stplus-mod-wrapper(ITripDB)-ps2-192"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.5f, "stplus-mod-wrapper(ITripDB)-ps2-231"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.5f, "stplus-mod-wrapper(ITripDB)-ps2-309"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.5f, "stplus-mod-wrapper(ITripDB)-ps2-314"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.5f, "stplus-mod-wrapper(ITripDB)-ps2-33"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.5f, "stplus-mod-wrapper(ITripDB)-ps2-347"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.5f, "stplus-mod-wrapper(ITripDB)-ps2-354"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 231.5f, "stplus-mod-wrapper(ITripDB)-ps2-86"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-145"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-147"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-270"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-275"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-324"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-354"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-369"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-445"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-449"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IExternalPayment)-ps2-453"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-130"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-237"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-257"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-310"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-358"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-361"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-437"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-441"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-489"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IEmployeePayment)-ps2-496"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBooking)-ps2-117"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBooking)-ps2-143"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBooking)-ps2-237"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBooking)-ps2-286"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBooking)-ps2-299"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBooking)-ps2-330"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBooking)-ps2-375"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBooking)-ps2-376"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBooking)-ps2-384"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBooking)-ps2-401"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-107"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-130"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-156"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-238"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-276"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-282"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-440"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-442"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-90"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f, "stplus-mod-wrapper(IBusinessTrip)-ps2-98"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-143"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-191"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-268"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-307"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-314"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-352"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-354"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-355"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-55"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 8, */ 352.0f, "stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-7"));
+				new ModifiabilityProposal( 352.0f, "stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps2-7"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-137"));
+				new ModifiabilityProposal( 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-137"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-142"));
+				new ModifiabilityProposal( 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-142"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-171"));
+				new ModifiabilityProposal( 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-171"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-189"));
+				new ModifiabilityProposal( 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-189"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-209"));
+				new ModifiabilityProposal( 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-209"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-238"));
+				new ModifiabilityProposal( 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-238"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-275"));
+				new ModifiabilityProposal( 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-275"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-281"));
+				new ModifiabilityProposal( 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-281"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-285"));
+				new ModifiabilityProposal( 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-285"));
 		m2Bot.insertInOrder(
-				new ModifiabilityProposal(/* 6, */ 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-414"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+				new ModifiabilityProposal( 231.5f, "stplus-mod-split(PaymentSystem)-wrapper(ITripDB)-ps2-414"));
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps2-192"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps2-203"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps2-275"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps2-279"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps2-360"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps2-364"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps2-403"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps2-439"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps2-450"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IExternalPayment)-ps2-492"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps2-250"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps2-321"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps2-33"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps2-359"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps2-360"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps2-369"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps2-370"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps2-456"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps2-499"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IEmployeePayment)-ps2-501"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps2-226"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps2-325"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps2-401"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps2-415"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps2-452"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps2-456"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps2-462"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps2-505"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps2-506"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBooking)-ps2-508"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-119"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-242"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-278"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-344"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-373"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-407"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-408"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-439"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-447"));
-		m2Bot.insertInOrder(new ModifiabilityProposal(/* 8, */ 352.0f,
+		m2Bot.insertInOrder(new ModifiabilityProposal( 352.0f,
 				"stplus-mod-split(PaymentSystem)-wrapper(IBusinessTrip)-ps2-482"));
 
 		// First level - Modifiability tactics
@@ -4319,23 +4343,23 @@ public class LoadHelper {
 		ret.add(p1Bot);
 		ret.add(p2Bot);
 
-		/*
-		 * System.out.println(m1Bot.getUtilityFor(
-		 * "stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-355"));
-		 * System.out.println(m2Bot.getUtilityFor(
-		 * "stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-355"));
-		 * System.out.println(p1Bot.getUtilityFor(
-		 * "stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-355"));
-		 * System.out.println(p2Bot.getUtilityFor(
-		 * "stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-355"));
-		 */
+		
+		 // System.out.println(m1Bot.getUtilityFor(
+		 // "stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-355"));
+		 // System.out.println(m2Bot.getUtilityFor(
+		 // "stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-355"));
+		 // System.out.println(p1Bot.getUtilityFor(
+		 // "stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-355"));
+		 // System.out.println(p2Bot.getUtilityFor(
+		 // "stplus-mod-split(PaymentSystem)-wrapper(IExporter)-ps1-355"));
+		 
 
 		m1Bot.printUtilies();
 		m2Bot.printUtilies();
 		p1Bot.printUtilies();
 		p2Bot.printUtilies();
 		return ret;
-	}
+	}*/
 	public static void main(String[] args) {
 		Float responseTimeP1 = 0.6f;// 30f;
 		ArchitecturalVersion initialArchitecture=new ArchitecturalVersion("cocome-cloud","models/cocomeWithResourceDemands","");

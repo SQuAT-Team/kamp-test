@@ -40,4 +40,12 @@ public class PerformanceBot extends SillyBot {
 	protected float getScenarioMeasureFor(Proposal proposal) {
 		return ((PerformanceProposal)proposal).getResponseTime();
 	}
+	@Override
+	public String getKind() {
+		return "Performance";
+	}
+	@Override
+	public String getResponseType() {
+		return "Latency";
+	}
 }

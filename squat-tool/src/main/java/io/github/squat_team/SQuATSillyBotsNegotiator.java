@@ -15,6 +15,8 @@ import io.github.squat_team.agentsUtils.LoadHelper;
 import io.github.squat_team.agentsUtils.Proposal;
 import io.github.squat_team.agentsUtils.SillyBot;
 import io.github.squat_team.agentsUtils.transformations.ArchitecturalTransformationsFactory;
+import io.github.squat_team.util.AlternativesRegistry;
+import io.github.squat_team.util.TimeMeasurement;
 
 public class SQuATSillyBotsNegotiator {
 
@@ -26,6 +28,9 @@ public class SQuATSillyBotsNegotiator {
 	private int maxNumberOfLevels;
 	private boolean noMoreAlternatives;
 	private boolean filterBestAlternatives;
+	
+	private List<Proposal> agreetmentsOfLevel;
+	private Set<Proposal> proposalsForNextRound;
 	
 	public SQuATSillyBotsNegotiator(){
 		agreementProposal=null;
@@ -48,12 +53,14 @@ public class SQuATSillyBotsNegotiator {
 		//Step 2: Loop until you reach an Agreement or a Conflict
 		while((!checkAgreement(proposals))||redoRequest){
 			redoRequest=false;
+			TimeMeasurement.getInstace().printStart("negotiation");
 			//Select Agent who has to concede
 			List<SillyBot> shouldConcede = selectWhoHasToConcede();
 
 			if (shouldConcede.isEmpty()){
 				//Step 4: CONFLICT REACHED
 				createNegotiationResult(); //conflict 
+				TimeMeasurement.getInstace().printFinish("negotiation (with conflict)");
 				return false; 
 			}				
 			else{				
@@ -75,11 +82,14 @@ public class SQuATSillyBotsNegotiator {
 				if(!atLeastOneNewProposal){
 					//Step 4: CONFLICT REACHED
 					createNegotiationResult(); //conflict 
+					TimeMeasurement.getInstace().printFinish("negotiation (with conflict)");
 					return false; 
 				}
 				if(checkAgreement(proposals)){
+					TimeMeasurement.getInstace().printFinish("negotiation (with agreement)");
 					System.out.println("Agreement: "+agreementProposal);
 					printCurrentState(agreementProposal);
+					agreetmentsOfLevel.add(agreementProposal);
 					System.out.println("REDO? (Y/N): ");
 					Scanner scan = new Scanner(System.in);
 					String answer = scan.next();
@@ -300,7 +310,7 @@ public class SQuATSillyBotsNegotiator {
 			System.out.println("Intial Proposals");
 			
 			//Each agent has to make a ranking with the alternatives and select the best for its scenario 
-			sillyBots=new LoadHelper().loadBotsForArchitecturalAlternatives(versionsUntilLevel,archTransFactory.getInitialArchitecture());
+			sillyBots=new LoadHelper().loadBotsForArchitecturalAlternatives(versionsUntilLevel,archTransFactory.getInitialArchitecture(),currentLevelOfTransformations);
 			System.out.println("Total proposals: "+sillyBots.get(0).getOrderedProposals().size());
 			for (Iterator<SillyBot> iterator = sillyBots.iterator(); iterator.hasNext();) {
 				SillyBot bot = (SillyBot) iterator.next();
@@ -331,7 +341,7 @@ public class SQuATSillyBotsNegotiator {
 	}
 
 	private void filerBestKAlternatives(int k) {
-		Set<Proposal> proposalsForNextRound=new HashSet<>(); 
+		proposalsForNextRound=new HashSet<>(); 
 		
 		//Each agent has to make a ranking with the alternatives and select the best K for its scenario 
 		for (SillyBot sillyBot : sillyBots) {
@@ -348,7 +358,13 @@ public class SQuATSillyBotsNegotiator {
 	public void negotiatiateUntilAnAgreementIsReached(){
 		boolean agreement=false;
 		while(!agreement&&(currentLevelOfTransformations<=maxNumberOfLevels)&&!noMoreAlternatives){
+			
+			agreetmentsOfLevel=new ArrayList<>();
+			
 			agreement=negotiateBaseOnMultipleArchitectures();
+			
+				
+			AlternativesRegistry.getInstace().saveAlternatives(sillyBots,agreetmentsOfLevel,currentLevelOfTransformations, proposalsForNextRound);
 			if(filterBestAlternatives){
 				filerBestKAlternatives(2/*10*/);
 			}
@@ -366,6 +382,8 @@ public class SQuATSillyBotsNegotiator {
 		SQuATSillyBotsNegotiator squat=new SQuATSillyBotsNegotiator();
 		//squat.getArchTransFactory().preLoadModelsFrom("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithResourceDemands",1);
 		squat.negotiatiateUntilAnAgreementIsReached();
+		TimeMeasurement.getInstace().closeFile();
+		AlternativesRegistry.getInstace().closeFile();
 	}
 
 }

@@ -47,6 +47,15 @@ public class ModifiabilityBot extends SillyBot {
 		return ((ModifiabilityProposal)proposal).getComplexity();
 	}
 
-	
+
+	@Override
+	public String getKind() {
+		return "Modifiability";
+	}
+
+	@Override
+	public String getResponseType() {
+		return "Complexity";
+	}
 	
 }

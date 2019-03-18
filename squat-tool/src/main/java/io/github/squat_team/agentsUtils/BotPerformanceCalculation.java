@@ -31,7 +31,7 @@ public class BotPerformanceCalculation implements Runnable{
 				new PerformanceProposal(
 						LoadHelper.calculatePerformanceComplexityForScenario(
 								scenario, model, absolutePathArchitecture),
-						architecturalVersionName));
+						architecturalVersionName,-1,""));
 	}
 
 }
