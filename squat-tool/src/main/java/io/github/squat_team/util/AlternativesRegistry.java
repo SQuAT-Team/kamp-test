@@ -72,9 +72,17 @@ public class AlternativesRegistry {
 			SillyBot bot = (SillyBot) iterator.next();
 			for(Iterator<Proposal> proposals=bot.getOrderedProposals().iterator(); proposals.hasNext();){
 				Proposal proposal=proposals.next();
-				printAlternative(bot, proposal, agreetmentsOfLevel.contains(proposal));
+				printAlternative(bot, proposal, isAnAgreement(agreetmentsOfLevel,proposal));
 			}
 		}
 		
+	}
+	
+	private boolean isAnAgreement(List<Proposal> agreetmentsOfLevel,Proposal proposal){
+		for (Proposal proposal2 : agreetmentsOfLevel) {
+			if(proposal2.getArchitectureName().equals(proposal.getArchitectureName()))
+				return true;
+		}
+		return false;
 	}
 }
