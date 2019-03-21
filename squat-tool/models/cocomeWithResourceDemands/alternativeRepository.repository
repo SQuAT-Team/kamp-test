@@ -106,13 +106,11 @@
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_8gdvNdbOEeeA6uet0yIgvwX" entityName="CashBoxNumpadKeypressEvent" requiredInterface__OperationRequiredRole="_J8kWV9Z_Eee7CN4Qm4czKQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_ChMildbPEeeA6uet0yIgvwX" entityName="ExpressModeDisabledEvent" requiredInterface__OperationRequiredRole="_aExwB9Z_Eee7CN4Qm4czKQ"/>
     <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_Ta0LFdbPEeeA6uet0yIgvw1X" entityName="CashBoxClosedEvent1" requiredInterface__OperationRequiredRole="_qKZIt9Z_Eee7CN4Qm4czKQ"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_Ta0LFdbPEeeA6uet0yIgvw2X" entityName="CashBoxClosedEvent2" requiredInterface__OperationRequiredRole="_qKZIt9Z_Eee7CN4Qm4czKQ2"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_PLQP1dbOEeeA6uet0yIgvw2X" entityName="CashAmountEnteredEvent2" requiredInterface__OperationRequiredRole="_mNHFt9Z9Eee7CN4Qm4czKQ2"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_PLQP1dbOEeeA6uet0yIgvw3X" entityName="CashAmountEnteredEvent3" requiredInterface__OperationRequiredRole="_mNHFt9Z9Eee7CN4Qm4czKQ3"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_nJ2W9dbOEeeA6uet0yIgvw2X" entityName="SaleFinishedEvent2" requiredInterface__OperationRequiredRole="_NUhmE9Z-Eee7CN4Qm4czKQ2"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_uIouBdbOEeeA6uet0yIgvw2X" entityName="PaymentModeSelectedEvent2" requiredInterface__OperationRequiredRole="_gJReh9Z-Eee7CN4Qm4czKQ2"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_ChMildbPEeeA6uet0yIgvw2X" entityName="ExpressModeDisabledEvent2" requiredInterface__OperationRequiredRole="_aExwB9Z_Eee7CN4Qm4czKQ2"/>
-    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_ChMildbPEeeA6uet0yIgvw3X" entityName="ExpressModeDisabledEvent3" requiredInterface__OperationRequiredRole="_aExwB9Z_Eee7CN4Qm4czKQ3"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_Ta0LFdbPEeeA6uet0yIgvw2X" entityName="CashBoxClosedEvent2" requiredInterface__OperationRequiredRole="_qKZIt9Z_Eee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_PLQP1dbOEeeA6uet0yIgvw2X" entityName="CashAmountEnteredEvent2" requiredInterface__OperationRequiredRole="_mNHFt9Z9Eee7CN4Qm4czKQ1"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_PLQP1dbOEeeA6uet0yIgvw3X" entityName="CashAmountEnteredEvent3" requiredInterface__OperationRequiredRole="_mNHFt9Z9Eee7CN4Qm4czKQ1"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_nJ2W9dbOEeeA6uet0yIgvw2X" entityName="SaleFinishedEvent2" requiredInterface__OperationRequiredRole="_NUhmE9Z-Eee7CN4Qm4czKQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_uIouBdbOEeeA6uet0yIgvw2X" entityName="PaymentModeSelectedEvent2" requiredInterface__OperationRequiredRole="_gJReh9Z-Eee7CN4Qm4czKQ"/>
     <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_G9USN0h9Eee76qhR2wvsFAX" describedService__SEFF="_j16kMtYgEeWrM-HnT5f_ug">
       <steps_Behaviour xsi:type="seff:StartAction" id="_yAXOxkiKEeeAK9a9NwDLowX" successor_AbstractAction="_6x_5XNtPEee4ToXBRRujSwX"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_yAXOx0iKEeeAK9a9NwDLowX" predecessor_AbstractAction="_6x_5XNtPEee4ToXBRRujSwX"/>
@@ -127,7 +125,7 @@
       <steps_Behaviour xsi:type="seff:StartAction" id="_yAXOykiKEeeAK9a9NwDLowX" successor_AbstractAction="_hVq8ZtbPEeeA6uet0yIgvw1X"/>
       <steps_Behaviour xsi:type="seff:StopAction" id="_yAXOy0iKEeeAK9a9NwDLowX" predecessor_AbstractAction="_PKombNtQEee4ToXBRRujSwX"/>
       <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_hVq8ZtbPEeeA6uet0yIgvw1X" entityName="fireCashBoxClosedEvent" predecessor_AbstractAction="_yAXOykiKEeeAK9a9NwDLowX" successor_AbstractAction="_hVq8ZtbPEeeA6uet0yIgvw2X" calledService_ExternalService="_ruh08NZ_Eee7CN4Qm4czKQ" role_ExternalService="_Ta0LFdbPEeeA6uet0yIgvw1X"/>
-      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_hVq8ZtbPEeeA6uet0yIgvw2X" entityName="fireCashBoxClosedEvent" predecessor_AbstractAction="_hVq8ZtbPEeeA6uet0yIgvw1X" successor_AbstractAction="_PKombNtQEee4ToXBRRujSwX" calledService_ExternalService="_ruh08NZ_Eee7CN4Qm4czKQ2" role_ExternalService="_Ta0LFdbPEeeA6uet0yIgvw2X"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_hVq8ZtbPEeeA6uet0yIgvw2X" entityName="fireCashBoxClosedEvent" predecessor_AbstractAction="_hVq8ZtbPEeeA6uet0yIgvw1X" successor_AbstractAction="_PKombNtQEee4ToXBRRujSwX" calledService_ExternalService="_ruh08NZ_Eee7CN4Qm4czKQ" role_ExternalService="_Ta0LFdbPEeeA6uet0yIgvw1X"/>
       <steps_Behaviour xsi:type="seff:InternalAction" id="_PKombNtQEee4ToXBRRujSwX" entityName="TempPerformanceCosts" predecessor_AbstractAction="_hVq8ZtbPEeeA6uet0yIgvw2X" successor_AbstractAction="_yAXOy0iKEeeAK9a9NwDLowX">
         <resourceDemand_Action>
           <specification_ParametericResourceDemand specification="2"/>
@@ -207,7 +205,7 @@
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_5atmgaZiEea90o6iaEaVPw" entityName="ICashDeskDAO">
-    <signatures__OperationInterface id="_K5a5EKZjEea90o6iaEaVPw" entityName="startSaleDAO">
+    <signatures__OperationInterface id="_K5a5EKZjEea90o6iaEaVPw" entityName="startSale">
       <parameters__OperationSignature parameterName="cashDeskName">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
       </parameters__OperationSignature>
@@ -215,7 +213,7 @@
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
       </parameters__OperationSignature>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="_NL55EKZjEea90o6iaEaVPw" entityName="isInExpressModeDAO">
+    <signatures__OperationInterface id="_NL55EKZjEea90o6iaEaVPw" entityName="isInExpressMode">
       <parameters__OperationSignature parameterName="cashDeskName">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
       </parameters__OperationSignature>
@@ -224,7 +222,7 @@
       </parameters__OperationSignature>
       <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="_QNHAQKZjEea90o6iaEaVPw" entityName="getDisplayMessageDAO">
+    <signatures__OperationInterface id="_QNHAQKZjEea90o6iaEaVPw" entityName="getDisplayMessage">
       <parameters__OperationSignature parameterName="cashDeskName">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
       </parameters__OperationSignature>
@@ -233,7 +231,7 @@
       </parameters__OperationSignature>
       <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="_SyK-AKZjEea90o6iaEaVPw" entityName="getPrinterOutputDAO" returnType__OperationSignature="_kRVU4tYgEeWrM-HnT5f_ug">
+    <signatures__OperationInterface id="_SyK-AKZjEea90o6iaEaVPw" entityName="getPrinterOutput" returnType__OperationSignature="_kRVU4tYgEeWrM-HnT5f_ug">
       <parameters__OperationSignature parameterName="cashDeskName">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
       </parameters__OperationSignature>
@@ -241,7 +239,7 @@
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
       </parameters__OperationSignature>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="_fnZkAKZjEea90o6iaEaVPw" entityName="enterCashAmountDAO">
+    <signatures__OperationInterface id="_fnZkAKZjEea90o6iaEaVPw" entityName="enterCashAmount">
       <parameters__OperationSignature parameterName="cashDeskName">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
       </parameters__OperationSignature>
@@ -252,7 +250,7 @@
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.3"/>
       </parameters__OperationSignature>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="_5TIiYKZjEea90o6iaEaVPw" entityName="enterCardInfoDAO">
+    <signatures__OperationInterface id="_5TIiYKZjEea90o6iaEaVPw" entityName="enterCardInfo">
       <parameters__OperationSignature parameterName="cashDeskName">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
       </parameters__OperationSignature>
@@ -266,7 +264,7 @@
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
       </parameters__OperationSignature>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="_6silUKZjEea90o6iaEaVPw" entityName="startCashPaymentDAO">
+    <signatures__OperationInterface id="_6silUKZjEea90o6iaEaVPw" entityName="startCashPayment">
       <parameters__OperationSignature parameterName="cashDeskName">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
       </parameters__OperationSignature>
@@ -274,7 +272,7 @@
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
       </parameters__OperationSignature>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="_88SaYKZjEea90o6iaEaVPw" entityName="startCreditCardPaymentDAO">
+    <signatures__OperationInterface id="_88SaYKZjEea90o6iaEaVPw" entityName="startCreditCardPayment">
       <parameters__OperationSignature parameterName="cashDeskName">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
       </parameters__OperationSignature>
@@ -282,7 +280,7 @@
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
       </parameters__OperationSignature>
     </signatures__OperationInterface>
-    <signatures__OperationInterface id="_-0RPsKZjEea90o6iaEaVPw" entityName="enterBarcodeDAO">
+    <signatures__OperationInterface id="_-0RPsKZjEea90o6iaEaVPw" entityName="enterBarcode">
       <parameters__OperationSignature parameterName="cashDeskName">
         <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
       </parameters__OperationSignature>
@@ -2324,7 +2322,7 @@
       </parameters__OperationSignature>
     </signatures__OperationInterface>
   </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_m8odoF_BEea_gvFl-mCXRQ" entityName="IAuthenticator2">
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_m8odoF_BEea_gvFl-mCXRQ" entityName="IAuthenticator">
     <signatures__OperationInterface id="_m9pEsF_BEea_gvFl-mCXRQ" entityName="checkCredentials">
       <parameters__OperationSignature dataType__Parameter="_m8pEsV_BEea_gvFl-mCXRQ" parameterName="user"/>
       <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
@@ -2459,92 +2457,6 @@
   <interfaces__Repository xsi:type="repository:OperationInterface" id="_oYG2R9aAEee7CN4Qm4czKQ" entityName="SaleRegisteredEvent">
     <signatures__OperationInterface id="_tmNS0NaAEee7CN4Qm4czKQ" entityName="SaleRegisteredEvent">
       <parameters__OperationSignature dataType__Parameter="_Di7XXutQEeWsnI9iaMkITA" parameterName="SaleRegisteredEventDataType"/>
-    </signatures__OperationInterface>
-  </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_YxhRp5cMEei3rPhZHRc1bw" entityName="ILogin"/>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_mNHFt9Z9Eee7CN4Qm4czKQ2" entityName="CashAmountEnteredEventSaleStartedEvent2">
-    <signatures__OperationInterface id="_ooe78NZ9Eee7CN4Qm4czKQ2" entityName="CashAmountEnteredEvent2">
-      <parameters__OperationSignature parameterName="amount">
-        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.3"/>
-      </parameters__OperationSignature>
-    </signatures__OperationInterface>
-    <signatures__OperationInterface id="_rGhrsNZ9Eee7CN4Qm4czKQ2" entityName="SaleStartedEvent2">
-      <parameters__OperationSignature dataType__Parameter="_JrEsoFaZEeeJY7d6iKM31g" parameterName="saleStartedEvent"/>
-    </signatures__OperationInterface>
-  </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_mNHFt9Z9Eee7CN4Qm4czKQ3" entityName="CashAmountEnteredEventSaleStartedEvent3">
-    <signatures__OperationInterface id="_ooe78NZ9Eee7CN4Qm4czKQ3" entityName="CashAmountEnteredEvent3">
-      <parameters__OperationSignature parameterName="amount">
-        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.3"/>
-      </parameters__OperationSignature>
-    </signatures__OperationInterface>
-    <signatures__OperationInterface id="_rGhrsNZ9Eee7CN4Qm4czKQ3" entityName="SaleStartedEvent3">
-      <parameters__OperationSignature dataType__Parameter="_JrEsoFaZEeeJY7d6iKM31g" parameterName="saleStartedEvent"/>
-    </signatures__OperationInterface>
-  </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_fKoUt9ZtEee7CN4Qm4czKQ2" entityName="ChangeAmountCalculatedEvent2">
-    <signatures__OperationInterface id="_iL000NZtEee7CN4Qm4czKQ2" entityName="ChangeAmountCalculatedEvent2">
-      <parameters__OperationSignature parameterName="changeAmount">
-        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.3"/>
-      </parameters__OperationSignature>
-    </signatures__OperationInterface>
-  </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_fKoUt9ZtEee7CN4Qm4czKQ3" entityName="ChangeAmountCalculatedEvent3">
-    <signatures__OperationInterface id="_iL000NZtEee7CN4Qm4czKQ3" entityName="ChangeAmountCalculatedEvent3">
-      <parameters__OperationSignature parameterName="changeAmount">
-        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.3"/>
-      </parameters__OperationSignature>
-    </signatures__OperationInterface>
-  </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_qKZIt9Z_Eee7CN4Qm4czKQ2" entityName="CashBoxClosedEvent2">
-    <signatures__OperationInterface id="_ruh08NZ_Eee7CN4Qm4czKQ2" entityName="CashBoxClosedEvent2">
-      <parameters__OperationSignature dataType__Parameter="_UC6DIFaZEeeJY7d6iKM31g" parameterName="CashBoxClosedEvent"/>
-    </signatures__OperationInterface>
-  </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_LNYYl9ZsEee7CN4Qm4czKQ2" entityName="CreditCardScannedEvent2">
-    <signatures__OperationInterface id="_NnPL4NZsEee7CN4Qm4czKQ2" entityName="CreditCardScannedEvent2">
-      <parameters__OperationSignature parameterName="CreditCardInformation">
-        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
-      </parameters__OperationSignature>
-    </signatures__OperationInterface>
-  </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_NUhmE9Z-Eee7CN4Qm4czKQ2" entityName="SaleFinishedEvent2">
-    <signatures__OperationInterface id="_T5yC0NZ-Eee7CN4Qm4czKQ2" entityName="SaleFinishedEvent2">
-      <parameters__OperationSignature dataType__Parameter="_T87PnVacEeeJY7d6iKM31g" parameterName="saleFinishedEvent"/>
-    </signatures__OperationInterface>
-  </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_gJReh9Z-Eee7CN4Qm4czKQ2" entityName="PaymentModeSelectedEvent2">
-    <signatures__OperationInterface id="_lW_gkNZ-Eee7CN4Qm4czKQ2" entityName="PaymentModeSelectedEvent2">
-      <parameters__OperationSignature dataType__Parameter="_j2DuINYgEeWrM-HnT5f_ug" parameterName="PaymentModeSelectedEventDataType"/>
-    </signatures__OperationInterface>
-  </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_5g9Pl9ZqEee7CN4Qm4czKQ2" entityName="LoginEvent2">
-    <signatures__OperationInterface id="_-gr48NZqEee7CN4Qm4czKQ2" entityName="LoginEvent2">
-      <parameters__OperationSignature dataType__Parameter="_qTt7w2SDEeaYxPjtCxykSQ" parameterName="userRoleStoreID"/>
-    </signatures__OperationInterface>
-  </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_-DSQp9Z9Eee7CN4Qm4czKQ2" entityName="ExpressModeEnableEvent2">
-    <signatures__OperationInterface id="_BtwXQNZ-Eee7CN4Qm4czKQ2" entityName="ExpressModeEnableEvent2">
-      <parameters__OperationSignature parameterName="cashdesk">
-        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
-      </parameters__OperationSignature>
-    </signatures__OperationInterface>
-  </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_-DSQp9Z9Eee7CN4Qm4czKQ3" entityName="ExpressModeEnableEvent3">
-    <signatures__OperationInterface id="_BtwXQNZ-Eee7CN4Qm4czKQ3" entityName="ExpressModeEnableEvent3">
-      <parameters__OperationSignature parameterName="cashdesk">
-        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
-      </parameters__OperationSignature>
-    </signatures__OperationInterface>
-  </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_aExwB9Z_Eee7CN4Qm4czKQ2" entityName="ExpressModeDisabledEvent2">
-    <signatures__OperationInterface id="_cc9vYNZ_Eee7CN4Qm4czKQ2" entityName="ExpressModeDisabledEvent2">
-      <parameters__OperationSignature dataType__Parameter="_Odc2gFaZEeeJY7d6iKM31g" parameterName="ExpressModeDisabledEvent"/>
-    </signatures__OperationInterface>
-  </interfaces__Repository>
-  <interfaces__Repository xsi:type="repository:OperationInterface" id="_aExwB9Z_Eee7CN4Qm4czKQ3" entityName="ExpressModeDisabledEvent3">
-    <signatures__OperationInterface id="_cc9vYNZ_Eee7CN4Qm4czKQ3" entityName="ExpressModeDisabledEvent3">
-      <parameters__OperationSignature dataType__Parameter="_Odc2gFaZEeeJY7d6iKM31g" parameterName="ExpressModeDisabledEvent"/>
     </signatures__OperationInterface>
   </interfaces__Repository>
   <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_m9E7bmUYEead_5QKkcGuDg" entityName="NavigationElement">

@@ -26,6 +26,7 @@ public class AlternativesRegistry {
 	                new BufferedWriter(fileWriter);
 	        bufferedWriter.write("BotName,QA,ResponseType,Value,ArchitecturalAlternative,Level,Generator,Negotiated,Utility");
 	        bufferedWriter.newLine();
+	        bufferedWriter.flush();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

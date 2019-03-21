@@ -16,6 +16,7 @@ import io.github.squat_team.agentsUtils.Proposal;
 import io.github.squat_team.agentsUtils.SillyBot;
 import io.github.squat_team.agentsUtils.transformations.ArchitecturalTransformationsFactory;
 import io.github.squat_team.util.AlternativesRegistry;
+import io.github.squat_team.util.LevelsRegistry;
 import io.github.squat_team.util.TimeMeasurement;
 
 public class SQuATSillyBotsNegotiator {
@@ -63,8 +64,9 @@ public class SQuATSillyBotsNegotiator {
 				TimeMeasurement.getInstace().printFinish("negotiation (with conflict)");
 				return false; 
 			}				
-			else{				
-				System.out.println("Step 3.b: Agent/s who has to concede [#= "+ shouldConcede.size()+"]=> "+ shouldConcede.toString());
+			else{	
+				
+				LevelsRegistry.getInstace().logInformationNewLine("Step 3.b: Agent/s who has to concede [#= "+ shouldConcede.size()+"]=> "+ shouldConcede.toString());
 				boolean atLeastOneNewProposal=false;
 				for (SillyBot concedingAg : shouldConcede){
 					//Make "concedingAg" to concede
@@ -72,7 +74,7 @@ public class SQuATSillyBotsNegotiator {
 			
 					newProposal = concedingAg.makeConcession(sillyBots);//I have to implement this method
 					if(newProposal!=null){
-						System.out.println("Step 3.c: New Proposal made by the agent => "+newProposal.toString());
+						LevelsRegistry.getInstace().logInformationNewLine("Step 3.c: New Proposal made by the agent => "+newProposal.toString());
 						//Update proposals map
 						proposals.put(concedingAg, newProposal);	
 						atLeastOneNewProposal=true;
@@ -88,11 +90,14 @@ public class SQuATSillyBotsNegotiator {
 				if(checkAgreement(proposals)){
 					TimeMeasurement.getInstace().printFinish("negotiation (with agreement)");
 					System.out.println("Agreement: "+agreementProposal);
+					LevelsRegistry.getInstace().logInformationNewLine("Agreement: "+agreementProposal);
 					printCurrentState(agreementProposal);
 					agreetmentsOfLevel.add(agreementProposal);
 					System.out.println("REDO? (Y/N): ");
+					LevelsRegistry.getInstace().logInformationNewLine("REDO? (Y/N): ");
 					Scanner scan = new Scanner(System.in);
 					String answer = scan.next();
+					LevelsRegistry.getInstace().logInformationNewLine(answer);
 					if(!answer.trim().toUpperCase().equals("Y"))
 						redoRequest=false;
 					else
@@ -109,20 +114,21 @@ public class SQuATSillyBotsNegotiator {
 
 
 	private void printAgreement(HashMap<SillyBot, Proposal> proposals) {
-		System.out.println("Agreement achieved!!!!!");
+		LevelsRegistry.getInstace().logInformationNewLine("Agreement achieved!!!!!");
 		System.out.println("Agreement: "+agreementProposal);
+		LevelsRegistry.getInstace().logInformationNewLine("Agreement: "+agreementProposal);
 		printCurrentState(agreementProposal);
 		printNonDominatedAlternatives();
 		printForExcell();
 	}
 
 	private void printForExcell() {
-		System.out.print(agreementProposal.getArchitectureName()+"\t"+sillyBots.get(0).getOrderedProposals().size()+"\t");
+		LevelsRegistry.getInstace().logInformation(agreementProposal.getArchitectureName()+"\t"+sillyBots.get(0).getOrderedProposals().size()+"\t");
 		for (SillyBot sillyBot : sillyBots) {
 			Proposal p=sillyBot.getProposalForArchitecture(agreementProposal.getArchitectureName());
-			System.out.print((sillyBot.getOrderedProposals().indexOf(p)+1)+"\t"+p.getScenarioResponse()+"\t"+sillyBot.getUtilityFor(p)+"\t");	
+			LevelsRegistry.getInstace().logInformation((sillyBot.getOrderedProposals().indexOf(p)+1)+"\t"+p.getScenarioResponse()+"\t"+sillyBot.getUtilityFor(p)+"\t");	
 		}
-		System.out.println();
+		LevelsRegistry.getInstace().logInformationNewLine("");
 	}
 
 	private void printNonDominatedAlternatives() {
@@ -135,10 +141,10 @@ public class SQuATSillyBotsNegotiator {
 				nonDominated.add(proposal);
 		}
 		
-		System.out.println("Non dominated alternatives");
+		LevelsRegistry.getInstace().logInformationNewLine("Non dominated alternatives");
 		for (Iterator<Proposal> iterator = nonDominated.iterator(); iterator.hasNext();) {
 			Proposal proposal = (Proposal) iterator.next();
-			System.out.println(proposal);
+			LevelsRegistry.getInstace().logInformationNewLine(proposal.toString());
 		}
 	}
 	private boolean isDominatedByAtLeastOneProposal(Proposal proposal){
@@ -173,14 +179,15 @@ public class SQuATSillyBotsNegotiator {
 
 	private void createNegotiationResult() {
 		System.out.println("Conflict.");
+		LevelsRegistry.getInstace().logInformationNewLine("Conflict.");
 		printCurrentState(null);
 	}
 
 	private void printCurrentState(Proposal agreementProposal) {
 		for (Iterator<SillyBot> iterator = sillyBots.iterator(); iterator.hasNext();) {
 			SillyBot bot = (SillyBot) iterator.next();
-			System.out.print(bot.toString());
-			System.out.print(" Current proposal "+ bot.getCurrentProposal() + " ("+(bot.getCurrentConcessionIndex()+1)+") ");
+			LevelsRegistry.getInstace().logInformation(bot.toString());
+			LevelsRegistry.getInstace().logInformation(" Current proposal "+ bot.getCurrentProposal() + " ("+(bot.getCurrentConcessionIndex()+1)+") ");
 			String acceptedProposals=" AcceptedProposals: ";
 			List<SillyBot> otherAgents = new ArrayList<>(sillyBots); 
 			otherAgents.remove(bot);
@@ -189,10 +196,10 @@ public class SQuATSillyBotsNegotiator {
 				if(bot.acceptableUtilityValue(bot2.getCurrentProposal()))
 					acceptedProposals=acceptedProposals+bot2.toString()+" ";
 			}
-			System.out.println(acceptedProposals);
+			LevelsRegistry.getInstace().logInformationNewLine(acceptedProposals);
 			if(agreementProposal!=null){
-				System.out.println("Index of agreement proposal: "+bot.getIndexForArchitecture(agreementProposal.getArchitectureName()));
-				System.out.println("Utility function for bot: "+ bot.getUtilityFor(agreementProposal.getArchitectureName()));
+				LevelsRegistry.getInstace().logInformationNewLine("Index of agreement proposal: "+bot.getIndexForArchitecture(agreementProposal.getArchitectureName()));
+				LevelsRegistry.getInstace().logInformationNewLine("Utility function for bot: "+ bot.getUtilityFor(agreementProposal.getArchitectureName()));
 			}
 		}
 	}
@@ -302,6 +309,7 @@ public class SQuATSillyBotsNegotiator {
 		sillyBots=null;
 		HashMap<SillyBot, Proposal> ret= new HashMap<>();
 		System.out.println("Level of transformations: "+ currentLevelOfTransformations);
+		LevelsRegistry.getInstace().logInformationNewLine("Level of transformations: "+ currentLevelOfTransformations);
 		List<ArchitecturalVersion> versionsUntilLevel=archTransFactory.getArchitecturalTransformationsUntilLevel(currentLevelOfTransformations);
 		List<ArchitecturalVersion> versionsForLevel=archTransFactory.transformationsForLevel(currentLevelOfTransformations);
 		if(versionsForLevel.size()==0){
@@ -311,11 +319,11 @@ public class SQuATSillyBotsNegotiator {
 			
 			//Each agent has to make a ranking with the alternatives and select the best for its scenario 
 			sillyBots=new LoadHelper().loadBotsForArchitecturalAlternatives(versionsUntilLevel,archTransFactory.getInitialArchitecture(),currentLevelOfTransformations);
-			System.out.println("Total proposals: "+sillyBots.get(0).getOrderedProposals().size());
+			LevelsRegistry.getInstace().logInformationNewLine("Total proposals: "+sillyBots.get(0).getOrderedProposals().size());
 			for (Iterator<SillyBot> iterator = sillyBots.iterator(); iterator.hasNext();) {
 				SillyBot bot = (SillyBot) iterator.next();
 				ret.put(bot, bot.getBestProposal());
-				System.out.println(bot+" "+bot.getBestProposal());
+				LevelsRegistry.getInstace().logInformationNewLine(bot+" "+bot.getBestProposal());
 			}
 		}
 		printTopAlternativesForBot(10);
@@ -326,14 +334,14 @@ public class SQuATSillyBotsNegotiator {
 			List<Proposal> proposals=sillyBot.getOrderedProposals();
 			for(int i=0; i<topX;i++){
 				Proposal p=proposals.get(i);
-				System.out.print(p.getArchitectureName()+"\t"+p.getScenarioResponse()+"\t"+sillyBot.getUtilityFor(p)+"\t"+(i+1)+"\t");
+				LevelsRegistry.getInstace().logInformation(p.getArchitectureName()+"\t"+p.getScenarioResponse()+"\t"+sillyBot.getUtilityFor(p)+"\t"+(i+1)+"\t");
 				for (SillyBot sillyBot2 : sillyBots) {
 					if(sillyBot!=sillyBot2){
 						Proposal pForBot2=sillyBot2.getProposalForArchitecture(p.getArchitectureName());
-						System.out.print(pForBot2.getScenarioResponse()+"\t"+sillyBot2.getUtilityFor(pForBot2)+"\t"+(sillyBot2.getOrderedProposals().indexOf(pForBot2)+1)+"\t");
+						LevelsRegistry.getInstace().logInformation(pForBot2.getScenarioResponse()+"\t"+sillyBot2.getUtilityFor(pForBot2)+"\t"+(sillyBot2.getOrderedProposals().indexOf(pForBot2)+1)+"\t");
 					}
 				}
-				System.out.println();
+				LevelsRegistry.getInstace().logInformationNewLine("");
 			}
 			
 		}
@@ -379,11 +387,13 @@ public class SQuATSillyBotsNegotiator {
 		return archTransFactory;
 	}
 	public static void main(String[] args) {
+		
 		SQuATSillyBotsNegotiator squat=new SQuATSillyBotsNegotiator();
 		//squat.getArchTransFactory().preLoadModelsFrom("/Users/santiagovidal/Documents/Programacion/kamp-test/squat-tool/models/cocomeWithResourceDemands",1);
 		squat.negotiatiateUntilAnAgreementIsReached();
 		TimeMeasurement.getInstace().closeFile();
 		AlternativesRegistry.getInstace().closeFile();
+		LevelsRegistry.getInstace().closeFile();
 	}
 
 }

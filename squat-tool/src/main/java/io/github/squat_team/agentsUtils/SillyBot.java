@@ -9,6 +9,7 @@ import io.github.squat_team.agentsUtils.concessionStrategies.ConcessionStrategy;
 import io.github.squat_team.agentsUtils.concessionStrategies.DesiresDistance;
 import io.github.squat_team.agentsUtils.concessionStrategies.EgocentricConcession;
 import io.github.squat_team.agentsUtils.concessionStrategies.NashConcession;
+import io.github.squat_team.util.LevelsRegistry;
 
 public abstract class SillyBot {
 	private String name;
@@ -133,7 +134,7 @@ public abstract class SillyBot {
 	protected abstract float getScenarioMeasureFor(Proposal proposal);
 	public void printUtilies(){
 		int differentFromZero=0;
-		System.out.print("Utilities for "+name+" [");
+		LevelsRegistry.getInstace().logInformationNewLine("Utilities for "+name+" [");
 		for (Iterator<Proposal> iterator = orderedProposals.iterator(); iterator.hasNext();) {
 			Proposal proposal = (Proposal) iterator.next();
 			/*if(proposal.getArchitectureName().equals("stplus-ps2-476-mod-split(PaymentSystem)-wrapper(IExporter)")){
@@ -142,13 +143,13 @@ public abstract class SillyBot {
 			}*/
 			float utility=getUtilityFor(proposal);
 			float scenarioResponse=getScenarioMeasureFor(proposal);
-			System.out.print("U: "+utility+"R: "+scenarioResponse+"M: "+proposal.getArchitectureName()+" ");
+			LevelsRegistry.getInstace().logInformationNewLine("U: "+utility+"R: "+scenarioResponse+"M: "+proposal.getArchitectureName()+" ");
 			if(utility>0)
 				differentFromZero++;
 				
 		}
-		System.out.println("]");
-		System.out.println("Different from zero: "+differentFromZero);
+		LevelsRegistry.getInstace().logInformationNewLine("]");
+		LevelsRegistry.getInstace().logInformationNewLine("Different from zero: "+differentFromZero);
 	}
 	/**it removes the proposals that are not contained in the list
 	 * 

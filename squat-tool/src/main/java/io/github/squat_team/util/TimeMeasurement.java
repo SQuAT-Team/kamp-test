@@ -30,9 +30,9 @@ public class TimeMeasurement {
 		start = Instant.now();
 		try {
 			String messageToLog="Starting "+message + " at "+start;
-			System.out.println(messageToLog);
 			bufferedWriter.write(messageToLog);
 			bufferedWriter.newLine();
+			bufferedWriter.flush();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
