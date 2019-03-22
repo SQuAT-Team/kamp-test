@@ -36,9 +36,9 @@ public class AlternativesRegistry {
 	private void printAlternative(SillyBot bot, Proposal proposal,boolean agreement){
 		
 		try {
-			String messageToLog=bot.getName()+","+bot.getKind()+","+bot.getResponseType()
-			+","+proposal.getScenarioResponse()+","+proposal.getArchitectureName()+","+proposal.getLevel()
-			+","+proposal.getLastModifiedBy()+","+agreement+","+bot.getUtilityFor(proposal);
+			String messageToLog=bot.getName()+";"+bot.getKind()+";"+bot.getResponseType()
+			+";"+proposal.getScenarioResponse()+";"+removePrefix(proposal.getArchitectureName())+";"+proposal.getLevel()
+			+";"+proposal.getLastModifiedBy()+";"+agreement+";"+bot.getUtilityFor(proposal);
 			//System.out.println(messageToLog);
 			bufferedWriter.write(messageToLog);
 			bufferedWriter.newLine();
@@ -49,6 +49,10 @@ public class AlternativesRegistry {
         
 	}
 	
+
+	private String removePrefix(String architectureName) {
+		return architectureName.replace("/Users/santiagovidal/git/kamp-test/squat-tool/models/cocomeWithResourceDemands/", "");
+	}
 
 	public void closeFile(){
 		try {

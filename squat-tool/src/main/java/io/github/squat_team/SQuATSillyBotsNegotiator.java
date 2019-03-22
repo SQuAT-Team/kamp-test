@@ -29,6 +29,7 @@ public class SQuATSillyBotsNegotiator {
 	private int maxNumberOfLevels;
 	private boolean noMoreAlternatives;
 	private boolean filterBestAlternatives;
+	private boolean getAllAgreetments;
 	
 	private List<Proposal> agreetmentsOfLevel;
 	private Set<Proposal> proposalsForNextRound;
@@ -40,6 +41,8 @@ public class SQuATSillyBotsNegotiator {
 		maxNumberOfLevels=5;
 		noMoreAlternatives=false;
 		filterBestAlternatives=true;
+		
+		getAllAgreetments=true;
 	}
 	
 	/**
@@ -93,15 +96,20 @@ public class SQuATSillyBotsNegotiator {
 					LevelsRegistry.getInstace().logInformationNewLine("Agreement: "+agreementProposal);
 					printCurrentState(agreementProposal);
 					agreetmentsOfLevel.add(agreementProposal);
-					System.out.println("REDO? (Y/N): ");
-					LevelsRegistry.getInstace().logInformationNewLine("REDO? (Y/N): ");
-					Scanner scan = new Scanner(System.in);
-					String answer = scan.next();
-					LevelsRegistry.getInstace().logInformationNewLine(answer);
-					if(!answer.trim().toUpperCase().equals("Y"))
-						redoRequest=false;
-					else
+					
+					if(!getAllAgreetments){
+						System.out.println("REDO? (Y/N): ");
+						LevelsRegistry.getInstace().logInformationNewLine("REDO? (Y/N): ");
+						Scanner scan = new Scanner(System.in);
+						String answer = scan.next();
+						LevelsRegistry.getInstace().logInformationNewLine(answer);
+						if(!answer.trim().toUpperCase().equals("Y"))
+							redoRequest=false;
+						else
+							redoRequest=true;
+					}else
 						redoRequest=true;
+					
 					//scan.close();
 				}
 			}
@@ -377,9 +385,12 @@ public class SQuATSillyBotsNegotiator {
 				filerBestKAlternatives(2/*10*/);
 			}
 			currentLevelOfTransformations++;
-			System.out.println("Next level (Y/N): ");
-			Scanner scan = new Scanner(System.in);
-			String answer = scan.next();
+			if(!getAllAgreetments){
+				System.out.println("Next level (Y/N): ");
+				Scanner scan = new Scanner(System.in);
+				String answer = scan.next();
+			}
+			
 		}
 		System.out.println("Finish");
 	}
