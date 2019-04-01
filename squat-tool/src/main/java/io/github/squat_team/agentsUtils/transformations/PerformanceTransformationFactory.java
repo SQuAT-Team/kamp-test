@@ -16,6 +16,7 @@ import io.github.squat_team.model.PCMScenarioResult;
 import io.github.squat_team.performance.AbstractPerformancePCMScenario;
 import io.github.squat_team.performance.peropteryx.ConcurrentPerOpteryxPCMBot;
 import io.github.squat_team.performance.peropteryx.PerOpteryxPCMBot;
+import io.github.squat_team.util.AlternativesRegistry;
 import io.github.squat_team.util.PCMWorkingCopyCreator;
 import io.github.squat_team.util.TimeMeasurement;
 import test.TestConstants;
@@ -66,6 +67,7 @@ public class PerformanceTransformationFactory {
 		AbstractPerformancePCMScenario cocomeScenario4 = PerformanceScenarioHelper.getInstance().createScenario4Cocome();
 		ret.addAll(createAlternativesForScenario(architecture, cocomeScenario4));
 		TimeMeasurement.getInstace().printFinish("generation of perfoamnce architectural alternatives");
+		AlternativesRegistry.getInstace().saveChildrensOfArchitecture(architecturalVersion, ret);
 		return ret;
 	}
 

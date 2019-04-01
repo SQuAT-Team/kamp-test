@@ -17,6 +17,7 @@ import edu.squat.transformations.modifiability.wrapper.WrapperRunner;
 import io.github.squat_team.HenshinResourceSetManager;
 import io.github.squat_team.agentsUtils.PerformanceScenarioHelper;
 import io.github.squat_team.model.PCMArchitectureInstance;
+import io.github.squat_team.util.AlternativesRegistry;
 import io.github.squat_team.util.PCMRepositoryModifier;
 import io.github.squat_team.util.TimeMeasurement;
 
@@ -87,6 +88,7 @@ public class ModifiabilityTransformationsFactory {
 	
 
 		TimeMeasurement.getInstace().printFinish("generation of modifiability architectural alternatives");
+		AlternativesRegistry.getInstace().saveChildrensOfArchitecture(initialArchitecture, ret);
 	
 		return ret;
 	}
