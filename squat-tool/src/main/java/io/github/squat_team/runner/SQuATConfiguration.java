@@ -43,7 +43,7 @@ public class SQuATConfiguration {
 		configuration.setExperiment(new CocomeExperiment());
 
 		configuration.setAskUserForRedo(true);
-		configuration.setSearchAllLevels(false);
+		configuration.setSearchAllLevels(true);
 		configuration.setFilterSpecialCases(true);
 
 		configuration.setModelFileName(DEFAULT_MODEL_FILE_NAME);
