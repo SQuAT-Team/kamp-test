@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 import edu.squat.transformations.ArchitecturalVersion;
+import io.github.squat_team.agentsUtils.SillyBot;
+import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.util.RandomGenerator;
 
 /**
@@ -19,7 +21,7 @@ import io.github.squat_team.util.RandomGenerator;
  * Important: This filter applies down rounding, if one quality attribute
  * appears rarely, this filter can remove all of its candidates.
  */
-public class RandomFilter implements IFilter {
+public class RandomFilter extends AbstractFilter {
 	private int total_maximum;
 
 	/**
@@ -34,12 +36,13 @@ public class RandomFilter implements IFilter {
 	}
 
 	@Override
-	public boolean checkPrecondition(List<ArchitecturalVersion> architecturalAlternatives) {
+	public boolean checkPrecondition(List<ArchitecturalVersion> architecturalAlternatives, Collection<SillyBot> bots) {
 		return architecturalAlternatives.size() > total_maximum;
 	}
 
 	@Override
-	public List<ArchitecturalVersion> filter(List<ArchitecturalVersion> architecturalAlternatives) {
+	public List<ArchitecturalVersion> filter(List<ArchitecturalVersion> architecturalAlternatives,
+			Collection<SillyBot> bots, Collection<SillyBot> allBots, Map<ArchitecturalVersion, PCMArchitectureInstance> candidateCash) {
 		Map<String, List<ArchitecturalVersion>> qualityAttributeAlternatives = sortByQualityAttribute(
 				architecturalAlternatives);
 		int alternativesSize = architecturalAlternatives.size();
@@ -139,17 +142,4 @@ public class RandomFilter implements IFilter {
 		Collections.shuffle(allAlternatives, randoms.generate());
 		return allAlternatives.subList(0, itemsToSelectPerformance);
 	}
-
-	/**
-	 * It removes from the list the alternatives that are not contained in the set
-	 * 
-	 * @param architecturalAlternatives
-	 * @param bestAlternatives
-	 */
-	private void filterList(List<ArchitecturalVersion> architecturalAlternatives,
-			Collection<ArchitecturalVersion> bestAlternatives) {
-		architecturalAlternatives.clear();
-		architecturalAlternatives.addAll(bestAlternatives);
-	}
-
 }
