@@ -125,7 +125,7 @@ public class SQuATController {
 
 			// Each agent has to make a ranking with the alternatives and select the best
 			// for its scenario
-			sillyBots = new LoadHelper(configuration).loadBotsForArchitecturalAlternatives(versionsUntilLevel,
+			sillyBots = new LoadHelper(configuration, archTransFactory).loadBotsForArchitecturalAlternatives(versionsUntilLevel,
 					archTransFactory.getInitialArchitecture());
 			System.out.println("Total proposals: " + sillyBots.get(0).getOrderedProposals().size());
 		}

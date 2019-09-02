@@ -6,7 +6,10 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,19 +19,23 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 import edu.squat.transformations.ArchitecturalVersion;
 import io.github.squat_team.AbstractPCMBot;
-import io.github.squat_team.agentsUtils.ArchitecturalCopyCreator;
 import io.github.squat_team.agentsUtils.Proposal;
 import io.github.squat_team.agentsUtils.SillyBot;
 import io.github.squat_team.algorithm.util.PCMBotMockBuilder;
 import io.github.squat_team.algorithm.util.PCMBotMockBuilderResult;
 import io.github.squat_team.experiments.AbstractExperiment;
 import io.github.squat_team.experiments.IExperiment;
+import io.github.squat_team.experiments.filters.BestCandidatesFilter;
+import io.github.squat_team.experiments.filters.CorruptedCandidatesFilter;
+import io.github.squat_team.experiments.filters.IFilter;
+import io.github.squat_team.experiments.filters.RandomFilter;
 import io.github.squat_team.algorithm.util.ArchitectureBuilder;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMResult;
 import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.negotiation.NegotiatorResult;
 import io.github.squat_team.performance.AbstractPerformancePCMScenario;
+import io.github.squat_team.performance.ArchitecturalCopyCreator;
 import io.github.squat_team.runner.SQuATConfiguration;
 import io.github.squat_team.runner.SQuATController;
 import io.github.squat_team.util.PCMHelper;
@@ -270,8 +277,39 @@ public abstract class AbstractSQuATTest {
 
 	protected void mockExperiment() {
 		IExperiment experiment = mock(AbstractExperiment.class);
+		mockQualityAttributes(experiment);
+		when(experiment.getPreEvaluationFilters()).thenReturn(getPreEvaluationFilters());
+		when(experiment.getQAspecificPostEvaluationFilters()).thenReturn(getQAspecificPostEvaluationFilters());
 		when(experiment.getBots()).thenReturn(bots);
+		when(experiment.getPreEvaluationFilters()).thenReturn(new ArrayList<>());
+		when(experiment.getQAspecificPostEvaluationFilters()).thenReturn(new HashMap<>());
 		when(configuration.getExperiment()).thenReturn(experiment);
 	}
 
+	private List<IFilter> getPreEvaluationFilters() {
+		List<IFilter> filters = new ArrayList<>();
+		filters.add(new RandomFilter(400));
+		return filters;
+	}
+	
+	private void mockQualityAttributes(IExperiment experiment) {
+		List<String> qualityAttributes = new ArrayList<>();
+		qualityAttributes.add(AbstractPCMBot.QA_MODIFIABILITY);
+		qualityAttributes.add(AbstractPCMBot.QA_PERFORMANCE);
+		when(experiment.getOrderedQualityAttributes()).thenReturn(qualityAttributes);
+	}
+	
+	private Map<String, List<IFilter>> getQAspecificPostEvaluationFilters() {
+		Map<String, List<IFilter>> filters = new LinkedHashMap<>();
+		List<IFilter> modifiabilityFilters = new ArrayList<>();
+		modifiabilityFilters.add(new BestCandidatesFilter(50));
+		filters.put(AbstractPCMBot.QA_MODIFIABILITY, modifiabilityFilters);
+
+		List<IFilter> performanceFilters = new ArrayList<>();
+		performanceFilters.add(new CorruptedCandidatesFilter(Float.MAX_VALUE));
+		filters.put(AbstractPCMBot.QA_PERFORMANCE, performanceFilters);
+
+		return filters;
+	}
+	
 }

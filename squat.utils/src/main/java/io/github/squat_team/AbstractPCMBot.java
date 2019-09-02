@@ -4,9 +4,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import edu.squat.transformations.ArchitecturalVersion;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.model.PCMScenarioResult;
+import io.github.squat_team.util.PCMHelper;
 
 public abstract class AbstractPCMBot {
 	public static final String QA_PERFORMANCE = "performance";
@@ -53,9 +55,40 @@ public abstract class AbstractPCMBot {
 		return allQualityAttributes;
 	}
 
+	/**
+	 * Analyzes a {@link PCMArchitectureInstance} and computes a scenario response,
+	 * which describes the degree to which the architecture satisfies the bot's
+	 * {@link PCMScenario}.
+	 * 
+	 * @param currentArchitecture
+	 *            the architecture to analyze.
+	 * @return a response that contains a scenario response value.
+	 */
 	public abstract PCMScenarioResult analyze(PCMArchitectureInstance currentArchitecture);
 
+	/**
+	 * Applies (architectural) tactics and transforms the provided architecture in
+	 * order to create alternatives. A bot that {@link #hasUniqueTactics()}, does
+	 * usually create other alternatives than another bot with the same
+	 * {@link #getQualityAttribute()}.
+	 * 
+	 * @param currentArchitecture
+	 *            the architecture to transform.
+	 * @return A result that contains the (analyzed!) alternatives.
+	 */
 	public abstract List<PCMScenarioResult> searchForAlternatives(PCMArchitectureInstance currentArchitecture);
+
+	/**
+	 * Uses the bot specific method to transform a {@link PCMArchitectureInstance}
+	 * into an {@link ArchitecturalVersion}. The bot knows the exact format of its
+	 * created architectures, so it should also know the way to transform them.
+	 * 
+	 * @param candidate the candidate to transform
+	 * @return the transformed candidate
+	 */
+	public ArchitecturalVersion transformCandidate(PCMArchitectureInstance candidate) {
+		return PCMHelper.createArchitecture(candidate);
+	}
 
 	public PCMScenario getScenario() {
 		return scenario;
@@ -67,6 +100,10 @@ public abstract class AbstractPCMBot {
 
 	public String getQualityAttribute() {
 		return qualityAttribute;
+	}
+
+	public boolean hasUniqueTactics() {
+		return uniqueTactics;
 	}
 
 }

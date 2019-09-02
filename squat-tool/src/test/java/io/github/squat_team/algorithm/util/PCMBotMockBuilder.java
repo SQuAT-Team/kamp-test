@@ -4,10 +4,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
+
+import edu.squat.transformations.ArchitecturalVersion;
 import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMResult;
 import io.github.squat_team.model.PCMScenarioResult;
+import io.github.squat_team.performance.ArchitecturalCopyCreator;
+import io.github.squat_team.util.PCMHelper;
 
 import static org.mockito.Mockito.*;
 
@@ -93,6 +99,12 @@ public class PCMBotMockBuilder {
 		when(bot.getScenario()).thenReturn(properties.getScenario());
 		when(bot.getName()).thenReturn(properties.getName());
 		when(bot.getQualityAttribute()).thenReturn(properties.getQualityAttribute());
+		when(bot.hasUniqueTactics()).thenReturn(properties.hasUniqueTactics());
+		if (properties.getQualityAttribute().equals(AbstractPCMBot.QA_PERFORMANCE)) {
+			when(bot.transformCandidate(any())).thenAnswer(new PerformanceTransformation());
+		} else {
+			when(bot.transformCandidate(any())).thenAnswer(new DefaultTransformation());
+		}
 		return bot;
 	}
 
@@ -176,6 +188,35 @@ public class PCMBotMockBuilder {
 
 	public void setAnalysisResponses(List<PCMArchitectureInstance> results, Comparable[] responses) throws Exception {
 		setAnalysisResponses(results, Arrays.asList(responses));
+	}
+
+	/**
+	 * A (mocked) {@link Answer} for a performance bot's
+	 * {@link AbstrPerformanceTransformationactPCMBot#transformCandidate(PCMArchitectureInstance)}
+	 * that uses the {@link ArchitecturalCopyCreator}.
+	 */
+	private class PerformanceTransformation implements Answer<ArchitecturalVersion> {
+
+		@Override
+		public ArchitecturalVersion answer(InvocationOnMock arg0) throws Throwable {
+			PCMArchitectureInstance architecture = (PCMArchitectureInstance) arg0.getArgument(0);
+			return ArchitecturalCopyCreator.getInstance().copy(architecture, mockedBot);
+		}
+	}
+
+	/**
+	 * A (mocked) {@link Answer} for a bot's
+	 * {@link AbstrPerformanceTransformationactPCMBot#transformCandidate(PCMArchitectureInstance)}
+	 * that uses the {@link PCMHelper}.
+	 */
+	private class DefaultTransformation implements Answer<ArchitecturalVersion> {
+
+		@Override
+		public ArchitecturalVersion answer(InvocationOnMock arg0) throws Throwable {
+			PCMArchitectureInstance architecture = (PCMArchitectureInstance) arg0.getArgument(0);
+			return PCMHelper.createArchitecture(architecture);
+		}
+
 	}
 
 }

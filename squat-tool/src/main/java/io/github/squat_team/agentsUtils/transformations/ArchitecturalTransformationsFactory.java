@@ -3,9 +3,11 @@ package io.github.squat_team.agentsUtils.transformations;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import edu.squat.transformations.ArchitecturalVersion;
@@ -21,18 +23,25 @@ public class ArchitecturalTransformationsFactory {
 	/** List of scenarios */
 	private Hashtable<Integer, List<ArchitecturalVersion>> architecturesByLevel;
 
-	// TODO Remove
-	private ModifiabilityTransformationsFactory modifiabilityTrans;
-	private PerformanceTransformationFactory performanceTrans;
+	private Map<String, QualityAttributeTransformationFactory> transformationFactories = new HashMap<>();
+
+	private List<String> qualityAttributes;
 
 	public ArchitecturalTransformationsFactory(SQuATConfiguration configuration,
 			ArchitecturalVersion initialArchitecture) {
 		this.initialArchitecture = initialArchitecture;
 		this.architecturesByLevel = new Hashtable<>();
+		this.qualityAttributes = configuration.getExperiment().getOrderedQualityAttributes();
 
-		// TODO Remove
-		this.modifiabilityTrans = ModifiabilityTransformationsFactory.getInstance(configuration);
-		this.performanceTrans = PerformanceTransformationFactory.getInstance(configuration);
+		for (String qualityAttribute : configuration.getExperiment().getOrderedQualityAttributes()) {
+			transformationFactories.put(qualityAttribute,
+					new QualityAttributeTransformationFactory(configuration, qualityAttribute));
+		}
+	}
+
+	public QualityAttributeTransformationFactory findTransformationFactory(AbstractPCMBot bot) {
+		String qualityAttribute = bot.getQualityAttribute();
+		return transformationFactories.get(qualityAttribute);
 	}
 
 	public List<ArchitecturalVersion> getArchitecturalTransformationsUntilLevel(int level) {
@@ -65,10 +74,11 @@ public class ArchitecturalTransformationsFactory {
 		architecturesByLevel.put(level, transformationForLevel);
 		if (level == 1) {
 			// Applied transformations to initial architecture and save it on the hashtable
-			transformationForLevel
-					.addAll(generateArchitecturalVersionsUsingModifiabilityTransformations(initialArchitecture));
-			transformationForLevel
-					.addAll(generateArchitecturalVersionsUsingPerformanceTransformations(initialArchitecture));
+			for (String qualityAttribute : qualityAttributes) {
+				QualityAttributeTransformationFactory factory = transformationFactories.get(qualityAttribute);
+				transformationForLevel
+						.addAll(factory.generateArchitecturalVersionsUsingTransformations(initialArchitecture));
+			}
 		} else {
 			List<ArchitecturalVersion> architecturesPreviousLevel = architecturesByLevel.get(level - 1);
 			int i = 0;
@@ -78,12 +88,12 @@ public class ArchitecturalTransformationsFactory {
 				i++;
 				// if the architecture was modified last time by performance now is going to be
 				// modified for modifiability.
-				if (architecturalVersion.wasLastModifiedBy(AbstractPCMBot.QA_MODIFIABILITY)) {
-					transformationForLevel
-							.addAll(generateArchitecturalVersionsUsingPerformanceTransformations(architecturalVersion));
-				} else {
-					transformationForLevel.addAll(
-							generateArchitecturalVersionsUsingModifiabilityTransformations(architecturalVersion));
+				for (Map.Entry<String, QualityAttributeTransformationFactory> qualityAttributeAndFactory : transformationFactories
+						.entrySet()) {
+					if (!architecturalVersion.wasLastModifiedBy(qualityAttributeAndFactory.getKey())) {
+						transformationForLevel.addAll(qualityAttributeAndFactory.getValue()
+								.generateArchitecturalVersionsUsingTransformations(architecturalVersion));
+					}
 				}
 			}
 		}
@@ -111,17 +121,6 @@ public class ArchitecturalTransformationsFactory {
 			}
 		}
 		return null;
-	}
-
-	private List<ArchitecturalVersion> generateArchitecturalVersionsUsingModifiabilityTransformations(
-			ArchitecturalVersion architecturalVersion) {
-		// System.out.println("The architectural version is: "+architecturalVersion);
-		return modifiabilityTrans.runModifiabilityTransformationsInAModel(architecturalVersion);
-	}
-
-	private List<ArchitecturalVersion> generateArchitecturalVersionsUsingPerformanceTransformations(
-			ArchitecturalVersion architecturalVersion) {
-		return performanceTrans.generateArchitecturalVersionsUsingPerformanceTransformations(architecturalVersion);
 	}
 
 	public List<ArchitecturalVersion> transformationsForLevel(int level) {

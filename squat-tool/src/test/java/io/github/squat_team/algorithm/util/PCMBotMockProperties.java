@@ -19,10 +19,11 @@ public class PCMBotMockProperties {
 
 	private String name;
 	private String qualityAttribute;
-
+	
 	private OptimizationType optimizationType;
 
 	private boolean returnArchitectures;
+	private boolean hasUniqueTactics;
 
 	private PCMScenario scenario = mock(PCMScenario.class);
 	private PCMResult result = new PCMResult(ResponseMeasureType.DECIMAL);
@@ -34,6 +35,7 @@ public class PCMBotMockProperties {
 		performanceBotProperties.setOptimizationType(OptimizationType.MINIMIZATION);
 		performanceBotProperties.setResponseMeasureType(ResponseMeasureType.DECIMAL);
 		performanceBotProperties.setReturnArchitectures(true);
+		performanceBotProperties.setHasUniqueTactics(true);
 		return performanceBotProperties;
 	}
 
@@ -45,6 +47,7 @@ public class PCMBotMockProperties {
 		modifiabilityBotProperties.setOptimizationType(OptimizationType.MINIMIZATION);
 		modifiabilityBotProperties.setResponseMeasureType(ResponseMeasureType.DECIMAL);
 		modifiabilityBotProperties.setReturnArchitectures(true);
+		modifiabilityBotProperties.setHasUniqueTactics(false);
 		return modifiabilityBotProperties;
 	}
 
@@ -101,5 +104,13 @@ public class PCMBotMockProperties {
 
 	public String getQualityAttribute() {
 		return qualityAttribute;
+	}
+
+	public boolean hasUniqueTactics() {
+		return hasUniqueTactics;
+	}
+
+	public void setHasUniqueTactics(boolean hasUniqueTactics) {
+		this.hasUniqueTactics = hasUniqueTactics;
 	}
 }

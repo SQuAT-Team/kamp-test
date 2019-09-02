@@ -6,8 +6,8 @@ import java.util.Map;
 import org.powermock.api.mockito.PowerMockito;
 
 import edu.squat.transformations.ArchitecturalVersion;
-import io.github.squat_team.agentsUtils.ArchitecturalCopyCreator;
 import io.github.squat_team.model.PCMArchitectureInstance;
+import io.github.squat_team.performance.ArchitecturalCopyCreator;
 import io.github.squat_team.util.PCMHelper;
 
 import static org.mockito.Mockito.*;

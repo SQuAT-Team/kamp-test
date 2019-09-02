@@ -12,12 +12,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import io.github.squat_team.AbstractPCMBot;
-import io.github.squat_team.agentsUtils.ArchitecturalCopyCreator;
 import io.github.squat_team.model.OptimizationType;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.model.PCMScenarioResult;
 import io.github.squat_team.model.ResponseMeasureType;
+import io.github.squat_team.performance.ArchitecturalCopyCreator;
 import io.github.squat_team.util.PCMHelper;
 
 /**
