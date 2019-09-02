@@ -1,9 +1,13 @@
 package io.github.squat_team.experiments;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import io.github.squat_team.AbstractPCMBot;
+import io.github.squat_team.experiments.filters.BestCandidatesFilter;
+import io.github.squat_team.experiments.filters.CorruptedCandidatesFilter;
 import io.github.squat_team.experiments.filters.IFilter;
 import io.github.squat_team.experiments.filters.RandomFilter;
 import io.github.squat_team.model.PCMScenario;
@@ -15,35 +19,46 @@ import io.github.squat_team.performance.peropteryx.configuration.ConfigurationIm
 import io.github.squat_team.performance.peropteryx.configuration.DesigndecisionConfigImproved;
 import test.TestConstants;
 
+/**
+ * These are the default settings for the CoCoME project.
+ */
 public class CocomeExperiment extends AbstractExperiment {
 	private static final CocomePerformanceScenarioHelper performanceScenarios = new CocomePerformanceScenarioHelper();
 	private static final CocomeModifiabilityScenarioHelper modifiabilityScenarios = new CocomeModifiabilityScenarioHelper();
 
-	private Float responseTimeM1 = 2270f;
-	private Float responseTimeM2 = 750f;
-	private Float responseTimeM3 = 170f;
-	private Float responseTimeM4 = 2180f;
-	private Float responseTimeP1 = 1.4f;
-	private Float responseTimeP2 = 1.6f;
-	private Float responseTimeP3 = 1.3f;
-	private Float responseTimeP4 = 2.8f;
+	private static final Float responseTimeM1 = 2270f;
+	private static final Float responseTimeM2 = 750f;
+	private static final Float responseTimeM3 = 170f;
+	private static final Float responseTimeM4 = 2180f;
+	private static final Float responseTimeP1 = 1.4f;
+	private static final Float responseTimeP2 = 1.6f;
+	private static final Float responseTimeP3 = 1.3f;
+	private static final Float responseTimeP4 = 2.8f;
 
-	private String botNameM1 = "modifiabilityBot1";
-	private String botNameM2 = "modifiabilityBot2";
-	private String botNameM3 = "modifiabilityBot3";
-	private String botNameM4 = "modifiabilityBot4";
-	private String botNameP1 = "perfomanceBot1";
-	private String botNameP2 = "perfomanceBot2";
-	private String botNameP3 = "perfomanceBot3";
-	private String botNameP4 = "perfomanceBot4";
+	private static final String botNameM1 = "modifiabilityBot1";
+	private static final String botNameM2 = "modifiabilityBot2";
+	private static final String botNameM3 = "modifiabilityBot3";
+	private static final String botNameM4 = "modifiabilityBot4";
+	private static final String botNameP1 = "perfomanceBot1";
+	private static final String botNameP2 = "perfomanceBot2";
+	private static final String botNameP3 = "perfomanceBot3";
+	private static final String botNameP4 = "perfomanceBot4";
 
-	private int randomFilterTotalMaximum = 400;
-	
+	private static final int randomFilterTotalMaximum = 400;
+	private static final int maximum_alternatives = 50;
+
+	private List<AbstractPCMBot> bots;
+	private List<String> orderedQualityAttributes;
+	private List<IFilter> preEvaluationFilters;
+	private Map<String, List<IFilter>> qaSpecificFilters;
+
 	@Override
 	public List<AbstractPCMBot> getBots() {
-		List<AbstractPCMBot> bots = new ArrayList<>();
-		bots.addAll(getModifiabilityBots());
-		bots.addAll(getPerformanceBots());
+		if (bots == null) {
+			bots = new ArrayList<>();
+			bots.addAll(getModifiabilityBots());
+			bots.addAll(getPerformanceBots());
+		}
 		return bots;
 	}
 
@@ -83,7 +98,7 @@ public class CocomeExperiment extends AbstractExperiment {
 		return bot;
 	}
 
-	public AbstractPCMBot createPerformanceBot(String name, PCMScenario scenario) {
+	private AbstractPCMBot createPerformanceBot(String name, PCMScenario scenario) {
 		ConfigurationImprovedImproved configuration = createPerformanceConfiguration();
 		ConcurrentPerOpteryxPCMBot bot = new ConcurrentPerOpteryxPCMBot(name, scenario, configuration);
 		bot.setDebugMode(false);
@@ -122,8 +137,36 @@ public class CocomeExperiment extends AbstractExperiment {
 
 	@Override
 	public List<IFilter> getPreEvaluationFilters() {
-		List<IFilter> filters = new ArrayList<>();
-		filters.add(new RandomFilter(randomFilterTotalMaximum));
-		return filters;
+		if (preEvaluationFilters == null) {
+			preEvaluationFilters = new ArrayList<>();
+			preEvaluationFilters.add(new RandomFilter(randomFilterTotalMaximum));
+		}
+		return preEvaluationFilters;
 	}
+
+	@Override
+	public Map<String, List<IFilter>> getQAspecificPostEvaluationFilters() {
+		if (qaSpecificFilters == null) {
+			qaSpecificFilters = new LinkedHashMap<>();
+			List<IFilter> modifiabilityFilters = new ArrayList<>();
+			modifiabilityFilters.add(new BestCandidatesFilter(maximum_alternatives));
+			qaSpecificFilters.put(AbstractPCMBot.QA_MODIFIABILITY, modifiabilityFilters);
+
+			List<IFilter> performanceFilters = new ArrayList<>();
+			performanceFilters.add(new CorruptedCandidatesFilter(Float.MAX_VALUE));
+			qaSpecificFilters.put(AbstractPCMBot.QA_PERFORMANCE, performanceFilters);
+		}
+		return qaSpecificFilters;
+	}
+
+	@Override
+	public List<String> getOrderedQualityAttributes() {
+		if (orderedQualityAttributes == null) {
+			orderedQualityAttributes = new ArrayList<>();
+			orderedQualityAttributes.add(AbstractPCMBot.QA_MODIFIABILITY);
+			orderedQualityAttributes.add(AbstractPCMBot.QA_PERFORMANCE);
+		}
+		return orderedQualityAttributes;
+	}
+
 }
