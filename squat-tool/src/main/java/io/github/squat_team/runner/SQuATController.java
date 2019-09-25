@@ -24,6 +24,9 @@ public class SQuATController {
 	private ArchitecturalTransformationsFactory archTransFactory;
 	private boolean noMoreAlternatives;
 
+	private List<Proposal> agreementsOfLevel;
+	private Set<Proposal> proposalsForNextRound;
+	
 	public SQuATController(SQuATConfiguration configuration) {
 		this.configuration = configuration;
 		this.exporter.register(configuration.getExporters());
@@ -91,7 +94,7 @@ public class SQuATController {
 	}
 
 	private void filterBestKAlternatives(int k) {
-		Set<Proposal> proposalsForNextRound = new HashSet<>();
+		proposalsForNextRound = new HashSet<>();
 
 		// Each agent has to make a ranking with the alternatives and select the best K
 		// for its scenario
@@ -126,7 +129,7 @@ public class SQuATController {
 			// Each agent has to make a ranking with the alternatives and select the best
 			// for its scenario
 			sillyBots = new LoadHelper(configuration, archTransFactory).loadBotsForArchitecturalAlternatives(versionsUntilLevel,
-					archTransFactory.getInitialArchitecture());
+					archTransFactory.getInitialArchitecture(), currentLevelOfTransformations);
 			System.out.println("Total proposals: " + sillyBots.get(0).getOrderedProposals().size());
 		}
 		printTopAlternativesForBot(10, sillyBots);

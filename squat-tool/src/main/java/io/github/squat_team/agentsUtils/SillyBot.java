@@ -7,10 +7,12 @@ import java.util.List;
 import edu.squat.transformations.ArchitecturalVersion;
 import io.github.squat_team.agentsUtils.concessionStrategies.ConcessionStrategy;
 import io.github.squat_team.agentsUtils.concessionStrategies.IConcessionStrategyFactory;
+import io.github.squat_team.util.LevelsRegistry;
 
 public class SillyBot {
 	private String name;
 	private String qualityAttribute;
+	private String responseType;
 
 	protected List<Proposal> orderedProposals;
 	private ConcessionStrategy concessionStrategy;
@@ -18,12 +20,13 @@ public class SillyBot {
 	private float scenarioThreshold;
 	private boolean filterSpecialCases;
 
-	public SillyBot(String name, String qualityAttribute, float scenarioThreshold, IConcessionStrategyFactory concessionStrategyFactory,
-			boolean filterSpecialCases) {
+	public SillyBot(String name, String qualityAttribute, String responseType, float scenarioThreshold,
+			IConcessionStrategyFactory concessionStrategyFactory, boolean filterSpecialCases) {
 		this.orderedProposals = new ArrayList<Proposal>();
 		this.concessionStrategy = concessionStrategyFactory.getConcessionStrategy(this);
 		this.name = name;
 		this.qualityAttribute = qualityAttribute;
+		this.responseType = responseType;
 		this.scenarioThreshold = scenarioThreshold;
 		this.acceptableLoss = 0.30f;
 		this.filterSpecialCases = filterSpecialCases;
@@ -140,19 +143,19 @@ public class SillyBot {
 
 	public void printUtilies() {
 		int differentFromZero = 0;
-		System.out.print("Utilities for " + name + " [");
-		for (Iterator<Proposal> iterator = orderedProposals.iterator(); iterator.hasNext();) {
-			Proposal proposal = (Proposal) iterator.next();
+		LevelsRegistry.getInstace().logInformationNewLine("Utilities for " + name + " [");
 
+		for (Proposal proposal : orderedProposals) {
 			float utility = getUtilityFor(proposal);
 			float scenarioResponse = getScenarioMeasureFor(proposal);
-			System.out.print("U: " + utility + "R: " + scenarioResponse + "M: " + proposal.getArchitectureName() + " ");
-			if (utility > 0)
+			LevelsRegistry.getInstace().logInformationNewLine(
+					"U: " + utility + "R: " + scenarioResponse + "M: " + proposal.getArchitectureName() + " ");
+			if (utility > 0) {
 				differentFromZero++;
-
+			}
 		}
-		System.out.println("]");
-		System.out.println("Different from zero: " + differentFromZero);
+		LevelsRegistry.getInstace().logInformationNewLine("]");
+		LevelsRegistry.getInstace().logInformationNewLine("Different from zero: " + differentFromZero);
 	}
 
 	/**
@@ -172,8 +175,20 @@ public class SillyBot {
 			this.insertInOrder(proposal);
 		}
 	}
-	
+
 	public String getQualityAttribute() {
 		return qualityAttribute;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getKind() {
+		return qualityAttribute;
+	}
+
+	public String getResponseType() {
+		return responseType;
 	}
 }

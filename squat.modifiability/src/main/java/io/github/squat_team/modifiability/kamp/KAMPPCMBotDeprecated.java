@@ -66,7 +66,7 @@ public class KAMPPCMBotDeprecated extends AbstractPCMBot {
 	private String evaluationType = TYPE_COMPLEXITY;
 
 	public KAMPPCMBotDeprecated(String name, PCMScenario scenario) {
-		super(name, scenario, KAMPPCMBot.QA_MODIFIABILITY, false);
+		super(name, scenario, KAMPPCMBot.QA_MODIFIABILITY, "Complexity", false);
 	}
 
 	public String getEvaluationType() {

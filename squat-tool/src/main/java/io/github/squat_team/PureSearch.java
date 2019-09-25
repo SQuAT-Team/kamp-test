@@ -57,8 +57,8 @@ public class PureSearch {
 			System.out.println("Proposals for level");
 
 			sillyBots = new LoadHelper(configuration, archTransFactory).loadBotsForArchitecturalAlternatives(versionsUntilLevel,
-					archTransFactory.getInitialArchitecture());
-			System.out.println("Total proposals: " + sillyBots.get(0).getOrderedProposals().size());
+					archTransFactory.getInitialArchitecture(), currentLevelOfTransformations);
+			System.out.println("Total proposals: " + sillyBots.get(0).getOrderedProposals().size());	
 		}
 	}
 

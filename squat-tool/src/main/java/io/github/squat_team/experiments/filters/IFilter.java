@@ -14,7 +14,7 @@ import io.github.squat_team.model.PCMArchitectureInstance;
  * the method is called.
  */
 public interface IFilter {
-
+	
 	/**
 	 * Checks whether filtering should be applied. If false is returned,
 	 * {@link #filter(List)} should not be called!

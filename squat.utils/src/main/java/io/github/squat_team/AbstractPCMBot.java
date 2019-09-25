@@ -22,6 +22,7 @@ public abstract class AbstractPCMBot {
 	protected PCMScenario scenario;
 	protected String qualityAttribute;
 	protected boolean uniqueTactics;
+	protected String responseType;
 
 	/**
 	 * Initializes a new bot.
@@ -38,11 +39,12 @@ public abstract class AbstractPCMBot {
 	 *            all other bots with the same quality atribute. If false, it is
 	 *            sufficient to ask one bot for all new candidates.
 	 */
-	public AbstractPCMBot(String name, PCMScenario scenario, String qualityAttribute, boolean uniqueTactics) {
+	public AbstractPCMBot(String name, PCMScenario scenario, String qualityAttribute, String responseType, boolean uniqueTactics) {
 		super();
 		this.name = name;
 		this.scenario = scenario;
 		this.qualityAttribute = qualityAttribute;
+		this.responseType = responseType;
 		this.uniqueTactics = uniqueTactics;
 		allQualityAttributes.add(qualityAttribute);
 	}
@@ -104,6 +106,10 @@ public abstract class AbstractPCMBot {
 
 	public boolean hasUniqueTactics() {
 		return uniqueTactics;
+	}
+	
+	public String getResponseType() {
+		return responseType;
 	}
 
 }

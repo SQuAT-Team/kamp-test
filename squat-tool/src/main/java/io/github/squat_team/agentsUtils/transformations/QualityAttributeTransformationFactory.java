@@ -11,7 +11,9 @@ import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.model.PCMArchitectureInstance;
 import io.github.squat_team.model.PCMScenarioResult;
 import io.github.squat_team.runner.SQuATConfiguration;
+import io.github.squat_team.util.AlternativesRegistry;
 import io.github.squat_team.util.PCMHelper;
+import io.github.squat_team.util.TimeMeasurement;
 
 public class QualityAttributeTransformationFactory {
 	private volatile Map<AbstractPCMBot, Map<String, Double>> architecturalResponse;
@@ -34,15 +36,22 @@ public class QualityAttributeTransformationFactory {
 	}
 
 	public List<ArchitecturalVersion> generateArchitecturalVersionsUsingTransformations(
-			ArchitecturalVersion architecturalVersion) {
-		System.out.println("Analyzing: " + architecturalVersion.getFileName());
-		PCMArchitectureInstance architecture = PCMHelper.createArchitecture(architecturalVersion);
+			ArchitecturalVersion parentArchitecturalVersion) {
+		TimeMeasurement.getInstace().printStart("generation of " + qualityAttribute + " architectural alternatives");
+		System.out.println("Analyzing: " + parentArchitecturalVersion.getFileName());
+		PCMArchitectureInstance architecture = PCMHelper.createArchitecture(parentArchitecturalVersion);
 
+		List<ArchitecturalVersion> architecturalVersions;
 		if (allBotsHaveSameTactics) {
-			return createArchitecturalVersionsByOneBot(architecture);
+			architecturalVersions = createArchitecturalVersionsByOneBot(architecture);
 		} else {
-			return createArchitecturalVersionsByAllBots(architecture);
+			architecturalVersions = createArchitecturalVersionsByAllBots(architecture);
 		}
+
+		TimeMeasurement.getInstace().printFinish("generation of " + qualityAttribute + " architectural alternatives");
+		AlternativesRegistry.getInstace().saveChildrensOfArchitecture(parentArchitecturalVersion, architecturalVersions);
+		
+		return architecturalVersions;
 	}
 
 	private List<ArchitecturalVersion> createArchitecturalVersionsByAllBots(PCMArchitectureInstance architecture) {
@@ -69,7 +78,7 @@ public class QualityAttributeTransformationFactory {
 		List<PCMScenarioResult> results = bot.searchForAlternatives(architecture);
 
 		for (PCMScenarioResult result : results) {
-			PCMArchitectureInstance archInstance = result.getResultingArchitecture();			
+			PCMArchitectureInstance archInstance = result.getResultingArchitecture();
 			ArchitecturalVersion newAlternative = bot.transformCandidate(archInstance);
 
 			Comparable response = result.getResult().getResponse();
@@ -81,7 +90,7 @@ public class QualityAttributeTransformationFactory {
 			} else {
 				throw new RuntimeException("");
 			}
-						
+
 			architecturalResponse.get(bot).put(
 					newAlternative.getAbsolutePath() + "/" + newAlternative.getRepositoryFilename(), doubleResponse);
 			ret.add(newAlternative);

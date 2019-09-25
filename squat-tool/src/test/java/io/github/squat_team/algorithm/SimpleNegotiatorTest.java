@@ -293,12 +293,13 @@ public class SimpleNegotiatorTest {
 	}
 
 	private void initializeTwoBots() {
-		initializeBot("performance1", AbstractPCMBot.QA_PERFORMANCE, BOT1_SCENARIO_THRESHOLD);
-		initializeBot("modifiability1", AbstractPCMBot.QA_MODIFIABILITY, BOT2_SCENARIO_THRESHOLD);
+		initializeBot("performance1", AbstractPCMBot.QA_PERFORMANCE, "latency", BOT1_SCENARIO_THRESHOLD);
+		initializeBot("modifiability1", AbstractPCMBot.QA_MODIFIABILITY, "complexity", BOT2_SCENARIO_THRESHOLD);
 	}
 
-	private void initializeBot(String name, String qualityAttribute, float scenarioThreshold) {
-		SillyBot bot = new SillyBotImplementation(name, qualityAttribute, scenarioThreshold, new DesiredDistanceFactory());
+	private void initializeBot(String name, String qualityAttribute, String responseType, float scenarioThreshold) {
+		SillyBot bot = new SillyBotImplementation(name, qualityAttribute, responseType, scenarioThreshold,
+				new DesiredDistanceFactory());
 		bots.add(bot);
 	}
 
@@ -317,9 +318,9 @@ public class SimpleNegotiatorTest {
 	 */
 	public class SillyBotImplementation extends SillyBot {
 
-		public SillyBotImplementation(String name, String qualityAttribute, float scenarioThreshold,
-				IConcessionStrategyFactory concessionStrategyFactory) {
-			super(name, qualityAttribute, scenarioThreshold, concessionStrategyFactory, false);
+		public SillyBotImplementation(String name, String qualityAttribute, String responseType,
+				float scenarioThreshold, IConcessionStrategyFactory concessionStrategyFactory) {
+			super(name, qualityAttribute, responseType, scenarioThreshold, concessionStrategyFactory, false);
 		}
 
 		@Override
@@ -341,7 +342,7 @@ public class SimpleNegotiatorTest {
 	public class ProposalImplementation extends Proposal {
 
 		public ProposalImplementation(String pcmArchitecture, float scenarioResponse) {
-			super(pcmArchitecture, scenarioResponse);
+			super(pcmArchitecture, scenarioResponse, 0 ,"");
 		}
 
 	}

@@ -17,6 +17,7 @@ import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.model.PCMScenarioResult;
 import io.github.squat_team.runner.SQuATConfiguration;
 import io.github.squat_team.util.PCMHelper;
+import io.github.squat_team.util.TimeMeasurement;
 
 public class LoadHelper {
 	private SQuATConfiguration configuration;
@@ -30,8 +31,8 @@ public class LoadHelper {
 	}
 
 	public List<SillyBot> loadBotsForArchitecturalAlternatives(List<ArchitecturalVersion> architecturalAlternatives,
-			ArchitecturalVersion initialArchitecture) {
-		return getCocomeAlternatives(architecturalAlternatives, initialArchitecture);
+			ArchitecturalVersion initialArchitecture, int level) {
+		return getCocomeAlternatives(architecturalAlternatives, initialArchitecture, level);
 		// return getSTPlusAlternatives(architecturalAlternatives, initialArchitecture);
 	}
 
@@ -39,7 +40,11 @@ public class LoadHelper {
 		Map<String, Map<SillyBot, AbstractPCMBot>> botsSortedByQualityAttribute = new LinkedHashMap<>();
 		List<AbstractPCMBot> bots = configuration.getExperiment().getBots();
 		for (AbstractPCMBot bot : bots) {
+			TimeMeasurement.getInstace()
+					.printStart("creation of " + bot.getQualityAttribute() + " bot " + bot.getName());
 			createSillyBot(bot, botsSortedByQualityAttribute);
+			TimeMeasurement.getInstace()
+					.printFinish("creation of " + bot.getQualityAttribute() + " bot " + bot.getName());
 		}
 		return botsSortedByQualityAttribute;
 	}
@@ -50,10 +55,11 @@ public class LoadHelper {
 		Boolean filterSpecialCases = configuration.shouldFilterSpecialCases();
 		String name = bot.getName();
 		String qualityAttribute = bot.getQualityAttribute();
+		String responseType = bot.getResponseType();
 		PCMScenario scenario = bot.getScenario();
 		Float expectedResponseTime = (Float) scenario.getExpectedResult().getResponse();
-		SillyBot sillyBot = new SillyBot(name, qualityAttribute, expectedResponseTime, concessionStrategyFactory,
-				filterSpecialCases);
+		SillyBot sillyBot = new SillyBot(name, qualityAttribute, responseType, expectedResponseTime,
+				concessionStrategyFactory, filterSpecialCases);
 		addBotEntry(botsSortedByQualityAttribute, sillyBot, bot);
 		return botsSortedByQualityAttribute;
 	}
@@ -78,9 +84,10 @@ public class LoadHelper {
 	}
 
 	private List<SillyBot> getCocomeAlternatives(List<ArchitecturalVersion> architecturalAlternatives,
-			ArchitecturalVersion initialArchitecture) {
+			ArchitecturalVersion initialArchitecture, int level) {
 		Map<String, Map<SillyBot, AbstractPCMBot>> botsSortedByQualityAttribute = createSillyBots();
 		List<SillyBot> sillyBots = getAllBots(botsSortedByQualityAttribute);
+
 		try {
 			// PRE EVALUATION CANDIDATE FILTERING
 			applyPreEvaluationFilters(architecturalAlternatives);
@@ -94,6 +101,8 @@ public class LoadHelper {
 						.get(currentQualityAttribute);
 
 				// EVALUATE CANDIDATES
+				TimeMeasurement.getInstace()
+						.printStart("calculating complexity of alternatives for " + currentQualityAttribute + " bots");
 				for (ArchitecturalVersion currentArchitecturalVersion : architecturalAlternatives) {
 					// cache
 					currentArchitecture = architectureCache.get(currentArchitecturalVersion);
@@ -111,10 +120,14 @@ public class LoadHelper {
 								+ currentArchitecturalVersion.getRepositoryFilename();
 						String architecturalVersionName = currentArchitecturalVersion.getName();
 
-						currentSillyBot.insertInOrder(new Proposal(calculateQualityAttributeComplexity(currentRealBot,
-								currentArchitecture, absolutePathArchitecture), architecturalVersionName));
+						currentSillyBot.insertInOrder(new Proposal(
+								calculateQualityAttributeComplexity(currentRealBot, currentArchitecture,
+										absolutePathArchitecture),
+								architecturalVersionName, level, currentArchitecturalVersion.getLastModifiedBy()));
 					}
 				}
+				TimeMeasurement.getInstace()
+						.printFinish("calculating complexity of alternatives for " + currentQualityAttribute + " bots");
 
 				// FILTER
 				List<IFilter> filtersForCurrentQualityAttribute = configuration.getExperiment()
@@ -122,10 +135,14 @@ public class LoadHelper {
 				Set<SillyBot> sillyBotsForCurrentQualityAttribute = botsForCurrentQualityAttribute.keySet();
 				if (filtersForCurrentQualityAttribute != null) {
 					for (IFilter filter : filtersForCurrentQualityAttribute) {
+						TimeMeasurement.getInstace().printStart("filtering alternatives with "
+								+ filter.getClass().getName() + " for " + currentQualityAttribute + " bots");
 						if (filter.checkPrecondition(architecturalAlternatives, sillyBotsForCurrentQualityAttribute)) {
 							architecturalAlternatives = filter.filter(architecturalAlternatives,
 									sillyBotsForCurrentQualityAttribute, sillyBots, architectureCache);
 						}
+						TimeMeasurement.getInstace().printFinish("filtering alternatives with "
+								+ filter.getClass().getName() + " for " + currentQualityAttribute + " bots");
 					}
 				}
 
@@ -150,9 +167,11 @@ public class LoadHelper {
 	private void applyPreEvaluationFilters(List<ArchitecturalVersion> architecturalAlternatives) {
 		java.lang.System.out.println("INITIAL NUMBER OF ALTERNATIVES: " + architecturalAlternatives.size());
 		for (IFilter filter : configuration.getExperiment().getPreEvaluationFilters()) {
+			TimeMeasurement.getInstace().printStart("pre-evaluation filter " + filter.getClass().getName());
 			if (filter.checkPrecondition(architecturalAlternatives, null)) {
 				architecturalAlternatives = filter.filter(architecturalAlternatives, null, null, null);
 			}
+			TimeMeasurement.getInstace().printFinish("pre-evaluation filter " + filter.getClass().getName());
 		}
 		java.lang.System.out.println("After pre evaluation filtering " + architecturalAlternatives.size());
 	}
@@ -179,5 +198,4 @@ public class LoadHelper {
 			}
 		}
 	}
-
 }

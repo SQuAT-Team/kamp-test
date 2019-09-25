@@ -430,6 +430,7 @@ public class SimpleLevelTwoSQuATTest extends AbstractSQuATTest {
 	private void validateAgreementProposalLevelTwo(NegotiatorResult result, List<SillyBot> orderedBots) {
 		Proposal agreementProposal = result.getAgreementProposal();
 		validateProposal(agreementProposal, BEST_RESULT_LVL2, orderedBots);
+		System.out.println(agreementProposal.getArchitectureName());
 	}
 
 	private void validateLevelTwo(List<Proposal> nonDominatedProposals, List<SillyBot> orderedBots) {

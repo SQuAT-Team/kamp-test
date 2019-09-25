@@ -10,7 +10,9 @@ import java.util.Random;
 import io.github.squat_team.agentsUtils.Proposal;
 import io.github.squat_team.agentsUtils.SillyBot;
 import io.github.squat_team.export.ExportController;
+import io.github.squat_team.util.LevelsRegistry;
 import io.github.squat_team.util.RandomGenerator;
+import io.github.squat_team.util.TimeMeasurement;
 
 public class SQuATSillyBotsNegotiator implements ISQuATNegotiator {
 	private ExportController exporter;
@@ -51,15 +53,18 @@ public class SQuATSillyBotsNegotiator implements ISQuATNegotiator {
 		// Step 2: Loop until you reach an Agreement or a Conflict
 		while ((!checkAgreement(proposals)) || redoRequest) {
 			redoRequest = false;
+			TimeMeasurement.getInstace().printStart("negotiation");
 			// Select Agent who has to concede
 			List<SillyBot> shouldConcede = selectWhoHasToConcede();
 
 			if (shouldConcede.isEmpty()) {
 				// Step 4: CONFLICT REACHED
-				return createConflictResults();
+				NegotiatorResult conflictResult = createConflictResults();
+				TimeMeasurement.getInstace().printFinish("negotiation (with conflict)");
+				return conflictResult;
 			} else {
-				System.out.println("Step 3.b: Agent/s who has to concede [#= " + shouldConcede.size() + "]=> "
-						+ shouldConcede.toString());
+				LevelsRegistry.getInstace().logInformationNewLine("Step 3.b: Agent/s who has to concede [#= "
+						+ shouldConcede.size() + "]=> " + shouldConcede.toString());
 				boolean atLeastOneNewProposal = false;
 				for (SillyBot concedingAg : shouldConcede) {
 					// Make "concedingAg" to concede
@@ -67,7 +72,7 @@ public class SQuATSillyBotsNegotiator implements ISQuATNegotiator {
 
 					newProposal = concedingAg.makeConcession(this.sillyBots);// I have to implement this method
 					if (newProposal != null) {
-						System.out.println("Step 3.c: New Proposal made by agent " + concedingAg + " => "
+						LevelsRegistry.getInstace().logInformationNewLine("Step 3.c: New Proposal made by agent " + concedingAg + " => "
 								+ newProposal.toString());
 						// Update proposals map
 						proposals.put(concedingAg, newProposal);
@@ -77,7 +82,9 @@ public class SQuATSillyBotsNegotiator implements ISQuATNegotiator {
 				}
 				if (!atLeastOneNewProposal) {
 					// Step 4: CONFLICT REACHED
-					return createConflictResults();
+					NegotiatorResult conflictResult = createConflictResults();
+					TimeMeasurement.getInstace().printFinish("negotiation (with conflict)");
+					return conflictResult;
 				}
 			}
 		}
