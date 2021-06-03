@@ -82,6 +82,6 @@
 	<properties>
 		<primefaces-themes-artifact>redmond</primefaces-themes-artifact>
 		<primefaces-themes-version>1.0.10</primefaces-themes-version>
-		<primefaces-version>5.1</primefaces-version>
+		<primefaces-version>6.0</primefaces-version>
 	</properties>
 </project>
