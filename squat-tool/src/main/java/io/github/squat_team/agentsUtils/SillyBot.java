@@ -5,8 +5,10 @@ import java.util.Iterator;
 import java.util.List;
 
 import edu.squat.transformations.ArchitecturalVersion;
+import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.agentsUtils.concessionStrategies.ConcessionStrategy;
 import io.github.squat_team.agentsUtils.concessionStrategies.IConcessionStrategyFactory;
+import io.github.squat_team.runner.SQuATConfiguration;
 import io.github.squat_team.util.LevelsRegistry;
 
 public class SillyBot {
@@ -14,22 +16,29 @@ public class SillyBot {
 	private String qualityAttribute;
 	private String responseType;
 
-	protected List<Proposal> orderedProposals;
+	protected List<Proposal> orderedProposals = new ArrayList<Proposal>();
 	private ConcessionStrategy concessionStrategy;
-	private float acceptableLoss;
+	private float acceptableLoss = 0.3f;
 	private float scenarioThreshold;
 	private boolean filterSpecialCases;
 
 	public SillyBot(String name, String qualityAttribute, String responseType, float scenarioThreshold,
 			IConcessionStrategyFactory concessionStrategyFactory, boolean filterSpecialCases) {
-		this.orderedProposals = new ArrayList<Proposal>();
 		this.concessionStrategy = concessionStrategyFactory.getConcessionStrategy(this);
 		this.name = name;
 		this.qualityAttribute = qualityAttribute;
 		this.responseType = responseType;
 		this.scenarioThreshold = scenarioThreshold;
-		this.acceptableLoss = 0.30f;
 		this.filterSpecialCases = filterSpecialCases;
+	}
+	
+	public SillyBot(AbstractPCMBot bot, SQuATConfiguration configuration) {
+		this.concessionStrategy = configuration.getConcessionStrategyFactory().getConcessionStrategy(this);
+		this.name = bot.getName();
+		this.qualityAttribute = bot.getQualityAttribute();
+		this.responseType = bot.getResponseType();
+		this.scenarioThreshold = (Float) bot.getScenario().getExpectedResult().getResponse();
+		this.filterSpecialCases = configuration.shouldFilterSpecialCases();
 	}
 
 	public synchronized void insertInOrder(Proposal p) {

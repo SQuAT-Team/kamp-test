@@ -9,11 +9,9 @@ import java.util.Set;
 
 import edu.squat.transformations.ArchitecturalVersion;
 import io.github.squat_team.AbstractPCMBot;
-import io.github.squat_team.agentsUtils.concessionStrategies.IConcessionStrategyFactory;
 import io.github.squat_team.agentsUtils.transformations.ArchitecturalTransformationsFactory;
 import io.github.squat_team.experiments.filters.IFilter;
 import io.github.squat_team.model.PCMArchitectureInstance;
-import io.github.squat_team.model.PCMScenario;
 import io.github.squat_team.model.PCMScenarioResult;
 import io.github.squat_team.runner.SQuATConfiguration;
 import io.github.squat_team.util.PCMHelper;
@@ -51,15 +49,7 @@ public class LoadHelper {
 
 	private Map<String, Map<SillyBot, AbstractPCMBot>> createSillyBot(AbstractPCMBot bot,
 			Map<String, Map<SillyBot, AbstractPCMBot>> botsSortedByQualityAttribute) {
-		IConcessionStrategyFactory concessionStrategyFactory = configuration.getConcessionStrategyFactory();
-		Boolean filterSpecialCases = configuration.shouldFilterSpecialCases();
-		String name = bot.getName();
-		String qualityAttribute = bot.getQualityAttribute();
-		String responseType = bot.getResponseType();
-		PCMScenario scenario = bot.getScenario();
-		Float expectedResponseTime = (Float) scenario.getExpectedResult().getResponse();
-		SillyBot sillyBot = new SillyBot(name, qualityAttribute, responseType, expectedResponseTime,
-				concessionStrategyFactory, filterSpecialCases);
+		SillyBot sillyBot = new SillyBot(bot, configuration);
 		addBotEntry(botsSortedByQualityAttribute, sillyBot, bot);
 		return botsSortedByQualityAttribute;
 	}
@@ -120,7 +110,7 @@ public class LoadHelper {
 								+ currentArchitecturalVersion.getRepositoryFilename();
 						String architecturalVersionName = currentArchitecturalVersion.getName();
 
-						currentSillyBot.insertInOrder(new Proposal(
+						currentSillyBot.insertInOrder(new Proposal(currentArchitecturalVersion,
 								calculateQualityAttributeComplexity(currentRealBot, currentArchitecture,
 										absolutePathArchitecture),
 								architecturalVersionName, level, currentArchitecturalVersion.getLastModifiedBy()));

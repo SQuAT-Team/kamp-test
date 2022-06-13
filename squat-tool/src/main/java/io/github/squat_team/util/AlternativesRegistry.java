@@ -3,8 +3,6 @@ package io.github.squat_team.util;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.Duration;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -56,7 +54,7 @@ public class AlternativesRegistry {
 	}
 	
 
-	private String getFatherName(String childName) {
+	public String getFatherName(String childName) {
 		for(String fatherName : fathers.keySet()){
 			if(fathers.get(fatherName).contains(childName))
 				return fatherName;
@@ -64,7 +62,7 @@ public class AlternativesRegistry {
 		return "null";
 	}
 
-	private String removePrefix(String architectureName) {
+	public String removePrefix(String architectureName) {
 		return architectureName.replace("/Users/santiagovidal/git/kamp-test/squat-tool/models/cocomeWithResourceDemands/", "");
 	}
 
@@ -94,7 +92,6 @@ public class AlternativesRegistry {
 				printAlternative(bot, proposal, isAnAgreement(agreetmentsOfLevel,proposal));
 			}
 		}
-		
 	}
 	
 	private boolean isAnAgreement(List<Proposal> agreetmentsOfLevel,Proposal proposal){

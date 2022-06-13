@@ -14,6 +14,8 @@ import io.github.squat_team.agentsUtils.transformations.ArchitecturalTransformat
 import io.github.squat_team.export.ExportController;
 import io.github.squat_team.negotiation.ISQuATNegotiator;
 import io.github.squat_team.negotiation.NegotiatorResult;
+import io.github.squat_team.util.AlternativesRegistry;
+import io.github.squat_team.util.TimeMeasurement;
 
 public class SQuATController {
 
@@ -47,21 +49,28 @@ public class SQuATController {
 
 		boolean agreement = false;
 		while (shouldRepeat(agreement)) {
+			agreementsOfLevel = new ArrayList<>();
 			sillyBots = collectInitialProposals();
 			negotiator.initialize(sillyBots);
 			negotiatorResult = negotiator.negotiate(false);
 			agreement = negotiatorResult.isSuccessful();
 
 			boolean redoRequest = askUserForRedo(negotiatorResult);
+			TimeMeasurement.getInstace().printFinish("negotiation (with agreement)");
+			agreementsOfLevel.add(negotiatorResult.getAgreementProposal());
 			while (redoRequest && agreement) {
 				negotiatorResult = negotiator.negotiate(true);
 				agreement = negotiatorResult.isSuccessful();
 				redoRequest = askUserForRedo(negotiatorResult);
+				TimeMeasurement.getInstace().printFinish("negotiation (with agreement)");
+				agreementsOfLevel.add(negotiatorResult.getAgreementProposal());
 			}
 
 			negotiatorResultsForLevels.add(negotiatorResult);
 
 			exporter.handleLevelTerminated(negotiatorResult);
+			
+ 			AlternativesRegistry.getInstace().saveAlternatives(sillyBots,agreementsOfLevel,currentLevelOfTransformations, proposalsForNextRound);
 			if (configuration.shouldFilterBestAlternatives()) {
 				filterBestKAlternatives(configuration.getSeedSelectionSize());
 			}

@@ -12,6 +12,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.squat.transformations.ArchitecturalVersion;
 import io.github.squat_team.AbstractPCMBot;
 import io.github.squat_team.agentsUtils.Proposal;
 import io.github.squat_team.agentsUtils.SillyBot;
@@ -342,7 +343,7 @@ public class SimpleNegotiatorTest {
 	public class ProposalImplementation extends Proposal {
 
 		public ProposalImplementation(String pcmArchitecture, float scenarioResponse) {
-			super(pcmArchitecture, scenarioResponse, 0 ,"");
+			super(new ArchitecturalVersion(pcmArchitecture, pcmArchitecture, ""), pcmArchitecture, scenarioResponse, 0 ,"");
 		}
 
 	}
